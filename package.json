@@ -1,0 +1,22 @@
+{
+  "name": "lerna-react-ts-storybook-storyshot-starter",
+  "version": "1.0.0",
+  "description": "Starter for Monorepos: Lerna, TypeScript, CRA and Storybook",
+  "main": "index.js",
+  "repository": "https://github.com/softspider/lerna-react-ts-storybook-storyshot-starter",
+  "author": "Alexander Lapygin",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "lerna": "^3.18.3"
+  },
+  "scripts": {
+    "bootstrap": "lerna bootstrap",
+    "story": "lerna run story --stream",
+    "start": "lerna run start --stream",
+    "test": "cd packages/uilib && npm run test",
+    "build:lib": "lerna run libbuild --stream",
+    "build:app": "npm run bootstrap && npm run build:lib && cd ./packages/cra-app && npm run build",
+    "clean": "lerna clean"
+  }
+}
