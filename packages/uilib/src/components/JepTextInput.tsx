@@ -28,8 +28,8 @@ export function JepTextInput(props: JepTextInputProps) {
         return (
             <div className={fieldClassName}>
                 <label htmlFor={props.id} className={labelClassName}>
-                    {error || props.label}
-                </label>:&nbsp;
+                    {error || props.label}:
+                </label>&nbsp;
                 <input 
                     id={props.id} 
                     type={readonly ? "hidden" : "text"} 

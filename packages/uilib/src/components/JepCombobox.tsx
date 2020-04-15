@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
 
 type JepComboboxProps = {
+    id?: string,
+    error?: string,
     label: string,
-    value?: string
+    name: string,
+    value?: string,
+    disabled?: boolean,
+    readonly?: boolean
 };
 
 export function JepCombobox(props: JepComboboxProps) {
@@ -14,18 +19,38 @@ export function JepCombobox(props: JepComboboxProps) {
 
     const [value, setValue] = useState(props.value || "");
     const [data, setData] = useState(list);
-
-    const fieldClassName = ""; // make style depending on props and states
+    const [error, setError] = useState(props.error || "");
+    const [disabled, setDisabled] = useState(props.disabled || false);
+    const [readonly, setEditable] = useState(props.readonly || false);
+    
 
     const handleChange = (event) => {
         alert(event.target.value);
         setValue(event.target.value);
     }
-
+    const fieldClassName = ""; // make style depending on props and states
+    const labelClassName = `label ${error && "error"}`;
+    if(readonly) {
+        return (
+            <div className={fieldClassName}>
+                <label htmlFor={props.id} className={labelClassName}>
+                    {error || props.label}:
+                </label>&nbsp;
+                {value}
+            </div>
+        );
+    }
     return (
         <div className={fieldClassName}>
-            <label>{props.label}</label><br/>
-            <select value={value} onChange={handleChange.bind(this)}>
+            <label htmlFor={props.id} className={labelClassName}>
+                    {error || props.label}:
+            </label>&nbsp;
+            <select 
+                id={props.id} 
+                name={props.name} 
+                value={value} 
+                disabled={disabled} 
+                onChange={handleChange.bind(this)}>
                 {data.map(item => (
                 <option key={item.id} value={item.value}>{item.value}</option>
                 ))}
