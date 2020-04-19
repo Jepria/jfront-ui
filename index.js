@@ -1,1 +1,1 @@
-export * from './dist/ComboBox.js';
+export * from './dist/components/ComboBox.js';
