@@ -1,3 +1,1 @@
-'use strict';
-
-export * from './src/components/ComboBox.tsx';
+export * from './dist/ComboBox.js';
