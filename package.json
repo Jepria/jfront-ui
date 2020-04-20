@@ -1,0 +1,17 @@
+{
+  "name": "jfront-components",
+  "version": "0.1.0",
+  "private": true,
+  "main": "index.js",
+  "dependencies": {
+    "@types/styled-components": "^5.0.1",
+    "styled-components": "^5.0.1"
+  },
+  "scripts": {
+    "build": "tsc & npm run copy-resources",
+    "copy-resources": "npx cpx \\\"src/**/*.!(ts|tsx)\\\" dist"
+  },
+  "devDependencies": {
+    "cpx": "^1.5.0"
+  }
+}
