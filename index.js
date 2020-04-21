@@ -1,2 +1,2 @@
-export * from './dist/components/input/ComboBox';
-export * from './dist/utils';
+export * from './dist/components/input/ComboBox/index.js';
+export * from './dist/utils/index.js';
