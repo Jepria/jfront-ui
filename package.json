@@ -8,10 +8,13 @@
     "styled-components": "^5.0.1"
   },
   "scripts": {
+    "clean": "npx rimraf dist",    
     "build": "tsc & npm run copy-resources",
-    "copy-resources": "npx cpx \\\"src/**/*.!(ts|tsx)\\\" dist"
+    "copy-resources": "npx cpx \\\"src/**/*.!(ts|tsx)\\\" dist",
+    "clean-build": "npm run clean && npm run build"
   },
   "devDependencies": {
-    "cpx": "^1.5.0"
+    "cpx": "^1.5.0",
+    "rimraf": "^3.0.2"
   }
 }
