@@ -3,18 +3,22 @@
   "version": "0.1.0",
   "private": true,
   "main": "index.js",
-  "dependencies": {
-    "@types/styled-components": "^5.0.1",
-    "styled-components": "^5.0.1"
-  },
-  "scripts": {
-    "clean": "npx rimraf dist",
-    "build": "tsc & npm run copy-resources",
-    "copy-resources": "npx cpx \\\"src/**/*.!(ts|tsx)\\\" dist",
-    "clean-build": "npm run clean && npm run build"
-  },
   "devDependencies": {
     "cpx": "^1.5.0",
-    "rimraf": "^3.0.2"
+    "rimraf": "^3.0.2",
+    "@types/styled-components": "^5.0.1",
+    "@types/lodash": "^4.14.151"
+  },
+  "peerDependencies": {
+    "react": "16.x",
+    "react-dom": "16.x",
+    "styled-components": "^5.0.1",
+    "lodash": "^4.17.15"
+  },
+  "scripts": {
+    "clean": "rimraf dist",
+    "build": "tsc & npm run copy-resources",
+    "copy-resources": "cpx \"src/**/*.!(ts|tsx)\" dist",
+    "clean-build": "npm run clean && npm run build"
   }
 }

@@ -9,6 +9,9 @@
     "declaration": true,
     "noImplicitAny": true,
     "strictNullChecks": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
     "rootDir": "./src"
   },
   "include": ["src"],
