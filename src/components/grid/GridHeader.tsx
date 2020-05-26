@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import React from 'react';
+import React, { HTMLAttributes, ThHTMLAttributes } from 'react';
 
 export const TableHeader = styled.thead`
   display: block;
@@ -10,7 +10,7 @@ export const TableHeader = styled.thead`
   }
 `;
 
-interface TableHeaderCellProps {
+export interface TableHeaderCellProps extends ThHTMLAttributes<HTMLTableHeaderCellElement> {
   width?: string;
 }
 
@@ -21,18 +21,18 @@ export const TableHeaderCell = styled.th<TableHeaderCellProps>`
   ${props => props.width ? `width: ${props.width};` : ''}
 `
 
-export const GridHeader: React.FC = ({ children }) => {
+export const GridHeader: React.FC<HTMLAttributes<HTMLTableSectionElement>> = (props) => {
   return (
-    <TableHeader>
-      {typeof children === 'function' ? children() : children}
+    <TableHeader {...props}>
+      {props.children}
     </TableHeader>
   );
 }
 
-export const GridHeaderCell: React.FC<TableHeaderCellProps> = ({ width, children }) => {
+export const GridHeaderCell: React.FC<TableHeaderCellProps> = (props) => {
   return (
-    <TableHeaderCell width={width}>
-      {typeof children === 'function' ? children() : children}
+    <TableHeaderCell {...props}>
+      {props.children}
     </TableHeaderCell>
   );
 }

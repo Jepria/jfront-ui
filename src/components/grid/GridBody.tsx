@@ -1,44 +1,49 @@
-import React, { useRef, useState, useLayoutEffect, useContext, useEffect } from 'react';
+import React, { useRef, useState, useLayoutEffect } from 'react';
 import styled from 'styled-components';
-import { throttle } from 'lodash';
-import { GridContext } from './GridContext';
-
 
 interface TableBodyProps {
   height?: string;
+  scrollWidth?: number;
 }
 
 export const TableBody = styled.tbody<TableBodyProps>`
   width: 100%;
   display: block;
   overflow: auto;
-  ${props => props.height ? `height: ${props.height};` : ''}
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  -ms-flex-positive: 1;
+      flex-grow: 1;
   @media only screen and (min-width: 761px) {
-    width: calc(100% + 17px);
-    position: absolute;
-    right: -17px;
+    width: ${props => `calc(100% + ${props.scrollWidth ? props.scrollWidth : 0}px)`};
+    ${props => props.scrollWidth ? `right: -${props.scrollWidth}px` : ''};
   }
 `;
 
 interface ScrollDivProps {
   height?: number;
+  top?: number;
 }
 
-const ScrollDiv = styled.div<ScrollDivProps>`
+const Scroll = styled.tbody<ScrollDivProps>`
+  display: block;
   position: absolute;
-  width: 17px;
-  background-color: transparent;
-  right: 0;
-  height: ${props => props.height ? props.height : 0}px;
-  overflow: auto;
   opacity: 0.5;
   z-index: 2;
+  width: 17px;
+  right: 0;
+  top: ${props => props.top}px;
+  height: ${props => props.height ? props.height : 0}px;
+  background-color: transparent;
+  overflow: auto;
   @media only screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px) {
     display: none; 
   }
 `;
 
-const ScrollDivContent = styled.div<ScrollDivProps>`
+const ScrollSpacer = styled.tr<ScrollDivProps>`
+  display: block;
   width: 1px;
   background-color: transparent;
   height: ${props => props.height ? props.height : 0}px;
@@ -46,11 +51,19 @@ const ScrollDivContent = styled.div<ScrollDivProps>`
 
 export const GridBody: React.FC = ({ children }) => {
 
-  const context = useContext(GridContext);
   const refThis = useRef<HTMLTableSectionElement>(null);
-  const refScroll = useRef<HTMLDivElement>(null);
+  const refScroll = useRef<HTMLTableSectionElement>(null);
   const [height, setHeight] = useState<number | undefined>(undefined);
   const [scrollHeight, setScrollHeight] = useState<number | undefined>(undefined);
+  const [scrollWidth, setScrollWidth] = useState<number | undefined>(undefined);
+  const [scrollTop, setScrollTop] = useState<number | undefined>(undefined);
+
+  useLayoutEffect(() => {
+    if (refThis.current && scrollTop !== refThis.current.offsetTop) {
+      setScrollTop(refThis.current.offsetTop);
+     }
+     //eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [height]);
 
   const getScrollHeight = () => {
     if (height && refThis.current?.clientWidth
@@ -63,36 +76,22 @@ export const GridBody: React.FC = ({ children }) => {
   }
 
   const resize = () => {
-    let tableSize = refThis.current?.parentElement?.offsetHeight;
-    let thead = refThis.current?.parentElement?.getElementsByTagName('thead')[0];
-    let newHeight = thead?.offsetHeight && tableSize ? tableSize - thead.offsetHeight : tableSize;
-    /** tbody height = table height - thead height TODO change to calc() for optimization **/
-    if (height !== newHeight) {
-      setHeight(newHeight);
+    if (height !== refThis.current?.offsetHeight) {
+      setHeight(refThis.current?.offsetHeight);
     }
   }
 
   useLayoutEffect(() => {
-    const handleResize = throttle(() => {
-      resize();
-    }, 100);
-    window.addEventListener("resize", handleResize);
+    window.addEventListener("resize", resize);
     resize();
-    return () => window.removeEventListener("resize", handleResize);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    return () => window.removeEventListener("resize", resize);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  useLayoutEffect(() => {
-    if (scrollHeight !== refThis.current?.scrollHeight) {
-      setScrollHeight(refThis.current?.scrollHeight);
-    }
-  });
 
   useLayoutEffect(
     () => {
       const refTbody = refThis.current;
-      const refDiv = refScroll.current;
+      const refScrollPanel = refScroll.current;
       let ignoreScrollEvents = false;
 
       const handleScroll = (e: Event) => {
@@ -102,16 +101,16 @@ export const GridBody: React.FC = ({ children }) => {
             if (thead) {
               thead.scrollLeft = refTbody.scrollLeft;
             }
-            if (refDiv && refTbody) {
+            if (refScrollPanel && refTbody) {
               let ignore = ignoreScrollEvents
               ignoreScrollEvents = false
               if (ignore) return
 
               ignoreScrollEvents = true
               if (e.target === refTbody) {
-                refDiv.scrollTop = refTbody.scrollTop;
+                refScrollPanel.scrollTop = refTbody.scrollTop;
               } else {
-                refTbody.scrollTop = refDiv.scrollTop;
+                refTbody.scrollTop = refScrollPanel.scrollTop;
               }
             }
           }
@@ -120,29 +119,35 @@ export const GridBody: React.FC = ({ children }) => {
       }
 
       refTbody?.addEventListener("scroll", handleScroll);
-      refDiv?.addEventListener("scroll", handleScroll);
+      refScrollPanel?.addEventListener("scroll", handleScroll);
       return () => {
         refTbody?.removeEventListener("scroll", handleScroll)
-        refDiv?.removeEventListener("scroll", handleScroll)
+        refScrollPanel?.removeEventListener("scroll", handleScroll)
       };
     }, []
   );
 
-  useEffect(() => {
-    if (context.pagingBar.current) {
-      resize();
+  //eslint-disable-next-line react-hooks/exhaustive-deps
+  useLayoutEffect(
+    () => {
+      let newScrollWidth = refThis.current?.offsetWidth && refThis.current?.clientWidth !== 0 ? refThis.current?.offsetWidth - refThis.current?.clientWidth : undefined;
+      if (scrollWidth !== newScrollWidth) {
+        setScrollWidth(newScrollWidth);
+      }
+      if (scrollHeight !== refThis.current?.scrollHeight) {
+        setScrollHeight(refThis.current?.scrollHeight ? refThis.current?.scrollHeight - 1 : undefined);
+      }
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [context.pagingBar.current]);
+  );
 
   return (
     <React.Fragment>
-        <TableBody ref={refThis} height={height ? `${height}px` : undefined} >
-          {typeof children === 'function' ? children() : children}
-        </TableBody>
-        <ScrollDiv ref={refScroll} height={getScrollHeight()}>
-          <ScrollDivContent height={scrollHeight} />
-        </ScrollDiv>
+      <TableBody ref={refThis} scrollWidth={scrollWidth} >
+        {children}
+      </TableBody>
+      <Scroll ref={refScroll} height={getScrollHeight()} top={scrollTop} >
+        <ScrollSpacer height={scrollHeight} />
+      </Scroll>
     </React.Fragment>
   );
 }

@@ -14,7 +14,7 @@ export const TableRow = styled.tr<TableRowProps>`
   }
 `;
 
-export interface TableCellProps extends React.HTMLAttributes<HTMLTableCellElement> {
+export interface TableCellProps extends React.TdHTMLAttributes<HTMLTableCellElement> {
   label?: string;
   width?: string;
 }

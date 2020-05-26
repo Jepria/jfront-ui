@@ -1,13 +1,11 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, HTMLAttributes } from 'react';
 import styled from 'styled-components';
 import { PagingToolBar } from '../pagingbar';
-import { GridContext } from './GridContext';
 
 export const PagingBar = styled.div`
   font: 11px arial, tahoma, helvetica, sans-serif;
   margin: 0;
   padding: 2px 2px 2px 2px;
-  height: 24px;
 `;
 
 const Container = styled(PagingBar)`
@@ -54,31 +52,37 @@ const Input = styled.input.attrs( {type: 'number'})`
   width: 60px;
 `;
 
-export interface GridPagingBarProps {
+export interface GridPagingBarProps extends HTMLAttributes<HTMLDivElement> {
   currentPage?: number;
-  maxRowCount?: number;
+  rowCount?: number;
+  totalRowCount?: number;
   visibleRowCount?: number;
   children?: never;
-  onChange?(pageNumber: number, pageSize: number): void;
+  onRefresh?(pageNumber: number, pageSize: number): void;
 }
 
-export const GridPagingBar: React.FC<GridPagingBarProps> = ({ currentPage = 1, maxRowCount, visibleRowCount = 25, onChange }) => {
+export const GridPagingBar: React.FC<GridPagingBarProps> = (props) => {
 
-  const context = useContext(GridContext);
+  const { currentPage = 1, rowCount, totalRowCount, visibleRowCount = 25, onRefresh } = props;
+
   const [_visibleRowCount, setVisibleRowCount] = useState<number>(visibleRowCount);
   const [_currentPage, setCurrentPage] = useState<number>(currentPage);
   const visibleRowCountInputRef = React.createRef<HTMLInputElement>();
-  const pageCount = maxRowCount ? Math.ceil(maxRowCount / _visibleRowCount) : 1;
-  const [_maxRowCount, setMaxRowCount] = useState(maxRowCount);
+  const pageCount = totalRowCount ? Math.ceil(totalRowCount / _visibleRowCount) : 1;
+  const [_rowCount, setRowCount] = useState(rowCount);
+  const [_totalRowCount, setTotalRowCount] = useState(totalRowCount);
 
   useEffect(() => {
-    console.log(maxRowCount)
-    setMaxRowCount(maxRowCount);
-  }, [maxRowCount]);
+    setTotalRowCount(totalRowCount);
+  }, [totalRowCount]);
+
+  useEffect(() => {
+    setRowCount(rowCount);
+  }, [rowCount]);
 
   const onChangeValues = (pageNumber?: number, pageSize?: number) => {
-    if (pageNumber && pageSize && pageSize >= 1 && onChange) {
-      onChange(pageNumber, pageSize);
+    if (pageNumber && pageSize && pageSize >= 1 && onRefresh) {
+      onRefresh(pageNumber, pageSize);
     }
   }
 
@@ -109,7 +113,7 @@ export const GridPagingBar: React.FC<GridPagingBarProps> = ({ currentPage = 1, m
   }
 
   return (
-    <Container ref={context.pagingBar}>
+    <Container {...props}>
       <Left>
         <PagingToolBar startPageNumber={currentPage} pageCount={pageCount} onChange={page => {
           setCurrentPage(page);
@@ -117,14 +121,14 @@ export const GridPagingBar: React.FC<GridPagingBarProps> = ({ currentPage = 1, m
         }} />
       </Left>
       <Center>
-        {_maxRowCount ? `Записи ${_visibleRowCount * _currentPage - _visibleRowCount + 1} - ${_visibleRowCount * _currentPage} из ${_maxRowCount}` :
+        {_totalRowCount && _rowCount ? `Записи ${_visibleRowCount * _currentPage - _visibleRowCount + 1} - ${_rowCount < _visibleRowCount ? _rowCount : _visibleRowCount * _currentPage} из ${_totalRowCount}` :
           'Записей не найдено'}
       </Center>
       <Right>
         <label>Записей на странице: <Input
           ref={visibleRowCountInputRef}
           type='number'
-          min={1} max={_maxRowCount}
+          min={1} max={_totalRowCount}
           defaultValue={_visibleRowCount}
           onBlur={onBlur}
           onKeyUp={onKeyUp} />

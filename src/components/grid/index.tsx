@@ -1,16 +1,15 @@
-import React, { HTMLAttributes } from 'react';
+import React, { HTMLAttributes, TableHTMLAttributes } from 'react';
 import styled from 'styled-components';
 import { GridPagingBar, GridPagingBarProps } from './GridPagingBar';
 import { GridBody } from './GridBody';
-import { GridContextProvider } from './GridContext';
 import { GridTable } from './GridTable';
-import { GridHeader, GridHeaderCell } from './GridHeader';
+import { GridHeader, GridHeaderCell, TableHeaderCellProps } from './GridHeader';
 import { TableRow, GridRow, GridCell, TableRowProps, TableCellProps } from './GridRow';
 
 export type Grid = React.FC<GridProps> & {
-  Table: React.FC;
-  Header: React.FC;
-  HeaderCell: React.FC;
+  Table: React.FC<TableHTMLAttributes<HTMLTableElement>>;
+  Header: React.FC<HTMLAttributes<HTMLTableSectionElement>>;
+  HeaderCell: React.FC<TableHeaderCellProps>;
   Body: React.FC;
   Row: React.FC<TableRowProps>;
   Cell: React.FC<TableCellProps>;
@@ -25,41 +24,46 @@ interface GridProps extends HTMLAttributes<HTMLDivElement> {
 const Container = styled.section<GridProps>`
   height: ${props => props.height ? props.height : '100%'};
   width: ${props => props.width ? props.width : '100%'};
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 `;
 
 
 export const Grid: Grid = (props) => {
   return (
     <Container {...props}>
-      <GridContextProvider>
         {props.children}
-      </GridContextProvider>
     </Container>
   );
 }
 
-Grid.Table = ({ children }) => {
+Grid.Table = (props) => {
   return (
-    <GridTable>
-      {children}
+    <GridTable {...props}>
+      {props.children}
     </GridTable>
   );
 }
 
-Grid.Header = ({ children }) => {
+Grid.Header = (props) => {
   return (
-    <GridHeader>
+    <GridHeader {...props}>
       <TableRow>
-        {children}
+        {props.children}
       </TableRow>
     </GridHeader>
   );
 }
 
-Grid.HeaderCell = ({ children }) => {
+Grid.HeaderCell = (props) => {
   return (
-    <GridHeaderCell>
-      {children}
+    <GridHeaderCell {...props}>
+      {props.children}
     </GridHeaderCell>
   );
 }
