@@ -9,6 +9,7 @@ export * from './components/grid/common/GridRow';
 export * from './components/grid/common/GridTable';
 export * from './components/grid/common';
 export * from './components/grid/jepgrid';
+export * from './components/layout/index';
 export * from './utils';
 
 export * from './components/form';
