@@ -1,6 +1,6 @@
 import React, { useState, useEffect, HTMLAttributes } from 'react';
 import styled from 'styled-components';
-import { PagingToolBar } from '../pagingbar';
+import { PagingToolBar } from '../../pagingbar';
 
 export const PagingBar = styled.div`
   font: 11px arial, tahoma, helvetica, sans-serif;
