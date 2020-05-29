@@ -12,7 +12,6 @@ export * from './components/grid/jepgrid';
 export * from './utils';
 
 export * from './components/form';
-export * from './components/form-field';
 
 export * from './components/tabpanel';
 
