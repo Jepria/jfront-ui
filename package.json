@@ -21,5 +21,8 @@
     "build": "tsc & npm run copy-resources",
     "copy-resources": "cpx \"src/**/*.!(ts|tsx)\" dist",
     "clean-build": "npm run clean && npm run build"
+  },
+  "dependencies": {
+    "typescript": "^3.9.3"
   }
 }
