@@ -4,11 +4,9 @@ import React from "react";
 
 const TabPanel = styled.div`
   height:22px;
-  border-bottom: 1px solid #99BBE8;
   font-family: tahoma, arial, helvetica, sans-serif;
   color: rgb(21, 66, 139);
   font-size: 11px;
-  border-bottom: 1px solid #99BBE8;
 `;
 
 interface TabProps {
