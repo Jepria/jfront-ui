@@ -6,6 +6,7 @@ export const PagingBar = styled.div`
   font: 11px arial, tahoma, helvetica, sans-serif;
   margin: 0;
   padding: 2px 2px 2px 2px;
+  box-sizing: border-box;
 `;
 
 const Container = styled(PagingBar)`
