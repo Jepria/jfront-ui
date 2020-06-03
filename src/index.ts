@@ -1,4 +1,5 @@
-export * from './components/input/ComboBox';
+export * from './components/input/combobox';
+export * from './components/input/checkboxlist';
 export * from './components/input/InputText';
 export * from './components/input/InputSelect';
 

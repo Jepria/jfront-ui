@@ -1,53 +1,49 @@
-import React, { useReducer, createContext, useContext, useEffect } from 'react';
+import React, { useReducer, createContext, useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import openIcon from './openIcon.gif';
 import exclamation from '../images/exclamation.gif';
+import loading from '../images/loading.gif';
 import { isFunction } from '../../../utils';
 
 const ComboBoxButton = styled.img`
-  width: 17px;
-  height: 21px;
-  padding: 0px;
-  cursor: pointer;
+  box-sizing: border-box;
+  display: inline-block;
   vertical-align: top;
-  position:absolute;
+  cursor: pointer;
   border-color: #ccc;
   border-top-color: #999;
   border-bottom: 1px solid #b5b8c8;
+  height: 24px;
 `;
 
-interface ComboBoxInputProps {
-  withButton?: boolean;
+const ComboBoxInput = styled.div`
+  box-sizing: border-box;
+  width: 100%;
+  white-space: nowrap;
+`;
+
+interface InputProps {
   error?: boolean;
 }
 
-const ComboBoxInput = styled.input`
-  height: 20px;
-  padding: 0px;
-  margin: 0px;
-  width: ${(props: ComboBoxInputProps) => props.withButton ? 'calc(100% - 17px)' : '100%'};
-  ${(props: ComboBoxInputProps) => props.error ? 'border: 1px solid red' : 'border: 1px solid #ccc; border-top: 1px solid #999;'}
-`;
-
-const ComboBoxOptionSelected = styled.li`
-  text-align: left;
-  overflow: hidden;
-  white-space: nowrap;
-  height: 18px;
-  padding: 2px 6px;
-  cursor: pointer;
+const Input = styled.input<InputProps>`
   font-family: tahoma, arial, helvetica, sans-serif;
   font-size: 12px;
-  background: #ccddf3;
+  box-sizing: border-box;
+  display: inline-block;
+  vertical-align: top;
+  height: 24px;
+  padding-left: 2px;
+  width: calc(100% - 17px);
+  ${(props: InputProps) => props.error ? 'border: 1px solid red' : 'border: 1px solid #ccc; border-top: 1px solid #999;'}
 `;
-
 
 interface ComboBoxOptionProps {
   hidden?: boolean;
+  selected?: boolean;
 }
 
 const ComboBoxOption = styled.li<ComboBoxOptionProps>`
-  text-align: left;
   overflow: hidden;
   white-space: nowrap;
   height: 18px;
@@ -56,15 +52,12 @@ const ComboBoxOption = styled.li<ComboBoxOptionProps>`
   font-family: tahoma, arial, helvetica, sans-serif;
   font-size: 12px;
   ${(props: ComboBoxOptionProps) => props.hidden ? 'display: none' : ''}
-  &:hover{
-    background: #eee
-  }
+  ${(props: ComboBoxOptionProps) => props.selected ? 'background: #ccddf3;' : '&:hover {background: #eee}' }
 `;
 
 const CompoBoxList = styled.ul`
   background: white;
   overflow: auto;
-  max-height: 200px;
   margin: 0;
   padding: 0;
 `;
@@ -80,42 +73,32 @@ const ComboBoxPopup = styled.div<ComboBoxPopupProps>`
   border-width: 1px;
   z-index: 5100;
   position: relative;
-  width: 100%;
-  max-width: ${(props: ComboBoxProps) => props.width ? props.width : '200px'};
-  ${(props: ComboBoxPopupProps) => props.hidden ? 'display: none' : ''}
 `;
 
 interface ComboBoxProps {
   width?: string;
 }
 
-const ComboBox = styled.div<ComboBoxProps>`
-  font-family: tahoma, arial, helvetica, sans-serif;
-  font-size: 12px;
-  float: left;
+const ComboBox = styled.div`
   width: 100%;
-  max-width: ${(props: ComboBoxProps) => props.width ? props.width : '200px'};
-  height: 20px;
-  padding: 0px;
-  margin: 0px;
 `;
 
-const Center = styled.div`
-  margin-left: 5px;
-  position: relative;
-`;
-
-const Icon = styled.img`
-  position: absolute;
-  margin: auto;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+const Image = styled.img`
   height: 16px;
   width: 16px;
+  margin-top: 2px;
+  margin-left: 4px;
 `;
 
+const Container = styled.div<ComboBoxProps>`
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 24px;
+  min-width: ${props => props.width ? `calc(${props.width} / 2)` : '100px'};
+  max-width: ${props => props.width ? props.width : '200px'};
+  width: 100%;
+`;
 
 export interface ComboBoxOptionComponentProps {
   name: string;
@@ -132,69 +115,60 @@ const ComboBoxOptionComponent: React.FC<ComboBoxOptionComponentProps> = ({ name,
     }
   });
 
-  if (value === context.selected) {
-    return (
-      <ComboBoxOptionSelected
-        key={value}>
-        {children ? (isFunction(children) && children()) : name}
-      </ComboBoxOptionSelected>
-    );
-  } else {
-    return (
-      <ComboBoxOption
-        key={value}
-        hidden={context.text && !context.selected ? !`${name}`.startsWith(context.text) : false}
-        onClick={e => {
-          e.stopPropagation();
-          context.handleSelect(value, name)
-        }}>
-        {children ? (isFunction(children) && children()) : name}
-      </ComboBoxOption>
-    );
+  return (
+    <ComboBoxOption
+      key={value}
+      hidden={context.text && !context.selected ? !`${name}`.startsWith(context.text) : false}
+      selected={context.selected === value}
+      onClick={e => {
+        e.stopPropagation();
+        context.handleSelect(value, name)
+      }}>
+      {children ? children : name}
+    </ComboBoxOption>
+  );
+
+}
+
+export interface ComboBoxListProps {
+  children?: (() => React.ReactNode) | React.ReactNode;
+}
+
+const ComboBoxListComponent: React.FC<ComboBoxListProps> = ({ children }) => {
+  const context = useContext(ComboBoxContext);
+
+  return (
+    <ComboBoxPopup hidden={!context.opened}>
+      <CompoBoxList>{isFunction(children) ? children() : children}</CompoBoxList>
+    </ComboBoxPopup>
+  );
+}
+
+const ComboBoxInputComponent: React.FC<React.InputHTMLAttributes<HTMLInputElement>> = (props) => {
+
+  const context = useContext(ComboBoxContext);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (props.onChange) {
+      props.onChange(e);
+    }
+    context.handleChange(e.target.value)
   }
 
-}
-
-const ComboBoxListComponent: React.FC = ({ children }) => {
   return (
-    <CompoBoxList>{isFunction(children) ? children() : children}</CompoBoxList>
-  );
-}
-
-const ComboBoxPopupComponent: React.FC<ComboBoxComponentProps> = ({ width, children }) => {
-
-  const context = useContext(ComboBoxContext);
-
-  return (
-    <ComboBoxPopup hidden={!context.opened} width={width}>{children}</ComboBoxPopup>
-  );
-
-}
-
-export interface ComboBoxInputComponent extends React.InputHTMLAttributes<HTMLInputElement> {
-  withButton?: boolean;
-}
-
-const ComboBoxInputComponent: React.FC<ComboBoxInputComponent> = ({ placeholder, onChange, withButton = true }) => {
-
-  const context = useContext(ComboBoxContext);
-
-  return (
-    <React.Fragment>
-      <ComboBoxInput type='text'
-        placeholder={placeholder}
-        onChange={onChange ? onChange : e => context.handleChange(e.target.value)}
+    <ComboBoxInput>
+      <Input type='text'
+        {...props}
+        onChange={handleChange}
         onFocus={context.handleFocus}
-        onBlur={e => { e.stopPropagation() }}
         value={context.text}
-        withButton={withButton}
         error={context.touched && context.error ? true : false}
       />
-      {withButton && <ComboBoxButton src={openIcon} onClick={e => {
+      <ComboBoxButton src={openIcon} onClick={e => {
         e.stopPropagation();
         context.toggle()
-      }} />}
-    </React.Fragment>
+      }} />
+    </ComboBoxInput>
   );
 }
 
@@ -204,7 +178,7 @@ export interface IComboBoxContext {
   selected?: any;
   text?: string;
   opened: boolean;
-  isLoading: boolean;
+  isLoading?: boolean;
   touched?: boolean;
   error?: string;
   handleSelect(value: string, text: string): void;
@@ -228,19 +202,20 @@ export const useComboBoxContext = () => {
 }
 
 export interface ComboBoxComponentProps {
+  id?: string;
   name?: string;
   value?: any;
   touched?: boolean;
   error?: string;
   onChange?(field: string, value: any): void;
   width?: string;
+  isLoading?: boolean;
 }
 
 type ComboBoxState = {
   opened: boolean;
   selected: any;
   text?: string;
-  isLoading: boolean;
 }
 
 type Action =
@@ -253,30 +228,36 @@ type Action =
 const ComboBoxReducer = (state: ComboBoxState, action: Action) => {
   switch (action.type) {
     case 'select':
-      return { isLoading: false, opened: false, selected: action.value, text: action.text };
+      return { opened: false, selected: action.value, text: action.text };
     case 'filter':
-      return { isLoading: false, opened: true, selected: [], text: action.text };
+      return { opened: true, selected: undefined, text: action.text };
     case 'toggle':
-      return { isLoading: false, opened: action.opened, selected: state.selected, text: state.text };
+      return { opened: action.opened, selected: state.selected, text: state.text };
     case 'blur':
-      return { isLoading: false, opened: false, selected: state.selected, text: state.text };
+      return { opened: false, selected: state.selected, text: state.text };
     case 'focus':
-      return { isLoading: false, opened: action.opened, selected: state.selected, text: state.text };
+      return { opened: action.opened, selected: state.selected, text: state.text };
   }
 }
 
-const ComboBoxComponent: React.FC<ComboBoxComponentProps> = ({ width, name = '', value, touched, error, onChange, children }) => {
+const ComboBoxComponent: React.FC<ComboBoxComponentProps> = ({ id, width, name = '', value, touched, error, onChange, isLoading, children }) => {
 
   const [{
     opened,
     selected,
-    text,
-    isLoading }, dispatch] = useReducer(ComboBoxReducer, {
+    text}, dispatch] = useReducer(ComboBoxReducer, {
       opened: false,
       selected: [],
-      text: '',
-      isLoading: false
+      text: ''
     });
+
+  const [_isLoading, setIsLoading] = useState(isLoading);
+  
+  useEffect(
+    () => {
+      setIsLoading(isLoading);
+    }, [isLoading]
+  );
 
   useEffect(
     () => {
@@ -302,6 +283,7 @@ const ComboBoxComponent: React.FC<ComboBoxComponentProps> = ({ width, name = '',
   }
 
   const handleChange = (value: string) => {
+    console.log(value);
     dispatch({
       type: 'filter',
       text: value
@@ -325,7 +307,7 @@ const ComboBoxComponent: React.FC<ComboBoxComponentProps> = ({ width, name = '',
   }
 
   const handleBlur = (e: React.FocusEvent) => {
-    if (opened) {
+    if (opened && e.relatedTarget === null) {
       dispatch({
         type: 'blur'
       });
@@ -336,13 +318,14 @@ const ComboBoxComponent: React.FC<ComboBoxComponentProps> = ({ width, name = '',
   }
 
   return (
-    <ComboBoxContext.Provider value={{ name, selected, text, opened, isLoading, touched, error, handleSelect, handleChange, toggle, handleFocus }}>
-      <ComboBox width={width} tabIndex={1} onBlur={handleBlur}>
-        {(isFunction(children) && children(width)) || (children && React.Children.map(children, child => React.cloneElement(child as React.ReactElement<any>, { width })))}
-      </ComboBox>
-      <Center>
-        {touched && error && <Icon src={exclamation} title={error} />}
-      </Center>
+    <ComboBoxContext.Provider value={{ name, selected, text, opened, touched, error, handleSelect, handleChange, toggle, handleFocus, isLoading: _isLoading }}>
+      <Container width={width}>
+        <ComboBox id={id} tabIndex={1} onBlur={handleBlur}>
+          {children}
+        </ComboBox>
+        {touched && error && <Image src={exclamation} title={error} />}
+        {!error && _isLoading && <Image src={loading} />}
+      </Container>
     </ComboBoxContext.Provider>
   );
 }
@@ -351,7 +334,6 @@ const ComboBoxComponent: React.FC<ComboBoxComponentProps> = ({ width, name = '',
 export {
   ComboBoxOptionComponent as ComboBoxOption,
   ComboBoxListComponent as ComboBoxList,
-  ComboBoxPopupComponent as ComboBoxPopup,
   ComboBoxInputComponent as ComboBoxInput,
   ComboBoxComponent as ComboBox
 }
