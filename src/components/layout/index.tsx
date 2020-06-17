@@ -60,4 +60,6 @@ export const Footer = styled.footer`
   box-sizing: border-box;
   height: auto;
   width: 100%;
+  position: fixed;
+  bottom: 0px;
 `;
