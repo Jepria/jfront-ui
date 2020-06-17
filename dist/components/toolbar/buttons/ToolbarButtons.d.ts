@@ -1,0 +1,10 @@
+import React from "react";
+import { ToolbarButtonInterface } from "./ToolbarButtonBase";
+declare const ToolbarButtonFind: React.FC<ToolbarButtonInterface>;
+declare const ToolbarButtonCreate: React.FC<ToolbarButtonInterface>;
+declare const ToolbarButtonSave: React.FC<ToolbarButtonInterface>;
+declare const ToolbarButtonEdit: React.FC<ToolbarButtonInterface>;
+declare const ToolbarButtonDelete: React.FC<ToolbarButtonInterface>;
+declare const ToolbarButtonView: React.FC<ToolbarButtonInterface>;
+declare const ToolbarSplitter: import("styled-components").StyledComponent<"span", any, {}, never>;
+export { ToolbarButtonFind, ToolbarButtonCreate, ToolbarButtonSave, ToolbarButtonEdit, ToolbarButtonDelete, ToolbarButtonView, ToolbarSplitter, };
