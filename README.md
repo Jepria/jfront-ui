@@ -3,7 +3,18 @@ JFront component library
 
 Добавлена первичная функциональность экспорта компонентов из модуля с последующим импортом в другие проекты.
 
-### Использование компонентов в прикладном проекте:
+### Installing from github
+
+Using master.
+```
+npm i https://github.com/Jepria/jfront-components.git
+```
+Using branch/tag.
+```
+npm i https://github.com/Jepria/jfront-components.git#branch
+```
+
+### Использование компонентов из локальной сборки в прикладном проекте:
 - `jfront-components>npm run build` —
     *ts* и *tsx* файлы из папки *src* компилируются и попадают в папку *dist*
 - `jfront-components>npm link` —
