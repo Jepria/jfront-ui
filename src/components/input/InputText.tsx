@@ -18,7 +18,7 @@ export function InputText(props: InputTextProps) {
     const [disabled, setDisabled] = useState(props.disabled || false);
     const [readonly, setEditable] = useState(props.readonly || false);
 
-    function changeValue(event) {
+    function changeValue(event: any) {
         const value = event.target.value;
         setValue(value);
         setError("");

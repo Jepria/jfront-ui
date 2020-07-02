@@ -4,26 +4,36 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "devDependencies": {
+    "@types/react": "^16.9.0",
+    "@types/react-datepicker": "^2.11.0",
+    "@types/react-dom": "^16.9.0",
+    "@types/styled-components": "^5.0.1",
+    "awesome-typescript-loader": "^5.2.1",
     "cpx": "^1.5.0",
+    "css-loader": "^3.6.0",
+    "date-fns": "^2.14.0",
+    "file-loader": "^6.0.0",
+    "path": "^0.12.7",
+    "react": "16.13.1",
+    "react-datepicker": "^2.16.0",
+    "react-dom": "16.13.1",
     "rimraf": "^3.0.2",
-    "@types/styled-components": "^5.0.1"
+    "source-map-loader": "^1.0.0",
+    "style-loader": "^1.2.1",
+    "typescript": "^3.9.5",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.12"
   },
   "peerDependencies": {
-    "react": "16.x",
-    "react-dom": "16.x",
-    "styled-components": "^5.0.1",
-    "date-fns": "^2.14.0"
+    "date-fns": "^2.14.0",
+    "react": ">= 16.8.x",
+    "react-dom": ">= 16.8.x",
+    "styled-components": "^5.0.1"
   },
   "scripts": {
     "clean": "rimraf dist",
-    "build": "tsc & npm run copy-resources",
+    "build": "webpack --config webpack.config.js --mode production",
     "copy-resources": "cpx \"src/**/*.!(ts|tsx)\" dist",
     "clean-build": "npm run clean && npm run build"
-  },
-  "dependencies": {
-    "@types/react-datepicker": "^2.11.0",
-    "date-fns": "^2.14.0",
-    "react-datepicker": "^2.16.0",
-    "typescript": "^3.9.3"
   }
 }

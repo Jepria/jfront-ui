@@ -24,7 +24,7 @@ export function InputSelect(props: InputSelectProps) {
     const [readonly, setEditable] = useState(props.readonly || false);
     
 
-    const handleChange = (event) => {
+    const handleChange = (event: any) => {
         alert(event.target.value);
         setValue(event.target.value);
     }
