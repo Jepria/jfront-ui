@@ -1,37 +1,66 @@
 import React from 'react';
-export interface ComboBoxOptionComponentProps {
-    name: string;
-    value: any;
+export declare const ComboBoxInputContainer: import("styled-components").StyledComponent<"div", any, {}, never>;
+export declare const ComboBoxButton: import("styled-components").StyledComponent<"img", any, {}, never>;
+export interface InputProps {
+    error?: boolean;
 }
-declare const ComboBoxOptionComponent: React.FC<ComboBoxOptionComponentProps>;
-export interface ComboBoxListProps {
-    children?: (() => React.ReactNode) | React.ReactNode;
+export declare const ComboBoxInput: import("styled-components").StyledComponent<"input", any, InputProps, never>;
+export interface ComboBoxOptionProps {
+    selected?: boolean;
 }
-declare const ComboBoxListComponent: React.FC<ComboBoxListProps>;
-declare const ComboBoxInputComponent: React.FC<React.InputHTMLAttributes<HTMLInputElement>>;
-export interface IComboBoxContext {
-    name?: string;
-    selected?: any;
-    text?: string;
-    opened: boolean;
-    isLoading?: boolean;
-    touched?: boolean;
-    error?: string;
-    handleSelect(value: string, text: string): void;
-    handleChange(value: string): void;
-    toggle(): void;
-    handleFocus(e: React.FocusEvent<HTMLInputElement>): void;
+export declare const ComboBoxOption: import("styled-components").StyledComponent<"li", any, ComboBoxOptionProps, never>;
+export declare const ComboBoxList: import("styled-components").StyledComponent<"ul", any, {}, never>;
+interface ComboBoxProps {
+    width?: string;
 }
-export declare const useComboBoxContext: () => IComboBoxContext;
-export interface ComboBoxComponentProps {
+export declare const Container: import("styled-components").StyledComponent<"div", any, ComboBoxProps, never>;
+export interface ComboBoxFieldProps {
     id?: string;
     name?: string;
-    value?: any;
+    initialValue?: any;
+    inputValue?: string;
     touched?: boolean;
     error?: string;
-    onChange?(field: string, value: any): void;
+    onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    onChangeValue?: (field: string, value: any) => void;
     width?: string;
+    options: Array<any>;
     isLoading?: boolean;
+    getOptionName?: (option: any) => string;
+    getOptionValue?: (option: any) => string;
+    placeholder?: string;
+    disabled?: boolean;
+    hasEmptyOption?: boolean;
+    emptyOptionText?: string;
 }
-declare const ComboBoxComponent: React.FC<ComboBoxComponentProps>;
-export { ComboBoxOptionComponent as ComboBoxOption, ComboBoxListComponent as ComboBoxList, ComboBoxInputComponent as ComboBoxInput, ComboBoxComponent as ComboBox };
+/**
+ * ComboBox form field
+ *
+ * @param {ComboBoxFieldProps} props incoming props
+ * @example
+ * const options = [
+ *   {
+ *     name: '123',
+ *     value: '123'
+ *   },
+ *   {
+ *     name: '111',
+ *     value: '111'
+ *   },
+ *   {
+ *     name: '222',
+ *     value: '222'
+ *   },
+ *   {
+ *     name: '333',
+ *     value: '333'
+ *   },
+ *   {
+ *     name: '444',
+ *     value: '444'
+ *   },
+ * ]
+ * <ComboBoxField options={options} onChangeValue={(field: string, value: any) => console.log(field, value)}/>
+ */
+export declare const ComboBoxField: React.FC<ComboBoxFieldProps>;
+export {};

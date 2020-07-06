@@ -1,40 +1,77 @@
 import React from 'react';
+import { OptionProps } from '../../../hooks/useSelect';
+export declare const CheckBox: import("styled-components").StyledComponent<"input", any, {
+    type: "checkbox";
+}, "type">;
+export declare const CheckBoxListOptionLabel: import("styled-components").StyledComponent<"label", any, {}, never>;
+export declare const CheckBoxListOption: import("styled-components").StyledComponent<"li", any, {}, never>;
+export interface OptionListProps {
+    error?: boolean;
+}
+export declare const OptionList: import("styled-components").StyledComponent<"ul", any, OptionListProps, never>;
 export interface CheckBoxListProps {
     width?: string;
     height?: string;
 }
-export interface CheckBoxListComponentProps {
+export declare const CheckBoxList: import("styled-components").StyledComponent<"div", any, CheckBoxListProps, never>;
+export declare const Icon: import("styled-components").StyledComponent<"img", any, {}, never>;
+export declare const ListContainer: import("styled-components").StyledComponent<"div", any, CheckBoxListProps, never>;
+export interface CheckBoxListFieldProps {
     id?: string;
     name?: string;
-    value?: Array<any>;
+    initialValue?: Array<any>;
     touched?: boolean;
     error?: string;
-    onChange?(field: string, value: any): void;
     isLoading?: boolean;
     width?: string;
     height?: string;
+    onChangeValue?: (field: string, value: any) => void;
+    options: Array<any>;
+    getOptionName?: (option: any) => string;
+    getOptionValue?: (option: any) => string;
+    disabled?: boolean;
 }
-declare const CheckBoxListComponent: React.FC<CheckBoxListComponentProps>;
-export interface OptionListProps {
-    children?: (() => React.ReactNode) | React.ReactNode;
+/**
+ * Check box list form field
+ *
+ * @param {CheckBoxListFieldProps} props incoming props
+ * @example
+ * const options = [
+ *   {
+ *     name: '123',
+ *     value: '123'
+ *   },
+ *   {
+ *     name: '111',
+ *     value: '111'
+ *   },
+ *   {
+ *     name: '222',
+ *     value: '222'
+ *   },
+ *   {
+ *     name: '333',
+ *     value: '333'
+ *   },
+ *   {
+ *     name: '444',
+ *     value: '444'
+ *   },
+ * ]
+ * <CheckBoxListField options={options} onChangeValue={(field: string, value: any) => {console.log(field, value)}}/>
+ */
+export declare const CheckBoxListField: React.FC<CheckBoxListFieldProps>;
+export interface CheckBoxOptionProps extends OptionProps {
+    selected: boolean;
+    option: any;
+    getOptionName?: (option: any) => string;
+    getOptionValue?: (option: any) => string;
 }
-declare const OptionListComponent: React.FC<OptionListProps>;
-export interface OptionComponentProps {
-    value: any;
-    name?: string;
+export declare const CheckBoxOption: React.FC<CheckBoxOptionProps>;
+export interface SelectAllCheckBoxProps {
+    disabled?: boolean;
+    selectOption: (value: any) => void;
+    selectAll: () => void;
+    isSelectedAll: () => boolean;
 }
-declare const OptionComponent: React.FC<OptionComponentProps>;
-declare const SelectAllCheckBoxComponent: React.FC;
-export interface ICheckBoxListContext {
-    name: string;
-    selected: Array<any>;
-    values: Array<any>;
-    isLoading?: boolean;
-    touched?: boolean;
-    error?: string;
-    changeSelection(value: any): void;
-    selectAll(): void;
-    addValue(value: any): void;
-}
-export declare const useCheckBoxListContext: () => ICheckBoxListContext;
-export { CheckBoxListComponent as CheckBoxList, OptionListComponent as CheckBoxOptionList, OptionComponent as CheckBoxOption, SelectAllCheckBoxComponent as SelectAllCheckBox };
+export declare const SelectAllCheckBox: React.FC<SelectAllCheckBoxProps>;

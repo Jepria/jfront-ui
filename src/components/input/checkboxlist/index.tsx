@@ -2,17 +2,14 @@ import React, { useReducer, createContext, useContext, useEffect, useState } fro
 import styled from 'styled-components';
 import exclamation from '../images/exclamation.gif'
 import loading from '../images/loading.gif';
-import { isFunction } from '../../../utils';
+import { useSelect, OptionProps } from '../../../hooks/useSelect';
+import { useMultiple, UseMultipleInstance } from '../../../hooks/useSelect/useMultiple';
 
-interface CheckBoxListOptionBlockProps {
-  width?: string;
-}
-
-const CheckBox = styled.input.attrs({ type: 'checkbox' })`
+export const CheckBox = styled.input.attrs({ type: 'checkbox' })`
   margin: 2px;
 `;
 
-const CheckBoxListOptionLabel = styled.label`
+export const CheckBoxListOptionLabel = styled.label`
   height: 20px;
   font-family: tahoma, arial, helvetica, sans-serif;
   font-size: 12px;
@@ -30,13 +27,7 @@ const CheckBoxListOptionLabel = styled.label`
                                 supported by Chrome, Edge, Opera and Firefox */
 `;
 
-const CheckBoxListOptionSelected = styled.li`
-  height: 20px;
-  width: 100%;
-  background: #ccddf3;
-`;
-
-const CheckBoxListOption = styled.li`
+export const CheckBoxListOption = styled.li`
   height: 20px;
   width: 100%;
   &:hover{
@@ -44,11 +35,11 @@ const CheckBoxListOption = styled.li`
   }
 `;
 
-interface CheckBoxListOptionListProps {
+export interface OptionListProps {
   error?: boolean;
 }
 
-const CheckBoxListOptionList = styled.ul<CheckBoxListOptionListProps>`
+export const OptionList = styled.ul<OptionListProps>`
   overflow: auto;
   background: white;
   margin: 0;
@@ -63,7 +54,7 @@ export interface CheckBoxListProps {
   height?: string;
 }
 
-const CheckBoxList = styled.div<CheckBoxListProps>`
+export const CheckBoxList = styled.div<CheckBoxListProps>`
   box-sizing: border-box;
   padding: 0px;
   margin: 0px;
@@ -73,14 +64,14 @@ const CheckBoxList = styled.div<CheckBoxListProps>`
   height: ${props => props.height ? props.height : '100px'};
 `;
 
-const Icon = styled.img`
+export const Icon = styled.img`
   margin-left: 5px;
   margin-top: 5px;
   height: 16px;
   width: 16px;
 `;
 
-const Container = styled.div<CheckBoxListProps>`
+export const ListContainer = styled.div<CheckBoxListProps>`
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -89,51 +80,64 @@ const Container = styled.div<CheckBoxListProps>`
   width: 100%;
 `;
 
-type CheckBoxListState = {
-  values: Array<any>;
-  selected: Array<any>;
-}
-
-type Action =
-  | { type: "select", selected: Array<any> }
-  | { type: "values", values: Array<any> }
-
-const CheckBoxListReducer = (state: CheckBoxListState, action: Action) => {
-  switch (action.type) {
-    case 'select':
-      return {
-        values: state.values,
-        selected: action.selected ? action.selected : []
-      };
-    case 'values':
-      return {
-        selected: state.selected,
-        values: action.values
-      };
-  }
-}
-
-export interface CheckBoxListComponentProps {
+export interface CheckBoxListFieldProps {
   id?: string;
   name?: string;
-  value?: Array<any>;
+  initialValue?: Array<any>;
   touched?: boolean;
   error?: string;
-  onChange?(field: string, value: any): void;
   isLoading?: boolean;
   width?: string;
   height?: string;
+  onChangeValue?: (field: string, value: any) => void;
+  options: Array<any>;
+  getOptionName?: (option: any) => string;
+  getOptionValue?: (option: any) => string;
+  disabled?: boolean;
 }
 
-const CheckBoxListComponent: React.FC<CheckBoxListComponentProps> = ({ id, name = '', value, touched, error, children, isLoading, onChange, width, height }) => {
-
-  const [{
-    values,
-    selected
-  }, dispatch] = useReducer(CheckBoxListReducer, {
-    values: [],
-    selected: []
-  });
+/**
+ * Check box list form field
+ * 
+ * @param {CheckBoxListFieldProps} props incoming props
+ * @example
+ * const options = [
+ *   {
+ *     name: '123',
+ *     value: '123'
+ *   },
+ *   {
+ *     name: '111',
+ *     value: '111'
+ *   },
+ *   {
+ *     name: '222',
+ *     value: '222'
+ *   },
+ *   {
+ *     name: '333',
+ *     value: '333'
+ *   },
+ *   {
+ *     name: '444',
+ *     value: '444'
+ *   },
+ * ]
+ * <CheckBoxListField options={options} onChangeValue={(field: string, value: any) => {console.log(field, value)}}/> 
+ */
+export const CheckBoxListField: React.FC<CheckBoxListFieldProps> = ({
+  id,
+  name = '',
+  initialValue,
+  options,
+  touched,
+  error,
+  isLoading,
+  onChangeValue,
+  getOptionName,
+  getOptionValue,
+  width,
+  height }) => {
 
   const [_isLoading, setIsLoading] = useState(isLoading);
 
@@ -143,193 +147,130 @@ const CheckBoxListComponent: React.FC<CheckBoxListComponentProps> = ({ id, name 
     }, [isLoading]
   );
 
-  useEffect(() => {
-    dispatch({
-      type: 'select',
-      selected: value ? value.slice() : []
-    });
-  }, [value, dispatch]);
-
-  const changeSelection = (value: any) => {
-    if (selected.includes(value)) {
-      selected.splice(selected.indexOf(value), 1);
-    } else {
-      selected.push(value);
-    }
-    dispatch({
-      type: 'select',
-      selected: selected
-    });
-    if (onChange) {
-      onChange(name, selected.slice());
-    }
-  }
-
-  const selectAll = () => {
-    if (values === selected || (values.length === selected.length && values.every(e => selected.includes(e)))) {
-      dispatch({
-        type: 'select',
-        selected: []
-      });
-      if (onChange) {
-        onChange(name, []);
+  const {
+    getSelectedValue,
+    isSelectedAll,
+    selectAll,
+    selectOption,
+    getOptions,
+    getRootProps,
+    getListProps
+  } = useSelect({
+    options: options,
+    onChange: (value) => {
+      if (onChangeValue) {
+        onChangeValue(name, value);
       }
-    } else {
-      dispatch({
-        type: 'select',
-        selected: values.slice()
-      });
-      if (onChange) {
-        onChange(name, values.slice());
-      }
-    }
-  }
+    },
+    initialValue,
+    getOptionName,
+    getOptionValue,
+  }, useMultiple
+  ) as UseMultipleInstance;
 
-  const addValue = (value: any) => {
-    if (!values.includes(value)) {
-      values.push(value);
-    }
-  }
+  const value = getSelectedValue();
 
   return (
-    <CheckBoxListContext.Provider value={{ name, selected, values, isLoading: _isLoading, touched, error, changeSelection, selectAll, addValue }}>
-      <Container width={width}>
-        <CheckBoxList id={id} height={height}>{children}</CheckBoxList>
-        {touched && error && <Icon src={exclamation} title={error} />}
-        {!error && _isLoading && <Icon src={loading} />}
-      </Container>
-    </CheckBoxListContext.Provider>
+    <ListContainer width={width}>
+      <CheckBoxList id={id} height={height} {...getRootProps()}>
+        <OptionList error={touched && error ? true : false} {...getListProps()}>
+          {
+            getOptions().map(optionInstance => {
+              return (<CheckBoxOption {...optionInstance.getOptionProps()} option={optionInstance.option} selected={value && value.includes(optionInstance.option.value)}/>)
+            })
+          }
+        </OptionList>
+        <SelectAllCheckBox selectAll={selectAll} selectOption={selectOption} isSelectedAll={isSelectedAll} disabled={!options || options.length == 0}/>
+      </CheckBoxList>
+      {touched && error && <Icon src={exclamation} title={error} />}
+      {!error && _isLoading && <Icon src={loading} />}
+    </ListContainer>
   );
 }
 
-
-export interface OptionListProps {
-  children?: (() => React.ReactNode) | React.ReactNode;
+export interface CheckBoxOptionProps extends OptionProps {
+  selected: boolean;
+  option: any;
+  getOptionName?: (option: any) => string;
+  getOptionValue?: (option: any) => string;
 }
 
-const OptionListComponent: React.FC<OptionListProps> = ({ children }) => {
-  const context = useContext(CheckBoxListContext);
+export const CheckBoxOption: React.FC<CheckBoxOptionProps> = (props) => {
+  const { role, selected, option, getOptionName, onClick } = props;
   return (
-    <CheckBoxListOptionList error={context.touched && context.error ? true : false}>{isFunction(children) ? children() : children}</CheckBoxListOptionList>
-  );
-}
-
-export interface OptionComponentProps {
-  value: any;
-  name?: string;
-}
-
-const OptionComponent: React.FC<OptionComponentProps> = ({ value, name, children }) => {
-  const context = useContext(CheckBoxListContext);
-
-  context.addValue(value);
-
-  if (children) {
-    if (context.selected.includes(value)) {
-      return (
-        <CheckBoxListOptionSelected key={value} onClick={e => context.changeSelection(value)}>{children}</CheckBoxListOptionSelected>
-      );
-    } else {
-      return (
-        <CheckBoxListOption key={value} onClick={e => context.changeSelection(value)}>{children}</CheckBoxListOption>
-      );
-    }
-  } else {
-    return (
-      <CheckBoxListOption key={value}
-        onDoubleClick={
-          e => {
-            /** IE fix checkbox double-click issue **/
-            if ((document as any).documentMode) {
-              context.changeSelection(value)
-            }
+    <CheckBoxListOption role={role}
+      onDoubleClick={
+        e => {
+          /** IE fix checkbox double-click issue **/
+          if ((document as any).documentMode) {
+            onClick();
           }
         }
-      >
-        <CheckBoxListOptionLabel>
-          <CheckBox
-            onChange={e => context.changeSelection(value)}
-            checked={context.selected.includes(value)}
-            onDoubleClick={
-              e => {
-                /** IE fix checkbox double-click issue **/
-                if ((document as any).documentMode) {
-                  e.stopPropagation();
-                  context.changeSelection(value)
-                }
-              }
-            }
-          />
-          {name}
-        </CheckBoxListOptionLabel>
-      </CheckBoxListOption>
-    );
-  }
-}
-
-const SelectAllCheckBoxComponent: React.FC = () => {
-
-  const context = useContext(CheckBoxListContext);
-
-  return (
-    <React.Fragment>
-      <CheckBoxListOptionLabel
-        onDoubleClick={
-          e => {
-            /** IE fix checkbox double-click issue **/
-            if ((document as any).documentMode) {
-              context.selectAll();
-            }
-          }
-        }>
+      } >
+      <CheckBoxListOptionLabel>
         <CheckBox
-          onChange={context.selectAll}
-          checked={context.values === context.selected || (context.values.length === context.selected.length && context.values.every(e => context.selected.includes(e)))}
-          disabled={context.values?.length === 0}
+          onChange={e => onClick()}
+          checked={selected}
           onDoubleClick={
             e => {
               /** IE fix checkbox double-click issue **/
               if ((document as any).documentMode) {
                 e.stopPropagation();
-                context.selectAll()
+                onClick();
               }
             }
-          }/>
-          Выделить всё
-        </CheckBoxListOptionLabel>
-    </React.Fragment>
+          }
+        />
+        {getOptionName ? getOptionName(option) : option.name}
+      </CheckBoxListOptionLabel>
+    </CheckBoxListOption>
   );
 }
 
-export interface ICheckBoxListContext {
-  name: string;
-  selected: Array<any>;
-  values: Array<any>;
-  isLoading?: boolean;
-  touched?: boolean;
-  error?: string;
-  changeSelection(value: any): void;
-  selectAll(): void;
-  addValue(value: any): void;
+export interface SelectAllCheckBoxProps {
+  disabled?: boolean;
+  selectOption: (value: any) => void;
+  selectAll: () => void;
+  isSelectedAll: () => boolean;
 }
 
-const CheckBoxListContext = createContext<ICheckBoxListContext>({
-  name: '',
-  isLoading: false,
-  selected: [],
-  values: [],
-  changeSelection: (value: any) => { },
-  selectAll: () => { },
-  addValue: (value: any) => { },
-});
+export const SelectAllCheckBox: React.FC<SelectAllCheckBoxProps> = ({disabled, selectOption, selectAll, isSelectedAll}) => {
 
-export const useCheckBoxListContext = () => {
-  return useContext(CheckBoxListContext);
+  const selectAllOptions = () => {
+    if (isSelectedAll()) {
+      selectOption([]);
+    } else {
+      selectAll();
+    }
+  }
+
+  return (
+    <CheckBoxListOptionLabel
+      onDoubleClick={
+        e => {
+          /** IE fix checkbox double-click issue **/
+          if ((document as any).documentMode) {
+            selectAllOptions();
+          }
+        }
+      }>
+      <CheckBox
+        onChange={() => {
+          selectAllOptions();
+        }}
+        checked={isSelectedAll()}
+        disabled={disabled}
+        onDoubleClick={
+          e => {
+            /** IE fix checkbox double-click issue **/
+            if ((document as any).documentMode) {
+              e.stopPropagation();
+              selectAllOptions();
+            }
+          }
+        } />
+          Выделить всё
+    </CheckBoxListOptionLabel>
+  );
 }
 
-export {
-  CheckBoxListComponent as CheckBoxList,
-  OptionListComponent as CheckBoxOptionList,
-  OptionComponent as CheckBoxOption,
-  SelectAllCheckBoxComponent as SelectAllCheckBox
-}
