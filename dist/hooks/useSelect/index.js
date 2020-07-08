@@ -16,12 +16,23 @@ var __spreadArrays = (this && this.__spreadArrays) || function () {
             r[k] = a[j];
     return r;
 };
-import React, { useRef, useReducer } from 'react';
+import React, { useRef, useReducer, useEffect } from 'react';
 export function useGetLatest(obj) {
     var ref = React.useRef(obj);
     return React.useCallback(function () { return ref.current; }, []);
 }
-function checkValueCollision(options, getOptionValue) {
+export function equals(arr1, arr2) {
+    var i = arr1.length;
+    if (i != arr2.length)
+        return false;
+    while (i--) {
+        if (!arr2.includes(arr1[i]) || (arr2.includes(arr1[i]) && arr2.filter(function (elem) { return elem === arr1[i]; }).length > 1)) {
+            return false;
+        }
+    }
+    return true;
+}
+export function checkValueCollision(options, getOptionValue) {
     var values = options.map(function (option) {
         option.value && getOptionValue ? getOptionValue(option) : option.value;
     });
@@ -44,7 +55,9 @@ export function loopPropGetters(propGetters) {
 function useSelectReducer(state, action) {
     switch (action.type) {
         case 'select':
-            return __assign(__assign({}, state), { value: action.value }); // no break added, allows to add specific logic for select action in mixing hooks.
+            return __assign(__assign({}, state), { value: action.value });
+        case 'init':
+            return { value: action.initialValue };
     }
 }
 var defaultProps = {
@@ -106,7 +119,9 @@ export function useSelect(props) {
         getSelectedOption: function () { var _a; return (_a = getInstance().state) === null || _a === void 0 ? void 0 : _a.value; }
     });
     var getInstance = useGetLatest(instanceRef.current);
-    Object.assign(getInstance(), { props: __assign(__assign({}, defaultProps), props) });
+    Object.assign(getInstance(), {
+        props: __assign(__assign({}, defaultProps), props)
+    });
     //allow hooks to register itselfs ASAP
     instanceRef.current.hooks.forEach(function (hook) { return hook(instanceRef.current); });
     var reducer = function (state, action) {
@@ -118,6 +133,18 @@ export function useSelect(props) {
         ], getInstance().hooks.reducers ? getInstance().hooks.reducers : []).reduce(function (s, handler) { return handler(s, action, state, getInstance()) || s; }, state);
     };
     var _a = useReducer(reducer, { value: initialValue }), state = _a[0], dispatch = _a[1];
+    useEffect(function () {
+        var _a;
+        if (state.value && initialValue && Array.isArray(initialValue) && !equals(state.value, initialValue)) {
+            dispatch({ type: 'init', initialValue: initialValue });
+        }
+        else {
+            if (state.value !== initialValue
+                && (getOptionValue ? getOptionValue(state.value) !== getOptionValue(initialValue) : ((_a = state.value) === null || _a === void 0 ? void 0 : _a.value) !== (initialValue === null || initialValue === void 0 ? void 0 : initialValue.value))) {
+                dispatch({ type: 'init', initialValue: initialValue });
+            }
+        }
+    }, [initialValue]);
     Object.assign(getInstance(), { state: state, dispatch: dispatch });
     //allow hooks to update the final state of useSelect instance
     if (hooks.useInstance) {

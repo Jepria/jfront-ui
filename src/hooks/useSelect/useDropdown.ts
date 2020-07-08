@@ -110,10 +110,18 @@ function useInstance(instance: UseDropdownInstance) {
 
     return {
       tabIndex: 1,
-      onBlur: (e: React.FocusEvent<any>) => {
-        if ((state as unknown as UseDropdownState).isOpen && e.relatedTarget === null) {
+      onBlur: ({relatedTarget, currentTarget}: React.FocusEvent<any>) => {
+        if (!(state as UseDropdownState).isOpen) return;
+        if (relatedTarget === null) {
           close();
+          return;
         }
+        let node = (relatedTarget as any)?.parentNode;
+        while (node !== null) {
+          if (node === currentTarget) return;
+          node = node?.parentNode
+        }
+        close();
       }
     }
   }

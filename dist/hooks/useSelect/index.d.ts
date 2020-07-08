@@ -41,9 +41,14 @@ export interface UseSelectState {
     value: any;
 }
 export declare type Action = {
+    type: 'init';
+    initialValue: any;
+} | {
     type: 'select';
     value: any;
 };
 export declare function useGetLatest(obj: UseSelectInstance): () => UseSelectInstance;
+export declare function equals(arr1: Array<any>, arr2: Array<any>): boolean;
+export declare function checkValueCollision(options: Array<any>, getOptionValue?: Function): void;
 export declare function loopPropGetters(propGetters: Array<Function>): {};
 export declare function useSelect(props: UseSelectProps, ...hooks: any): UseSelectInstance;

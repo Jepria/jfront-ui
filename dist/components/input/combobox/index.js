@@ -66,9 +66,9 @@ export var Container = styled.div(templateObject_8 || (templateObject_8 = __make
  * <ComboBoxField options={options} onChangeValue={(field: string, value: any) => console.log(field, value)}/>
  */
 export var ComboBoxField = function (_a) {
-    var id = _a.id, width = _a.width, _b = _a.name, name = _b === void 0 ? '' : _b, initialValue = _a.initialValue, hasEmptyOption = _a.hasEmptyOption, _c = _a.emptyOptionText, emptyOptionText = _c === void 0 ? '' : _c, touched = _a.touched, error = _a.error, placeholder = _a.placeholder, inputValue = _a.inputValue, disabled = _a.disabled, onChange = _a.onChange, onChangeValue = _a.onChangeValue, isLoading = _a.isLoading, options = _a.options, getOptionName = _a.getOptionName, getOptionValue = _a.getOptionValue;
+    var id = _a.id, width = _a.width, _b = _a.name, name = _b === void 0 ? '' : _b, initialValue = _a.initialValue, hasEmptyOption = _a.hasEmptyOption, _c = _a.emptyOptionText, emptyOptionText = _c === void 0 ? '' : _c, touched = _a.touched, error = _a.error, placeholder = _a.placeholder, disabled = _a.disabled, onChange = _a.onChange, onChangeValue = _a.onChangeValue, isLoading = _a.isLoading, options = _a.options, getOptionName = _a.getOptionName, getOptionValue = _a.getOptionValue;
     var _d = useSelect({
-        options: hasEmptyOption ? __spreadArrays([{ name: emptyOptionText, value: undefined }], options) : options,
+        options: hasEmptyOption ? __spreadArrays([{ name: emptyOptionText, value: undefined }], options) : __spreadArrays(options),
         onChange: function (value) {
             if (onChangeValue) {
                 onChangeValue(name, value);
@@ -79,27 +79,31 @@ export var ComboBoxField = function (_a) {
         getOptionValue: getOptionValue,
         invalidateOnFilter: true
     }, useDropdown, useFilter), isOpen = _d.isOpen, selectOption = _d.selectOption, getSelectedValue = _d.getSelectedValue, getSelectedOption = _d.getSelectedOption, getOptions = _d.getOptions, getButtonProps = _d.getButtonProps, getRootProps = _d.getRootProps, getListProps = _d.getListProps, getInputProps = _d.getInputProps;
-    var _e = useState(isLoading), _isLoading = _e[0], setIsLoading = _e[1];
+    var _e = useState(""), filter = _e[0], setFilter = _e[1];
+    var _f = useState(isLoading), _isLoading = _f[0], setIsLoading = _f[1];
     useEffect(function () {
         setIsLoading(isLoading);
     }, [isLoading]);
     var selectedValue = getSelectedValue();
     var selectedOption = getSelectedOption();
+    console.log(isOpen);
     return (React.createElement(Container, { width: width },
         React.createElement(ComboBox, __assign({}, getRootProps(), { id: id }),
             React.createElement(ComboBoxInputContainer, null,
                 React.createElement(ComboBoxInput, __assign({}, getInputProps(), { onChange: function (e) {
                         if (onChange) {
                             selectOption(undefined);
+                            setFilter(e.target.value);
                             onChange(e);
                         }
                         else {
-                            getInputProps().onChange;
+                            getInputProps().onChange(e);
                         }
-                    }, error: touched && error ? true : false, placeholder: placeholder, disabled: disabled, value: selectedOption ? (getOptionName ? getOptionName(selectedOption) : selectedOption.name) : (onChange ? inputValue : getInputProps().value) })),
+                    }, error: touched && error ? true : false, placeholder: placeholder, disabled: disabled, value: selectedOption ? (getOptionName ? getOptionName(selectedOption) : selectedOption.name) : (onChange ? filter : getInputProps().value) })),
                 React.createElement(ComboBoxButton, __assign({}, getButtonProps(), { src: openIcon }))),
-            React.createElement(ComboBoxList, __assign({}, getListProps(), { style: isOpen ? { display: 'block' } : { display: 'none' } }), getOptions().map(function (optionInstance) {
-                return (React.createElement(ComboBoxOption, __assign({}, optionInstance.getOptionProps(), { selected: selectedValue === (optionInstance.option.value && getOptionValue ? getOptionValue(optionInstance.option) : optionInstance.option.value) }), optionInstance.option.value && getOptionName ? getOptionName(optionInstance.option) : optionInstance.option.name));
+            React.createElement(ComboBoxList, __assign({}, getListProps(), { style: isOpen && !disabled ? { display: 'block' } : { display: 'none' } }), getOptions().map(function (optionInstance) {
+                var _a, _b;
+                return (React.createElement(ComboBoxOption, __assign({}, optionInstance.getOptionProps(), { selected: selectedValue === (getOptionValue ? getOptionValue(optionInstance.option) : (_a = optionInstance.option) === null || _a === void 0 ? void 0 : _a.value) }), getOptionName ? getOptionName(optionInstance.option) : (_b = optionInstance.option) === null || _b === void 0 ? void 0 : _b.name));
             }))),
         touched && error && React.createElement(Image, { src: exclamation, title: error }),
         !error && _isLoading && React.createElement(Image, { src: loading })));

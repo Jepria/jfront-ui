@@ -25,11 +25,11 @@ export const ComboBoxButton = styled.img`
   height: 24px;
 `;
 
-export interface InputProps {
+export interface ComboBoxInputProps {
   error?: boolean;
 }
 
-export const ComboBoxInput = styled.input<InputProps>`
+export const ComboBoxInput = styled.input<ComboBoxInputProps>`
   font-family: tahoma, arial, helvetica, sans-serif;
   font-size: 12px;
   box-sizing: border-box;
@@ -38,7 +38,7 @@ export const ComboBoxInput = styled.input<InputProps>`
   height: 24px;
   padding-left: 2px;
   width: calc(100% - 17px);
-  ${(props: InputProps) => props.error ? 'border: 1px solid red' : 'border: 1px solid #ccc; border-top: 1px solid #999;'}
+  ${(props: ComboBoxInputProps) => props.error ? 'border: 1px solid red' : 'border: 1px solid #ccc; border-top: 1px solid #999;'}
 `;
 
 export interface ComboBoxOptionProps {
@@ -98,7 +98,6 @@ export interface ComboBoxFieldProps {
   id?: string;
   name?: string;
   initialValue?: any;
-  inputValue?: string;
   touched?: boolean;
   error?: string;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
@@ -153,7 +152,6 @@ export const ComboBoxField: React.FC<ComboBoxFieldProps> = ({
   touched,
   error,
   placeholder,
-  inputValue,
   disabled,
   onChange,
   onChangeValue,
@@ -173,7 +171,7 @@ export const ComboBoxField: React.FC<ComboBoxFieldProps> = ({
     getListProps,
     getInputProps
   } = useSelect({
-    options: hasEmptyOption ? [{ name: emptyOptionText, value: undefined }, ...options] : options,
+    options: hasEmptyOption ? [{ name: emptyOptionText, value: undefined }, ...options] : [...options],
     onChange: (value) => {
       if (onChangeValue) {
         onChangeValue(name, value);
@@ -185,6 +183,7 @@ export const ComboBoxField: React.FC<ComboBoxFieldProps> = ({
     invalidateOnFilter: true
   }, useDropdown, useFilter) as UseDropdownInstance & UseFilterInstance;
 
+  const [filter, setFilter] = useState("");
   const [_isLoading, setIsLoading] = useState(isLoading);
 
   useEffect(
@@ -205,26 +204,26 @@ export const ComboBoxField: React.FC<ComboBoxFieldProps> = ({
             onChange={e => {
               if (onChange) {
                 selectOption(undefined);
+                setFilter(e.target.value);
                 onChange(e);
               } else {
-                getInputProps().onChange
+                getInputProps().onChange(e)
               }
-            }
-            }
+            }}
             error={touched && error ? true : false}
             placeholder={placeholder}
             disabled={disabled}
-            value={selectedOption ? (getOptionName ? getOptionName(selectedOption) : selectedOption.name) : (onChange ? inputValue : getInputProps().value)} />
+            value={selectedOption ? (getOptionName ? getOptionName(selectedOption) : selectedOption.name) : (onChange ? filter : getInputProps().value)} />
           <ComboBoxButton {...getButtonProps()} src={openIcon} />
         </ComboBoxInputContainer>
-        <ComboBoxList {...getListProps()} style={isOpen ? { display: 'block' } : { display: 'none' }}>
+        <ComboBoxList {...getListProps()} style={isOpen && !disabled ? { display: 'block' } : { display: 'none' }}>
           {
             getOptions().map(optionInstance => {
               return (
                 <ComboBoxOption
                   {...optionInstance.getOptionProps()}
-                  selected={selectedValue === (optionInstance.option.value && getOptionValue ? getOptionValue(optionInstance.option) : optionInstance.option.value)}>
-                  {optionInstance.option.value && getOptionName ? getOptionName(optionInstance.option) : optionInstance.option.name}
+                  selected={selectedValue === (getOptionValue ? getOptionValue(optionInstance.option) : optionInstance.option?.value)}>
+                  {getOptionName ? getOptionName(optionInstance.option) : optionInstance.option?.name}
                 </ComboBoxOption>
               )
             })

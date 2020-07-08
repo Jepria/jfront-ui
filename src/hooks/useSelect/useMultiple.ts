@@ -1,19 +1,8 @@
-import { UseSelectInstance } from ".";
+import { UseSelectInstance, equals } from ".";
 
 export interface UseMultipleInstance extends UseSelectInstance {
   isSelectedAll: () => boolean;
   selectAll: () => void;
-}
-
-function equals(arr1: Array<any>, arr2: Array<any>): boolean {
-  var i = arr1.length;
-  if (i != arr2.length) return false;
-  while (i--) {
-    if (!arr2.includes(arr1[i]) || (arr2.includes(arr1[i]) && arr2.filter( elem => elem === arr1[i]).length > 1)) {
-      return false;
-    }
-  }
-  return true;
 }
 
 export function useMultiple(instance: UseSelectInstance) {

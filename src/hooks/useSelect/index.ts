@@ -1,4 +1,4 @@
-import React, { useRef, useReducer } from 'react';
+import React, { useRef, useReducer, useEffect } from 'react';
 
 export interface UseSelectProps {
   initialValue?: any;
@@ -49,6 +49,7 @@ export interface UseSelectState {
 }
 
 export type Action =
+  | { type: 'init', initialValue: any }
   | { type: 'select', value: any }
 
 
@@ -58,11 +59,22 @@ export function useGetLatest(obj: UseSelectInstance) {
   return React.useCallback(() => ref.current, [])
 }
 
-function checkValueCollision(options: Array<any>, getOptionValue?: Function) {
+export function equals(arr1: Array<any>, arr2: Array<any>): boolean {
+  var i = arr1.length;
+  if (i != arr2.length) return false;
+  while (i--) {
+    if (!arr2.includes(arr1[i]) || (arr2.includes(arr1[i]) && arr2.filter( elem => elem === arr1[i]).length > 1)) {
+      return false;
+    }
+  }
+  return true;
+}
+
+export function checkValueCollision(options: Array<any>, getOptionValue?: Function) {
   const values = options.map(option => {
     option.value && getOptionValue ? getOptionValue(option) : option.value
   });
-  const duplicates = values.reduce(function(acc: Array<any>, el: any, i, arr: Array<any>) {
+  const duplicates = values.reduce(function (acc: Array<any>, el: any, i, arr: Array<any>) {
     if (arr.indexOf(el) !== i && acc.indexOf(el) < 0) acc.push(el); return acc;
   }, []);
   if (duplicates.length > 0) {
@@ -81,7 +93,9 @@ export function loopPropGetters(propGetters: Array<Function>) {
 function useSelectReducer(state: UseSelectState, action: Action) {
   switch (action.type) {
     case 'select':
-      return { ...state, value: action.value }; // no break added, allows to add specific logic for select action in mixing hooks.
+      return { ...state, value: action.value };
+    case 'init':
+      return { value: action.initialValue };
   }
 }
 
@@ -155,10 +169,12 @@ export function useSelect(props: UseSelectProps, ...hooks: any) {
   });
 
   const getInstance = useGetLatest(instanceRef.current);
-  
-  Object.assign(getInstance(), { props: {
-    ...defaultProps, ...props
-  } });
+
+  Object.assign(getInstance(), {
+    props: {
+      ...defaultProps, ...props
+    }
+  });
 
   //allow hooks to register itselfs ASAP
   instanceRef.current.hooks.forEach((hook: any) => hook(instanceRef.current));
@@ -177,6 +193,18 @@ export function useSelect(props: UseSelectProps, ...hooks: any) {
   }
 
   const [state, dispatch] = useReducer(reducer, { value: initialValue });
+
+  useEffect(() => {
+    if (state.value && initialValue && Array.isArray(initialValue) && !equals(state.value, initialValue)) {
+      dispatch({type: 'init', initialValue: initialValue});
+    } else {
+      if (state.value !== initialValue
+        && (getOptionValue ? getOptionValue(state.value) !== getOptionValue(initialValue) : state.value?.value !== initialValue?.value)) {
+          dispatch({type: 'init', initialValue: initialValue});
+      }
+    }
+    
+  }, [initialValue])
 
   Object.assign(getInstance(), { state, dispatch });
 

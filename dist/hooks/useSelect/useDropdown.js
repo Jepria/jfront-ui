@@ -89,10 +89,25 @@ function useInstance(instance) {
         var state = instance.state, close = instance.close;
         return {
             tabIndex: 1,
-            onBlur: function (e) {
-                if (state.isOpen && e.relatedTarget === null) {
+            onBlur: function (_a) {
+                var _b;
+                var relatedTarget = _a.relatedTarget, currentTarget = _a.currentTarget;
+                if (!state.isOpen)
+                    return;
+                console.log(state);
+                console.log(relatedTarget);
+                if (relatedTarget === null) {
                     close();
+                    return;
                 }
+                ;
+                var node = (_b = relatedTarget) === null || _b === void 0 ? void 0 : _b.parentNode;
+                while (node !== null) {
+                    if (node === currentTarget)
+                        return;
+                    node = node === null || node === void 0 ? void 0 : node.parentNode;
+                }
+                close();
             }
         };
     };

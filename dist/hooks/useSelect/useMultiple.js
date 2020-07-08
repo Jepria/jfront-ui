@@ -5,17 +5,7 @@ var __spreadArrays = (this && this.__spreadArrays) || function () {
             r[k] = a[j];
     return r;
 };
-function equals(arr1, arr2) {
-    var i = arr1.length;
-    if (i != arr2.length)
-        return false;
-    while (i--) {
-        if (!arr2.includes(arr1[i]) || (arr2.includes(arr1[i]) && arr2.filter(function (elem) { return elem === arr1[i]; }).length > 1)) {
-            return false;
-        }
-    }
-    return true;
-}
+import { equals } from ".";
 export function useMultiple(instance) {
     instance.hooks.useInstance = instance.hooks.useInstance ? __spreadArrays(instance.hooks.useInstance, [useInstance]) : [useInstance];
 }

@@ -1,10 +1,10 @@
 import React from 'react';
 export declare const ComboBoxInputContainer: import("styled-components").StyledComponent<"div", any, {}, never>;
 export declare const ComboBoxButton: import("styled-components").StyledComponent<"img", any, {}, never>;
-export interface InputProps {
+export interface ComboBoxInputProps {
     error?: boolean;
 }
-export declare const ComboBoxInput: import("styled-components").StyledComponent<"input", any, InputProps, never>;
+export declare const ComboBoxInput: import("styled-components").StyledComponent<"input", any, ComboBoxInputProps, never>;
 export interface ComboBoxOptionProps {
     selected?: boolean;
 }
@@ -18,7 +18,6 @@ export interface ComboBoxFieldProps {
     id?: string;
     name?: string;
     initialValue?: any;
-    inputValue?: string;
     touched?: boolean;
     error?: string;
     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
