@@ -94,13 +94,10 @@ function useInstance(instance) {
                 var relatedTarget = _a.relatedTarget, currentTarget = _a.currentTarget;
                 if (!state.isOpen)
                     return;
-                console.log(state);
-                console.log(relatedTarget);
                 if (relatedTarget === null) {
                     close();
                     return;
                 }
-                ;
                 var node = (_b = relatedTarget) === null || _b === void 0 ? void 0 : _b.parentNode;
                 while (node !== null) {
                     if (node === currentTarget)

@@ -19,17 +19,21 @@ function useInstance(instance) {
             return [];
         }
     };
+    var mapArray = function (options) {
+        var props = instance.props;
+        return options.map(function (option) {
+            if (props.getOptionValue) {
+                return props.getOptionValue(option);
+            }
+            else {
+                return option.value;
+            }
+        });
+    };
     var getValue = function () {
         var state = instance.state, props = instance.props;
         if (state === null || state === void 0 ? void 0 : state.value) {
-            return state.value.map(function (option) {
-                if (props.getOptionValue) {
-                    return props.getOptionValue(option);
-                }
-                else {
-                    return option.value;
-                }
-            });
+            return mapArray(state.value);
         }
         else {
             return [];
@@ -41,7 +45,7 @@ function useInstance(instance) {
             if (dispatch)
                 dispatch({ type: 'select', value: __spreadArrays(value) });
             if (instance.props.onChange) {
-                instance.props.onChange(value);
+                instance.props.onChange(mapArray(value));
             }
         }
         else if (value) {

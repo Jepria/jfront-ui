@@ -86,7 +86,6 @@ export var ComboBoxField = function (_a) {
     }, [isLoading]);
     var selectedValue = getSelectedValue();
     var selectedOption = getSelectedOption();
-    console.log(isOpen);
     return (React.createElement(Container, { width: width },
         React.createElement(ComboBox, __assign({}, getRootProps(), { id: id }),
             React.createElement(ComboBoxInputContainer, null,

@@ -25,6 +25,20 @@ function useInstance(instance: UseMultipleInstance) {
     }
   };
 
+  const mapArray = (options: Array<any>) => {
+    const {
+      props
+    } = instance;
+
+    return options.map((option: any) => {
+      if (props.getOptionValue) {
+        return props.getOptionValue(option)
+      } else {
+        return option.value;
+      }
+    })
+  }
+
   const getValue = (): Array<any> => {
     const {
       state,
@@ -32,13 +46,7 @@ function useInstance(instance: UseMultipleInstance) {
     } = instance;
 
     if (state?.value) {
-      return state.value.map((option: any) => {
-        if (props.getOptionValue) {
-          return props.getOptionValue(option)
-        } else {
-          return option.value;
-        }
-      })
+      return mapArray(state.value);
     } else {
       return [];
     }
@@ -54,7 +62,7 @@ function useInstance(instance: UseMultipleInstance) {
     if (Array.isArray(value)) {
       if (dispatch) dispatch({ type: 'select', value: [...value] });
       if (instance.props.onChange) {
-        instance.props.onChange(value);
+        instance.props.onChange(mapArray(value));
       }
     } else if (value) {
       let newSelected;
