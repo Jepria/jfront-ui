@@ -1,11 +1,20 @@
-import React, { useReducer, createContext, useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import openIcon from './openIcon.gif';
 import exclamation from '../images/exclamation.gif';
 import loading from '../images/loading.gif';
-import { isFunction } from '../../../utils';
+import { useSelect } from '../../../hooks/useSelect';
+import { useDropdown, UseDropdownInstance } from '../../../hooks/useSelect/useDropdown';
+import { useFilter, UseFilterInstance } from '../../../hooks/useSelect/useFilter';
 
-const ComboBoxButton = styled.img`
+
+export const ComboBoxInputContainer = styled.div`
+  box-sizing: border-box;
+  width: 100%;
+  white-space: nowrap;
+`;
+
+export const ComboBoxButton = styled.img`
   box-sizing: border-box;
   display: inline-block;
   vertical-align: top;
@@ -16,17 +25,11 @@ const ComboBoxButton = styled.img`
   height: 24px;
 `;
 
-const ComboBoxInput = styled.div`
-  box-sizing: border-box;
-  width: 100%;
-  white-space: nowrap;
-`;
-
-interface InputProps {
+export interface ComboBoxInputProps {
   error?: boolean;
 }
 
-const Input = styled.input<InputProps>`
+export const ComboBoxInput = styled.input<ComboBoxInputProps>`
   font-family: tahoma, arial, helvetica, sans-serif;
   font-size: 12px;
   box-sizing: border-box;
@@ -35,15 +38,14 @@ const Input = styled.input<InputProps>`
   height: 24px;
   padding-left: 2px;
   width: calc(100% - 17px);
-  ${(props: InputProps) => props.error ? 'border: 1px solid red' : 'border: 1px solid #ccc; border-top: 1px solid #999;'}
+  ${(props: ComboBoxInputProps) => props.error ? 'border: 1px solid red' : 'border: 1px solid #ccc; border-top: 1px solid #999;'}
 `;
 
-interface ComboBoxOptionProps {
-  hidden?: boolean;
+export interface ComboBoxOptionProps {
   selected?: boolean;
 }
 
-const ComboBoxOption = styled.li<ComboBoxOptionProps>`
+export const ComboBoxOption = styled.li<ComboBoxOptionProps>`
   overflow: hidden;
   white-space: nowrap;
   height: 18px;
@@ -51,23 +53,14 @@ const ComboBoxOption = styled.li<ComboBoxOptionProps>`
   cursor: pointer;
   font-family: tahoma, arial, helvetica, sans-serif;
   font-size: 12px;
-  ${(props: ComboBoxOptionProps) => props.hidden ? 'display: none' : ''}
-  ${(props: ComboBoxOptionProps) => props.selected ? 'background: #ccddf3;' : '&:hover {background: #eee}' }
+  ${(props: ComboBoxOptionProps) => props.selected ? 'background: #ccddf3;' : '&:hover {background: #eee}'}
 `;
 
-const CompoBoxList = styled.ul`
+export const ComboBoxList = styled.ul`
   background: white;
   overflow: auto;
   margin: 0;
   padding: 0;
-`;
-
-interface ComboBoxPopupProps {
-  hidden?: boolean;
-  width?: string;
-}
-
-const ComboBoxPopup = styled.div<ComboBoxPopupProps>`
   border-style: solid;
   border-color: #99BBE8;
   border-width: 1px;
@@ -90,7 +83,7 @@ const Image = styled.img`
   margin-left: 4px;
 `;
 
-const Container = styled.div<ComboBoxProps>`
+export const Container = styled.div<ComboBoxProps>`
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -100,240 +93,145 @@ const Container = styled.div<ComboBoxProps>`
   width: 100%;
 `;
 
-export interface ComboBoxOptionComponentProps {
-  name: string;
-  value: any;
-}
 
-const ComboBoxOptionComponent: React.FC<ComboBoxOptionComponentProps> = ({ name, value, children }) => {
-
-  const context = useContext(ComboBoxContext);
-
-  useEffect(() => {
-    if (value === context.selected && context.text !== name) {
-      context.handleSelect(value, name);
-    }
-  });
-
-  return (
-    <ComboBoxOption
-      key={value}
-      hidden={context.text && !context.selected ? !`${name}`.startsWith(context.text) : false}
-      selected={context.selected === value}
-      onClick={e => {
-        e.stopPropagation();
-        context.handleSelect(value, name)
-      }}>
-      {children ? children : name}
-    </ComboBoxOption>
-  );
-
-}
-
-export interface ComboBoxListProps {
-  children?: (() => React.ReactNode) | React.ReactNode;
-}
-
-const ComboBoxListComponent: React.FC<ComboBoxListProps> = ({ children }) => {
-  const context = useContext(ComboBoxContext);
-
-  return (
-    <ComboBoxPopup hidden={!context.opened}>
-      <CompoBoxList>{isFunction(children) ? children() : children}</CompoBoxList>
-    </ComboBoxPopup>
-  );
-}
-
-const ComboBoxInputComponent: React.FC<React.InputHTMLAttributes<HTMLInputElement>> = (props) => {
-
-  const context = useContext(ComboBoxContext);
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (props.onChange) {
-      props.onChange(e);
-    }
-    context.handleChange(e.target.value)
-  }
-
-  return (
-    <ComboBoxInput>
-      <Input type='text'
-        {...props}
-        onChange={handleChange}
-        onFocus={context.handleFocus}
-        value={context.text}
-        error={context.touched && context.error ? true : false}
-      />
-      <ComboBoxButton src={openIcon} onClick={e => {
-        e.stopPropagation();
-        context.toggle()
-      }} />
-    </ComboBoxInput>
-  );
-}
-
-
-export interface IComboBoxContext {
-  name?: string;
-  selected?: any;
-  text?: string;
-  opened: boolean;
-  isLoading?: boolean;
-  touched?: boolean;
-  error?: string;
-  handleSelect(value: string, text: string): void;
-  handleChange(value: string): void;
-  toggle(): void;
-  handleFocus(e: React.FocusEvent<HTMLInputElement>): void;
-}
-
-const ComboBoxContext = createContext<IComboBoxContext>({
-  name: '',
-  opened: false,
-  isLoading: false,
-  handleSelect: (value: string, text: string) => { },
-  handleChange: (value: string) => { },
-  toggle: () => { },
-  handleFocus: (e: React.FocusEvent<HTMLInputElement>) => { }
-});
-
-export const useComboBoxContext = () => {
-  return useContext(ComboBoxContext);
-}
-
-export interface ComboBoxComponentProps {
+export interface ComboBoxFieldProps {
   id?: string;
   name?: string;
-  value?: any;
+  initialValue?: any;
   touched?: boolean;
   error?: string;
-  onChange?(field: string, value: any): void;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onChangeValue?: (field: string, value: any) => void;
   width?: string;
+  options: Array<any>;
   isLoading?: boolean;
+  getOptionName?: (option: any) => string;
+  getOptionValue?: (option: any) => string;
+  placeholder?: string;
+  disabled?: boolean;
+  hasEmptyOption?: boolean;
+  emptyOptionText?: string;
 }
 
-type ComboBoxState = {
-  opened: boolean;
-  selected: any;
-  text?: string;
-}
+/**
+ * ComboBox form field
+ * 
+ * @param {ComboBoxFieldProps} props incoming props
+ * @example
+ * const options = [
+ *   {
+ *     name: '123',
+ *     value: '123'
+ *   },
+ *   {
+ *     name: '111',
+ *     value: '111'
+ *   },
+ *   {
+ *     name: '222',
+ *     value: '222'
+ *   },
+ *   {
+ *     name: '333',
+ *     value: '333'
+ *   },
+ *   {
+ *     name: '444',
+ *     value: '444'
+ *   },
+ * ]
+ * <ComboBoxField options={options} onChangeValue={(field: string, value: any) => console.log(field, value)}/>
+ */
+export const ComboBoxField: React.FC<ComboBoxFieldProps> = ({
+  id,
+  width,
+  name = '',
+  initialValue,
+  hasEmptyOption,
+  emptyOptionText = '',
+  touched,
+  error,
+  placeholder,
+  disabled,
+  onChange,
+  onChangeValue,
+  isLoading,
+  options,
+  getOptionName,
+  getOptionValue }) => {
 
-type Action =
-  | { type: "select", value: any, text: string }
-  | { type: "filter", text: string }
-  | { type: "toggle", opened: boolean }
-  | { type: "blur" }
-  | { type: "focus", opened: boolean }
+  const {
+    isOpen,
+    selectOption,
+    getSelectedValue,
+    getSelectedOption,
+    getOptions,
+    getButtonProps,
+    getRootProps,
+    getListProps,
+    getInputProps
+  } = useSelect({
+    options: hasEmptyOption ? [{ name: emptyOptionText, value: undefined }, ...options] : [...options],
+    onChange: (value) => {
+      if (onChangeValue) {
+        onChangeValue(name, value);
+      }
+    },
+    initialValue,
+    getOptionName,
+    getOptionValue,
+    invalidateOnFilter: true
+  }, useDropdown, useFilter) as UseDropdownInstance & UseFilterInstance;
 
-const ComboBoxReducer = (state: ComboBoxState, action: Action) => {
-  switch (action.type) {
-    case 'select':
-      return { opened: false, selected: action.value, text: action.text };
-    case 'filter':
-      return { opened: true, selected: undefined, text: action.text };
-    case 'toggle':
-      return { opened: action.opened, selected: state.selected, text: state.text };
-    case 'blur':
-      return { opened: false, selected: state.selected, text: state.text };
-    case 'focus':
-      return { opened: action.opened, selected: state.selected, text: state.text };
-  }
-}
-
-const ComboBoxComponent: React.FC<ComboBoxComponentProps> = ({ id, width, name = '', value, touched, error, onChange, isLoading, children }) => {
-
-  const [{
-    opened,
-    selected,
-    text}, dispatch] = useReducer(ComboBoxReducer, {
-      opened: false,
-      selected: [],
-      text: ''
-    });
-
+  const [filter, setFilter] = useState("");
   const [_isLoading, setIsLoading] = useState(isLoading);
-  
+
   useEffect(
     () => {
       setIsLoading(isLoading);
     }, [isLoading]
   );
 
-  useEffect(
-    () => {
-      dispatch({
-        type: 'select',
-        value: value,
-        text: ''
-      });
-    }, [value, dispatch]
-  );
-
-  const handleSelect = (fieldValue: string, fieldText: string) => {
-    if (selected !== fieldValue || text !== fieldText) {
-      dispatch({
-        type: 'select',
-        value: fieldValue,
-        text: fieldText
-      });
-      if (onChange) {
-        onChange(name, fieldValue);
-      }
-    }
-  }
-
-  const handleChange = (value: string) => {
-    console.log(value);
-    dispatch({
-      type: 'filter',
-      text: value
-    });
-  }
-
-  const toggle = () => {
-    dispatch({
-      type: 'toggle',
-      opened: !opened
-    });
-  }
-
-  const handleFocus = (e: React.FocusEvent<HTMLInputElement>) => {
-    if (!opened) {
-      dispatch({
-        type: 'focus',
-        opened: true
-      });
-    }
-  }
-
-  const handleBlur = (e: React.FocusEvent) => {
-    if (opened && e.relatedTarget === null) {
-      dispatch({
-        type: 'blur'
-      });
-    }
-    if (onChange) {
-      onChange(name, selected);
-    }
-  }
+  const selectedValue = getSelectedValue();
+  const selectedOption = getSelectedOption();
 
   return (
-    <ComboBoxContext.Provider value={{ name, selected, text, opened, touched, error, handleSelect, handleChange, toggle, handleFocus, isLoading: _isLoading }}>
-      <Container width={width}>
-        <ComboBox id={id} tabIndex={1} onBlur={handleBlur}>
-          {children}
-        </ComboBox>
-        {touched && error && <Image src={exclamation} title={error} />}
-        {!error && _isLoading && <Image src={loading} />}
-      </Container>
-    </ComboBoxContext.Provider>
+    <Container width={width}>
+      <ComboBox {...getRootProps()} id={id}>
+        <ComboBoxInputContainer>
+          <ComboBoxInput
+            {...getInputProps()}
+            onChange={e => {
+              if (onChange) {
+                selectOption(undefined);
+                setFilter(e.target.value);
+                onChange(e);
+              } else {
+                getInputProps().onChange(e)
+              }
+            }}
+            error={touched && error ? true : false}
+            placeholder={placeholder}
+            disabled={disabled}
+            value={selectedOption ? (getOptionName ? getOptionName(selectedOption) : selectedOption.name) : (onChange ? filter : getInputProps().value)} />
+          <ComboBoxButton {...getButtonProps()} src={openIcon} />
+        </ComboBoxInputContainer>
+        <ComboBoxList {...getListProps()} style={isOpen && !disabled ? { display: 'block' } : { display: 'none' }}>
+          {
+            getOptions().map(optionInstance => {
+              return (
+                <ComboBoxOption
+                  {...optionInstance.getOptionProps()}
+                  selected={selectedValue === (getOptionValue ? getOptionValue(optionInstance.option) : optionInstance.option?.value)}>
+                  {getOptionName ? getOptionName(optionInstance.option) : optionInstance.option?.name}
+                </ComboBoxOption>
+              )
+            })
+          }
+        </ComboBoxList>
+      </ComboBox>
+      {touched && error && <Image src={exclamation} title={error} />}
+      {!error && _isLoading && <Image src={loading} />}
+    </Container>
   );
-}
-
-
-export {
-  ComboBoxOptionComponent as ComboBoxOption,
-  ComboBoxListComponent as ComboBoxList,
-  ComboBoxInputComponent as ComboBoxInput,
-  ComboBoxComponent as ComboBox
 }
