@@ -2,6 +2,9 @@
 # Created by https://www.gitignore.io/api/node,react
 # Edit at https://www.gitignore.io/?templates=node,react
 
+#IDE
+/.idea/
+
 ### Node ###
 # Logs
 logs
@@ -119,4 +122,3 @@ thumb
 sketch
 
 # End of https://www.gitignore.io/api/node,react
-/.idea/
