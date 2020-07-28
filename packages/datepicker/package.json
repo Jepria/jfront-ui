@@ -1,0 +1,32 @@
+{
+  "name": "@jfront/components-datepicker",
+  "version": "0.1.0",
+  "license": "Apache-2.0",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types/index.d.ts",
+  "typings": "dist/types/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "prebuild": "rimraf dist",
+    "build": "concurrently yarn:build:*",
+    "build:esm": "cross-env BABEL_ENV=esm babel src --root-mode upward --extensions .ts,.tsx -d dist/esm --source-maps",
+    "build:cjs": "cross-env BABEL_ENV=cjs babel src --root-mode upward --extensions .ts,.tsx -d dist/cjs --source-maps",
+    "build:types": "tsc --emitDeclarationOnly --declaration --declarationDir dist/types",
+    "test": "jest"
+  },
+  "dependencies": {
+    "date-fns": "^2.14.0",
+    "react-datepicker": "^2.16.0"
+  },
+  "peerDependencies": {
+    "react": "16.x",
+    "react-dom": "16.x"
+  },
+  "devDependencies": {
+    "@types/react-datepicker": "^2.11.0",
+    "@types/styled-components": "^5.0.1"
+  }
+}

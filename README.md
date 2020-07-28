@@ -38,26 +38,9 @@ npm i https://github.com/Jepria/jfront-components.git#branch
 
 ### Добавление новых компонентов:
 - Написать *ts*, *tsx* код в подходящем файле (например, *src/components/NewComponent.tsx*)
-- Добавить экспорт в файл *index.ts* из добавленных исходных файлов: 
-    ```
-    export * from './src/components/NewComponent.tsx';
-    ```
 - `jfront-components>npm run build` —
     *ts* и *tsx* файлы из папки *src* компилируются и попадают в папку *dist*
-	
-### Подключение сторонних библиотек
-- Если предполагается, что библиотека не будет повторно использована в коде потребителя, то следует объявить ее в `devDependencies` в `package.json`
-- Если возможно, что библиотека будет использована в прикладном коде, то нужно объявить ее в  `devDependencies` и `peerDependencies` в `package.json`и добавить исключение в сборку `webpack` (блок externals):
-
+- Добавить экспорт в файл *index.js* из скомпилированного *js*-файла: 
     ```
-    module.exports = {
-      ...
-      module: {
-      ...
-      externals: {
-        //'имя библиотеки' : 'имя библиотеки'
-        'lib-name': 'lib-name',
-      },
-      ...
-    };
+    export * from './dist/components/NewComponent.js';
     ```

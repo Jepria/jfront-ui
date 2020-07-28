@@ -1,0 +1,36 @@
+{
+  "files": [
+    {
+      "path": "packages/system/dist/esm/*.js",
+      "maxSize": "10 kB"
+    },
+    {
+      "path": "packages/Collapse/dist/esm/*.js",
+      "maxSize": "10 kB"
+    },
+    {
+      "path": "packages/utils/dist/esm/*.js",
+      "maxSize": "10 kB"
+    },
+    {
+      "path": "packages/hooks/dist/esm/*.js",
+      "maxSize": "5 kB"
+    },
+    {
+      "path": "packages/popper/dist/esm/*.js",
+      "maxSize": "5 kB"
+    },
+    {
+      "path": "packages/components-dev-core/dist/esm/*.js",
+      "maxSize": "5 kB"
+    },
+    {
+      "path": "packages/components-utils/dist/esm/*.js",
+      "maxSize": "5 kB"
+    },
+    {
+      "path": "packages/components-datepicker/dist/esm/*.js",
+      "maxSize": "5 kB"
+    }
+  ]
+}
