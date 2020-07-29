@@ -43,7 +43,6 @@
     "@babel/runtime": "7.10.5",
     "@storybook/addon-actions": "6.0.0-rc.13",
     "@storybook/addon-knobs": "6.0.0-rc.13",
-    "storybook-addon-performance": "0.11.0",
     "@storybook/addon-a11y": "5.3.19",
     "@storybook/react": "6.0.0-rc.13",
     "@types/jest": "26.0.5",
@@ -88,9 +87,9 @@
     "react-lorem-component": "^0.13.0",
     "react-router-dom": "5.2.0",
     "react-spinners": "0.8.3",
-    "react-test-renderer": "16.13.1",
     "rimraf": "3.0.2",
     "shelljs": "0.8.4",
+    "storybook-addon-performance": "0.11.0",
     "ts-jest": "26.1.2",
     "typescript": "3.9.7"
   }
