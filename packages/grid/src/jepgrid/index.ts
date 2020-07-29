@@ -1,6 +1,6 @@
-import { Grid as CommonGrid } from '../common';
-import styled from 'styled-components';
-import bg from './images/bg.gif';
+import { Grid as CommonGrid } from '../common'
+import styled from 'styled-components'
+import bg from './images/bg.gif'
 
 /** Поддержка стилей грида из legacy GWT-версии **/
 

@@ -1,8 +1,8 @@
 import * as React from "react"
-import {GridTable} from "../src/common/GridTable";
+import {InputText} from "../src/InputText";
 
 export default {
-  title: "GridTable",
+  title: "InputText",
   decorators: [
     (StoryFn: Function) => (
     <StoryFn />
@@ -13,7 +13,7 @@ export default {
 export const BasicUsage = () => {
   return (
     <>
-      <GridTable
+      <InputText name="InputTextName"
       />
     </>
   )

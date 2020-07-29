@@ -1,8 +1,8 @@
 import * as React from "react"
-import {GridTable} from "../src/common/GridTable";
+import { PagingToolBar } from "../src";
 
 export default {
-  title: "GridTable",
+  title: "PagingToolBar",
   decorators: [
     (StoryFn: Function) => (
     <StoryFn />
@@ -11,10 +11,12 @@ export default {
 }
 
 export const BasicUsage = () => {
+  const onChange = () => {console.log('onChange()')}
+
   return (
     <>
-      <GridTable
-      />
+      <PagingToolBar
+       pageCount={2}/>
     </>
   )
 }
