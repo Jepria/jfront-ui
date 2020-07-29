@@ -11,17 +11,28 @@
   ],
   "scripts": {
     "prebuild": "rimraf dist",
-    "build": "concurrently yarn:build:*",
+    "build1": "concurrently yarn:build:*",
     "build:esm": "cross-env BABEL_ENV=esm babel src --root-mode upward --extensions .ts,.tsx -d dist/esm --source-maps",
     "build:cjs": "cross-env BABEL_ENV=cjs babel src --root-mode upward --extensions .ts,.tsx -d dist/cjs --source-maps",
     "build:types": "tsc --emitDeclarationOnly --declaration --declarationDir dist/types",
+
+    "build": "webpack --config webpack.config.js --mode production",
+
     "test": "jest --passWithNoTests"
+  },
+  "dependencies": {
+    "@jfront/components-pagingbar": "^0.1.0"
   },
   "peerDependencies": {
     "react": "16.x",
     "react-dom": "16.x"
   },
   "devDependencies": {
-    "@types/styled-components": "^5.0.1"
+    "@types/styled-components": "^5.0.1",
+    "awesome-typescript-loader": "^5.2.1",
+    "css-loader": "^3.6.0",
+    "file-loader": "^6.0.0",
+    "source-map-loader": "^1.0.0",
+    "style-loader": "^1.2.1"
   }
 }
