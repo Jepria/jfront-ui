@@ -12,8 +12,8 @@ type InputSelectProps = {
 
 export function InputSelect(props: InputSelectProps) {
     const list = [
-        { id: "1", value: "Option1"}, 
-        { id: "2", value: "Option2"}, 
+        { id: "1", value: "Option1"},
+        { id: "2", value: "Option2"},
         { id: "3", value: "Option3"}
     ]; // it could be func returning real data
 
@@ -22,7 +22,7 @@ export function InputSelect(props: InputSelectProps) {
     const [error, setError] = useState(props.error || "");
     const [disabled, setDisabled] = useState(props.disabled || false);
     const [readonly, setEditable] = useState(props.readonly || false);
-    
+
 
     const handleChange = (event: any) => {
         alert(event.target.value);
@@ -45,11 +45,11 @@ export function InputSelect(props: InputSelectProps) {
             <label htmlFor={props.id} className={labelClassName}>
                     {error || props.label}:
             </label>&nbsp;
-            <select 
-                id={props.id} 
-                name={props.name} 
-                value={value} 
-                disabled={disabled} 
+            <select
+                id={props.id}
+                name={props.name}
+                value={value}
+                disabled={disabled}
                 onChange={handleChange.bind(this)}>
                 {data.map(item => (
                 <option key={item.id} value={item.value}>{item.value}</option>
