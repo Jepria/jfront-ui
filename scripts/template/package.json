@@ -3,13 +3,12 @@
   "version": "1.0.0-next.3",
   "description": "description",
   "keywords": [
-    "theme",
-    "theming",
-    "ui mode",
+    "jfront",
+    "components",
+    "library",
     "ui"
   ],
-  "author": "Segun Adebayo <sage@adebayosegun.com>",
-  "homepage": "https://github.com/chakra-ui/chakra-ui#readme",
+  "homepage": "https://https://github.com/Jepria/jfront-components#readme",
   "license": "MIT",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -23,10 +22,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/chakra-ui/chakra-ui.git"
+    "url": "git+https://github.com/Jepria/jfront-components.git"
   },
   "bugs": {
-    "url": "https://github.com/chakra-ui/chakra-ui/issues"
+    "url": "https://github.com/Jepria/jfront-components/issues"
   },
   "scripts": {
     "prebuild": "rimraf dist",
@@ -42,9 +41,6 @@
     "lint": "concurrently yarn:lint:*"
   },
   "dependencies": {
-    "@chakra-ui/utils": "1.0.0-next.3",
-    "@chakra-ui/hooks": "1.0.0-next.3",
-    "@chakra-ui/system": "1.0.0-next.3"
   },
   "peerDependencies": {
     "react": "16.x"
