@@ -27,15 +27,15 @@ your contribution.
 The following steps will get you setup to contribute changes to this repo:
 
 1. Fork the repo (click the <kbd>Fork</kbd> button at the top right of
-   [this page](https://github.com/chakra-ui/chakra-ui))
+   [this page](https://github.com/Jepria/jfront-components))
 
 2. Clone your fork locally
 
 ```sh
 # in a terminal, cd to parent directory where you want your clone to be, then
-git clone https://github.com/<your_github_username>/chakra-ui.git
+git clone https://github.com/<your_github_username>/jfront-components.git
 
-cd chakra-ui
+cd jfront-components
 ```
 
 3. Setup all dependencies and build. Chakra UI uses `yarn` and `lerna`, so run
@@ -90,15 +90,15 @@ on. You can run `build`, `test`, `lint` commands
 Since we're using lerna monorepo + yarn workspaces by default, this enables us
 to run commands within component package directly from the root.
 
-Each component is named this way `@chakra-ui/[component]`. Let's say we want to
+Each component is named this way `@jfront/[component]`. Let's say we want to
 build the checkbox component. Here's how to do it:
 
 ```bash
-yarn workspace @chakra-ui/button build
+yarn workspace @jfront/button build
 
 # or
 
-lerna run build --scope @chakra-ui/button
+lerna run build --scope @jfront/button
 ```
 
 **Shortcut:** To make this shorter and more convenient, we've added an alias for
@@ -135,8 +135,8 @@ with a code example. The best way to show a bug is by sending a CodeSandbox link
 
 You may wish to use our starters to help you get going:
 
-- JavaScript Starter: https://codesandbox.io/s/chakra-ui-javascript-lzzg9
-- TypeScript Starter: https://codesandbox.io/s/chakra-ui-typescript-pomi8
+- JavaScript Starter: https://codesandbox.io/s/jfront-javascript-TBD
+- TypeScript Starter: https://codesandbox.io/s/jfront-typescript-TBD
 
 ## Proposing new or changed API?
 
@@ -180,7 +180,7 @@ https://www.conventionalcommits.org/ or check out the
 
 ### Steps to PR
 
-- Fork of the chakra-ui repository and clone your fork
+- Fork of the jfront-components repository and clone your fork
 - Create a new branch out of the `develop` branch. We follow the convention
   `[type/scope]`. For example `fix/accordion-hook`, `docs/menu-typo`
 
@@ -230,5 +230,5 @@ TODO
 
 ## License
 
-By contributing your code to the chakra-ui GitHub repository, you agree to
-license your contribution under the MIT license.
+By contributing your code to the jfront-components GitHub repository, you agree to
+license your contribution under the Apache 2.0 license.
