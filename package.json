@@ -25,13 +25,7 @@
     "release:ci": "lerna publish -y --loglevel verbose",
     "release:next": "lerna publish --force-publish=* --preid next --dist-tag next",
     "publish:next": "lerna publish from-package --dist-tag next",
-    "docs": "yarn workspace @chakra-ui/docs",
-    "docs:start": "yarn docs start",
-    "utils": "yarn workspace @chakra-ui/utils",
-    "system": "yarn workspace @chakra-ui/system",
-    "alert-dialog": "yarn workspace @chakra-ui/alert-dialog",
-    "babel-plugin": "yarn workspace babel-plugin-chakra-ui",
-    "gatsby-plugin": "yarn workspace gatsby-plugin-chakra-ui"
+    "docs:start": "yarn docs start"
   },
   "devDependencies": {
     "@babel/cli": "7.10.5",
@@ -83,12 +77,7 @@
     "prettier": "2.0.5",
     "react": "16.13.1",
     "react-dom": "16.13.1",
-    "react-icons": "3.10.0",
-    "react-lorem-component": "^0.13.0",
-    "react-router-dom": "5.2.0",
-    "react-spinners": "0.8.3",
     "rimraf": "3.0.2",
-    "shelljs": "0.8.4",
     "storybook-addon-performance": "0.11.0",
     "ts-jest": "26.1.2",
     "typescript": "3.9.7"
