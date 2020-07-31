@@ -5,5 +5,5 @@ A Quick description of the component
 ## Installation
 
 ```sh
-yarn add @chakra-ui/<component>
+yarn add @jfront/<component>
 ```
