@@ -1,6 +1,6 @@
 ---
 name: Bug report
-about: Create a report to help make Chakra UI better
+about: Create a report to help make JFront UI better
 title: "[Component] A concise description of bug"
 labels: ""
 assignees: ""

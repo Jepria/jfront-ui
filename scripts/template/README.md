@@ -5,5 +5,5 @@ A Quick description of the component
 ## Installation
 
 ```sh
-yarn add @jfront/<component>
+yarn add @jfront-ui/<component>
 ```

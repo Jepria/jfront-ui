@@ -1,7 +1,7 @@
 # Code Review Guidelines
 
-The goal of this document is to outline all the requirements for any Chakra
-components. At Chakra, we want the entire code base to be beginner friendly,
+The goal of this document is to outline all the requirements for any JFront UI
+components. At JFront, we want the entire code base to be beginner friendly,
 easy to understand and high quality.
 
 At the end of the day, most of these documented knowledge will be used directly
@@ -39,7 +39,7 @@ Every component package must implement the following:
 
 - TypeScript: Component prop types should be named with `[component]Props`
 
-- Ensure you update the component dependencies, anytime you import a chakra
+- Ensure you update the component dependencies, anytime you import a jfront
   component
 
 ## Hooks
@@ -51,8 +51,8 @@ Every component package must implement the following:
   unto a component, then return the "remaining" props from the hook to prevent
   unnecessary destructuring
 
-- Add a `data-chakra-*` signature to all components so it's easier to spot
-  chakra components anywhere online :)
+- Add a `data-jfront-*` signature to all components so it's easier to spot
+  jfront components anywhere online :)
 
 - Consider using prop getters as the return values for your hooks, it makes it
   easy to merge in any external props passed to the consuming component.
@@ -68,7 +68,7 @@ TypeScript:
 
 Testing:
 
-- [Chakra Component Test Checklist](COMPONENT_TEST_CHECKLIST.md)
+- [JFront Component Test Checklist](COMPONENT_TEST_CHECKLIST.md)
 
 - Common React testing library scenarios:
   https://react-testing-library-examples.netlify.com/

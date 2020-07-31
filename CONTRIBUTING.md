@@ -1,4 +1,4 @@
-Thanks for showing interest to contribute to Chakra UI 💖, you rock!
+Thanks for showing interest to contribute to JFront UI 💖, you rock!
 
 When it comes to open source, there are different ways you can contribute, all
 of which are valuable. Here's few guidelines that should help you as you prepare
@@ -38,16 +38,16 @@ git clone https://github.com/<your_github_username>/jfront-components.git
 cd jfront-components
 ```
 
-3. Setup all dependencies and build. Chakra UI uses `yarn` and `lerna`, so run
+3. Setup all dependencies and build. JFront UI uses `yarn` and `lerna`, so run
    `yarn bootstrap`. This command will install dependencies, bootstrap the repo
    using `lerna` and build all packages.
 
-> If you run into any issues during this step, kindly reach out to the Chakra UI
+> If you run into any issues during this step, kindly reach out to the JFront UI
 > React team here: https://discord.gg/dQHfcWF
 
 ## Development
 
-To improve our development process, we've setup a couple of systems. Chakra UI
+To improve our development process, we've setup a couple of systems. JFront UI
 uses a monorepo structure, this means each component is it's own package and can
 use consumed independently.
 
@@ -190,7 +190,7 @@ https://www.conventionalcommits.org/ or check out the
 
 ### Changesets
 
-The Chakra project uses [`changesets`](https://github.com/atlassian/changesets)
+The JFront project uses [`changesets`](https://github.com/atlassian/changesets)
 to manage versioning and changelogs.
 
 A new changeset can be created using `yarn changeset`. This will begin a guided
@@ -217,7 +217,7 @@ document for more information.
 
 All commits that fix bugs or add features need a test.
 
-> **Dear Chakra team:** Please do not merge code without tests
+> **Dear JFront team:** Please do not merge code without tests
 
 ## Want to write a blog post or tutorial
 

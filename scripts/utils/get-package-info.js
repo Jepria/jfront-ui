@@ -6,7 +6,7 @@
  */
 export default function getPackageInfo(pkg) {
   // prepare the workspace command
-  const cmd = `yarn workspace @chakra-ui/${pkg}`
+  const cmd = `yarn workspace @jfront/${pkg}`
 
   // prepare the directory path to run
   const dir = `packages/${pkg}`

@@ -11,7 +11,7 @@ follow the TypeScript guidelines.
 - Every function should type it’s input
 - Enums are great, but beware they map to index numbers if not redefined
 
-The end goal of this ensure all Chakra UI components are as strongly typed as
+The end goal of this ensure all JFront UI components are as strongly typed as
 possible to enable teams leverage the library.
 
 It's also important to keep types as simple as possible. Primarily we should

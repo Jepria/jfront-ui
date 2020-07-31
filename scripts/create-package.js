@@ -197,7 +197,7 @@ function editPackageJson(options) {
   const package = component.toLowerCase()
   const file = editJsonFile(`${path}/package.json`)
 
-  file.set("name", `@chakra-ui/${package}`)
+  file.set("name", `@jfront-ui/${package}`)
   file.set("module", `dist/${package}.esm.js`)
   file.save()
 }
@@ -208,7 +208,7 @@ function editRootPackageJson(options) {
   const package = component.toLowerCase()
   const file = editJsonFile(`package.json`)
 
-  file.set(`scripts.${package}`, `yarn workspace @chakra-ui/${package}`)
+  file.set(`scripts.${package}`, `yarn workspace @jfront-ui/${package}`)
   file.save()
 }
 

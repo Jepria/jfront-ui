@@ -1,6 +1,6 @@
 ---
 name: Feature request
-about: Suggest an idea for a feature or a new component for Chakra UI
+about: Suggest an idea for a feature or a new component for JFront UI
 title: Request to add [Component] component
 labels: ""
 assignees: ""
