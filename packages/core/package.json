@@ -1,0 +1,54 @@
+{
+  "name": "@jfront-ui/core",
+  "version": "0.1.0",
+  "description": "React UI components built with React and Styled Components",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types/index.d.ts",
+  "typings": "dist/types/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "prebuild": "rimraf dist",
+    "start": "nodemon --watch src --exec yarn build -e ts,tsx",
+    "build": "concurrently yarn:build:*",
+    "test": "jest --env=jsdom --passWithNoTests",
+    "lint": "concurrently yarn:lint:*",
+    "version": "yarn build",
+    "build:esm": "cross-env BABEL_ENV=esm babel src --root-mode upward --extensions .ts,.tsx -d dist/esm --source-maps",
+    "build:cjs": "cross-env BABEL_ENV=cjs babel src --root-mode upward --extensions .ts,.tsx -d dist/cjs --source-maps",
+    "build:types": "tsc --emitDeclarationOnly --declaration --declarationDir dist/types",
+    "test:cov": "yarn test --coverage",
+    "lint:src": "eslint src --ext .ts,.tsx --config ../../.eslintrc",
+    "lint:types": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@jfront-ui/app": "0.1.0",
+    "@jfront-ui/datepicker": "0.1.0",
+    "@jfront-ui/form": "0.1.0",
+    "@jfront-ui/grid": "0.1.0",
+    "@jfront-ui/hooks": "0.1.0",
+    "@jfront-ui/input": "0.1.0",
+    "@jfront-ui/layout": "0.1.0",
+    "@jfront-ui/pagingbar": "0.1.0",
+    "@jfront-ui/tabpanel": "0.1.0",
+    "@jfront-ui/toolbar": "0.1.0"
+  },
+  "peerDependencies": {
+    "react": "16.x"
+  },
+  "license": "Apache-2.0",
+  "repository": "https://github.com/Jepria/jepria-ui",
+  "keywords": [
+    "react",
+    "ui",
+    "components",
+    "styled-components",
+    "library"
+  ]
+}
