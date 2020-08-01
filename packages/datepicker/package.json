@@ -1,5 +1,5 @@
 {
-  "name": "@jfront/components-datepicker",
+  "name": "@jfront-ui/datepicker",
   "version": "0.1.0",
   "license": "Apache-2.0",
   "main": "dist/cjs/index.js",

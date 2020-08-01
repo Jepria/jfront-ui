@@ -8,7 +8,7 @@
     "library",
     "ui"
   ],
-  "homepage": "https://https://github.com/Jepria/jfront-components#readme",
+  "homepage": "https://https://github.com/Jepria/jfront-ui#readme",
   "license": "MIT",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -22,10 +22,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Jepria/jfront-components.git"
+    "url": "git+https://github.com/Jepria/jfront-ui.git"
   },
   "bugs": {
-    "url": "https://github.com/Jepria/jfront-components/issues"
+    "url": "https://github.com/Jepria/jfront-ui/issues"
   },
   "scripts": {
     "prebuild": "rimraf dist",

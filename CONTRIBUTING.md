@@ -27,15 +27,15 @@ your contribution.
 The following steps will get you setup to contribute changes to this repo:
 
 1. Fork the repo (click the <kbd>Fork</kbd> button at the top right of
-   [this page](https://github.com/Jepria/jfront-components))
+   [this page](https://github.com/Jepria/jfront-ui))
 
 2. Clone your fork locally
 
 ```sh
 # in a terminal, cd to parent directory where you want your clone to be, then
-git clone https://github.com/<your_github_username>/jfront-components.git
+git clone https://github.com/<your_github_username>/jfront-ui.git
 
-cd jfront-components
+cd jfront-ui
 ```
 
 3. Setup all dependencies and build. JFront UI uses `yarn` and `lerna`, so run
@@ -180,7 +180,7 @@ https://www.conventionalcommits.org/ or check out the
 
 ### Steps to PR
 
-- Fork of the jfront-components repository and clone your fork
+- Fork of the jfrontui repository and clone your fork
 - Create a new branch out of the `develop` branch. We follow the convention
   `[type/scope]`. For example `fix/accordion-hook`, `docs/menu-typo`
 
@@ -230,5 +230,5 @@ TODO
 
 ## License
 
-By contributing your code to the jfront-components GitHub repository, you agree to
+By contributing your code to the jfront-ui GitHub repository, you agree to
 license your contribution under the Apache 2.0 license.
