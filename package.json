@@ -1,5 +1,5 @@
 {
-  "name": "@jfront-ui",
+  "name": "jfront-ui",
   "private": true,
   "workspaces": {
     "packages": [
