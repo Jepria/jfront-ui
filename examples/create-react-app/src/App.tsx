@@ -1,14 +1,13 @@
 import * as React from "react"
-import { Box, Alert, AlertIcon } from "@jfront-ui/core"
+import { DatePicker } from "@jfront-ui/core"
 
 function App() {
+  const onChange = () => {console.log('onChange()')}
   return (
     <div>
-      <Box>Welcome</Box>
-      <Alert status="success">
-        <AlertIcon />
-        Alert throws type error
-      </Alert>
+      <DatePicker
+        onChange = {onChange}
+      />
     </div>
   )
 }

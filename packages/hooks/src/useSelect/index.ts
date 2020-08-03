@@ -1,5 +1,9 @@
 import React, { useRef, useReducer, useEffect } from 'react';
 
+export * from './useMultiple'
+export * from './useFilter'
+export * from './useDropdown'
+
 export interface UseSelectProps {
   initialValue?: any;
   options: Array<any>;
@@ -203,7 +207,7 @@ export function useSelect(props: UseSelectProps, ...hooks: any) {
           dispatch({type: 'init', initialValue: initialValue});
       }
     }
-    
+
   }, [initialValue])
 
   Object.assign(getInstance(), { state, dispatch });

@@ -1,9 +1,8 @@
-import React, { useReducer, createContext, useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import exclamation from '../images/exclamation.gif'
 import loading from '../images/loading.gif';
-import { useSelect, OptionProps } from '../../../hooks/src/useSelect';
-import { useMultiple, UseMultipleInstance } from '../../../hooks/src/useSelect/useMultiple';
+import {OptionProps, useMultiple, UseMultipleInstance, useSelect} from "@jfront-ui/hooks";
 
 export const CheckBox = styled.input.attrs({ type: 'checkbox' })`
   margin: 2px;

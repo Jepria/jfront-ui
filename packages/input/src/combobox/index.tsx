@@ -3,10 +3,7 @@ import styled from 'styled-components';
 import openIcon from './openIcon.gif';
 import exclamation from '../images/exclamation.gif';
 import loading from '../images/loading.gif';
-import { useSelect } from '../../../hooks/src/useSelect';
-import { useDropdown, UseDropdownInstance } from '../../../hooks/src/useSelect/useDropdown';
-import { useFilter, UseFilterInstance } from '../../../hooks/src/useSelect/useFilter';
-
+import {useSelect, useFilter, UseFilterInstance, useDropdown, UseDropdownInstance} from "@jfront-ui/hooks";
 
 export const ComboBoxInputContainer = styled.div`
   box-sizing: border-box;
