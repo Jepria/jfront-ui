@@ -26,6 +26,7 @@
     "react-dom": "16.x"
   },
   "devDependencies": {
+    "@types/node": "*",
     "@types/styled-components": "^5.0.1"
   }
 }
