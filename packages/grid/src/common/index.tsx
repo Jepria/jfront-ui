@@ -6,6 +6,8 @@ import { GridTable } from './GridTable';
 import { GridHeader, GridHeaderCell, TableHeaderCellProps } from './GridHeader';
 import { TableRow, GridRow, GridCell, TableRowProps, TableCellProps } from './GridRow';
 
+export * from './GridTable'
+
 export type Grid = React.FC<GridProps> & {
   Table: React.FC<TableHTMLAttributes<HTMLTableElement>>;
   Header: React.FC<HTMLAttributes<HTMLTableSectionElement>>;
