@@ -43,7 +43,7 @@
     "react": "16.x"
   },
   "license": "Apache-2.0",
-  "repository": "https://github.com/Jepria/jepria-ui",
+  "repository": "https://github.com/Jepria/jfront-ui",
   "keywords": [
     "react",
     "ui",
