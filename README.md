@@ -1,5 +1,5 @@
 # jfront-ui
-JFront component library
+JFront component library!
 
 Добавлена первичная функциональность экспорта компонентов из модуля с последующим импортом в другие проекты.
 
