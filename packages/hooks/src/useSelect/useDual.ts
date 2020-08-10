@@ -1,4 +1,4 @@
-import { UseSelectInstance, OptionInstance } from "./index";
+import { UseSelectInstance, OptionInstance } from ".";
 
 export interface UseDualInstance extends UseSelectInstance {
   getSelectedOptions: () => OptionInstance[];
@@ -19,7 +19,7 @@ function useInstance(instance: UseDualInstance) {
     } = instance;
 
     const selectedValue = getSelectedValue();
-
+    
     if (selectedValue && Array.isArray(selectedValue)) {
       return getOptions().filter(optionInstance => !selectedValue.includes(props.getOptionValue ? props.getOptionValue(optionInstance.option) : optionInstance.option.value))
     } else {

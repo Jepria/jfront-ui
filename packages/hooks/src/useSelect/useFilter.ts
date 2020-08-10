@@ -1,10 +1,10 @@
-import { loopPropGetters, UseSelectState, Action, UseSelectInstance } from './index';
+import { loopPropGetters, UseSelectState, Action, UseSelectInstance } from '.';
 
 export interface UseFilterState extends UseSelectState {
   filter?: string;
 }
 
-export type UseFilterAction = Action
+export type UseFilterAction = Action 
 | {type: 'filter', filter: string}
 
 export interface InputProps {
@@ -45,7 +45,7 @@ function useInstance(instance: UseFilterInstance) {
 
     const {
       hooks,
-      props,
+      props, 
       selectOption,
       dispatch
     } = instance;

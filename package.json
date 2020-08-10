@@ -17,7 +17,6 @@
     "build": "lerna run build --no-private --stream",
     "clean": "lerna clean --yes && rimraf node_modules",
     "start": "yarn build && yarn storybook",
-    "start:all": "yarn build && concurrently \"yarn docs develop\"  \"yarn storybook\" ",
     "test": "lerna run test --no-private --stream",
     "test:cov": "lerna run test:cov",
     "lint": "lerna run lint --no-private --stream",

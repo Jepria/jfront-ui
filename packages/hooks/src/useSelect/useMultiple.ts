@@ -1,4 +1,4 @@
-import { UseSelectInstance, equals } from "./index";
+import { UseSelectInstance, equals } from ".";
 
 export interface UseMultipleInstance extends UseSelectInstance {
   isSelectedAll: () => boolean;

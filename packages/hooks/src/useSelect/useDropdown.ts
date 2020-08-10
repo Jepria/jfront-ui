@@ -1,4 +1,4 @@
-import { Action, UseSelectInstance } from "./index";
+import { Action, UseSelectInstance } from ".";
 import { UseFilterState } from "./useFilter";
 
 export interface UseDropdownState extends UseFilterState {
@@ -73,7 +73,7 @@ function useInstance(instance: UseDropdownInstance) {
       props,
       close
     } = instance;
-
+    
     return getOptions().map(optionInstance => {
       const optionProps = optionInstance.getOptionProps();
       optionInstance.getOptionProps = () => {
@@ -133,7 +133,7 @@ function useInstance(instance: UseDropdownInstance) {
   }
 
   const getInputProps = () => {
-
+    
     const {
       props,
       state,
