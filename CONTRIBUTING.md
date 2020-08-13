@@ -221,8 +221,7 @@ All commits that fix bugs or add features need a test.
 
 ## Want to write a blog post or tutorial
 
-That would be amazing! Reach out to the core team here:
-https://discord.gg/dQHfcWF. We would love to support you anyway we can.
+TODO
 
 ## Want to help improve the docs?
 
