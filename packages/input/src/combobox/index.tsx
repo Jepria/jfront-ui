@@ -1,15 +1,21 @@
-import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
-import openIcon from './openIcon.gif';
-import exclamation from '../images/exclamation.gif';
-import loading from '../images/loading.gif';
-import {useSelect, useFilter, UseFilterInstance, useDropdown, UseDropdownInstance} from "@jfront-ui/hooks";
+import React, { useEffect, useState } from "react"
+import styled from "styled-components"
+import openIcon from "./openIcon.gif"
+import exclamation from "../images/exclamation.gif"
+import loading from "../images/loading.gif"
+import {
+  useSelect,
+  useFilter,
+  UseFilterInstance,
+  useDropdown,
+  UseDropdownInstance,
+} from "@jfront/ui-hooks"
 
 export const ComboBoxInputContainer = styled.div`
   box-sizing: border-box;
   width: 100%;
   white-space: nowrap;
-`;
+`
 
 export const ComboBoxButton = styled.img`
   box-sizing: border-box;
@@ -20,10 +26,10 @@ export const ComboBoxButton = styled.img`
   border-top-color: #999;
   border-bottom: 1px solid #b5b8c8;
   height: 24px;
-`;
+`
 
 export interface ComboBoxInputProps {
-  error?: boolean;
+  error?: boolean
 }
 
 export const ComboBoxInput = styled.input<ComboBoxInputProps>`
@@ -35,11 +41,14 @@ export const ComboBoxInput = styled.input<ComboBoxInputProps>`
   height: 24px;
   padding-left: 2px;
   width: calc(100% - 17px);
-  ${(props: ComboBoxInputProps) => props.error ? 'border: 1px solid red' : 'border: 1px solid #ccc; border-top: 1px solid #999;'}
-`;
+  ${(props: ComboBoxInputProps) =>
+    props.error
+      ? "border: 1px solid red"
+      : "border: 1px solid #ccc; border-top: 1px solid #999;"}
+`
 
 export interface ComboBoxOptionProps {
-  selected?: boolean;
+  selected?: boolean
 }
 
 export const ComboBoxOption = styled.li<ComboBoxOptionProps>`
@@ -50,8 +59,9 @@ export const ComboBoxOption = styled.li<ComboBoxOptionProps>`
   cursor: pointer;
   font-family: tahoma, arial, helvetica, sans-serif;
   font-size: 12px;
-  ${(props: ComboBoxOptionProps) => props.selected ? 'background: #ccddf3;' : '&:hover {background: #eee}'}
-`;
+  ${(props: ComboBoxOptionProps) =>
+    props.selected ? "background: #ccddf3;" : "&:hover {background: #eee}"}
+`
 
 export const ComboBoxList = styled.ul`
   background: white;
@@ -59,55 +69,54 @@ export const ComboBoxList = styled.ul`
   margin: 0;
   padding: 0;
   border-style: solid;
-  border-color: #99BBE8;
+  border-color: #99bbe8;
   border-width: 1px;
   z-index: 5100;
   position: relative;
-`;
+`
 
 interface ComboBoxProps {
-  width?: string;
+  width?: string
 }
 
 const ComboBox = styled.div`
   width: 100%;
-`;
+`
 
 const Image = styled.img`
   height: 16px;
   width: 16px;
   margin-top: 2px;
   margin-left: 4px;
-`;
+`
 
 export const Container = styled.div<ComboBoxProps>`
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   height: 24px;
-  min-width: ${props => props.width ? `calc(${props.width} / 2)` : '100px'};
-  max-width: ${props => props.width ? props.width : '200px'};
+  min-width: ${(props) => (props.width ? `calc(${props.width} / 2)` : "100px")};
+  max-width: ${(props) => (props.width ? props.width : "200px")};
   width: 100%;
-`;
-
+`
 
 export interface ComboBoxFieldProps {
-  id?: string;
-  name?: string;
-  initialValue?: any;
-  touched?: boolean;
-  error?: string;
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  onChangeValue?: (field: string, value: any) => void;
-  width?: string;
-  options: Array<any>;
-  isLoading?: boolean;
-  getOptionName?: (option: any) => string;
-  getOptionValue?: (option: any) => string;
-  placeholder?: string;
-  disabled?: boolean;
-  hasEmptyOption?: boolean;
-  emptyOptionText?: string;
+  id?: string
+  name?: string
+  initialValue?: any
+  touched?: boolean
+  error?: string
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
+  onChangeValue?: (field: string, value: any) => void
+  width?: string
+  options: Array<any>
+  isLoading?: boolean
+  getOptionName?: (option: any) => string
+  getOptionValue?: (option: any) => string
+  placeholder?: string
+  disabled?: boolean
+  hasEmptyOption?: boolean
+  emptyOptionText?: string
 }
 
 /**
@@ -142,10 +151,10 @@ export interface ComboBoxFieldProps {
 export const ComboBoxField: React.FC<ComboBoxFieldProps> = ({
   id,
   width,
-  name = '',
+  name = "",
   initialValue,
   hasEmptyOption,
-  emptyOptionText = '',
+  emptyOptionText = "",
   touched,
   error,
   placeholder,
@@ -155,8 +164,8 @@ export const ComboBoxField: React.FC<ComboBoxFieldProps> = ({
   isLoading,
   options,
   getOptionName,
-  getOptionValue }) => {
-
+  getOptionValue,
+}) => {
   const {
     isOpen,
     selectOption,
@@ -166,31 +175,35 @@ export const ComboBoxField: React.FC<ComboBoxFieldProps> = ({
     getButtonProps,
     getRootProps,
     getListProps,
-    getInputProps
-  } = useSelect({
-    options: hasEmptyOption ? [{ name: emptyOptionText, value: undefined }, ...options] : [...options],
-    onChange: (value) => {
-      if (onChangeValue) {
-        onChangeValue(name, value);
-      }
+    getInputProps,
+  } = useSelect(
+    {
+      options: hasEmptyOption
+        ? [{ name: emptyOptionText, value: undefined }, ...options]
+        : [...options],
+      onChange: (value) => {
+        if (onChangeValue) {
+          onChangeValue(name, value)
+        }
+      },
+      initialValue,
+      getOptionName,
+      getOptionValue,
+      invalidateOnFilter: true,
     },
-    initialValue,
-    getOptionName,
-    getOptionValue,
-    invalidateOnFilter: true
-  }, useDropdown, useFilter) as UseDropdownInstance & UseFilterInstance;
+    useDropdown,
+    useFilter,
+  ) as UseDropdownInstance & UseFilterInstance
 
-  const [filter, setFilter] = useState("");
-  const [_isLoading, setIsLoading] = useState(isLoading);
+  const [filter, setFilter] = useState("")
+  const [_isLoading, setIsLoading] = useState(isLoading)
 
-  useEffect(
-    () => {
-      setIsLoading(isLoading);
-    }, [isLoading]
-  );
+  useEffect(() => {
+    setIsLoading(isLoading)
+  }, [isLoading])
 
-  const selectedValue = getSelectedValue();
-  const selectedOption = getSelectedOption();
+  const selectedValue = getSelectedValue()
+  const selectedOption = getSelectedOption()
 
   return (
     <Container width={width}>
@@ -198,11 +211,11 @@ export const ComboBoxField: React.FC<ComboBoxFieldProps> = ({
         <ComboBoxInputContainer>
           <ComboBoxInput
             {...getInputProps()}
-            onChange={e => {
+            onChange={(e) => {
               if (onChange) {
-                selectOption(undefined);
-                setFilter(e.target.value);
-                onChange(e);
+                selectOption(undefined)
+                setFilter(e.target.value)
+                onChange(e)
               } else {
                 getInputProps().onChange(e)
               }
@@ -210,25 +223,45 @@ export const ComboBoxField: React.FC<ComboBoxFieldProps> = ({
             error={touched && error ? true : false}
             placeholder={placeholder}
             disabled={disabled}
-            value={selectedOption ? (getOptionName ? getOptionName(selectedOption) : selectedOption.name) : (onChange ? filter : getInputProps().value)} />
+            value={
+              selectedOption
+                ? getOptionName
+                  ? getOptionName(selectedOption)
+                  : selectedOption.name
+                : onChange
+                ? filter
+                : getInputProps().value
+            }
+          />
           <ComboBoxButton {...getButtonProps()} src={openIcon} />
         </ComboBoxInputContainer>
-        <ComboBoxList {...getListProps()} style={isOpen && !disabled ? { display: 'block' } : { display: 'none' }}>
-          {
-            getOptions().map(optionInstance => {
-              return (
-                <ComboBoxOption
-                  {...optionInstance.getOptionProps()}
-                  selected={selectedValue === (getOptionValue ? getOptionValue(optionInstance.option) : optionInstance.option?.value)}>
-                  {getOptionName ? getOptionName(optionInstance.option) : optionInstance.option?.name}
-                </ComboBoxOption>
-              )
-            })
+        <ComboBoxList
+          {...getListProps()}
+          style={
+            isOpen && !disabled ? { display: "block" } : { display: "none" }
           }
+        >
+          {getOptions().map((optionInstance) => {
+            return (
+              <ComboBoxOption
+                {...optionInstance.getOptionProps()}
+                selected={
+                  selectedValue ===
+                  (getOptionValue
+                    ? getOptionValue(optionInstance.option)
+                    : optionInstance.option?.value)
+                }
+              >
+                {getOptionName
+                  ? getOptionName(optionInstance.option)
+                  : optionInstance.option?.name}
+              </ComboBoxOption>
+            )
+          })}
         </ComboBoxList>
       </ComboBox>
       {touched && error && <Image src={exclamation} title={error} />}
       {!error && _isLoading && <Image src={loading} />}
     </Container>
-  );
+  )
 }
