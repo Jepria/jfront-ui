@@ -6,6 +6,9 @@
   "module": "dist/esm/index.js",
   "types": "dist/types/index.d.ts",
   "typings": "dist/types/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
   "files": [
     "dist"
   ],
@@ -21,7 +24,5 @@
   "peerDependencies": {
     "react": "16.x",
     "react-dom": "16.x"
-  },
-  "devDependencies": {
   }
 }
