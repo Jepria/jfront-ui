@@ -1,5 +1,21 @@
 # Change Log
 
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [0.1.1](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-input@0.1.0...@jfront/ui-input@0.1.1) (2020-08-17)
+
+
+### Bug Fixes
+
+* update packages ([088c61f](https://github.com/Jepria/jfront-ui/commit/088c61f2c7e5b4240adba0f4565ce43a23487d43))
+
+
+
+
+
+# Change Log
+
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
