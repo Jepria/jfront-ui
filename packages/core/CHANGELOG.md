@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.1.0 (2020-08-17)
+
+### Bug Fixes
+
+- copying images during babel transpilation
+  ([2925c0b](https://github.com/Jepria/jfront-ui/commit/2925c0b3a8eb7d7e07deeeb3d24137b1bf48078e))
+- GridTable import into example App problem
+  ([5a979e0](https://github.com/Jepria/jfront-ui/commit/5a979e0a27fe78131c3c722865fa6cfe41be44c9))
+- module import
+  ([add9f10](https://github.com/Jepria/jfront-ui/commit/add9f100aabefa240473c6b5152c00c5668f5a6f))
+- update packages names
+  ([f866136](https://github.com/Jepria/jfront-ui/commit/f866136a1ac3388a010816fe9cfffa75c91818b7))
+
+### Features
+
+- add core package
+  ([11d3898](https://github.com/Jepria/jfront-ui/commit/11d3898e1eb2c80255bed727cc8c68021d5ce82b))
+- temporarily exclude input from core
+  ([089bf7f](https://github.com/Jepria/jfront-ui/commit/089bf7f5ae5dd49a6fb51766fcd18dfa9c0c9b75))
+- temporarily exclude modules with images from core package
+  ([25a053f](https://github.com/Jepria/jfront-ui/commit/25a053f226143036336d1cce735c6845dcd0143b))
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
 # [1.0.0-rc.0](https://github.com/chakra-ui/chakra-ui/compare/@chakra-ui/core@1.0.0-next.7...@chakra-ui/core@1.0.0-rc.0) (2020-07-26)
 
 **Note:** Version bump only for package @chakra-ui/core
