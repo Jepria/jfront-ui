@@ -1,5 +1,5 @@
 {
-  "name": "@jfront-ui/core",
+  "name": "@jfront/ui-core",
   "version": "0.1.0",
   "description": "React UI components built with React and Styled Components",
   "main": "dist/cjs/index.js",

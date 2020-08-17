@@ -1,6 +1,7 @@
 {
-  "name": "jfront-ui",
+  "name": "@jfront/ui",
   "private": true,
+  "license": "Apache-2.0",
   "workspaces": {
     "packages": [
       "packages/*",
@@ -10,26 +11,6 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Jepria/jfront-ui.git"
-  },
-  "scripts": {
-    "prestart": "yarn && yarn bootstrap",
-    "boot": "yarn prestart && yarn build",
-    "build": "lerna run build --no-private --stream",
-    "clean": "lerna clean --yes && rimraf node_modules",
-    "start": "yarn build && yarn storybook",
-    "test": "lerna run test --no-private --stream",
-    "test:cov": "lerna run test:cov",
-    "lint": "lerna run lint --no-private --stream",
-    "storybook": "start-storybook -p 6006",
-    "bootstrap": "lerna bootstrap --use-workspaces",
-    "bundlesize": "bundlesize -c bundlesize.config.json",
-    "build:storybook": "build-storybook",
-    "patch": "node -r esm scripts/patch-workspace.js",
-    "create-pkg": "node scripts/create-package.js",
-    "release": "lerna publish",
-    "release:ci": "lerna publish -y --loglevel verbose",
-    "release:next": "lerna publish --force-publish=* --preid next --dist-tag next",
-    "publish:next": "lerna publish from-package --dist-tag next"
   },
   "devDependencies": {
     "@babel/cli": "7.10.5",
@@ -81,5 +62,29 @@
     "storybook-addon-performance": "0.11.0",
     "ts-jest": "26.1.2",
     "typescript": "3.9.7"
+  },
+  "scripts": {
+    "prestart": "yarn && yarn bootstrap",
+    "boot": "yarn prestart && yarn build",
+    "build": "lerna run build --no-private --stream",
+    "clean": "lerna clean --yes && rimraf node_modules",
+    "start": "yarn build && yarn storybook",
+    "start:all": "yarn build && concurrently \"yarn docs develop\"  \"yarn storybook\" ",
+    "test": "lerna run test --no-private --stream",
+    "test:cov": "lerna run test:cov",
+    "lint": "lerna run lint --no-private --stream",
+    "storybook": "start-storybook -p 6006",
+    "bootstrap": "lerna bootstrap --use-workspaces",
+    "bundlesize": "bundlesize -c bundlesize.config.json",
+    "build:storybook": "build-storybook",
+    "version:release": "lerna version --conventional-commits --conventional-graduate -y",
+    "version:pre-release": "lerna version --conventional-commits --conventional-prerelease --preid=rc -y",
+    "version:pre-release:alpha": "lerna version --conventional-commits --conventional-prerelease --preid=alpha",
+    "version:pre-release:beta": "lerna version --conventional-commits --conventional-prerelease --preid=beta",
+    "publish:release": "lerna publish from-package --npm-tag latest -y",
+    "publish:pre-release": "lerna publish from-package --npm-tag next -y",
+    "publish:pre-release:alpha": "lerna publish from-package --npm-tag alpha",
+    "publish:pre-release:beta": "lerna publish from-package --npm-tag beta",
+    "deploy-storybook": "storybook-to-ghpages"
   }
 }

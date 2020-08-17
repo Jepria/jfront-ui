@@ -1,5 +1,5 @@
 {
-  "name": "@jfront-ui/grid",
+  "name": "@jfront/ui-grid",
   "version": "0.1.0",
   "license": "Apache-2.0",
   "main": "dist/cjs/index.js",
