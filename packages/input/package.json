@@ -22,7 +22,7 @@
     "test:cov": "yarn test --coverage"
   },
   "dependencies": {
-    "@jfront-ui/hooks": "^0.1.0"
+    "@jfront/ui-hooks": "^0.1.0"
   },
   "peerDependencies": {
     "react": "16.x",
