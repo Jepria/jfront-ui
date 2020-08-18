@@ -9,7 +9,6 @@ your contribution.
   - [Tooling](#tooling)
   - [Commands](#commands)
     - [Yarn Workspace](#yarn-workspace)
-  - [Documentation](#documentation)
   - [Storybook](#storybook)
 - [Think you found a bug?](#think-you-found-a-bug)
 - [Proposing new or changed API?](#proposing-new-or-changed-api)
@@ -101,6 +100,11 @@ lerna run build --scope @jfront/ui-grid
 ### Storybook
 
 Build components in isolation with Storybook using `yarn storybook`.
+
+### Local usage
+
+We are using [verdaccio](https://github.com/verdaccio/verdaccio) for testing 
+local build of our library in applications.
 
 ## Think you found a bug?
 
