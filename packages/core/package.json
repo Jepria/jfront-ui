@@ -37,7 +37,9 @@
     "@jfront/ui-layout": "0.1.0",
     "@jfront/ui-pagingbar": "0.1.0",
     "@jfront/ui-tabpanel": "0.1.0",
-    "@jfront/ui-toolbar": "0.1.0"
+    "@jfront/ui-toolbar": "0.1.0",
+    "@jfront/ui-checkbox": "0.1.0",
+    "@jfront/ui-checkbox-group": "0.1.0"
   },
   "peerDependencies": {
     "react": "16.x"

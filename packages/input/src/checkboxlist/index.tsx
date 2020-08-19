@@ -9,7 +9,7 @@ import {
   useSelect,
 } from "@jfront/ui-hooks"
 
-export const CheckBox = styled.input.attrs({ type: "checkbox" })`
+const CheckBox = styled.input.attrs({ type: "checkbox" })`
   margin: 2px;
 `
 
