@@ -36,18 +36,8 @@ jobs:
       - run: yarn test
       - run: git config --global user.email "aleksoider@gmail.com"
       - run: git config --global user.name "AlexSav94"
-      - name: Branch Protection Bot
-        uses: benjefferies/branch-protection-bot@1.0.5
-        if: always()
-        with:
-          access-token: ${{ secrets.ACCESS_TOKEN }}
       - run: yarn version:release -y
       - run: yarn publish:release -y
-      - name: Branch Protection Bot
-        uses: benjefferies/branch-protection-bot@1.0.5
-        if: always()
-        with:
-          access-token: ${{ secrets.ACCESS_TOKEN }}
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
           GITHUB_TOKEN: ${{secrets.ACCESS_TOKEN}}
