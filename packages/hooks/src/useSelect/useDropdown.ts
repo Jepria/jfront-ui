@@ -1,162 +1,174 @@
-import { Action, UseSelectInstance } from ".";
-import { UseFilterState } from "./useFilter";
+import { Action, UseSelectInstance } from "."
+import { UseFilterState } from "./useFilter"
 
 export interface UseDropdownState extends UseFilterState {
-  isOpen: boolean;
+  isOpen: boolean
 }
 
 export interface UseDropdownInstance extends UseSelectInstance {
-  isOpen: boolean;
-  open: () => void;
-  close: () => void;
-  getButtonProps: () => { onClick: () => void; };
-
+  isOpen: boolean
+  open: () => void
+  close: () => void
+  getToggleProps: () => { onClick: () => void }
+  getLabel: () => any
 }
 
-export type DropdownAction = Action
-  | { type: 'open' }
-  | { type: 'close' }
-  | { type: 'toggle' }
+export type DropdownAction =
+  | Action
+  | { type: "open" }
+  | { type: "close" }
+  | { type: "toggle" }
 
 function reducer(state: UseDropdownState, action: DropdownAction) {
   switch (action.type) {
-    case 'open':
+    case "open":
       return { ...state, isOpen: true }
-    case 'close':
+    case "close":
       return { ...state, isOpen: false }
-    case 'toggle':
+    case "toggle":
       return { ...state, isOpen: state.isOpen ? false : true }
   }
 }
 
 export function useDropdown(instance: UseSelectInstance) {
+  instance.hooks.reducers = instance.hooks.reducers
+    ? [...instance.hooks.reducers, reducer]
+    : [reducer]
 
-  instance.hooks.reducers = instance.hooks.reducers ? [...instance.hooks.reducers, reducer] : [reducer];
-
-  instance.hooks.useInstance = instance.hooks.useInstance ? [...instance.hooks.useInstance, useInstance] : [useInstance];
+  instance.hooks.useInstance = instance.hooks.useInstance
+    ? [...instance.hooks.useInstance, useInstance]
+    : [useInstance]
 }
 
 function useInstance(instance: UseDropdownInstance) {
-
   const toggle = () => {
     if (instance.dispatch) {
       instance.dispatch({
-        type: 'toggle'
+        type: "toggle",
       })
     }
-    instance.isOpen = !(instance.state as unknown as UseDropdownState).isOpen;
+    instance.isOpen = !((instance.state as unknown) as UseDropdownState).isOpen
   }
 
   instance.open = () => {
     if (instance.dispatch) {
       instance.dispatch({
-        type: 'open'
+        type: "open",
       })
     }
-    instance.isOpen = true;
+    instance.isOpen = true
   }
 
   instance.close = () => {
     if (instance.dispatch) {
       instance.dispatch({
-        type: 'close'
+        type: "close",
       })
     }
-    instance.isOpen = false;
+    instance.isOpen = false
   }
 
-  const getOptions = instance.getOptions;
+  const getOptions = instance.getOptions
 
   instance.getOptions = () => {
+    const { props, close } = instance
 
-    const {
-      props,
-      close
-    } = instance;
-    
-    return getOptions().map(optionInstance => {
-      const optionProps = optionInstance.getOptionProps();
+    return getOptions().map((optionInstance) => {
+      const optionProps = optionInstance.getOptionProps()
       optionInstance.getOptionProps = () => {
-        let option = optionInstance.option
+        const option = optionInstance.option
         return {
-          key: `${props.getOptionValue ? props.getOptionValue(option) : option.value}`,
-          role: 'option',
+          key: `${
+            props.getOptionValue ? props.getOptionValue(option) : option.value
+          }`,
+          role: "option",
           onClick: () => {
             if (props.closeOnSelect) {
-              optionProps.onClick();
-              close();
+              optionProps.onClick()
+              close()
             } else {
-              optionProps.onClick();
+              optionProps.onClick()
             }
-          }
+          },
         }
       }
-      return optionInstance;
-    });
+      return optionInstance
+    })
   }
 
-  instance.getButtonProps = () => ({
+  instance.getToggleProps = () => ({
     onClick: () => {
-      toggle();
+      toggle()
+    },
+  })
+
+  instance.getLabel = () => {
+    const { state, props } = instance
+    if (state?.value) {
+      const currentOption = props.options.find((option) =>
+        props.getOptionValue
+          ? props.getOptionValue(option) === state.value
+          : option.value === state.value,
+      )
+      return props.getOptionName
+        ? props.getOptionName(currentOption)
+        : currentOption.name
+    } else {
+      return null
     }
-  });;
+  }
 
   const getRootProps = () => {
-
-    const {
-      state,
-      close
-    } = instance;
+    const { state, close } = instance
 
     return {
       tabIndex: 1,
-      onBlur: ({relatedTarget, currentTarget}: React.FocusEvent<any>) => {
-        if (!(state as UseDropdownState).isOpen) return;
+      onBlur: ({ relatedTarget, currentTarget }: React.FocusEvent<any>) => {
+        if (!(state as UseDropdownState).isOpen) return
         if (relatedTarget === null) {
-          close();
-          return;
+          close()
+          return
         }
-        let node = (relatedTarget as any)?.parentNode;
+        let node = relatedTarget
         while (node !== null) {
-          if (node === currentTarget) return;
-          node = node?.parentNode
+          if (node === currentTarget) return
+          node = (node as any).parentNode
         }
-        close();
-      }
+        close()
+      },
     }
   }
 
   if (instance.hooks.getRootProps) {
     instance.hooks.getRootProps.push(getRootProps)
   } else {
-    instance.hooks.getRootProps = [getRootProps];
+    instance.hooks.getRootProps = [getRootProps]
   }
 
   const getInputProps = () => {
-    
-    const {
-      props,
-      state,
-      open
-    } = instance;
+    const { props, state, open } = instance
 
-    let name;
+    let name
     if (state?.value && !Array.isArray(state.value)) {
-      name = props.getOptionName ? props.getOptionName(state.value) : state.value.name;
+      name = props.getOptionName
+        ? props.getOptionName(state.value)
+        : state.value.name
     } else {
-      name = (state as UseDropdownState).filter ? (state as UseDropdownState).filter : '';
+      name = (state as UseDropdownState).filter
+        ? (state as UseDropdownState).filter
+        : ""
     }
     return {
       value: name,
       onFocus: () => {
-        open();
-      }
+        open()
+      },
     }
   }
 
   if (instance.hooks.getInputProps) {
     instance.hooks.getInputProps.push(getInputProps)
   } else {
-    instance.hooks.getInputProps = [getInputProps];
+    instance.hooks.getInputProps = [getInputProps]
   }
 }
