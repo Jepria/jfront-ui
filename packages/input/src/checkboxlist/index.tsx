@@ -22,6 +22,7 @@ export const CheckBoxListOptionLabel = styled.label`
   cursor: pointer;
   white-space: nowrap;
   width: 100%;
+  text-align: left;
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none; /* Safari */
   -khtml-user-select: none; /* Konqueror HTML */
@@ -34,6 +35,7 @@ export const CheckBoxListOptionLabel = styled.label`
 export const CheckBoxListOption = styled.li`
   height: 20px;
   width: 100%;
+  text-align: left;
   &:hover {
     background: #eee;
   }
@@ -50,6 +52,7 @@ export const OptionList = styled.ul<OptionListProps>`
   padding: 0;
   width: 100%;
   height: calc(100% - 20px);
+  list-style-type: none;
   ${(props) =>
     props.error
       ? "border: 1px solid red;"
@@ -195,7 +198,7 @@ export const CheckBoxListField: React.FC<CheckBoxListFieldProps> = ({
           selectAll={selectAll}
           selectOption={selectOption}
           isSelectedAll={isSelectedAll}
-          disabled={!options || options.length == 0}
+          disabled={!options || (options && options.length == 0)}
         />
       </CheckBoxList>
       {touched && error && <Icon src={exclamation} title={error} />}
@@ -212,10 +215,9 @@ export interface CheckBoxOptionProps extends OptionProps {
 }
 
 export const CheckBoxOption: React.FC<CheckBoxOptionProps> = (props) => {
-  const { role, selected, option, getOptionName, onClick } = props
+  const { selected, option, getOptionName, onClick } = props
   return (
     <CheckBoxListOption
-      role={role}
       onDoubleClick={(e) => {
         /** IE fix checkbox double-click issue **/
         if ((document as any).documentMode) {
