@@ -197,6 +197,23 @@ All commits that fix bugs or add features need a test.
 
 > **Dear JFront team:** Please do not merge code without tests
 
+## Continuous integration
+
+JFront UI uses [GitHub Actions](https://github.com/features/actions) for CI
+processing.
+
+| branch              | version                     | tag      |
+| :------------------ | :-------------------------- | :------- |
+| `master`            | from `package.json`         | `latest` |
+| `release/<version>` | `<version>-rc.<sha>`        | `next`   |
+| `develop`           | `<version>-alpha/beta<sha>` | `canary` |
+
+- With PUSH in master branch CI updates version, creates release and publish to
+  NPM.
+- On release/_ branch creation version updates to _-rc.\*, publish is manual.
+- PUSH/PULL_REQUEST in develop runs auto-testing, PR is not allowed if tests are
+  not completed.
+
 ## License
 
 By contributing your code to the jfront-ui GitHub repository, you agree to
