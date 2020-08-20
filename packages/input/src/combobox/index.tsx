@@ -59,6 +59,7 @@ export const ComboBoxOption = styled.li<ComboBoxOptionProps>`
   cursor: pointer;
   font-family: tahoma, arial, helvetica, sans-serif;
   font-size: 12px;
+  text-align: left;
   ${(props: ComboBoxOptionProps) =>
     props.selected ? "background: #ccddf3;" : "&:hover {background: #eee}"}
 `
@@ -73,6 +74,7 @@ export const ComboBoxList = styled.ul`
   border-width: 1px;
   z-index: 5100;
   position: relative;
+  list-style-type: none;
 `
 
 interface ComboBoxProps {
@@ -170,9 +172,9 @@ export const ComboBoxField: React.FC<ComboBoxFieldProps> = ({
     isOpen,
     selectOption,
     getSelectedValue,
-    getSelectedOption,
+    getLabel,
     getOptions,
-    getButtonProps,
+    getToggleProps,
     getRootProps,
     getListProps,
     getInputProps,
@@ -203,7 +205,6 @@ export const ComboBoxField: React.FC<ComboBoxFieldProps> = ({
   }, [isLoading])
 
   const selectedValue = getSelectedValue()
-  const selectedOption = getSelectedOption()
 
   return (
     <Container width={width}>
@@ -224,16 +225,14 @@ export const ComboBoxField: React.FC<ComboBoxFieldProps> = ({
             placeholder={placeholder}
             disabled={disabled}
             value={
-              selectedOption
-                ? getOptionName
-                  ? getOptionName(selectedOption)
-                  : selectedOption.name
+              selectedValue
+                ? getLabel()
                 : onChange
                 ? filter
                 : getInputProps().value
             }
           />
-          <ComboBoxButton {...getButtonProps()} src={openIcon} />
+          <ComboBoxButton {...getToggleProps()} src={openIcon} />
         </ComboBoxInputContainer>
         <ComboBoxList
           {...getListProps()}
