@@ -37,11 +37,10 @@ jobs:
       - run: git config --global user.email "aleksoider@gmail.com"
       - run: git config --global user.name "AlexSav94"
       - run: yarn version:release -y --no-push
-      - run: git push https://${{secrets.ACCESS_TOKEN}}@github.com/Jepria/jfront-ui.git
+      - run: git push --follow-tags --no-verify origin master --force
       - run: yarn publish:release -y
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
-          GITHUB_TOKEN: ${{secrets.ACCESS_TOKEN}}
   deploy-storybook:
     needs: version
     runs-on: ubuntu-latest
