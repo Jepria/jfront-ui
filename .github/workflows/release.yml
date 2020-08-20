@@ -34,8 +34,8 @@ jobs:
       - run: yarn prestart
       - run: yarn build
       - run: yarn test
-      - run: git config --global user.email "github@jepria.org"
-      - run: git config --global user.name "jepria-private"
+      - run: git config --global user.email "aleksoider@gmail.com"
+      - run: git config --global user.name "AlexSav94"
       - name: Branch Protection Bot
         uses: benjefferies/branch-protection-bot@1.0.5
         if: always()
