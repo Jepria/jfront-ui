@@ -48,7 +48,18 @@ export const CheckBox: React.FC<CheckBoxInterface> = (props) => {
 
   return (
     <StyledCheckBox>
-      <StyledCheckBoxLabel htmlFor={htmlId}>{props.label}</StyledCheckBoxLabel>
+      <StyledCheckBoxLabel
+        htmlFor={htmlId}
+        onDoubleClick={(e) => {
+          /** IE fix checkbox double-click issue **/
+          if ((document as any).documentMode) {
+            e.stopPropagation()
+            e.currentTarget.click()
+          }
+        }}
+      >
+        {props.label}
+      </StyledCheckBoxLabel>
       <StyledCheckBoxInput
         id={htmlId}
         type="checkbox"
@@ -56,6 +67,13 @@ export const CheckBox: React.FC<CheckBoxInterface> = (props) => {
         checked={props.checked}
         disabled={props.disabled}
         onChange={props.onChange}
+        onDoubleClick={(e) => {
+          /** IE fix checkbox double-click issue **/
+          if ((document as any).documentMode) {
+            e.stopPropagation()
+            e.currentTarget.click()
+          }
+        }}
       />
     </StyledCheckBox>
   )
