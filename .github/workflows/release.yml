@@ -50,6 +50,7 @@ jobs:
           access-token: ${{ secrets.ACCESS_TOKEN }}
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+          GITHUB_TOKEN: ${{secrets.ACCESS_TOKEN}}
   deploy-storybook:
     needs: version
     runs-on: ubuntu-latest
