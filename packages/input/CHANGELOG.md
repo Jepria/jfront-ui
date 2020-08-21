@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-input@0.1.1...@jfront/ui-input@0.2.0) (2020-08-21)
+
+
+### Features
+
+* add new implementation CheckBox and CheckBoxGroup ([6c6bb76](https://github.com/Jepria/jfront-ui/commit/6c6bb76f9243c445b06a6a7ca330f167c7f79486))
+* input stories ([83dba4c](https://github.com/Jepria/jfront-ui/commit/83dba4c76ed823978ed7d1feb6c4cb065889abe9))
+
+
+
+
+
 ## [0.1.1](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-input@0.1.0...@jfront/ui-input@0.1.1) (2020-08-17)
 
 

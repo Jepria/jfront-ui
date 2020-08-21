@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/Jepria/jfront-ui/compare/jfront-cra@0.1.1...jfront-cra@0.2.0) (2020-08-21)
+
+
+### Features
+
+* add new implementation CheckBox and CheckBoxGroup ([6c6bb76](https://github.com/Jepria/jfront-ui/commit/6c6bb76f9243c445b06a6a7ca330f167c7f79486))
+* ie support ([15f6d0b](https://github.com/Jepria/jfront-ui/commit/15f6d0b94508cbcb9decad08fce6753c8f2b63ef))
+
+
+
+
+
 ## [0.1.1](https://github.com/Jepria/jfront-ui/compare/jfront-cra@0.1.0...jfront-cra@0.1.1) (2020-08-17)
 
 

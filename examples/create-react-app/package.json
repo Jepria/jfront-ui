@@ -1,9 +1,9 @@
 {
   "name": "jfront-cra",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "private": true,
   "dependencies": {
-    "@jfront/ui-core": "^0.1.1",
+    "@jfront/ui-core": "^0.2.0",
     "react": "16.13.1",
     "react-dom": "16.13.1"
   },
@@ -13,10 +13,10 @@
     "@types/jest": "^26.0.0",
     "@types/react": "^16.9.23",
     "@types/react-dom": "^16.9.8",
-    "eslint-config-react-app": "^5.2.1",
-    "react-scripts": "^3.4.1",
     "core-js": "^3.6.4",
+    "eslint-config-react-app": "^5.2.1",
     "react-app-polyfill": "^1.0.6",
+    "react-scripts": "^3.4.1",
     "typescript": "^3.9.6"
   },
   "scripts": {
