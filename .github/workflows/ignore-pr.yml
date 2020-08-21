@@ -1,0 +1,19 @@
+name: Close Pull Request
+
+on:
+  pull_request:
+    branches: [master]
+    types: [opened, reopened]
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    if:
+      startsWith(github.head_ref, 'release/') != true &&
+      startsWith(github.head_ref, 'hotfix/') != true
+    steps:
+      - uses: superbrothers/close-pull-request@v2
+        with:
+          comment: "We accept PR's to master only from release/* branches"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
