@@ -39,7 +39,8 @@
     "@jfront/ui-layout": "0.1.0",
     "@jfront/ui-pagingbar": "0.1.0",
     "@jfront/ui-tabpanel": "0.1.0",
-    "@jfront/ui-toolbar": "0.1.0"
+    "@jfront/ui-toolbar": "0.1.0",
+    "@jfront/ui-combobox": "0.0.1"
   },
   "peerDependencies": {
     "react": "16.x"

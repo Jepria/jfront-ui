@@ -3,7 +3,13 @@ import { CheckBox } from "../src"
 
 export default {
   title: "CheckBox",
-  decorators: [(StoryFn: Function) => <StoryFn />],
+  decorators: [
+    (StoryFn: Function) => (
+      <div style={{ width: "200px" }}>
+        <StoryFn />
+      </div>
+    ),
+  ],
 }
 
 export const BasicUsage = () => {
