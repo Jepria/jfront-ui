@@ -204,6 +204,9 @@ const Right = styled.div`
 `
 
 interface ColumnConfigPanelProps<D extends object> {
+  top?: string | number
+  left?: string | number
+  right?: string | number
   columns: Array<ColumnInstance<D>>
   toggleAllProps: (
     props?: Partial<TableToggleHideAllColumnProps>,
@@ -212,75 +215,72 @@ interface ColumnConfigPanelProps<D extends object> {
 }
 
 function ColumnConfigPanel<D extends object>(props: ColumnConfigPanelProps<D>) {
-  const { columns, toggleAllProps, hide } = props
+  const { columns, toggleAllProps, hide, top, left, right } = props
+
+  const [place, setPlace] = useState<React.CSSProperties>({ top, left, right })
+
+  useEffect(() => {
+    setPlace({ top, left, right })
+  }, [top, left, right])
 
   return (
     <>
-      <GlassMask />
+      <GlassMask onClick={hide} />
       <div
         style={{
           position: "absolute",
           display: "flex",
-          height: "100%",
-          width: "100%",
-          alignItems: "center",
-          justifyContent: "center",
-          backgroundColor: "transparent",
+          flexDirection: "column",
+          backgroundColor: "white",
+          border: "2px solid #999",
+          borderRadius: "10%",
+          padding: "15px",
           zIndex: 5101,
+          maxWidth: "300px",
+          ...place,
         }}
       >
-        <div
+        <ul
           style={{
-            display: "flex",
-            flexDirection: "column",
-            backgroundColor: "white",
-            border: "2px solid #999",
-            borderRadius: "10%",
-            padding: "15px",
+            height: "40%",
+            padding: 0,
           }}
         >
-          <ul
+          <li
             style={{
-              height: "40%",
-              padding: 0,
+              listStyle: "none",
+              fontFamily: "Arial Unicode MS, Arial, sans-serif",
+              fontSize: "small",
             }}
           >
+            <label>
+              <input type="checkbox" {...toggleAllProps()} /> Выбрать все
+            </label>
+          </li>
+          {columns.map((column) => (
             <li
               style={{
                 listStyle: "none",
                 fontFamily: "Arial Unicode MS, Arial, sans-serif",
                 fontSize: "small",
+                userSelect: "none",
               }}
             >
               <label>
-                <input type="checkbox" {...toggleAllProps()} /> Выбрать все
+                <input type="checkbox" {...column.getToggleHiddenProps()} />{" "}
+                {column.Header}
               </label>
             </li>
-            {columns.map((column) => (
-              <li
-                style={{
-                  listStyle: "none",
-                  fontFamily: "Arial Unicode MS, Arial, sans-serif",
-                  fontSize: "small",
-                  userSelect: "none",
-                }}
-              >
-                <label>
-                  <input type="checkbox" {...column.getToggleHiddenProps()} />{" "}
-                  {column.Header}
-                </label>
-              </li>
-            ))}
-          </ul>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              userSelect: "none",
-            }}
-          >
-            <button onClick={hide}>ОК</button>
-          </div>
+          ))}
+        </ul>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            userSelect: "none",
+          }}
+        >
+          <button onClick={hide}>ОК</button>
         </div>
       </div>
     </>
@@ -389,14 +389,29 @@ export function Grid<D extends object>(props: GridProps<D>) {
     UsePaginationState<D>
 
   const [isColumnConfigVisible, setColumnConfigVisible] = useState(false)
+  const [place, setPlace] = useState<React.CSSProperties>({})
   const [lastSelectedItem, setLastSelectedItem] = useState<Row<D> | undefined>(
     undefined,
   )
 
-  const showColumnConfig = (visible: boolean) => {
+  const showColumnConfig = (visible: boolean, target?: HTMLElement) => {
     if (!visible && visibleColumns.length == 0) {
       window.alert("Выберите хотя бы одну колонку")
       return
+    }
+    const rect = target?.getBoundingClientRect()
+    const screenWidth = document.body.clientWidth
+    if (rect) {
+      if (rect && rect.right + 300 > screenWidth) {
+        console.log(screenWidth, rect.right + 300)
+        setPlace({
+          top: rect.top,
+          right: screenWidth - rect.right,
+        })
+      } else {
+        console.log(1)
+        setPlace({ top: rect.top, left: rect.left })
+      }
     }
     setColumnConfigVisible(visible)
   }
@@ -484,7 +499,7 @@ export function Grid<D extends object>(props: GridProps<D>) {
         <StyledGrid.GridHeader>
           {headerGroups.map((headerGroup) => (
             <StyledGrid.GridRow {...headerGroup.getHeaderGroupProps()}>
-              {headerGroup.headers.map((column) => {
+              {headerGroup.headers.map((column, index) => {
                 const sortableColumn = (column as unknown) as UseSortByColumnProps<
                   D
                 >
@@ -504,7 +519,12 @@ export function Grid<D extends object>(props: GridProps<D>) {
                       </StyledSvg>
                     </StyledSpan>
                     {column.render("Header")}
-                    <ColumnConfigImg onClick={() => showColumnConfig(true)} />
+                    <ColumnConfigImg
+                      onClick={(e) => {
+                        e.stopPropagation()
+                        showColumnConfig(true, e.currentTarget)
+                      }}
+                    />
                     <Resizer
                       {...((column as unknown) as UseResizeColumnsColumnProps<
                         D
@@ -630,6 +650,9 @@ export function Grid<D extends object>(props: GridProps<D>) {
       </StyledPagingBar>
       {isColumnConfigVisible && (
         <ColumnConfigPanel
+          top={place.top}
+          left={place.left}
+          right={place.right}
           columns={allColumns}
           toggleAllProps={getToggleHideAllColumnsProps}
           hide={() => showColumnConfig(false)}
