@@ -56,7 +56,7 @@ export const CheckBoxGroup: React.FC<CheckBoxGroupInterface> = (props) => {
 
   return (
     <StyledCheckBoxGroup>
-      <Label>{props.text}</Label>
+      {props.text && <Label>{props.text}</Label>}
       {props.isLoading ? (
         <div>Loading...</div>
       ) : (
