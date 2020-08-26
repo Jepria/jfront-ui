@@ -1,6 +1,6 @@
 {
-  "name": "@jfront/ui-grid",
-  "version": "0.1.1",
+  "name": "@jfront/ui-table",
+  "version": "0.0.1",
   "license": "Apache-2.0",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -22,15 +22,13 @@
     "test:cov": "yarn test --coverage"
   },
   "dependencies": {
-    "@jfront/ui-table": "^0.0.1",
-    "react-table": "^7.5.0"
+    "@jfront/ui-pagingbar": "^0.1.0"
   },
   "peerDependencies": {
     "react": "16.x",
     "react-dom": "16.x"
   },
   "devDependencies": {
-    "@types/react-table": "^7.0.22",
     "@types/styled-components": "^5.0.1"
   }
 }
