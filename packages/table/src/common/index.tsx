@@ -22,7 +22,12 @@ export type Table = React.FC<TableHTMLAttributes<HTMLTableElement>> & {
   >
   Header: React.FC<HTMLAttributes<HTMLTableSectionElement>>
   HeaderCell: React.FC<TableHeaderCellProps>
-  Body: React.FC
+  Body: React.FC<
+    React.DetailedHTMLProps<
+      React.HTMLAttributes<HTMLTableSectionElement>,
+      HTMLTableSectionElement
+    >
+  >
   Row: React.FC<TableRowProps>
   Cell: React.FC<TableCellProps>
   PagingBar: React.FC<TablePagingBarProps>
@@ -56,8 +61,8 @@ Table.HeaderCell = (props) => {
   return <TableHeaderCell {...props}>{props.children}</TableHeaderCell>
 }
 
-Table.Body = ({ children }) => {
-  return <TableBody>{children}</TableBody>
+Table.Body = (props) => {
+  return <TableBody {...props}>{props.children}</TableBody>
 }
 
 Table.Row = (props) => {

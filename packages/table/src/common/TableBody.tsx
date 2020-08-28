@@ -1,7 +1,11 @@
 import React, { useRef, useState, useLayoutEffect } from "react"
 import styled from "styled-components"
 
-interface TableBodyProps {
+interface TableBodyProps
+  extends React.DetailedHTMLProps<
+    React.HTMLAttributes<HTMLTableSectionElement>,
+    HTMLTableSectionElement
+  > {
   height?: string
   scrollWidth?: number
 }
@@ -17,12 +21,6 @@ const StyledTBody = styled.tbody<TableBodyProps>`
     ${(props) => (props.scrollWidth ? `right: -${props.scrollWidth}px` : "")};
   }
 `
-
-// -webkit-box-flex: 1;
-//     -ms-flex: 1;
-//         flex: 1;
-// -ms-flex-positive: 1;
-//     flex-grow: 1;
 
 interface ScrollDivProps {
   height?: number
@@ -53,7 +51,10 @@ const ScrollSpacer = styled.tr<ScrollDivProps>`
   height: ${(props) => (props.height ? props.height : 0)}px;
 `
 
-export const TableBody: React.FC = ({ children }) => {
+export const TableBody: React.FC<React.DetailedHTMLProps<
+  React.HTMLAttributes<HTMLTableSectionElement>,
+  HTMLTableSectionElement
+>> = (props) => {
   const refThis = useRef<HTMLTableSectionElement>(null)
   const refScroll = useRef<HTMLTableSectionElement>(null)
   const [height, setHeight] = useState<number | undefined>(undefined)
@@ -157,8 +158,8 @@ export const TableBody: React.FC = ({ children }) => {
 
   return (
     <React.Fragment>
-      <StyledTBody ref={refThis} scrollWidth={scrollWidth}>
-        {children}
+      <StyledTBody {...props} ref={refThis} scrollWidth={scrollWidth}>
+        {props.children}
       </StyledTBody>
       <StyledScroll ref={refScroll} height={getScrollHeight()} top={scrollTop}>
         <ScrollSpacer height={scrollHeight} />
