@@ -9,10 +9,16 @@ interface CheckBoxGroupInterface {
   text?: string
   disabled?: boolean
   isLoading?: boolean
+  style?: React.CSSProperties
+  className?: string
   /**
    * Обработчик изменения значения 'checked' одного из дочерних элементов
    */
-  onChange?: (value?: any[], event?: React.ChangeEvent<any>) => void
+  onChange?: (
+    name?: string,
+    value?: any[],
+    event?: React.ChangeEvent<any>,
+  ) => void
 }
 
 const StyledCheckBoxGroup = styled.div`
@@ -22,62 +28,79 @@ const StyledCheckBoxGroup = styled.div`
 `
 
 const StyledUl = styled.div`
-  width: 200px;
   margin: 2px;
   padding: 5px;
   border: 1px solid grey;
   padding-left: 0;
 `
 
-export const CheckBoxGroup: React.FC<CheckBoxGroupInterface> = (props) => {
-  const [state, setState] = useState<any[]>([])
-
-  const handleCheckboxChange = (
-    value: React.ReactText,
-    event: React.ChangeEvent<any> | undefined,
+export const CheckBoxGroup = React.forwardRef<
+  HTMLDivElement,
+  CheckBoxGroupInterface
+>(
+  (
+    {
+      children,
+      name,
+      value,
+      text,
+      disabled,
+      isLoading,
+      style,
+      className,
+      onChange,
+    },
+    ref,
   ) => {
-    const newValue = props.value ? props.value.slice() : state.slice()
-    const changedValueIndex = newValue.findIndex(
-      (stateValue) => stateValue === value,
+    const [state, setState] = useState<any[]>([])
+
+    const handleCheckboxChange = (
+      _value: React.ReactText,
+      event: React.ChangeEvent<any> | undefined,
+    ) => {
+      const newValue = value ? value.slice() : state.slice()
+      const changedValueIndex = newValue.findIndex(
+        (stateValue) => stateValue === _value,
+      )
+
+      if (event && event.target.checked) {
+        newValue.push(_value)
+      } else {
+        newValue.splice(changedValueIndex, 1)
+      }
+
+      setState(newValue)
+
+      if (onChange) {
+        onChange(name, newValue, event)
+      }
+    }
+
+    return (
+      <StyledCheckBoxGroup>
+        {text && <Label>{text}</Label>}
+        {isLoading ? (
+          <div>Loading...</div>
+        ) : (
+          <StyledUl style={style} className={className} ref={ref}>
+            {React.Children.map(children, (checkbox, index) => {
+              if (!React.isValidElement(checkbox)) {
+                return null
+              }
+
+              return React.cloneElement(checkbox, {
+                disabled: checkbox.props.disabled || disabled,
+                value: value ? value[index] : undefined,
+                onChange:
+                  checkbox.props.onChange === undefined
+                    ? (event: any, _text: any) =>
+                        handleCheckboxChange(checkbox.props.value, event)
+                    : checkbox.props.onChange,
+              })
+            })}
+          </StyledUl>
+        )}
+      </StyledCheckBoxGroup>
     )
-
-    if (event && event.target.checked) {
-      newValue.push(value)
-    } else {
-      newValue.splice(changedValueIndex, 1)
-    }
-
-    setState(newValue)
-
-    if (props.onChange) {
-      props.onChange(newValue, event)
-    }
-  }
-
-  return (
-    <StyledCheckBoxGroup>
-      {props.text && <Label>{props.text}</Label>}
-      {props.isLoading ? (
-        <div>Loading...</div>
-      ) : (
-        <StyledUl>
-          {React.Children.map(props.children, (checkbox, index) => {
-            if (!React.isValidElement(checkbox)) {
-              return null
-            }
-
-            return React.cloneElement(checkbox, {
-              disabled: checkbox.props.disabled || props.disabled,
-              value: props.value ? props.value[index] : undefined,
-              onChange:
-                checkbox.props.onChange === undefined
-                  ? (event: any, _text: any) =>
-                      handleCheckboxChange(checkbox.props.value, event)
-                  : checkbox.props.onChange,
-            })
-          })}
-        </StyledUl>
-      )}
-    </StyledCheckBoxGroup>
-  )
-}
+  },
+)
