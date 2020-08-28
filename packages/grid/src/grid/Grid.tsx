@@ -389,7 +389,7 @@ export function Grid<D extends object>(props: GridProps<D>) {
   useEffect(() => {
     if (id) {
       const saveConfig = async () => {
-        if (hiddenColumns && hiddenColumns.length > 0) {
+        if (hiddenColumns) {
           window.localStorage.setItem(
             `${id}_grid_hidden_columns`,
             JSON.stringify(hiddenColumns),
