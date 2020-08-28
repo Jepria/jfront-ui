@@ -291,8 +291,6 @@ export function Grid<D extends object>(props: GridProps<D>) {
 
   const [_pageCount, setPageCount] = useState(totalPageCount)
 
-  console.log("hiddenColumnConfiguration", hiddenColumnConfiguration)
-
   const {
     headerGroups,
     allColumns,
@@ -350,8 +348,6 @@ export function Grid<D extends object>(props: GridProps<D>) {
     UseSortByState<D> &
     UsePaginationState<D> &
     UseResizeColumnsState<D>
-
-  console.log("hiddenColumns", hiddenColumns)
 
   useEffect(() => {
     setPageCount(
