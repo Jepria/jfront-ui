@@ -1,13 +1,34 @@
-import React, { useRef, useState, useEffect } from "react"
-import * as StyledGrid from "../styled"
-import styled from "styled-components"
-import settingsSmall from "./icons/settingSmall.png"
+import React, { useState, useEffect } from "react"
+import {
+  Grid as StyledGrid,
+  GridTable,
+  GridHeader,
+  GridRow,
+  GridHeaderCell,
+  GridBody,
+  GridRowCell,
+  GlassMask,
+  ModalDiv,
+  StyledSpan,
+  StyledSvg,
+  ColumnConfigImg,
+  Resizer,
+  StyledPagingBar,
+  Left,
+  PagingToolbar,
+  Item,
+  Label,
+  NumberInput,
+  Center,
+  Right,
+} from "../styles"
 import first from "./icons/first.gif"
 import last from "./icons/last.gif"
 import next from "./icons/next.gif"
 import prev from "./icons/prev.gif"
 import refresh from "./icons/refresh.gif"
-import bg from "./icons/bg.gif"
+import { CheckBoxGroup } from "@jfront/ui-checkbox-group"
+import { CheckBox } from "@jfront/ui-checkbox"
 
 import {
   useTable,
@@ -31,179 +52,16 @@ import {
   usePagination,
   UsePaginationInstanceProps,
   UsePaginationState,
+  UseResizeColumnsState,
+  Cell,
+  TableCellProps,
+  TableRowProps,
+  TableCommonProps,
+  TableHeaderProps,
 } from "react-table"
 
-const Resizer = styled.div`
-  display: inline-block;
-  position: absolute;
-  right: 0;
-  top: 0;
-  height: 100%;
-  width: 10px;
-  background-color: transparent;
-  z-index: 1;
-  touch-action: none;
-`
-
-const GlassMask = styled.div`
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  background-color: black;
-  z-index: 5100;
-  opacity: 0.2;
-`
-
-const ColumnConfigImg = styled.img.attrs({ src: settingsSmall })`
-  display: inline-block;
-  position: absolute;
-  right: 0;
-  top: 0;
-  height: 12px;
-  width: 12px;
-  z-index: 2;
-  opacity: 0;
-  &:hover {
-    opacity: 1;
-  }
-`
-interface StyledSpanProps {
-  active?: boolean
-  desc?: boolean
-}
-
-const StyledSpan = styled.span<StyledSpanProps>`
-  position: absolute;
-  z-index: 2;
-  left: 0;
-  top: 0;
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  width: 24px;
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  text-align: center;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  ${(props) => (props.active ? "" : "display: none;")}
-  ${(props) =>
-    props.desc
-      ? ""
-      : `
-  -webkit-transform: rotate(180deg);
-      -ms-transform: rotate(180deg);
-          transform: rotate(180deg);`}
-`
-
-const StyledSvg = styled.svg`
-  fill: currentColor;
-  width: 1em;
-  height: 1em;
-  display: inline-block;
-  font-size: 1.5rem;
-  -webkit-transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  -o-transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-`
-
-const PagingToolbar = styled.div`
-  white-space: nowrap;
-`
-
-const Item = styled.button`
-  font: 11px arial, tahoma, verdana, helvetica;
-  height: 100%;
-  padding: 1px 1px;
-  margin: 0 1px;
-  background-color: transparent;
-  background-image: none;
-  border: solid 1px transparent;
-  ${(props) =>
-    props.disabled
-      ? "opacity: 0.5;"
-      : `opacity: 1;
-      &:hover {
-    border: solid 1px #99bbe8;
-    background: #ddefff;
-  }`}
-`
-
-const Label = styled.label`
-  display: inline-block;
-  height: 22px;
-  vertical-align: top;
-`
-
-const NumberInput = styled.input.attrs({ type: "number" })`
-  width: 60px;
-  margin: 0 5px;
-`
-
-const StyledPagingBar = styled.div`
-  display: table;
-  box-sizing: border-box;
-  width: 100%;
-  font: 11px arial, tahoma, helvetica, sans-serif;
-  margin: 0;
-  padding: 2px 2px 2px 2px;
-  border-style: solid;
-  border-color: #99bbe8;
-  border-width: 1px;
-  background-color: #d0def0;
-  background-image: url(${bg});
-`
-
-const Left = styled.div`
-  display: table-cell;
-  width: 33.33%;
-  text-align: left;
-  @media only screen and (max-width: 760px),
-    (min-device-width: 768px) and (max-device-width: 1024px) {
-    width: auto;
-    display: table-row;
-    text-align: center;
-  }
-`
-
-const Center = styled.div`
-  display: table-cell;
-  vertical-align: middle;
-  text-align: center;
-  width: 33.33%;
-  @media only screen and (max-width: 760px),
-    (min-device-width: 768px) and (max-device-width: 1024px) {
-    width: auto;
-    display: table-row;
-    text-align: center;
-  }
-`
-
-const Right = styled.div`
-  display: table-cell;
-  vertical-align: middle;
-  text-align: right;
-  width: 33.33%;
-  @media only screen and (max-width: 760px),
-    (min-device-width: 768px) and (max-device-width: 1024px) {
-    width: auto;
-    display: table-row;
-    text-align: center;
-  }
-`
-
 interface ColumnConfigPanelProps<D extends object> {
+  id?: string
   top?: string | number
   left?: string | number
   right?: string | number
@@ -215,7 +73,7 @@ interface ColumnConfigPanelProps<D extends object> {
 }
 
 function ColumnConfigPanel<D extends object>(props: ColumnConfigPanelProps<D>) {
-  const { columns, toggleAllProps, hide, top, left, right } = props
+  const { id, columns, toggleAllProps, hide, top, left, right } = props
 
   const [place, setPlace] = useState<React.CSSProperties>({ top, left, right })
 
@@ -226,53 +84,39 @@ function ColumnConfigPanel<D extends object>(props: ColumnConfigPanelProps<D>) {
   return (
     <>
       <GlassMask onClick={hide} />
-      <div
+      <ModalDiv
+        id={id}
         style={{
-          position: "absolute",
-          display: "flex",
           flexDirection: "column",
           backgroundColor: "white",
-          border: "2px solid #999",
-          borderRadius: "10%",
+          border: "1px solid #999",
+          borderRadius: "5%",
           padding: "15px",
-          zIndex: 5101,
+          minWidth: "100px",
           maxWidth: "300px",
           ...place,
         }}
       >
-        <ul
+        <CheckBoxGroup
           style={{
-            height: "40%",
+            fontFamily: "Arial Unicode MS, Arial, sans-serif",
+            fontSize: "small",
+            height: "100px",
+            overflow: "hidden",
+            overflowY: "auto",
             padding: 0,
+            border: 0,
           }}
         >
-          <li
-            style={{
-              listStyle: "none",
-              fontFamily: "Arial Unicode MS, Arial, sans-serif",
-              fontSize: "small",
-            }}
-          >
-            <label>
-              <input type="checkbox" {...toggleAllProps()} /> Выбрать все
-            </label>
-          </li>
+          <CheckBox key="selectAll" {...toggleAllProps()} label="Выбрать все" />
           {columns.map((column) => (
-            <li
-              style={{
-                listStyle: "none",
-                fontFamily: "Arial Unicode MS, Arial, sans-serif",
-                fontSize: "small",
-                userSelect: "none",
-              }}
-            >
-              <label>
-                <input type="checkbox" {...column.getToggleHiddenProps()} />{" "}
-                {column.Header}
-              </label>
-            </li>
+            <CheckBox
+              key={column.id}
+              {...column.getToggleHiddenProps()}
+              label={column.Header}
+            />
           ))}
-        </ul>
+        </CheckBoxGroup>
         <div
           style={{
             display: "flex",
@@ -282,7 +126,7 @@ function ColumnConfigPanel<D extends object>(props: ColumnConfigPanelProps<D>) {
         >
           <button onClick={hide}>ОК</button>
         </div>
-      </div>
+      </ModalDiv>
     </>
   )
 }
@@ -294,6 +138,8 @@ export interface ColumnSortConfiguration {
 
 export interface GridProps<D extends object>
   extends React.RefAttributes<HTMLTableElement> {
+  id?: string
+  //column configuration
   columns: Array<Column<D>>
   data?: D[]
   isLoading?: boolean
@@ -304,33 +150,74 @@ export interface GridProps<D extends object>
   pageNumber?: number
   totalRowCount?: number
   totalPageCount?: number
-  onSelectionChange?: (records?: D[]) => void
+  maxPageSize?: number
+  //disable sorting dor all columns, if you want to disable only for some columns add disableSortBy to each column description in columns prop
+  disableSort?: boolean
+  onSelection?: (records?: D[]) => void
+  //provide onSort if sorting is processing outside of Grid component (e.g. server-side)
   onSort?: (sortConfigs?: ColumnSortConfiguration[]) => void
   onClick?: (record?: D, e?: React.MouseEvent) => void
   onDoubleClick?: (record?: D, e?: React.MouseEvent) => void
+  //if onPaging !== undefined => pageNumber, totalRowCount, totalPageCount must be defined
+  //provide onPaging if pagination is processing outside of Grid component (e.g. server-side)
   onPaging?: (pageNumber: number, pageSize: number) => void
+  getHeaderProps?: (column?: ColumnInstance<D>) => TableCommonProps
+  getColumnProps?: (column?: ColumnInstance<D>) => TableCommonProps
+  getRowProps?: (row?: Row<D> & UseRowSelectRowProps<D>) => TableCommonProps
+  getCellProps?: (cell?: Cell<D>) => TableCommonProps
 }
 
+// Create a default prop getter
+const defaultPropGetter = () => ({})
+
+/**
+ * Grid implementation based on [react-table v7](https://github.com/tannerlinsley/react-table)
+ * @param props 
+ * @example 
+ * <Grid
+      id="test"
+      columns={[
+        {
+          Header: "Id",
+          accessor: "id"
+        },
+        {
+          Header: "Name",
+          accessor: "name"
+        },
+        {
+          Header: "Info",
+          accessor: "info"
+        },
+      ]}
+      data={[{id: 1, name: "123", info: "test"}]}
+    />
+ */
 export function Grid<D extends object>(props: GridProps<D>) {
   const {
+    id,
     columns,
     data = [],
     ref,
     className,
     style,
     defaultPageSize = 25,
+    maxPageSize = 9999,
     pageNumber = 1,
     totalRowCount,
     isLoading,
-    onSelectionChange,
+    disableSort = false,
+    totalPageCount,
+    getHeaderProps = defaultPropGetter,
+    getColumnProps = defaultPropGetter,
+    getRowProps = defaultPropGetter,
+    getCellProps = defaultPropGetter,
+    onSelection,
     onSort,
     onClick,
     onDoubleClick,
     onPaging,
-    totalPageCount = onPaging ? -1 : undefined,
   } = props
-
-  const dataRef = useRef(data)
 
   const defaultColumn = React.useMemo(
     () => ({
@@ -341,15 +228,68 @@ export function Grid<D extends object>(props: GridProps<D>) {
     [],
   )
 
+  /**
+   * Restoring saved hidden columns array from Local Storage
+   */
+  const restoreHiddenColumns = () => {
+    if (id) {
+      const savedString = window.localStorage.getItem(
+        `${id}_grid_hidden_columns`,
+      )
+      if (savedString) {
+        return JSON.parse(savedString)
+      }
+    }
+    return []
+  }
+
+  /**
+   * Restoring saved column widths and integrating them in columns object
+   */
+  const restoreColumnWidth = (columnConfiguration: Array<Column<D>>) => {
+    if (id) {
+      const savedString = window.localStorage.getItem(`${id}_grid_column_width`)
+      if (savedString) {
+        const columnWidth: Record<string, number> = JSON.parse(savedString)
+        const test = updateLevel(columnConfiguration, columnWidth)
+        return test
+      }
+    }
+    return columnConfiguration
+  }
+
+  const updateLevel = (
+    columnConfiguration: any,
+    columnWidth: Record<string, number>,
+  ) => {
+    return columnConfiguration.map((column: any) => {
+      if (typeof column.accessor == "string" && columnWidth[column.accessor]) {
+        column.width = columnWidth[column.accessor]
+      } else if (column.id && columnWidth[column.id]) {
+        column.width = columnWidth[column.id]
+      }
+      if (column.columns) {
+        column.columns = updateLevel(column.columns, columnWidth)
+      }
+      return column
+    })
+  }
+
+  const [columnConfiguration, setColumnConfiguration] = useState(columns)
+  const [hiddenColumnConfiguration, setHiddenColumnConfiguration] = useState([])
+
+  useEffect(() => {
+    setColumnConfiguration(restoreColumnWidth(columns))
+    setHiddenColumnConfiguration(restoreHiddenColumns())
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [columns])
+
+  const [_pageCount, setPageCount] = useState(totalPageCount)
+
   const {
-    getTableProps,
-    getTableBodyProps,
     headerGroups,
-    prepareRow,
-    getToggleHideAllColumnsProps,
     allColumns,
     visibleColumns,
-    toggleRowSelected,
     selectedFlatRows,
     state,
     page,
@@ -357,21 +297,29 @@ export function Grid<D extends object>(props: GridProps<D>) {
     canNextPage,
     pageOptions,
     pageCount,
+    getTableProps,
+    getTableBodyProps,
+    prepareRow,
+    getToggleHideAllColumnsProps,
+    toggleRowSelected,
     gotoPage,
     nextPage,
     previousPage,
     setPageSize,
   } = useTable<D>(
     {
-      columns,
-      data: dataRef.current,
+      columns: columnConfiguration,
+      data: data,
       defaultColumn,
+      disableSortBy: disableSort,
       manualSortBy: onSort ? true : false,
       manualPagination: onPaging ? true : false,
+      pageCount: _pageCount ? _pageCount : -1,
+      autoResetPage: onPaging ? false : true,
       initialState: {
         pageSize: defaultPageSize,
         pageIndex: pageNumber - 1,
-        pageCount: totalPageCount,
+        hiddenColumns: hiddenColumnConfiguration,
       } as TableState<D>,
     } as TableOptions<D>,
     useSortBy,
@@ -383,10 +331,74 @@ export function Grid<D extends object>(props: GridProps<D>) {
     UseRowSelectInstanceProps<D> &
     UsePaginationInstanceProps<D>
 
-  const { pageIndex, pageSize, sortBy } = state as TableState<D> &
+  const {
+    pageIndex,
+    pageSize,
+    sortBy,
+    columnResizing,
+    hiddenColumns,
+  } = state as TableState<D> &
     UseRowSelectState<D> &
     UseSortByState<D> &
-    UsePaginationState<D>
+    UsePaginationState<D> &
+    UseResizeColumnsState<D>
+
+  useEffect(() => {
+    setPageCount(
+      totalRowCount ? Math.ceil(totalRowCount / pageSize) : undefined,
+    )
+  }, [pageSize, totalRowCount])
+
+  /**
+   * Saving resized column widths, only if something was manually resized
+   */
+  useEffect(() => {
+    if (id) {
+      const saveConfig = async () => {
+        if (
+          columnResizing.columnWidths &&
+          Object.keys(columnResizing.columnWidths).length > 0
+        ) {
+          const savedString = window.localStorage.getItem(
+            `${id}_grid_column_width`,
+          )
+          if (savedString) {
+            const columnWidth: Record<string, number> = JSON.parse(savedString)
+            window.localStorage.setItem(
+              `${id}_grid_column_width`,
+              JSON.stringify({
+                ...columnWidth,
+                ...columnResizing.columnWidths,
+              }),
+            )
+          } else {
+            window.localStorage.setItem(
+              `${id}_grid_column_width`,
+              JSON.stringify(columnResizing.columnWidths),
+            )
+          }
+        }
+      }
+      saveConfig()
+    }
+  }, [columnResizing, id])
+
+  /**
+   * Saving hidden columns names, if present
+   */
+  useEffect(() => {
+    if (id) {
+      const saveConfig = async () => {
+        if (hiddenColumns && hiddenColumns.length > 0) {
+          window.localStorage.setItem(
+            `${id}_grid_hidden_columns`,
+            JSON.stringify(hiddenColumns),
+          )
+        }
+      }
+      saveConfig()
+    }
+  }, [hiddenColumns, id])
 
   const [isColumnConfigVisible, setColumnConfigVisible] = useState(false)
   const [place, setPlace] = useState<React.CSSProperties>({})
@@ -394,6 +406,11 @@ export function Grid<D extends object>(props: GridProps<D>) {
     undefined,
   )
 
+  /**
+   * Open column configuration modal
+   * @param visible
+   * @param target
+   */
   const showColumnConfig = (visible: boolean, target?: HTMLElement) => {
     if (!visible && visibleColumns.length == 0) {
       window.alert("Выберите хотя бы одну колонку")
@@ -403,19 +420,20 @@ export function Grid<D extends object>(props: GridProps<D>) {
     const screenWidth = document.body.clientWidth
     if (rect) {
       if (rect && rect.right + 300 > screenWidth) {
-        console.log(screenWidth, rect.right + 300)
         setPlace({
           top: rect.top,
           right: screenWidth - rect.right,
         })
       } else {
-        console.log(1)
         setPlace({ top: rect.top, left: rect.left })
       }
     }
     setColumnConfigVisible(visible)
   }
 
+  /**
+   * call onSort callback, if present
+   */
   useEffect(() => {
     if (onSort) {
       onSort(
@@ -424,16 +442,23 @@ export function Grid<D extends object>(props: GridProps<D>) {
           sortOrder: sort.desc ? "desc" : "asc",
         })),
       )
+      if (pageIndex !== 0) {
+        gotoPage(0)
+      } else {
+        onPagination(0, pageSize)
+      }
     }
-  }, [onSort, sortBy])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [sortBy])
 
+  /**
+   * call onSelection callback, if present
+   */
   useEffect(() => {
-    if (onSelectionChange) {
-      onSelectionChange(
-        selectedFlatRows.map((selectedRow) => selectedRow.original),
-      )
+    if (onSelection) {
+      onSelection(selectedFlatRows.map((selectedRow) => selectedRow.original))
     }
-  }, [onSelectionChange, selectedFlatRows])
+  }, [onSelection, selectedFlatRows])
 
   const onPagination = (pageIndex: number, pageSize: number) => {
     if (onPaging) {
@@ -441,11 +466,18 @@ export function Grid<D extends object>(props: GridProps<D>) {
     }
   }
 
+  /**
+   * call onPaging callback, if present
+   */
   useEffect(() => {
     onPagination(pageIndex, pageSize)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [onPaging, pageIndex, pageSize])
+  }, [pageIndex, pageSize])
 
+  /**
+   * count item's id's for selecting
+   * @param row
+   */
   const getNewSelectedItems = (row: Row<D>) => {
     const currentSelectedIndex = row.index
     const lastSelectedIndex = lastSelectedItem?.index
@@ -461,6 +493,10 @@ export function Grid<D extends object>(props: GridProps<D>) {
     }
   }
 
+  /**
+   * shift + click selection handler
+   * @param row
+   */
   const onShiftClick = (row: Row<D>) => {
     const hasBeenSelected = selectedFlatRows.find(
       (selectedRow) => selectedRow.id == row.id,
@@ -488,26 +524,63 @@ export function Grid<D extends object>(props: GridProps<D>) {
     setLastSelectedItem(row)
   }
 
+  /**
+   * row selection handler
+   * @param e
+   * @param row
+   */
+  const selectRow = (e: React.MouseEvent, row: Row<D>) => {
+    const selectableRow = (row as unknown) as UseRowSelectRowProps<D>
+    if (e.detail % 2 == 0) {
+      if (onDoubleClick) {
+        onDoubleClick(row.original, e)
+      }
+    } else {
+      if (onClick) {
+        onClick(row.original, e)
+      }
+    }
+    if (e.shiftKey) {
+      onShiftClick(row)
+      document.getSelection()?.removeAllRanges()
+    } else if (!e.ctrlKey) {
+      selectedFlatRows.map((selectedRow) => {
+        if (selectedRow.id !== row.id) {
+          toggleRowSelected(selectedRow.id, false)
+        }
+      })
+      selectableRow.toggleRowSelected(true)
+      setLastSelectedItem(row)
+    } else {
+      if (!selectableRow.isSelected) setLastSelectedItem(row)
+      selectableRow.toggleRowSelected()
+    }
+  }
+
   return (
-    <StyledGrid.Grid>
-      <StyledGrid.GridTable
+    <StyledGrid id={id ? `${id}_grid` : undefined}>
+      <GridTable
+        id={id ? `${id}_table` : undefined}
         className={className}
         style={style}
         {...getTableProps()}
         ref={ref}
       >
-        <StyledGrid.GridHeader>
+        <GridHeader id={id ? `${id}_thead` : undefined}>
           {headerGroups.map((headerGroup) => (
-            <StyledGrid.GridRow {...headerGroup.getHeaderGroupProps()}>
+            <GridRow {...headerGroup.getHeaderGroupProps()}>
               {headerGroup.headers.map((column, index) => {
                 const sortableColumn = (column as unknown) as UseSortByColumnProps<
                   D
                 >
                 return (
-                  <StyledGrid.GridHeaderCell
-                    {...column.getHeaderProps(
+                  <GridHeaderCell
+                    id={id ? `${id}_th_${column.id}` : undefined}
+                    {...column.getHeaderProps([
                       sortableColumn.getSortByToggleProps(),
-                    )}
+                      getColumnProps(column),
+                      getHeaderProps(column),
+                    ])}
                     title={`${column.Header}`}
                   >
                     <StyledSpan
@@ -529,76 +602,68 @@ export function Grid<D extends object>(props: GridProps<D>) {
                       {...((column as unknown) as UseResizeColumnsColumnProps<
                         D
                       >).getResizerProps()}
+                      onClick={(e) => e.stopPropagation()}
                     />
-                  </StyledGrid.GridHeaderCell>
+                  </GridHeaderCell>
                 )
               })}
-            </StyledGrid.GridRow>
+            </GridRow>
           ))}
-        </StyledGrid.GridHeader>
-        <StyledGrid.GridBody {...getTableBodyProps()}>
+        </GridHeader>
+        <GridBody {...getTableBodyProps()} id={id ? `${id}_tbody` : undefined}>
           {page.map((row, i) => {
             prepareRow(row)
             const selectableRow = (row as unknown) as UseRowSelectRowProps<D>
-            const selectRow = (e: React.MouseEvent) => {
-              if (e.detail % 2 == 0) {
-                if (onDoubleClick) {
-                  onDoubleClick(row.original, e)
-                }
-              } else {
-                if (onClick) {
-                  onClick(row.original, e)
-                }
-              }
-              if (e.shiftKey) {
-                onShiftClick(row)
-                document.getSelection()?.removeAllRanges()
-              } else if (!e.ctrlKey) {
-                selectedFlatRows.map((selectedRow) => {
-                  if (selectedRow.id !== row.id) {
-                    toggleRowSelected(selectedRow.id, false)
-                  }
-                })
-                selectableRow.toggleRowSelected(true)
-                setLastSelectedItem(row)
-              } else {
-                if (!selectableRow.isSelected) setLastSelectedItem(row)
-                selectableRow.toggleRowSelected()
-              }
-            }
             return (
-              <StyledGrid.GridRow
-                {...row.getRowProps()}
-                onClick={selectRow}
+              <GridRow
+                id={id ? `${id}_row_${row.id}` : undefined}
+                {...row.getRowProps(
+                  getRowProps(row as Row<D> & UseRowSelectRowProps<D>),
+                )}
+                onClick={(e) => selectRow(e, row)}
                 selected={selectableRow.isSelected}
               >
-                {row.cells.map((cell) => {
+                {row.cells.map((cell, index) => {
                   return (
-                    <StyledGrid.GridRowCell
-                      {...cell.getCellProps()}
+                    <GridRowCell
+                      id={id ? `${id}_td_${row.id}_${index}` : undefined}
+                      {...cell.getCellProps([
+                        getColumnProps(cell.column),
+                        getCellProps(cell),
+                      ])}
                       label={`${cell.column.Header}`}
+                      title={`${cell.value}`}
                     >
                       {cell.render("Cell")}
-                    </StyledGrid.GridRowCell>
+                    </GridRowCell>
                   )
                 })}
-              </StyledGrid.GridRow>
+              </GridRow>
             )
           })}
-        </StyledGrid.GridBody>
-      </StyledGrid.GridTable>
-      <StyledPagingBar>
+        </GridBody>
+      </GridTable>
+      <StyledPagingBar id={id ? `${id}_pagingbar` : undefined}>
         <Left>
           <PagingToolbar>
-            <Item onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
+            <Item
+              id={id ? `${id}_pagingbar_first` : undefined}
+              onClick={() => gotoPage(0)}
+              disabled={!canPreviousPage}
+            >
               <img src={first} title="Первая" alt="Первая" />
             </Item>
-            <Item onClick={() => previousPage()} disabled={!canPreviousPage}>
+            <Item
+              id={id ? `${id}_pagingbar_prev` : undefined}
+              onClick={() => previousPage()}
+              disabled={!canPreviousPage}
+            >
               <img src={prev} title="Предыдушая" alt="Предыдушая" />
             </Item>
             <Label>
               Стр.{" "}
               <NumberInput
+                id={id ? `${id}_pagingbar_page` : undefined}
                 value={pageIndex + 1}
                 min={1}
                 pattern="^[0-9]+$"
@@ -610,16 +675,32 @@ export function Grid<D extends object>(props: GridProps<D>) {
               />{" "}
               из {pageOptions.length}
             </Label>
-            <Item onClick={() => nextPage()} disabled={!canNextPage}>
+            <Item
+              id={id ? `${id}_pagingbar_next` : undefined}
+              onClick={() => {
+                nextPage()
+              }}
+              disabled={!canNextPage}
+            >
               <img src={next} title="Следующая" alt="Следующая" />
             </Item>
             <Item
+              id={id ? `${id}_pagingbar_last` : undefined}
               onClick={() => gotoPage(pageCount - 1)}
               disabled={!canNextPage}
             >
               <img src={last} title="Последняя" alt="Последняя" />
             </Item>
-            <Item onClick={() => onPagination(pageIndex, pageSize)}>
+            <Item
+              id={id ? `${id}_pagingbar_refresh` : undefined}
+              onClick={() => {
+                if (pageSize === 0) {
+                  onPagination(pageIndex, pageSize)
+                } else {
+                  gotoPage(0)
+                }
+              }}
+            >
               <img src={refresh} title="Обновить" alt="Обновить" />
             </Item>
           </PagingToolbar>
@@ -637,8 +718,9 @@ export function Grid<D extends object>(props: GridProps<D>) {
           <label>
             Записей на странице:{" "}
             <NumberInput
+              id={id ? `${id}_pagingbar_pagesize` : undefined}
               min={1}
-              max={9999}
+              max={maxPageSize}
               pattern="^[0-9]+$"
               value={pageSize}
               onChange={(e) => {
@@ -648,8 +730,9 @@ export function Grid<D extends object>(props: GridProps<D>) {
           </label>
         </Right>
       </StyledPagingBar>
-      {isColumnConfigVisible && (
+      {!isLoading && isColumnConfigVisible && (
         <ColumnConfigPanel
+          id={id ? `${id}_column_config` : undefined}
           top={place.top}
           left={place.left}
           right={place.right}
@@ -658,6 +741,30 @@ export function Grid<D extends object>(props: GridProps<D>) {
           hide={() => showColumnConfig(false)}
         />
       )}
-    </StyledGrid.Grid>
+      {isLoading && (
+        <>
+          <GlassMask />
+          <ModalDiv
+            id={id ? `${id}_loading` : undefined}
+            style={{
+              backgroundColor: "transparent",
+              height: "100%",
+              width: "100%",
+            }}
+          >
+            <span
+              style={{
+                backgroundColor: "white",
+                padding: "5px",
+                border: "1px solid #999",
+                fontSize: "8px",
+              }}
+            >
+              Загрузка данных...
+            </span>
+          </ModalDiv>
+        </>
+      )}
+    </StyledGrid>
   )
 }

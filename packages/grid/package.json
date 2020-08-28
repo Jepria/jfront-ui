@@ -23,6 +23,8 @@
   },
   "dependencies": {
     "@jfront/ui-table": "^0.0.1",
+    "@jfront/ui-checkbox-group": "^0.2.0",
+    "@jfront/ui-checkbox": "^0.2.0",
     "react-table": "^7.5.0"
   },
   "peerDependencies": {
@@ -31,6 +33,7 @@
   },
   "devDependencies": {
     "@types/react-table": "^7.0.22",
+    "namor": "2.0.2",
     "@types/styled-components": "^5.0.1"
   }
 }
