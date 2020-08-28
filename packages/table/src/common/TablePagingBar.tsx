@@ -2,16 +2,13 @@ import React, { useState, useEffect, HTMLAttributes } from "react"
 import styled from "styled-components"
 import { PagingToolBar } from "@jfront/ui-pagingbar"
 
-export const PagingBar = styled.div`
+const StyledPagingBar = styled.div`
+  display: table;
+  width: 100%;
   font: 11px arial, tahoma, helvetica, sans-serif;
   margin: 0;
   padding: 2px 2px 2px 2px;
   box-sizing: border-box;
-`
-
-const Container = styled(PagingBar)`
-  display: table;
-  width: 100%;
 `
 
 const Left = styled.div`
@@ -56,7 +53,7 @@ const Input = styled.input.attrs({ type: "number" })`
   width: 60px;
 `
 
-export interface GridPagingBarProps extends HTMLAttributes<HTMLDivElement> {
+export interface TablePagingBarProps extends HTMLAttributes<HTMLDivElement> {
   currentPage?: number
   rowCount?: number
   totalRowCount?: number
@@ -65,7 +62,7 @@ export interface GridPagingBarProps extends HTMLAttributes<HTMLDivElement> {
   onRefresh?(pageNumber: number, pageSize: number): void
 }
 
-export const GridPagingBar: React.FC<GridPagingBarProps> = (props) => {
+export const TablePagingBar: React.FC<TablePagingBarProps> = (props) => {
   const {
     currentPage = 1,
     rowCount,
@@ -101,7 +98,7 @@ export const GridPagingBar: React.FC<GridPagingBarProps> = (props) => {
 
   const onKeyUp = (e: React.KeyboardEvent) => {
     if (e.key === "Enter") {
-      let value = visibleRowCountInputRef.current?.value
+      const value = visibleRowCountInputRef.current?.value
       let intValue: number
       if (value) {
         intValue = parseInt(value)
@@ -126,7 +123,7 @@ export const GridPagingBar: React.FC<GridPagingBarProps> = (props) => {
   }
 
   return (
-    <Container {...props}>
+    <StyledPagingBar {...props}>
       <Left>
         <PagingToolBar
           startPageNumber={currentPage}
@@ -162,6 +159,6 @@ export const GridPagingBar: React.FC<GridPagingBarProps> = (props) => {
           />
         </label>
       </Right>
-    </Container>
+    </StyledPagingBar>
   )
 }

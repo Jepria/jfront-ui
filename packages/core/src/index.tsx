@@ -1,6 +1,7 @@
 export * from "@jfront/ui-app"
 export * from "@jfront/ui-datepicker"
 export * from "@jfront/ui-form"
+export * from "@jfront/ui-table"
 export * from "@jfront/ui-grid"
 export * from "@jfront/ui-hooks"
 export * from "@jfront/ui-input"
