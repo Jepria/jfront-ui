@@ -284,7 +284,14 @@ export function Grid<D extends object>(props: GridProps<D>) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [columns])
 
+  useEffect(() => {
+    setHiddenColumns(hiddenColumnConfiguration)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [hiddenColumnConfiguration])
+
   const [_pageCount, setPageCount] = useState(totalPageCount)
+
+  console.log("hiddenColumnConfiguration", hiddenColumnConfiguration)
 
   const {
     headerGroups,
@@ -297,6 +304,7 @@ export function Grid<D extends object>(props: GridProps<D>) {
     canNextPage,
     pageOptions,
     pageCount,
+    setHiddenColumns,
     getTableProps,
     getTableBodyProps,
     prepareRow,
@@ -342,6 +350,8 @@ export function Grid<D extends object>(props: GridProps<D>) {
     UseSortByState<D> &
     UsePaginationState<D> &
     UseResizeColumnsState<D>
+
+  console.log("hiddenColumns", hiddenColumns)
 
   useEffect(() => {
     setPageCount(
@@ -389,7 +399,7 @@ export function Grid<D extends object>(props: GridProps<D>) {
   useEffect(() => {
     if (id) {
       const saveConfig = async () => {
-        if (hiddenColumns && hiddenColumns.length > 0) {
+        if (hiddenColumns) {
           window.localStorage.setItem(
             `${id}_grid_hidden_columns`,
             JSON.stringify(hiddenColumns),

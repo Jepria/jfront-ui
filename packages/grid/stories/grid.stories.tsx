@@ -44,7 +44,7 @@ const data: Array<Data> = makeData(100)
 export const BasicUsage = () => {
   return (
     <Grid<Data>
-      // id="test"
+      id="basic"
       columns={[
         {
           Header: "Id",
@@ -173,7 +173,7 @@ export const ExternalPagingAndSort = () => {
 
   return (
     <Grid<Data>
-      id="test"
+      id="paging"
       isLoading={loading}
       columns={[
         {
@@ -226,7 +226,7 @@ export const ExternalPagingAndSort = () => {
 export const ExternalDataDrivenStyle = () => {
   return (
     <Grid<Data>
-      id="test"
+      id="styles"
       columns={[
         {
           Header: "Id",
