@@ -251,7 +251,6 @@ export interface ComboBoxProps {
   variant?: string
   isLoading?: boolean
   error?: string
-  touched?: boolean
   getOptionName?: (option: any) => string
   getOptionValue?: (option: any) => any
   renderItem?: (props: ComboBoxItemProps) => React.ReactNode
@@ -283,7 +282,6 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
       onChangeValue,
       isLoading,
       error,
-      touched,
     },
     ref,
   ) => {
@@ -330,6 +328,9 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
     const _onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       if (value) {
         setValue(undefined)
+        if (onChangeValue) {
+          onChangeValue(name, undefined)
+        }
       }
       setText(e.target.value)
       if (onChange) onChange(e)
@@ -478,7 +479,7 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
           ref={outerDivRef}
           onBlur={_onBlur}
           style={style}
-          error={error !== undefined && touched}
+          error={error !== undefined}
         >
           <StyledDiv>
             <StyledInput
@@ -529,7 +530,7 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
           )}
         </OuterDiv>
         {isLoading && <LoadingImage />}
-        {error !== undefined && touched && <ExclamationImage title={error} />}
+        {error !== undefined && <ExclamationImage title={error} />}
       </NoWrap>
     )
   },
