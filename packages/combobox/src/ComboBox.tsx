@@ -1,22 +1,31 @@
 import React, { useState, useRef, useEffect } from "react"
 import styled from "styled-components"
 import nextId from "react-id-generator"
-import openIcon from "./openIcon.png"
+import openIcon from "./images/openIcon.png"
+import loading from "./images/loading.gif"
+import exclamation from "./images/exclamation.gif"
 
 interface OuterDivProps {
   focused?: boolean
+  error?: boolean
 }
 
 const OuterDiv = styled.div<OuterDivProps>`
+  display: inline-block;
   font-family: tahoma, arial, helvetica, sans-serif;
   font-size: 12px;
   text-align: left;
-  width: 100%;
   height: 24px;
   ${(props) =>
     props.focused
-      ? "outline-color: #999; outline-style: solid; outline-width: 2px"
+      ? "outline-color: #999; outline-style: solid; outline-width: 2px;"
       : "border: 1px solid #ccc; border-top: 1px solid #999;"};
+  ${(props) =>
+    props.error
+      ? props.focused
+        ? "outline-color: red; outline-style: solid; outline-width: 2px;"
+        : "border: 1px solid red;"
+      : ""};
 `
 
 interface ItemProps {
@@ -138,7 +147,7 @@ const StyledSvg = styled.svg`
   flex-shrink: 0;
 `
 
-export const JepRiaButton = styled.img.attrs({ src: openIcon })`
+const JepRiaButton = styled.img.attrs({ src: openIcon })`
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   display: inline-block;
@@ -152,6 +161,17 @@ export const JepRiaButton = styled.img.attrs({ src: openIcon })`
   &:hover {
     opacity: 0.5;
   }
+`
+
+const LoadingImage = styled.img.attrs({ src: loading })`
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 5px;
+`
+
+const ExclamationImage = styled(LoadingImage).attrs({ src: exclamation })`
+  cursor: pointer;
 `
 
 interface StyledButtonProps {
@@ -181,6 +201,10 @@ const StyledDiv = styled.div`
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+`
+
+const NoWrap = styled.div`
+  wrap-text: nowrap;
 `
 
 export interface ComboBoxItemProps {
@@ -225,6 +249,9 @@ export interface ComboBoxProps {
   clearOnBlur?: boolean
   options?: any[]
   variant?: string
+  isLoading?: boolean
+  error?: string
+  touched?: boolean
   getOptionName?: (option: any) => string
   getOptionValue?: (option: any) => any
   renderItem?: (props: ComboBoxItemProps) => React.ReactNode
@@ -254,6 +281,9 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
       onBlur,
       onChange,
       onChangeValue,
+      isLoading,
+      error,
+      touched,
     },
     ref,
   ) => {
@@ -441,61 +471,66 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
     }
 
     return (
-      <OuterDiv
-        className={className}
-        focused={focused}
-        ref={outerDivRef}
-        onBlur={_onBlur}
-        style={style}
-      >
-        <StyledDiv>
-          <StyledInput
-            id={`${id}_input`}
-            ref={ref}
-            value={text}
-            onFocus={_onFocus}
-            onChange={_onChange}
-          />
-          {(variant === ComboBoxVariant.standard && (
-            <StyledButton
-              id={`${id}_button`}
-              tabIndex={-1}
-              isOpen={isOpen}
-              onClick={toggle}
-              onFocus={() => setFocused(true)}
-            >
-              <StyledSpan>
-                <StyledSvg>
-                  <path d="M7 10l5 5 5-5z" />
-                </StyledSvg>
-              </StyledSpan>
-            </StyledButton>
-          )) ||
-            (variant === ComboBoxVariant.jepria && (
-              <JepRiaButton
+      <NoWrap>
+        <OuterDiv
+          className={className}
+          focused={focused}
+          ref={outerDivRef}
+          onBlur={_onBlur}
+          style={style}
+          error={error !== undefined && touched}
+        >
+          <StyledDiv>
+            <StyledInput
+              id={`${id}_input`}
+              ref={ref}
+              value={text}
+              onFocus={_onFocus}
+              onChange={_onChange}
+            />
+            {(variant === ComboBoxVariant.standard && (
+              <StyledButton
                 id={`${id}_button`}
                 tabIndex={-1}
+                isOpen={isOpen}
                 onClick={toggle}
                 onFocus={() => setFocused(true)}
-              />
-            ))}
-        </StyledDiv>
-        {isOpen && (
-          <Popup
-            id={`${id}_popup`}
-            ref={popupRef}
-            tabIndex={0}
-            style={{
-              top: getPopupTop(),
-              left: getPopupLeft(),
-              width: getPopupWidth(),
-              maxHeight: getPopupHeight(),
-            }}
-          >
-            {renderItems()}
-          </Popup>
-        )}
-      </OuterDiv>
+              >
+                <StyledSpan>
+                  <StyledSvg>
+                    <path d="M7 10l5 5 5-5z" />
+                  </StyledSvg>
+                </StyledSpan>
+              </StyledButton>
+            )) ||
+              (variant === ComboBoxVariant.jepria && (
+                <JepRiaButton
+                  id={`${id}_button`}
+                  tabIndex={-1}
+                  onClick={toggle}
+                  onFocus={() => setFocused(true)}
+                />
+              ))}
+          </StyledDiv>
+          {isOpen && (
+            <Popup
+              id={`${id}_popup`}
+              ref={popupRef}
+              tabIndex={0}
+              style={{
+                top: getPopupTop(),
+                left: getPopupLeft(),
+                width: getPopupWidth(),
+                maxHeight: getPopupHeight(),
+              }}
+            >
+              {renderItems()}
+            </Popup>
+          )}
+        </OuterDiv>
+        {isLoading && <LoadingImage />}
+        {error !== undefined && touched && <ExclamationImage title={error} />}
+      </NoWrap>
     )
   },
 )

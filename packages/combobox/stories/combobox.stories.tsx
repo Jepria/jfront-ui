@@ -4,7 +4,13 @@ import styled from "styled-components"
 
 export default {
   title: "ComboBox",
-  decorators: [(StoryFn: Function) => <StoryFn />],
+  decorators: [
+    (StoryFn: Function) => (
+      <div style={{ margin: "5px" }}>
+        <StoryFn />
+      </div>
+    ),
+  ],
 }
 
 export const BasicUsage = () => {
@@ -47,6 +53,51 @@ export const WithOptionsProp = () => {
         style={{ width: "200px" }}
         onChangeValue={(name, value) => console.log(value)}
       />
+    </>
+  )
+}
+
+export const LoadingImage = () => {
+  return (
+    <>
+      <ComboBox
+        onChangeValue={(name, value) => console.log(value)}
+        style={{ width: "200px" }}
+        isLoading
+      >
+        <ComboBoxItem value={1} label="test1" />
+        <ComboBoxItem value={2} label="test2" />
+        <ComboBoxItem value={3} label="test3" />
+        <ComboBoxItem value={4} label="test4" />
+        <ComboBoxItem value={5} label="test5" />
+        <ComboBoxItem value={6} label="test6" />
+        <ComboBoxItem value={7} label="test7" />
+        <ComboBoxItem value={8} label="test8" />
+        <ComboBoxItem value={9} label="test9" />
+      </ComboBox>
+    </>
+  )
+}
+
+export const Error = () => {
+  return (
+    <>
+      <ComboBox
+        onChangeValue={(name, value) => console.log(value)}
+        style={{ width: "200px" }}
+        error="error"
+        touched
+      >
+        <ComboBoxItem value={1} label="test1" />
+        <ComboBoxItem value={2} label="test2" />
+        <ComboBoxItem value={3} label="test3" />
+        <ComboBoxItem value={4} label="test4" />
+        <ComboBoxItem value={5} label="test5" />
+        <ComboBoxItem value={6} label="test6" />
+        <ComboBoxItem value={7} label="test7" />
+        <ComboBoxItem value={8} label="test8" />
+        <ComboBoxItem value={9} label="test9" />
+      </ComboBox>
     </>
   )
 }
