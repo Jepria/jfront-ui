@@ -11,13 +11,13 @@ import {
   UseDropdownInstance,
 } from "@jfront/ui-hooks"
 
-export const ComboBoxInputContainer = styled.div`
+const ComboBoxInputContainer = styled.div`
   box-sizing: border-box;
   width: 100%;
   white-space: nowrap;
 `
 
-export const ComboBoxButton = styled.img`
+const ComboBoxButton = styled.img`
   box-sizing: border-box;
   display: inline-block;
   vertical-align: top;
@@ -28,11 +28,11 @@ export const ComboBoxButton = styled.img`
   height: 24px;
 `
 
-export interface ComboBoxInputProps {
+interface ComboBoxInputProps {
   error?: boolean
 }
 
-export const ComboBoxInput = styled.input<ComboBoxInputProps>`
+const ComboBoxInput = styled.input<ComboBoxInputProps>`
   font-family: tahoma, arial, helvetica, sans-serif;
   font-size: 12px;
   box-sizing: border-box;
@@ -47,11 +47,11 @@ export const ComboBoxInput = styled.input<ComboBoxInputProps>`
       : "border: 1px solid #ccc; border-top: 1px solid #999;"}
 `
 
-export interface ComboBoxOptionProps {
+interface ComboBoxOptionProps {
   selected?: boolean
 }
 
-export const ComboBoxOption = styled.li<ComboBoxOptionProps>`
+const ComboBoxOption = styled.li<ComboBoxOptionProps>`
   overflow: hidden;
   white-space: nowrap;
   height: 18px;
@@ -64,7 +64,7 @@ export const ComboBoxOption = styled.li<ComboBoxOptionProps>`
     props.selected ? "background: #ccddf3;" : "&:hover {background: #eee}"}
 `
 
-export const ComboBoxList = styled.ul`
+const ComboBoxList = styled.ul`
   background: white;
   overflow: auto;
   margin: 0;
@@ -92,7 +92,7 @@ const Image = styled.img`
   margin-left: 4px;
 `
 
-export const Container = styled.div<ComboBoxProps>`
+const Container = styled.div<ComboBoxProps>`
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
