@@ -86,7 +86,6 @@ export const Error = () => {
         onChangeValue={(name, value) => console.log(value)}
         style={{ width: "200px" }}
         error="error"
-        touched
       >
         <ComboBoxItem value={1} label="test1" />
         <ComboBoxItem value={2} label="test2" />
