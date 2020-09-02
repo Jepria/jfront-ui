@@ -1,12 +1,17 @@
 import React, { useState, useEffect, ReactNode } from "react"
 import styled from "styled-components"
 import { Label } from "@jfront/ui-label"
+import {
+  LoadingImage as Loading,
+  ExclamationImage as Exclamation,
+} from "@jfront/ui-icons"
 
 interface CheckBoxGroupInterface {
   children: ReactNode[]
   name?: string
   value?: any[]
   text?: string
+  error?: string
   disabled?: boolean
   isLoading?: boolean
   style?: React.CSSProperties
@@ -27,11 +32,36 @@ const StyledCheckBoxGroup = styled.div`
   justify-content: left;
 `
 
-const StyledUl = styled.div`
+interface StyledUlProps {
+  error?: string
+}
+
+const StyledUl = styled.div<StyledUlProps>`
   margin: 2px;
   padding: 5px;
+  font-family: tahoma, arial, helvetica, sans-serif;
+  font-size: 12px;
   border: 1px solid grey;
   padding-left: 0;
+  ${(props) => (props.error ? "border: 1px solid red;" : "")};
+`
+const LoadingImage = styled(Loading)`
+  position: relative;
+  display: inline-block;
+  margin-top: 5px;
+  margin-left: 5px;
+  width: 16px;
+  height: 16px;
+`
+
+const ExclamationImage = styled(Exclamation)`
+  position: relative;
+  display: inline-block;
+  margin-top: 5px;
+  margin-left: 5px;
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
 `
 
 export const CheckBoxGroup = React.forwardRef<
@@ -46,6 +76,7 @@ export const CheckBoxGroup = React.forwardRef<
       text,
       disabled,
       isLoading,
+      error,
       style,
       className,
       onChange,
@@ -79,27 +110,25 @@ export const CheckBoxGroup = React.forwardRef<
     return (
       <StyledCheckBoxGroup>
         {text && <Label>{text}</Label>}
-        {isLoading ? (
-          <div>Loading...</div>
-        ) : (
-          <StyledUl style={style} className={className} ref={ref}>
-            {React.Children.map(children, (checkbox, index) => {
-              if (!React.isValidElement(checkbox)) {
-                return null
-              }
+        <StyledUl style={style} className={className} ref={ref} error={error}>
+          {React.Children.map(children, (checkbox, index) => {
+            if (!React.isValidElement(checkbox)) {
+              return null
+            }
 
-              return React.cloneElement(checkbox, {
-                disabled: checkbox.props.disabled || disabled,
-                value: value ? value[index] : undefined,
-                onChange:
-                  checkbox.props.onChange === undefined
-                    ? (event: any, _text: any) =>
-                        handleCheckboxChange(checkbox.props.value, event)
-                    : checkbox.props.onChange,
-              })
-            })}
-          </StyledUl>
-        )}
+            return React.cloneElement(checkbox, {
+              disabled: checkbox.props.disabled || disabled,
+              value: value ? value[index] : undefined,
+              onChange:
+                checkbox.props.onChange === undefined
+                  ? (event: any, _text: any) =>
+                      handleCheckboxChange(checkbox.props.value, event)
+                  : checkbox.props.onChange,
+            })
+          })}
+        </StyledUl>
+        {isLoading && <LoadingImage />}
+        {error !== undefined && <ExclamationImage title={error} />}
       </StyledCheckBoxGroup>
     )
   },
