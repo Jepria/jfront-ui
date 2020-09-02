@@ -22,14 +22,15 @@ import {
   Center,
   Right,
 } from "../styles"
-import first from "./icons/first.gif"
-import last from "./icons/last.gif"
-import next from "./icons/next.gif"
-import prev from "./icons/prev.gif"
-import refresh from "./icons/refresh.gif"
 import { CheckBoxGroup } from "@jfront/ui-checkbox-group"
 import { CheckBox } from "@jfront/ui-checkbox"
-
+import {
+  FirstImage,
+  PrevImage,
+  NextImage,
+  LastImage,
+  RefreshImage,
+} from "@jfront/ui-icons"
 import {
   useTable,
   useFlexLayout,
@@ -54,10 +55,7 @@ import {
   UsePaginationState,
   UseResizeColumnsState,
   Cell,
-  TableCellProps,
-  TableRowProps,
   TableCommonProps,
-  TableHeaderProps,
 } from "react-table"
 
 interface ColumnConfigPanelProps<D extends object> {
@@ -657,14 +655,14 @@ export function Grid<D extends object>(props: GridProps<D>) {
               onClick={() => gotoPage(0)}
               disabled={!canPreviousPage}
             >
-              <img src={first} title="Первая" alt="Первая" />
+              <FirstImage title="Первая" />
             </Item>
             <Item
               id={id ? `${id}_pagingbar_prev` : undefined}
               onClick={() => previousPage()}
               disabled={!canPreviousPage}
             >
-              <img src={prev} title="Предыдушая" alt="Предыдушая" />
+              <PrevImage title="Предыдушая" />
             </Item>
             <Label>
               Стр.{" "}
@@ -688,14 +686,14 @@ export function Grid<D extends object>(props: GridProps<D>) {
               }}
               disabled={!canNextPage}
             >
-              <img src={next} title="Следующая" alt="Следующая" />
+              <NextImage title="Следующая" />
             </Item>
             <Item
               id={id ? `${id}_pagingbar_last` : undefined}
               onClick={() => gotoPage(pageCount - 1)}
               disabled={!canNextPage}
             >
-              <img src={last} title="Последняя" alt="Последняя" />
+              <LastImage title="Последняя" />
             </Item>
             <Item
               id={id ? `${id}_pagingbar_refresh` : undefined}
@@ -707,7 +705,7 @@ export function Grid<D extends object>(props: GridProps<D>) {
                 }
               }}
             >
-              <img src={refresh} title="Обновить" alt="Обновить" />
+              <RefreshImage title="Обновить" />
             </Item>
           </PagingToolbar>
         </Left>
