@@ -1,9 +1,7 @@
 import React, { useState, useRef, useEffect } from "react"
 import styled from "styled-components"
 import nextId from "react-id-generator"
-import openIcon from "./images/openIcon.png"
-import loading from "./images/loading.gif"
-import exclamation from "./images/exclamation.gif"
+import { OpenImage, LoadingImage, ExclamationImage } from "@jfront/ui-icons"
 
 interface OuterDivProps {
   focused?: boolean
@@ -147,7 +145,7 @@ const StyledSvg = styled.svg`
   flex-shrink: 0;
 `
 
-const JepRiaButton = styled.img.attrs({ src: openIcon })`
+const JepRiaButton = styled(OpenImage)`
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   display: inline-block;
@@ -161,17 +159,6 @@ const JepRiaButton = styled.img.attrs({ src: openIcon })`
   &:hover {
     opacity: 0.5;
   }
-`
-
-const LoadingImage = styled.img.attrs({ src: loading })`
-  position: relative;
-  display: inline-block;
-  vertical-align: middle;
-  margin-left: 5px;
-`
-
-const ExclamationImage = styled(LoadingImage).attrs({ src: exclamation })`
-  cursor: pointer;
 `
 
 interface StyledButtonProps {

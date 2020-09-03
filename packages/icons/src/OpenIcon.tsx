@@ -1,0 +1,10 @@
+import React from "react"
+
+export const OpenImage = (props: React.HTMLAttributes<HTMLImageElement>) => {
+  return (
+    <img
+      {...props}
+      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAYCAIAAACTAIFlAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACISURBVDhPY3z//j0DiYAJSpMCho8eRkZGIEmanv///wNJRFjz8fFBGJ8+fYIwMEUgAKoHKG0S3AcROrO2CKgIUwTIALoNaBXUbUAhoASEDVSKVQMQQPyDkg6QlUIAsgYgQLEHApBtAwI0DUAACQP0cINoY2Ji3Dc/BU0DHIym0VE9IEC6HgYGAD4SUOL7WA3lAAAAAElFTkSuQmCC"
+    />
+  )
+}

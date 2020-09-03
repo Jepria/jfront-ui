@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react"
 import styled from "styled-components"
-import exclamation from "../images/exclamation.gif"
-import loading from "../images/loading.gif"
 import {
   OptionProps,
   useMultiple,
   UseMultipleInstance,
   useSelect,
 } from "@jfront/ui-hooks"
+import { LoadingImage, ExclamationImage } from "@jfront/ui-icons"
 
 const CheckBox = styled.input.attrs({ type: "checkbox" })`
   margin: 2px;
@@ -90,7 +89,7 @@ const ListContainer = styled.div<CheckBoxListProps>`
   width: 100%;
 `
 
-export interface CheckBoxListFieldProps {
+export interface CheckBoxListInputProps {
   id?: string
   name?: string
   initialValue?: Array<any>
@@ -135,7 +134,7 @@ export interface CheckBoxListFieldProps {
  * ]
  * <CheckBoxListField options={options} onChangeValue={(field: string, value: any) => {console.log(field, value)}}/>
  */
-export const CheckBoxListField: React.FC<CheckBoxListFieldProps> = ({
+export const CheckBoxListInput: React.FC<CheckBoxListInputProps> = ({
   id,
   name = "",
   initialValue,
@@ -201,8 +200,8 @@ export const CheckBoxListField: React.FC<CheckBoxListFieldProps> = ({
           disabled={!options || (options && options.length == 0)}
         />
       </CheckBoxList>
-      {touched && error && <Icon src={exclamation} title={error} />}
-      {!error && _isLoading && <Icon src={loading} />}
+      {touched && error && <ExclamationImage title={error} />}
+      {!error && _isLoading && <LoadingImage />}
     </ListContainer>
   )
 }

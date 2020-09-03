@@ -59,3 +59,45 @@ export const Disabled = () => {
     </>
   )
 }
+
+export const Loading = () => {
+  const onChange = () => {
+    console.log("onChange()")
+  }
+
+  return (
+    <>
+      <CheckBoxGroup
+        name="name"
+        text="Group"
+        disabled={false}
+        value={["asd", "as2"]}
+        isLoading
+      >
+        <CheckBox label="label1" value="value" />
+        <CheckBox label="label2" value="value" />
+      </CheckBoxGroup>
+    </>
+  )
+}
+
+export const Error = () => {
+  const onChange = () => {
+    console.log("onChange()")
+  }
+
+  return (
+    <>
+      <CheckBoxGroup
+        name="name"
+        text="Group"
+        disabled={false}
+        value={["asd", "as2"]}
+        error="Wrong value"
+      >
+        <CheckBox label="label1" value="value" />
+        <CheckBox label="label2" value="value" />
+      </CheckBoxGroup>
+    </>
+  )
+}

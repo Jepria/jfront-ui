@@ -1,7 +1,6 @@
 import { Table } from "@jfront/ui-table"
 import styled from "styled-components"
-import bg from "../grid/icons/bg.gif"
-import settingsSmall from "../grid/icons/settingSmall.png"
+import { SettingsSmallImage } from "@jfront/ui-icons"
 
 export const Grid = styled(Table)``
 
@@ -102,7 +101,7 @@ export const GlassMask = styled.div`
   opacity: 0.2;
 `
 
-export const ColumnConfigImg = styled.img.attrs({ src: settingsSmall })`
+export const ColumnConfigImg = styled(SettingsSmallImage)`
   cursor: pointer;
   display: inline-block;
   position: absolute;
@@ -210,8 +209,7 @@ export const StyledPagingBar = styled.div`
   border-style: solid;
   border-color: #99bbe8;
   border-width: 1px;
-  background-color: #d0def0;
-  background-image: url(${bg});
+  background: linear-gradient(#dae6f4, #d0def0);
 `
 
 export const Left = styled.div`
