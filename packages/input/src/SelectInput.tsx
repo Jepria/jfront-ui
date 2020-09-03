@@ -2,7 +2,8 @@ import React from "react"
 import styled from "styled-components"
 import { Label } from "@jfront/ui-label"
 import { InputProps } from "."
-import { LoadingImage, ExclamationImage, StyledInputProps } from "./styles"
+import { StyledInputProps } from "./styles"
+import { LoadingImage, ExclamationImage } from "@jfront/ui-icons"
 
 export interface SelectInputProps
   extends React.DetailedHTMLProps<

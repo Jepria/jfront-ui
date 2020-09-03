@@ -1,8 +1,4 @@
 import styled from "styled-components"
-import {
-  LoadingImage as Loading,
-  ExclamationImage as Exclamation,
-} from "@jfront/ui-icons"
 
 export interface StyledInputProps {
   error?: string
@@ -22,22 +18,4 @@ export const StyledInput = styled.input<StyledInputProps>`
         ? "outline-color: red; outline-style: solid; outline-width: 1px;"
         : ""};
   }
-`
-export const LoadingImage = styled(Loading)`
-  position: relative;
-  display: inline-block;
-  vertical-align: middle;
-  margin-left: 5px;
-  width: 16px;
-  height: 16px;
-`
-
-export const ExclamationImage = styled(Exclamation)`
-  position: relative;
-  display: inline-block;
-  vertical-align: middle;
-  margin-left: 5px;
-  cursor: pointer;
-  width: 16px;
-  height: 16px;
 `

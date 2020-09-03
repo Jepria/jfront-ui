@@ -46,22 +46,11 @@ const StyledUl = styled.div<StyledUlProps>`
   ${(props) => (props.error ? "border: 1px solid red;" : "")};
 `
 const LoadingImage = styled(Loading)`
-  position: relative;
-  display: inline-block;
   margin-top: 5px;
-  margin-left: 5px;
-  width: 16px;
-  height: 16px;
 `
 
 const ExclamationImage = styled(Exclamation)`
-  position: relative;
-  display: inline-block;
   margin-top: 5px;
-  margin-left: 5px;
-  cursor: pointer;
-  width: 16px;
-  height: 16px;
 `
 
 export const CheckBoxGroup = React.forwardRef<

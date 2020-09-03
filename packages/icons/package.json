@@ -24,5 +24,8 @@
   "peerDependencies": {
     "react": "16.x",
     "react-dom": "16.x"
+  },
+  "devDependencies": {
+    "@types/styled-components": "^5.0.1"
   }
 }

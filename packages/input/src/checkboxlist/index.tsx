@@ -6,7 +6,7 @@ import {
   UseMultipleInstance,
   useSelect,
 } from "@jfront/ui-hooks"
-import { ExclamationImage, LoadingImage } from "../styles"
+import { LoadingImage, ExclamationImage } from "@jfront/ui-icons"
 
 const CheckBox = styled.input.attrs({ type: "checkbox" })`
   margin: 2px;

@@ -1,6 +1,4 @@
 import React from "react"
-import { Label } from "@jfront/ui-label"
-import { LoadingImage, ExclamationImage } from "./styles"
 import { InputProps, DecimalInput } from "."
 import { NumberFormatProps } from "react-number-format"
 

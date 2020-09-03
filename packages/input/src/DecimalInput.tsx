@@ -2,7 +2,7 @@ import React from "react"
 import NumberFormat, { NumberFormatProps } from "react-number-format"
 import styled from "styled-components"
 import { Label } from "@jfront/ui-label"
-import { LoadingImage, ExclamationImage } from "./styles"
+import { LoadingImage, ExclamationImage } from "@jfront/ui-icons"
 import { InputProps } from "."
 
 interface StyledNumberFormatProps {

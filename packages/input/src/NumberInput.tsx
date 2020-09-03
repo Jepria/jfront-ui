@@ -1,7 +1,8 @@
 import React from "react"
 import { Label } from "@jfront/ui-label"
 import { InputProps } from "."
-import { StyledInput, LoadingImage, ExclamationImage } from "./styles"
+import { StyledInput } from "./styles"
+import { LoadingImage, ExclamationImage } from "@jfront/ui-icons"
 
 export interface NumberInputProps
   extends React.DetailedHTMLProps<

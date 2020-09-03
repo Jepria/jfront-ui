@@ -1,11 +1,7 @@
 import React, { useState, useRef, useEffect } from "react"
 import styled from "styled-components"
 import nextId from "react-id-generator"
-import {
-  OpenImage,
-  LoadingImage as Loading,
-  ExclamationImage as Exclamation,
-} from "@jfront/ui-icons"
+import { OpenImage, LoadingImage, ExclamationImage } from "@jfront/ui-icons"
 
 interface OuterDivProps {
   focused?: boolean
@@ -163,25 +159,6 @@ const JepRiaButton = styled(OpenImage)`
   &:hover {
     opacity: 0.5;
   }
-`
-
-const LoadingImage = styled(Loading)`
-  position: relative;
-  display: inline-block;
-  vertical-align: middle;
-  width: 16px;
-  height: 16px;
-  margin-left: 5px;
-`
-
-const ExclamationImage = styled(Exclamation)`
-  position: relative;
-  display: inline-block;
-  vertical-align: middle;
-  width: 16px;
-  height: 16px;
-  cursor: pointer;
-  margin-left: 5px;
 `
 
 interface StyledButtonProps {
