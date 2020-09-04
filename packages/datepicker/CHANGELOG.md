@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-datepicker@0.1.1...@jfront/ui-datepicker@0.2.0) (2020-09-04)
+
+
+### Features
+
+* add new implementation CheckBox and CheckBoxGroup ([e90c8e0](https://github.com/Jepria/jfront-ui/commit/e90c8e09f5e3a3e6e4c3cb3780893ae871ce8aa5))
+* loading and error states ([b54b244](https://github.com/Jepria/jfront-ui/commit/b54b2441655edbc3adce075a0de61ebd0e3d75b7))
+
+
+
+
+
 ## 0.1.2-rc.0 (2020-09-04)
 
 **Note:** Version bump only for package @jfront/ui-datepicker

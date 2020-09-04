@@ -1,6 +1,6 @@
 {
   "name": "@jfront/ui-core",
-  "version": "0.2.1-rc.0",
+  "version": "0.3.0",
   "description": "React UI components built with React and Styled Components",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -28,21 +28,21 @@
     "lint:types": "tsc --noEmit"
   },
   "dependencies": {
-    "@jfront/ui-app": "^0.1.1-rc.0",
-    "@jfront/ui-checkbox": "^0.2.1-rc.0",
-    "@jfront/ui-checkbox-group": "^0.2.1-rc.0",
-    "@jfront/ui-combobox": "^0.0.2-rc.0",
-    "@jfront/ui-datepicker": "^0.1.2-rc.0",
-    "@jfront/ui-form": "^0.1.1-rc.0",
-    "@jfront/ui-grid": "^0.1.2-rc.0",
-    "@jfront/ui-hooks": "^0.2.1-rc.0",
-    "@jfront/ui-icons": "^0.0.2-rc.0",
-    "@jfront/ui-input": "^0.2.1-rc.0",
-    "@jfront/ui-layout": "^0.1.1-rc.0",
-    "@jfront/ui-pagingbar": "^0.1.1-rc.0",
-    "@jfront/ui-table": "^0.0.2-rc.0",
-    "@jfront/ui-tabpanel": "^0.1.1-rc.0",
-    "@jfront/ui-toolbar": "^0.1.1-rc.0"
+    "@jfront/ui-app": "^0.1.1",
+    "@jfront/ui-checkbox": "^0.3.0",
+    "@jfront/ui-checkbox-group": "^0.3.0",
+    "@jfront/ui-combobox": "^0.1.0",
+    "@jfront/ui-datepicker": "^0.2.0",
+    "@jfront/ui-form": "^0.1.1",
+    "@jfront/ui-grid": "^0.2.0",
+    "@jfront/ui-hooks": "^0.3.0",
+    "@jfront/ui-icons": "^0.1.0",
+    "@jfront/ui-input": "^0.3.0",
+    "@jfront/ui-layout": "^0.1.1",
+    "@jfront/ui-pagingbar": "^0.1.1",
+    "@jfront/ui-table": "^0.1.0",
+    "@jfront/ui-tabpanel": "^0.1.1",
+    "@jfront/ui-toolbar": "^0.1.1"
   },
   "peerDependencies": {
     "react": "16.x"

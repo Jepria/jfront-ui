@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.1](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-toolbar@0.1.0...@jfront/ui-toolbar@0.1.1) (2020-09-04)
+
+
+### Bug Fixes
+
+* gradient ([a016240](https://github.com/Jepria/jfront-ui/commit/a0162405fd2c3b9073816ac7d971df2250e1ff85))
+* icons refactor ([ae2784b](https://github.com/Jepria/jfront-ui/commit/ae2784be68bbba3c6bafc2775a4a5a50c059c92e))
+
+
+
+
+
 ## 0.1.1-rc.0 (2020-09-04)
 
 **Note:** Version bump only for package @jfront/ui-toolbar
