@@ -1,18 +1,29 @@
 import React, { useState, useEffect, ReactNode } from "react"
 import styled from "styled-components"
 import { Label } from "@jfront/ui-label"
+import {
+  LoadingImage as Loading,
+  ExclamationImage as Exclamation,
+} from "@jfront/ui-icons"
 
 interface CheckBoxGroupInterface {
   children: ReactNode[]
   name?: string
   value?: any[]
   text?: string
+  error?: string
   disabled?: boolean
   isLoading?: boolean
+  style?: React.CSSProperties
+  className?: string
   /**
    * Обработчик изменения значения 'checked' одного из дочерних элементов
    */
-  onChange?: (value?: any[], event?: React.ChangeEvent<any>) => void
+  onChange?: (
+    name?: string,
+    value?: any[],
+    event?: React.ChangeEvent<any>,
+  ) => void
 }
 
 const StyledCheckBoxGroup = styled.div`
@@ -21,54 +32,82 @@ const StyledCheckBoxGroup = styled.div`
   justify-content: left;
 `
 
-const StyledUl = styled.div`
-  width: 200px;
+interface StyledUlProps {
+  error?: string
+}
+
+const StyledUl = styled.div<StyledUlProps>`
   margin: 2px;
   padding: 5px;
+  font-family: tahoma, arial, helvetica, sans-serif;
+  font-size: 12px;
   border: 1px solid grey;
   padding-left: 0;
+  ${(props) => (props.error ? "border: 1px solid red;" : "")};
+`
+const LoadingImage = styled(Loading)`
+  margin-top: 5px;
 `
 
-export const CheckBoxGroup: React.FC<CheckBoxGroupInterface> = (props) => {
-  const [state, setState] = useState<any[]>([])
+const ExclamationImage = styled(Exclamation)`
+  margin-top: 5px;
+`
 
-  const handleCheckboxChange = (
-    value: React.ReactText,
-    event: React.ChangeEvent<any> | undefined,
+export const CheckBoxGroup = React.forwardRef<
+  HTMLDivElement,
+  CheckBoxGroupInterface
+>(
+  (
+    {
+      children,
+      name,
+      value,
+      text,
+      disabled,
+      isLoading,
+      error,
+      style,
+      className,
+      onChange,
+    },
+    ref,
   ) => {
-    const newValue = props.value ? props.value.slice() : state.slice()
-    const changedValueIndex = newValue.findIndex(
-      (stateValue) => stateValue === value,
-    )
+    const [state, setState] = useState<any[]>([])
 
-    if (event && event.target.checked) {
-      newValue.push(value)
-    } else {
-      newValue.splice(changedValueIndex, 1)
+    const handleCheckboxChange = (
+      _value: React.ReactText,
+      event: React.ChangeEvent<any> | undefined,
+    ) => {
+      const newValue = value ? value.slice() : state.slice()
+      const changedValueIndex = newValue.findIndex(
+        (stateValue) => stateValue === _value,
+      )
+
+      if (event && event.target.checked) {
+        newValue.push(_value)
+      } else {
+        newValue.splice(changedValueIndex, 1)
+      }
+
+      setState(newValue)
+
+      if (onChange) {
+        onChange(name, newValue, event)
+      }
     }
 
-    setState(newValue)
-
-    if (props.onChange) {
-      props.onChange(newValue, event)
-    }
-  }
-
-  return (
-    <StyledCheckBoxGroup>
-      <Label>{props.text}</Label>
-      {props.isLoading ? (
-        <div>Loading...</div>
-      ) : (
-        <StyledUl>
-          {React.Children.map(props.children, (checkbox, index) => {
+    return (
+      <StyledCheckBoxGroup>
+        {text && <Label>{text}</Label>}
+        <StyledUl style={style} className={className} ref={ref} error={error}>
+          {React.Children.map(children, (checkbox, index) => {
             if (!React.isValidElement(checkbox)) {
               return null
             }
 
             return React.cloneElement(checkbox, {
-              disabled: checkbox.props.disabled || props.disabled,
-              value: props.value ? props.value[index] : undefined,
+              disabled: checkbox.props.disabled || disabled,
+              value: value ? value[index] : undefined,
               onChange:
                 checkbox.props.onChange === undefined
                   ? (event: any, _text: any) =>
@@ -77,7 +116,9 @@ export const CheckBoxGroup: React.FC<CheckBoxGroupInterface> = (props) => {
             })
           })}
         </StyledUl>
-      )}
-    </StyledCheckBoxGroup>
-  )
-}
+        {isLoading && <LoadingImage />}
+        {error !== undefined && <ExclamationImage title={error} />}
+      </StyledCheckBoxGroup>
+    )
+  },
+)

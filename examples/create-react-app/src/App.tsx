@@ -4,7 +4,6 @@ import { PagingToolBar } from "@jfront/ui-pagingbar"
 import { InputText } from "@jfront/ui-input"
 import { TabPanel } from "@jfront/ui-tabpanel"
 import { Toolbar } from "@jfront/ui-toolbar"
-import { GridTable } from "@jfront/ui-grid"
 import { Form } from "@jfront/ui-form"
 
 function App() {
@@ -15,7 +14,6 @@ function App() {
     <div>
       <DatePicker onChange={onChange} />
       <PagingToolBar pageCount={2} />
-      <GridTable />
       <InputText name="InputTextName" />
       <TabPanel />
       <Toolbar />

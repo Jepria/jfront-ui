@@ -1,15 +1,15 @@
 import * as React from "react"
-import { CheckBoxListField } from "../src"
+import { CheckBoxListInput } from "../src"
 
 export default {
-  title: "CheckBoxListField",
+  title: "CheckBoxListInput",
   decorators: [(StoryFn: Function) => <StoryFn />],
 }
 
 export const BasicUsage = () => {
   return (
     <>
-      <CheckBoxListField
+      <CheckBoxListInput
         name="testfield"
         onChangeValue={(field, value) => {
           window.alert(value)

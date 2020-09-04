@@ -1,19 +1,18 @@
 import React, { useEffect, useState } from "react"
 import styled from "styled-components"
-import exclamation from "../images/exclamation.gif"
-import loading from "../images/loading.gif"
 import {
   OptionProps,
   useMultiple,
   UseMultipleInstance,
   useSelect,
 } from "@jfront/ui-hooks"
+import { LoadingImage, ExclamationImage } from "@jfront/ui-icons"
 
 const CheckBox = styled.input.attrs({ type: "checkbox" })`
   margin: 2px;
 `
 
-export const CheckBoxListOptionLabel = styled.label`
+const CheckBoxListOptionLabel = styled.label`
   height: 20px;
   font-family: tahoma, arial, helvetica, sans-serif;
   font-size: 12px;
@@ -32,7 +31,7 @@ export const CheckBoxListOptionLabel = styled.label`
                                 supported by Chrome, Edge, Opera and Firefox */
 `
 
-export const CheckBoxListOption = styled.li`
+const CheckBoxListOption = styled.li`
   height: 20px;
   width: 100%;
   text-align: left;
@@ -41,11 +40,11 @@ export const CheckBoxListOption = styled.li`
   }
 `
 
-export interface OptionListProps {
+interface OptionListProps {
   error?: boolean
 }
 
-export const OptionList = styled.ul<OptionListProps>`
+const OptionList = styled.ul<OptionListProps>`
   overflow: auto;
   background: white;
   margin: 0;
@@ -59,12 +58,12 @@ export const OptionList = styled.ul<OptionListProps>`
       : "border: 1px solid #ccc; border-top: 1px solid #999;"}
 `
 
-export interface CheckBoxListProps {
+interface CheckBoxListProps {
   width?: string
   height?: string
 }
 
-export const CheckBoxList = styled.div<CheckBoxListProps>`
+const CheckBoxList = styled.div<CheckBoxListProps>`
   box-sizing: border-box;
   padding: 0px;
   margin: 0px;
@@ -74,14 +73,14 @@ export const CheckBoxList = styled.div<CheckBoxListProps>`
   height: ${(props) => (props.height ? props.height : "100px")};
 `
 
-export const Icon = styled.img`
+const Icon = styled.img`
   margin-left: 5px;
   margin-top: 5px;
   height: 16px;
   width: 16px;
 `
 
-export const ListContainer = styled.div<CheckBoxListProps>`
+const ListContainer = styled.div<CheckBoxListProps>`
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -90,7 +89,7 @@ export const ListContainer = styled.div<CheckBoxListProps>`
   width: 100%;
 `
 
-export interface CheckBoxListFieldProps {
+export interface CheckBoxListInputProps {
   id?: string
   name?: string
   initialValue?: Array<any>
@@ -135,7 +134,7 @@ export interface CheckBoxListFieldProps {
  * ]
  * <CheckBoxListField options={options} onChangeValue={(field: string, value: any) => {console.log(field, value)}}/>
  */
-export const CheckBoxListField: React.FC<CheckBoxListFieldProps> = ({
+export const CheckBoxListInput: React.FC<CheckBoxListInputProps> = ({
   id,
   name = "",
   initialValue,
@@ -201,8 +200,8 @@ export const CheckBoxListField: React.FC<CheckBoxListFieldProps> = ({
           disabled={!options || (options && options.length == 0)}
         />
       </CheckBoxList>
-      {touched && error && <Icon src={exclamation} title={error} />}
-      {!error && _isLoading && <Icon src={loading} />}
+      {touched && error && <ExclamationImage title={error} />}
+      {!error && _isLoading && <LoadingImage />}
     </ListContainer>
   )
 }

@@ -8,6 +8,8 @@ export interface CheckBoxInterface
    * Подпись к чекбоксу
    */
   label?: string
+  className?: string
+  style?: React.CSSProperties
 }
 
 const StyledCheckBoxInput = styled.input`
@@ -43,38 +45,41 @@ const StyledCheckBox = styled.span`
   }
 `
 
-export const CheckBox: React.FC<CheckBoxInterface> = (props) => {
-  const htmlId = props.id ? props.id : nextId()
+export const CheckBox = React.forwardRef<HTMLInputElement, CheckBoxInterface>(
+  (props, ref) => {
+    const htmlId = props.id ? props.id : nextId()
 
-  return (
-    <StyledCheckBox>
-      <StyledCheckBoxLabel
-        htmlFor={htmlId}
-        onDoubleClick={(e) => {
-          /** IE fix checkbox double-click issue **/
-          if ((document as any).documentMode) {
-            e.stopPropagation()
-            e.currentTarget.click()
-          }
-        }}
-      >
-        {props.label}
-      </StyledCheckBoxLabel>
-      <StyledCheckBoxInput
-        id={htmlId}
-        type="checkbox"
-        value={props.value}
-        checked={props.checked}
-        disabled={props.disabled}
-        onChange={props.onChange}
-        onDoubleClick={(e) => {
-          /** IE fix checkbox double-click issue **/
-          if ((document as any).documentMode) {
-            e.stopPropagation()
-            e.currentTarget.click()
-          }
-        }}
-      />
-    </StyledCheckBox>
-  )
-}
+    return (
+      <StyledCheckBox className={props.className} style={props.style}>
+        <StyledCheckBoxLabel
+          htmlFor={htmlId}
+          onDoubleClick={(e) => {
+            /** IE fix checkbox double-click issue **/
+            if ((document as any).documentMode) {
+              e.stopPropagation()
+              e.currentTarget.click()
+            }
+          }}
+        >
+          {props.label}
+        </StyledCheckBoxLabel>
+        <StyledCheckBoxInput
+          id={htmlId}
+          ref={ref}
+          type="checkbox"
+          value={props.value}
+          checked={props.checked}
+          disabled={props.disabled}
+          onChange={props.onChange}
+          onDoubleClick={(e) => {
+            /** IE fix checkbox double-click issue **/
+            if ((document as any).documentMode) {
+              e.stopPropagation()
+              e.currentTarget.click()
+            }
+          }}
+        />
+      </StyledCheckBox>
+    )
+  },
+)
