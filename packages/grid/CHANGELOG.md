@@ -3,6 +3,35 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-grid@0.1.1...@jfront/ui-grid@0.2.0) (2020-09-04)
+
+
+### Bug Fixes
+
+* column configuration modal placement ([5da5a08](https://github.com/Jepria/jfront-ui/commit/5da5a081b412b3faa063140f1b62238f9c2cc912))
+* gradient ([a016240](https://github.com/Jepria/jfront-ui/commit/a0162405fd2c3b9073816ac7d971df2250e1ff85))
+* hiding columns ([ebb5f82](https://github.com/Jepria/jfront-ui/commit/ebb5f82795302d2ddd1eaa3b2b58d78be087b030))
+* hiding columns ([3d681de](https://github.com/Jepria/jfront-ui/commit/3d681de69e4e8eb06e1b25e65e7d1930658a6de4))
+* icons refactor ([ae2784b](https://github.com/Jepria/jfront-ui/commit/ae2784be68bbba3c6bafc2775a4a5a50c059c92e))
+
+
+### Features
+
+* data grid based on react-table ([122cc41](https://github.com/Jepria/jfront-ui/commit/122cc41ac883337a140fdc745893ab00cb0cd37a))
+* saving of column width and hidden columns to local storage ([900b808](https://github.com/Jepria/jfront-ui/commit/900b8085a31f8c21726b28da3d24f949023a6ff4))
+
+
+
+
+
+## 0.1.2-rc.0 (2020-09-04)
+
+**Note:** Version bump only for package @jfront/ui-grid
+
+
+
+
+
 ## [0.1.1](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-grid@0.1.0...@jfront/ui-grid@0.1.1) (2020-08-17)
 
 

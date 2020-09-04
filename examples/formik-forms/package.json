@@ -1,9 +1,9 @@
 {
   "name": "jfront-formik",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@jfront/ui-core": "^0.2.0",
+    "@jfront/ui-core": "^0.3.0",
     "react": "16.13.1",
     "react-dom": "16.13.1"
   },
@@ -15,10 +15,10 @@
     "@types/react-dom": "^16.9.8",
     "core-js": "^3.6.4",
     "eslint-config-react-app": "^5.2.1",
+    "formik": "2.1.5",
     "react-app-polyfill": "^1.0.6",
     "react-scripts": "^3.4.1",
-    "typescript": "^3.9.6",
-    "formik": "2.1.5"
+    "typescript": "^3.9.6"
   },
   "scripts": {
     "start": "react-scripts start",
