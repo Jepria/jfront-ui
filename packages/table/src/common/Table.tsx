@@ -29,8 +29,6 @@ interface TableContainerProps {
 const TableContainer = styled.div<TableContainerProps>`
   width: 100%;
   overflow-y: hidden;
-  overflow-x: hidden;
-  position: relative;
   -webkit-box-flex: 1;
   -ms-flex-positive: 1;
   flex-grow: 1;

@@ -16,9 +16,11 @@ const StyledTBody = styled.tbody<TableBodyProps>`
   flex-direction: column;
   overflow: auto;
   @media only screen and (min-width: 761px) {
-    width: ${(props) =>
-      `calc(100% + ${props.scrollWidth ? props.scrollWidth : 0}px)`};
-    ${(props) => (props.scrollWidth ? `right: -${props.scrollWidth}px` : "")};
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
 `
 
@@ -107,12 +109,6 @@ export const TableBody: React.FC<React.DetailedHTMLProps<
     const handleScroll = (e: Event) => {
       const onScroll = () => {
         if (refTbody) {
-          const thead = refTbody?.parentElement?.getElementsByTagName(
-            "thead",
-          )[0]
-          if (thead) {
-            thead.scrollLeft = refTbody.scrollLeft
-          }
           if (refScrollPanel && refTbody) {
             const ignore = ignoreScrollEvents
             ignoreScrollEvents = false
