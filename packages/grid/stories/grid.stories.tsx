@@ -1,4 +1,4 @@
-import React, { useMemo, useEffect } from "react"
+import React from "react"
 import { Grid, ColumnSortConfiguration } from "../src"
 import namor from "namor"
 
@@ -56,10 +56,12 @@ export const BasicUsage = () => {
             {
               Header: "First Name",
               accessor: "firstName",
+              width: 300,
             },
             {
               Header: "Last Name",
               accessor: "lastName",
+              width: 300,
             },
           ],
         },
@@ -69,24 +71,27 @@ export const BasicUsage = () => {
             {
               Header: "Age",
               accessor: "age",
+              width: 300,
             },
             {
               Header: "Visits",
               accessor: "visits",
+              width: 300,
             },
             {
               Header: "Status",
               accessor: "status",
+              width: 300,
             },
             {
               Header: "Profile Progress",
               accessor: "progress",
+              width: 300,
             },
           ],
         },
       ]}
       data={data}
-      onSelection={console.log}
     />
   )
 }

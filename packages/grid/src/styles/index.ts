@@ -33,7 +33,13 @@ export const GridHeaderCell = styled(Table.HeaderCell)`
   text-align: center;
 `
 
-export const GridBody = styled(Table.Body)``
+export const GridBody = styled(Table.Body)`
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+`
 
 export const GridRow = styled(Table.Row)`
   min-height: 24px;

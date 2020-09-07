@@ -295,6 +295,7 @@ export function Grid<D extends object>(props: GridProps<D>) {
     visibleColumns,
     selectedFlatRows,
     state,
+    rows,
     page,
     canPreviousPage,
     canNextPage,
@@ -483,15 +484,19 @@ export function Grid<D extends object>(props: GridProps<D>) {
    * @param row
    */
   const getNewSelectedItems = (row: Row<D>) => {
-    const currentSelectedIndex = row.index
-    const lastSelectedIndex = lastSelectedItem?.index
+    const currentSelectedIndex = rows.indexOf(row)
+    const lastSelectedIndex = lastSelectedItem
+      ? rows.indexOf(lastSelectedItem)
+      : undefined
     if (lastSelectedIndex !== undefined) {
-      return page
+      return rows
         .slice(
           Math.min(lastSelectedIndex, currentSelectedIndex),
           Math.max(lastSelectedIndex, currentSelectedIndex) + 1,
         )
-        .map((item) => item.id)
+        .map((item) => {
+          return item.id
+        })
     } else {
       return [row.id]
     }
