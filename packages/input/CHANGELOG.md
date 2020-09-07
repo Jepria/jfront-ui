@@ -1,5 +1,37 @@
 # Change Log
 
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+# [0.3.0](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-input@0.2.0...@jfront/ui-input@0.3.0) (2020-09-04)
+
+
+### Bug Fixes
+
+* export fixes ([43c99bf](https://github.com/Jepria/jfront-ui/commit/43c99bf57138d37522e2791ec7c1d7f10926ba00))
+* loading, exclamation icons styles moved to icons module ([843ac20](https://github.com/Jepria/jfront-ui/commit/843ac20c8ac3194e87916938c8586af10a08ca97))
+* removed images ([2635731](https://github.com/Jepria/jfront-ui/commit/2635731ee759dd7716feabacdbabc24b88e49eb2))
+
+
+### Features
+
+* add new implementation CheckBox and CheckBoxGroup ([e90c8e0](https://github.com/Jepria/jfront-ui/commit/e90c8e09f5e3a3e6e4c3cb3780893ae871ce8aa5))
+* input stories ([7a623bf](https://github.com/Jepria/jfront-ui/commit/7a623bfcd48a8f6f8e22054641139ea3cafdf2f5))
+
+
+
+
+
+## 0.2.1-rc.0 (2020-09-04)
+
+**Note:** Version bump only for package @jfront/ui-input
+
+
+
+
+
+# Change Log
+
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 

@@ -12,7 +12,8 @@
       "allowBranch": "master"
     },
     "version": {
-      "ignoreChanges": ["**/stories/**", "**/tests/**"]
+      "ignoreChanges": ["**/stories/**", "**/tests/**"],
+      "allowBranch": ["master", "develop", "release/*"]
     }
   }
 }

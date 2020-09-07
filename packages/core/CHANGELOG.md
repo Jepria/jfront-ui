@@ -1,5 +1,32 @@
 # Change Log
 
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+# [0.3.0](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-core@0.2.0...@jfront/ui-core@0.3.0) (2020-09-04)
+
+
+### Features
+
+* add new implementation CheckBox and CheckBoxGroup ([e90c8e0](https://github.com/Jepria/jfront-ui/commit/e90c8e09f5e3a3e6e4c3cb3780893ae871ce8aa5))
+* combobox implementation ([3b3007c](https://github.com/Jepria/jfront-ui/commit/3b3007c19452253c27b318e0cec231230d4457ea))
+* data grid based on react-table ([122cc41](https://github.com/Jepria/jfront-ui/commit/122cc41ac883337a140fdc745893ab00cb0cd37a))
+* icons added to core ([5096966](https://github.com/Jepria/jfront-ui/commit/5096966eedd0bc721a4ba83cce486b07f6c3cd52))
+
+
+
+
+
+## 0.2.1-rc.0 (2020-09-04)
+
+**Note:** Version bump only for package @jfront/ui-core
+
+
+
+
+
+# Change Log
+
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
