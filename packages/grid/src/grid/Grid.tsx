@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useMemo } from "react"
 import {
   Grid as StyledGrid,
   GridTable,
@@ -339,6 +339,7 @@ export function Grid<D extends object>(props: GridProps<D>) {
   const {
     pageIndex,
     pageSize,
+    selectedRowIds,
     sortBy,
     columnResizing,
     hiddenColumns,
@@ -463,7 +464,8 @@ export function Grid<D extends object>(props: GridProps<D>) {
     if (onSelection) {
       onSelection(selectedFlatRows.map((selectedRow) => selectedRow.original))
     }
-  }, [onSelection, selectedFlatRows])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [onSelection, selectedRowIds])
 
   const onPagination = (pageIndex: number, pageSize: number) => {
     if (onPaging) {
@@ -540,15 +542,6 @@ export function Grid<D extends object>(props: GridProps<D>) {
    */
   const selectRow = (e: React.MouseEvent, row: Row<D>) => {
     const selectableRow = (row as unknown) as UseRowSelectRowProps<D>
-    if (e.detail % 2 == 0) {
-      if (onDoubleClick) {
-        onDoubleClick(row.original, e)
-      }
-    } else {
-      if (onClick) {
-        onClick(row.original, e)
-      }
-    }
     if (e.shiftKey) {
       onShiftClick(row)
       document.getSelection()?.removeAllRanges()
@@ -563,6 +556,15 @@ export function Grid<D extends object>(props: GridProps<D>) {
     } else {
       if (!selectableRow.isSelected) setLastSelectedItem(row)
       selectableRow.toggleRowSelected()
+      if (e.detail % 2 == 0) {
+        if (onDoubleClick) {
+          onDoubleClick(row.original, e)
+        }
+      } else {
+        if (onClick) {
+          onClick(row.original, e)
+        }
+      }
     }
   }
 
