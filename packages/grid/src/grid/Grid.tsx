@@ -96,6 +96,7 @@ function ColumnConfigPanel<D extends object>(props: ColumnConfigPanelProps<D>) {
         }}
       >
         <CheckBoxGroup
+          values={[]}
           style={{
             fontFamily: "Arial Unicode MS, Arial, sans-serif",
             fontSize: "small",

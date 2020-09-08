@@ -1,6 +1,7 @@
 import * as React from "react"
 import { CheckBoxGroup } from "../src"
 import { CheckBox } from "@jfront/ui-checkbox"
+import { useState, useEffect } from "react"
 
 export default {
   title: "CheckBoxGroup",
@@ -8,23 +9,24 @@ export default {
 }
 
 export const BasicUsage = () => {
-  const onChange = () => {
-    console.log("onChange()")
-  }
+  const [values, setValues] = useState<string[]>()
 
   return (
-    <>
+    <div>
       <CheckBoxGroup
         name="name"
         text="Group"
         isLoading={false}
         disabled={false}
-        value={["asd", "as2"]}
+        values={values ? values : []}
+        onChange={(name, _values) => {
+          setValues(_values)
+        }}
       >
-        <CheckBox label="label1" value="value" />
-        {/*<CheckBox label="label2" value="value"/>*/}
+        <CheckBox label="label1" value="value1" />
+        <CheckBox label="label2" value="value2" />
       </CheckBoxGroup>
-    </>
+    </div>
   )
 }
 
@@ -39,7 +41,7 @@ export const Disabled = () => {
         name="name"
         text="Group"
         isLoading={false}
-        value={["asd", "as2"]}
+        values={["asd", "as2"]}
       >
         <CheckBox disabled={true} label="label1" value="value" />
         <CheckBox label="label2" value="value" />
@@ -50,7 +52,7 @@ export const Disabled = () => {
         text="DisabledGroup"
         isLoading={false}
         disabled={true}
-        value={["asd", "as2"]}
+        values={["asd", "as2"]}
       >
         <CheckBox label="label1" value="value" />
         <CheckBox label="label2" value="value" />
@@ -71,7 +73,7 @@ export const Loading = () => {
         name="name"
         text="Group"
         disabled={false}
-        value={["asd", "as2"]}
+        values={["asd", "as2"]}
         isLoading
       >
         <CheckBox label="label1" value="value" />
@@ -92,7 +94,7 @@ export const Error = () => {
         name="name"
         text="Group"
         disabled={false}
-        value={["asd", "as2"]}
+        values={["asd", "as2"]}
         error="Wrong value"
       >
         <CheckBox label="label1" value="value" />
