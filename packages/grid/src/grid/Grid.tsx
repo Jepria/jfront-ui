@@ -488,7 +488,7 @@ export function Grid<D extends object>(props: GridProps<D>) {
   const getNewSelectedItems = (row: Row<D>) => {
     const currentSelectedIndex = rows.indexOf(row)
     const lastSelectedIndex = lastSelectedItem
-      ? rows.indexOf(lastSelectedItem)
+      ? rows.findIndex((row) => row.original === lastSelectedItem.original)
       : undefined
     if (lastSelectedIndex !== undefined) {
       return rows
