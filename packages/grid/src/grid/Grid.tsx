@@ -22,7 +22,6 @@ import {
   Center,
   Right,
 } from "../styles"
-import { CheckBoxGroup } from "@jfront/ui-checkbox-group"
 import { CheckBox } from "@jfront/ui-checkbox"
 import {
   FirstImage,
@@ -95,7 +94,7 @@ function ColumnConfigPanel<D extends object>(props: ColumnConfigPanelProps<D>) {
           ...place,
         }}
       >
-        <CheckBoxGroup
+        <div
           style={{
             fontFamily: "Arial Unicode MS, Arial, sans-serif",
             fontSize: "small",
@@ -107,14 +106,16 @@ function ColumnConfigPanel<D extends object>(props: ColumnConfigPanelProps<D>) {
           }}
         >
           <CheckBox key="selectAll" {...toggleAllProps()} label="Выбрать все" />
-          {columns.map((column) => (
-            <CheckBox
-              key={column.id}
-              {...column.getToggleHiddenProps()}
-              label={column.Header}
-            />
-          ))}
-        </CheckBoxGroup>
+          {columns.map((column) => {
+            return (
+              <CheckBox
+                key={column.id}
+                {...column.getToggleHiddenProps()}
+                label={column.Header}
+              />
+            )
+          })}
+        </div>
         <div
           style={{
             display: "flex",
@@ -469,7 +470,7 @@ export function Grid<D extends object>(props: GridProps<D>) {
 
   const onPagination = (pageIndex: number, pageSize: number) => {
     if (onPaging) {
-      onPaging(pageIndex, pageSize)
+      onPaging(pageIndex + 1, pageSize)
     }
   }
 
@@ -705,7 +706,7 @@ export function Grid<D extends object>(props: GridProps<D>) {
             <Item
               id={id ? `${id}_pagingbar_refresh` : undefined}
               onClick={() => {
-                if (pageSize === 0) {
+                if (pageIndex === 0) {
                   onPagination(pageIndex, pageSize)
                 } else {
                   gotoPage(0)
