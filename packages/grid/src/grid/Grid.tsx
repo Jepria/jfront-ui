@@ -56,6 +56,7 @@ import {
   Cell,
   TableCommonProps,
 } from "react-table"
+import { debounce } from "debounce"
 
 interface ColumnConfigPanelProps<D extends object> {
   id?: string
@@ -227,6 +228,10 @@ export function Grid<D extends object>(props: GridProps<D>) {
     [],
   )
 
+  const memoizedData = React.useMemo(() => data, [data])
+
+  const memoizedColumns = React.useMemo(() => columns, [columns])
+
   /**
    * Restoring saved hidden columns array from Local Storage
    */
@@ -274,19 +279,16 @@ export function Grid<D extends object>(props: GridProps<D>) {
     })
   }
 
-  const [columnConfiguration, setColumnConfiguration] = useState(columns)
+  const [columnConfiguration, setColumnConfiguration] = useState(
+    memoizedColumns,
+  )
   const [hiddenColumnConfiguration, setHiddenColumnConfiguration] = useState([])
 
   useEffect(() => {
-    setColumnConfiguration(restoreColumnWidth(columns))
+    setColumnConfiguration(restoreColumnWidth(memoizedColumns))
     setHiddenColumnConfiguration(restoreHiddenColumns())
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [columns])
-
-  useEffect(() => {
-    setHiddenColumns(hiddenColumnConfiguration)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [hiddenColumnConfiguration])
+  }, [memoizedColumns])
 
   const [_pageCount, setPageCount] = useState(totalPageCount)
 
@@ -315,7 +317,7 @@ export function Grid<D extends object>(props: GridProps<D>) {
   } = useTable<D>(
     {
       columns: columnConfiguration,
-      data: data,
+      data: memoizedData,
       defaultColumn,
       disableSortBy: disableSort,
       manualSortBy: onSort ? true : false,
@@ -359,53 +361,53 @@ export function Grid<D extends object>(props: GridProps<D>) {
   /**
    * Saving resized column widths, only if something was manually resized
    */
+  const saveResizedColumnConfig = debounce(() => {
+    if (
+      columnResizing.columnWidths &&
+      Object.keys(columnResizing.columnWidths).length > 0
+    ) {
+      const savedString = window.localStorage.getItem(`${id}_grid_column_width`)
+      if (savedString) {
+        const columnWidth: Record<string, number> = JSON.parse(savedString)
+        window.localStorage.setItem(
+          `${id}_grid_column_width`,
+          JSON.stringify({
+            ...columnWidth,
+            ...columnResizing.columnWidths,
+          }),
+        )
+      } else {
+        window.localStorage.setItem(
+          `${id}_grid_column_width`,
+          JSON.stringify(columnResizing.columnWidths),
+        )
+      }
+    }
+  }, 1000)
+
   useEffect(() => {
     if (id) {
-      const saveConfig = async () => {
-        if (
-          columnResizing.columnWidths &&
-          Object.keys(columnResizing.columnWidths).length > 0
-        ) {
-          const savedString = window.localStorage.getItem(
-            `${id}_grid_column_width`,
-          )
-          if (savedString) {
-            const columnWidth: Record<string, number> = JSON.parse(savedString)
-            window.localStorage.setItem(
-              `${id}_grid_column_width`,
-              JSON.stringify({
-                ...columnWidth,
-                ...columnResizing.columnWidths,
-              }),
-            )
-          } else {
-            window.localStorage.setItem(
-              `${id}_grid_column_width`,
-              JSON.stringify(columnResizing.columnWidths),
-            )
-          }
-        }
-      }
-      saveConfig()
+      saveResizedColumnConfig()
     }
-  }, [columnResizing, id])
+  }, [columnResizing, id, saveResizedColumnConfig])
 
   /**
    * Saving hidden columns names, if present
    */
+  const saveHiddenColumnConfig = debounce(() => {
+    if (hiddenColumns) {
+      window.localStorage.setItem(
+        `${id}_grid_hidden_columns`,
+        JSON.stringify(hiddenColumns),
+      )
+    }
+  }, 1000)
+
   useEffect(() => {
     if (id) {
-      const saveConfig = async () => {
-        if (hiddenColumns) {
-          window.localStorage.setItem(
-            `${id}_grid_hidden_columns`,
-            JSON.stringify(hiddenColumns),
-          )
-        }
-      }
-      saveConfig()
+      saveHiddenColumnConfig()
     }
-  }, [hiddenColumns, id])
+  }, [hiddenColumns, id, saveHiddenColumnConfig])
 
   const [isColumnConfigVisible, setColumnConfigVisible] = useState(false)
   const [place, setPlace] = useState<React.CSSProperties>({})
