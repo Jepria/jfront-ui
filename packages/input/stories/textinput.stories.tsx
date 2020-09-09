@@ -1,5 +1,6 @@
 import * as React from "react"
 import { TextInput } from "../src/TextInput"
+import { Label } from "@jfront/ui-label"
 
 export default {
   title: "TextInput",
@@ -32,6 +33,17 @@ export const Error = () => {
   return (
     <>
       <TextInput name="InputTextNameLoading" error="wrong value" />
+    </>
+  )
+}
+
+export const ExternalLabel = () => {
+  return (
+    <>
+      <div style={{ display: "inline-block" }}>
+        <Label>Text label</Label>
+        <TextInput name="InputTextName" />
+      </div>
     </>
   )
 }

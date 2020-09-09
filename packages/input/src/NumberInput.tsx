@@ -14,7 +14,7 @@ export interface NumberInputProps
 export const NumberInput = React.forwardRef<HTMLInputElement, NumberInputProps>(
   (props, ref) => {
     return (
-      <div>
+      <div style={{ display: props.label ? "block" : "inline-block" }}>
         {props.label !== undefined && (
           <Label htmlFor={props.id}>{props.label}:&nbsp;</Label>
         )}
