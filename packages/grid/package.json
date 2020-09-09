@@ -23,7 +23,6 @@
   },
   "dependencies": {
     "@jfront/ui-checkbox": "^0.3.0",
-    "@jfront/ui-checkbox-group": "^0.3.0",
     "@jfront/ui-icons": "^0.1.0",
     "@jfront/ui-table": "^0.1.0",
     "react-table": "^7.5.0"

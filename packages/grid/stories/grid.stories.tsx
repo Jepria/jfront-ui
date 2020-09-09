@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import { Grid, ColumnSortConfiguration } from "../src"
 import namor from "namor"
 
@@ -42,6 +42,8 @@ const makeData = (length: number) => {
 const data: Array<Data> = makeData(100)
 
 export const BasicUsage = () => {
+  const [rows, setRows] = useState([])
+  console.log(rows)
   return (
     <Grid<Data>
       id="basic"
@@ -91,6 +93,7 @@ export const BasicUsage = () => {
           ],
         },
       ]}
+      onSelection={setRows}
       data={data}
     />
   )
