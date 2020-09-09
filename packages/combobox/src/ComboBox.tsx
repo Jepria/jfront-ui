@@ -204,15 +204,18 @@ export interface ComboBoxItemProps {
 }
 
 export const ComboBoxItem = React.forwardRef<HTMLDivElement, ComboBoxItemProps>(
-  ({ id, disabled, value, label, children, onClick, selected }, ref) => {
+  (
+    { id, disabled, value, label, children, onClick, selected, ...rest },
+    ref,
+  ) => {
     return (
       <Item
         id={id}
-        onClick={onClick}
+        onClick={disabled ? onClick : () => {}}
         ref={ref}
-        key={value}
         disabled={disabled}
         selected={selected}
+        {...rest}
       >
         {React.Children.count(children) > 0 ? children : label}
       </Item>
@@ -238,6 +241,7 @@ export interface ComboBoxProps {
   variant?: string
   isLoading?: boolean
   error?: string
+  initialValue?: any
   getOptionName?: (option: any) => string
   getOptionValue?: (option: any) => any
   renderItem?: (props: ComboBoxItemProps) => React.ReactNode
@@ -260,6 +264,7 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
       style,
       options,
       variant = "standard",
+      initialValue,
       getOptionName,
       getOptionValue,
       renderItem,
@@ -277,7 +282,7 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
     }
 
     const [isOpen, setIsOpen] = useState(false)
-    const [value, setValue] = useState<string | undefined>()
+    const [value, setValue] = useState<string | undefined>(initialValue)
     const [focused, setFocused] = useState(false)
     const [text, setText] = useState("")
     const outerDivRef = useRef<HTMLDivElement>(null)
@@ -355,6 +360,29 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isOpen, value])
 
+    useEffect(() => {
+      if (initialValue) {
+        if (options) {
+          const option = options.find((option) => {
+            return getOptionValue
+              ? getOptionValue(option) === initialValue
+              : option.value === initialValue
+          })
+          if (option) {
+            setText(getOptionName ? getOptionName(option) : option.name)
+          }
+        } else if (children && React.Children.count(children) > 0) {
+          const child = children.find((child) => {
+            return (child as any)?.props.value === initialValue
+          })
+          if (child) {
+            setText((child as any)?.props.label)
+          }
+        }
+      }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
     const getPopupTop = () => {
       const rect = outerDivRef.current?.getBoundingClientRect()
       const screenHeight = document.body.clientHeight
@@ -410,7 +438,6 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
         ) {
           return React.cloneElement(item, {
             id: `${id}_${itemValue}`,
-            key: itemValue,
             disabled: item.props.disabled || disabled,
             value: itemValue,
             selected: value === itemValue,
@@ -429,7 +456,7 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
         const itemLabel = getOptionName ? getOptionName(option) : option.name
         const itemProps = {
           id: `${id}_${itemValue}`,
-          key: itemValue,
+          // key: itemValue,
           label: itemLabel,
           value: itemValue,
           selected: value === itemValue,
