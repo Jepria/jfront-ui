@@ -25,13 +25,15 @@
     "@jfront/ui-checkbox": "^0.3.0",
     "@jfront/ui-icons": "^0.1.0",
     "@jfront/ui-table": "^0.1.0",
-    "react-table": "^7.5.0"
+    "react-table": "^7.5.0",
+    "throttle-debounce": "^2.1.0"
   },
   "peerDependencies": {
     "react": "16.x",
     "react-dom": "16.x"
   },
   "devDependencies": {
+    "@types/throttle-debounce": "^2.1.0",
     "@types/react-table": "^7.0.22",
     "@types/styled-components": "^5.0.1",
     "namor": "2.0.2"

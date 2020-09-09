@@ -42,7 +42,6 @@ export const GridRow = styled(Table.Row)`
   @media only screen and (max-width: 760px),
     (min-device-width: 768px) and (max-device-width: 1024px) {
     flex-direction: column;
-    margin-bottom: 0.625em;
   }
   ${(props) =>
     props.selected

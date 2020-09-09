@@ -115,7 +115,7 @@ export const ExternalPagingAndSort = () => {
     setTimeout(() => {
       // Only update the data if this is the latest fetch
       if (fetchId === fetchIdRef.current) {
-        const startRow = pageSize * pageIndex
+        const startRow = pageSize * (pageIndex - 1)
         const endRow = startRow + pageSize
         setForgedData(sortableData.slice(startRow, endRow))
         setLoading(false)

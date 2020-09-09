@@ -150,7 +150,7 @@ export const TableBody: React.FC<React.DetailedHTMLProps<
           : undefined,
       )
     }
-  })
+  }, [scrollHeight, scrollWidth])
 
   return (
     <React.Fragment>
