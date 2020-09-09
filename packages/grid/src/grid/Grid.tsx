@@ -219,7 +219,7 @@ export function Grid<D extends object>(props: GridProps<D>) {
     onPaging,
   } = props
 
-  const defaultColumn = React.useMemo(
+  const defaultColumn = useMemo(
     () => ({
       minWidth: 30,
       width: 150,
@@ -228,9 +228,9 @@ export function Grid<D extends object>(props: GridProps<D>) {
     [],
   )
 
-  const memoizedData = React.useMemo(() => data, [data])
+  const memoizedData = useMemo(() => data, [data])
 
-  const memoizedColumns = React.useMemo(() => columns, [columns])
+  const memoizedColumns = useMemo(() => columns, [columns])
 
   /**
    * Restoring saved hidden columns array from Local Storage
