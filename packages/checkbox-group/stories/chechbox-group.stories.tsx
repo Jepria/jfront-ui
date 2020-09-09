@@ -37,26 +37,20 @@ export const Disabled = () => {
 
   return (
     <>
-      <CheckBoxGroup
-        name="name"
-        text="Group"
-        isLoading={false}
-        values={["asd", "as2"]}
-      >
-        <CheckBox disabled={true} label="label1" value="value" />
-        <CheckBox label="label2" value="value" />
-        <CheckBox label="label3" value="value" />
+      <CheckBoxGroup name="name" text="Group" isLoading={false}>
+        <CheckBox disabled={true} label="label1" value="value1" />
+        <CheckBox label="label2" value="value2" />
+        <CheckBox label="label3" value="value3" />
       </CheckBoxGroup>
       <CheckBoxGroup
         name="name2"
         text="DisabledGroup"
         isLoading={false}
         disabled={true}
-        values={["asd", "as2"]}
       >
-        <CheckBox label="label1" value="value" />
-        <CheckBox label="label2" value="value" />
-        <CheckBox label="label3" value="value" />
+        <CheckBox label="label1" value="value1" />
+        <CheckBox label="label2" value="value2" />
+        <CheckBox label="label3" value="value3" />
       </CheckBoxGroup>
     </>
   )
@@ -69,15 +63,9 @@ export const Loading = () => {
 
   return (
     <>
-      <CheckBoxGroup
-        name="name"
-        text="Group"
-        disabled={false}
-        values={["asd", "as2"]}
-        isLoading
-      >
-        <CheckBox label="label1" value="value" />
-        <CheckBox label="label2" value="value" />
+      <CheckBoxGroup name="name" text="Group" disabled={false} isLoading>
+        <CheckBox label="label1" value="value1" />
+        <CheckBox label="label2" value="value2" />
       </CheckBoxGroup>
     </>
   )
@@ -94,11 +82,10 @@ export const Error = () => {
         name="name"
         text="Group"
         disabled={false}
-        values={["asd", "as2"]}
         error="Wrong value"
       >
-        <CheckBox label="label1" value="value" />
-        <CheckBox label="label2" value="value" />
+        <CheckBox label="label1" value="value1" />
+        <CheckBox label="label2" value="value2" />
       </CheckBoxGroup>
     </>
   )

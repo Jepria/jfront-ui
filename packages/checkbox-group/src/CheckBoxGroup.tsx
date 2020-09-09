@@ -9,7 +9,10 @@ import {
 interface CheckBoxGroupInterface {
   children: ReactNode[]
   name?: string
-  values: any[]
+  /**
+   * use values to external state control
+   */
+  values?: any[]
   text?: string
   error?: string
   disabled?: boolean
@@ -72,22 +75,26 @@ export const CheckBoxGroup = React.forwardRef<
     },
     ref,
   ) => {
+    const [state, setState] = useState<any[]>([])
+
     const handleCheckboxChange = (
       _value: React.ReactText,
       event: React.ChangeEvent<any> | undefined,
     ) => {
-      const changedValueIndex = values.findIndex(
+      const newValue = values ? values.slice() : state.slice()
+
+      const changedValueIndex = newValue.findIndex(
         (stateValue) => stateValue === _value,
       )
-
-      const newValue: any[] = []
-      Object.assign(newValue, values)
 
       if (event && event.target.checked) {
         newValue.push(_value)
       } else {
         newValue.splice(changedValueIndex, 1)
       }
+
+      setState(newValue)
+
       if (onChange) {
         onChange(name, newValue, event)
       }
@@ -102,7 +109,7 @@ export const CheckBoxGroup = React.forwardRef<
               return null
             }
 
-            const isFound = values.find(
+            const isFound = state.find(
               (stateValue) => stateValue === checkbox.props.value,
             )
 
