@@ -9,7 +9,10 @@ import {
 interface CheckBoxGroupInterface {
   children: ReactNode[]
   name?: string
-  value?: any[]
+  /**
+   * use values to external state control
+   */
+  values?: any[]
   text?: string
   error?: string
   disabled?: boolean
@@ -61,7 +64,7 @@ export const CheckBoxGroup = React.forwardRef<
     {
       children,
       name,
-      value,
+      values,
       text,
       disabled,
       isLoading,
@@ -78,7 +81,8 @@ export const CheckBoxGroup = React.forwardRef<
       _value: React.ReactText,
       event: React.ChangeEvent<any> | undefined,
     ) => {
-      const newValue = value ? value.slice() : state.slice()
+      const newValue = values ? values.slice() : state.slice()
+
       const changedValueIndex = newValue.findIndex(
         (stateValue) => stateValue === _value,
       )
@@ -100,14 +104,20 @@ export const CheckBoxGroup = React.forwardRef<
       <StyledCheckBoxGroup>
         {text && <Label>{text}</Label>}
         <StyledUl style={style} className={className} ref={ref} error={error}>
-          {React.Children.map(children, (checkbox, index) => {
+          {React.Children.map(children, (checkbox) => {
             if (!React.isValidElement(checkbox)) {
               return null
             }
 
+            const isFound = state.find(
+              (stateValue) => stateValue === checkbox.props.value,
+            )
+
+            const checked = undefined !== isFound
+
             return React.cloneElement(checkbox, {
               disabled: checkbox.props.disabled || disabled,
-              value: value ? value[index] : undefined,
+              checked: checked,
               onChange:
                 checkbox.props.onChange === undefined
                   ? (event: any, _text: any) =>
