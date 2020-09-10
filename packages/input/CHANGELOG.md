@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.1](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-input@0.3.0...@jfront/ui-input@0.3.1) (2020-09-10)
+
+
+### Bug Fixes
+
+* default inputs display style "inline-block" ([96d1901](https://github.com/Jepria/jfront-ui/commit/96d19017c8daef8f6ba3f2bc4703979488ed5dfa))
+* react-input-mask version ([050ae31](https://github.com/Jepria/jfront-ui/commit/050ae31a11563d86533848cdd59f6cdfb0f159fd))
+
+
+
+
+
 # [0.3.0](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-input@0.2.0...@jfront/ui-input@0.3.0) (2020-09-04)
 
 

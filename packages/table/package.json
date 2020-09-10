@@ -1,6 +1,6 @@
 {
   "name": "@jfront/ui-table",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "license": "Apache-2.0",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -22,7 +22,7 @@
     "test:cov": "yarn test --coverage"
   },
   "dependencies": {
-    "@jfront/ui-pagingbar": "^0.1.1"
+    "@jfront/ui-pagingbar": "^0.1.2"
   },
   "peerDependencies": {
     "react": "16.x",

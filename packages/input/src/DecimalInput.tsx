@@ -32,7 +32,7 @@ export const DecimalInput = React.forwardRef<
   const { thousandSeparator = true, decimalSeparator = "." } = props
 
   return (
-    <div>
+    <div style={{ display: props.label ? "block" : "inline-block" }}>
       {props.label !== undefined && (
         <Label htmlFor={props.id}>{props.label}:&nbsp;</Label>
       )}

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useMemo } from "react"
 import {
   Grid as StyledGrid,
   GridTable,
@@ -22,7 +22,6 @@ import {
   Center,
   Right,
 } from "../styles"
-import { CheckBoxGroup } from "@jfront/ui-checkbox-group"
 import { CheckBox } from "@jfront/ui-checkbox"
 import {
   FirstImage,
@@ -57,6 +56,7 @@ import {
   Cell,
   TableCommonProps,
 } from "react-table"
+import { throttle } from "throttle-debounce"
 
 interface ColumnConfigPanelProps<D extends object> {
   id?: string
@@ -95,7 +95,7 @@ function ColumnConfigPanel<D extends object>(props: ColumnConfigPanelProps<D>) {
           ...place,
         }}
       >
-        <CheckBoxGroup
+        <div
           style={{
             fontFamily: "Arial Unicode MS, Arial, sans-serif",
             fontSize: "small",
@@ -107,14 +107,16 @@ function ColumnConfigPanel<D extends object>(props: ColumnConfigPanelProps<D>) {
           }}
         >
           <CheckBox key="selectAll" {...toggleAllProps()} label="Выбрать все" />
-          {columns.map((column) => (
-            <CheckBox
-              key={column.id}
-              {...column.getToggleHiddenProps()}
-              label={column.Header}
-            />
-          ))}
-        </CheckBoxGroup>
+          {columns.map((column) => {
+            return (
+              <CheckBox
+                key={column.id}
+                {...column.getToggleHiddenProps()}
+                label={column.Header}
+              />
+            )
+          })}
+        </div>
         <div
           style={{
             display: "flex",
@@ -139,7 +141,7 @@ export interface GridProps<D extends object>
   id?: string
   //column configuration
   columns: Array<Column<D>>
-  data?: D[]
+  data: D[]
   isLoading?: boolean
   children?: never
   className?: string
@@ -195,7 +197,7 @@ export function Grid<D extends object>(props: GridProps<D>) {
   const {
     id,
     columns,
-    data = [],
+    data,
     ref,
     className,
     style,
@@ -217,7 +219,7 @@ export function Grid<D extends object>(props: GridProps<D>) {
     onPaging,
   } = props
 
-  const defaultColumn = React.useMemo(
+  const defaultColumn = useMemo(
     () => ({
       minWidth: 30,
       width: 150,
@@ -280,7 +282,7 @@ export function Grid<D extends object>(props: GridProps<D>) {
     setColumnConfiguration(restoreColumnWidth(columns))
     setHiddenColumnConfiguration(restoreHiddenColumns())
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [columns])
+  }, [])
 
   useEffect(() => {
     setHiddenColumns(hiddenColumnConfiguration)
@@ -295,6 +297,7 @@ export function Grid<D extends object>(props: GridProps<D>) {
     visibleColumns,
     selectedFlatRows,
     state,
+    rows,
     page,
     canPreviousPage,
     canNextPage,
@@ -338,6 +341,7 @@ export function Grid<D extends object>(props: GridProps<D>) {
   const {
     pageIndex,
     pageSize,
+    selectedRowIds,
     sortBy,
     columnResizing,
     hiddenColumns,
@@ -356,53 +360,53 @@ export function Grid<D extends object>(props: GridProps<D>) {
   /**
    * Saving resized column widths, only if something was manually resized
    */
+  const saveResizedColumnConfig = throttle(1000, () => {
+    if (
+      columnResizing.columnWidths &&
+      Object.keys(columnResizing.columnWidths).length > 0
+    ) {
+      const savedString = window.localStorage.getItem(`${id}_grid_column_width`)
+      if (savedString) {
+        const columnWidth: Record<string, number> = JSON.parse(savedString)
+        window.localStorage.setItem(
+          `${id}_grid_column_width`,
+          JSON.stringify({
+            ...columnWidth,
+            ...columnResizing.columnWidths,
+          }),
+        )
+      } else {
+        window.localStorage.setItem(
+          `${id}_grid_column_width`,
+          JSON.stringify(columnResizing.columnWidths),
+        )
+      }
+    }
+  })
+
   useEffect(() => {
     if (id) {
-      const saveConfig = async () => {
-        if (
-          columnResizing.columnWidths &&
-          Object.keys(columnResizing.columnWidths).length > 0
-        ) {
-          const savedString = window.localStorage.getItem(
-            `${id}_grid_column_width`,
-          )
-          if (savedString) {
-            const columnWidth: Record<string, number> = JSON.parse(savedString)
-            window.localStorage.setItem(
-              `${id}_grid_column_width`,
-              JSON.stringify({
-                ...columnWidth,
-                ...columnResizing.columnWidths,
-              }),
-            )
-          } else {
-            window.localStorage.setItem(
-              `${id}_grid_column_width`,
-              JSON.stringify(columnResizing.columnWidths),
-            )
-          }
-        }
-      }
-      saveConfig()
+      saveResizedColumnConfig()
     }
-  }, [columnResizing, id])
+  }, [columnResizing, id, saveResizedColumnConfig])
 
   /**
    * Saving hidden columns names, if present
    */
+  const saveHiddenColumnConfig = throttle(1000, () => {
+    if (hiddenColumns) {
+      window.localStorage.setItem(
+        `${id}_grid_hidden_columns`,
+        JSON.stringify(hiddenColumns),
+      )
+    }
+  })
+
   useEffect(() => {
     if (id) {
-      const saveConfig = async () => {
-        if (hiddenColumns) {
-          window.localStorage.setItem(
-            `${id}_grid_hidden_columns`,
-            JSON.stringify(hiddenColumns),
-          )
-        }
-      }
-      saveConfig()
+      saveHiddenColumnConfig()
     }
-  }, [hiddenColumns, id])
+  }, [hiddenColumns, id, saveHiddenColumnConfig])
 
   const [isColumnConfigVisible, setColumnConfigVisible] = useState(false)
   const [place, setPlace] = useState<React.CSSProperties>({})
@@ -462,11 +466,12 @@ export function Grid<D extends object>(props: GridProps<D>) {
     if (onSelection) {
       onSelection(selectedFlatRows.map((selectedRow) => selectedRow.original))
     }
-  }, [onSelection, selectedFlatRows])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [onSelection, selectedRowIds])
 
   const onPagination = (pageIndex: number, pageSize: number) => {
     if (onPaging) {
-      onPaging(pageIndex, pageSize)
+      onPaging(pageIndex + 1, pageSize)
     }
   }
 
@@ -483,15 +488,19 @@ export function Grid<D extends object>(props: GridProps<D>) {
    * @param row
    */
   const getNewSelectedItems = (row: Row<D>) => {
-    const currentSelectedIndex = row.index
-    const lastSelectedIndex = lastSelectedItem?.index
+    const currentSelectedIndex = rows.indexOf(row)
+    const lastSelectedIndex = lastSelectedItem
+      ? rows.findIndex((row) => row.original === lastSelectedItem.original)
+      : undefined
     if (lastSelectedIndex !== undefined) {
-      return page
+      return rows
         .slice(
           Math.min(lastSelectedIndex, currentSelectedIndex),
           Math.max(lastSelectedIndex, currentSelectedIndex) + 1,
         )
-        .map((item) => item.id)
+        .map((item) => {
+          return item.id
+        })
     } else {
       return [row.id]
     }
@@ -535,15 +544,6 @@ export function Grid<D extends object>(props: GridProps<D>) {
    */
   const selectRow = (e: React.MouseEvent, row: Row<D>) => {
     const selectableRow = (row as unknown) as UseRowSelectRowProps<D>
-    if (e.detail % 2 == 0) {
-      if (onDoubleClick) {
-        onDoubleClick(row.original, e)
-      }
-    } else {
-      if (onClick) {
-        onClick(row.original, e)
-      }
-    }
     if (e.shiftKey) {
       onShiftClick(row)
       document.getSelection()?.removeAllRanges()
@@ -555,6 +555,15 @@ export function Grid<D extends object>(props: GridProps<D>) {
       })
       selectableRow.toggleRowSelected(true)
       setLastSelectedItem(row)
+      if (e.detail % 2 == 0) {
+        if (onDoubleClick) {
+          onDoubleClick(row.original, e)
+        }
+      } else {
+        if (onClick) {
+          onClick(row.original, e)
+        }
+      }
     } else {
       if (!selectableRow.isSelected) setLastSelectedItem(row)
       selectableRow.toggleRowSelected()
@@ -698,7 +707,7 @@ export function Grid<D extends object>(props: GridProps<D>) {
             <Item
               id={id ? `${id}_pagingbar_refresh` : undefined}
               onClick={() => {
-                if (pageSize === 0) {
+                if (pageIndex === 0) {
                   onPagination(pageIndex, pageSize)
                 } else {
                   gotoPage(0)

@@ -1,6 +1,6 @@
 {
   "name": "@jfront/ui-input",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "license": "Apache-2.0",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -22,10 +22,10 @@
     "test:cov": "yarn test --coverage"
   },
   "dependencies": {
-    "@jfront/ui-hooks": "^0.3.0",
-    "@jfront/ui-icons": "^0.1.0",
+    "@jfront/ui-hooks": "^0.3.1",
+    "@jfront/ui-icons": "^0.1.1",
     "@jfront/ui-label": "^0.1.0",
-    "react-input-mask": "3.0.0.alpha.2",
+    "react-input-mask": "3.0.0-alpha.2",
     "react-number-format": "4.4.1"
   },
   "peerDependencies": {

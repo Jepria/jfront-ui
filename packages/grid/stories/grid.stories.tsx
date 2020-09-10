@@ -1,4 +1,4 @@
-import React, { useMemo, useEffect } from "react"
+import React, { useState, useEffect } from "react"
 import { Grid, ColumnSortConfiguration } from "../src"
 import namor from "namor"
 
@@ -41,7 +41,12 @@ const makeData = (length: number) => {
 
 const data: Array<Data> = makeData(100)
 
+const empty = []
+
 export const BasicUsage = () => {
+  const [rows, setRows] = useState([])
+
+  console.log(rows)
   return (
     <Grid<Data>
       id="basic"
@@ -56,10 +61,12 @@ export const BasicUsage = () => {
             {
               Header: "First Name",
               accessor: "firstName",
+              width: 300,
             },
             {
               Header: "Last Name",
               accessor: "lastName",
+              width: 300,
             },
           ],
         },
@@ -69,24 +76,28 @@ export const BasicUsage = () => {
             {
               Header: "Age",
               accessor: "age",
+              width: 300,
             },
             {
               Header: "Visits",
               accessor: "visits",
+              width: 300,
             },
             {
               Header: "Status",
               accessor: "status",
+              width: 300,
             },
             {
               Header: "Profile Progress",
               accessor: "progress",
+              width: 300,
             },
           ],
         },
       ]}
-      data={data}
-      onSelection={console.log}
+      onSelection={setRows}
+      data={React.useMemo(() => [], [])}
     />
   )
 }
@@ -107,7 +118,7 @@ export const ExternalPagingAndSort = () => {
     setTimeout(() => {
       // Only update the data if this is the latest fetch
       if (fetchId === fetchIdRef.current) {
-        const startRow = pageSize * pageIndex
+        const startRow = pageSize * (pageIndex - 1)
         const endRow = startRow + pageSize
         setForgedData(sortableData.slice(startRow, endRow))
         setLoading(false)
@@ -218,7 +229,7 @@ export const ExternalPagingAndSort = () => {
       totalRowCount={data.length}
       onPaging={fetchData}
       onSort={sortData}
-      data={forgedData}
+      data={React.useMemo(() => forgedData, [forgedData])}
     />
   )
 }
@@ -267,7 +278,7 @@ export const ExternalDataDrivenStyle = () => {
           ],
         },
       ]}
-      data={data}
+      data={React.useMemo(() => data, [])}
       getRowProps={(row) => ({
         style: !row.isSelected
           ? row.original.status === "relationship"

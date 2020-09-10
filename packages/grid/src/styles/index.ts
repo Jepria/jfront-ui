@@ -36,13 +36,12 @@ export const GridHeaderCell = styled(Table.HeaderCell)`
 export const GridBody = styled(Table.Body)``
 
 export const GridRow = styled(Table.Row)`
+  box-sizing: border-box;
   min-height: 24px;
   border-bottom: 1px solid #ededed;
   @media only screen and (max-width: 760px),
     (min-device-width: 768px) and (max-device-width: 1024px) {
     flex-direction: column;
-    margin-bottom: 0.625em;
-    border-bottom: 1px solid #ddd;
   }
   ${(props) =>
     props.selected
