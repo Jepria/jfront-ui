@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.1](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-grid@0.2.0...@jfront/ui-grid@0.2.1) (2020-09-10)
+
+
+### Bug Fixes
+
+* checkbox list ([04eb6ae](https://github.com/Jepria/jfront-ui/commit/04eb6aefe11efb783eab745d0f14785a337548a0))
+* checkboxes ([c69f246](https://github.com/Jepria/jfront-ui/commit/c69f246d51390303c5f4d99a82a181720350e8c2))
+* column configuration save ([aa209b1](https://github.com/Jepria/jfront-ui/commit/aa209b18babaf11348d6610701c3639336befcd4))
+* debounce column saving ([573154a](https://github.com/Jepria/jfront-ui/commit/573154adca56c8377b6707c4283e4ade3d5564f5))
+* grid optimization ([6dab87d](https://github.com/Jepria/jfront-ui/commit/6dab87d08d25c5f8442ff8e38d99e3f9c89c17f4))
+* horizontal scrolling ([1ac3151](https://github.com/Jepria/jfront-ui/commit/1ac3151ffa410f926fa31e6addadf7a0efddfcee))
+* onSelection ([9f0decb](https://github.com/Jepria/jfront-ui/commit/9f0decb322640d9f061037a49a5d577b884da40e))
+* shift + click ([41e9d05](https://github.com/Jepria/jfront-ui/commit/41e9d05b881ded6f6869dab37f0b9a7b2c5fa127))
+* shift + click bug on re-render ([7dcb084](https://github.com/Jepria/jfront-ui/commit/7dcb08497f18d03185733ed4d8cf319e4dddafec))
+
+
+
+
+
 # [0.2.0](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-grid@0.1.1...@jfront/ui-grid@0.2.0) (2020-09-04)
 
 

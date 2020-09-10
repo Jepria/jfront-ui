@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-combobox@0.1.0...@jfront/ui-combobox@0.2.0) (2020-09-10)
+
+
+### Features
+
+* initial value ([cea9002](https://github.com/Jepria/jfront-ui/commit/cea9002115531ba7deb3179830aa904c52166bbd))
+
+
+
+
+
 # 0.1.0 (2020-09-04)
 
 

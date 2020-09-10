@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.1](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-checkbox-group@0.3.0...@jfront/ui-checkbox-group@0.3.1) (2020-09-10)
+
+
+### Bug Fixes
+
+* chechbox-group value -> values ([1351523](https://github.com/Jepria/jfront-ui/commit/13515237d538b2e175e37856613074e98c92ebf4))
+* checkbox-group add internal state ([f83d3a5](https://github.com/Jepria/jfront-ui/commit/f83d3a5e69c1a860d6125302d1126a7ebbcb4928))
+
+
+
+
+
 # [0.3.0](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-checkbox-group@0.2.0...@jfront/ui-checkbox-group@0.3.0) (2020-09-04)
 
 
