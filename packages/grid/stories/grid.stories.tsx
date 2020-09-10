@@ -41,8 +41,11 @@ const makeData = (length: number) => {
 
 const data: Array<Data> = makeData(100)
 
+const empty = []
+
 export const BasicUsage = () => {
   const [rows, setRows] = useState([])
+
   console.log(rows)
   return (
     <Grid<Data>
@@ -94,7 +97,7 @@ export const BasicUsage = () => {
         },
       ]}
       onSelection={setRows}
-      data={data}
+      data={React.useMemo(() => [], [])}
     />
   )
 }
@@ -226,7 +229,7 @@ export const ExternalPagingAndSort = () => {
       totalRowCount={data.length}
       onPaging={fetchData}
       onSort={sortData}
-      data={forgedData}
+      data={React.useMemo(() => forgedData, [forgedData])}
     />
   )
 }
@@ -275,7 +278,7 @@ export const ExternalDataDrivenStyle = () => {
           ],
         },
       ]}
-      data={data}
+      data={React.useMemo(() => data, [])}
       getRowProps={(row) => ({
         style: !row.isSelected
           ? row.original.status === "relationship"

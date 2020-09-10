@@ -141,7 +141,7 @@ export interface GridProps<D extends object>
   id?: string
   //column configuration
   columns: Array<Column<D>>
-  data?: D[]
+  data: D[]
   isLoading?: boolean
   children?: never
   className?: string
@@ -197,7 +197,7 @@ export function Grid<D extends object>(props: GridProps<D>) {
   const {
     id,
     columns,
-    data = [],
+    data,
     ref,
     className,
     style,
@@ -227,10 +227,6 @@ export function Grid<D extends object>(props: GridProps<D>) {
     }),
     [],
   )
-
-  const memoizedData = useMemo(() => data, [data])
-
-  const memoizedColumns = useMemo(() => columns, [columns])
 
   /**
    * Restoring saved hidden columns array from Local Storage
@@ -279,16 +275,14 @@ export function Grid<D extends object>(props: GridProps<D>) {
     })
   }
 
-  const [columnConfiguration, setColumnConfiguration] = useState(
-    memoizedColumns,
-  )
+  const [columnConfiguration, setColumnConfiguration] = useState(columns)
   const [hiddenColumnConfiguration, setHiddenColumnConfiguration] = useState([])
 
   useEffect(() => {
-    setColumnConfiguration(restoreColumnWidth(memoizedColumns))
+    setColumnConfiguration(restoreColumnWidth(columns))
     setHiddenColumnConfiguration(restoreHiddenColumns())
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [memoizedColumns])
+  }, [])
 
   useEffect(() => {
     setHiddenColumns(hiddenColumnConfiguration)
@@ -322,7 +316,7 @@ export function Grid<D extends object>(props: GridProps<D>) {
   } = useTable<D>(
     {
       columns: columnConfiguration,
-      data: memoizedData,
+      data: data,
       defaultColumn,
       disableSortBy: disableSort,
       manualSortBy: onSort ? true : false,
