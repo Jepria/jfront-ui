@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react"
 import styled from "styled-components"
 import nextId from "react-id-generator"
 import { OpenImage, LoadingImage, ExclamationImage } from "@jfront/ui-icons"
+import { Label } from "@jfront/ui-label"
 
 interface OuterDivProps {
   focused?: boolean
@@ -10,8 +11,6 @@ interface OuterDivProps {
 
 const OuterDiv = styled.div<OuterDivProps>`
   display: inline-block;
-  font-family: tahoma, arial, helvetica, sans-serif;
-  font-size: 12px;
   text-align: left;
   height: 24px;
   ${(props) =>
@@ -69,7 +68,7 @@ const Popup = styled.div`
   }
 `
 
-const StyledButton = styled.button<StyledButtonProps>`
+const StyledButton = styled.button.attrs({ type: "button" })<StyledButtonProps>`
   position: relative;
   right: 0;
   top: 0;
@@ -167,9 +166,11 @@ interface StyledButtonProps {
 
 const StyledInput = styled.input.attrs({ type: "search" })`
   margin: auto;
-  padding: 0 5px;
+  padding: 0;
   height: calc(100% - 1px);
   width: calc(100% - 40px);
+  font-family: tahoma, arial, helvetica, sans-serif;
+  font-size: 12px;
   border: 0;
   &:focus {
     outline: none;
@@ -190,10 +191,6 @@ const StyledDiv = styled.div`
   align-items: center;
 `
 
-const NoWrap = styled.div`
-  wrap-text: nowrap;
-`
-
 export interface ComboBoxItemProps {
   id?: string
   disabled?: boolean
@@ -211,7 +208,7 @@ export const ComboBoxItem = React.forwardRef<HTMLDivElement, ComboBoxItemProps>(
     return (
       <Item
         id={id}
-        onClick={disabled ? onClick : () => {}}
+        onClick={!disabled ? onClick : undefined}
         ref={ref}
         disabled={disabled}
         selected={selected}
@@ -242,6 +239,8 @@ export interface ComboBoxProps {
   isLoading?: boolean
   error?: string
   initialValue?: any
+  value?: any
+  label?: string
   getOptionName?: (option: any) => string
   getOptionValue?: (option: any) => any
   renderItem?: (props: ComboBoxItemProps) => React.ReactNode
@@ -264,16 +263,15 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
       style,
       options,
       variant = "standard",
-      initialValue,
+      initialValue = null,
+      value = null,
+      isLoading,
+      error,
+      label,
       getOptionName,
       getOptionValue,
       renderItem,
-      onFocus,
-      onBlur,
-      onChange,
-      onChangeValue,
-      isLoading,
-      error,
+      ...props
     },
     ref,
   ) => {
@@ -282,22 +280,30 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
     }
 
     const [isOpen, setIsOpen] = useState(false)
-    const [value, setValue] = useState<string | undefined>(initialValue)
+    const [currentValue, setCurrentValue] = useState(
+      initialValue != null ? initialValue : value != null ? value : undefined,
+    )
     const [focused, setFocused] = useState(false)
     const [text, setText] = useState("")
     const outerDivRef = useRef<HTMLDivElement>(null)
     const popupRef = useRef<HTMLDivElement>(null)
     const currentValueRef = useRef<HTMLDivElement>(null)
+    const defaultInputRef = useRef<HTMLInputElement>(null)
+    const inputRef = ref || defaultInputRef
 
-    const _onFocus = (e: React.FocusEvent) => {
+    useEffect(() => {
+      if (value != null) setCurrentValue(value)
+    }, [value])
+
+    const onFocus = (e: React.FocusEvent) => {
       if (!isOpen && openOnFocus) {
         setIsOpen(true)
       }
       setFocused(true)
-      if (onFocus) onFocus(e)
+      if (props.onFocus) props.onFocus(e)
     }
 
-    const _onBlur = (e: React.FocusEvent) => {
+    const onBlur = (e: React.FocusEvent) => {
       const { relatedTarget, currentTarget } = e
       if (isOpen) {
         if (relatedTarget === null) {
@@ -313,30 +319,32 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
         setIsOpen(false)
       }
       setFocused(false)
-      if (clearOnBlur && !value) setText("")
-      if (onBlur) onBlur(e)
+      if (clearOnBlur && !currentValue) setText("")
+      if (props.onBlur) props.onBlur(e)
     }
 
-    const _onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-      if (value) {
-        setValue(undefined)
+    const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      if (currentValue) {
+        if (initialValue != null || value == null) {
+          setCurrentValue(undefined)
+        }
         if (onChangeValue) {
           onChangeValue(name, undefined)
         }
       }
       setText(e.target.value)
-      if (onChange) onChange(e)
+      if (props.onChange) props.onChange(e)
     }
 
-    const _onChangeValue = (label: string, newValue: any) => {
-      if (newValue !== value) {
-        setValue(newValue)
+    const onChangeValue = (label: string, newValue: any) => {
+      if (newValue !== currentValue) {
+        if (initialValue != null || value == null) {
+          setCurrentValue(newValue)
+        }
         setText(label)
         setIsOpen(false)
-        setFocused(false)
-        if (onChangeValue) {
-          onChangeValue(name, newValue)
-        }
+        ;(inputRef as React.MutableRefObject<HTMLInputElement | null>).current?.focus()
+        if (props.onChangeValue) props.onChangeValue(name, newValue)
       }
     }
 
@@ -345,7 +353,7 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
     }
 
     useEffect(() => {
-      if (isOpen && value) {
+      if (isOpen && currentValue) {
         if (currentValueRef.current) {
           currentValueRef.current.scrollIntoView({
             behavior: "smooth",
@@ -353,27 +361,28 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
           })
         } else {
           popupRef.current?.scrollTo({
-            top: document.getElementById(`${id}_${value}`)?.offsetTop,
+            top: document.getElementById(`${id}_${currentValue}`)?.offsetTop,
           })
         }
       }
       // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [isOpen, value])
+    }, [isOpen, currentValue])
 
     useEffect(() => {
-      if (initialValue) {
+      if (initialValue != null || (value != null && text.length == 0)) {
+        const defaultValue = initialValue || value
         if (options) {
           const option = options.find((option) => {
             return getOptionValue
-              ? getOptionValue(option) === initialValue
-              : option.value === initialValue
+              ? getOptionValue(option) === defaultValue
+              : option.value === defaultValue
           })
           if (option) {
             setText(getOptionName ? getOptionName(option) : option.name)
           }
         } else if (children && React.Children.count(children) > 0) {
           const child = children.find((child) => {
-            return (child as any)?.props.value === initialValue
+            return (child as any)?.props.value === defaultValue
           })
           if (child) {
             setText((child as any)?.props.label)
@@ -381,7 +390,7 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
         }
       }
       // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    }, [value])
 
     const getPopupTop = () => {
       const rect = outerDivRef.current?.getBoundingClientRect()
@@ -433,16 +442,16 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
         }
         const itemValue = item.props.value
         if (
-          (!onChange && item.props.label.startsWith(text)) ||
-          value !== undefined
+          (!props.onChange && item.props.label.startsWith(text)) ||
+          currentValue !== undefined
         ) {
           return React.cloneElement(item, {
             id: `${id}_${itemValue}`,
             disabled: item.props.disabled || disabled,
             value: itemValue,
-            selected: value === itemValue,
-            ref: value === itemValue ? currentValueRef : null,
-            onClick: () => _onChangeValue(item.props.label, itemValue),
+            selected: currentValue === itemValue,
+            ref: currentValue === itemValue ? currentValueRef : null,
+            onClick: () => onChangeValue(item.props.label, itemValue),
           })
         } else {
           return null
@@ -456,14 +465,17 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
         const itemLabel = getOptionName ? getOptionName(option) : option.name
         const itemProps = {
           id: `${id}_${itemValue}`,
-          // key: itemValue,
+          key: itemValue,
           label: itemLabel,
           value: itemValue,
-          selected: value === itemValue,
-          ref: value === itemValue ? currentValueRef : null,
-          onClick: () => _onChangeValue(itemLabel, itemValue),
+          selected: currentValue === itemValue,
+          ref: currentValue === itemValue ? currentValueRef : null,
+          onClick: () => onChangeValue(itemLabel, itemValue),
         }
-        if ((!onChange && itemLabel.startsWith(text)) || value !== undefined) {
+        if (
+          (!props.onChange && itemLabel.startsWith(text)) ||
+          currentValue !== undefined
+        ) {
           if (renderItem) {
             return renderItem(itemProps)
           } else {
@@ -486,22 +498,23 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
     }
 
     return (
-      <NoWrap>
+      <div style={label ? { display: "block" } : { display: "inline-block" }}>
+        {label && <Label>{label}:&nbsp;</Label>}
         <OuterDiv
           className={className}
           focused={focused}
           ref={outerDivRef}
-          onBlur={_onBlur}
+          onBlur={onBlur}
           style={style}
           error={error !== undefined}
         >
           <StyledDiv>
             <StyledInput
               id={`${id}_input`}
-              ref={ref}
+              ref={inputRef}
               value={text}
-              onFocus={_onFocus}
-              onChange={_onChange}
+              onFocus={onFocus}
+              onChange={onChange}
             />
             {(variant === ComboBoxVariant.standard && (
               <StyledButton
@@ -545,7 +558,7 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
         </OuterDiv>
         {isLoading && <LoadingImage />}
         {error !== undefined && <ExclamationImage title={error} />}
-      </NoWrap>
+      </div>
     )
   },
 )
