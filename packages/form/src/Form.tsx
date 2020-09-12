@@ -1,19 +1,131 @@
-import React from "react";
-import styled from "styled-components";
+import React, { RefObject } from "react"
+import { Label, LabelProps } from "@jfront/ui-label"
+import styled from "styled-components"
 
-interface FormInterface extends React.FormHTMLAttributes<HTMLFormElement>{
-
+export interface FormProps extends React.FormHTMLAttributes<HTMLFormElement> {
+  ref?: RefObject<HTMLFormElement>
 }
 
 const StyledForm = styled.form`
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
   padding-left: 10px;
-  padding-top: 3px;
+  padding-top: 5px;
   font-family: Arial, sans-serif;
   font-size: small;
-`;
+`
 
-export const Form: React.FC<FormInterface> = (props) => {
+const StyledField = styled.div`
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 1.25em;
+  @media (max-width: 575px) {
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+  }
+`
+
+const StyledFieldControl = styled.div`
+  flex-direction: column;
+  box-sizing: border-box;
+  display: inline-flex;
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 0px;
+  flex: 1 1 0;
+`
+
+export interface FormFieldSetProps
+  extends React.FieldsetHTMLAttributes<HTMLFieldSetElement> {
+  legend?: string
+  renderLegend?: (legend?: string) => React.ReactNode
+  ref?: RefObject<HTMLFieldSetElement>
+}
+
+export interface FormLabelProps extends LabelProps {
+  required?: boolean
+}
+
+const StyledFormLabel = styled(Label)<FormLabelProps>`
+  min-width: 150px;
+  max-width: 200px;
+  width: 100%;
+  line-height: 1.5715;
+  @media (max-width: 575px) {
+    justify-content: flex-start;
+    text-align: left;
+    min-width: unset;
+    max-width: unset;
+    width: unset;
+  }
+  ${(props) =>
+    props.required
+      ? `&::before{
+            display: inline-block;
+            margin-right: 4px;
+            color: #ff4d4f;
+            font-size: 14px;
+            font-family: SimSun, sans-serif;
+            line-height: 1;
+            content: '*';
+            vertical-align: top;
+          }`
+      : ""}
+`
+
+export interface FormControlProps extends React.HTMLAttributes<HTMLDivElement> {
+  error?: string
+}
+
+export type Form = React.FC<FormProps> & {
+  Field: React.FC<React.HTMLAttributes<HTMLDivElement>>
+  Control: React.FC<FormControlProps>
+  Label: React.FC<FormLabelProps>
+  FieldSet: React.FC<FormFieldSetProps>
+}
+
+export const Form: Form = (props: FormProps) => {
+  return <StyledForm {...props}>{props.children}</StyledForm>
+}
+
+Form.Field = (props) => {
+  return <StyledField {...props}>{props.children}</StyledField>
+}
+
+Form.FieldSet = (props) => {
   return (
-      <StyledForm {...props}>{props.children}</StyledForm>
-  );
+    <fieldset {...props}>
+      {props.legend && !props.renderLegend && <legend>{props.legend}</legend>}
+      {props.renderLegend && props.renderLegend(props.legend)}
+      {props.children}
+    </fieldset>
+  )
+}
+
+Form.Control = (props) => {
+  return (
+    <StyledFieldControl {...props}>
+      {React.Children.only(props.children)}
+      {props.error && (
+        <span
+          style={{
+            fontFamily: "SimSun, sans-serif",
+            fontSize: 12,
+            color: "red",
+          }}
+        >
+          {props.error}
+        </span>
+      )}
+    </StyledFieldControl>
+  )
+}
+
+Form.Label = (props) => {
+  return <StyledFormLabel {...props}>{props.children}</StyledFormLabel>
 }
