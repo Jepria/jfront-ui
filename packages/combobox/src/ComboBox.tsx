@@ -121,7 +121,7 @@ const StyledDiv = styled.div<StyledDivProps>`
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
-  height: 24px;
+  min-height: 24px;
   text-align: left;
   ${(props) =>
     props.focused
@@ -191,8 +191,8 @@ export interface ComboBoxProps {
   renderItem?: (props: ComboBoxItemProps) => React.ReactNode
   onFocus?: (event: React.FocusEvent) => void
   onBlur?: (event: React.FocusEvent) => void
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
-  onChangeValue?: (name: string, value: any) => void
+  onInputChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
+  onSelectionChange?: (name: string, value: any) => void
 }
 
 export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
@@ -248,7 +248,8 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
     }
 
     const onBlur = (e: React.FocusEvent) => {
-      const { relatedTarget, currentTarget } = e
+      const { currentTarget } = e
+      const relatedTarget = e.relatedTarget || document.activeElement
       if (isOpen) {
         if (relatedTarget === null) {
           setIsOpen(false)
@@ -269,15 +270,13 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
 
     const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       if (currentValue) {
-        if (initialValue != null || value == null) {
-          setCurrentValue(undefined)
-        }
+        setCurrentValue(undefined)
         if (onChangeValue) {
           onChangeValue(name, undefined)
         }
       }
       setText(e.target.value)
-      if (props.onChange) props.onChange(e)
+      if (props.onInputChange) props.onInputChange(e)
     }
 
     const onChangeValue = (label: string, newValue: any) => {
@@ -287,8 +286,8 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
         }
         setText(label)
         setIsOpen(false)
-        ;(inputRef as React.MutableRefObject<HTMLInputElement | null>).current?.focus()
-        if (props.onChangeValue) props.onChangeValue(name, newValue)
+        setFocused(false)
+        if (props.onSelectionChange) props.onSelectionChange(name, newValue)
       }
     }
 
@@ -411,7 +410,7 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
         }
         const itemValue = item.props.value
         if (
-          (!props.onChange && item.props.label.startsWith(text)) ||
+          (!props.onInputChange && item.props.label.startsWith(text)) ||
           currentValue !== undefined
         ) {
           return React.cloneElement(item, {
@@ -442,7 +441,7 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
           onClick: () => onChangeValue(itemLabel, itemValue),
         }
         if (
-          (!props.onChange && itemLabel.startsWith(text)) ||
+          (!props.onInputChange && itemLabel.startsWith(text)) ||
           currentValue !== undefined
         ) {
           if (renderItem) {
