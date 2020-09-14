@@ -5,7 +5,7 @@ const StyledImage = styled.img`
   position: relative;
   display: inline-block;
   vertical-align: middle;
-  margin-left: 5px;
+  margin: 0 5px;
   width: 16px;
   height: 16px;
   cursor: pointer;
