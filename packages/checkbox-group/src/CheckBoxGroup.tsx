@@ -77,6 +77,12 @@ export const CheckBoxGroup = React.forwardRef<
   ) => {
     const [state, setState] = useState<any[]>([])
 
+    useEffect(() => {
+      if (values) {
+        setState(values)
+      }
+    }, [values])
+
     const handleCheckboxChange = (
       _value: React.ReactText,
       event: React.ChangeEvent<any> | undefined,
