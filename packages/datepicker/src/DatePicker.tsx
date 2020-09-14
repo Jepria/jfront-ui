@@ -2,7 +2,6 @@ import React from "react"
 import ReactDatePicker, { ReactDatePickerProps } from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css"
 import { ru } from "date-fns/locale"
-import { Label } from "@jfront/ui-label"
 import { MaskedTextInput, InputProps } from "@jfront/ui-input"
 
 export const dateFormatToMask = (dateFormat: string | string[]) => {
