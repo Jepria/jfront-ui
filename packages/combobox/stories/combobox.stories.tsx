@@ -1,6 +1,5 @@
 import * as React from "react"
 import { ComboBox, ComboBoxItem } from "../src"
-import styled from "styled-components"
 
 export default {
   title: "ComboBox",
@@ -16,10 +15,7 @@ export default {
 export const BasicUsage = () => {
   return (
     <>
-      <ComboBox
-        onChangeValue={(name, value) => console.log(value)}
-        style={{ width: "200px" }}
-      >
+      <ComboBox onChangeValue={(name, value) => console.log(value)}>
         <ComboBoxItem value={1} label="test1" />
         <ComboBoxItem value={2} label="test2" />
         <ComboBoxItem value={3} label="test3" />
@@ -84,7 +80,8 @@ export const LoadingImage = () => {
     <>
       <ComboBox
         onChangeValue={(name, value) => console.log(value)}
-        style={{ width: "200px" }}
+        // style={{ maxWidth: "200px"}}
+        label="123"
         isLoading
       >
         <ComboBoxItem value={1} label="test1" />

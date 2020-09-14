@@ -1,9 +1,9 @@
 import * as React from "react"
-import { TextInput } from "../src/TextInput"
 import { Label } from "@jfront/ui-label"
+import { NumberInput } from "../src"
 
 export default {
-  title: "TextInput",
+  title: "NumberInput",
   decorators: [
     (StoryFn: Function) => (
       <div style={{ padding: "5px" }}>
@@ -16,7 +16,7 @@ export default {
 export const BasicUsage = () => {
   return (
     <>
-      <TextInput name="InputTextName" />
+      <NumberInput name="InputTextName" />
     </>
   )
 }
@@ -24,7 +24,7 @@ export const BasicUsage = () => {
 export const IsLoading = () => {
   return (
     <>
-      <TextInput name="InputTextNameLoading" isLoading />
+      <NumberInput name="InputTextNameLoading" isLoading />
     </>
   )
 }
@@ -32,7 +32,7 @@ export const IsLoading = () => {
 export const Error = () => {
   return (
     <>
-      <TextInput name="InputTextNameLoading" error="wrong value" />
+      <NumberInput name="InputTextNameLoading" error="wrong value" />
     </>
   )
 }
@@ -42,7 +42,7 @@ export const ExternalLabel = () => {
     <>
       <div style={{ display: "inline-block" }}>
         <Label>Text label</Label>
-        <TextInput name="InputTextName" />
+        <NumberInput name="InputTextName" />
       </div>
     </>
   )
