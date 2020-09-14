@@ -33,11 +33,18 @@ interface StyledCheckBoxGroupProps {
 }
 
 const StyledCheckBoxGroup = styled.div<StyledCheckBoxGroupProps>`
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
   display: inline-flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
-  justify-content: left;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
   border: 1px solid grey;
-  padding-left: 0;
+  padding: 0;
+  margin: 0;
   ${(props) => (props.error ? "border: 1px solid red;" : "")};
 `
 
@@ -47,14 +54,26 @@ export enum Direction {
 }
 
 interface StyledUlProps {
-  direction?: Direction
+  direction: Direction
 }
 
 const StyledUl = styled.div<StyledUlProps>`
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
   display: inline-flex;
-  flex-direction: ${(props) =>
-    props.direction ? props.direction : Direction.column};
+  -webkit-box-flex: 1;
+  -ms-flex-positive: 1;
   flex-grow: 1;
+  ${(props) =>
+    props.direction === Direction.column
+      ? `-webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;`
+      : `-webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;`};
   overflow: auto;
   margin: 2px;
   padding: 5px;
@@ -119,7 +138,9 @@ export const CheckBoxGroup = React.forwardRef<
         ref={ref}
         error={error}
       >
-        <StyledUl direction={props.direction}>
+        <StyledUl
+          direction={props.direction ? props.direction : Direction.column}
+        >
           {React.Children.map(children, (checkbox) => {
             if (!React.isValidElement(checkbox)) {
               return null
