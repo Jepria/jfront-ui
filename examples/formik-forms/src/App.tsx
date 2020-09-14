@@ -1,13 +1,17 @@
 import * as React from "react"
 import { useFormik } from "formik"
-import { ComboBox } from "@jfront/ui-core"
+import { ComboBox, TextInput, DatePicker } from "@jfront/ui-core"
+import { Form } from "@jfront/ui-form"
 import { CheckBoxGroup } from "@jfront/ui-checkbox-group"
 import { CheckBox } from "@jfront/ui-checkbox"
 import { useEffect } from "react"
+import { useRef } from "react"
 
 interface FormData {
   fruit?: string
   statusCodeList?: string[]
+  name?: string
+  date?: Date
 }
 
 function App() {
@@ -23,12 +27,16 @@ function App() {
     enableReinitialize: true,
     initialValues: {
       fruit: fruit,
+      statusCodeList: ["value1"],
     },
     onSubmit: (values) => {
       console.log("formik.values: ", values)
     },
     validate: (values) => {
       const errors: any = {}
+      if (!values.name) {
+        errors.name = "Must be not empty"
+      }
       if (!values.fruit) {
         errors.fruit = "Must be not empty"
       }
@@ -43,42 +51,77 @@ function App() {
 
   return (
     <div>
-      <form style={{ padding: "5px" }} onSubmit={formik.handleSubmit}>
-        <ComboBox
-          name="fruit"
-          label="Fruit"
-          options={[
-            { name: "Apple", value: "Apple" },
-            { name: "Orange", value: "Orange" },
-            { name: "Water mellon", value: "Water mellon" },
-            { name: "Grapes", value: "Grapes" },
-            { name: "Peach", value: "Peach" },
-          ]}
-          value={formik.values.fruit}
-          style={{ width: "200px" }}
-          isLoading={fruit === undefined}
-          onChangeValue={formik.setFieldValue}
-          error={formik.errors["fruit"]}
-        />
-        <CheckBoxGroup
-          name="statusCodeList"
-          text={"ChechBox:"}
-          values={
-            formik.values.statusCodeList ? formik.values.statusCodeList : []
-          }
-          onChange={(name, newValue) => {
-            console.log("onChange: " + newValue)
-            formik.setFieldValue(name, newValue)
-          }}
-        >
-          {statusOptions
-            ? statusOptions.map((option) => {
-                return <CheckBox value={option.value} label={option.name} />
-              })
-            : null}
-        </CheckBoxGroup>
-        <input type="submit" />
-      </form>
+      <Form style={{ padding: "5px" }} onSubmit={formik.handleSubmit}>
+        <Form.Field label="Name:" required>
+          <Form.Control
+            error={formik.errors["name"]}
+            style={{ maxWidth: "200px" }}
+          >
+            <TextInput
+              name="name"
+              value={formik.values.name}
+              onChange={formik.handleChange}
+              error={formik.errors["name"]}
+            />
+          </Form.Control>
+        </Form.Field>
+        <Form.Field label="Date:">
+          <DatePicker
+            name="date"
+            selected={formik.values.date}
+            onChange={(date) => formik.setFieldValue("date", date)}
+          />
+        </Form.Field>
+        <Form.Field label="Fruit:" required>
+          <Form.Control
+            error={formik.errors["fruit"]}
+            style={{ maxWidth: "200px" }}
+          >
+            <ComboBox
+              name="fruit"
+              options={[
+                { name: "Apple", value: "Apple" },
+                { name: "Orange", value: "Orange" },
+                { name: "Water mellon", value: "Water mellon" },
+                { name: "Grapes", value: "Grapes" },
+                { name: "Peach", value: "Peach" },
+              ]}
+              value={formik.values.fruit}
+              isLoading={fruit === undefined}
+              onSelectionChange={(name, newValue) => {
+                console.log("onChange: " + newValue)
+                formik.setFieldValue(name, newValue)
+              }}
+              error={formik.errors["fruit"]}
+            />
+          </Form.Control>
+        </Form.Field>
+        <Form.Field label="Status code list:">
+          <CheckBoxGroup
+            name="statusCodeList"
+            values={
+              formik.values.statusCodeList ? formik.values.statusCodeList : []
+            }
+            onChange={(name, newValue) => {
+              console.log("onChange: " + newValue)
+              formik.setFieldValue(name, newValue)
+            }}
+          >
+            {statusOptions
+              ? statusOptions.map((option) => {
+                  return (
+                    <CheckBox
+                      key={option.value}
+                      value={option.value}
+                      label={option.name}
+                    />
+                  )
+                })
+              : null}
+          </CheckBoxGroup>
+        </Form.Field>
+        <input type="submit" style={{ width: "100px", marginLeft: "200px" }} />
+      </Form>
     </div>
   )
 }
