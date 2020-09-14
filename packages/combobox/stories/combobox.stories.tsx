@@ -78,12 +78,7 @@ export const WithOptionsProp = () => {
 export const LoadingImage = () => {
   return (
     <>
-      <ComboBox
-        onChangeValue={(name, value) => console.log(value)}
-        // style={{ maxWidth: "200px"}}
-        label="123"
-        isLoading
-      >
+      <ComboBox onChangeValue={(name, value) => console.log(value)} isLoading>
         <ComboBoxItem value={1} label="test1" />
         <ComboBoxItem value={2} label="test2" />
         <ComboBoxItem value={3} label="test3" />
