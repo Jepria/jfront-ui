@@ -78,14 +78,32 @@ const StyledFormLabel = styled(Label)<FormLabelProps>`
       : ""}
 `
 
+const StyledFieldSet = styled.fieldset`
+  border: 1px solid rgba(81, 162, 238, 1);
+  border-radius: 5px;
+`
+
+const StyledLegend = styled.legend`
+  color: rgba(81, 162, 238, 1);
+  margin: 0 5px;
+`
+
 export interface FormControlProps extends React.HTMLAttributes<HTMLDivElement> {
   error?: string
 }
 
+export interface FormFieldProps extends React.HTMLAttributes<HTMLDivElement> {
+  label?: string
+  required?: boolean
+  renderLabel?: (label?: string, required?: boolean) => React.ReactNode
+  ref?: RefObject<HTMLDivElement>
+}
+
 export type Form = React.FC<FormProps> & {
-  Field: React.FC<React.HTMLAttributes<HTMLDivElement>>
-  Control: React.FC<FormControlProps>
+  Field: React.FC<FormFieldProps>
   Label: React.FC<FormLabelProps>
+  Legend: React.FC<React.HTMLAttributes<HTMLLegendElement>>
+  Control: React.FC<FormControlProps>
   FieldSet: React.FC<FormFieldSetProps>
 }
 
@@ -94,16 +112,34 @@ export const Form: Form = (props: FormProps) => {
 }
 
 Form.Field = (props) => {
-  return <StyledField {...props}>{props.children}</StyledField>
+  return (
+    <StyledField {...props}>
+      {props.label && !props.renderLabel && (
+        <Form.Label required={props.required}>{props.label}</Form.Label>
+      )}
+      {props.renderLabel && props.renderLabel(props.label, props.required)}
+      {props.children}
+    </StyledField>
+  )
+}
+
+Form.Label = (props) => {
+  return <StyledFormLabel {...props}>{props.children}</StyledFormLabel>
+}
+
+Form.Legend = (props) => {
+  return <StyledLegend {...props}>{props.children}</StyledLegend>
 }
 
 Form.FieldSet = (props) => {
   return (
-    <fieldset {...props}>
-      {props.legend && !props.renderLegend && <legend>{props.legend}</legend>}
+    <StyledFieldSet {...props}>
+      {props.legend && !props.renderLegend && (
+        <Form.Legend>{props.legend}</Form.Legend>
+      )}
       {props.renderLegend && props.renderLegend(props.legend)}
       {props.children}
-    </fieldset>
+    </StyledFieldSet>
   )
 }
 
@@ -114,8 +150,8 @@ Form.Control = (props) => {
       {props.error && (
         <span
           style={{
-            fontFamily: "SimSun, sans-serif",
-            fontSize: 12,
+            fontFamily: "tahoma, arial, helvetica, sans-serif",
+            fontSize: 11,
             color: "red",
           }}
         >
@@ -124,8 +160,4 @@ Form.Control = (props) => {
       )}
     </StyledFieldControl>
   )
-}
-
-Form.Label = (props) => {
-  return <StyledFormLabel {...props}>{props.children}</StyledFormLabel>
 }
