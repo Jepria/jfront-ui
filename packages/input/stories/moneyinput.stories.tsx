@@ -1,8 +1,8 @@
 import * as React from "react"
-import { DecimalInput } from "../src"
+import { MoneyInput } from "../src"
 
 export default {
-  title: "DecimalInput",
+  title: "MoneyInput",
   decorators: [
     (StoryFn: Function) => (
       <div style={{ padding: "5px" }}>
@@ -15,7 +15,7 @@ export default {
 export const BasicUsage = () => {
   return (
     <>
-      <DecimalInput name="InputTextName" />
+      <MoneyInput name="InputTextName" />
     </>
   )
 }
@@ -23,7 +23,7 @@ export const BasicUsage = () => {
 export const IsLoading = () => {
   return (
     <>
-      <DecimalInput name="InputTextNameLoading" isLoading />
+      <MoneyInput name="InputTextNameLoading" isLoading />
     </>
   )
 }
@@ -31,7 +31,7 @@ export const IsLoading = () => {
 export const Error = () => {
   return (
     <>
-      <DecimalInput name="InputTextNameLoading" error="wrong value" />
+      <MoneyInput name="InputTextNameLoading" error="wrong value" />
     </>
   )
 }
