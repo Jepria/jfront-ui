@@ -1,71 +1,49 @@
-import React, { useState } from "react"
+import React from "react"
 import NumberFormat, { NumberFormatProps } from "react-number-format"
 import styled from "styled-components"
+import { Label } from "@jfront/ui-label"
 import { LoadingImage, ExclamationImage } from "@jfront/ui-icons"
 import { InputProps } from "."
-import { StyledDiv } from "./styles"
 
 interface StyledNumberFormatProps {
   error?: string
 }
 
 const StyledNumberFormat = styled(NumberFormat)<StyledNumberFormatProps>`
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-box-flex: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
-  margin: 0;
-  padding: 0;
-  padding-left: 3px;
+  box-sizing: border-box;
+  display: inline-block;
   font-family: tahoma, arial, helvetica, sans-serif;
   font-size: 12px;
-  border: 0;
+  text-align: left;
+  height: 24px;
+  ${(props) => (props.error ? "border: 1px solid red;" : "")};
   &:focus {
-    outline: none;
+    ${(props) =>
+      props.error
+        ? "outline-color: red; outline-style: solid; outline-width: 1px;"
+        : ""};
   }
 `
 
-export interface DecimalInputProps extends InputProps, NumberFormatProps {
-  inputRef?: React.RefObject<HTMLInputElement>
-}
+export const DecimalInput = React.forwardRef<
+  HTMLInputElement,
+  InputProps & NumberFormatProps
+>((props, ref) => {
+  const { thousandSeparator = true, decimalSeparator = "." } = props
 
-export const DecimalInput = React.forwardRef<HTMLDivElement, DecimalInputProps>(
-  (props, ref) => {
-    const { thousandSeparator = true, decimalSeparator = "." } = props
-
-    const [focused, setFocused] = useState(false)
-
-    return (
-      <StyledDiv
-        className={props.className}
-        focused={focused}
-        style={props.style}
-        ref={ref}
-        error={props.error !== undefined}
-      >
-        <StyledNumberFormat
-          {...props}
-          onFocus={(e) => {
-            if (props.onFocus) {
-              props.onFocus(e)
-            }
-            setFocused(true)
-          }}
-          onBlur={(e) => {
-            if (props.onBlur) {
-              props.onBlur(e)
-            }
-            setFocused(false)
-          }}
-          thousandSeparator={thousandSeparator}
-          decimalSeparator={decimalSeparator}
-          getInputRef={props.inputRef}
-        />
-        {props.isLoading && <LoadingImage />}
-        {props.error !== undefined && <ExclamationImage title={props.error} />}
-      </StyledDiv>
-    )
-  },
-)
+  return (
+    <div style={{ display: props.label ? "block" : "inline-block" }}>
+      {props.label !== undefined && (
+        <Label htmlFor={props.id}>{props.label}:&nbsp;</Label>
+      )}
+      <StyledNumberFormat
+        {...props}
+        thousandSeparator={thousandSeparator}
+        decimalSeparator={decimalSeparator}
+        getInputRef={ref}
+      />
+      {props.isLoading && <LoadingImage />}
+      {props.error !== undefined && <ExclamationImage title={props.error} />}
+    </div>
+  )
+})

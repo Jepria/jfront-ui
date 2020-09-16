@@ -38,16 +38,21 @@ export const DatePicker = React.forwardRef<
   } = props
 
   return (
-    <ReactDatePicker
-      {...props}
-      customInput={customInput}
-      peekNextMonth={peekNextMonth}
-      showMonthDropdown={showMonthDropdown}
-      showYearDropdown={showYearDropdown}
-      dropdownMode={dropdownMode}
-      dateFormat={dateFormat}
-      autoComplete={autoComplete}
-      locale={locale}
-    />
+    <div>
+      {props.label !== undefined && (
+        <Label htmlFor={props.id}>{props.label}:&nbsp;</Label>
+      )}
+      <ReactDatePicker
+        {...props}
+        customInput={customInput}
+        peekNextMonth={peekNextMonth}
+        showMonthDropdown={showMonthDropdown}
+        showYearDropdown={showYearDropdown}
+        dropdownMode={dropdownMode}
+        dateFormat={dateFormat}
+        autoComplete={autoComplete}
+        locale={locale}
+      />
+    </div>
   )
 })

@@ -1,7 +1,8 @@
-import React, { RefObject, useState } from "react"
+import React from "react"
 import styled from "styled-components"
+import { Label } from "@jfront/ui-label"
 import { InputProps } from "."
-import { StyledDiv } from "./styles"
+import { StyledInputProps } from "./styles"
 import { LoadingImage, ExclamationImage } from "@jfront/ui-icons"
 
 export interface SelectInputProps
@@ -15,98 +16,70 @@ export interface SelectInputProps
   getOptionValue?: (option: any) => any
   children?: React.ReactNode[]
   renderItem?: (option: any) => React.ReactNode
-  selectRef?: RefObject<HTMLSelectElement>
 }
 
-const StyledSelect = styled.select`
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-box-flex: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
-  margin: 0;
-  padding: 0;
-  padding-left: 3px;
+const StyledSelect = styled.select<StyledInputProps>`
+  box-sizing: border-box;
+  display: inline-block;
   font-family: tahoma, arial, helvetica, sans-serif;
   font-size: 12px;
-  border: 0;
+  text-align: left;
+  height: 24px;
+  ${(props) => (props.error ? "border: 1px solid red;" : "")};
   &:focus {
-    outline: none;
+    ${(props) =>
+      props.error
+        ? "outline-color: red; outline-style: solid; outline-width: 1px;"
+        : ""};
   }
 `
 
-export const SelectInput = React.forwardRef<HTMLDivElement, SelectInputProps>(
-  (props, ref) => {
-    const {
-      options,
-      children,
-      getOptionName,
-      getOptionValue,
-      renderItem,
-    } = props
+export const SelectInput = React.forwardRef<
+  HTMLSelectElement,
+  SelectInputProps
+>((props, ref) => {
+  const { options, children, getOptionName, getOptionValue, renderItem } = props
 
-    const [focused, setFocused] = useState(false)
+  if (options && React.Children.count(children) > 0) {
+    throw new Error("Use options or children")
+  }
 
-    if (options && React.Children.count(children) > 0) {
-      throw new Error("Use options or children")
-    }
-
-    const renderOptions = () => {
-      return options?.map((option) => {
-        const itemValue = getOptionValue ? getOptionValue(option) : option.value
-        const itemLabel = getOptionName ? getOptionName(option) : option.name
-        if (renderItem) {
-          return renderItem(option)
-        } else {
-          return React.createElement(
-            "option",
-            { value: itemValue, key: `${itemValue}` },
-            itemLabel,
-          )
-        }
-      })
-    }
-
-    const renderItems = () => {
-      if (React.Children.count(children) > 0) {
-        return children
-      } else if (options && options.length > 0) {
-        return renderOptions()
+  const renderOptions = () => {
+    return options?.map((option) => {
+      const itemValue = getOptionValue ? getOptionValue(option) : option.value
+      const itemLabel = getOptionName ? getOptionName(option) : option.name
+      if (renderItem) {
+        return renderItem(option)
       } else {
-        return null
+        return React.createElement(
+          "option",
+          { value: itemValue, key: `${itemValue}` },
+          itemLabel,
+        )
       }
-    }
+    })
+  }
 
-    return (
-      <StyledDiv
-        className={props.className}
-        focused={focused}
-        style={props.style}
-        ref={ref}
-        error={props.error !== undefined}
-      >
-        <StyledSelect
-          {...props}
-          onFocus={(e) => {
-            if (props.onFocus) {
-              props.onFocus(e)
-            }
-            setFocused(true)
-          }}
-          onBlur={(e) => {
-            if (props.onBlur) {
-              props.onBlur(e)
-            }
-            setFocused(false)
-          }}
-          ref={props.selectRef}
-        >
-          {renderItems()}
-        </StyledSelect>
-        {props.isLoading && <LoadingImage />}
-        {props.error !== undefined && <ExclamationImage title={props.error} />}
-      </StyledDiv>
-    )
-  },
-)
+  const renderItems = () => {
+    if (React.Children.count(children) > 0) {
+      return children
+    } else if (options && options.length > 0) {
+      return renderOptions()
+    } else {
+      return null
+    }
+  }
+
+  return (
+    <div style={{ display: props.label ? "block" : "inline-block" }}>
+      {props.label !== undefined && (
+        <Label htmlFor={props.id}>{props.label}:&nbsp;</Label>
+      )}
+      <StyledSelect {...props} ref={ref}>
+        {renderItems()}
+      </StyledSelect>
+      {props.isLoading && <LoadingImage />}
+      {props.error !== undefined && <ExclamationImage title={props.error} />}
+    </div>
+  )
+})

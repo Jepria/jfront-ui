@@ -1,6 +1,10 @@
-import React, { useState, ReactNode } from "react"
+import React, { useState, useEffect, ReactNode } from "react"
 import styled from "styled-components"
-import { LoadingImage, ExclamationImage } from "@jfront/ui-icons"
+import { Label } from "@jfront/ui-label"
+import {
+  LoadingImage as Loading,
+  ExclamationImage as Exclamation,
+} from "@jfront/ui-icons"
 
 interface CheckBoxGroupInterface {
   children: ReactNode[]
@@ -9,15 +13,12 @@ interface CheckBoxGroupInterface {
    * use values to external state control
    */
   values?: any[]
+  text?: string
   error?: string
   disabled?: boolean
   isLoading?: boolean
   style?: React.CSSProperties
   className?: string
-  /**
-   * checkbox list layout direction column/row
-   */
-  direction?: Direction
   /**
    * Обработчик изменения значения 'checked' одного из дочерних элементов
    */
@@ -28,38 +29,31 @@ interface CheckBoxGroupInterface {
   ) => void
 }
 
-interface StyledCheckBoxGroupProps {
+const StyledCheckBoxGroup = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: left;
+`
+
+interface StyledUlProps {
   error?: string
 }
 
-const StyledCheckBoxGroup = styled.div<StyledCheckBoxGroupProps>`
-  display: inline-flex;
-  align-items: center;
-  justify-content: left;
-  border: 1px solid grey;
-  padding-left: 0;
-  ${(props) => (props.error ? "border: 1px solid red;" : "")};
-`
-
-export enum Direction {
-  column = "column",
-  row = "row",
-}
-
-interface StyledUlProps {
-  direction?: Direction
-}
-
 const StyledUl = styled.div<StyledUlProps>`
-  display: inline-flex;
-  flex-direction: ${(props) =>
-    props.direction ? props.direction : Direction.column};
-  flex-grow: 1;
-  overflow: auto;
   margin: 2px;
   padding: 5px;
   font-family: tahoma, arial, helvetica, sans-serif;
   font-size: 12px;
+  border: 1px solid grey;
+  padding-left: 0;
+  ${(props) => (props.error ? "border: 1px solid red;" : "")};
+`
+const LoadingImage = styled(Loading)`
+  margin-top: 5px;
+`
+
+const ExclamationImage = styled(Exclamation)`
+  margin-top: 5px;
 `
 
 export const CheckBoxGroup = React.forwardRef<
@@ -71,13 +65,13 @@ export const CheckBoxGroup = React.forwardRef<
       children,
       name,
       values,
+      text,
       disabled,
       isLoading,
       error,
       style,
       className,
       onChange,
-      ...props
     },
     ref,
   ) => {
@@ -113,13 +107,9 @@ export const CheckBoxGroup = React.forwardRef<
     }
 
     return (
-      <StyledCheckBoxGroup
-        style={style}
-        className={className}
-        ref={ref}
-        error={error}
-      >
-        <StyledUl direction={props.direction}>
+      <StyledCheckBoxGroup>
+        {text && <Label>{text}</Label>}
+        <StyledUl style={style} className={className} ref={ref} error={error}>
           {React.Children.map(children, (checkbox) => {
             if (!React.isValidElement(checkbox)) {
               return null

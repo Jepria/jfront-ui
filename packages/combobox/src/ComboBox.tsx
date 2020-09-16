@@ -3,21 +3,26 @@ import styled from "styled-components"
 import nextId from "react-id-generator"
 import { OpenImage, LoadingImage, ExclamationImage } from "@jfront/ui-icons"
 import { Label } from "@jfront/ui-label"
-import { ComboBoxButton } from "./ComboBoxButton"
 
-const OuterDiv = styled.div`
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  white-space: nowrap;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+interface OuterDivProps {
+  focused?: boolean
+  error?: boolean
+}
+
+const OuterDiv = styled.div<OuterDivProps>`
+  display: inline-block;
   text-align: left;
+  height: 24px;
+  ${(props) =>
+    props.focused
+      ? "outline-color: #999; outline-style: solid; outline-width: 2px;"
+      : "border: 1px solid #ccc; border-top: 1px solid #999;"};
+  ${(props) =>
+    props.error
+      ? props.focused
+        ? "outline-color: red; outline-style: solid; outline-width: 2px;"
+        : "border: 1px solid red;"
+      : ""};
 `
 
 interface ItemProps {
@@ -50,7 +55,6 @@ const Popup = styled.div`
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   position: absolute;
-  width: 98%;
   z-index: 5100;
   margin: 0;
   padding: 0;
@@ -62,6 +66,82 @@ const Popup = styled.div`
   &:focus {
     outline: none;
   }
+`
+
+const StyledButton = styled.button.attrs({ type: "button" })<StyledButtonProps>`
+  position: relative;
+  right: 0;
+  top: 0;
+  color: #999;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  padding: 12px;
+  overflow: visible;
+  font-size: 1.5rem;
+  text-align: center;
+  border-radius: 50%;
+  height: 24px;
+  width: 24px;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+  background-color: transparent;
+  border: 0;
+  ${(props) =>
+    props.isOpen
+      ? `
+  -webkit-transform: rotate(180deg);
+      -ms-transform: rotate(180deg);
+          transform: rotate(180deg);
+  `
+      : ""}
+  cursor: pointer;
+  &:hover {
+    background-color: #f2f0f0;
+    -webkit-transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    -o-transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    opacity: 0.5;
+  }
+  &:focus {
+    outline: none;
+  }
+`
+const StyledSpan = styled.span`
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  text-align: center;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+`
+
+const StyledSvg = styled.svg`
+  fill: currentColor;
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  font-size: 1.5rem;
+  -webkit-transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  -o-transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
 `
 
 const JepRiaButton = styled(OpenImage)`
@@ -85,15 +165,10 @@ interface StyledButtonProps {
 }
 
 const StyledInput = styled.input.attrs({ type: "search" })`
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-box-flex: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
-  margin: 0;
+  margin: auto;
   padding: 0;
-  padding-left: 3px;
+  height: calc(100% - 1px);
+  width: calc(100% - 40px);
   font-family: tahoma, arial, helvetica, sans-serif;
   font-size: 12px;
   border: 0;
@@ -102,40 +177,18 @@ const StyledInput = styled.input.attrs({ type: "search" })`
   }
 `
 
-interface StyledDivProps {
-  focused?: boolean
-  error?: boolean
-}
-
-const StyledDiv = styled.div<StyledDivProps>`
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-box-flex: 1;
-  -ms-flex-positive: 1;
+const StyledDiv = styled.div`
   margin: 0;
   padding: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  height: 100%;
   white-space: nowrap;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  height: 24px;
-  text-align: left;
-  ${(props) =>
-    props.focused
-      ? `box-shadow: 0 0 5px rgba(81, 203, 238, 1);
-         border: 1px solid rgba(81, 203, 238, 1);`
-      : "border: 1px solid #ccc; border-top: 1px solid #999;"};
-  ${(props) =>
-    props.error
-      ? props.focused
-        ? `box-shadow: 0 0 5px red;
-        border: 1px solid red;`
-        : "border: 1px solid red;"
-      : ""};
 `
 
 export interface ComboBoxItemProps {
@@ -187,6 +240,7 @@ export interface ComboBoxProps {
   error?: string
   initialValue?: any
   value?: any
+  label?: string
   getOptionName?: (option: any) => string
   getOptionValue?: (option: any) => any
   renderItem?: (props: ComboBoxItemProps) => React.ReactNode
@@ -213,6 +267,7 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
       value = null,
       isLoading,
       error,
+      label,
       getOptionName,
       getOptionValue,
       renderItem,
@@ -443,56 +498,67 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
     }
 
     return (
-      <StyledDiv
-        className={className}
-        focused={focused}
-        ref={outerDivRef}
-        onBlur={onBlur}
-        style={style}
-        error={error !== undefined}
-      >
-        <StyledInput
-          id={`${id}_input`}
-          ref={inputRef}
-          value={text}
-          onFocus={onFocus}
-          onChange={onChange}
-        />
-        {(variant === ComboBoxVariant.standard && (
-          <ComboBoxButton
-            id={`${id}_button`}
-            tabIndex={-1}
-            rotate={String(isOpen)}
-            onClick={toggle}
-            onFocus={() => setFocused(true)}
-          />
-        )) ||
-          (variant === ComboBoxVariant.jepria && (
-            <JepRiaButton
-              id={`${id}_button`}
-              tabIndex={-1}
-              onClick={toggle}
-              onFocus={() => setFocused(true)}
+      <div style={label ? { display: "block" } : { display: "inline-block" }}>
+        {label && <Label>{label}:&nbsp;</Label>}
+        <OuterDiv
+          className={className}
+          focused={focused}
+          ref={outerDivRef}
+          onBlur={onBlur}
+          style={style}
+          error={error !== undefined}
+        >
+          <StyledDiv>
+            <StyledInput
+              id={`${id}_input`}
+              ref={inputRef}
+              value={text}
+              onFocus={onFocus}
+              onChange={onChange}
             />
-          ))}
-        {isOpen && (
-          <Popup
-            id={`${id}_popup`}
-            ref={popupRef}
-            tabIndex={0}
-            style={{
-              top: getPopupTop(),
-              left: getPopupLeft(),
-              width: getPopupWidth(),
-              maxHeight: getPopupHeight(),
-            }}
-          >
-            {renderItems()}
-          </Popup>
-        )}
+            {(variant === ComboBoxVariant.standard && (
+              <StyledButton
+                id={`${id}_button`}
+                tabIndex={-1}
+                isOpen={isOpen}
+                onClick={toggle}
+                onFocus={() => setFocused(true)}
+              >
+                <StyledSpan>
+                  <StyledSvg>
+                    <path d="M7 10l5 5 5-5z" />
+                  </StyledSvg>
+                </StyledSpan>
+              </StyledButton>
+            )) ||
+              (variant === ComboBoxVariant.jepria && (
+                <JepRiaButton
+                  id={`${id}_button`}
+                  tabIndex={-1}
+                  onClick={toggle}
+                  onFocus={() => setFocused(true)}
+                />
+              ))}
+          </StyledDiv>
+          {isOpen && (
+            <Popup
+              id={`${id}_popup`}
+              ref={popupRef}
+              tabIndex={0}
+              style={{
+                top: getPopupTop(),
+                left: getPopupLeft(),
+                width: getPopupWidth(),
+                maxHeight: getPopupHeight(),
+              }}
+            >
+              {renderItems()}
+            </Popup>
+          )}
+        </OuterDiv>
         {isLoading && <LoadingImage />}
         {error !== undefined && <ExclamationImage title={error} />}
-      </StyledDiv>
+      </div>
     )
   },
 )

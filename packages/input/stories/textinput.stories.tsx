@@ -16,7 +16,7 @@ export default {
 export const BasicUsage = () => {
   return (
     <>
-      <TextInput name="InputTextName" />
+      <TextInput label="Text input" name="InputTextName" />
     </>
   )
 }

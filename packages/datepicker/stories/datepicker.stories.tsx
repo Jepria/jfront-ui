@@ -37,7 +37,12 @@ export const Error = () => {
 
   return (
     <>
-      <DatePicker selected={date} onChange={onChange} error="Wrong value" />
+      <DatePicker
+        selected={date}
+        label="Date"
+        onChange={onChange}
+        error="Wrong value"
+      />
     </>
   )
 }

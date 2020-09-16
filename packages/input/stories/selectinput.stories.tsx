@@ -15,7 +15,7 @@ export default {
 export const BasicUsage = () => {
   return (
     <>
-      <SelectInput name="Select">
+      <SelectInput label="Select input" name="Select">
         <option value="Apple">Apple</option>
         <option value="Peach">Peach</option>
         <option value="Orange">Orange</option>
@@ -28,6 +28,7 @@ export const BasicUsageOptions = () => {
   return (
     <>
       <SelectInput
+        label="Select input"
         name="Select"
         options={[
           { name: "Apple", value: "Apple" },
