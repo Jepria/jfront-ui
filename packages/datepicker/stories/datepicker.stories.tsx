@@ -20,9 +20,13 @@ export const BasicUsage = () => {
 
   const [date, setDate] = React.useState<Date | undefined>(undefined)
 
+  const ref = React.useRef(null)
+
+  console.log(ref)
+
   return (
     <>
-      <DatePicker selected={date} label="Date" onChange={onChange} />
+      <DatePicker selected={date} onChange={onChange} ref={ref} />
     </>
   )
 }
