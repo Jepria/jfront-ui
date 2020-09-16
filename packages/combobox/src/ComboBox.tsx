@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react"
 import styled from "styled-components"
 import nextId from "react-id-generator"
 import { OpenImage, LoadingImage, ExclamationImage } from "@jfront/ui-icons"
+import { Label } from "@jfront/ui-label"
 import { ComboBoxButton } from "./ComboBoxButton"
 
 const OuterDiv = styled.div`
