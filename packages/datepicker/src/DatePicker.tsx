@@ -7,9 +7,9 @@ import { MaskedTextInput, InputProps } from "@jfront/ui-input"
 
 export const dateFormatToMask = (dateFormat: string | string[]) => {
   if (Array.isArray(dateFormat)) {
-    return dateFormat.map((format) => format.replace(/[mMdDyYhH]/g, "9"))
+    return dateFormat.map((format) => format.replaceAll(/[mMdDyYhH]/g, "9"))
   } else {
-    return dateFormat.replace(/[mMdDyYhH]/g, "9")
+    return dateFormat.replaceAll(/[mMdDyYhH]/g, "9")
   }
 }
 
