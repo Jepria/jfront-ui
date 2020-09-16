@@ -56,9 +56,9 @@ const Popup = styled.div`
   padding: 0;
   background: white;
   overflow: auto;
-  -webkit-box-shadow: 2px 2px 1px -1px rgba(0, 0, 0, 0.34);
-  -moz-box-shadow: 2px 2px 1px -1px rgba(0, 0, 0, 0.34);
-  box-shadow: 2px 2px 1px -1px rgba(0, 0, 0, 0.34);
+  -webkit-box-shadow: 3px 3px 1px -1px rgba(0, 0, 0, 0.34);
+  -moz-box-shadow: 3px 3px 1px -1px rgba(0, 0, 0, 0.34);
+  box-shadow: 3px 3px 1px -1px rgba(0, 0, 0, 0.34);
   &:focus {
     outline: none;
   }
@@ -340,9 +340,7 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
     const getPopupTop = () => {
       const rect = outerDivRef.current?.getBoundingClientRect()
       const screenHeight = document.body.clientHeight
-      if (rect && screenHeight - rect.bottom < 20 && rect.top > 22) {
-        return undefined
-      } else {
+      if (rect && screenHeight - rect.bottom > 40) {
         return `${
           (outerDivRef.current?.offsetTop
             ? outerDivRef.current?.offsetTop
@@ -352,21 +350,8 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
             : 0) +
           2
         }px`
-      }
-    }
-
-    const getPopupBottom = () => {
-      const rect = outerDivRef.current?.getBoundingClientRect()
-      const screenHeight = document.body.clientHeight
-      if (
-        outerDivRef.current?.offsetTop &&
-        rect &&
-        screenHeight - rect.bottom < 20 &&
-        rect.top > 22
-      ) {
-        return `${screenHeight - outerDivRef.current?.offsetTop + 4}px`
       } else {
-        return undefined
+        return `${outerDivRef.current?.offsetTop}px`
       }
     }
 
@@ -386,22 +371,12 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
       const rect = outerDivRef.current?.getBoundingClientRect()
       const screenHeight = document.body.clientHeight
 
-      if (rect && screenHeight - rect.bottom < 20 && rect.top > 22) {
-        if (rect && rect.top > 100) {
-          return "100px"
-        } else if (rect && rect.top > 20) {
-          return `${rect.top - 2}px`
-        } else {
-          return "20px"
-        }
+      if (rect && screenHeight - rect.bottom > 100) {
+        return "100px"
+      } else if (rect && screenHeight - rect.bottom > 20) {
+        return `${document.body.clientHeight - rect.bottom}px`
       } else {
-        if (rect && screenHeight - rect.bottom > 100) {
-          return "100px"
-        } else if (rect && screenHeight - rect.bottom > 20) {
-          return `${document.body.clientHeight - rect.bottom - 2}px`
-        } else {
-          return "20px"
-        }
+        return "20px"
       }
     }
 
@@ -482,7 +457,6 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
           value={text}
           onFocus={onFocus}
           onChange={onChange}
-          autoComplete="off"
         />
         {(variant === ComboBoxVariant.standard && (
           <ComboBoxButton
@@ -509,7 +483,6 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
             style={{
               top: getPopupTop(),
               left: getPopupLeft(),
-              bottom: getPopupBottom(),
               width: getPopupWidth(),
               maxHeight: getPopupHeight(),
             }}
