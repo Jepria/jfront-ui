@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/Jepria/jfront-ui/compare/jfront-formik@0.1.1...jfront-formik@0.2.0) (2020-09-16)
+
+
+### Features
+
+* embedded labels removed from inputs ([6a04aab](https://github.com/Jepria/jfront-ui/commit/6a04aab0fdf5da0948a6adf6181a6fdd43234eec))
+* new inputs added ([5405111](https://github.com/Jepria/jfront-ui/commit/54051110bcf9fcd36d7adc9b5b24436045bd116b))
+
+
+
+
+
 ## [0.1.1](https://github.com/Jepria/jfront-ui/compare/jfront-formik@0.1.0...jfront-formik@0.1.1) (2020-09-10)
 
 
