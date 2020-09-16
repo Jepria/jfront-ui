@@ -1,10 +1,10 @@
-import React, {
-  RefObject,
-  ForwardRefExoticComponent,
-  RefAttributes,
-} from "react"
+import React, { RefObject } from "react"
 import { Label, LabelProps } from "@jfront/ui-label"
 import styled from "styled-components"
+
+export interface FormProps extends React.FormHTMLAttributes<HTMLFormElement> {
+  ref?: RefObject<HTMLFormElement>
+}
 
 const StyledForm = styled.form`
   -webkit-box-sizing: border-box;
@@ -44,6 +44,7 @@ export interface FormFieldSetProps
   extends React.FieldsetHTMLAttributes<HTMLFieldSetElement> {
   legend?: string
   renderLegend?: (legend?: string) => React.ReactNode
+  ref?: RefObject<HTMLFieldSetElement>
 }
 
 export interface FormLabelProps extends LabelProps {
@@ -95,11 +96,10 @@ export interface FormFieldProps extends React.HTMLAttributes<HTMLDivElement> {
   label?: string
   required?: boolean
   renderLabel?: (label?: string, required?: boolean) => React.ReactNode
+  ref?: RefObject<HTMLDivElement>
 }
 
-type Form = ForwardRefExoticComponent<
-  React.FormHTMLAttributes<HTMLFormElement> & RefAttributes<HTMLFormElement>
-> & {
+export type Form = React.FC<FormProps> & {
   Field: React.FC<FormFieldProps>
   Label: React.FC<FormLabelProps>
   Legend: React.FC<React.HTMLAttributes<HTMLLegendElement>>
@@ -107,20 +107,11 @@ type Form = ForwardRefExoticComponent<
   FieldSet: React.FC<FormFieldSetProps>
 }
 
-const InternalForm = React.forwardRef<
-  HTMLFormElement,
-  React.FormHTMLAttributes<HTMLFormElement>
->((props, ref) => {
-  return (
-    <StyledForm {...props} ref={ref}>
-      {props.children}
-    </StyledForm>
-  )
-})
+export const Form: Form = (props: FormProps) => {
+  return <StyledForm {...props}>{props.children}</StyledForm>
+}
 
-const Form: Form = InternalForm as Form
-
-Form.Field = (props: FormFieldProps) => {
+Form.Field = (props) => {
   return (
     <StyledField {...props}>
       {props.label && !props.renderLabel && (
@@ -132,15 +123,15 @@ Form.Field = (props: FormFieldProps) => {
   )
 }
 
-Form.Label = (props: FormLabelProps) => {
+Form.Label = (props) => {
   return <StyledFormLabel {...props}>{props.children}</StyledFormLabel>
 }
 
-Form.Legend = (props: React.HTMLAttributes<HTMLLegendElement>) => {
+Form.Legend = (props) => {
   return <StyledLegend {...props}>{props.children}</StyledLegend>
 }
 
-Form.FieldSet = (props: FormFieldSetProps) => {
+Form.FieldSet = (props) => {
   return (
     <StyledFieldSet {...props}>
       {props.legend && !props.renderLegend && (
@@ -152,7 +143,7 @@ Form.FieldSet = (props: FormFieldSetProps) => {
   )
 }
 
-Form.Control = (props: FormControlProps) => {
+Form.Control = (props) => {
   return (
     <StyledFieldControl {...props}>
       {React.Children.only(props.children)}
@@ -170,5 +161,3 @@ Form.Control = (props: FormControlProps) => {
     </StyledFieldControl>
   )
 }
-
-export { Form }
