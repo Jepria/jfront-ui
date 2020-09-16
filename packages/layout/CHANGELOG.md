@@ -3,17 +3,6 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-# [0.2.0](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-layout@0.1.2...@jfront/ui-layout@0.2.0) (2020-09-16)
-
-
-### Features
-
-* panel refactoring ([38874b2](https://github.com/Jepria/jfront-ui/commit/38874b2c05a045ea2734e2479fbf9267b6c0383f))
-
-
-
-
-
 ## [0.1.2](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-layout@0.1.1...@jfront/ui-layout@0.1.2) (2020-09-10)
 
 **Note:** Version bump only for package @jfront/ui-layout

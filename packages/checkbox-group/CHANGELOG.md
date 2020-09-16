@@ -3,23 +3,6 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-# [0.4.0](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-checkbox-group@0.3.1...@jfront/ui-checkbox-group@0.4.0) (2020-09-16)
-
-
-### Bug Fixes
-
-* add rerender after changed values in CheckBoxGroup ([c62ccd2](https://github.com/Jepria/jfront-ui/commit/c62ccd267df3e65f3079826e8cbd3759982a89b5))
-* useEffect added ([f5d6884](https://github.com/Jepria/jfront-ui/commit/f5d68847b73bf2743e452088ba6128c214e6d42d))
-
-
-### Features
-
-* embedded labels removed from inputs ([6a04aab](https://github.com/Jepria/jfront-ui/commit/6a04aab0fdf5da0948a6adf6181a6fdd43234eec))
-
-
-
-
-
 ## [0.3.1](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-checkbox-group@0.3.0...@jfront/ui-checkbox-group@0.3.1) (2020-09-10)
 
 
