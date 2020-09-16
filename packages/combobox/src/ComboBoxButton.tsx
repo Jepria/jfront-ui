@@ -18,6 +18,7 @@ const StyledButton = styled.button<ComboBoxButtonProps>`
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
+  padding: 12px;
   overflow: visible;
   font-size: 1.5rem;
   text-align: center;
