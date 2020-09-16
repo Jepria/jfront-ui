@@ -15,7 +15,7 @@ export default {
 export const BasicUsage = () => {
   return (
     <>
-      <MaskedTextInput mask="99/99/9999" name="Masked" showMask />
+      <MaskedTextInput mask="99/99/9999" name="Masked" alwaysShowMask />
     </>
   )
 }
@@ -23,7 +23,12 @@ export const BasicUsage = () => {
 export const IsLoading = () => {
   return (
     <>
-      <MaskedTextInput mask="99/99/9999" name="Masked" showMask isLoading />
+      <MaskedTextInput
+        mask="99/99/9999"
+        name="Masked"
+        alwaysShowMask
+        isLoading
+      />
     </>
   )
 }
@@ -34,7 +39,7 @@ export const Error = () => {
       <MaskedTextInput
         mask="99/99/9999"
         name="Masked"
-        showMask
+        alwaysShowMask
         error="wrong value"
       />
     </>

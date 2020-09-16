@@ -2,28 +2,20 @@ import React from "react"
 import ReactDatePicker, { ReactDatePickerProps } from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css"
 import { ru } from "date-fns/locale"
-import {
-  TextInput,
-  InputProps,
-  parseMask,
-  parsePlaceholderFromString,
-} from "@jfront/ui-input"
-import MaskedInput from "react-text-mask"
+import { MaskedTextInput, InputProps } from "@jfront/ui-input"
 
 export const dateFormatToMask = (dateFormat: string | string[]) => {
   if (Array.isArray(dateFormat)) {
-    return dateFormat
-      .map((format) => format.replace(/[mMdDyYhH]/g, "9"))
-      .join("")
+    return dateFormat.map((format) => format.replace(/[mMdDyYhH]/g, "9"))
   } else {
     return dateFormat.replace(/[mMdDyYhH]/g, "9")
   }
 }
 
 export const DatePicker = React.forwardRef<
-  ReactDatePicker,
+  HTMLInputElement,
   ReactDatePickerProps & InputProps
->(({ onChange, onSelect, ...props }, ref) => {
+>((props, ref) => {
   const {
     peekNextMonth = true,
     showMonthDropdown = true,
@@ -33,13 +25,13 @@ export const DatePicker = React.forwardRef<
     autoComplete = "off",
     locale = ru,
     customInput = (
-      <MaskedInput
-        placeholderChar={"*"}
-        {...props}
-        mask={parseMask(dateFormatToMask(dateFormat))}
-        render={(innerRef, props) => (
-          <TextInput inputRef={innerRef} {...props} />
-        )}
+      <MaskedTextInput
+        mask={dateFormatToMask(dateFormat)}
+        maskPlaceholder="*"
+        error={props.error}
+        isLoading={props.isLoading}
+        alwaysShowMask
+        ref={ref}
       />
     ),
   } = props
@@ -54,12 +46,7 @@ export const DatePicker = React.forwardRef<
       dropdownMode={dropdownMode}
       dateFormat={dateFormat}
       autoComplete={autoComplete}
-      onChange={onChange}
-      onSelect={onSelect}
       locale={locale}
-      isClearable={!props.error && !props.isLoading}
-      placeholderText={parsePlaceholderFromString(dateFormatToMask(dateFormat))}
-      ref={ref}
     />
   )
 })
