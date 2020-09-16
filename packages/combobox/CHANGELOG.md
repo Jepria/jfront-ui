@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-combobox@0.2.0...@jfront/ui-combobox@0.3.0) (2020-09-16)
+
+
+### Bug Fixes
+
+* added label ([803b2c3](https://github.com/Jepria/jfront-ui/commit/803b2c3a4354464fce70f90f8ded32aa414107d4))
+* fixes for IE ([d50f2cd](https://github.com/Jepria/jfront-ui/commit/d50f2cd300082525a13371d87349790067f19768))
+* popup coordinates ([931344f](https://github.com/Jepria/jfront-ui/commit/931344f3b127bbf8be2aa9d6190925aa1e84843e))
+* ui-label moved to devDependencies ([c33be59](https://github.com/Jepria/jfront-ui/commit/c33be596df218b1b72f367aa330f4bf75df4e665))
+
+
+### Features
+
+* embedded labels removed from inputs ([6a04aab](https://github.com/Jepria/jfront-ui/commit/6a04aab0fdf5da0948a6adf6181a6fdd43234eec))
+
+
+
+
+
 # [0.2.0](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-combobox@0.1.0...@jfront/ui-combobox@0.2.0) (2020-09-10)
 
 

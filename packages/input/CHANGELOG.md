@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-input@0.3.1...@jfront/ui-input@0.4.0) (2020-09-16)
+
+
+### Bug Fixes
+
+* label moved to devDependencies ([644e527](https://github.com/Jepria/jfront-ui/commit/644e5273d6da06c643d71d6c8a89030ca56bda2b))
+* masked input and datepicker fixes ([539c7e3](https://github.com/Jepria/jfront-ui/commit/539c7e33f55618be243d39f83fccd7c82ad2e085))
+
+
+### Features
+
+* embedded labels removed from inputs ([6a04aab](https://github.com/Jepria/jfront-ui/commit/6a04aab0fdf5da0948a6adf6181a6fdd43234eec))
+
+
+
+
+
 ## [0.3.1](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-input@0.3.0...@jfront/ui-input@0.3.1) (2020-09-10)
 
 
