@@ -97,7 +97,7 @@ export const BasicUsage = () => {
         },
       ]}
       onSelection={setRows}
-      data={React.useMemo(() => [], [])}
+      data={React.useMemo(() => data, [])}
     />
   )
 }
