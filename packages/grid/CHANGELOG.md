@@ -1,74 +1,74 @@
 # Change Log
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [0.2.3](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-grid@0.2.2...@jfront/ui-grid@0.2.3) (2020-09-17)
+
+### Bug Fixes
+
+- basic usage records
+  ([f0c335d](https://github.com/Jepria/jfront-ui/commit/f0c335d13c74a6b52e63482fee90f04a7267db0f))
 
 ## [0.2.2](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-grid@0.2.1...@jfront/ui-grid@0.2.2) (2020-09-16)
 
 **Note:** Version bump only for package @jfront/ui-grid
 
-
-
-
-
 ## [0.2.1](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-grid@0.2.0...@jfront/ui-grid@0.2.1) (2020-09-10)
-
 
 ### Bug Fixes
 
-* checkbox list ([04eb6ae](https://github.com/Jepria/jfront-ui/commit/04eb6aefe11efb783eab745d0f14785a337548a0))
-* checkboxes ([c69f246](https://github.com/Jepria/jfront-ui/commit/c69f246d51390303c5f4d99a82a181720350e8c2))
-* column configuration save ([aa209b1](https://github.com/Jepria/jfront-ui/commit/aa209b18babaf11348d6610701c3639336befcd4))
-* debounce column saving ([573154a](https://github.com/Jepria/jfront-ui/commit/573154adca56c8377b6707c4283e4ade3d5564f5))
-* grid optimization ([6dab87d](https://github.com/Jepria/jfront-ui/commit/6dab87d08d25c5f8442ff8e38d99e3f9c89c17f4))
-* horizontal scrolling ([1ac3151](https://github.com/Jepria/jfront-ui/commit/1ac3151ffa410f926fa31e6addadf7a0efddfcee))
-* onSelection ([9f0decb](https://github.com/Jepria/jfront-ui/commit/9f0decb322640d9f061037a49a5d577b884da40e))
-* shift + click ([41e9d05](https://github.com/Jepria/jfront-ui/commit/41e9d05b881ded6f6869dab37f0b9a7b2c5fa127))
-* shift + click bug on re-render ([7dcb084](https://github.com/Jepria/jfront-ui/commit/7dcb08497f18d03185733ed4d8cf319e4dddafec))
-
-
-
-
+- checkbox list
+  ([04eb6ae](https://github.com/Jepria/jfront-ui/commit/04eb6aefe11efb783eab745d0f14785a337548a0))
+- checkboxes
+  ([c69f246](https://github.com/Jepria/jfront-ui/commit/c69f246d51390303c5f4d99a82a181720350e8c2))
+- column configuration save
+  ([aa209b1](https://github.com/Jepria/jfront-ui/commit/aa209b18babaf11348d6610701c3639336befcd4))
+- debounce column saving
+  ([573154a](https://github.com/Jepria/jfront-ui/commit/573154adca56c8377b6707c4283e4ade3d5564f5))
+- grid optimization
+  ([6dab87d](https://github.com/Jepria/jfront-ui/commit/6dab87d08d25c5f8442ff8e38d99e3f9c89c17f4))
+- horizontal scrolling
+  ([1ac3151](https://github.com/Jepria/jfront-ui/commit/1ac3151ffa410f926fa31e6addadf7a0efddfcee))
+- onSelection
+  ([9f0decb](https://github.com/Jepria/jfront-ui/commit/9f0decb322640d9f061037a49a5d577b884da40e))
+- shift + click
+  ([41e9d05](https://github.com/Jepria/jfront-ui/commit/41e9d05b881ded6f6869dab37f0b9a7b2c5fa127))
+- shift + click bug on re-render
+  ([7dcb084](https://github.com/Jepria/jfront-ui/commit/7dcb08497f18d03185733ed4d8cf319e4dddafec))
 
 # [0.2.0](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-grid@0.1.1...@jfront/ui-grid@0.2.0) (2020-09-04)
 
-
 ### Bug Fixes
 
-* column configuration modal placement ([5da5a08](https://github.com/Jepria/jfront-ui/commit/5da5a081b412b3faa063140f1b62238f9c2cc912))
-* gradient ([a016240](https://github.com/Jepria/jfront-ui/commit/a0162405fd2c3b9073816ac7d971df2250e1ff85))
-* hiding columns ([ebb5f82](https://github.com/Jepria/jfront-ui/commit/ebb5f82795302d2ddd1eaa3b2b58d78be087b030))
-* hiding columns ([3d681de](https://github.com/Jepria/jfront-ui/commit/3d681de69e4e8eb06e1b25e65e7d1930658a6de4))
-* icons refactor ([ae2784b](https://github.com/Jepria/jfront-ui/commit/ae2784be68bbba3c6bafc2775a4a5a50c059c92e))
-
+- column configuration modal placement
+  ([5da5a08](https://github.com/Jepria/jfront-ui/commit/5da5a081b412b3faa063140f1b62238f9c2cc912))
+- gradient
+  ([a016240](https://github.com/Jepria/jfront-ui/commit/a0162405fd2c3b9073816ac7d971df2250e1ff85))
+- hiding columns
+  ([ebb5f82](https://github.com/Jepria/jfront-ui/commit/ebb5f82795302d2ddd1eaa3b2b58d78be087b030))
+- hiding columns
+  ([3d681de](https://github.com/Jepria/jfront-ui/commit/3d681de69e4e8eb06e1b25e65e7d1930658a6de4))
+- icons refactor
+  ([ae2784b](https://github.com/Jepria/jfront-ui/commit/ae2784be68bbba3c6bafc2775a4a5a50c059c92e))
 
 ### Features
 
-* data grid based on react-table ([122cc41](https://github.com/Jepria/jfront-ui/commit/122cc41ac883337a140fdc745893ab00cb0cd37a))
-* saving of column width and hidden columns to local storage ([900b808](https://github.com/Jepria/jfront-ui/commit/900b8085a31f8c21726b28da3d24f949023a6ff4))
-
-
-
-
+- data grid based on react-table
+  ([122cc41](https://github.com/Jepria/jfront-ui/commit/122cc41ac883337a140fdc745893ab00cb0cd37a))
+- saving of column width and hidden columns to local storage
+  ([900b808](https://github.com/Jepria/jfront-ui/commit/900b8085a31f8c21726b28da3d24f949023a6ff4))
 
 ## 0.1.2-rc.0 (2020-09-04)
 
 **Note:** Version bump only for package @jfront/ui-grid
 
-
-
-
-
 ## [0.1.1](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-grid@0.1.0...@jfront/ui-grid@0.1.1) (2020-08-17)
-
 
 ### Bug Fixes
 
-* update packages ([088c61f](https://github.com/Jepria/jfront-ui/commit/088c61f2c7e5b4240adba0f4565ce43a23487d43))
-
-
-
-
+- update packages
+  ([088c61f](https://github.com/Jepria/jfront-ui/commit/088c61f2c7e5b4240adba0f4565ce43a23487d43))
 
 # Change Log
 

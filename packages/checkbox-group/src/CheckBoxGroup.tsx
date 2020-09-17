@@ -45,6 +45,7 @@ const StyledCheckBoxGroup = styled.div<StyledCheckBoxGroupProps>`
   border: 1px solid grey;
   padding: 0;
   margin: 0;
+  min-width: 150px;
   ${(props) => (props.error ? "border: 1px solid red;" : "")};
 `
 
@@ -64,6 +65,8 @@ const StyledUl = styled.div<StyledUlProps>`
   -webkit-box-flex: 1;
   -ms-flex-positive: 1;
   flex-grow: 1;
+  box-sizing: border-box;
+  height: 100%;
   ${(props) =>
     props.direction === Direction.column
       ? `-webkit-box-orient: vertical;
@@ -75,8 +78,7 @@ const StyledUl = styled.div<StyledUlProps>`
       -ms-flex-direction: row;
           flex-direction: row;`};
   overflow: auto;
-  margin: 2px;
-  padding: 5px;
+  padding: 7px;
   font-family: tahoma, arial, helvetica, sans-serif;
   font-size: 12px;
 `

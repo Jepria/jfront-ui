@@ -1,50 +1,41 @@
 # Change Log
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [0.3.3](https://github.com/Jepria/jfront-ui/compare/jfront-cra@0.3.2...jfront-cra@0.3.3) (2020-09-17)
+
+**Note:** Version bump only for package jfront-cra
 
 ## [0.3.2](https://github.com/Jepria/jfront-ui/compare/jfront-cra@0.3.1...jfront-cra@0.3.2) (2020-09-16)
 
 **Note:** Version bump only for package jfront-cra
 
-
-
-
-
 ## [0.3.1](https://github.com/Jepria/jfront-ui/compare/jfront-cra@0.3.0...jfront-cra@0.3.1) (2020-09-10)
 
 **Note:** Version bump only for package jfront-cra
 
-
-
-
-
 # [0.3.0](https://github.com/Jepria/jfront-ui/compare/jfront-cra@0.2.0...jfront-cra@0.3.0) (2020-09-04)
-
 
 ### Bug Fixes
 
-* added index.css ([411a1cd](https://github.com/Jepria/jfront-ui/commit/411a1cde916b09fa7f4e202e82b26c612fca4308))
-* dependencies ([1a47a8a](https://github.com/Jepria/jfront-ui/commit/1a47a8addf43cfa9035364fa219c4b01fe6ee0fa))
-
+- added index.css
+  ([411a1cd](https://github.com/Jepria/jfront-ui/commit/411a1cde916b09fa7f4e202e82b26c612fca4308))
+- dependencies
+  ([1a47a8a](https://github.com/Jepria/jfront-ui/commit/1a47a8addf43cfa9035364fa219c4b01fe6ee0fa))
 
 ### Features
 
-* add new implementation CheckBox and CheckBoxGroup ([e90c8e0](https://github.com/Jepria/jfront-ui/commit/e90c8e09f5e3a3e6e4c3cb3780893ae871ce8aa5))
-* data grid based on react-table ([122cc41](https://github.com/Jepria/jfront-ui/commit/122cc41ac883337a140fdc745893ab00cb0cd37a))
-* ie support ([a227af1](https://github.com/Jepria/jfront-ui/commit/a227af136d021c8adce0863607dc934d0320f35e))
-
-
-
-
+- add new implementation CheckBox and CheckBoxGroup
+  ([e90c8e0](https://github.com/Jepria/jfront-ui/commit/e90c8e09f5e3a3e6e4c3cb3780893ae871ce8aa5))
+- data grid based on react-table
+  ([122cc41](https://github.com/Jepria/jfront-ui/commit/122cc41ac883337a140fdc745893ab00cb0cd37a))
+- ie support
+  ([a227af1](https://github.com/Jepria/jfront-ui/commit/a227af136d021c8adce0863607dc934d0320f35e))
 
 ## 0.2.1-rc.0 (2020-09-04)
 
 **Note:** Version bump only for package jfront-cra
-
-
-
-
 
 # Change Log
 
