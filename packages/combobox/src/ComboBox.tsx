@@ -112,8 +112,8 @@ const StyledDiv = styled.div<StyledDivProps>`
   text-align: left;
   ${(props) =>
     props.focused
-      ? `box-shadow: 0 0 5px rgba(81, 203, 238, 1);
-         border: 1px solid rgba(81, 203, 238, 1);`
+      ? `box-shadow: 0 0 5px #99bbe8;
+         border: 1px solid #99bbe8;`
       : "border: 1px solid #ccc; border-top: 1px solid #999;"};
   ${(props) =>
     props.error
