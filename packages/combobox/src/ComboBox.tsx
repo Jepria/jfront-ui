@@ -4,21 +4,6 @@ import nextId from "react-id-generator"
 import { OpenImage, LoadingImage, ExclamationImage } from "@jfront/ui-icons"
 import { ComboBoxButton } from "./ComboBoxButton"
 
-const OuterDiv = styled.div`
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  white-space: nowrap;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  text-align: left;
-`
-
 interface ItemProps {
   disabled?: boolean
   selected?: boolean
@@ -90,6 +75,7 @@ const StyledInput = styled.input.attrs({ type: "search" })`
   -webkit-box-flex: 1;
   -ms-flex-positive: 1;
   flex-grow: 1;
+  min-width: 0px;
   margin: 0;
   padding: 0;
   padding-left: 3px;
@@ -114,6 +100,7 @@ const StyledDiv = styled.div<StyledDivProps>`
   -ms-flex-positive: 1;
   margin: 0;
   padding: 0;
+  min-width: 150px;
   white-space: nowrap;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -411,7 +398,8 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
         const itemValue = item.props.value
         if (
           (!props.onInputChange && item.props.label.startsWith(text)) ||
-          currentValue !== undefined
+          currentValue !== undefined ||
+          props.onInputChange
         ) {
           return React.cloneElement(item, {
             id: `${id}_${itemValue}`,
@@ -442,7 +430,8 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
         }
         if (
           (!props.onInputChange && itemLabel.startsWith(text)) ||
-          currentValue !== undefined
+          currentValue !== undefined ||
+          props.onInputChange
         ) {
           if (renderItem) {
             return renderItem(itemProps)
