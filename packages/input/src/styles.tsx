@@ -13,6 +13,7 @@ export const StyledDiv = styled.div<StyledInputProps>`
   -ms-flex-positive: 1;
   margin: 0;
   padding: 0;
+  min-width: 150px;
   white-space: nowrap;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -43,6 +44,7 @@ export const StyledInput = styled.input`
   -webkit-box-flex: 1;
   -ms-flex-positive: 1;
   flex-grow: 1;
+  min-width: 0px;
   margin: 0;
   padding: 0;
   padding-left: 3px;
