@@ -16,6 +16,7 @@ const StyledNumberFormat = styled(NumberFormat)<StyledNumberFormatProps>`
   -webkit-box-flex: 1;
   -ms-flex-positive: 1;
   flex-grow: 1;
+  min-width: 0px;
   margin: 0;
   padding: 0;
   padding-left: 3px;

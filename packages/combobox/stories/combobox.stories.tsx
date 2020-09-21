@@ -15,7 +15,7 @@ export default {
 export const BasicUsage = () => {
   return (
     <>
-      <ComboBox onChangeValue={(name, value) => console.log(value)}>
+      <ComboBox onSelectionChange={(name, value) => console.log(value)}>
         <ComboBoxItem value={1} label="test1" />
         <ComboBoxItem value={2} label="test2" />
         <ComboBoxItem value={3} label="test3" />
@@ -30,11 +30,51 @@ export const BasicUsage = () => {
   )
 }
 
+export const CustomFilter = () => {
+  const options = [
+    { name: "test1", value: 1 },
+    { name: "test2", value: 2 },
+    { name: "test3", value: 3 },
+    { name: "test4", value: 4 },
+    { name: "test5", value: 5 },
+    { name: "test6", value: 6 },
+    { name: "test7", value: 7 },
+    { name: "test8", value: 8 },
+    { name: "test9", value: 9 },
+  ]
+
+  const [filter, setFilter] = React.useState("")
+
+  return (
+    <>
+      <ComboBox
+        onInputChange={(e) => setFilter(e.target.value)}
+        onSelectionChange={(name, value) => {
+          console.log(value)
+          if (value !== undefined) {
+            setFilter("")
+          }
+        }}
+      >
+        {options
+          .filter((option) => option.name.startsWith(filter))
+          .map((option) => (
+            <ComboBoxItem
+              key={option.value}
+              value={option.value}
+              label={option.name}
+            />
+          ))}
+      </ComboBox>
+    </>
+  )
+}
+
 export const InitialValue = () => {
   return (
     <>
       <ComboBox
-        onChangeValue={(name, value) => console.log(value)}
+        onSelectionChange={(name, value) => console.log(value)}
         style={{ width: "200px" }}
         initialValue={3}
       >
@@ -69,7 +109,7 @@ export const WithOptionsProp = () => {
         ]}
         variant="jepria"
         style={{ width: "200px" }}
-        onChangeValue={(name, value) => console.log(value)}
+        onSelectionChange={(name, value) => console.log(value)}
       />
     </>
   )
@@ -78,7 +118,10 @@ export const WithOptionsProp = () => {
 export const LoadingImage = () => {
   return (
     <>
-      <ComboBox onChangeValue={(name, value) => console.log(value)} isLoading>
+      <ComboBox
+        onSelectionChange={(name, value) => console.log(value)}
+        isLoading
+      >
         <ComboBoxItem value={1} label="test1" />
         <ComboBoxItem value={2} label="test2" />
         <ComboBoxItem value={3} label="test3" />
@@ -97,7 +140,7 @@ export const Error = () => {
   return (
     <>
       <ComboBox
-        onChangeValue={(name, value) => console.log(value)}
+        onSelectionChange={(name, value) => console.log(value)}
         style={{ width: "200px" }}
         error="error"
       >

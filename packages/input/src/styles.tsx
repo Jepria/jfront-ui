@@ -13,6 +13,7 @@ export const StyledDiv = styled.div<StyledInputProps>`
   -ms-flex-positive: 1;
   margin: 0;
   padding: 0;
+  min-width: 150px;
   white-space: nowrap;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -24,8 +25,8 @@ export const StyledDiv = styled.div<StyledInputProps>`
   text-align: left;
   ${(props) =>
     props.focused
-      ? `box-shadow: 0 0 5px rgba(81, 203, 238, 1);
-       border: 1px solid rgba(81, 203, 238, 1);`
+      ? `box-shadow: 0 0 5px #99bbe8;
+       border: 1px solid #99bbe8;`
       : "border: 1px solid #ccc; border-top: 1px solid #999;"};
   ${(props) =>
     props.error
@@ -43,6 +44,7 @@ export const StyledInput = styled.input`
   -webkit-box-flex: 1;
   -ms-flex-positive: 1;
   flex-grow: 1;
+  min-width: 0px;
   margin: 0;
   padding: 0;
   padding-left: 3px;
