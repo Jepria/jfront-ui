@@ -50,7 +50,15 @@ function App() {
   const data: Array<Data> = makeData(100)
 
   return (
-    <div>
+    <div
+      style={{
+        height: "100%",
+        overflow: "hidden",
+        display: "flex",
+        flexDirection: "column",
+        width: "100%",
+      }}
+    >
       <TabPanel>
         <Tab selected={true}>Showcase App</Tab>
       </TabPanel>
@@ -65,46 +73,56 @@ function App() {
         <ToolbarButtonFind />
         <ToolbarButtonBase>Найти</ToolbarButtonBase>
       </Toolbar>
-      <Grid<Data>
-        columns={[
-          {
-            Header: "Id",
-            accessor: "id",
-          },
-          {
-            Header: "First Name",
-            accessor: "firstName",
-            width: 300,
-          },
-          {
-            Header: "Last Name",
-            accessor: "lastName",
-            width: 300,
-          },
+      <div
+        style={{
+          height: "100%",
+          overflow: "hidden",
+          display: "flex",
+          flexDirection: "column",
+          width: "100%",
+        }}
+      >
+        <Grid<Data>
+          columns={[
+            {
+              Header: "Id",
+              accessor: "id",
+            },
+            {
+              Header: "First Name",
+              accessor: "firstName",
+              width: 300,
+            },
+            {
+              Header: "Last Name",
+              accessor: "lastName",
+              width: 300,
+            },
 
-          {
-            Header: "Age",
-            accessor: "age",
-            width: 300,
-          },
-          {
-            Header: "Visits",
-            accessor: "visits",
-            width: 300,
-          },
-          {
-            Header: "Status",
-            accessor: "status",
-            width: 300,
-          },
-          {
-            Header: "Profile Progress",
-            accessor: "progress",
-            width: 300,
-          },
-        ]}
-        data={React.useMemo(() => data, [])}
-      />
+            {
+              Header: "Age",
+              accessor: "age",
+              width: 300,
+            },
+            {
+              Header: "Visits",
+              accessor: "visits",
+              width: 300,
+            },
+            {
+              Header: "Status",
+              accessor: "status",
+              width: 300,
+            },
+            {
+              Header: "Profile Progress",
+              accessor: "progress",
+              width: 300,
+            },
+          ]}
+          data={React.useMemo(() => data, [])}
+        />
+      </div>
     </div>
   )
 }
