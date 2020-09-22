@@ -6,6 +6,7 @@ const TabPanel = styled.div`
   font-family: tahoma, arial, helvetica, sans-serif;
   color: rgb(21, 66, 139);
   font-size: 11px;
+  z-index: 1;
 `
 
 interface TabProps {
