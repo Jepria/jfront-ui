@@ -13,6 +13,7 @@ const StyledToolbar = styled.nav`
   border-width: 1px 1px 1px 1px;
   overflow: hidden;
   background: linear-gradient(#dae6f4, #d0def0);
+  z-index: 0;
 `
 
 export const Toolbar: React.FC<ToolbarInterface> = (props) => {
