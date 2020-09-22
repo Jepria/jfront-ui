@@ -7,6 +7,7 @@ const TabPanel = styled.div`
   color: rgb(21, 66, 139);
   font-size: 11px;
   z-index: 1;
+  flex-shrink: 0;
 `
 
 interface TabProps {
