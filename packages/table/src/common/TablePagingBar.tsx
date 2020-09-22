@@ -2,50 +2,50 @@ import React, { useState, useEffect, HTMLAttributes } from "react"
 import styled from "styled-components"
 import { PagingToolBar } from "@jfront/ui-pagingbar"
 
-const StyledPagingBar = styled.div`
-  display: table;
+export const StyledPagingBar = styled.div`
+  display: flex;
   width: 100%;
   font: 11px arial, tahoma, helvetica, sans-serif;
   margin: 0;
   padding: 2px 2px 2px 2px;
   box-sizing: border-box;
-`
-
-const Left = styled.div`
-  display: table-cell;
-  width: 33.33%;
-  text-align: left;
   @media only screen and (max-width: 760px),
     (min-device-width: 768px) and (max-device-width: 1024px) {
-    width: auto;
-    display: table-row;
-    text-align: center;
+    flex-direction: column;
+    justify-content: center;
   }
 `
 
-const Center = styled.div`
-  display: table-cell;
-  vertical-align: middle;
-  text-align: center;
-  width: 33.33%;
+export const Left = styled.div`
+  display: inline-flex;
+  align-items: center;
+  flex-basis: 33.33%;
+  justify-content: flex-start;
   @media only screen and (max-width: 760px),
     (min-device-width: 768px) and (max-device-width: 1024px) {
-    width: auto;
-    display: table-row;
-    text-align: center;
+    justify-content: center;
   }
 `
 
-const Right = styled.div`
-  display: table-cell;
-  vertical-align: middle;
-  text-align: right;
-  width: 33.33%;
+export const Center = styled.div`
+  display: inline-flex;
+  align-items: center;
+  flex-basis: 33.33%;
+  justify-content: center;
   @media only screen and (max-width: 760px),
     (min-device-width: 768px) and (max-device-width: 1024px) {
-    width: auto;
-    display: table-row;
-    text-align: center;
+    justify-content: center;
+  }
+`
+
+export const Right = styled.div`
+  display: inline-flex;
+  align-items: center;
+  flex-basis: 33.33%;
+  justify-content: flex-end;
+  @media only screen and (max-width: 760px),
+    (min-device-width: 768px) and (max-device-width: 1024px) {
+    justify-content: center;
   }
 `
 
