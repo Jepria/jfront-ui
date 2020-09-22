@@ -193,11 +193,6 @@ export const Label = styled.label`
   vertical-align: top;
 `
 
-export const NumberInput = styled.input.attrs({ type: "number" })`
-  width: 60px;
-  margin: 0 5px;
-`
-
 export const StyledPagingBar = styled.div`
   display: table;
   box-sizing: border-box;
