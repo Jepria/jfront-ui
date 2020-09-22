@@ -685,6 +685,11 @@ export function Grid<D extends object>(props: GridProps<D>) {
                   const page = e.target.value ? Number(e.target.value) - 1 : 0
                   gotoPage(page)
                 }}
+                style={{
+                  minWidth: "60px",
+                  maxWidth: "150px",
+                  backgroundColor: "white",
+                }}
               />{" "}
               из {pageOptions.length}
             </Label>
@@ -740,6 +745,11 @@ export function Grid<D extends object>(props: GridProps<D>) {
                 if (e.target.value !== "") {
                   setPageSize(Number(e.target.value))
                 }
+              }}
+              style={{
+                minWidth: "60px",
+                maxWidth: "100px",
+                backgroundColor: "white",
               }}
             />
           </label>
