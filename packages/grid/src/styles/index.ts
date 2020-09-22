@@ -166,6 +166,8 @@ export const StyledSvg = styled.svg`
 `
 
 export const PagingToolbar = styled.div`
+  display: inline-flex;
+  align-items: center;
   white-space: nowrap;
 `
 
@@ -189,63 +191,57 @@ export const Item = styled.button`
 
 export const Label = styled.label`
   display: inline-block;
-  height: 22px;
   vertical-align: top;
 `
 
-export const NumberInput = styled.input.attrs({ type: "number" })`
-  width: 60px;
-  margin: 0 5px;
-`
-
 export const StyledPagingBar = styled.div`
-  display: table;
-  box-sizing: border-box;
+  display: flex;
   width: 100%;
   font: 11px arial, tahoma, helvetica, sans-serif;
   margin: 0;
   padding: 2px 2px 2px 2px;
+  box-sizing: border-box;
   border-style: solid;
-  border-color: #99bbe8;
+  border-color: rgb(153, 187, 232);
   border-width: 1px;
-  background: linear-gradient(#dae6f4, #d0def0);
+  background: linear-gradient(rgb(218, 230, 244), rgb(208, 222, 240));
+  @media only screen and (max-width: 760px),
+    (min-device-width: 768px) and (max-device-width: 1024px) {
+    flex-direction: column;
+    justify-content: center;
+  }
 `
 
 export const Left = styled.div`
-  display: table-cell;
-  width: 33.33%;
-  text-align: left;
+  display: inline-flex;
+  align-items: center;
+  flex-basis: 33.33%;
+  justify-content: flex-start;
   @media only screen and (max-width: 760px),
     (min-device-width: 768px) and (max-device-width: 1024px) {
-    width: auto;
-    display: table-row;
-    text-align: center;
+    justify-content: center;
   }
 `
 
 export const Center = styled.div`
-  display: table-cell;
-  vertical-align: middle;
-  text-align: center;
-  width: 33.33%;
+  display: inline-flex;
+  align-items: center;
+  flex-basis: 33.33%;
+  justify-content: center;
   @media only screen and (max-width: 760px),
     (min-device-width: 768px) and (max-device-width: 1024px) {
-    width: auto;
-    display: table-row;
-    text-align: center;
+    justify-content: center;
   }
 `
 
 export const Right = styled.div`
-  display: table-cell;
-  vertical-align: middle;
-  text-align: right;
-  width: 33.33%;
+  display: inline-flex;
+  align-items: center;
+  flex-basis: 33.33%;
+  justify-content: flex-end;
   @media only screen and (max-width: 760px),
     (min-device-width: 768px) and (max-device-width: 1024px) {
-    width: auto;
-    display: table-row;
-    text-align: center;
+    justify-content: center;
   }
 `
 

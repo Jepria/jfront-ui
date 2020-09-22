@@ -18,7 +18,6 @@ import {
   PagingToolbar,
   Item,
   Label,
-  NumberInput,
   Center,
   Right,
 } from "../styles"
@@ -57,6 +56,7 @@ import {
   TableCommonProps,
 } from "react-table"
 import { throttle } from "throttle-debounce"
+import { NumberInput } from "@jfront/ui-input"
 
 interface ColumnConfigPanelProps<D extends object> {
   id?: string
@@ -685,6 +685,11 @@ export function Grid<D extends object>(props: GridProps<D>) {
                   const page = e.target.value ? Number(e.target.value) - 1 : 0
                   gotoPage(page)
                 }}
+                style={{
+                  minWidth: "60px",
+                  maxWidth: "150px",
+                  backgroundColor: "white",
+                }}
               />{" "}
               из {pageOptions.length}
             </Label>
@@ -737,7 +742,14 @@ export function Grid<D extends object>(props: GridProps<D>) {
               pattern="^[0-9]+$"
               value={pageSize}
               onChange={(e) => {
-                setPageSize(Number(e.target.value))
+                if (e.target.value !== "") {
+                  setPageSize(Number(e.target.value))
+                }
+              }}
+              style={{
+                minWidth: "60px",
+                maxWidth: "100px",
+                backgroundColor: "white",
               }}
             />
           </label>

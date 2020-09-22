@@ -47,3 +47,11 @@ export const ExternalLabel = () => {
     </>
   )
 }
+
+export const MinMax = () => {
+  return (
+    <>
+      <NumberInput min={5} max={10} />
+    </>
+  )
+}
