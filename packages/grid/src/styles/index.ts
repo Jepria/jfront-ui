@@ -7,6 +7,10 @@ export const Grid = styled(Table)``
 export const GridTable = styled(Table.Table)`
   font-family: Arial Unicode MS, Arial, sans-serif;
   font-size: small;
+  @media only screen and (max-width: 760px),
+    (min-device-width: 768px) and (max-device-width: 1024px) {
+    min-width: 100% !important;
+  }
 `
 
 export const GridHeader = styled(Table.Header)`
