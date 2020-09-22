@@ -581,7 +581,7 @@ export function Grid<D extends object>(props: GridProps<D>) {
       >
         <GridHeader id={id ? `${id}_thead` : undefined}>
           {headerGroups.map((headerGroup) => (
-            <GridRow {...headerGroup.getHeaderGroupProps()}>
+            <tr {...headerGroup.getHeaderGroupProps()}>
               {headerGroup.headers.map((column, index) => {
                 const sortableColumn = (column as unknown) as UseSortByColumnProps<
                   D
@@ -620,7 +620,7 @@ export function Grid<D extends object>(props: GridProps<D>) {
                   </GridHeaderCell>
                 )
               })}
-            </GridRow>
+            </tr>
           ))}
         </GridHeader>
         <GridBody {...getTableBodyProps()} id={id ? `${id}_tbody` : undefined}>
