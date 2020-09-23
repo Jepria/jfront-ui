@@ -24,13 +24,13 @@ const Tab = styled.div<TabProps>`
   border: 1px solid #8db2e3;
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
-  border-bottom-color: #d7e4f3;
   ${(props) =>
     props.selected
       ? `
-  background-color: #D7E4F3;
+    background-color: #D7E4F3;
     cursor: default;
     font-weight: bold;
+    border-bottom-color: #d7e4f3;
   `
       : `
     background: linear-gradient(#dae6f4, #d0def0);
