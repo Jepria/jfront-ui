@@ -27,6 +27,7 @@ const StyledTBody = styled.tbody<TableBodyProps>`
 
 interface ScrollDivProps {
   height?: number
+  top?: number
 }
 
 const StyledScroll = styled.tr<ScrollDivProps>`
@@ -41,10 +42,12 @@ const StyledScroll = styled.tr<ScrollDivProps>`
   height: ${(props) => (props.height ? props.height : 0)}px;
   background-color: transparent;
   overflow: auto;
+  -ms-overflow-style: auto; /* IE and Edge */
   @media only screen and (max-width: 760px),
     (min-device-width: 768px) and (max-device-width: 1024px) {
     display: none;
   }
+  ${(props) => (props.top ? `top: ${props.top}px` : "")}
 `
 
 const ScrollSpacer = styled.td<ScrollDivProps>`
@@ -100,11 +103,16 @@ export const TableBody: React.FC<React.DetailedHTMLProps<
     <ReactResizeDetector handleHeight>
       {(resizerProps: any) => {
         resizerProps.targetRef = refThis
+        console.log(refThis.current)
         return (
           <>
             <StyledTBody {...props} ref={refThis}>
               {props.children}
-              <StyledScroll height={resizerProps.height} ref={refScroll}>
+              <StyledScroll
+                height={resizerProps.height}
+                ref={refScroll}
+                top={refThis.current?.getBoundingClientRect()?.top}
+              >
                 <ScrollSpacer
                   height={resizerProps.targetRef.current?.scrollHeight}
                 />

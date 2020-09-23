@@ -7,21 +7,20 @@ export const Grid = styled(Table)``
 export const GridTable = styled(Table.Table)`
   font-family: Arial Unicode MS, Arial, sans-serif;
   font-size: small;
+  @media only screen and (max-width: 760px),
+    (min-device-width: 768px) and (max-device-width: 1024px) {
+    min-width: 100% !important;
+  }
 `
 
 export const GridHeader = styled(Table.Header)`
-  min-height: 30px;
   flex-shrink: 0;
 `
 
 export const GridHeaderCell = styled(Table.HeaderCell)`
+  min-height: 20px;
   border-bottom: 1px solid #ddd;
   border-right: 1px solid #ddd;
-  padding-bottom: 3px;
-  padding-left: 5px;
-  padding-right: 3px;
-  padding-top: 3px;
-  text-align: left;
   color: black;
   text-shadow: none;
   font: 11px tahoma, arial, verdana, sans-serif;
@@ -29,7 +28,8 @@ export const GridHeaderCell = styled(Table.HeaderCell)`
   white-space: nowrap;
   overflow: hidden;
   background-color: #ededed;
-  padding: 0.625em;
+  background-clip: padding-box;
+  padding: 3px;
   text-align: center;
 `
 
@@ -58,8 +58,9 @@ export const GridRow = styled(Table.Row)`
 `
 
 export const GridRowCell = styled(Table.Cell)`
+  min-height: 20px;
   cursor: pointer;
-  padding: 0.625em;
+  padding: 3px;
   @media only screen and (min-width: 761px) {
     padding-bottom: 3px;
     padding-left: 5px;
@@ -214,8 +215,8 @@ export const StyledPagingBar = styled.div`
 
 export const Left = styled.div`
   display: inline-flex;
+  flex: 1 1 auto;
   align-items: center;
-  flex-basis: 33.33%;
   justify-content: flex-start;
   @media only screen and (max-width: 760px),
     (min-device-width: 768px) and (max-device-width: 1024px) {
@@ -225,8 +226,8 @@ export const Left = styled.div`
 
 export const Center = styled.div`
   display: inline-flex;
+  flex: 1 1 auto;
   align-items: center;
-  flex-basis: 33.33%;
   justify-content: center;
   @media only screen and (max-width: 760px),
     (min-device-width: 768px) and (max-device-width: 1024px) {
@@ -236,8 +237,8 @@ export const Center = styled.div`
 
 export const Right = styled.div`
   display: inline-flex;
+  flex: 1 1 auto;
   align-items: center;
-  flex-basis: 33.33%;
   justify-content: flex-end;
   @media only screen and (max-width: 760px),
     (min-device-width: 768px) and (max-device-width: 1024px) {
