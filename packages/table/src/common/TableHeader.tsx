@@ -22,5 +22,4 @@ export const TableHeaderCell = styled.th<TableHeaderCellProps>`
   text-overflow: ellipsis;
   white-space: normal;
   overflow: hidden;
-  ${(props) => (props.width ? `width: ${props.width};` : "")}
 `
