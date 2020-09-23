@@ -20,7 +20,7 @@ export const NumberInput = React.forwardRef<HTMLDivElement, NumberInputProps>(
     const maxVal = props.max ? props.max : Number.MAX_SAFE_INTEGER
 
     const [error, setError] = React.useState(props.error)
-    console.log("NumberInput render")
+
     return (
       <StyledDiv
         className={props.className}
