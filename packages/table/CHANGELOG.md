@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.3](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-table@0.1.2...@jfront/ui-table@0.1.3) (2020-09-23)
+
+
+### Bug Fixes
+
+* flex paging bar ([640f348](https://github.com/Jepria/jfront-ui/commit/640f3489a9b3022221b75d5a9c0cad71ef1f0d67))
+* scroll fix for IE ([a7f5e97](https://github.com/Jepria/jfront-ui/commit/a7f5e97725a769f39d9dcc407a895b54d4e73c08))
+* scroll resizing ([cd25703](https://github.com/Jepria/jfront-ui/commit/cd25703e02189a818c1e38007152e4c20ffb5415))
+
+
+
+
+
 ## [0.1.2](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-table@0.1.1...@jfront/ui-table@0.1.2) (2020-09-16)
 
 **Note:** Version bump only for package @jfront/ui-table

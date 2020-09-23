@@ -1,5 +1,22 @@
 # Change Log
 
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [0.4.2](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-input@0.4.1...@jfront/ui-input@0.4.2) (2020-09-23)
+
+
+### Bug Fixes
+
+* delete console log ([3c7882d](https://github.com/Jepria/jfront-ui/commit/3c7882defb438871d9f724d5f70dbf66b347b35a))
+* number input min and max check ([89f0b27](https://github.com/Jepria/jfront-ui/commit/89f0b279b31c3a482732bff22a05d86f74944c9b))
+
+
+
+
+
+# Change Log
+
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
