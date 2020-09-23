@@ -19,7 +19,7 @@ const Tab = styled.div<TabProps>`
   height: 16px;
   text-align: center;
   margin-left: 2px;
-  padding: 3px 6px 3px 6px;
+  padding: 3px 6px 2px 6px;
   min-width: 20px;
   border: 1px solid #8db2e3;
   border-top-left-radius: 3px;
