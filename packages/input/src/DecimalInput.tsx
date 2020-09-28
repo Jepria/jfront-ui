@@ -23,6 +23,8 @@ const StyledNumberFormat = styled(NumberFormat)<StyledNumberFormatProps>`
   font-family: tahoma, arial, helvetica, sans-serif;
   font-size: 12px;
   border: 0;
+  height: 100%;
+  box-sizing: border-box;
   &:focus {
     outline: none;
   }
@@ -33,16 +35,16 @@ export interface DecimalInputProps extends InputProps, NumberFormatProps {
 }
 
 export const DecimalInput = React.forwardRef<HTMLDivElement, DecimalInputProps>(
-  (props, ref) => {
+  ({ style, className, ...props }, ref) => {
     const { thousandSeparator = true, decimalSeparator = "." } = props
 
     const [focused, setFocused] = useState(false)
 
     return (
       <StyledDiv
-        className={props.className}
+        className={className}
         focused={focused}
-        style={props.style}
+        style={style}
         ref={ref}
         error={props.error !== undefined}
       >

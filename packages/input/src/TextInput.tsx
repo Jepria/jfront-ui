@@ -11,14 +11,14 @@ export interface TextInputProps
 }
 
 export const TextInput = React.forwardRef<HTMLDivElement, TextInputProps>(
-  (props, ref) => {
+  ({ style, className, ...props }, ref) => {
     const [focused, setFocused] = useState(false)
 
     return (
       <StyledDiv
-        className={props.className}
+        className={className}
         focused={focused}
-        style={props.style}
+        style={style}
         ref={ref}
         error={props.error !== undefined}
       >
