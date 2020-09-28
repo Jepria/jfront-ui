@@ -13,7 +13,7 @@ export interface NumberInputProps
 }
 
 export const NumberInput = React.forwardRef<HTMLDivElement, NumberInputProps>(
-  (props, ref) => {
+  ({ style, className, ...props }, ref) => {
     const [focused, setFocused] = useState(false)
 
     const minVal = props.min ? props.min : Number.MIN_SAFE_INTEGER
@@ -23,9 +23,9 @@ export const NumberInput = React.forwardRef<HTMLDivElement, NumberInputProps>(
 
     return (
       <StyledDiv
-        className={props.className}
+        className={className}
         focused={focused}
-        style={props.style}
+        style={style}
         ref={ref}
         error={error !== undefined}
       >

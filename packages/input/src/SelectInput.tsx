@@ -32,21 +32,27 @@ const StyledSelect = styled.select`
   font-family: tahoma, arial, helvetica, sans-serif;
   font-size: 12px;
   border: 0;
+  height: 100%;
+  box-sizing: border-box;
   &:focus {
     outline: none;
   }
 `
 
 export const SelectInput = React.forwardRef<HTMLDivElement, SelectInputProps>(
-  (props, ref) => {
-    const {
+  (
+    {
       options,
       children,
       getOptionName,
       getOptionValue,
       renderItem,
-    } = props
-
+      style,
+      className,
+      ...props
+    },
+    ref,
+  ) => {
     const [focused, setFocused] = useState(false)
 
     if (options && React.Children.count(children) > 0) {
@@ -81,9 +87,9 @@ export const SelectInput = React.forwardRef<HTMLDivElement, SelectInputProps>(
 
     return (
       <StyledDiv
-        className={props.className}
+        style={style}
+        className={className}
         focused={focused}
-        style={props.style}
         ref={ref}
         error={props.error !== undefined}
       >

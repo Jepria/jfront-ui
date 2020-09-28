@@ -51,6 +51,8 @@ export const StyledInput = styled.input`
   font-family: tahoma, arial, helvetica, sans-serif;
   font-size: 12px;
   border: 0;
+  height: 100%;
+  box-sizing: border-box;
   &:focus {
     outline: none;
   }
