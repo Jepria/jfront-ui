@@ -7,21 +7,20 @@ export const Grid = styled(Table)``
 export const GridTable = styled(Table.Table)`
   font-family: Arial Unicode MS, Arial, sans-serif;
   font-size: small;
+  @media only screen and (max-width: 760px),
+    (min-device-width: 768px) and (max-device-width: 1024px) {
+    min-width: 100% !important;
+  }
 `
 
 export const GridHeader = styled(Table.Header)`
-  min-height: 30px;
   flex-shrink: 0;
 `
 
 export const GridHeaderCell = styled(Table.HeaderCell)`
+  min-height: 20px;
   border-bottom: 1px solid #ddd;
   border-right: 1px solid #ddd;
-  padding-bottom: 3px;
-  padding-left: 5px;
-  padding-right: 3px;
-  padding-top: 3px;
-  text-align: left;
   color: black;
   text-shadow: none;
   font: 11px tahoma, arial, verdana, sans-serif;
@@ -29,7 +28,8 @@ export const GridHeaderCell = styled(Table.HeaderCell)`
   white-space: nowrap;
   overflow: hidden;
   background-color: #ededed;
-  padding: 0.625em;
+  background-clip: padding-box;
+  padding: 3px;
   text-align: center;
 `
 
@@ -37,7 +37,7 @@ export const GridBody = styled(Table.Body)``
 
 export const GridRow = styled(Table.Row)`
   box-sizing: border-box;
-  min-height: 24px;
+  min-height: 13px;
   border-bottom: 1px solid #ededed;
   @media only screen and (max-width: 760px),
     (min-device-width: 768px) and (max-device-width: 1024px) {
@@ -58,8 +58,9 @@ export const GridRow = styled(Table.Row)`
 `
 
 export const GridRowCell = styled(Table.Cell)`
+  min-height: 20px;
   cursor: pointer;
-  padding: 0.625em;
+  padding: 3px;
   @media only screen and (min-width: 761px) {
     padding-bottom: 3px;
     padding-left: 5px;
@@ -166,6 +167,8 @@ export const StyledSvg = styled.svg`
 `
 
 export const PagingToolbar = styled.div`
+  display: inline-flex;
+  align-items: center;
   white-space: nowrap;
 `
 
@@ -189,63 +192,57 @@ export const Item = styled.button`
 
 export const Label = styled.label`
   display: inline-block;
-  height: 22px;
   vertical-align: top;
 `
 
-export const NumberInput = styled.input.attrs({ type: "number" })`
-  width: 60px;
-  margin: 0 5px;
-`
-
 export const StyledPagingBar = styled.div`
-  display: table;
-  box-sizing: border-box;
+  display: flex;
   width: 100%;
   font: 11px arial, tahoma, helvetica, sans-serif;
   margin: 0;
   padding: 2px 2px 2px 2px;
+  box-sizing: border-box;
   border-style: solid;
-  border-color: #99bbe8;
+  border-color: rgb(153, 187, 232);
   border-width: 1px;
-  background: linear-gradient(#dae6f4, #d0def0);
+  background: linear-gradient(rgb(218, 230, 244), rgb(208, 222, 240));
+  @media only screen and (max-width: 760px),
+    (min-device-width: 768px) and (max-device-width: 1024px) {
+    flex-direction: column;
+    justify-content: center;
+  }
 `
 
 export const Left = styled.div`
-  display: table-cell;
-  width: 33.33%;
-  text-align: left;
+  display: inline-flex;
+  flex: 1 1 auto;
+  align-items: center;
+  justify-content: flex-start;
   @media only screen and (max-width: 760px),
     (min-device-width: 768px) and (max-device-width: 1024px) {
-    width: auto;
-    display: table-row;
-    text-align: center;
+    justify-content: center;
   }
 `
 
 export const Center = styled.div`
-  display: table-cell;
-  vertical-align: middle;
-  text-align: center;
-  width: 33.33%;
+  display: inline-flex;
+  flex: 1 1 auto;
+  align-items: center;
+  justify-content: center;
   @media only screen and (max-width: 760px),
     (min-device-width: 768px) and (max-device-width: 1024px) {
-    width: auto;
-    display: table-row;
-    text-align: center;
+    justify-content: center;
   }
 `
 
 export const Right = styled.div`
-  display: table-cell;
-  vertical-align: middle;
-  text-align: right;
-  width: 33.33%;
+  display: inline-flex;
+  flex: 1 1 auto;
+  align-items: center;
+  justify-content: flex-end;
   @media only screen and (max-width: 760px),
     (min-device-width: 768px) and (max-device-width: 1024px) {
-    width: auto;
-    display: table-row;
-    text-align: center;
+    justify-content: center;
   }
 `
 

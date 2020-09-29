@@ -64,10 +64,6 @@ const JepRiaButton = styled(OpenImage)`
   }
 `
 
-interface StyledButtonProps {
-  isOpen: boolean
-}
-
 const StyledInput = styled.input.attrs({ type: "search" })`
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
@@ -82,6 +78,8 @@ const StyledInput = styled.input.attrs({ type: "search" })`
   font-family: tahoma, arial, helvetica, sans-serif;
   font-size: 12px;
   border: 0;
+  height: 100%;
+  box-sizing: border-box;
   &:focus {
     outline: none;
   }

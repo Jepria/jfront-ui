@@ -1,4 +1,5 @@
 import React, { useRef, useState, useLayoutEffect } from "react"
+import ReactResizeDetector from "react-resize-detector"
 import styled from "styled-components"
 
 interface TableBodyProps
@@ -29,24 +30,29 @@ interface ScrollDivProps {
   top?: number
 }
 
-const StyledScroll = styled.tbody<ScrollDivProps>`
+const StyledScroll = styled.tr<ScrollDivProps>`
+  margin: 0;
+  padding: 0;
   display: block;
   position: absolute;
   opacity: 0.5;
   z-index: 2;
   width: 17px;
   right: 0;
-  top: ${(props) => props.top}px;
   height: ${(props) => (props.height ? props.height : 0)}px;
   background-color: transparent;
   overflow: auto;
+  -ms-overflow-style: auto; /* IE and Edge */
   @media only screen and (max-width: 760px),
     (min-device-width: 768px) and (max-device-width: 1024px) {
     display: none;
   }
+  ${(props) => (props.top ? `top: ${props.top}px` : "")}
 `
 
-const ScrollSpacer = styled.tr<ScrollDivProps>`
+const ScrollSpacer = styled.td<ScrollDivProps>`
+  margin: 0;
+  padding: 0;
   display: block;
   width: 1px;
   background-color: transparent;
@@ -58,48 +64,7 @@ export const TableBody: React.FC<React.DetailedHTMLProps<
   HTMLTableSectionElement
 >> = (props) => {
   const refThis = useRef<HTMLTableSectionElement>(null)
-  const refScroll = useRef<HTMLTableSectionElement>(null)
-  const [height, setHeight] = useState<number | undefined>(undefined)
-  const [scrollHeight, setScrollHeight] = useState<number | undefined>(
-    undefined,
-  )
-  const [scrollWidth, setScrollWidth] = useState<number | undefined>(undefined)
-  const [scrollTop, setScrollTop] = useState<number | undefined>(undefined)
-
-  useLayoutEffect(() => {
-    if (refThis.current && scrollTop !== refThis.current.offsetTop) {
-      setScrollTop(refThis.current.offsetTop)
-    }
-    //eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [height])
-
-  const getScrollHeight = () => {
-    if (
-      height &&
-      refThis.current?.clientWidth &&
-      refThis.current?.scrollWidth &&
-      refThis.current?.clientWidth < refThis.current?.scrollWidth
-    ) {
-      return (
-        height - (refThis.current.offsetHeight - refThis.current.clientHeight)
-      )
-    } else {
-      return height
-    }
-  }
-
-  const resize = () => {
-    if (height !== refThis.current?.offsetHeight) {
-      setHeight(refThis.current?.offsetHeight)
-    }
-  }
-
-  useLayoutEffect(() => {
-    window.addEventListener("resize", resize)
-    resize()
-    return () => window.removeEventListener("resize", resize)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  const refScroll = useRef<HTMLTableRowElement>(null)
 
   useLayoutEffect(() => {
     const refTbody = refThis.current
@@ -134,32 +99,28 @@ export const TableBody: React.FC<React.DetailedHTMLProps<
     }
   }, [])
 
-  //eslint-disable-next-line react-hooks/exhaustive-deps
-  useLayoutEffect(() => {
-    const newScrollWidth =
-      refThis.current?.offsetWidth && refThis.current?.clientWidth !== 0
-        ? refThis.current?.offsetWidth - refThis.current?.clientWidth
-        : undefined
-    if (scrollWidth !== newScrollWidth) {
-      setScrollWidth(newScrollWidth)
-    }
-    if (scrollHeight !== refThis.current?.scrollHeight) {
-      setScrollHeight(
-        refThis.current?.scrollHeight
-          ? refThis.current?.scrollHeight - 1
-          : undefined,
-      )
-    }
-  }, [scrollHeight, scrollWidth])
-
   return (
-    <React.Fragment>
-      <StyledTBody {...props} ref={refThis} scrollWidth={scrollWidth}>
-        {props.children}
-      </StyledTBody>
-      <StyledScroll ref={refScroll} height={getScrollHeight()} top={scrollTop}>
-        <ScrollSpacer height={scrollHeight} />
-      </StyledScroll>
-    </React.Fragment>
+    <ReactResizeDetector handleHeight>
+      {(resizerProps: any) => {
+        resizerProps.targetRef = refThis
+        console.log(refThis.current)
+        return (
+          <>
+            <StyledTBody {...props} ref={refThis}>
+              {props.children}
+              <StyledScroll
+                height={resizerProps.height}
+                ref={refScroll}
+                top={refThis.current?.getBoundingClientRect()?.top}
+              >
+                <ScrollSpacer
+                  height={resizerProps.targetRef.current?.scrollHeight}
+                />
+              </StyledScroll>
+            </StyledTBody>
+          </>
+        )
+      }}
+    </ReactResizeDetector>
   )
 }

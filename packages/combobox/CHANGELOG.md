@@ -1,5 +1,21 @@
 # Change Log
 
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [0.3.2](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-combobox@0.3.1...@jfront/ui-combobox@0.3.2) (2020-09-29)
+
+
+### Bug Fixes
+
+* input style props ([c57e66e](https://github.com/Jepria/jfront-ui/commit/c57e66ec0d0789d3a0a487c7f12416f89ae5d0ef))
+
+
+
+
+
+# Change Log
+
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
