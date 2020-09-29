@@ -1,5 +1,26 @@
 # Change Log
 
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [0.2.4](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-grid@0.2.3...@jfront/ui-grid@0.2.4) (2020-09-29)
+
+
+### Bug Fixes
+
+* add NumberInput from jfront to grid ([37ec191](https://github.com/Jepria/jfront-ui/commit/37ec1913f1bb54f876a71114f535b7f831501d36))
+* flex paging bar ([640f348](https://github.com/Jepria/jfront-ui/commit/640f3489a9b3022221b75d5a9c0cad71ef1f0d67))
+* header fix for IE ([391b4c7](https://github.com/Jepria/jfront-ui/commit/391b4c772f9ab091fae145746a9e5216b7817d0c))
+* mobile width ([8f4121e](https://github.com/Jepria/jfront-ui/commit/8f4121e85eb5e27b005660d17356469c73a1d798))
+* styling inputs in grid PagingBar ([d7c82e8](https://github.com/Jepria/jfront-ui/commit/d7c82e8f1136f18abbb5c32510a2b09720720fa3))
+* table row min-height old style ([272ad8e](https://github.com/Jepria/jfront-ui/commit/272ad8e09c21d72e15132b3b9541442a67ec6cfc))
+
+
+
+
+
+# Change Log
+
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
