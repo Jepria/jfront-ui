@@ -24,7 +24,7 @@ const StyledField = styled.div`
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin-bottom: 1.25em;
+  margin-bottom: 1em;
   @media (max-width: 575px) {
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
