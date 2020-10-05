@@ -7,6 +7,7 @@ import { ComboBoxButton } from "./ComboBoxButton"
 interface ItemProps {
   disabled?: boolean
   selected?: boolean
+  hover?: boolean
 }
 
 const Item = styled.div<ItemProps>`
@@ -18,8 +19,12 @@ const Item = styled.div<ItemProps>`
   font-family: tahoma, arial, helvetica, sans-serif;
   font-size: 12px;
   text-align: left;
-  ${(props: ItemProps) =>
-    props.selected ? "background: #ccddf3;" : "&:hover {background: #eee}"}
+  ${(props) =>
+    props.selected
+      ? "background: #ccddf3;"
+      : props.hover
+      ? "background: #eee;"
+      : "&:hover {background: #eee}"}
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none; /* Safari */
   -khtml-user-select: none; /* Konqueror HTML */
@@ -127,13 +132,14 @@ export interface ComboBoxItemProps {
   disabled?: boolean
   value: any
   selected?: boolean
+  hover?: boolean
   label: string
   onClick?: () => void
 }
 
 export const ComboBoxItem = React.forwardRef<HTMLDivElement, ComboBoxItemProps>(
   (
-    { id, disabled, value, label, children, onClick, selected, ...rest },
+    { id, disabled, value, label, children, onClick, hover, selected, ...rest },
     ref,
   ) => {
     return (
@@ -142,6 +148,7 @@ export const ComboBoxItem = React.forwardRef<HTMLDivElement, ComboBoxItemProps>(
         onClick={!disabled ? onClick : undefined}
         ref={ref}
         disabled={disabled}
+        hover={hover}
         selected={selected}
         {...rest}
       >
@@ -170,6 +177,7 @@ export interface ComboBoxProps {
   isLoading?: boolean
   error?: string
   initialValue?: any
+  placeholder?: string
   value?: any
   getOptionName?: (option: any) => string
   getOptionValue?: (option: any) => any
@@ -196,6 +204,7 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
       initialValue = null,
       value = null,
       isLoading,
+      placeholder,
       error,
       getOptionName,
       getOptionValue,
@@ -214,15 +223,23 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
     )
     const [focused, setFocused] = useState(false)
     const [text, setText] = useState("")
+    const [hoverIndex, setHoverIndex] = useState(-1)
     const outerDivRef = useRef<HTMLDivElement>(null)
     const popupRef = useRef<HTMLDivElement>(null)
     const currentValueRef = useRef<HTMLDivElement>(null)
+    const hoveredItemRef = useRef<HTMLDivElement>(null)
     const defaultInputRef = useRef<HTMLInputElement>(null)
     const inputRef = ref || defaultInputRef
 
     useEffect(() => {
       if (value != null) setCurrentValue(value)
     }, [value])
+
+    useEffect(() => {
+      if (!isOpen) {
+        setHoverIndex(-1)
+      }
+    }, [isOpen])
 
     const onFocus = (e: React.FocusEvent) => {
       if (!isOpen && openOnFocus) {
@@ -295,6 +312,17 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
       }
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isOpen, currentValue])
+
+    useEffect(() => {
+      if (isOpen && hoverIndex != -1) {
+        if (hoveredItemRef.current) {
+          hoveredItemRef.current.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          })
+        }
+      }
+    }, [isOpen, hoverIndex])
 
     useEffect(() => {
       if (initialValue != null || (value != null && text.length == 0)) {
@@ -404,7 +432,13 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
             disabled: item.props.disabled || disabled,
             value: itemValue,
             selected: currentValue === itemValue,
-            ref: currentValue === itemValue ? currentValueRef : null,
+            hover: index === hoverIndex,
+            ref:
+              currentValue === itemValue
+                ? currentValueRef
+                : index === hoverIndex
+                ? hoveredItemRef
+                : null,
             onClick: () => onChangeValue(item.props.label, itemValue),
           })
         } else {
@@ -414,7 +448,7 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
     }
 
     const renderOptions = () => {
-      return options?.map((option) => {
+      return options?.map((option, index) => {
         const itemValue = getOptionValue ? getOptionValue(option) : option.value
         const itemLabel = getOptionName ? getOptionName(option) : option.name
         const itemProps = {
@@ -422,6 +456,7 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
           key: itemValue,
           label: itemLabel,
           value: itemValue,
+          hover: index === hoverIndex,
           selected: currentValue === itemValue,
           ref: currentValue === itemValue ? currentValueRef : null,
           onClick: () => onChangeValue(itemLabel, itemValue),
@@ -452,6 +487,31 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
       }
     }
 
+    const onKeyDownHandler = (e: React.KeyboardEvent) => {
+      if (isOpen) {
+        if (e.keyCode === 38 && hoverIndex > 0) {
+          setHoverIndex(hoverIndex - 1)
+        } else if (
+          e.keyCode === 40 &&
+          ((options?.length && hoverIndex < options?.length) ||
+            hoverIndex < React.Children.count(children))
+        ) {
+          setHoverIndex(hoverIndex + 1)
+        } else if (e.keyCode === 13 && hoverIndex != -1) {
+          if (options && options?.length > 0) {
+            const newOption = options[hoverIndex]
+            onChangeValue(
+              getOptionName ? getOptionName(newOption) : newOption.name,
+              getOptionValue ? getOptionValue(newOption) : newOption.value,
+            )
+          } else if (children && React.Children.count(children) > 0) {
+            const item = children[hoverIndex] as any
+            onChangeValue(item?.props?.label, item?.props?.value)
+          }
+        }
+      }
+    }
+
     return (
       <StyledDiv
         className={className}
@@ -465,14 +525,17 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
           id={`${id}_input`}
           ref={inputRef}
           value={text}
+          onKeyDown={(e) => onKeyDownHandler(e)}
           onFocus={onFocus}
           onChange={onChange}
+          placeholder={placeholder}
           autoComplete="off"
         />
         {(variant === ComboBoxVariant.standard && (
           <ComboBoxButton
             id={`${id}_button`}
             tabIndex={-1}
+            onKeyDown={(e) => onKeyDownHandler(e)}
             rotate={String(isOpen)}
             onClick={toggle}
             onFocus={() => setFocused(true)}
@@ -482,6 +545,7 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
             <JepRiaButton
               id={`${id}_button`}
               tabIndex={-1}
+              onKeyDown={(e) => onKeyDownHandler(e)}
               onClick={toggle}
               onFocus={() => setFocused(true)}
             />
@@ -491,6 +555,7 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
             id={`${id}_popup`}
             ref={popupRef}
             tabIndex={0}
+            onKeyDown={(e) => onKeyDownHandler(e)}
             style={{
               top: getPopupTop(),
               left: getPopupLeft(),
