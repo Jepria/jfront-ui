@@ -21,6 +21,10 @@ export const NumberInput = React.forwardRef<HTMLDivElement, NumberInputProps>(
 
     const [error, setError] = React.useState(props.error)
 
+    React.useEffect(() => {
+      setError(props.error)
+    }, [props.error])
+
     return (
       <StyledDiv
         className={className}
