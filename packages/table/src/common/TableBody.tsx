@@ -103,7 +103,6 @@ export const TableBody: React.FC<React.DetailedHTMLProps<
     <ReactResizeDetector handleHeight>
       {(resizerProps: any) => {
         resizerProps.targetRef = refThis
-        console.log(refThis.current)
         return (
           <>
             <StyledTBody {...props} ref={refThis}>

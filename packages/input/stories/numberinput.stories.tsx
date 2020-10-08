@@ -37,6 +37,30 @@ export const Error = () => {
   )
 }
 
+export const OutsideError = () => {
+  const [error, setError] = React.useState("wrong value")
+
+  return (
+    <>
+      <button
+        onClick={() => {
+          setError("wrong value")
+        }}
+      >
+        Set Error
+      </button>
+      <button
+        onClick={() => {
+          setError(undefined)
+        }}
+      >
+        Clear
+      </button>
+      <NumberInput name="InputTextNameLoading" error={error} />
+    </>
+  )
+}
+
 export const ExternalLabel = () => {
   return (
     <>

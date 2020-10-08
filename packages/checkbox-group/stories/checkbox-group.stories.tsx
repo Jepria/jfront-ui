@@ -38,58 +38,46 @@ export const Disabled = () => {
 
   return (
     <>
-      <Label>
-        Group:
+      <div>
+        <Label>Group:</Label>
         <CheckBoxGroup name="name" isLoading={false}>
           <CheckBox disabled={true} label="label1" value="value1" />
           <CheckBox label="label2" value="value2" />
           <CheckBox label="label3" value="value3" />
         </CheckBoxGroup>
-      </Label>
-      <Label>
-        Group2:
+      </div>
+      <div>
+        <Label>Group2:</Label>
         <CheckBoxGroup name="name2" isLoading={false} disabled={true}>
           <CheckBox label="label1" value="value1" />
           <CheckBox label="label2" value="value2" />
           <CheckBox label="label3" value="value3" />
         </CheckBoxGroup>
-      </Label>
+      </div>
     </>
   )
 }
 
 export const Loading = () => {
-  const onChange = () => {
-    console.log("onChange()")
-  }
-
   return (
-    <>
-      <Label>
-        Group:
-        <CheckBoxGroup name="name" disabled={false} isLoading>
-          <CheckBox label="label1" value="value1" />
-          <CheckBox label="label2" value="value2" />
-        </CheckBoxGroup>
-      </Label>
-    </>
+    <div>
+      <Label>Group:</Label>
+      <CheckBoxGroup name="name" disabled={false} isLoading>
+        <CheckBox label="label1" value="value1" />
+        <CheckBox label="label2" value="value2" />
+      </CheckBoxGroup>
+    </div>
   )
 }
 
 export const Error = () => {
-  const onChange = () => {
-    console.log("onChange()")
-  }
-
   return (
-    <>
-      <Label>
-        Group:
-        <CheckBoxGroup name="name" disabled={false} error="Wrong value">
-          <CheckBox label="label1" value="value1" />
-          <CheckBox label="label2" value="value2" />
-        </CheckBoxGroup>
-      </Label>
-    </>
+    <div>
+      <Label>Group:</Label>
+      <CheckBoxGroup name="name" disabled={false} error="Wrong value">
+        <CheckBox label="label1" value="value1" />
+        <CheckBox label="label2" value="value2" />
+      </CheckBoxGroup>
+    </div>
   )
 }
