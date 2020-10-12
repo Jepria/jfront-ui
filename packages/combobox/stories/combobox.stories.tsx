@@ -76,7 +76,7 @@ export const InitialValue = () => {
       <ComboBox
         onSelectionChange={(name, value) => console.log(value)}
         style={{ width: "200px" }}
-        // initialValue={3}
+        initialValue={3}
       >
         <ComboBoxItem value={1} label="test1" />
         <ComboBoxItem value={2} label="test2" />
