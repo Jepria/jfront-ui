@@ -188,6 +188,10 @@ export interface ComboBoxProps {
   onSelectionChange?: (name: string, value: any) => void
 }
 
+const ARROW_UP = 38
+const ARROW_DOWN = 40
+const ENTER = 13
+
 export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
   (
     {
@@ -489,15 +493,15 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
 
     const onKeyDownHandler = (e: React.KeyboardEvent) => {
       if (isOpen) {
-        if (e.keyCode === 38 && hoverIndex > 0) {
+        if (e.keyCode === ARROW_UP && hoverIndex > 0) {
           setHoverIndex(hoverIndex - 1)
         } else if (
-          e.keyCode === 40 &&
+          e.keyCode === ARROW_DOWN &&
           ((options?.length && hoverIndex < options?.length) ||
             hoverIndex < React.Children.count(children))
         ) {
           setHoverIndex(hoverIndex + 1)
-        } else if (e.keyCode === 13 && hoverIndex != -1) {
+        } else if (e.keyCode === ENTER && hoverIndex != -1) {
           if (options && options?.length > 0) {
             const newOption = options[hoverIndex]
             onChangeValue(
