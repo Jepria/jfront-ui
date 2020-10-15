@@ -157,7 +157,7 @@ export const DualList: React.FC<DualListProps> = ({
     }
   }
 
-  const select = (newValues?: Array<any>) => {
+  const select = (newValues?: Array<any>, asString = false) => {
     if (newValues && newValues.length > 0) {
       if (onSelectionChange) {
         onSelectionChange(name, [
@@ -165,22 +165,37 @@ export const DualList: React.FC<DualListProps> = ({
           ...newValues,
         ])
       }
-      setValues([
-        ...values,
-        ...options.filter((option) =>
-          newValues.includes(getOptionValue(option)),
-        ),
-      ])
+      if (asString) {
+        setValues([
+          ...values,
+          ...options.filter((option) =>
+            newValues.includes(
+              String(getOptionValue ? getOptionValue(option) : option.value),
+            ),
+          ),
+        ])
+      } else {
+        setValues([
+          ...values,
+          ...options.filter((option) =>
+            newValues.includes(getOptionValue(option)),
+          ),
+        ])
+      }
     }
   }
 
-  const deselect = (newValues?: Array<any>) => {
+  const deselect = (newValues?: Array<any>, asString = false) => {
     if (newValues && newValues.length > 0 && values.length > 0) {
       const nextValues = values.filter(
         (valueOption) =>
-          !newValues.find(
-            (newValue) => getOptionValue(valueOption) === newValue,
-          ),
+          !newValues.find((newValue) => {
+            if (asString) {
+              return String(getOptionValue(valueOption)) === newValue
+            } else {
+              return getOptionValue(valueOption) === newValue
+            }
+          }),
       )
       if (onSelectionChange) {
         onSelectionChange(
@@ -283,6 +298,7 @@ export const DualList: React.FC<DualListProps> = ({
                       (selectedOption: any) => selectedOption.value,
                     )
                   : [],
+                true,
               )
             }
             disabled={disabled}
@@ -297,6 +313,7 @@ export const DualList: React.FC<DualListProps> = ({
                       (selectedOption: any) => selectedOption.value,
                     )
                   : [],
+                true,
               )
             }
             disabled={disabled}
