@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.2](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-form@0.2.1...@jfront/ui-form@0.2.2) (2020-10-23)
+
+
+### Bug Fixes
+
+* formField margin-bottom 1.25em -> 1em ([27e9a4a](https://github.com/Jepria/jfront-ui/commit/27e9a4a1666a678f089e3d71aff0dadd1cb344d7))
+* removed unused import and style from Form ([5afe199](https://github.com/Jepria/jfront-ui/commit/5afe199129d6f4cc1950ea24b88d30b9c2b34c53))
+
+
+
+
+
 ## [0.2.1](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-form@0.2.0...@jfront/ui-form@0.2.1) (2020-09-29)
 
 **Note:** Version bump only for package @jfront/ui-form
