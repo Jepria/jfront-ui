@@ -20,4 +20,5 @@ jobs:
           node-version: 12
       - run: yarn prestart
       - run: yarn build
+      - run: yarn lint
       - run: yarn test

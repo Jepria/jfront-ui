@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.4](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-table@0.1.3...@jfront/ui-table@0.1.4) (2020-10-23)
+
+
+### Bug Fixes
+
+* remove console.log ([095db0b](https://github.com/Jepria/jfront-ui/commit/095db0b4ebe41efd469a71147cf0cbe004450b03))
+
+
+
+
+
 ## [0.1.3](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-table@0.1.2...@jfront/ui-table@0.1.3) (2020-09-29)
 
 

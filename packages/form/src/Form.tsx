@@ -1,14 +1,9 @@
-import React, {
-  RefObject,
-  ForwardRefExoticComponent,
-  RefAttributes,
-} from "react"
+import React, { ForwardRefExoticComponent, RefAttributes } from "react"
 import { Label, LabelProps } from "@jfront/ui-label"
 import styled from "styled-components"
 
 const StyledForm = styled.form`
   -webkit-box-sizing: border-box;
-  box-sizing: border-box;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -24,7 +19,7 @@ const StyledField = styled.div`
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin-bottom: 1.25em;
+  margin-bottom: 1em;
   @media (max-width: 575px) {
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
@@ -36,7 +31,7 @@ const StyledFieldControl = styled.div`
   box-sizing: border-box;
   display: inline-flex;
   -webkit-box-flex: 1;
-  -ms-flex: 1 1 0px;
+  -ms-flex: 1 1 0;
   flex: 1 1 0;
 `
 

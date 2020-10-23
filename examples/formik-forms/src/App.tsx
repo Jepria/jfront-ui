@@ -1,6 +1,6 @@
 import * as React from "react"
 import { useFormik } from "formik"
-import { ComboBox, TextInput, DatePicker } from "@jfront/ui-core"
+import { ComboBox, TextInput, DatePicker, NumberInput } from "@jfront/ui-core"
 import { Form } from "@jfront/ui-form"
 import { CheckBoxGroup } from "@jfront/ui-checkbox-group"
 import { CheckBox } from "@jfront/ui-checkbox"
@@ -12,6 +12,7 @@ interface FormData {
   statusCodeList?: string[]
   name?: string
   date?: Date
+  numberInput?: number
 }
 
 function App() {
@@ -39,6 +40,9 @@ function App() {
       }
       if (!values.fruit) {
         errors.fruit = "Must be not empty"
+      }
+      if (!values.numberInput) {
+        errors.numberInput = "Must be not empty"
       }
       return errors
     },
@@ -119,6 +123,19 @@ function App() {
                 })
               : null}
           </CheckBoxGroup>
+        </Form.Field>
+        <Form.Field label="Number Input" required>
+          <Form.Control
+            error={formik.errors["numberInput"]}
+            style={{ maxWidth: "200px" }}
+          >
+            <NumberInput
+              name="numberInput"
+              value={formik.values.numberInput}
+              onChange={formik.handleChange}
+              error={formik.errors["numberInput"]}
+            />
+          </Form.Control>
         </Form.Field>
         <input type="submit" style={{ width: "100px", marginLeft: "200px" }} />
       </Form>
