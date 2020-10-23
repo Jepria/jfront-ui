@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.3](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-input@0.4.2...@jfront/ui-input@0.4.3) (2020-10-23)
+
+
+### Bug Fixes
+
+* error behaviour in NumberInput ([4748e92](https://github.com/Jepria/jfront-ui/commit/4748e92390c2939ab7cb252b5fae591584aac4ce))
+
+
+
+
+
 ## [0.4.2](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-input@0.4.1...@jfront/ui-input@0.4.2) (2020-09-29)
 
 
