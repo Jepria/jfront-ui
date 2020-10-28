@@ -20,9 +20,13 @@ export const BasicUsage = () => {
 
   const [date, setDate] = React.useState<Date | undefined>(undefined)
 
+  const ref = React.useRef(null)
+
+  console.log(ref)
+
   return (
     <>
-      <DatePicker selected={date} label="Date" onChange={onChange} />
+      <DatePicker selected={date} onChange={onChange} ref={ref} />
     </>
   )
 }
@@ -37,12 +41,7 @@ export const Error = () => {
 
   return (
     <>
-      <DatePicker
-        selected={date}
-        label="Date"
-        onChange={onChange}
-        error="Wrong value"
-      />
+      <DatePicker selected={date} onChange={onChange} error="Wrong value" />
     </>
   )
 }

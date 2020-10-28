@@ -23,6 +23,7 @@ const StyledCheckBoxLabel = styled.label`
   cursor: pointer;
   white-space: nowrap;
   width: 100%;
+  text-align: left;
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none; /* Safari */
   -khtml-user-select: none; /* Konqueror HTML */

@@ -8,12 +8,12 @@
     "publish": {
       "conventionalCommits": true,
       "message": "chore(release): publish",
-      "ignoreChanges": ["**/stories/**", "**/tests/**"],
+      "ignoreChanges": ["**/stories/**", "**/tests/**", "**/*.md"],
       "allowBranch": "master"
     },
     "version": {
-      "ignoreChanges": ["**/stories/**", "**/tests/**"],
-      "allowBranch": ["master", "develop", "release/*"]
+      "ignoreChanges": ["**/stories/**", "**/tests/**", "**/*.md"],
+      "allowBranch": ["master", "release/*", "hotfix/*"]
     }
   }
 }

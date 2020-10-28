@@ -1,6 +1,7 @@
 import * as React from "react"
 import { CheckBoxGroup } from "../src"
 import { CheckBox } from "@jfront/ui-checkbox"
+import { Label } from "@jfront/ui-label"
 import { useState, useEffect } from "react"
 
 export default {
@@ -13,9 +14,9 @@ export const BasicUsage = () => {
 
   return (
     <div>
+      <Label>Group:</Label>
       <CheckBoxGroup
         name="name"
-        text="Group"
         isLoading={false}
         disabled={false}
         values={values ? values : []}
@@ -37,56 +38,46 @@ export const Disabled = () => {
 
   return (
     <>
-      <CheckBoxGroup name="name" text="Group" isLoading={false}>
-        <CheckBox disabled={true} label="label1" value="value1" />
-        <CheckBox label="label2" value="value2" />
-        <CheckBox label="label3" value="value3" />
-      </CheckBoxGroup>
-      <CheckBoxGroup
-        name="name2"
-        text="DisabledGroup"
-        isLoading={false}
-        disabled={true}
-      >
-        <CheckBox label="label1" value="value1" />
-        <CheckBox label="label2" value="value2" />
-        <CheckBox label="label3" value="value3" />
-      </CheckBoxGroup>
+      <div>
+        <Label>Group:</Label>
+        <CheckBoxGroup name="name" isLoading={false}>
+          <CheckBox disabled={true} label="label1" value="value1" />
+          <CheckBox label="label2" value="value2" />
+          <CheckBox label="label3" value="value3" />
+        </CheckBoxGroup>
+      </div>
+      <div>
+        <Label>Group2:</Label>
+        <CheckBoxGroup name="name2" isLoading={false} disabled={true}>
+          <CheckBox label="label1" value="value1" />
+          <CheckBox label="label2" value="value2" />
+          <CheckBox label="label3" value="value3" />
+        </CheckBoxGroup>
+      </div>
     </>
   )
 }
 
 export const Loading = () => {
-  const onChange = () => {
-    console.log("onChange()")
-  }
-
   return (
-    <>
-      <CheckBoxGroup name="name" text="Group" disabled={false} isLoading>
+    <div>
+      <Label>Group:</Label>
+      <CheckBoxGroup name="name" disabled={false} isLoading>
         <CheckBox label="label1" value="value1" />
         <CheckBox label="label2" value="value2" />
       </CheckBoxGroup>
-    </>
+    </div>
   )
 }
 
 export const Error = () => {
-  const onChange = () => {
-    console.log("onChange()")
-  }
-
   return (
-    <>
-      <CheckBoxGroup
-        name="name"
-        text="Group"
-        disabled={false}
-        error="Wrong value"
-      >
+    <div>
+      <Label>Group:</Label>
+      <CheckBoxGroup name="name" disabled={false} error="Wrong value">
         <CheckBox label="label1" value="value1" />
         <CheckBox label="label2" value="value2" />
       </CheckBoxGroup>
-    </>
+    </div>
   )
 }

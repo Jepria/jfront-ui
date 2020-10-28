@@ -2,33 +2,12 @@ import React, { useState, useRef, useEffect } from "react"
 import styled from "styled-components"
 import nextId from "react-id-generator"
 import { OpenImage, LoadingImage, ExclamationImage } from "@jfront/ui-icons"
-
-interface OuterDivProps {
-  focused?: boolean
-  error?: boolean
-}
-
-const OuterDiv = styled.div<OuterDivProps>`
-  display: inline-block;
-  font-family: tahoma, arial, helvetica, sans-serif;
-  font-size: 12px;
-  text-align: left;
-  height: 24px;
-  ${(props) =>
-    props.focused
-      ? "outline-color: #999; outline-style: solid; outline-width: 2px;"
-      : "border: 1px solid #ccc; border-top: 1px solid #999;"};
-  ${(props) =>
-    props.error
-      ? props.focused
-        ? "outline-color: red; outline-style: solid; outline-width: 2px;"
-        : "border: 1px solid red;"
-      : ""};
-`
+import { ComboBoxButton } from "./ComboBoxButton"
 
 interface ItemProps {
   disabled?: boolean
   selected?: boolean
+  hover?: boolean
 }
 
 const Item = styled.div<ItemProps>`
@@ -40,8 +19,12 @@ const Item = styled.div<ItemProps>`
   font-family: tahoma, arial, helvetica, sans-serif;
   font-size: 12px;
   text-align: left;
-  ${(props: ItemProps) =>
-    props.selected ? "background: #ccddf3;" : "&:hover {background: #eee}"}
+  ${(props) =>
+    props.selected
+      ? "background: #ccddf3;"
+      : props.hover
+      ? "background: #eee;"
+      : "&:hover {background: #eee}"}
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none; /* Safari */
   -khtml-user-select: none; /* Konqueror HTML */
@@ -56,93 +39,18 @@ const Popup = styled.div`
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   position: absolute;
+  width: 98%;
   z-index: 5100;
   margin: 0;
   padding: 0;
   background: white;
   overflow: auto;
-  -webkit-box-shadow: 3px 3px 1px -1px rgba(0, 0, 0, 0.34);
-  -moz-box-shadow: 3px 3px 1px -1px rgba(0, 0, 0, 0.34);
-  box-shadow: 3px 3px 1px -1px rgba(0, 0, 0, 0.34);
+  -webkit-box-shadow: 2px 2px 1px -1px rgba(0, 0, 0, 0.34);
+  -moz-box-shadow: 2px 2px 1px -1px rgba(0, 0, 0, 0.34);
+  box-shadow: 2px 2px 1px -1px rgba(0, 0, 0, 0.34);
   &:focus {
     outline: none;
   }
-`
-
-const StyledButton = styled.button<StyledButtonProps>`
-  position: relative;
-  right: 0;
-  top: 0;
-  color: #999;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  padding: 12px;
-  overflow: visible;
-  font-size: 1.5rem;
-  text-align: center;
-  border-radius: 50%;
-  height: 24px;
-  width: 24px;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  text-align: center;
-  background-color: transparent;
-  border: 0;
-  ${(props) =>
-    props.isOpen
-      ? `
-  -webkit-transform: rotate(180deg);
-      -ms-transform: rotate(180deg);
-          transform: rotate(180deg);
-  `
-      : ""}
-  cursor: pointer;
-  &:hover {
-    background-color: #f2f0f0;
-    -webkit-transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-    -o-transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-    transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-    opacity: 0.5;
-  }
-  &:focus {
-    outline: none;
-  }
-`
-const StyledSpan = styled.span`
-  width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  text-align: center;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-`
-
-const StyledSvg = styled.svg`
-  fill: currentColor;
-  width: 1em;
-  height: 1em;
-  display: inline-block;
-  font-size: 1.5rem;
-  -webkit-transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  -o-transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
 `
 
 const JepRiaButton = styled(OpenImage)`
@@ -161,37 +69,62 @@ const JepRiaButton = styled(OpenImage)`
   }
 `
 
-interface StyledButtonProps {
-  isOpen: boolean
-}
-
 const StyledInput = styled.input.attrs({ type: "search" })`
-  margin: auto;
-  padding: 0 5px;
-  height: calc(100% - 1px);
-  width: calc(100% - 40px);
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-flex: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  min-width: 0px;
+  margin: 0;
+  padding: 0;
+  padding-left: 3px;
+  font-family: tahoma, arial, helvetica, sans-serif;
+  font-size: 12px;
   border: 0;
+  height: 100%;
+  box-sizing: border-box;
   &:focus {
     outline: none;
   }
 `
 
-const StyledDiv = styled.div`
+interface StyledDivProps {
+  focused?: boolean
+  error?: boolean
+}
+
+const StyledDiv = styled.div<StyledDivProps>`
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-flex: 1;
+  -ms-flex-positive: 1;
   margin: 0;
   padding: 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  width: 100%;
-  height: 100%;
+  min-width: 150px;
   white-space: nowrap;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-`
-
-const NoWrap = styled.div`
-  wrap-text: nowrap;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  min-height: 24px;
+  text-align: left;
+  ${(props) =>
+    props.focused
+      ? `box-shadow: 0 0 5px #99bbe8;
+         border: 1px solid #99bbe8;`
+      : "border: 1px solid #ccc; border-top: 1px solid #999;"};
+  ${(props) =>
+    props.error
+      ? props.focused
+        ? `box-shadow: 0 0 5px red;
+        border: 1px solid red;`
+        : "border: 1px solid red;"
+      : ""};
 `
 
 export interface ComboBoxItemProps {
@@ -199,21 +132,23 @@ export interface ComboBoxItemProps {
   disabled?: boolean
   value: any
   selected?: boolean
+  hover?: boolean
   label: string
   onClick?: () => void
 }
 
 export const ComboBoxItem = React.forwardRef<HTMLDivElement, ComboBoxItemProps>(
   (
-    { id, disabled, value, label, children, onClick, selected, ...rest },
+    { id, disabled, value, label, children, onClick, hover, selected, ...rest },
     ref,
   ) => {
     return (
       <Item
         id={id}
-        onClick={disabled ? onClick : () => {}}
+        onClick={!disabled ? onClick : undefined}
         ref={ref}
         disabled={disabled}
+        hover={hover}
         selected={selected}
         {...rest}
       >
@@ -242,14 +177,20 @@ export interface ComboBoxProps {
   isLoading?: boolean
   error?: string
   initialValue?: any
+  placeholder?: string
+  value?: any
   getOptionName?: (option: any) => string
   getOptionValue?: (option: any) => any
   renderItem?: (props: ComboBoxItemProps) => React.ReactNode
   onFocus?: (event: React.FocusEvent) => void
   onBlur?: (event: React.FocusEvent) => void
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
-  onChangeValue?: (name: string, value: any) => void
+  onInputChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
+  onSelectionChange?: (name: string, value: any) => void
 }
+
+const ARROW_UP = 38
+const ARROW_DOWN = 40
+const ENTER = 13
 
 export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
   (
@@ -264,16 +205,15 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
       style,
       options,
       variant = "standard",
-      initialValue,
+      initialValue = null,
+      value = null,
+      isLoading,
+      placeholder,
+      error,
       getOptionName,
       getOptionValue,
       renderItem,
-      onFocus,
-      onBlur,
-      onChange,
-      onChangeValue,
-      isLoading,
-      error,
+      ...props
     },
     ref,
   ) => {
@@ -282,23 +222,40 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
     }
 
     const [isOpen, setIsOpen] = useState(false)
-    const [value, setValue] = useState<string | undefined>(initialValue)
+    const [currentValue, setCurrentValue] = useState(
+      initialValue != null ? initialValue : value != null ? value : undefined,
+    )
     const [focused, setFocused] = useState(false)
     const [text, setText] = useState("")
+    const [hoverIndex, setHoverIndex] = useState(-1)
     const outerDivRef = useRef<HTMLDivElement>(null)
     const popupRef = useRef<HTMLDivElement>(null)
     const currentValueRef = useRef<HTMLDivElement>(null)
+    const hoveredItemRef = useRef<HTMLDivElement>(null)
+    const defaultInputRef = useRef<HTMLInputElement>(null)
+    const inputRef = ref || defaultInputRef
 
-    const _onFocus = (e: React.FocusEvent) => {
+    useEffect(() => {
+      if (value != null) setCurrentValue(value)
+    }, [value])
+
+    useEffect(() => {
+      if (!isOpen) {
+        setHoverIndex(-1)
+      }
+    }, [isOpen])
+
+    const onFocus = (e: React.FocusEvent) => {
       if (!isOpen && openOnFocus) {
         setIsOpen(true)
       }
       setFocused(true)
-      if (onFocus) onFocus(e)
+      if (props.onFocus) props.onFocus(e)
     }
 
-    const _onBlur = (e: React.FocusEvent) => {
-      const { relatedTarget, currentTarget } = e
+    const onBlur = (e: React.FocusEvent) => {
+      const { currentTarget } = e
+      const relatedTarget = e.relatedTarget || document.activeElement
       if (isOpen) {
         if (relatedTarget === null) {
           setIsOpen(false)
@@ -313,30 +270,30 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
         setIsOpen(false)
       }
       setFocused(false)
-      if (clearOnBlur && !value) setText("")
-      if (onBlur) onBlur(e)
+      if (clearOnBlur && !currentValue) setText("")
+      if (props.onBlur) props.onBlur(e)
     }
 
-    const _onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-      if (value) {
-        setValue(undefined)
+    const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      if (currentValue) {
+        setCurrentValue(undefined)
         if (onChangeValue) {
           onChangeValue(name, undefined)
         }
       }
       setText(e.target.value)
-      if (onChange) onChange(e)
+      if (props.onInputChange) props.onInputChange(e)
     }
 
-    const _onChangeValue = (label: string, newValue: any) => {
-      if (newValue !== value) {
-        setValue(newValue)
+    const onChangeValue = (label: string, newValue: any) => {
+      if (newValue !== currentValue) {
+        if (initialValue != null || value == null) {
+          setCurrentValue(newValue)
+        }
         setText(label)
         setIsOpen(false)
         setFocused(false)
-        if (onChangeValue) {
-          onChangeValue(name, newValue)
-        }
+        if (props.onSelectionChange) props.onSelectionChange(name, newValue)
       }
     }
 
@@ -345,7 +302,7 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
     }
 
     useEffect(() => {
-      if (isOpen && value) {
+      if (isOpen && currentValue) {
         if (currentValueRef.current) {
           currentValueRef.current.scrollIntoView({
             behavior: "smooth",
@@ -353,27 +310,39 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
           })
         } else {
           popupRef.current?.scrollTo({
-            top: document.getElementById(`${id}_${value}`)?.offsetTop,
+            top: document.getElementById(`${id}_${currentValue}`)?.offsetTop,
           })
         }
       }
       // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [isOpen, value])
+    }, [isOpen, currentValue])
 
     useEffect(() => {
-      if (initialValue) {
+      if (isOpen && hoverIndex != -1) {
+        if (hoveredItemRef.current) {
+          hoveredItemRef.current.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          })
+        }
+      }
+    }, [isOpen, hoverIndex])
+
+    useEffect(() => {
+      if (initialValue != null || (value != null && text.length == 0)) {
+        const defaultValue = initialValue || value
         if (options) {
           const option = options.find((option) => {
             return getOptionValue
-              ? getOptionValue(option) === initialValue
-              : option.value === initialValue
+              ? getOptionValue(option) === defaultValue
+              : option.value === defaultValue
           })
           if (option) {
             setText(getOptionName ? getOptionName(option) : option.name)
           }
         } else if (children && React.Children.count(children) > 0) {
           const child = children.find((child) => {
-            return (child as any)?.props.value === initialValue
+            return (child as any)?.props.value === defaultValue
           })
           if (child) {
             setText((child as any)?.props.label)
@@ -381,12 +350,14 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
         }
       }
       // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    }, [value])
 
     const getPopupTop = () => {
       const rect = outerDivRef.current?.getBoundingClientRect()
       const screenHeight = document.body.clientHeight
-      if (rect && screenHeight - rect.bottom > 40) {
+      if (rect && screenHeight - rect.bottom < 20 && rect.top > 22) {
+        return undefined
+      } else {
         return `${
           (outerDivRef.current?.offsetTop
             ? outerDivRef.current?.offsetTop
@@ -396,8 +367,21 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
             : 0) +
           2
         }px`
+      }
+    }
+
+    const getPopupBottom = () => {
+      const rect = outerDivRef.current?.getBoundingClientRect()
+      const screenHeight = document.body.clientHeight
+      if (
+        outerDivRef.current?.offsetTop &&
+        rect &&
+        screenHeight - rect.bottom < 20 &&
+        rect.top > 22
+      ) {
+        return `${screenHeight - outerDivRef.current?.offsetTop + 4}px`
       } else {
-        return `${outerDivRef.current?.offsetTop}px`
+        return undefined
       }
     }
 
@@ -417,12 +401,22 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
       const rect = outerDivRef.current?.getBoundingClientRect()
       const screenHeight = document.body.clientHeight
 
-      if (rect && screenHeight - rect.bottom > 100) {
-        return "100px"
-      } else if (rect && screenHeight - rect.bottom > 20) {
-        return `${document.body.clientHeight - rect.bottom}px`
+      if (rect && screenHeight - rect.bottom < 20 && rect.top > 22) {
+        if (rect && rect.top > 100) {
+          return "100px"
+        } else if (rect && rect.top > 20) {
+          return `${rect.top - 2}px`
+        } else {
+          return "20px"
+        }
       } else {
-        return "20px"
+        if (rect && screenHeight - rect.bottom > 100) {
+          return "100px"
+        } else if (rect && screenHeight - rect.bottom > 20) {
+          return `${document.body.clientHeight - rect.bottom - 2}px`
+        } else {
+          return "20px"
+        }
       }
     }
 
@@ -433,16 +427,23 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
         }
         const itemValue = item.props.value
         if (
-          (!onChange && item.props.label.startsWith(text)) ||
-          value !== undefined
+          (!props.onInputChange && item.props.label.startsWith(text)) ||
+          currentValue !== undefined ||
+          props.onInputChange
         ) {
           return React.cloneElement(item, {
             id: `${id}_${itemValue}`,
             disabled: item.props.disabled || disabled,
             value: itemValue,
-            selected: value === itemValue,
-            ref: value === itemValue ? currentValueRef : null,
-            onClick: () => _onChangeValue(item.props.label, itemValue),
+            selected: currentValue === itemValue,
+            hover: index === hoverIndex,
+            ref:
+              currentValue === itemValue
+                ? currentValueRef
+                : index === hoverIndex
+                ? hoveredItemRef
+                : null,
+            onClick: () => onChangeValue(item.props.label, itemValue),
           })
         } else {
           return null
@@ -451,19 +452,24 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
     }
 
     const renderOptions = () => {
-      return options?.map((option) => {
+      return options?.map((option, index) => {
         const itemValue = getOptionValue ? getOptionValue(option) : option.value
         const itemLabel = getOptionName ? getOptionName(option) : option.name
         const itemProps = {
           id: `${id}_${itemValue}`,
-          // key: itemValue,
+          key: itemValue,
           label: itemLabel,
           value: itemValue,
-          selected: value === itemValue,
-          ref: value === itemValue ? currentValueRef : null,
-          onClick: () => _onChangeValue(itemLabel, itemValue),
+          hover: index === hoverIndex,
+          selected: currentValue === itemValue,
+          ref: currentValue === itemValue ? currentValueRef : null,
+          onClick: () => onChangeValue(itemLabel, itemValue),
         }
-        if ((!onChange && itemLabel.startsWith(text)) || value !== undefined) {
+        if (
+          (!props.onInputChange && itemLabel.startsWith(text)) ||
+          currentValue !== undefined ||
+          props.onInputChange
+        ) {
           if (renderItem) {
             return renderItem(itemProps)
           } else {
@@ -485,67 +491,89 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
       }
     }
 
+    const onKeyDownHandler = (e: React.KeyboardEvent) => {
+      if (isOpen) {
+        if (e.keyCode === ARROW_UP && hoverIndex > 0) {
+          setHoverIndex(hoverIndex - 1)
+        } else if (
+          e.keyCode === ARROW_DOWN &&
+          ((options?.length && hoverIndex < options?.length) ||
+            hoverIndex < React.Children.count(children))
+        ) {
+          setHoverIndex(hoverIndex + 1)
+        } else if (e.keyCode === ENTER && hoverIndex != -1) {
+          if (options && options?.length > 0) {
+            const newOption = options[hoverIndex]
+            onChangeValue(
+              getOptionName ? getOptionName(newOption) : newOption.name,
+              getOptionValue ? getOptionValue(newOption) : newOption.value,
+            )
+          } else if (children && React.Children.count(children) > 0) {
+            const item = children[hoverIndex] as any
+            onChangeValue(item?.props?.label, item?.props?.value)
+          }
+        }
+      }
+    }
+
     return (
-      <NoWrap>
-        <OuterDiv
-          className={className}
-          focused={focused}
-          ref={outerDivRef}
-          onBlur={_onBlur}
-          style={style}
-          error={error !== undefined}
-        >
-          <StyledDiv>
-            <StyledInput
-              id={`${id}_input`}
-              ref={ref}
-              value={text}
-              onFocus={_onFocus}
-              onChange={_onChange}
+      <StyledDiv
+        className={className}
+        focused={focused}
+        ref={outerDivRef}
+        onBlur={onBlur}
+        style={style}
+        error={error !== undefined}
+      >
+        <StyledInput
+          id={`${id}_input`}
+          ref={inputRef}
+          value={text}
+          onKeyDown={(e) => onKeyDownHandler(e)}
+          onFocus={onFocus}
+          onChange={onChange}
+          placeholder={placeholder}
+          autoComplete="off"
+        />
+        {(variant === ComboBoxVariant.standard && (
+          <ComboBoxButton
+            id={`${id}_button`}
+            tabIndex={-1}
+            onKeyDown={(e) => onKeyDownHandler(e)}
+            rotate={String(isOpen)}
+            onClick={toggle}
+            onFocus={() => setFocused(true)}
+          />
+        )) ||
+          (variant === ComboBoxVariant.jepria && (
+            <JepRiaButton
+              id={`${id}_button`}
+              tabIndex={-1}
+              onKeyDown={(e) => onKeyDownHandler(e)}
+              onClick={toggle}
+              onFocus={() => setFocused(true)}
             />
-            {(variant === ComboBoxVariant.standard && (
-              <StyledButton
-                id={`${id}_button`}
-                tabIndex={-1}
-                isOpen={isOpen}
-                onClick={toggle}
-                onFocus={() => setFocused(true)}
-              >
-                <StyledSpan>
-                  <StyledSvg>
-                    <path d="M7 10l5 5 5-5z" />
-                  </StyledSvg>
-                </StyledSpan>
-              </StyledButton>
-            )) ||
-              (variant === ComboBoxVariant.jepria && (
-                <JepRiaButton
-                  id={`${id}_button`}
-                  tabIndex={-1}
-                  onClick={toggle}
-                  onFocus={() => setFocused(true)}
-                />
-              ))}
-          </StyledDiv>
-          {isOpen && (
-            <Popup
-              id={`${id}_popup`}
-              ref={popupRef}
-              tabIndex={0}
-              style={{
-                top: getPopupTop(),
-                left: getPopupLeft(),
-                width: getPopupWidth(),
-                maxHeight: getPopupHeight(),
-              }}
-            >
-              {renderItems()}
-            </Popup>
-          )}
-        </OuterDiv>
+          ))}
+        {isOpen && (
+          <Popup
+            id={`${id}_popup`}
+            ref={popupRef}
+            tabIndex={0}
+            onKeyDown={(e) => onKeyDownHandler(e)}
+            style={{
+              top: getPopupTop(),
+              left: getPopupLeft(),
+              bottom: getPopupBottom(),
+              width: getPopupWidth(),
+              maxHeight: getPopupHeight(),
+            }}
+          >
+            {renderItems()}
+          </Popup>
+        )}
         {isLoading && <LoadingImage />}
         {error !== undefined && <ExclamationImage title={error} />}
-      </NoWrap>
+      </StyledDiv>
     )
   },
 )

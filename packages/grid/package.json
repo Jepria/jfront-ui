@@ -1,6 +1,6 @@
 {
   "name": "@jfront/ui-grid",
-  "version": "0.2.1",
+  "version": "0.2.5",
   "license": "Apache-2.0",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -18,13 +18,16 @@
     "build:esm": "cross-env BABEL_ENV=esm babel src --root-mode upward --extensions .ts,.tsx -d dist/esm --source-maps --copy-files",
     "build:cjs": "cross-env BABEL_ENV=cjs babel src --root-mode upward --extensions .ts,.tsx -d dist/cjs --source-maps --copy-files",
     "build:types": "tsc --emitDeclarationOnly --declaration --declarationDir dist/types",
+    "lint": "concurrently yarn:lint:*",
+    "lint:src": "eslint src --ext .ts,.tsx --config ../../.eslintrc",
+    "lint:types": "tsc --noEmit",
     "test": "jest --passWithNoTests",
     "test:cov": "yarn test --coverage"
   },
   "dependencies": {
-    "@jfront/ui-checkbox": "^0.3.1",
-    "@jfront/ui-icons": "^0.1.1",
-    "@jfront/ui-table": "^0.1.1",
+    "@jfront/ui-checkbox": "^0.3.5",
+    "@jfront/ui-icons": "^0.2.2",
+    "@jfront/ui-table": "^0.1.4",
     "react-table": "^7.5.0",
     "throttle-debounce": "^2.1.0"
   },

@@ -15,7 +15,7 @@ export default {
 export const BasicUsage = () => {
   return (
     <>
-      <DecimalInput label="Text input" name="InputTextName" />
+      <DecimalInput name="InputTextName" />
     </>
   )
 }

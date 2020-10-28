@@ -1,7 +1,6 @@
-import React from "react"
-import { Label } from "@jfront/ui-label"
-import { InputProps } from "."
-import { StyledInput } from "./styles"
+import React, { useState } from "react"
+import { InputProps, TextInputProps } from "."
+import { StyledDiv, StyledInput } from "./styles"
 import { LoadingImage, ExclamationImage } from "@jfront/ui-icons"
 
 export interface NumberInputProps
@@ -9,19 +8,70 @@ export interface NumberInputProps
       React.InputHTMLAttributes<HTMLInputElement>,
       HTMLInputElement
     >,
-    InputProps {}
+    InputProps {
+  inputRef?: React.RefObject<HTMLInputElement>
+}
 
-export const NumberInput = React.forwardRef<HTMLInputElement, NumberInputProps>(
-  (props, ref) => {
+export const NumberInput = React.forwardRef<HTMLDivElement, NumberInputProps>(
+  ({ style, className, ...props }, ref) => {
+    const [focused, setFocused] = useState(false)
+
+    const minVal = props.min ? props.min : Number.MIN_SAFE_INTEGER
+    const maxVal = props.max ? props.max : Number.MAX_SAFE_INTEGER
+
+    const [error, setError] = React.useState(props.error)
+
+    React.useEffect(() => {
+      setError(props.error)
+    }, [props.error])
+
     return (
-      <div style={{ display: props.label ? "block" : "inline-block" }}>
-        {props.label !== undefined && (
-          <Label htmlFor={props.id}>{props.label}:&nbsp;</Label>
-        )}
-        <StyledInput {...props} ref={ref} type={"number"} pattern="^[0-9]+$" />
+      <StyledDiv
+        className={className}
+        focused={focused}
+        style={style}
+        ref={ref}
+        error={error !== undefined}
+      >
+        <StyledInput
+          {...props}
+          onChange={(e) => {
+            if (parseInt(e.target.value) < minVal) {
+              setError(
+                props.error
+                  ? props.error
+                  : `Значение должно быть больше или равным ${minVal}`,
+              )
+            } else if (parseInt(e.target.value) > maxVal) {
+              setError(
+                props.error
+                  ? props.error
+                  : `Значение должно быть меньше или равным ${maxVal}`,
+              )
+            } else {
+              setError(props.error ? props.error : undefined)
+              props.onChange ? props.onChange(e) : undefined
+            }
+          }}
+          onFocus={(e) => {
+            if (props.onFocus) {
+              props.onFocus(e)
+            }
+            setFocused(true)
+          }}
+          onBlur={(e) => {
+            if (props.onBlur) {
+              props.onBlur(e)
+            }
+            setFocused(false)
+          }}
+          ref={props.inputRef}
+          type={"number"}
+          pattern="^[0-9]+$"
+        />
         {props.isLoading && <LoadingImage />}
-        {props.error !== undefined && <ExclamationImage title={props.error} />}
-      </div>
+        {error !== undefined && <ExclamationImage title={error} />}
+      </StyledDiv>
     )
   },
 )

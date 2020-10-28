@@ -6,6 +6,8 @@ const TabPanel = styled.div`
   font-family: tahoma, arial, helvetica, sans-serif;
   color: rgb(21, 66, 139);
   font-size: 11px;
+  z-index: 1;
+  flex-shrink: 0;
 `
 
 interface TabProps {
@@ -17,18 +19,18 @@ const Tab = styled.div<TabProps>`
   height: 16px;
   text-align: center;
   margin-left: 2px;
-  padding: 3px 6px 3px 6px;
+  padding: 3px 6px 2px 6px;
   min-width: 20px;
   border: 1px solid #8db2e3;
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
-  border-bottom-color: #d7e4f3;
   ${(props) =>
     props.selected
       ? `
-  background-color: #D7E4F3;
+    background-color: #D7E4F3;
     cursor: default;
     font-weight: bold;
+    border-bottom-color: #d7e4f3;
   `
       : `
     background: linear-gradient(#dae6f4, #d0def0);
