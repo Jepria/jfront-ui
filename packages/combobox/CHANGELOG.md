@@ -1,34 +1,26 @@
 # Change Log
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
 # [0.4.0](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-combobox@0.3.2...@jfront/ui-combobox@0.4.0) (2020-10-23)
 
-
 ### Bug Fixes
 
-* uncomment ([9f9d649](https://github.com/Jepria/jfront-ui/commit/9f9d6494d1646df90b3754f4844d0c47187fff46))
-
+- uncomment
+  ([9f9d649](https://github.com/Jepria/jfront-ui/commit/9f9d6494d1646df90b3754f4844d0c47187fff46))
 
 ### Features
 
-* combobox arrow navigation ([6fc90b8](https://github.com/Jepria/jfront-ui/commit/6fc90b89ce8052c5be5ad7ee84d909209cd0cc7b))
-
-
-
-
+- combobox arrow navigation
+  ([6fc90b8](https://github.com/Jepria/jfront-ui/commit/6fc90b89ce8052c5be5ad7ee84d909209cd0cc7b))
 
 ## [0.3.2](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-combobox@0.3.1...@jfront/ui-combobox@0.3.2) (2020-09-29)
 
-
 ### Bug Fixes
 
-* input style props ([c57e66e](https://github.com/Jepria/jfront-ui/commit/c57e66ec0d0789d3a0a487c7f12416f89ae5d0ef))
-
-
-
-
+- input style props
+  ([c57e66e](https://github.com/Jepria/jfront-ui/commit/c57e66ec0d0789d3a0a487c7f12416f89ae5d0ef))
 
 # Change Log
 

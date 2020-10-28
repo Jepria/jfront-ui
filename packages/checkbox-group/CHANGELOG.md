@@ -1,23 +1,15 @@
 # Change Log
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
 ## [0.4.3](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-checkbox-group@0.4.2...@jfront/ui-checkbox-group@0.4.3) (2020-10-23)
 
 **Note:** Version bump only for package @jfront/ui-checkbox-group
 
-
-
-
-
 ## [0.4.2](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-checkbox-group@0.4.1...@jfront/ui-checkbox-group@0.4.2) (2020-09-29)
 
 **Note:** Version bump only for package @jfront/ui-checkbox-group
-
-
-
-
 
 # Change Log
 

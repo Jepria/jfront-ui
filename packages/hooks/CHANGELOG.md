@@ -1,64 +1,41 @@
 # Change Log
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
 ## [0.3.4](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-hooks@0.3.3...@jfront/ui-hooks@0.3.4) (2020-10-23)
 
 **Note:** Version bump only for package @jfront/ui-hooks
 
-
-
-
-
 ## [0.3.3](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-hooks@0.3.2...@jfront/ui-hooks@0.3.3) (2020-09-29)
 
 **Note:** Version bump only for package @jfront/ui-hooks
-
-
-
-
 
 ## [0.3.2](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-hooks@0.3.1...@jfront/ui-hooks@0.3.2) (2020-09-16)
 
 **Note:** Version bump only for package @jfront/ui-hooks
 
-
-
-
-
 ## [0.3.1](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-hooks@0.3.0...@jfront/ui-hooks@0.3.1) (2020-09-10)
 
 **Note:** Version bump only for package @jfront/ui-hooks
 
-
-
-
-
 # [0.3.0](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-hooks@0.2.0...@jfront/ui-hooks@0.3.0) (2020-09-04)
-
 
 ### Bug Fixes
 
-* error fixes and refactoring ([685e05d](https://github.com/Jepria/jfront-ui/commit/685e05dd0d2caeafda07990ca3c245c7166a8ce5))
-
+- error fixes and refactoring
+  ([685e05d](https://github.com/Jepria/jfront-ui/commit/685e05dd0d2caeafda07990ca3c245c7166a8ce5))
 
 ### Features
 
-* loading and error states ([b54b244](https://github.com/Jepria/jfront-ui/commit/b54b2441655edbc3adce075a0de61ebd0e3d75b7))
-* stories useSelect ([3ccec1b](https://github.com/Jepria/jfront-ui/commit/3ccec1b31566faf7767b0489dfa6c8a630f46768))
-
-
-
-
+- loading and error states
+  ([b54b244](https://github.com/Jepria/jfront-ui/commit/b54b2441655edbc3adce075a0de61ebd0e3d75b7))
+- stories useSelect
+  ([3ccec1b](https://github.com/Jepria/jfront-ui/commit/3ccec1b31566faf7767b0489dfa6c8a630f46768))
 
 ## 0.2.1-rc.0 (2020-09-04)
 
 **Note:** Version bump only for package @jfront/ui-hooks
-
-
-
-
 
 # Change Log
 
