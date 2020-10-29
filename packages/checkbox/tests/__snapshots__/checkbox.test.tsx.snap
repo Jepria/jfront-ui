@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Checkbox renders correctly 1`] = `
+<DocumentFragment>
+  <span
+    class="sc-AxiKw bsspJY"
+  >
+    <label
+      class="sc-AxirZ ieqohX"
+      for="id4"
+    >
+      CheckBox Name
+    </label>
+    <input
+      class="sc-AxjAm jIaAfJ"
+      id="id4"
+      type="checkbox"
+      value=""
+    />
+  </span>
+</DocumentFragment>
+`;
+
+exports[`Matches snapshot  1`] = `
+<DocumentFragment>
+  <span
+    class="sc-AxiKw bsspJY"
+  >
+    <label
+      class="sc-AxirZ ieqohX"
+      for="id3"
+    />
+    <input
+      class="sc-AxjAm jIaAfJ"
+      id="id3"
+      type="checkbox"
+      value=""
+    />
+  </span>
+</DocumentFragment>
+`;

@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Matches snapshot  1`] = `
+<DocumentFragment>
+  <section
+    class="sc-AxiKw gGQAYG"
+  >
+    <header
+      class="sc-AxhCb UORoV"
+      style="background-color: yellow; min-height: 30px;"
+    />
+    <section
+      class="sc-AxhUy ereXFW"
+      style="background-color: red;"
+    />
+    <footer
+      class="sc-AxgMl jwgXaO"
+      style="background-color: blue; min-height: 30px;"
+    />
+  </section>
+</DocumentFragment>
+`;
+
+exports[`PanelWithLeftSide snapshot  1`] = `
+<DocumentFragment>
+  <section
+    class="sc-AxiKw gGQAYG"
+  >
+    <section
+      class="sc-AxhUy ereXFW"
+    >
+      <div
+        class="sc-AxirZ jsFaQM"
+        style="height: 100%;"
+      >
+        <div
+          class="sc-AxjAm fDqZvr"
+          style="flex-grow: 1; background-color: green;"
+        >
+          <section
+            class="sc-AxiKw gGQAYG"
+          />
+        </div>
+        <div
+          class="sc-AxjAm fDqZvr"
+          style="flex-grow: 3;"
+        >
+          <section
+            class="sc-AxiKw gGQAYG"
+          >
+            <header
+              class="sc-AxhCb UORoV"
+              style="background-color: yellow; min-height: 30px;"
+            />
+            <section
+              class="sc-AxhUy ereXFW"
+              style="background-color: red;"
+            />
+            <footer
+              class="sc-AxgMl jwgXaO"
+              style="background-color: blue; min-height: 30px;"
+            />
+          </section>
+        </div>
+      </div>
+    </section>
+  </section>
+</DocumentFragment>
+`;

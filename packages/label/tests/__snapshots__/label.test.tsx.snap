@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Label renders correctly 1`] = `
+<DocumentFragment>
+  <label
+    class="sc-AxjAm DLLwe"
+  >
+    Text
+  </label>
+</DocumentFragment>
+`;
+
+exports[`Matches snapshot  1`] = `
+<DocumentFragment>
+  <label
+    class="sc-AxjAm DLLwe"
+  />
+</DocumentFragment>
+`;

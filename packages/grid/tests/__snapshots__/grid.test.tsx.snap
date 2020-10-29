@@ -1,0 +1,641 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Grid colors block renders correctly 1`] = `
+<DocumentFragment>
+  <section
+    class="sc-fzoLag inWPiQ sc-fzoXzr bvUUDN"
+    id="test_grid"
+  >
+    <div
+      class="sc-fznZeY JotLz"
+    >
+      <table
+        class="sc-fznKkj fMNvPW sc-fzpjYC fZJtjE"
+        id="test_table"
+        role="table"
+        style="min-width: 450px;"
+      >
+        <thead
+          class="sc-fzokOt dNeaSo sc-fznxsB iHlWRH"
+          id="test_thead"
+        >
+          <tr
+            role="row"
+            style="display: flex; flex: 1 0 auto; min-width: 90px;"
+          >
+            <th
+              class="sc-fzqBZW cVRUvW sc-fznJRM buLgpv"
+              colspan="1"
+              id="test_th_id"
+              role="columnheader"
+              style="box-sizing: border-box; flex: 150 0 auto; min-width: 30px; width: 150px; position: relative; cursor: pointer;"
+              title="Id"
+            >
+              <span
+                class="sc-fzoXWK dMrSVb"
+              >
+                <svg
+                  class="sc-fzpmMD blFlkL"
+                >
+                  <path
+                    d="M7 10l5 5 5-5z"
+                  />
+                </svg>
+              </span>
+              Id
+              <img
+                class="sc-fzoNJl fwLPQn"
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAADoSURBVHjaXFC7iYVAFD2zaAlGIhoIZhpYghYgWIy1WIRgZCRoAyYGgpiIYAEmiijMvjO7K2/fwP3Mued+RZ7n+Hjy14p38Ivqvm/pOI6kjeMYlHeMHI3Ktm24rqvsdV2qQhRF0HVd/dd1hbZtGyiWZSmgLEtFTJIEpmliGIaf1ud5yjRNcRwHmqZBlmWCQp8YY+RoL4VlWVSWYRjP8PRJZIwcVhRVVT3ZdV1Lyl8Xxl5jCY1L7PsOz/PQ973amI++7/sYxxHP1tM0oSgKzPP8bN22rcKJBUEA8XnwruvU3cIw/HfwbwEGAKbej5/tP3njAAAAAElFTkSuQmCC"
+              />
+              <div
+                class="sc-fzqNqU fNiuGK"
+                draggable="false"
+                role="separator"
+                style="cursor: ew-resize;"
+              />
+            </th>
+            <th
+              class="sc-fzqBZW cVRUvW sc-fznJRM buLgpv"
+              colspan="1"
+              id="test_th_name"
+              role="columnheader"
+              style="box-sizing: border-box; flex: 150 0 auto; min-width: 30px; width: 150px; position: relative; cursor: pointer;"
+              title="Name"
+            >
+              <span
+                class="sc-fzoXWK dMrSVb"
+              >
+                <svg
+                  class="sc-fzpmMD blFlkL"
+                >
+                  <path
+                    d="M7 10l5 5 5-5z"
+                  />
+                </svg>
+              </span>
+              Name
+              <img
+                class="sc-fzoNJl fwLPQn"
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAADoSURBVHjaXFC7iYVAFD2zaAlGIhoIZhpYghYgWIy1WIRgZCRoAyYGgpiIYAEmiijMvjO7K2/fwP3Mued+RZ7n+Hjy14p38Ivqvm/pOI6kjeMYlHeMHI3Ktm24rqvsdV2qQhRF0HVd/dd1hbZtGyiWZSmgLEtFTJIEpmliGIaf1ud5yjRNcRwHmqZBlmWCQp8YY+RoL4VlWVSWYRjP8PRJZIwcVhRVVT3ZdV1Lyl8Xxl5jCY1L7PsOz/PQ973amI++7/sYxxHP1tM0oSgKzPP8bN22rcKJBUEA8XnwruvU3cIw/HfwbwEGAKbej5/tP3njAAAAAElFTkSuQmCC"
+              />
+              <div
+                class="sc-fzqNqU fNiuGK"
+                draggable="false"
+                role="separator"
+                style="cursor: ew-resize;"
+              />
+            </th>
+            <th
+              class="sc-fzqBZW cVRUvW sc-fznJRM buLgpv"
+              colspan="1"
+              id="test_th_info"
+              role="columnheader"
+              style="box-sizing: border-box; flex: 150 0 auto; min-width: 30px; width: 150px; position: relative; cursor: pointer;"
+              title="Info"
+            >
+              <span
+                class="sc-fzoXWK dMrSVb"
+              >
+                <svg
+                  class="sc-fzpmMD blFlkL"
+                >
+                  <path
+                    d="M7 10l5 5 5-5z"
+                  />
+                </svg>
+              </span>
+              Info
+              <img
+                class="sc-fzoNJl fwLPQn"
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAADoSURBVHjaXFC7iYVAFD2zaAlGIhoIZhpYghYgWIy1WIRgZCRoAyYGgpiIYAEmiijMvjO7K2/fwP3Mued+RZ7n+Hjy14p38Ivqvm/pOI6kjeMYlHeMHI3Ktm24rqvsdV2qQhRF0HVd/dd1hbZtGyiWZSmgLEtFTJIEpmliGIaf1ud5yjRNcRwHmqZBlmWCQp8YY+RoL4VlWVSWYRjP8PRJZIwcVhRVVT3ZdV1Lyl8Xxl5jCY1L7PsOz/PQ973amI++7/sYxxHP1tM0oSgKzPP8bN22rcKJBUEA8XnwruvU3cIw/HfwbwEGAKbej5/tP3njAAAAAElFTkSuQmCC"
+              />
+              <div
+                class="sc-fzqNqU fNiuGK"
+                draggable="false"
+                role="separator"
+                style="cursor: ew-resize;"
+              />
+            </th>
+          </tr>
+        </thead>
+        <tbody
+          class="sc-fzpans STsDJ sc-fznWqX clGFVO"
+          id="test_tbody"
+          role="rowgroup"
+        >
+          <tr
+            class="sc-fzqNJr jQXiND sc-fzoiQi eYEEes"
+            id="test_row_0"
+            role="row"
+            style="display: flex; flex: 1 0 auto; min-width: 90px; background-color: rgb(255, 95, 87);"
+          >
+            <td
+              class="sc-fzoyAV erdTaJ sc-fzqARJ hFSrUY"
+              id="test_td_0_0"
+              label="Id"
+              role="cell"
+              style="box-sizing: border-box; flex: 150 0 auto; min-width: 30px; width: 150px;"
+              title="1"
+            >
+              1
+            </td>
+            <td
+              class="sc-fzoyAV fhdlZT sc-fzqARJ hFSrUY"
+              id="test_td_0_1"
+              label="Name"
+              role="cell"
+              style="box-sizing: border-box; flex: 150 0 auto; min-width: 30px; width: 150px;"
+              title="123"
+            >
+              123
+            </td>
+            <td
+              class="sc-fzoyAV hgHnhu sc-fzqARJ hFSrUY"
+              id="test_td_0_2"
+              label="Info"
+              role="cell"
+              style="box-sizing: border-box; flex: 150 0 auto; min-width: 30px; width: 150px;"
+              title="test"
+            >
+              test
+            </td>
+          </tr>
+          <tr
+            class="sc-fzqNJr jQXiND sc-fzoiQi eYEEes"
+            id="test_row_1"
+            role="row"
+            style="display: flex; flex: 1 0 auto; min-width: 90px; background-color: rgb(255, 95, 87);"
+          >
+            <td
+              class="sc-fzoyAV erdTaJ sc-fzqARJ hFSrUY"
+              id="test_td_1_0"
+              label="Id"
+              role="cell"
+              style="box-sizing: border-box; flex: 150 0 auto; min-width: 30px; width: 150px;"
+              title="1"
+            >
+              1
+            </td>
+            <td
+              class="sc-fzoyAV fhdlZT sc-fzqARJ hFSrUY"
+              id="test_td_1_1"
+              label="Name"
+              role="cell"
+              style="box-sizing: border-box; flex: 150 0 auto; min-width: 30px; width: 150px;"
+              title="121"
+            >
+              121
+            </td>
+            <td
+              class="sc-fzoyAV hgHnhu sc-fzqARJ hFSrUY"
+              id="test_td_1_2"
+              label="Info"
+              role="cell"
+              style="box-sizing: border-box; flex: 150 0 auto; min-width: 30px; width: 150px;"
+              title="test2"
+            >
+              test2
+            </td>
+          </tr>
+          <tr
+            class="sc-fzqNJr jQXiND sc-fzoiQi eYEEes"
+            id="test_row_2"
+            role="row"
+            style="display: flex; flex: 1 0 auto; min-width: 90px; background-color: rgb(255, 95, 87);"
+          >
+            <td
+              class="sc-fzoyAV erdTaJ sc-fzqARJ hFSrUY"
+              id="test_td_2_0"
+              label="Id"
+              role="cell"
+              style="box-sizing: border-box; flex: 150 0 auto; min-width: 30px; width: 150px;"
+              title="1"
+            >
+              1
+            </td>
+            <td
+              class="sc-fzoyAV fhdlZT sc-fzqARJ hFSrUY"
+              id="test_td_2_1"
+              label="Name"
+              role="cell"
+              style="box-sizing: border-box; flex: 150 0 auto; min-width: 30px; width: 150px;"
+              title="14"
+            >
+              14
+            </td>
+            <td
+              class="sc-fzoyAV hgHnhu sc-fzqARJ hFSrUY"
+              id="test_td_2_2"
+              label="Info"
+              role="cell"
+              style="box-sizing: border-box; flex: 150 0 auto; min-width: 30px; width: 150px;"
+              title="test3"
+            >
+              test3
+            </td>
+          </tr>
+          <tr
+            class="sc-fzplWN hbEGsR"
+          >
+            <td
+              class="sc-fznyAO eMIraO"
+              height="0"
+            />
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div
+      class="sc-fzolEj dRnGtF"
+      id="test_pagingbar"
+    >
+      <div
+        class="sc-fzqBkg ehTsMo"
+      >
+        <div
+          class="sc-fznxKY kCZLjk"
+        >
+          <button
+            class="sc-fznMAR cnTfHo"
+            disabled=""
+            id="test_pagingbar_first"
+          >
+            <img
+              src="data:image/gif;base64,R0lGODlhEAAQAIcAACRIkChNli1TnjNZpjhgrz9otx1m9S9kzy9l0yxm2DBiyDFq2zhu3D5z2z913SRq8ixx7jRy6D5++URvwEJt1Ep1yE970Eh630574UD/QFOA1lOE3VWF3liH30+K9k+J/VGD4VeH4FaE6VmK4l+L4F+M4WCM5GWP62mR42iU5WuT62+W7G2Z5mec+2ma/2ic+XGa536f7oKg54Wu/42r8Iiu/5a076G+8KK9/6W//6rE7wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAMAABkALAAAAAAQABAAAAh6ADMIHEiwoMGDB2HIQGEwhEEWOhwSJKHBYIobFQeWyGHBoAkbHQV2yOGigsERNExm4JBjxocJBkHEgLkBR40XEgoYvLBCZ4YGLTxAIGDQgQqiAg9EeDDAIIMTTQcqMCDA4AIRVQkiCGAwAQauBQEYpABALMKzaNMODAgAOw=="
+              title="Первая"
+            />
+          </button>
+          <button
+            class="sc-fznMAR cnTfHo"
+            disabled=""
+            id="test_pagingbar_prev"
+          >
+            <img
+              src="data:image/gif;base64,R0lGODlhEAAQAIcAACRIkChNli1TnjNZpjhgrz9otx1m9S9kzy9l0yxm2DBiyDFq2zhu3D5z2z913SRq8ixx7jRy6D5++URvwEJt1Ep1yE970Eh630574UD/QFOA1lOE3VWF3liH30+K9k+J/VGD4VeH4FaE6VmK4l+L4F+M4WCM5GWP62mR42iU5WuT62+W7G2Z5mec+2ma/2ic+XGa536f7oKg54Wu/42r8Iiu/5a076G+8KK9/6W//6rE7wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAMAABkALAAAAAAQABAAAAhMADMIHEiwoMGDCAuGSFiQhAaGA0vksAAxQ4ccLipA5JBjxocJDDfgqPFCQgGIDVp4gECg4oEIDwZUzKDAgICZGRAEwJkBAM+fQA0GBAA7"
+              title="Предыдушая"
+            />
+          </button>
+          <label
+            class="sc-fznWOq jcxdSx"
+          >
+            Стр. 
+            <div
+              class="sc-fzoYHE fiJGUm"
+              style="min-width: 60px; max-width: 150px; background-color: white;"
+            >
+              <input
+                class="sc-fzpkqZ gurULy"
+                id="test_pagingbar_page"
+                max="1"
+                min="1"
+                pattern="^[0-9]+$"
+                type="number"
+                value="1"
+              />
+            </div>
+             из 1
+          </label>
+          <button
+            class="sc-fznMAR cnTfHo"
+            disabled=""
+            id="test_pagingbar_next"
+          >
+            <img
+              src="data:image/gif;base64,R0lGODlhEAAQAIcAACRIkChNli1TnjNZpjhgrz9otx1m9S9kzy9l0yxm2DBiyDFq2zhu3D5z2z913SRq8ixx7jRy6D5++URvwEJt1Ep1yE970Eh630574UD/QFOA1lOE3VWF3liH30+K9k+J/VGD4VeH4FaE6VmK4l+L4F+M4WCM5GWP62mR42iU5WuT62+W7G2Z5mec+2ma/2ic+XGa536f7oKg54Wu/42r8Iiu/5a076G+8KK9/6W//6rE7wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAMAABkALAAAAAAQABAAAAhIADMIHEiwoMGDCDPASGiQBQmGBFPgeAgxgwkcNShUHGHjRQuNDEHQaAEhwQCGF2CUBADRAYgELCEyoBAT4oKaEBNU3MmzJ8GAADs="
+              title="Следующая"
+            />
+          </button>
+          <button
+            class="sc-fznMAR cnTfHo"
+            disabled=""
+            id="test_pagingbar_last"
+          >
+            <img
+              src="data:image/gif;base64,R0lGODlhEAAQAIcAACRIkChNli1TnjNZpjhgrz9otx1m9S9kzy9l0yxm2DBiyDFq2zhu3D5z2z913SRq8ixx7jRy6D5++URvwEJt1Ep1yE970Eh630574UD/QFOA1lOE3VWF3liH30+K9k+J/VGD4VeH4FaE6VmK4l+L4F+M4WCM5GWP62mR42iU5WuT62+W7G2Z5mec+2ma/2ic+XGa536f7oKg54Wu/42r8Iiu/5a076G+8KK9/6W//6rE7wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAMAABkALAAAAAAQABAAAAh4ADMIHEiwoMGDB2EYhCEDhUEWJAqy0BHCYAocEQemuKHBoAkcNSgMNGHDgsERNl60EJlhBI0KBkHQaAEhwYAMIGJMMHgBRk0AAi+sKGDQAYgEQAU6UEHAIAMKSQUyOHGz4IKoAheIEGAwQVcMARAWhIpVrNmzGQICADs="
+              title="Последняя"
+            />
+          </button>
+          <button
+            class="sc-fznMAR DWfuS"
+            id="test_pagingbar_refresh"
+          >
+            <img
+              src="data:image/gif;base64,R0lGODlhEAAQAIcAABBYsRhcvRhuzhR0xiBxzyZ4zyd70yd71SR72Cp50Dd3yTp/zT16yEN5w0J8x1J+whqI3BqA7ByQ+CKA1iqA0iyE0SqC2jyK1iyL5SqV/CqX/zSL4jqh/z2n/0qHyEqMzkqH1UqG20+J1kKQ30qS1liOzVaR3VSb10Sa4Eyf6VKf40uh4Uii60On/0it/0+u/1Kj4Vqk6lew/1my/2Wb3Wuc1W+c2nCNx26n3G6q33Sj3GCm7G+q5Guz72O3/3ax53a3+HS+/3W+/3W//3nB/37D/4Wl1oOn25Sx3YWp4Iq1442y4Y+66JC+552+5ojC74XC/YjK/47J/5TM/5bM/5jP/5vM/p7P/5/P/6XA5qHK763C5KzE6arM7KDT/6LR/6HU/6TS/6DZ/7TM6rDU87Df/7fc/73W87Hg/7rk/73g/7zi/7zl/8Tb9MTd9s7d88Dk/8Xi/87k99bh9Nbm9tHp/9rm9uPr+eXz/+b0/+vy/O31/Pb7//j5/P3+//7+/////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAMAAIAALAAAAAAQABAAAAiuAAEJHEiwoMEmKCZQ+DDG4MAeEjJwaDHkgBOHWiA8IfMDgwwiCeaYCEGQR56BbjYIiQLAigKHA5cAmVKlTAOYgPQYWeDlC5oHArusgMEihQo5NcSwgbMmzQ2BOPDEMQOmSI43NESA8OBgi8ATdcJgqaDEYJ+BJNRcobKDCU5AF6AMkBLEQpuBd5IQHBGDTgEfMxDo4HIkQBaHZwy8cNFBQwQbOO2UICCAAZK3mAMCADs="
+              title="Обновить"
+            />
+          </button>
+        </div>
+      </div>
+      <div
+        class="sc-fzqPZZ kSrhMH"
+      >
+        Записи 1 - 3 из 3
+      </div>
+      <div
+        class="sc-fzoxKX jDdfqI"
+      >
+        <label>
+          Записей на странице: 
+          <div
+            class="sc-fzoYHE fiJGUm"
+            style="min-width: 60px; max-width: 100px; background-color: white;"
+          >
+            <input
+              class="sc-fzpkqZ gurULy"
+              id="test_pagingbar_pagesize"
+              max="9999"
+              min="1"
+              pattern="^[0-9]+$"
+              type="number"
+              value="25"
+            />
+          </div>
+        </label>
+      </div>
+    </div>
+  </section>
+</DocumentFragment>
+`;
+
+exports[`Matches snapshot  1`] = `
+<DocumentFragment>
+  <section
+    class="sc-fzoLag inWPiQ sc-fzoXzr bvUUDN"
+    id="test_grid"
+  >
+    <div
+      class="sc-fznZeY JotLz"
+    >
+      <table
+        class="sc-fznKkj fMNvPW sc-fzpjYC fZJtjE"
+        id="test_table"
+        role="table"
+        style="min-width: 450px;"
+      >
+        <thead
+          class="sc-fzokOt dNeaSo sc-fznxsB iHlWRH"
+          id="test_thead"
+        >
+          <tr
+            role="row"
+            style="display: flex; flex: 1 0 auto; min-width: 90px;"
+          >
+            <th
+              class="sc-fzqBZW cVRUvW sc-fznJRM buLgpv"
+              colspan="1"
+              id="test_th_id"
+              role="columnheader"
+              style="box-sizing: border-box; flex: 150 0 auto; min-width: 30px; width: 150px; position: relative; cursor: pointer;"
+              title="Id"
+            >
+              <span
+                class="sc-fzoXWK dMrSVb"
+              >
+                <svg
+                  class="sc-fzpmMD blFlkL"
+                >
+                  <path
+                    d="M7 10l5 5 5-5z"
+                  />
+                </svg>
+              </span>
+              Id
+              <img
+                class="sc-fzoNJl fwLPQn"
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAADoSURBVHjaXFC7iYVAFD2zaAlGIhoIZhpYghYgWIy1WIRgZCRoAyYGgpiIYAEmiijMvjO7K2/fwP3Mued+RZ7n+Hjy14p38Ivqvm/pOI6kjeMYlHeMHI3Ktm24rqvsdV2qQhRF0HVd/dd1hbZtGyiWZSmgLEtFTJIEpmliGIaf1ud5yjRNcRwHmqZBlmWCQp8YY+RoL4VlWVSWYRjP8PRJZIwcVhRVVT3ZdV1Lyl8Xxl5jCY1L7PsOz/PQ973amI++7/sYxxHP1tM0oSgKzPP8bN22rcKJBUEA8XnwruvU3cIw/HfwbwEGAKbej5/tP3njAAAAAElFTkSuQmCC"
+              />
+              <div
+                class="sc-fzqNqU fNiuGK"
+                draggable="false"
+                role="separator"
+                style="cursor: ew-resize;"
+              />
+            </th>
+            <th
+              class="sc-fzqBZW cVRUvW sc-fznJRM buLgpv"
+              colspan="1"
+              id="test_th_name"
+              role="columnheader"
+              style="box-sizing: border-box; flex: 150 0 auto; min-width: 30px; width: 150px; position: relative; cursor: pointer;"
+              title="Name"
+            >
+              <span
+                class="sc-fzoXWK dMrSVb"
+              >
+                <svg
+                  class="sc-fzpmMD blFlkL"
+                >
+                  <path
+                    d="M7 10l5 5 5-5z"
+                  />
+                </svg>
+              </span>
+              Name
+              <img
+                class="sc-fzoNJl fwLPQn"
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAADoSURBVHjaXFC7iYVAFD2zaAlGIhoIZhpYghYgWIy1WIRgZCRoAyYGgpiIYAEmiijMvjO7K2/fwP3Mued+RZ7n+Hjy14p38Ivqvm/pOI6kjeMYlHeMHI3Ktm24rqvsdV2qQhRF0HVd/dd1hbZtGyiWZSmgLEtFTJIEpmliGIaf1ud5yjRNcRwHmqZBlmWCQp8YY+RoL4VlWVSWYRjP8PRJZIwcVhRVVT3ZdV1Lyl8Xxl5jCY1L7PsOz/PQ973amI++7/sYxxHP1tM0oSgKzPP8bN22rcKJBUEA8XnwruvU3cIw/HfwbwEGAKbej5/tP3njAAAAAElFTkSuQmCC"
+              />
+              <div
+                class="sc-fzqNqU fNiuGK"
+                draggable="false"
+                role="separator"
+                style="cursor: ew-resize;"
+              />
+            </th>
+            <th
+              class="sc-fzqBZW cVRUvW sc-fznJRM buLgpv"
+              colspan="1"
+              id="test_th_info"
+              role="columnheader"
+              style="box-sizing: border-box; flex: 150 0 auto; min-width: 30px; width: 150px; position: relative; cursor: pointer;"
+              title="Info"
+            >
+              <span
+                class="sc-fzoXWK dMrSVb"
+              >
+                <svg
+                  class="sc-fzpmMD blFlkL"
+                >
+                  <path
+                    d="M7 10l5 5 5-5z"
+                  />
+                </svg>
+              </span>
+              Info
+              <img
+                class="sc-fzoNJl fwLPQn"
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAADoSURBVHjaXFC7iYVAFD2zaAlGIhoIZhpYghYgWIy1WIRgZCRoAyYGgpiIYAEmiijMvjO7K2/fwP3Mued+RZ7n+Hjy14p38Ivqvm/pOI6kjeMYlHeMHI3Ktm24rqvsdV2qQhRF0HVd/dd1hbZtGyiWZSmgLEtFTJIEpmliGIaf1ud5yjRNcRwHmqZBlmWCQp8YY+RoL4VlWVSWYRjP8PRJZIwcVhRVVT3ZdV1Lyl8Xxl5jCY1L7PsOz/PQ973amI++7/sYxxHP1tM0oSgKzPP8bN22rcKJBUEA8XnwruvU3cIw/HfwbwEGAKbej5/tP3njAAAAAElFTkSuQmCC"
+              />
+              <div
+                class="sc-fzqNqU fNiuGK"
+                draggable="false"
+                role="separator"
+                style="cursor: ew-resize;"
+              />
+            </th>
+          </tr>
+        </thead>
+        <tbody
+          class="sc-fzpans STsDJ sc-fznWqX clGFVO"
+          id="test_tbody"
+          role="rowgroup"
+        >
+          <tr
+            class="sc-fzqNJr jQXiND sc-fzoiQi eYEEes"
+            id="test_row_0"
+            role="row"
+            style="display: flex; flex: 1 0 auto; min-width: 90px;"
+          >
+            <td
+              class="sc-fzoyAV erdTaJ sc-fzqARJ hFSrUY"
+              id="test_td_0_0"
+              label="Id"
+              role="cell"
+              style="box-sizing: border-box; flex: 150 0 auto; min-width: 30px; width: 150px;"
+              title="1"
+            >
+              1
+            </td>
+            <td
+              class="sc-fzoyAV fhdlZT sc-fzqARJ hFSrUY"
+              id="test_td_0_1"
+              label="Name"
+              role="cell"
+              style="box-sizing: border-box; flex: 150 0 auto; min-width: 30px; width: 150px;"
+              title="123"
+            >
+              123
+            </td>
+            <td
+              class="sc-fzoyAV hgHnhu sc-fzqARJ hFSrUY"
+              id="test_td_0_2"
+              label="Info"
+              role="cell"
+              style="box-sizing: border-box; flex: 150 0 auto; min-width: 30px; width: 150px;"
+              title="test"
+            >
+              test
+            </td>
+          </tr>
+          <tr
+            class="sc-fzplWN hbEGsR"
+          >
+            <td
+              class="sc-fznyAO eMIraO"
+              height="0"
+            />
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div
+      class="sc-fzolEj dRnGtF"
+      id="test_pagingbar"
+    >
+      <div
+        class="sc-fzqBkg ehTsMo"
+      >
+        <div
+          class="sc-fznxKY kCZLjk"
+        >
+          <button
+            class="sc-fznMAR cnTfHo"
+            disabled=""
+            id="test_pagingbar_first"
+          >
+            <img
+              src="data:image/gif;base64,R0lGODlhEAAQAIcAACRIkChNli1TnjNZpjhgrz9otx1m9S9kzy9l0yxm2DBiyDFq2zhu3D5z2z913SRq8ixx7jRy6D5++URvwEJt1Ep1yE970Eh630574UD/QFOA1lOE3VWF3liH30+K9k+J/VGD4VeH4FaE6VmK4l+L4F+M4WCM5GWP62mR42iU5WuT62+W7G2Z5mec+2ma/2ic+XGa536f7oKg54Wu/42r8Iiu/5a076G+8KK9/6W//6rE7wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAMAABkALAAAAAAQABAAAAh6ADMIHEiwoMGDB2HIQGEwhEEWOhwSJKHBYIobFQeWyGHBoAkbHQV2yOGigsERNExm4JBjxocJBkHEgLkBR40XEgoYvLBCZ4YGLTxAIGDQgQqiAg9EeDDAIIMTTQcqMCDA4AIRVQkiCGAwAQauBQEYpABALMKzaNMODAgAOw=="
+              title="Первая"
+            />
+          </button>
+          <button
+            class="sc-fznMAR cnTfHo"
+            disabled=""
+            id="test_pagingbar_prev"
+          >
+            <img
+              src="data:image/gif;base64,R0lGODlhEAAQAIcAACRIkChNli1TnjNZpjhgrz9otx1m9S9kzy9l0yxm2DBiyDFq2zhu3D5z2z913SRq8ixx7jRy6D5++URvwEJt1Ep1yE970Eh630574UD/QFOA1lOE3VWF3liH30+K9k+J/VGD4VeH4FaE6VmK4l+L4F+M4WCM5GWP62mR42iU5WuT62+W7G2Z5mec+2ma/2ic+XGa536f7oKg54Wu/42r8Iiu/5a076G+8KK9/6W//6rE7wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAMAABkALAAAAAAQABAAAAhMADMIHEiwoMGDCAuGSFiQhAaGA0vksAAxQ4ccLipA5JBjxocJDDfgqPFCQgGIDVp4gECg4oEIDwZUzKDAgICZGRAEwJkBAM+fQA0GBAA7"
+              title="Предыдушая"
+            />
+          </button>
+          <label
+            class="sc-fznWOq jcxdSx"
+          >
+            Стр. 
+            <div
+              class="sc-fzoYHE fiJGUm"
+              style="min-width: 60px; max-width: 150px; background-color: white;"
+            >
+              <input
+                class="sc-fzpkqZ gurULy"
+                id="test_pagingbar_page"
+                max="1"
+                min="1"
+                pattern="^[0-9]+$"
+                type="number"
+                value="1"
+              />
+            </div>
+             из 1
+          </label>
+          <button
+            class="sc-fznMAR cnTfHo"
+            disabled=""
+            id="test_pagingbar_next"
+          >
+            <img
+              src="data:image/gif;base64,R0lGODlhEAAQAIcAACRIkChNli1TnjNZpjhgrz9otx1m9S9kzy9l0yxm2DBiyDFq2zhu3D5z2z913SRq8ixx7jRy6D5++URvwEJt1Ep1yE970Eh630574UD/QFOA1lOE3VWF3liH30+K9k+J/VGD4VeH4FaE6VmK4l+L4F+M4WCM5GWP62mR42iU5WuT62+W7G2Z5mec+2ma/2ic+XGa536f7oKg54Wu/42r8Iiu/5a076G+8KK9/6W//6rE7wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAMAABkALAAAAAAQABAAAAhIADMIHEiwoMGDCDPASGiQBQmGBFPgeAgxgwkcNShUHGHjRQuNDEHQaAEhwQCGF2CUBADRAYgELCEyoBAT4oKaEBNU3MmzJ8GAADs="
+              title="Следующая"
+            />
+          </button>
+          <button
+            class="sc-fznMAR cnTfHo"
+            disabled=""
+            id="test_pagingbar_last"
+          >
+            <img
+              src="data:image/gif;base64,R0lGODlhEAAQAIcAACRIkChNli1TnjNZpjhgrz9otx1m9S9kzy9l0yxm2DBiyDFq2zhu3D5z2z913SRq8ixx7jRy6D5++URvwEJt1Ep1yE970Eh630574UD/QFOA1lOE3VWF3liH30+K9k+J/VGD4VeH4FaE6VmK4l+L4F+M4WCM5GWP62mR42iU5WuT62+W7G2Z5mec+2ma/2ic+XGa536f7oKg54Wu/42r8Iiu/5a076G+8KK9/6W//6rE7wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAMAABkALAAAAAAQABAAAAh4ADMIHEiwoMGDB2EYhCEDhUEWJAqy0BHCYAocEQemuKHBoAkcNSgMNGHDgsERNl60EJlhBI0KBkHQaAEhwYAMIGJMMHgBRk0AAi+sKGDQAYgEQAU6UEHAIAMKSQUyOHGz4IKoAheIEGAwQVcMARAWhIpVrNmzGQICADs="
+              title="Последняя"
+            />
+          </button>
+          <button
+            class="sc-fznMAR DWfuS"
+            id="test_pagingbar_refresh"
+          >
+            <img
+              src="data:image/gif;base64,R0lGODlhEAAQAIcAABBYsRhcvRhuzhR0xiBxzyZ4zyd70yd71SR72Cp50Dd3yTp/zT16yEN5w0J8x1J+whqI3BqA7ByQ+CKA1iqA0iyE0SqC2jyK1iyL5SqV/CqX/zSL4jqh/z2n/0qHyEqMzkqH1UqG20+J1kKQ30qS1liOzVaR3VSb10Sa4Eyf6VKf40uh4Uii60On/0it/0+u/1Kj4Vqk6lew/1my/2Wb3Wuc1W+c2nCNx26n3G6q33Sj3GCm7G+q5Guz72O3/3ax53a3+HS+/3W+/3W//3nB/37D/4Wl1oOn25Sx3YWp4Iq1442y4Y+66JC+552+5ojC74XC/YjK/47J/5TM/5bM/5jP/5vM/p7P/5/P/6XA5qHK763C5KzE6arM7KDT/6LR/6HU/6TS/6DZ/7TM6rDU87Df/7fc/73W87Hg/7rk/73g/7zi/7zl/8Tb9MTd9s7d88Dk/8Xi/87k99bh9Nbm9tHp/9rm9uPr+eXz/+b0/+vy/O31/Pb7//j5/P3+//7+/////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAMAAIAALAAAAAAQABAAAAiuAAEJHEiwoMEmKCZQ+DDG4MAeEjJwaDHkgBOHWiA8IfMDgwwiCeaYCEGQR56BbjYIiQLAigKHA5cAmVKlTAOYgPQYWeDlC5oHArusgMEihQo5NcSwgbMmzQ2BOPDEMQOmSI43NESA8OBgi8ATdcJgqaDEYJ+BJNRcobKDCU5AF6AMkBLEQpuBd5IQHBGDTgEfMxDo4HIkQBaHZwy8cNFBQwQbOO2UICCAAZK3mAMCADs="
+              title="Обновить"
+            />
+          </button>
+        </div>
+      </div>
+      <div
+        class="sc-fzqPZZ kSrhMH"
+      >
+        Записи 1 - 1 из 1
+      </div>
+      <div
+        class="sc-fzoxKX jDdfqI"
+      >
+        <label>
+          Записей на странице: 
+          <div
+            class="sc-fzoYHE fiJGUm"
+            style="min-width: 60px; max-width: 100px; background-color: white;"
+          >
+            <input
+              class="sc-fzpkqZ gurULy"
+              id="test_pagingbar_pagesize"
+              max="9999"
+              min="1"
+              pattern="^[0-9]+$"
+              type="number"
+              value="25"
+            />
+          </div>
+        </label>
+      </div>
+    </div>
+  </section>
+</DocumentFragment>
+`;
