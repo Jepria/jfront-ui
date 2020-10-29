@@ -29,7 +29,7 @@ test("Matches snapshot ", () => {
   )
   expect(asFragment()).toMatchSnapshot()
 })
-//todo colors
+
 test("Grid colors block renders correctly", () => {
   const { asFragment } = render(
     <Grid

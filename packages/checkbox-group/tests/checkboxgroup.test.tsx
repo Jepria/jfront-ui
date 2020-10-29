@@ -16,6 +16,38 @@ test("Checking for the existence of an element CheckBoxGroup", () => {
   )
 })
 
+test("Checking when clicking on CheckBox in CheckBoxGroup", () => {
+  let pressed: any[] | undefined = []
+  render(
+    <CheckBoxGroup
+      name="name"
+      isLoading={false}
+      onChange={(name, values) => {
+        pressed = values
+      }}
+    >
+      <CheckBox disabled={true} label="label1" value="value1" />
+      <CheckBox label="label2" value="value2" />
+      <CheckBox label="label3" value="value3" />
+    </CheckBoxGroup>,
+  )
+  fireEvent.click(screen.getByLabelText("label1"))
+  fireEvent.click(screen.getByLabelText("label2"))
+  fireEvent.click(screen.getByLabelText("label1"))
+
+  expect(pressed).toEqual(["value2"])
+})
+
+test("Matches snapshot ", () => {
+  const { asFragment } = render(
+    <CheckBoxGroup name="name" isLoading={false}>
+      <CheckBox disabled={true} label="label1" value="value1" />
+      <CheckBox label="label2" value="value2" />
+      <CheckBox label="label3" value="value3" />
+    </CheckBoxGroup>,
+  )
+  expect(asFragment()).toMatchSnapshot()
+})
 test("CheckBoxGroup isLoading renders correctly", () => {
   const tools = render(
     <div>
