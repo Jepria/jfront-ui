@@ -1,6 +1,5 @@
 import React from "react"
 import { render, fireEvent, screen } from "@testing-library/react"
-import { Simulate } from "react-dom/test-utils"
 import { CheckBoxGroup } from "../src"
 import { CheckBox } from "../../checkbox/src"
 

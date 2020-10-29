@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Matches snapshot  1`] = `
+<DocumentFragment>
+  <div
+    class="sc-AxjAm gSRbKu"
+  >
+    <div
+      class="sc-AxirZ ercANe"
+    >
+      Tab1
+    </div>
+    <div
+      class="sc-AxirZ ercANe"
+    >
+      Tab2
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`TabPanel with Toolbar renders correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-AxjAm gSRbKu"
+  >
+    <div
+      class="sc-AxirZ ercANe"
+    >
+      Tab 1
+    </div>
+  </div>
+  <nav
+    class="sc-AxiKw kNbwFY"
+  >
+    <button
+      class="sc-AxhCb MacuA"
+    >
+      <img
+        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wBDAcfIC3l2C8AAAIRSURBVDjLlZLLThRRFEXXuffWq5s3RB5CogZRQ0hk4DsS/RaHOmHiNzjSqb/h0ImJ0eBQI1GDEBQSHtI00LR0dVVX3ePIEW2CZ7zPyk72Errc3cX7BHFAVAmWRS1Zms3l7ZylF+9OZV03gC88faNVHbs8QphF7PzY062NXemW7QoospKhmX4mHgwSblfI2wUba1ucGQCgTsjDDg1TI/UpRroWwPzjndBYem2VTqVNYXPEd4+6e4sL0BE0UzrSwePJmjk+U59TmJY0ybz3Ze65+fgOqqAo1lqsMzifFDDd0Z5rMeeYYqgcpshKdL5d/Ey/m4N6g2r/sL9wY0zjJMKZgNCG1HePONg/FNeW9Nmv6gadmQOujl8hMrP00cd2vu121mv4VSXT0lWux1DxOKNUbcTJR4ttmEUXa/KttZPRfAVfzq/wdWwFQtAW9Gz2M6CDMA3BhFCGIYXJ+e0atFfblK58JLee3ua450ibA3UkAkJF1HASpsXJZtMl8zAbzxdDO5MuiAwiBiPC8WaL1m4qLigiRurjMro3CQqqEOSO/bndcu3SJ4IpyD4Xpva6IT4p0L/zBQbjBPf++dtT0yw8eUie5MaNQHUiIVmvmDIWPrxcOqMHHrAgVYiiGGstqvo/IgGikEMepWhQAnJ2lb3zJLUKcTJI8qaXYk2QUM8OUKuEh5GMpxeXrTP41M5J0L3oHxh15JAxMjBeAAAAAElFTkSuQmCC"
+      />
+    </button>
+    <button
+      class="sc-AxhCb MacuA"
+    >
+      <img
+        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wBDAcgO/9eO/8AAALLSURBVDjLpZFJb1MHFIW/+zzGTmLjxHYMqSIDCTFlaJO2EQgpQNXICCEQC6YFYscPoKv+iZIKiQ0rWlFVLUGt2HRRlaFFiujAUJEJoQRZcRwntuPk2X6237ss7AX7Xuks7uJcnXs+UVX+z4ghPhy1iAGT4cjVD8qF+VWH3wXIAH6gE/ACH/uNw088XQevbW7czAHeQBABN9DEB9QWc8rsv3yfTosXWG4fCAAGcPH2d6rbYgRPTUgVcHV0YEATgG9Gx5RcERJ7GD02rhbQaMsCPps4oRw4guzYxeTnaQWwbRsBsH56rN7FObh/DzsYwfXpJ8zcu8Xd5y/FD3wxMqYH0+eo//ccL00YSvEys8aBH2+IALjDfTxL9uuHc/PkGzXwBYj29lA8fYZaNktiepp8uQwVk6jXw1I4THJlXRSr1eS2RBKAN5EerYE+AH0IWhpMaT6R0Eegf4BWQGdBAbqCPeD3t17o6B+kmlkgCkx1dWppc4sVwNVG5QJ6ATFcXHFsWQV8oThWvYwsjR3lz+kHbAELgGcwRbpa0ZnMEvZ7vPdF4/zi9ohkMwzTipHojmCs2DZrQBEwgaObJbXMLYpAFagDJaBs1ZhwudRs7wVgDXDXHIdK23w5tl2t3DILCnuAaDt+FiiUN9htVrgUi+tvq7kWPRSjYTepgXs8GFQjn2VLYS8tBUZG8R86xH4gCRTsBp2FIuM9Ia1CoOkoRqNe56uvrze6TZOiKgNt89/hMGuvX00tzzz79mkkxEdAP5Bv1gmtb/Dl2fNmQx14cvICj3q79QXoa1AL9E4sqhmfe/7XUID74QCLHtc/d+J92gR9AzrXHdS/En06KYLhoKiIrAO7hlPcHR7meD7/1oYhB0FFsGFkvJCb/SEWJxnfTqls4oghiIGhCDaCDTI1tJOLE8ewlQFHFW3jchRsR1Nnhwb4ObUbB0RFcER4BzxKOdvITdVmAAAAAElFTkSuQmCC"
+      />
+    </button>
+  </nav>
+</DocumentFragment>
+`;

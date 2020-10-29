@@ -1,5 +1,5 @@
-import { render } from "@testing-library/react"
 import React from "react"
+import { render } from "@testing-library/react"
 import { Column, Panel, Row } from "../src"
 
 test("Checking for the existence of an element Tab", () => {

@@ -1,7 +1,6 @@
-import { render } from "@testing-library/react"
 import React from "react"
+import { render } from "@testing-library/react"
 import { Label } from "../src"
-import { MoneyInput } from "@jfront/ui-input/src"
 
 test("Checking for the existence of an element Label", () => {
   expect(render(<Label />))
