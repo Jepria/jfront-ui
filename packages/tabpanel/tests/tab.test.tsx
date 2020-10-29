@@ -5,3 +5,8 @@ import { Tab } from "../src"
 test("Checking for the existence of an element Tab", () => {
   render(<Tab />)
 })
+
+test("Matches snapshot ", () => {
+  const { asFragment } = render(<Tab />)
+  expect(asFragment()).toMatchSnapshot()
+})
