@@ -1,6 +1,5 @@
 import React from "react"
 import { render } from "react-dom"
-import { act } from "react-dom/test-utils"
 import { DualList } from "../src"
 import { fireEvent, screen } from "@testing-library/react"
 
