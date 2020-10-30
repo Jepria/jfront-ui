@@ -10,21 +10,33 @@ test("Checking for the existence of an element DatePicker", () => {
   render(<DatePicker onChange={onChange} />)
 })
 
-//todo make normal time type
 test("DatePicker data input ", () => {
+  const options = {
+    era: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    weekday: "long",
+    timezone: "UTC",
+    hour: "numeric",
+    minute: "numeric",
+    second: "numeric",
+  }
+  const date = new Date(2018, 6, 20, 0, 0, 0).toLocaleString("ru", options)
   let dateToCheck
+
   render(
     <DatePicker
       data-testid="DatePickerInputCheck"
       onChange={(name: Date) => {
-        dateToCheck = name
+        dateToCheck = name.toLocaleString("ru", options)
       }}
     />,
   )
   const input = screen.getByTestId("DatePickerInputCheck")
   fireEvent.mouseEnter(input)
-  fireEvent.change(input, { target: { value: "2020-05-10" } })
-  expect(dateToCheck).toEqual(new Date("2020-05-09T21:00:00.000Z")) //Дата при задавание в поле input из "2020-05-10" из за часовых часов превращается в "2020-05-09T21:00:00.000Z"//todo сделать нормально
+  fireEvent.change(input, { target: { value: date } })
+  expect(dateToCheck).toEqual(date)
 })
 
 test("Matches snapshot ", () => {
