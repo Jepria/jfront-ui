@@ -36,7 +36,7 @@ test("DatePicker data input ", () => {
   const input = screen.getByTestId("DatePickerInputCheck")
   fireEvent.mouseEnter(input)
   fireEvent.change(input, { target: { value: date } })
-  expect(dateToCheck).toEqual(date)
+  expect(dateToCheck).toBe(date)
 })
 
 test("Matches snapshot ", () => {
