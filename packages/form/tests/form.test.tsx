@@ -1,9 +1,6 @@
 import React from "react"
-import { fireEvent, screen } from "@testing-library/react"
-import { render } from "@testing-library/react"
+import { fireEvent, render, screen } from "@testing-library/react"
 import { Form } from "../src"
-import { ComboBoxItem } from "@jfront/ui-combobox/src"
-import { CheckBox } from "@jfront/ui-checkbox/src"
 
 test("Checking for the existence of an element Form", () => {
   render(<Form />)
