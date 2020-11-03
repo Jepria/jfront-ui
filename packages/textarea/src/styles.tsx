@@ -5,6 +5,10 @@ export interface StyledAreaProps {
   focused?: boolean
 }
 
+export interface StyledTextAreaProps {
+  resize?: string
+}
+
 export const StyledDiv = styled.div<StyledAreaProps>`
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
@@ -36,7 +40,7 @@ export const StyledDiv = styled.div<StyledAreaProps>`
       : ""};
 `
 
-export const StyledTextArea = styled.textarea`
+export const StyledTextArea = styled.textarea<StyledTextAreaProps>`
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
@@ -56,4 +60,8 @@ export const StyledTextArea = styled.textarea`
   &:focus {
     outline: none;
   }
+  ${(props) =>
+    props.resize !== undefined
+      ? `resize:` + props.resize + `;`
+      : `resize: none`};
 `

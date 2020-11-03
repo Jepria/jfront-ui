@@ -34,18 +34,38 @@ export const IsLoading = () => {
 export const Error = () => {
   return (
     <>
-      <TextArea name="TextAreaNameLoading" error="Ahtung! Wrong value">
+      <TextArea name="TextAreaNameError" error="Ahtung! Wrong value">
         Текст при ошибке
       </TextArea>
     </>
   )
 }
 
-export const NoResizable = () => {
+export const BothResizable = () => {
   return (
     <>
-      <TextArea name="TextAreaNameLoading" error="Ahtung! Wrong value">
-        Текст при ошибке
+      <TextArea name="TextAreaNameResize" resize="both">
+        Изменение размера по горизонтали и вертикали
+      </TextArea>
+    </>
+  )
+}
+
+export const HorizontalResizable = () => {
+  return (
+    <>
+      <TextArea name="TextAreaNameResize" resize="horizontal">
+        Изменение размера по горизонтали
+      </TextArea>
+    </>
+  )
+}
+
+export const VerticalResizable = () => {
+  return (
+    <>
+      <TextArea name="TextAreaNameResize" resize="vertical">
+        Изменение размера по вертикали
       </TextArea>
     </>
   )

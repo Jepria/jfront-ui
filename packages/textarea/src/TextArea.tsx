@@ -33,8 +33,7 @@ export const TextArea = React.forwardRef<HTMLDivElement, TextAreaProps>(
             }
             setFocused(false)
           }}
-          /*ref={props.inputRef}
-                    type={props.clearButton ? "search" : "text"}*/
+          resize={props.resize}
         />
         {props.isLoading && <LoadingImage />}
         {props.error !== undefined && <ExclamationImage title={props.error} />}
