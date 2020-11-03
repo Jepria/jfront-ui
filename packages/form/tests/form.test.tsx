@@ -1,9 +1,61 @@
 import React from "react"
-import { render } from "@testing-library/react"
+import { fireEvent, render, screen } from "@testing-library/react"
 import { Form } from "../src"
 
-test("Checking for the existence of an element Form, FormField", () => {
+test("Checking for the existence of an element Form", () => {
   render(<Form />)
+})
+
+test("Entering data into a Form", () => {
+  let textField
+  render(
+    <>
+      <Form>
+        <Form.Field>
+          <Form.Label required>Text input:</Form.Label>
+          <Form.Control>
+            <input
+              onChange={(event) => {
+                textField = event.target.value
+              }}
+              type="text"
+            />
+          </Form.Control>
+        </Form.Field>
+      </Form>
+    </>,
+  )
+  const input = screen.getAllByRole("textbox")[0]
+  fireEvent.focus(input)
+  fireEvent.change(input, { target: { value: "test" } })
+  expect(textField).toEqual("test")
+})
+
+test("Entering a field from a list", () => {
+  let textSelect
+  render(
+    <Form.Field>
+      <Form.Label>Select input</Form.Label>
+      <Form.Control>
+        <select>
+          <option value={1}>one</option>
+          <option
+            data-testid="itemClick"
+            value={2}
+            onClick={(event) => {
+              textSelect = event.currentTarget.value
+            }}
+          >
+            two
+          </option>
+          <option value={3}>three</option>
+        </select>
+      </Form.Control>
+    </Form.Field>,
+  )
+  const input = screen.getByTestId("itemClick")
+  fireEvent.click(input)
+  expect(textSelect).toEqual("2")
 })
 
 test("Matches snapshot ", () => {
