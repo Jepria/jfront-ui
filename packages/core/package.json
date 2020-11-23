@@ -43,7 +43,10 @@
     "@jfront/ui-pagingbar": "^0.1.5",
     "@jfront/ui-table": "^0.1.4",
     "@jfront/ui-tabpanel": "^0.1.5",
-    "@jfront/ui-toolbar": "^0.1.5"
+    "@jfront/ui-toolbar": "^0.1.5",
+    "@jfront/ui-breadcrumbs": "^0.0.1",
+    "@jfront/ui-link": "^0.0.1",
+    "@jfront/ui-popup": "^0.0.1"
   },
   "peerDependencies": {
     "react": "16.x"
