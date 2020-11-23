@@ -1,0 +1,79 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Matches snapshot  1`] = `
+<DocumentFragment>
+  <div
+    class="sc-AxmLO lfRwSm"
+  >
+    <div
+      class="sc-AxheI jMLNwX"
+    >
+      <ul
+        class="sc-AxgMl kYQuzp"
+      >
+        <li
+          class="sc-AxhUy jxqIDM"
+        >
+          <label
+            class="sc-AxhCb cPnBNO"
+          >
+            <input
+              class="sc-AxiKw fYVMUP"
+              type="checkbox"
+            />
+            option1
+          </label>
+        </li>
+        <li
+          class="sc-AxhUy jxqIDM"
+        >
+          <label
+            class="sc-AxhCb cPnBNO"
+          >
+            <input
+              class="sc-AxiKw fYVMUP"
+              type="checkbox"
+            />
+            option2
+          </label>
+        </li>
+        <li
+          class="sc-AxhUy jxqIDM"
+        >
+          <label
+            class="sc-AxhCb cPnBNO"
+          >
+            <input
+              class="sc-AxiKw fYVMUP"
+              type="checkbox"
+            />
+            option3
+          </label>
+        </li>
+        <li
+          class="sc-AxhUy jxqIDM"
+        >
+          <label
+            class="sc-AxhCb cPnBNO"
+          >
+            <input
+              class="sc-AxiKw fYVMUP"
+              type="checkbox"
+            />
+            option4
+          </label>
+        </li>
+      </ul>
+      <label
+        class="sc-AxhCb cPnBNO"
+      >
+        <input
+          class="sc-AxiKw fYVMUP"
+          type="checkbox"
+        />
+        Выделить всё
+      </label>
+    </div>
+  </div>
+</DocumentFragment>
+`;
