@@ -24,6 +24,9 @@
     "test": "jest --passWithNoTests",
     "test:cov": "yarn test --coverage"
   },
+  "dependencies": {
+    "@jfront/ui-utils": "^0.1.5"
+  },
   "peerDependencies": {
     "react": "16.x",
     "react-dom": "16.x"
