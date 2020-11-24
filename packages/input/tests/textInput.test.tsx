@@ -1,6 +1,6 @@
 import React from "react"
 import { fireEvent, render, screen } from "@testing-library/react"
-import { CheckBoxListInput, TextInput } from "../src"
+import { TextInput } from "../src"
 import { Label } from "@jfront/ui-label"
 
 test("Checking for the existence of an element TextInput", () => {

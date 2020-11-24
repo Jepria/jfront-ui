@@ -1,5 +1,5 @@
 import React from "react"
-import { render } from "@testing-library/react"
+import { fireEvent, render, screen } from "@testing-library/react"
 import { TextArea } from "../src"
 
 const vtextValue = "tets"
@@ -76,4 +76,23 @@ test("resize horizontal display TextArea", () => {
     </>,
   )
   expect(asFragment()).toMatchSnapshot()
+})
+test("Entering a value in TextArea", () => {
+  let inputText
+  render(
+    <TextArea
+      name="TextAreaName"
+      onChange={(event) => {
+        inputText = event.target.value
+      }}
+      value={vtextValue}
+    >
+      Test
+    </TextArea>,
+  )
+  const input = screen.getAllByRole("textbox")[0]
+  fireEvent.focus(input)
+  fireEvent.change(input, { target: { value: "214312412412" } })
+
+  expect(inputText).toEqual("214312412412")
 })
