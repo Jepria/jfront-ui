@@ -16,7 +16,19 @@ test("Matches snapshot ", () => {
 
 test("Error display MaskedTextInput", () => {
   const { asFragment } = render(
-    <MaskedTextInput mask="99/99/9999" name="Masked" showMask />,
+    <MaskedTextInput
+      mask="99/99/9999"
+      name="Masked"
+      showMask
+      error="wrong value"
+    />,
+  )
+  expect(asFragment()).toMatchSnapshot()
+})
+
+test("isLoading  display MaskedTextInput", () => {
+  const { asFragment } = render(
+    <MaskedTextInput mask="99/99/9999" name="Masked" showMask isLoading />,
   )
   expect(asFragment()).toMatchSnapshot()
 })
