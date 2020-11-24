@@ -11,25 +11,14 @@ test("Checking for the existence of an element DatePicker", () => {
   render(<DatePicker onChange={onChange} />)
 })
 
-// test("DatePicker data input ", () => {
-//
-//   const date ="2018-05-05";
-//   let dateToCheck
-//
-//   render(
-//     <DatePicker
-//       onChange={(name: Date) => {
-//         console.log( "name =", name, "| date =", date)
-//         dateToCheck = name
-//       }}
-//     />
-//   )
-//   const input = screen.getByRole("textbox");
-//   fireEvent.click(input)
-//   fireEvent.change(input, { target: { value: date } })
-//   // console.log(screen.debug())
-//   // expect(dateToCheck).toBe(date)
-// })
+test("DatePicker data input ", () => {
+  const date = "2018-05-05"
+
+  render(<DatePicker onChange={(name: Date) => {}} />)
+  const input = screen.getByRole("textbox")
+
+  expect(fireEvent.change(input, { target: { value: date } })).toBe(true)
+})
 
 test("Matches snapshot ", () => {
   const { asFragment } = render(
