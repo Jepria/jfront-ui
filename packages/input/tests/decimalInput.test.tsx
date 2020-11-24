@@ -1,7 +1,8 @@
 import React from "react"
-import { render } from "@testing-library/react"
-import { DecimalInput } from "../src"
+import { fireEvent, render, screen } from "@testing-library/react"
+import { DecimalInput, TextInput } from "../src"
 import { Label } from "@jfront/ui-label"
+import { act } from "react-dom/test-utils"
 
 test("Checking for the existence of an element DecimalInput", () => {
   render(<DecimalInput />)
@@ -28,3 +29,26 @@ test("DecimalInput label renders correctly", () => {
   )
   expect(tools.asFragment()).toMatchSnapshot()
 })
+
+//todo DecimalInput test
+/*test("Entering a value in DecimalInput", () => {
+    let inputTextInput
+    render(
+      <DecimalInput
+        name="InputTextName"
+        aria-label="test-label"
+      />
+    )
+
+  const input = screen.getAllByRole("textbox")[0];
+    act(() => {
+    fireEvent.click(input)
+    fireEvent.keyPress(input, { key: '1', code: '49' })
+    fireEvent.click(input)
+    })
+  console.log(screen.debug())
+
+  // console.log(input)
+
+  // expect(inputTextInput).toEqual("Test text")
+})*/
