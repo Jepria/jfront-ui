@@ -40,7 +40,6 @@ test("Entering a value in MaskedTextInput", () => {
       mask="99/99/9999"
       name="Masked"
       showMask
-      data-testid="itemCheck"
       onChange={(name, value) => {
         MaskedTextInputText = value
       }}
