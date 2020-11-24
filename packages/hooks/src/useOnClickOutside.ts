@@ -6,8 +6,6 @@ export const useOnClickOutside = (
   active = true,
 ) => {
   React.useEffect(() => {
-    console.log(ref)
-
     if (!active) return
     const listener = (event: any) => {
       // Do nothing if clicking ref's element or descendent elements
