@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Error display MaskedTextInput 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-fzozJi jplEaj"
+  >
+    <input
+      class="sc-fzoLsD gDlcHK"
+      type="text"
+      value=""
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Matches snapshot  1`] = `
+<DocumentFragment>
+  <div
+    class="sc-fzozJi jplEaj"
+  >
+    <input
+      class="sc-fzoLsD gDlcHK"
+      type="text"
+      value=""
+    />
+  </div>
+</DocumentFragment>
+`;

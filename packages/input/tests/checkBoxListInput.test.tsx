@@ -1,7 +1,6 @@
-import { fireEvent, render, screen } from "@testing-library/react"
-import { CheckBoxListInput, DecimalInput } from "../src"
-import { Label } from "@jfront/ui-label"
 import React from "react"
+import { fireEvent, render, screen } from "@testing-library/react"
+import { CheckBoxListInput } from "../src"
 
 test("Checking for the existence of an element CheckBoxListInput", () => {
   render(
