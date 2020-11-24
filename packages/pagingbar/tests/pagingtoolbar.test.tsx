@@ -20,8 +20,6 @@ test("Enter values ​​in a string field", () => {
       pageCount={6}
     />,
   )
-
-  const input = screen.getAllByRole("spinbutton")[0]
   fireEvent.click(screen.getAllByRole("button")[2])
   expect(itemSelection).toEqual(2)
 })
