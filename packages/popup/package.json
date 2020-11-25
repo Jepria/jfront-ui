@@ -1,6 +1,6 @@
 {
-  "name": "@jfront/ui-hooks",
-  "version": "0.3.4",
+  "name": "@jfront/ui-popup",
+  "version": "0.0.1",
   "license": "Apache-2.0",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -25,10 +25,15 @@
     "test:cov": "yarn test --coverage"
   },
   "dependencies": {
-    "@jfront/ui-utils": "^0.1.5"
+    "@jfront/ui-utils": "^0.1.5",
+    "@jfront/ui-hooks": "^0.3.4"
   },
   "peerDependencies": {
     "react": "16.x",
-    "react-dom": "16.x"
+    "react-dom": "16.x",
+    "styled-components": "5.x.x"
+  },
+  "devDependencies": {
+    "@types/styled-components": "^5.0.1"
   }
 }

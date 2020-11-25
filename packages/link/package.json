@@ -1,6 +1,6 @@
 {
-  "name": "@jfront/ui-hooks",
-  "version": "0.3.4",
+  "name": "@jfront/ui-link",
+  "version": "0.0.1",
   "license": "Apache-2.0",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -30,5 +30,8 @@
   "peerDependencies": {
     "react": "16.x",
     "react-dom": "16.x"
+  },
+  "devDependencies": {
+    "@types/styled-components": "^5.0.1"
   }
 }
