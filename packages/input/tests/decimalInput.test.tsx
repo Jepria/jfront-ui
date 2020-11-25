@@ -3,6 +3,7 @@ import { fireEvent, render, screen } from "@testing-library/react"
 import { DecimalInput, TextInput } from "../src"
 import { Label } from "@jfront/ui-label"
 import { act } from "react-dom/test-utils"
+import { NumberFormatValues } from "react-number-format"
 
 test("Checking for the existence of an element DecimalInput", () => {
   render(<DecimalInput />)
@@ -31,24 +32,22 @@ test("DecimalInput label renders correctly", () => {
 })
 
 //todo DecimalInput test
-/*test("Entering a value in DecimalInput", () => {
-    let inputTextInput
-    render(
-      <DecimalInput
-        name="InputTextName"
-        aria-label="test-label"
-      />
-    )
+test("Entering a value in DecimalInput", () => {
+  let inputTextInput
+  render(
+    <DecimalInput
+      name="InputTextName"
+      aria-label="test-label"
+      onValueChange={(values: NumberFormatValues) => {
+        inputTextInput = values.value
+      }}
+    />,
+  )
 
-  const input = screen.getAllByRole("textbox")[0];
-    act(() => {
-    fireEvent.click(input)
-    fireEvent.keyPress(input, { key: '1', code: '49' })
-    fireEvent.click(input)
-    })
-  console.log(screen.debug())
+  const input = screen.getByLabelText("test-label", { selector: "input" })
 
-  // console.log(input)
+  fireEvent.focus(input)
+  fireEvent.change(input, { target: { value: 54321 } })
 
-  // expect(inputTextInput).toEqual("Test text")
-})*/
+  expect(inputTextInput).toEqual("54321")
+})
