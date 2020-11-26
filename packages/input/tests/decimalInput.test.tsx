@@ -31,8 +31,7 @@ test("DecimalInput label renders correctly", () => {
   expect(tools.asFragment()).toMatchSnapshot()
 })
 
-//todo DecimalInput test
-test("Entering a value in DecimalInput", () => {
+test("Entering a value in DecimalInput", async () => {
   let inputTextInput
   render(
     <DecimalInput
@@ -48,6 +47,5 @@ test("Entering a value in DecimalInput", () => {
 
   fireEvent.focus(input)
   fireEvent.change(input, { target: { value: 54321 } })
-
   expect(inputTextInput).toEqual("54321")
 })
