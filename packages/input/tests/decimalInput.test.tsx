@@ -1,7 +1,9 @@
 import React from "react"
-import { render } from "@testing-library/react"
-import { DecimalInput } from "../src"
+import { fireEvent, render, screen } from "@testing-library/react"
+import { DecimalInput, TextInput } from "../src"
 import { Label } from "@jfront/ui-label"
+import { act } from "react-dom/test-utils"
+import { NumberFormatValues } from "react-number-format"
 
 test("Checking for the existence of an element DecimalInput", () => {
   render(<DecimalInput />)
@@ -27,4 +29,23 @@ test("DecimalInput label renders correctly", () => {
     </div>,
   )
   expect(tools.asFragment()).toMatchSnapshot()
+})
+
+test("Entering a value in DecimalInput", async () => {
+  let inputTextInput
+  render(
+    <DecimalInput
+      name="InputTextName"
+      aria-label="test-label"
+      onValueChange={(values: NumberFormatValues) => {
+        inputTextInput = values.value
+      }}
+    />,
+  )
+
+  const input = screen.getByLabelText("test-label", { selector: "input" })
+
+  fireEvent.focus(input)
+  fireEvent.change(input, { target: { value: 54321 } })
+  expect(inputTextInput).toEqual("54321")
 })
