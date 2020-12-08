@@ -31,6 +31,7 @@ const StyledFieldControl = styled.div`
   flex-direction: column;
   box-sizing: border-box;
   display: inline-flex;
+  max-width: 150px;
   -webkit-box-flex: 1;
   -ms-flex: 1 1 0;
   flex: 1 1 0;
