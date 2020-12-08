@@ -3,7 +3,7 @@
 exports[`Form isError renders correctly 1`] = `
 <DocumentFragment>
   <form
-    class="sc-AxirZ fWRIjU"
+    class="sc-AxirZ boPVkc"
   >
     <div
       class="sc-AxiKw kAZRMG"
@@ -115,7 +115,7 @@ exports[`Form layout renders correctly 1`] = `
 exports[`Form required renders correctly 1`] = `
 <DocumentFragment>
   <form
-    class="sc-AxirZ fWRIjU"
+    class="sc-AxirZ boPVkc"
   >
     <div
       class="sc-AxiKw kAZRMG"
@@ -157,7 +157,7 @@ exports[`Form required renders correctly 1`] = `
 exports[`Matches snapshot  1`] = `
 <DocumentFragment>
   <form
-    class="sc-AxirZ fWRIjU"
+    class="sc-AxirZ boPVkc"
   >
     <div
       class="sc-AxiKw kAZRMG"
