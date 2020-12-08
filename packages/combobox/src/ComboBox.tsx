@@ -1,8 +1,9 @@
 import React, { useState, useRef, useEffect } from "react"
 import styled from "styled-components"
 import nextId from "react-id-generator"
-import { OpenImage, LoadingImage, ExclamationImage } from "@jfront/ui-icons"
+import { LoadingImage, ExclamationImage } from "@jfront/ui-icons"
 import { ComboBoxButton } from "./ComboBoxButton"
+import { Popup } from "@jfront/ui-popup"
 
 interface ItemProps {
   disabled?: boolean
@@ -33,40 +34,6 @@ const Item = styled.div<ItemProps>`
   user-select: none; /* Non-prefixed version, currently
                                 supported by Chrome, Edge, Opera and Firefox */
   ${(props) => (props.disabled ? "opacity: 0.33;" : "cursor: pointer;")}
-`
-
-const Popup = styled.div`
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  position: absolute;
-  width: 98%;
-  z-index: 5100;
-  margin: 0;
-  padding: 0;
-  background: white;
-  overflow: auto;
-  -webkit-box-shadow: 2px 2px 1px -1px rgba(0, 0, 0, 0.34);
-  -moz-box-shadow: 2px 2px 1px -1px rgba(0, 0, 0, 0.34);
-  box-shadow: 2px 2px 1px -1px rgba(0, 0, 0, 0.34);
-  &:focus {
-    outline: none;
-  }
-`
-
-const JepRiaButton = styled(OpenImage)`
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  display: inline-block;
-  vertical-align: top;
-  cursor: pointer;
-  height: 24px;
-  border-left: 1px solid #ccc;
-  &:focus {
-    outline: none;
-  }
-  &:hover {
-    opacity: 0.5;
-  }
 `
 
 const StyledInput = styled.input.attrs({ type: "search" })`
@@ -173,7 +140,6 @@ export interface ComboBoxProps {
   openOnFocus?: boolean
   clearOnBlur?: boolean
   options?: any[]
-  variant?: string
   isLoading?: boolean
   error?: string
   initialValue?: any
@@ -204,7 +170,6 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
       name = "",
       style,
       options,
-      variant = "standard",
       initialValue = null,
       value = null,
       isLoading,
@@ -222,9 +187,7 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
     }
 
     const [isOpen, setIsOpen] = useState(false)
-    const [currentValue, setCurrentValue] = useState(
-      initialValue != null ? initialValue : value != null ? value : undefined,
-    )
+    const [currentValue, setCurrentValue] = useState<any>(value || initialValue)
     const [focused, setFocused] = useState(false)
     const [text, setText] = useState("")
     const [hoverIndex, setHoverIndex] = useState(-1)
@@ -236,7 +199,9 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
     const inputRef = ref || defaultInputRef
 
     useEffect(() => {
-      if (value != null) setCurrentValue(value)
+      if (value != null) {
+        setCurrentValue(value)
+      }
     }, [value])
 
     useEffect(() => {
@@ -254,23 +219,7 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
     }
 
     const onBlur = (e: React.FocusEvent) => {
-      const { currentTarget } = e
-      const relatedTarget = e.relatedTarget || document.activeElement
-      if (isOpen) {
-        if (relatedTarget === null) {
-          setIsOpen(false)
-          setFocused(false)
-          return
-        }
-        let node = relatedTarget
-        while (node !== null) {
-          if (node === currentTarget) return
-          node = (node as any).parentNode
-        }
-        setIsOpen(false)
-      }
       setFocused(false)
-      if (clearOnBlur && !currentValue) setText("")
       if (props.onBlur) props.onBlur(e)
     }
 
@@ -287,9 +236,7 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
 
     const onChangeValue = (label: string, newValue: any) => {
       if (newValue !== currentValue) {
-        if (initialValue != null || value == null) {
-          setCurrentValue(newValue)
-        }
+        setCurrentValue(newValue)
         setText(label)
         setIsOpen(false)
         setFocused(false)
@@ -300,22 +247,6 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
     const toggle = () => {
       setIsOpen(!isOpen)
     }
-
-    useEffect(() => {
-      if (isOpen && currentValue) {
-        if (currentValueRef.current) {
-          currentValueRef.current.scrollIntoView({
-            behavior: "smooth",
-            block: "start",
-          })
-        } else {
-          popupRef.current?.scrollTo({
-            top: document.getElementById(`${id}_${currentValue}`)?.offsetTop,
-          })
-        }
-      }
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [isOpen, currentValue])
 
     useEffect(() => {
       if (isOpen && hoverIndex != -1) {
@@ -329,20 +260,19 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
     }, [isOpen, hoverIndex])
 
     useEffect(() => {
-      if (initialValue != null || (value != null && text.length == 0)) {
-        const defaultValue = initialValue || value
+      if (currentValue != null) {
         if (options) {
           const option = options.find((option) => {
             return getOptionValue
-              ? getOptionValue(option) === defaultValue
-              : option.value === defaultValue
+              ? getOptionValue(option) === currentValue
+              : option.value === currentValue
           })
           if (option) {
             setText(getOptionName ? getOptionName(option) : option.name)
           }
         } else if (children && React.Children.count(children) > 0) {
           const child = children.find((child) => {
-            return (child as any)?.props.value === defaultValue
+            return (child as any)?.props.value === currentValue
           })
           if (child) {
             setText((child as any)?.props.label)
@@ -350,46 +280,7 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
         }
       }
       // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [value])
-
-    const getPopupTop = () => {
-      const rect = outerDivRef.current?.getBoundingClientRect()
-      const screenHeight = document.body.clientHeight
-      if (rect && screenHeight - rect.bottom < 20 && rect.top > 22) {
-        return undefined
-      } else {
-        return `${
-          (outerDivRef.current?.offsetTop
-            ? outerDivRef.current?.offsetTop
-            : 0) +
-          (outerDivRef.current?.offsetHeight
-            ? outerDivRef.current?.offsetHeight
-            : 0) +
-          2
-        }px`
-      }
-    }
-
-    const getPopupBottom = () => {
-      const rect = outerDivRef.current?.getBoundingClientRect()
-      const screenHeight = document.body.clientHeight
-      if (
-        outerDivRef.current?.offsetTop &&
-        rect &&
-        screenHeight - rect.bottom < 20 &&
-        rect.top > 22
-      ) {
-        return `${screenHeight - outerDivRef.current?.offsetTop + 4}px`
-      } else {
-        return undefined
-      }
-    }
-
-    const getPopupLeft = () => {
-      return `${
-        outerDivRef.current?.offsetLeft ? outerDivRef.current?.offsetLeft : 0
-      }px`
-    }
+    }, [currentValue])
 
     const getPopupWidth = () => {
       return `${
@@ -516,26 +407,35 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
       }
     }
 
+    const scrollIntoCurrentItem = () => {
+      if (currentValueRef.current) {
+        currentValueRef.current.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        })
+      }
+    }
+
     return (
-      <StyledDiv
-        className={className}
-        focused={focused}
-        ref={outerDivRef}
-        onBlur={onBlur}
-        style={style}
-        error={error !== undefined}
-      >
-        <StyledInput
-          id={`${id}_input`}
-          ref={inputRef}
-          value={text}
-          onKeyDown={(e) => onKeyDownHandler(e)}
-          onFocus={onFocus}
-          onChange={onChange}
-          placeholder={placeholder}
-          autoComplete="off"
-        />
-        {(variant === ComboBoxVariant.standard && (
+      <>
+        <StyledDiv
+          className={className}
+          focused={focused}
+          ref={outerDivRef}
+          onBlur={onBlur}
+          style={style}
+          error={error !== undefined}
+        >
+          <StyledInput
+            id={`${id}_input`}
+            ref={inputRef}
+            value={text}
+            onKeyDown={(e) => onKeyDownHandler(e)}
+            onFocus={onFocus}
+            onChange={onChange}
+            placeholder={placeholder}
+            autoComplete="off"
+          />
           <ComboBoxButton
             id={`${id}_button`}
             tabIndex={-1}
@@ -544,36 +444,30 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
             onClick={toggle}
             onFocus={() => setFocused(true)}
           />
-        )) ||
-          (variant === ComboBoxVariant.jepria && (
-            <JepRiaButton
-              id={`${id}_button`}
-              tabIndex={-1}
-              onKeyDown={(e) => onKeyDownHandler(e)}
-              onClick={toggle}
-              onFocus={() => setFocused(true)}
-            />
-          ))}
-        {isOpen && (
-          <Popup
-            id={`${id}_popup`}
-            ref={popupRef}
-            tabIndex={0}
-            onKeyDown={(e) => onKeyDownHandler(e)}
-            style={{
-              top: getPopupTop(),
-              left: getPopupLeft(),
-              bottom: getPopupBottom(),
-              width: getPopupWidth(),
-              maxHeight: getPopupHeight(),
-            }}
-          >
-            {renderItems()}
-          </Popup>
-        )}
-        {isLoading && <LoadingImage />}
-        {error !== undefined && <ExclamationImage title={error} />}
-      </StyledDiv>
+          {isLoading && <LoadingImage />}
+          {error !== undefined && <ExclamationImage title={error} />}
+        </StyledDiv>
+        <Popup
+          id={`${id}_popup`}
+          ref={popupRef}
+          tabIndex={0}
+          onKeyDown={(e: React.KeyboardEvent<Element>) => onKeyDownHandler(e)}
+          targetElementRef={outerDivRef as React.RefObject<HTMLDivElement>}
+          targetRelativePosition={{
+            horizontal: "left",
+            vertical: "bottom",
+          }}
+          style={{
+            width: getPopupWidth(),
+            maxHeight: getPopupHeight(),
+          }}
+          visible={isOpen}
+          onOpen={scrollIntoCurrentItem}
+          onClose={() => setIsOpen(false)}
+        >
+          {renderItems()}
+        </Popup>
+      </>
     )
   },
 )
