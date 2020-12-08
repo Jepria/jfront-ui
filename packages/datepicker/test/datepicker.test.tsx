@@ -13,6 +13,7 @@ test("Checking for the existence of an element DatePicker", () => {
 
 test("DatePicker data input ", () => {
   const date = "2018-05-05"
+  const formattedDate = "05.05.2018"
 
   const myNewDate = new Date(
     new Date(date).getTime() + 60000 * new Date(date).getTimezoneOffset(),
@@ -26,7 +27,7 @@ test("DatePicker data input ", () => {
     />,
   )
   const input = screen.getByRole("textbox")
-  fireEvent.change(input, { target: { value: date } })
+  fireEvent.change(input, { target: { value: formattedDate } })
 
   expect(new Date(Date.parse(dates.toString())).toString()).toBe(
     myNewDate.toString(),

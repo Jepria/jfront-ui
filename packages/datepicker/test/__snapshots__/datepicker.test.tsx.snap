@@ -14,7 +14,7 @@ exports[`DatePicker isError renders correctly 1`] = `
         <input
           autocomplete="off"
           class="sc-fzoLsD gDlcHK"
-          placeholder="****-**-**"
+          placeholder="**.**.****"
           type="text"
           value=""
         />
@@ -43,7 +43,7 @@ exports[`DatePicker isLoading renders correctly 1`] = `
         <input
           autocomplete="off"
           class="sc-fzoLsD gDlcHK"
-          placeholder="****-**-**"
+          placeholder="**.**.****"
           type="text"
           value=""
         />
@@ -71,7 +71,7 @@ exports[`Matches snapshot  1`] = `
         <input
           autocomplete="off"
           class="sc-fzoLsD gDlcHK"
-          placeholder="****-**-**"
+          placeholder="**.**.****"
           type="text"
           value=""
         />
