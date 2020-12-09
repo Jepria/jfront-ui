@@ -1,0 +1,214 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Form isError renders correctly 1`] = `
+<DocumentFragment>
+  <form
+    class="sc-AxirZ boPVkc"
+  >
+    <div
+      class="sc-AxiKw kAZRMG"
+    >
+      <label
+        class="sc-AxjAm DLLwe sc-AxhUy bUIkeS"
+      >
+        Select input
+      </label>
+      <div
+        class="sc-AxhCb jjmKci"
+      >
+        <select
+          style="display: inline-flex;"
+        >
+          <option
+            value="1"
+          >
+            one
+          </option>
+          <option
+            value="2"
+          >
+            two
+          </option>
+          <option
+            value="3"
+          >
+            three
+          </option>
+        </select>
+        <span
+          style="font-family: tahoma, arial, helvetica, sans-serif; font-size: 11px; color: red;"
+        >
+          Error message
+        </span>
+      </div>
+    </div>
+  </form>
+</DocumentFragment>
+`;
+
+exports[`Form layout renders correctly 1`] = `
+<DocumentFragment>
+  <fieldset
+    class="sc-AxgMl eyCrfk"
+    name="fields"
+  >
+    <legend
+      class="sc-AxheI kOhSQw"
+    >
+      row
+    </legend>
+    <div
+      class="sc-AxiKw kAZRMG"
+      style="flex-basis: 50%;"
+    >
+      <label
+        class="sc-AxjAm DLLwe sc-AxhUy bUIkeS"
+      >
+        Text input:
+      </label>
+      <div
+        class="sc-AxhCb jjmKci"
+      >
+        <input
+          style="display: inline-flex;"
+          type="text"
+        />
+      </div>
+    </div>
+    <div
+      class="sc-AxiKw kAZRMG"
+      style="flex-basis: 50%;"
+    >
+      <label
+        class="sc-AxjAm DLLwe sc-AxhUy bUIkeS"
+      >
+        Select input
+      </label>
+      <div
+        class="sc-AxhCb jjmKci"
+      >
+        <select
+          style="display: inline-flex;"
+        >
+          <option
+            value="1"
+          >
+            one
+          </option>
+          <option
+            value="2"
+          >
+            two
+          </option>
+          <option
+            value="3"
+          >
+            three
+          </option>
+        </select>
+      </div>
+    </div>
+  </fieldset>
+</DocumentFragment>
+`;
+
+exports[`Form required renders correctly 1`] = `
+<DocumentFragment>
+  <form
+    class="sc-AxirZ boPVkc"
+  >
+    <div
+      class="sc-AxiKw kAZRMG"
+    >
+      <label
+        class="sc-AxjAm DLLwe sc-AxhUy gnUDJm"
+        required=""
+      >
+        Select input
+      </label>
+      <div
+        class="sc-AxhCb jjmKci"
+      >
+        <select
+          style="display: inline-flex;"
+        >
+          <option
+            value="1"
+          >
+            one
+          </option>
+          <option
+            value="2"
+          >
+            two
+          </option>
+          <option
+            value="3"
+          >
+            three
+          </option>
+        </select>
+      </div>
+    </div>
+  </form>
+</DocumentFragment>
+`;
+
+exports[`Matches snapshot  1`] = `
+<DocumentFragment>
+  <form
+    class="sc-AxirZ boPVkc"
+  >
+    <div
+      class="sc-AxiKw kAZRMG"
+    >
+      <label
+        class="sc-AxjAm DLLwe sc-AxhUy gnUDJm"
+        required=""
+      >
+        Text input:
+      </label>
+      <div
+        class="sc-AxhCb jjmKci"
+      >
+        <input
+          style="display: inline-flex;"
+          type="text"
+        />
+      </div>
+    </div>
+    <div
+      class="sc-AxiKw kAZRMG"
+    >
+      <label
+        class="sc-AxjAm DLLwe sc-AxhUy bUIkeS"
+      >
+        Select input
+      </label>
+      <div
+        class="sc-AxhCb jjmKci"
+      >
+        <select
+          style="display: inline-flex;"
+        >
+          <option
+            value="1"
+          >
+            one
+          </option>
+          <option
+            value="2"
+          >
+            two
+          </option>
+          <option
+            value="3"
+          >
+            three
+          </option>
+        </select>
+      </div>
+    </div>
+  </form>
+</DocumentFragment>
+`;

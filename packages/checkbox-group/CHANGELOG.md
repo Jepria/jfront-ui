@@ -3,21 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.4](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-checkbox-group@0.4.3...@jfront/ui-checkbox-group@0.4.4) (2020-12-09)
+
+
+### Bug Fixes
+
+* upgrade test. Warning: layout.test.tsx deleted! ([fddae0b](https://github.com/Jepria/jfront-ui/commit/fddae0b2f96413b0533e905efcefc1d08392a495))
+
+
+
+
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
 ## [0.4.3](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-checkbox-group@0.4.2...@jfront/ui-checkbox-group@0.4.3) (2020-10-23)
 
 **Note:** Version bump only for package @jfront/ui-checkbox-group
 
-
-
-
-
 ## [0.4.2](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-checkbox-group@0.4.1...@jfront/ui-checkbox-group@0.4.2) (2020-09-29)
 
 **Note:** Version bump only for package @jfront/ui-checkbox-group
-
-
-
-
 
 # Change Log
 

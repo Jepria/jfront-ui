@@ -1,0 +1,169 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CheckBoxGroup isError renders correctly 1`] = `
+<DocumentFragment>
+  <div>
+    <div
+      class="sc-AxiKw dVCmtU"
+    >
+      <div
+        class="sc-AxhCb JzKgM"
+        direction="column"
+      >
+        <span
+          class="sc-AxheI dGdMKF"
+        >
+          <label
+            class="sc-AxgMl ibGJBo"
+            for="id21"
+          >
+            label1
+          </label>
+          <input
+            class="sc-AxhUy ifPyXr"
+            id="id21"
+            type="checkbox"
+            value="value1"
+          />
+        </span>
+        <span
+          class="sc-AxheI dGdMKF"
+        >
+          <label
+            class="sc-AxgMl ibGJBo"
+            for="id22"
+          >
+            label2
+          </label>
+          <input
+            class="sc-AxhUy ifPyXr"
+            id="id22"
+            type="checkbox"
+            value="value2"
+          />
+        </span>
+      </div>
+      <img
+        class="sc-AxjAm khJDGy"
+        src="data:image/gif;base64,R0lGODlhEAAQAIcAAED/QMJLMsNNNMVPNsNUPcxVPMZXQcddRs5dTNBZQcxiTM5kTtVgR9FjTNFhUNRkUthwWd5wWd1wXd18b919b+FdUuJfU+NhVOViVeZlVudnV+NmW+RnXOdsXehpWOpsWetuWulvX+F0XOVyWep2XexwW+5zXO92XfB4X/F6X+BzYO57Yel9aPN8YPN+YemCau2BaeyBbO6DbuOEdeaIeOqHfeuJfeqNe+yLf+ySf/KAZfSAYvWBYvWCY/SEZ/WEaveGbPaJa/iGbfONdvWOd/eMdfqOd/qUfN6hleWOg+eQhOeRheySiO2SieyYie2flfGTgvCXg/GXhPSZhPCfjvGdkOGkl+Onmu6glfihiPiiifijivOmkfSmkvGlmfGom/Gon/Kpn+uvovOvpvSsofWwo/ezoPezpPC0qPi0oPi2ofi1pfm5pvq8qPu9qfi+sfq/sv3DtfrZ0////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAMAAAAALAAAAAAQABAAAAjBAAEIHEiwoME4R4D8IPLG4EAjMrqkScOFBQyHQqS42RIkiJY2OUYULBLFTY8ec+a4aMHmhoiBcGKY5LEjZQoUJ9ZIECNwCJcsO1amPGGiBBQnEASuUOOjxc2UJUB8CPElgUASZnTgNCFnzgcPGjp4KSDwBZUpRUFUGaMhAwYbSxYIRKPijFQPKTFcsBDGgZWBEWiUaduEiYUKYSgYKMhgBhkcHDbUADMhgMMGD5RgeZIEAQGHAq8oGCDgABLQqAkGBAA7"
+        title="Wrong value"
+      />
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`CheckBoxGroup isLoading renders correctly 1`] = `
+<DocumentFragment>
+  <div>
+    <div
+      class="sc-AxiKw dIjHRK"
+    >
+      <div
+        class="sc-AxhCb JzKgM"
+        direction="column"
+      >
+        <span
+          class="sc-AxheI dGdMKF"
+        >
+          <label
+            class="sc-AxgMl ibGJBo"
+            for="id19"
+          >
+            label1
+          </label>
+          <input
+            class="sc-AxhUy ifPyXr"
+            id="id19"
+            type="checkbox"
+            value="value1"
+          />
+        </span>
+        <span
+          class="sc-AxheI dGdMKF"
+        >
+          <label
+            class="sc-AxgMl ibGJBo"
+            for="id20"
+          >
+            label2
+          </label>
+          <input
+            class="sc-AxhUy ifPyXr"
+            id="id20"
+            type="checkbox"
+            value="value2"
+          />
+        </span>
+      </div>
+      <img
+        class="sc-AxirZ cxtyjb"
+        src="data:image/gif;base64,R0lGODlhEAAQALMMAKqooJGOhp2bk7e1rZ2bkre1rJCPhqqon8PBudDOxXd1bISCef///wAAAAAAAAAAACH/C05FVFNDQVBFMi4wAwEAAAAh+QQFAAAMACwAAAAAEAAQAAAET5DJyYyhmAZ7sxQEs1nMsmACGJKmSaVEOLXnK1PuBADepCiMg/DQ+/2GRI8RKOxJfpTCIJNIYArS6aRajWYZCASDa41Ow+Fx2YMWOyfpTAQAIfkEBQAADAAsAAAAABAAEAAABE6QyckEoZgKe7MEQMUxhoEd6FFdQWlOqTq15SlT9VQM3rQsjMKO5/n9hANixgjc9SQ/CgKRUSgw0ynFapVmGYkEg3v1gsPibg8tfk7CnggAIfkEBQAADAAsAAAAABAAEAAABE2QycnOoZjaA/IsRWV1goCBoMiUJTW8A0XMBPZmM4Ug3hQEjN2uZygahDyP0RBMEpmTRCKzWGCkUkq1SsFOFQrG1tr9gsPc3jnco4A9EQAh+QQFAAAMACwAAAAAEAAQAAAETpDJyUqhmFqbJ0LMIA7McWDfF5LmAVApOLUvLFMmlSTdJAiM3a73+wl5HYKSEET2lBSFIhMIYKRSimFriGIZiwWD2/WCw+Jt7xxeU9qZCAAh+QQFAAAMACwAAAAAEAAQAAAETZDJyRCimFqbZ0rVxgwF9n3hSJbeSQ2rCWIkpSjddBzMfee7nQ/XCfJ+OQYAQFksMgQBxumkEKLSCfVpMDCugqyW2w18xZmuwZycdDsRACH5BAUAAAwALAAAAAAQABAAAARNkMnJUqKYWpunUtXGIAj2feFIlt5JrWybkdSydNNQMLaND7pC79YBFnY+HENHMRgyhwPGaQhQotGm00oQMLBSLYPQ9QIASrLAq5x0OxEAIfkEBQAADAAsAAAAABAAEAAABE2QycmUopham+da1cYkCfZ94UiW3kmtbJuRlGF0E4Iwto3rut6tA9wFAjiJjkIgZAYDTLNJgUIpgqyAcTgwCuACJssAdL3gpLmbpLAzEQA7"
+      />
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Matches snapshot  1`] = `
+<DocumentFragment>
+  <div
+    class="sc-AxiKw dIjHRK"
+  >
+    <div
+      class="sc-AxhCb JzKgM"
+      direction="column"
+    >
+      <span
+        class="sc-AxheI dGdMKF"
+      >
+        <label
+          class="sc-AxgMl ibGJBo"
+          for="id16"
+        >
+          label1
+        </label>
+        <input
+          class="sc-AxhUy ifPyXr"
+          disabled=""
+          id="id16"
+          type="checkbox"
+          value="value1"
+        />
+      </span>
+      <span
+        class="sc-AxheI dGdMKF"
+      >
+        <label
+          class="sc-AxgMl ibGJBo"
+          for="id17"
+        >
+          label2
+        </label>
+        <input
+          class="sc-AxhUy ifPyXr"
+          id="id17"
+          type="checkbox"
+          value="value2"
+        />
+      </span>
+      <span
+        class="sc-AxheI dGdMKF"
+      >
+        <label
+          class="sc-AxgMl ibGJBo"
+          for="id18"
+        >
+          label3
+        </label>
+        <input
+          class="sc-AxhUy ifPyXr"
+          id="id18"
+          type="checkbox"
+          value="value3"
+        />
+      </span>
+    </div>
+  </div>
+</DocumentFragment>
+`;

@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Matches snapshot  1`] = `
+<DocumentFragment>
+  <div
+    class="sc-fzozJi jplEaj"
+  >
+    <input
+      class="sc-fzplWN hAzQTL"
+      inputmode="numeric"
+      name="InputTextName"
+      type="text"
+      value=""
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`MoneyInput isError renders correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-fzozJi eoScNh"
+  >
+    <input
+      class="sc-fzplWN hAzQTL"
+      error="wrong value"
+      inputmode="numeric"
+      name="InputTextNameLoading"
+      type="text"
+      value=""
+    />
+    <img
+      class="sc-AxjAm khJDGy"
+      src="data:image/gif;base64,R0lGODlhEAAQAIcAAED/QMJLMsNNNMVPNsNUPcxVPMZXQcddRs5dTNBZQcxiTM5kTtVgR9FjTNFhUNRkUthwWd5wWd1wXd18b919b+FdUuJfU+NhVOViVeZlVudnV+NmW+RnXOdsXehpWOpsWetuWulvX+F0XOVyWep2XexwW+5zXO92XfB4X/F6X+BzYO57Yel9aPN8YPN+YemCau2BaeyBbO6DbuOEdeaIeOqHfeuJfeqNe+yLf+ySf/KAZfSAYvWBYvWCY/SEZ/WEaveGbPaJa/iGbfONdvWOd/eMdfqOd/qUfN6hleWOg+eQhOeRheySiO2SieyYie2flfGTgvCXg/GXhPSZhPCfjvGdkOGkl+Onmu6glfihiPiiifijivOmkfSmkvGlmfGom/Gon/Kpn+uvovOvpvSsofWwo/ezoPezpPC0qPi0oPi2ofi1pfm5pvq8qPu9qfi+sfq/sv3DtfrZ0////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAMAAAAALAAAAAAQABAAAAjBAAEIHEiwoME4R4D8IPLG4EAjMrqkScOFBQyHQqS42RIkiJY2OUYULBLFTY8ec+a4aMHmhoiBcGKY5LEjZQoUJ9ZIECNwCJcsO1amPGGiBBQnEASuUOOjxc2UJUB8CPElgUASZnTgNCFnzgcPGjp4KSDwBZUpRUFUGaMhAwYbSxYIRKPijFQPKTFcsBDGgZWBEWiUaduEiYUKYSgYKMhgBhkcHDbUADMhgMMGD5RgeZIEAQGHAq8oGCDgABLQqAkGBAA7"
+      title="wrong value"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`MoneyInput label renders correctly 1`] = `
+<DocumentFragment>
+  <div
+    style="display: inline-block;"
+  >
+    <label
+      class="sc-fznyAO igXkWG"
+    >
+      Text label
+    </label>
+    <div
+      class="sc-fzozJi jplEaj"
+    >
+      <input
+        class="sc-fzplWN hAzQTL"
+        inputmode="numeric"
+        name="InputTextName"
+        type="text"
+        value=""
+      />
+    </div>
+  </div>
+</DocumentFragment>
+`;

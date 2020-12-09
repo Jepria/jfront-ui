@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Matches snapshot  1`] = `
+<DocumentFragment>
+  <div
+    class="sc-AxjAm gSRbKu"
+  >
+    <div
+      class="sc-AxirZ ercANe"
+    >
+      Tab1
+    </div>
+    <div
+      class="sc-AxirZ ercANe"
+    >
+      Tab2
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`TabPanel with Toolbar renders correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-AxjAm gSRbKu"
+  >
+    <div
+      class="sc-AxirZ ercANe"
+    >
+      Tab 1
+    </div>
+  </div>
+  <nav
+    class="sc-AxiKw kNbwFY"
+  >
+    <button
+      class="sc-AxhCb MacuA"
+    >
+      <img
+        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wBDAcfIC3l2C8AAAIRSURBVDjLlZLLThRRFEXXuffWq5s3RB5CogZRQ0hk4DsS/RaHOmHiNzjSqb/h0ImJ0eBQI1GDEBQSHtI00LR0dVVX3ePIEW2CZ7zPyk72Errc3cX7BHFAVAmWRS1Zms3l7ZylF+9OZV03gC88faNVHbs8QphF7PzY062NXemW7QoospKhmX4mHgwSblfI2wUba1ucGQCgTsjDDg1TI/UpRroWwPzjndBYem2VTqVNYXPEd4+6e4sL0BE0UzrSwePJmjk+U59TmJY0ybz3Ze65+fgOqqAo1lqsMzifFDDd0Z5rMeeYYqgcpshKdL5d/Ey/m4N6g2r/sL9wY0zjJMKZgNCG1HePONg/FNeW9Nmv6gadmQOujl8hMrP00cd2vu121mv4VSXT0lWux1DxOKNUbcTJR4ttmEUXa/KttZPRfAVfzq/wdWwFQtAW9Gz2M6CDMA3BhFCGIYXJ+e0atFfblK58JLee3ua450ibA3UkAkJF1HASpsXJZtMl8zAbzxdDO5MuiAwiBiPC8WaL1m4qLigiRurjMro3CQqqEOSO/bndcu3SJ4IpyD4Xpva6IT4p0L/zBQbjBPf++dtT0yw8eUie5MaNQHUiIVmvmDIWPrxcOqMHHrAgVYiiGGstqvo/IgGikEMepWhQAnJ2lb3zJLUKcTJI8qaXYk2QUM8OUKuEh5GMpxeXrTP41M5J0L3oHxh15JAxMjBeAAAAAElFTkSuQmCC"
+      />
+    </button>
+  </nav>
+</DocumentFragment>
+`;

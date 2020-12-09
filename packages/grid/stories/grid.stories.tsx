@@ -39,7 +39,7 @@ const makeData = (length: number) => {
   return arr
 }
 
-const data: Array<Data> = makeData(100)
+const data: Array<Data> = makeData(87)
 
 const empty = []
 
@@ -102,7 +102,7 @@ export const BasicUsage = () => {
   )
 }
 
-let sortableData: Array<Data> = makeData(100)
+let sortableData: Array<Data> = makeData(87)
 
 export const ExternalPagingAndSort = () => {
   const [forgedData, setForgedData] = React.useState([])
@@ -226,7 +226,7 @@ export const ExternalPagingAndSort = () => {
           ],
         },
       ]}
-      totalRowCount={data.length}
+      totalRowCount={sortableData.length}
       onPaging={fetchData}
       onSort={sortData}
       data={React.useMemo(() => forgedData, [forgedData])}

@@ -3,29 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [0.4.3](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-input@0.4.2...@jfront/ui-input@0.4.3) (2020-10-23)
+## [0.4.4](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-input@0.4.3...@jfront/ui-input@0.4.4) (2020-12-09)
 
+**Note:** Version bump only for package @jfront/ui-input
+
+
+
+
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [0.4.3](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-input@0.4.2...@jfront/ui-input@0.4.3) (2020-10-23)
 
 ### Bug Fixes
 
-* error behaviour in NumberInput ([4748e92](https://github.com/Jepria/jfront-ui/commit/4748e92390c2939ab7cb252b5fae591584aac4ce))
-
-
-
-
+- error behaviour in NumberInput
+  ([4748e92](https://github.com/Jepria/jfront-ui/commit/4748e92390c2939ab7cb252b5fae591584aac4ce))
 
 ## [0.4.2](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-input@0.4.1...@jfront/ui-input@0.4.2) (2020-09-29)
 
-
 ### Bug Fixes
 
-* delete console log ([3c7882d](https://github.com/Jepria/jfront-ui/commit/3c7882defb438871d9f724d5f70dbf66b347b35a))
-* input style props ([c57e66e](https://github.com/Jepria/jfront-ui/commit/c57e66ec0d0789d3a0a487c7f12416f89ae5d0ef))
-* number input min and max check ([89f0b27](https://github.com/Jepria/jfront-ui/commit/89f0b279b31c3a482732bff22a05d86f74944c9b))
-
-
-
-
+- delete console log
+  ([3c7882d](https://github.com/Jepria/jfront-ui/commit/3c7882defb438871d9f724d5f70dbf66b347b35a))
+- input style props
+  ([c57e66e](https://github.com/Jepria/jfront-ui/commit/c57e66ec0d0789d3a0a487c7f12416f89ae5d0ef))
+- number input min and max check
+  ([89f0b27](https://github.com/Jepria/jfront-ui/commit/89f0b279b31c3a482732bff22a05d86f74944c9b))
 
 # Change Log
 
