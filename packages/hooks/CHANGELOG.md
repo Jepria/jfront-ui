@@ -1,5 +1,26 @@
 # Change Log
 
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+# [0.4.0](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-hooks@0.3.4...@jfront/ui-hooks@0.4.0) (2020-12-09)
+
+
+### Bug Fixes
+
+* remove console.log ([a688f5d](https://github.com/Jepria/jfront-ui/commit/a688f5d01af813b5980f7b1cdfa6b4d48542ea77))
+
+
+### Features
+
+* useOnClickOutside hook ([dc54f68](https://github.com/Jepria/jfront-ui/commit/dc54f681d27fbf353146d187f3334aaa3593a462))
+
+
+
+
+
+# Change Log
+
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 

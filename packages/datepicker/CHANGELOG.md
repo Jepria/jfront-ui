@@ -1,5 +1,23 @@
 # Change Log
 
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [0.3.4](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-datepicker@0.3.3...@jfront/ui-datepicker@0.3.4) (2020-12-09)
+
+
+### Bug Fixes
+
+* datepicker default format ([531397c](https://github.com/Jepria/jfront-ui/commit/531397c37b40f0fa017260e431b3020a61a48587))
+* default date format ([ec9619a](https://github.com/Jepria/jfront-ui/commit/ec9619ad0841241346e581fcfdec0f79f36de934))
+* replaceAll changed to replace ([47f87f7](https://github.com/Jepria/jfront-ui/commit/47f87f74ef91ac23ae65bc5ed72963ec9d76027e))
+
+
+
+
+
+# Change Log
+
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 

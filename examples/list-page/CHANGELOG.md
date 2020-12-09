@@ -1,5 +1,18 @@
 # Change Log
 
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [0.1.3](https://github.com/Jepria/jfront-ui/compare/jfront-listpage@0.1.2...jfront-listpage@0.1.3) (2020-12-09)
+
+**Note:** Version bump only for package jfront-listpage
+
+
+
+
+
+# Change Log
+
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 

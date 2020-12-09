@@ -1,12 +1,12 @@
 {
   "name": "jfront-react-router",
-  "version": "0.3.5",
+  "version": "0.4.0",
   "private": true,
   "dependencies": {
-    "@jfront/ui-core": "^0.3.5",
-    "react-router-dom": "5.2.0",
+    "@jfront/ui-core": "^0.4.0",
     "react": "16.13.1",
-    "react-dom": "16.13.1"
+    "react-dom": "16.13.1",
+    "react-router-dom": "5.2.0"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.7.0",
@@ -17,10 +17,10 @@
     "@types/react-router-dom": "5.1.6",
     "core-js": "^3.6.4",
     "eslint-config-react-app": "^5.2.1",
+    "namor": "2.0.2",
     "react-app-polyfill": "^1.0.6",
     "react-scripts": "^3.4.1",
-    "typescript": "^3.9.6",
-    "namor": "2.0.2"
+    "typescript": "^3.9.6"
   },
   "scripts": {
     "start": "react-scripts start",

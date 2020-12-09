@@ -1,5 +1,22 @@
 # Change Log
 
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [0.4.1](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-combobox@0.4.0...@jfront/ui-combobox@0.4.1) (2020-12-09)
+
+
+### Bug Fixes
+
+* combobox behaviour when clicked on current option ([a6670d9](https://github.com/Jepria/jfront-ui/commit/a6670d98c6cf1142af9b25fe86a43cf8b6c8d5f5))
+* initial value issue ([3bf7c5d](https://github.com/Jepria/jfront-ui/commit/3bf7c5d2f7013ee9a20ec762de2605db0fae7c69))
+
+
+
+
+
+# Change Log
+
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
