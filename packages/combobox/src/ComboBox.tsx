@@ -241,6 +241,9 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
         setIsOpen(false)
         setFocused(false)
         if (props.onSelectionChange) props.onSelectionChange(name, newValue)
+      } else {
+        setIsOpen(false)
+        setFocused(false)
       }
     }
 
