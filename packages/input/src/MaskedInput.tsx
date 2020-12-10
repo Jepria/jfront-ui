@@ -86,13 +86,13 @@ export interface MaskedTextInputProps
   ) => false | string | { value: string; indexesOfPipedChars: number[] }
 
   showMask?: boolean
-  onChange?: (name: string, value?: string) => void
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
 export const MaskedTextInput = React.forwardRef<
   HTMLInputElement,
   MaskedTextInputProps
->(({ name = "", ...props }, ref) => {
+>(({ name = "", onChange, ...props }, ref) => {
   const maskOptions = React.useMemo(
     () => ({
       mask: typeof props.mask === "string" ? parseMask(props.mask) : props.mask,
@@ -120,20 +120,21 @@ export const MaskedTextInput = React.forwardRef<
       }}
       {...props}
       onChange={(e) => {
-        if (props.onChange) {
+        if (onChange) {
           if (e.target.value === maskOptions.placeholder) {
-            props.onChange(name, undefined)
+            e.target.value = ""
+            onChange(e)
           } else if (
-            props.onChange &&
+            onChange &&
             !conformToMask(e.target.value, maskOptions.mask, {}).meta
               .someCharsRejected
           ) {
-            props.onChange(name, e.target.value)
+            onChange(e)
           }
         }
       }}
       mask={maskOptions.mask}
-      render={(innerRef, props) => <TextInput inputRef={innerRef} {...props} />}
+      render={(innerRef, props) => <TextInput ref={innerRef} {...props} />}
     />
   )
 })

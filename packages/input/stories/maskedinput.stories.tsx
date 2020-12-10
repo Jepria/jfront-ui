@@ -15,7 +15,12 @@ export default {
 export const BasicUsage = () => {
   return (
     <>
-      <MaskedTextInput mask="99/99/9999" name="Masked" showMask />
+      <MaskedTextInput
+        mask="99/99/9999"
+        name="Masked"
+        showMask
+        onChange={(e) => console.log(e.target.value)}
+      />
     </>
   )
 }

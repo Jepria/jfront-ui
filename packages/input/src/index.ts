@@ -4,7 +4,6 @@ export interface InputProps {
   isLoading?: boolean
 }
 
-export * from "./checkboxlist"
 export * from "./SelectInput"
 export * from "./TextInput"
 export * from "./NumberInput"

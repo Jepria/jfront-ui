@@ -7,10 +7,9 @@ export interface TextInputProps
   extends React.InputHTMLAttributes<HTMLInputElement>,
     InputProps {
   clearButton?: boolean
-  inputRef?: RefObject<HTMLInputElement>
 }
 
-export const TextInput = React.forwardRef<HTMLDivElement, TextInputProps>(
+export const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
   ({ style, className, ...props }, ref) => {
     const [focused, setFocused] = useState(false)
 
@@ -19,7 +18,6 @@ export const TextInput = React.forwardRef<HTMLDivElement, TextInputProps>(
         className={className}
         focused={focused}
         style={style}
-        ref={ref}
         error={props.error !== undefined}
       >
         <StyledInput
@@ -36,8 +34,8 @@ export const TextInput = React.forwardRef<HTMLDivElement, TextInputProps>(
             }
             setFocused(false)
           }}
-          ref={props.inputRef}
-          type={props.clearButton ? "search" : "text"}
+          ref={ref}
+          type={props.type || (props.clearButton ? "search" : "text")}
         />
         {props.isLoading && <LoadingImage />}
         {props.error !== undefined && <ExclamationImage title={props.error} />}
