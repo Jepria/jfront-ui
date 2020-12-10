@@ -197,6 +197,24 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
     const hoveredItemRef = useRef<HTMLDivElement>(null)
     const defaultInputRef = useRef<HTMLInputElement>(null)
     const inputRef = ref || defaultInputRef
+
+    const getChildrenOptions = (
+      map: Map<any, any>,
+      children?: React.ReactNode[],
+    ) => {
+      children?.forEach((child) => {
+        if (child) {
+          if (Array.isArray(child)) {
+            getChildrenOptions(map, child)
+          }
+          map.set(
+            String((child as any).props?.value),
+            (child as any).props?.label,
+          )
+        }
+      })
+    }
+
     const optionsMap = React.useMemo(() => {
       const result = new Map()
       if (options != undefined) {
@@ -207,16 +225,11 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
           ),
         )
       } else {
-        children?.forEach((child) => {
-          if (child) {
-            result.set(
-              String((child as any).props?.value),
-              (child as any).props?.label,
-            )
-          }
-        })
+        getChildrenOptions(result, children)
       }
       return result
+
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [children, getOptionName, getOptionValue, options])
 
     useEffect(() => {
@@ -302,7 +315,7 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
         }
       }
       // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [currentValue])
+    }, [currentValue, optionsMap])
 
     const getPopupWidth = () => {
       return `${
