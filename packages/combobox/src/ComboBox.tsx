@@ -169,10 +169,10 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
       className,
       name = "",
       style,
-      options,
       initialValue = null,
       value = null,
       isLoading,
+      options,
       placeholder,
       error,
       getOptionName,
@@ -197,6 +197,27 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
     const hoveredItemRef = useRef<HTMLDivElement>(null)
     const defaultInputRef = useRef<HTMLInputElement>(null)
     const inputRef = ref || defaultInputRef
+    const optionsMap = React.useMemo(() => {
+      const result = new Map()
+      if (options != undefined) {
+        options.forEach((option) =>
+          result.set(
+            String(getOptionValue ? getOptionValue(option) : option.value),
+            getOptionName ? getOptionName(option) : option.name,
+          ),
+        )
+      } else {
+        children?.forEach((child) => {
+          if (child) {
+            result.set(
+              String((child as any).props?.value),
+              (child as any).props?.label,
+            )
+          }
+        })
+      }
+      return result
+    }, [children, getOptionName, getOptionValue, options])
 
     useEffect(() => {
       if (value != null) {
@@ -274,11 +295,9 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
             setText(getOptionName ? getOptionName(option) : option.name)
           }
         } else if (children && React.Children.count(children) > 0) {
-          const child = children.find((child) => {
-            return (child as any)?.props.value === currentValue
-          })
-          if (child) {
-            setText((child as any)?.props.label)
+          const text = optionsMap.get(currentValue)
+          if (text) {
+            setText(text)
           }
         }
       }
@@ -414,7 +433,7 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
       if (currentValueRef.current) {
         currentValueRef.current.scrollIntoView({
           behavior: "smooth",
-          block: "start",
+          block: "nearest",
         })
       }
     }
