@@ -28,7 +28,7 @@ export const BasicUsage = () => {
           { name: "test8", value: 8 },
           { name: "test9", value: 9 },
         ].map(({ name, value }) => (
-          <ComboBoxItem value={value} label={name} />
+          <ComboBoxItem key={value} value={value} label={name} />
         ))}
       </ComboBox>
     </>
