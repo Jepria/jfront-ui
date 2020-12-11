@@ -3,10 +3,10 @@
 exports[`Checkbox renders correctly 1`] = `
 <DocumentFragment>
   <span
-    class="sc-AxiKw bsspJY"
+    class="sc-AxiKw cuuhUq"
   >
     <label
-      class="sc-AxirZ ieqohX"
+      class="sc-AxirZ hWkxLE"
       for="id4"
     >
       CheckBox Name
@@ -24,10 +24,10 @@ exports[`Checkbox renders correctly 1`] = `
 exports[`Matches snapshot  1`] = `
 <DocumentFragment>
   <span
-    class="sc-AxiKw bsspJY"
+    class="sc-AxiKw cuuhUq"
   >
     <label
-      class="sc-AxirZ ieqohX"
+      class="sc-AxirZ hWkxLE"
       for="id3"
     />
     <input
