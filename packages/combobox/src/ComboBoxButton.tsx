@@ -49,6 +49,10 @@ const StyledButton = styled.button<ComboBoxButtonProps>`
   &:focus {
     outline: none;
   }
+  &:disabled {
+    opacity: 0.7;
+    pointer-events: none;
+  }
 `
 const StyledSpan = styled.span`
   width: 100%;
