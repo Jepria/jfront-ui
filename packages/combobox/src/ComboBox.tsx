@@ -78,7 +78,7 @@ const StyledDiv = styled.div<StyledDivProps>`
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
-  min-height: 24px;
+  height: 24px;
   text-align: left;
   ${(props) =>
     props.focused
@@ -125,11 +125,6 @@ export const ComboBoxItem = React.forwardRef<HTMLDivElement, ComboBoxItemProps>(
   },
 )
 
-export enum ComboBoxVariant {
-  standard = "standard",
-  jepria = "jepria",
-}
-
 export interface ComboBoxProps {
   id?: string
   children?: React.ReactNode[]
@@ -169,12 +164,14 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
       className,
       name = "",
       style,
-      options,
       initialValue = null,
       value = null,
       isLoading,
+      options,
       placeholder,
       error,
+      onInputChange,
+      onSelectionChange,
       getOptionName,
       getOptionValue,
       renderItem,
@@ -197,6 +194,56 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
     const hoveredItemRef = useRef<HTMLDivElement>(null)
     const defaultInputRef = useRef<HTMLInputElement>(null)
     const inputRef = ref || defaultInputRef
+
+    const optionsMap = React.useMemo(() => {
+      const result = new Map()
+      if (options != undefined) {
+        options.forEach((option) =>
+          result.set(
+            String(getOptionValue ? getOptionValue(option) : option.value),
+            getOptionName ? getOptionName(option) : option.name,
+          ),
+        )
+      } else {
+        React.Children.forEach(children, (child) =>
+          result.set(
+            String((child as any).props?.value),
+            (child as any).props?.label,
+          ),
+        )
+      }
+      return result
+    }, [children, getOptionName, getOptionValue, options])
+
+    const filteredOptions = React.useMemo(() => {
+      if (options) {
+        if ((text && currentValue) || onInputChange) {
+          return options
+        } else {
+          return options.filter((option) => {
+            const name = getOptionName ? getOptionName(option) : option.name
+            return name.startsWith(text)
+          })
+        }
+      } else {
+        return undefined
+      }
+    }, [options, text, currentValue, onInputChange, getOptionName])
+
+    const filteredChildren = React.useMemo(() => {
+      if (children) {
+        if ((text && currentValue) || onInputChange) {
+          return children
+        } else {
+          return React.Children.toArray(children).filter(child => {
+            const name = (child as any)?.props?.label;
+            return name?.startsWith(text);
+          })
+        }
+      } else {
+        return undefined
+      }
+    }, [children, text, currentValue, onInputChange])
 
     useEffect(() => {
       if (value != null) {
@@ -226,12 +273,13 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
     const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       if (currentValue) {
         setCurrentValue(undefined)
-        if (onChangeValue) {
-          onChangeValue(name, undefined)
+        if (onSelectionChange) {
+          onSelectionChange(name, undefined)
         }
       }
       setText(e.target.value)
-      if (props.onInputChange) props.onInputChange(e)
+      setIsOpen(true)
+      if (onInputChange) onInputChange(e)
     }
 
     const onChangeValue = (label: string, newValue: any) => {
@@ -239,11 +287,9 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
         setCurrentValue(newValue)
         setText(label)
         setIsOpen(false)
-        setFocused(false)
-        if (props.onSelectionChange) props.onSelectionChange(name, newValue)
+        if (onSelectionChange) onSelectionChange(name, newValue)
       } else {
         setIsOpen(false)
-        setFocused(false)
       }
     }
 
@@ -263,27 +309,14 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
     }, [isOpen, hoverIndex])
 
     useEffect(() => {
-      if (currentValue != null) {
-        if (options) {
-          const option = options.find((option) => {
-            return getOptionValue
-              ? getOptionValue(option) === currentValue
-              : option.value === currentValue
-          })
-          if (option) {
-            setText(getOptionName ? getOptionName(option) : option.name)
-          }
-        } else if (children && React.Children.count(children) > 0) {
-          const child = children.find((child) => {
-            return (child as any)?.props.value === currentValue
-          })
-          if (child) {
-            setText((child as any)?.props.label)
-          }
+      if (currentValue) {
+        const text = optionsMap.get(currentValue)
+        if (text) {
+          setText(text)
         }
       }
       // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [currentValue])
+    }, [currentValue, optionsMap])
 
     const getPopupWidth = () => {
       return `${
@@ -315,38 +348,30 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
     }
 
     const renderChildren = () => {
-      return React.Children.map(children, (item, index) => {
+      return React.Children.map(filteredChildren, (item, index) => {
         if (!React.isValidElement(item)) {
           return null
         }
         const itemValue = item.props.value
-        if (
-          (!props.onInputChange && item.props.label.startsWith(text)) ||
-          currentValue !== undefined ||
-          props.onInputChange
-        ) {
-          return React.cloneElement(item, {
-            id: `${id}_${itemValue}`,
-            disabled: item.props.disabled || disabled,
-            value: itemValue,
-            selected: currentValue === itemValue,
-            hover: index === hoverIndex,
-            ref:
-              currentValue === itemValue
-                ? currentValueRef
-                : index === hoverIndex
-                ? hoveredItemRef
-                : null,
-            onClick: () => onChangeValue(item.props.label, itemValue),
-          })
-        } else {
-          return null
-        }
+        return React.cloneElement(item, {
+          id: `${id}_${itemValue}`,
+          disabled: item.props.disabled || disabled,
+          value: itemValue,
+          selected: currentValue === itemValue,
+          hover: index === hoverIndex,
+          ref:
+            currentValue === itemValue
+              ? currentValueRef
+              : index === hoverIndex
+              ? hoveredItemRef
+              : null,
+          onClick: () => onChangeValue(item.props.label, itemValue),
+        })
       })
     }
 
     const renderOptions = () => {
-      return options?.map((option, index) => {
+      return filteredOptions?.map((option, index) => {
         const itemValue = getOptionValue ? getOptionValue(option) : option.value
         const itemLabel = getOptionName ? getOptionName(option) : option.name
         const itemProps = {
@@ -359,18 +384,10 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
           ref: currentValue === itemValue ? currentValueRef : null,
           onClick: () => onChangeValue(itemLabel, itemValue),
         }
-        if (
-          (!props.onInputChange && itemLabel.startsWith(text)) ||
-          currentValue !== undefined ||
-          props.onInputChange
-        ) {
-          if (renderItem) {
-            return renderItem(itemProps)
-          } else {
-            return React.createElement(ComboBoxItem, itemProps)
-          }
+        if (renderItem) {
+          return renderItem(itemProps)
         } else {
-          return null
+          return React.createElement(ComboBoxItem, itemProps)
         }
       })
     }
@@ -391,19 +408,23 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
           setHoverIndex(hoverIndex - 1)
         } else if (
           e.keyCode === ARROW_DOWN &&
-          ((options?.length && hoverIndex < options?.length) ||
-            hoverIndex < React.Children.count(children))
+          ((filteredOptions?.length &&
+            hoverIndex < filteredOptions?.length - 1) ||
+            hoverIndex < React.Children.count(filteredChildren) - 1)
         ) {
           setHoverIndex(hoverIndex + 1)
         } else if (e.keyCode === ENTER && hoverIndex != -1) {
-          if (options && options?.length > 0) {
-            const newOption = options[hoverIndex]
+          if (filteredOptions && filteredOptions?.length > 0) {
+            const newOption = filteredOptions[hoverIndex]
             onChangeValue(
               getOptionName ? getOptionName(newOption) : newOption.name,
               getOptionValue ? getOptionValue(newOption) : newOption.value,
             )
-          } else if (children && React.Children.count(children) > 0) {
-            const item = children[hoverIndex] as any
+          } else if (
+            filteredChildren &&
+            React.Children.count(filteredChildren) > 0
+          ) {
+            const item = React.Children.toArray(filteredChildren)[hoverIndex] as any
             onChangeValue(item?.props?.label, item?.props?.value)
           }
         }
@@ -414,7 +435,7 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
       if (currentValueRef.current) {
         currentValueRef.current.scrollIntoView({
           behavior: "smooth",
-          block: "start",
+          block: "nearest",
         })
       }
     }
@@ -437,10 +458,12 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
             onFocus={onFocus}
             onChange={onChange}
             placeholder={placeholder}
+            disabled={disabled}
             autoComplete="off"
           />
           <ComboBoxButton
             id={`${id}_button`}
+            disabled={disabled}
             tabIndex={-1}
             onKeyDown={(e) => onKeyDownHandler(e)}
             rotate={String(isOpen)}

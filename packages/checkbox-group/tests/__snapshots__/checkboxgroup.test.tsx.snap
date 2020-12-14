@@ -11,10 +11,10 @@ exports[`CheckBoxGroup isError renders correctly 1`] = `
         direction="column"
       >
         <span
-          class="sc-AxheI dGdMKF"
+          class="sc-AxheI ektFVT"
         >
           <label
-            class="sc-AxgMl ibGJBo"
+            class="sc-AxgMl dzQsAn"
             for="id21"
           >
             label1
@@ -27,10 +27,10 @@ exports[`CheckBoxGroup isError renders correctly 1`] = `
           />
         </span>
         <span
-          class="sc-AxheI dGdMKF"
+          class="sc-AxheI ektFVT"
         >
           <label
-            class="sc-AxgMl ibGJBo"
+            class="sc-AxgMl dzQsAn"
             for="id22"
           >
             label2
@@ -64,10 +64,10 @@ exports[`CheckBoxGroup isLoading renders correctly 1`] = `
         direction="column"
       >
         <span
-          class="sc-AxheI dGdMKF"
+          class="sc-AxheI ektFVT"
         >
           <label
-            class="sc-AxgMl ibGJBo"
+            class="sc-AxgMl dzQsAn"
             for="id19"
           >
             label1
@@ -80,10 +80,10 @@ exports[`CheckBoxGroup isLoading renders correctly 1`] = `
           />
         </span>
         <span
-          class="sc-AxheI dGdMKF"
+          class="sc-AxheI ektFVT"
         >
           <label
-            class="sc-AxgMl ibGJBo"
+            class="sc-AxgMl dzQsAn"
             for="id20"
           >
             label2
@@ -115,10 +115,10 @@ exports[`Matches snapshot  1`] = `
       direction="column"
     >
       <span
-        class="sc-AxheI dGdMKF"
+        class="sc-AxheI ektFVT"
       >
         <label
-          class="sc-AxgMl ibGJBo"
+          class="sc-AxgMl dzQsAn"
           for="id16"
         >
           label1
@@ -132,10 +132,10 @@ exports[`Matches snapshot  1`] = `
         />
       </span>
       <span
-        class="sc-AxheI dGdMKF"
+        class="sc-AxheI ektFVT"
       >
         <label
-          class="sc-AxgMl ibGJBo"
+          class="sc-AxgMl dzQsAn"
           for="id17"
         >
           label2
@@ -148,10 +148,10 @@ exports[`Matches snapshot  1`] = `
         />
       </span>
       <span
-        class="sc-AxheI dGdMKF"
+        class="sc-AxheI ektFVT"
       >
         <label
-          class="sc-AxgMl ibGJBo"
+          class="sc-AxgMl dzQsAn"
           for="id18"
         >
           label3
