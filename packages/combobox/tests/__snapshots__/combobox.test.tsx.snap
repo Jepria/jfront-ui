@@ -3,18 +3,18 @@
 exports[`ComboBox isError renders correctly 1`] = `
 <DocumentFragment>
   <div
-    class="sc-fzozJi hSEXG"
+    class="sc-AxmLO hQkLgg"
     style="width: 200px;"
   >
     <input
       autocomplete="off"
-      class="sc-AxmLO yMPIp"
+      class="sc-Axmtr brOIdg"
       id="id8_input"
       type="search"
       value=""
     />
     <button
-      class="sc-AxiKw cXGoCF"
+      class="sc-AxiKw eRzEko"
       id="id8_button_button"
       rotate="false"
       tabindex="-1"
@@ -44,17 +44,17 @@ exports[`ComboBox isError renders correctly 1`] = `
 exports[`ComboBox isLoading renders correctly 1`] = `
 <DocumentFragment>
   <div
-    class="sc-fzozJi iLEUWU"
+    class="sc-AxmLO kMckWu"
   >
     <input
       autocomplete="off"
-      class="sc-AxmLO yMPIp"
+      class="sc-Axmtr brOIdg"
       id="id7_input"
       type="search"
       value=""
     />
     <button
-      class="sc-AxiKw cXGoCF"
+      class="sc-AxiKw eRzEko"
       id="id7_button_button"
       rotate="false"
       tabindex="-1"
@@ -83,17 +83,17 @@ exports[`ComboBox isLoading renders correctly 1`] = `
 exports[`Matches snapshot  1`] = `
 <DocumentFragment>
   <div
-    class="sc-fzozJi iLEUWU"
+    class="sc-AxmLO kMckWu"
   >
     <input
       autocomplete="off"
-      class="sc-AxmLO yMPIp"
+      class="sc-Axmtr brOIdg"
       id="id6_input"
       type="search"
       value=""
     />
     <button
-      class="sc-AxiKw cXGoCF"
+      class="sc-AxiKw eRzEko"
       id="id6_button_button"
       rotate="false"
       tabindex="-1"

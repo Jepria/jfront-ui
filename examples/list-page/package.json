@@ -1,9 +1,9 @@
 {
   "name": "jfront-listpage",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "private": true,
   "dependencies": {
-    "@jfront/ui-core": "^0.3.5",
+    "@jfront/ui-core": "^0.4.0",
     "react": "16.13.1",
     "react-dom": "16.13.1"
   },

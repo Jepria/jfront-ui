@@ -1,3 +1,9 @@
 export const isFunction = (x: any): x is Function => {
-  return typeof x === 'function';
+  return typeof x === "function"
 }
+
+export interface Dictionary<T> {
+  [key: string]: T
+}
+
+export * from "./forwardRef"

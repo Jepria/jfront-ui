@@ -1,5 +1,5 @@
 import React from "react"
-import { render } from "@testing-library/react"
+import { fireEvent, render, screen } from "@testing-library/react"
 import { SelectInput } from "../src"
 import { Label } from "@jfront/ui-label"
 
@@ -26,4 +26,26 @@ test("SelectInput label renders correctly", () => {
     </div>,
   )
   expect(tools.asFragment()).toMatchSnapshot()
+})
+
+test("SelectInput item selection", () => {
+  let itemSelection
+  render(
+    <SelectInput
+      name="Select"
+      onChange={(event) => {
+        itemSelection = event.target.value
+      }}
+    >
+      <option value="Apple">Apple</option>
+      <option value="Peach">Peach</option>
+      <option value="Orange">Orange</option>
+    </SelectInput>,
+  )
+  const input = screen.getAllByRole("combobox")[0]
+  fireEvent.focus(input)
+  fireEvent.change(input, { target: { value: "Peach" } })
+  fireEvent.focus(input)
+
+  expect(itemSelection).toEqual("Peach")
 })

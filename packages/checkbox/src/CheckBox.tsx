@@ -10,6 +10,7 @@ export interface CheckBoxInterface
   label?: string
   className?: string
   style?: React.CSSProperties
+  orientation?: "left" | "right"
 }
 
 const StyledCheckBoxInput = styled.input`
@@ -19,6 +20,7 @@ const StyledCheckBoxInput = styled.input`
 const StyledCheckBoxLabel = styled.label`
   height: 20px;
   width: 100px;
+  margin: 2px;
   overflow: hidden;
   cursor: pointer;
   white-space: nowrap;
@@ -32,11 +34,17 @@ const StyledCheckBoxLabel = styled.label`
   user-select: none; /* Non-prefixed version, currently
                               supported by Chrome, Edge, Opera and Firefox */
 `
-
-const StyledCheckBox = styled.span`
+interface CheckboxSpanI {
+  orientation?: "left" | "right"
+}
+const StyledCheckBox = styled.span<CheckboxSpanI>`
   margin: 2px;
   height: 22px;
   display: flex;
+  ${(props) =>
+    props.orientation && props.orientation === "left"
+      ? `flex-direction: row-reverse;`
+      : `flex-direction: row;`};
   width: 100%;
   font-family: tahoma, arial, helvetica, sans-serif;
   font-size: 12px;
@@ -51,7 +59,11 @@ export const CheckBox = React.forwardRef<HTMLInputElement, CheckBoxInterface>(
     const htmlId = props.id ? props.id : nextId()
 
     return (
-      <StyledCheckBox className={props.className} style={props.style}>
+      <StyledCheckBox
+        className={props.className}
+        style={props.style}
+        orientation={props.orientation}
+      >
         <StyledCheckBoxLabel
           htmlFor={htmlId}
           onDoubleClick={(e) => {
