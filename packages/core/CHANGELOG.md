@@ -1,5 +1,21 @@
 # Change Log
 
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+# [0.4.0](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-core@0.3.5...@jfront/ui-core@0.4.0) (2020-12-09)
+
+
+### Features
+
+* core dependencies ([2e059a8](https://github.com/Jepria/jfront-ui/commit/2e059a8a61adcf0228bf8fd750393809825a8102))
+
+
+
+
+
+# Change Log
+
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 

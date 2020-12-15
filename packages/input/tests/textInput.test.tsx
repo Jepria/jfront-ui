@@ -1,5 +1,5 @@
 import React from "react"
-import { render } from "@testing-library/react"
+import { fireEvent, render, screen } from "@testing-library/react"
 import { TextInput } from "../src"
 import { Label } from "@jfront/ui-label"
 
@@ -32,4 +32,22 @@ test("TextInput label   renders correctly", () => {
     </div>,
   )
   expect(tools.asFragment()).toMatchSnapshot()
+})
+
+test("Entering a value in TextInput", () => {
+  let inputTextInput
+  render(
+    <TextInput
+      onChange={(event) => {
+        inputTextInput = event.target.value
+      }}
+      aria-label={"test-label"}
+      name="InputTextName"
+    />,
+  )
+  const input = screen.getByLabelText("test-label", { selector: "input" })
+  fireEvent.focus(input)
+  fireEvent.change(input, { target: { value: "Test text" } })
+
+  expect(inputTextInput).toEqual("Test text")
 })

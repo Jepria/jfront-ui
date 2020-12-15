@@ -1,11 +1,7 @@
 import { render } from "@testing-library/react"
 import React from "react"
 import { Tab, TabPanel } from "../src"
-import {
-  Toolbar,
-  ToolbarButtonCreate,
-  ToolbarButtonDelete,
-} from "@jfront/ui-toolbar"
+import { Toolbar, ToolbarButtonCreate } from "@jfront/ui-toolbar"
 
 test("Checking for the existence of an element TabPanel", () => {
   render(<TabPanel />)
@@ -29,7 +25,6 @@ test("TabPanel with Toolbar renders correctly", () => {
       </TabPanel>
       <Toolbar>
         <ToolbarButtonCreate />
-        <ToolbarButtonDelete />
       </Toolbar>
     </>,
   )

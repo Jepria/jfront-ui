@@ -725,11 +725,9 @@ export function Grid<D extends object>(props: GridProps<D>) {
         </Left>
         <Center>
           {data.length > 0
-            ? `Записи ${pageSize * (pageIndex + 1) - pageSize + 1} - ${
-                page.length < pageSize
-                  ? data.length
-                  : pageSize * (pageIndex + 1)
-              } из ${totalRowCount ? totalRowCount : data.length}`
+            ? `Записи ${pageSize * (pageIndex + 1) - pageSize + 1} 
+            - ${pageSize * (pageIndex + 1) - pageSize + page.length}
+            из ${totalRowCount ? totalRowCount : data.length}`
             : "Записей не найдено"}
         </Center>
         <Right>

@@ -3,7 +3,7 @@
 exports[`Form isError renders correctly 1`] = `
 <DocumentFragment>
   <form
-    class="sc-AxirZ fWRIjU"
+    class="sc-AxirZ boPVkc"
   >
     <div
       class="sc-AxiKw kAZRMG"
@@ -14,7 +14,7 @@ exports[`Form isError renders correctly 1`] = `
         Select input
       </label>
       <div
-        class="sc-AxhCb bgYvQa"
+        class="sc-AxhCb jjmKci"
       >
         <select
           style="display: inline-flex;"
@@ -67,7 +67,7 @@ exports[`Form layout renders correctly 1`] = `
         Text input:
       </label>
       <div
-        class="sc-AxhCb bgYvQa"
+        class="sc-AxhCb jjmKci"
       >
         <input
           style="display: inline-flex;"
@@ -85,7 +85,7 @@ exports[`Form layout renders correctly 1`] = `
         Select input
       </label>
       <div
-        class="sc-AxhCb bgYvQa"
+        class="sc-AxhCb jjmKci"
       >
         <select
           style="display: inline-flex;"
@@ -115,7 +115,7 @@ exports[`Form layout renders correctly 1`] = `
 exports[`Form required renders correctly 1`] = `
 <DocumentFragment>
   <form
-    class="sc-AxirZ fWRIjU"
+    class="sc-AxirZ boPVkc"
   >
     <div
       class="sc-AxiKw kAZRMG"
@@ -127,7 +127,7 @@ exports[`Form required renders correctly 1`] = `
         Select input
       </label>
       <div
-        class="sc-AxhCb bgYvQa"
+        class="sc-AxhCb jjmKci"
       >
         <select
           style="display: inline-flex;"
@@ -157,7 +157,7 @@ exports[`Form required renders correctly 1`] = `
 exports[`Matches snapshot  1`] = `
 <DocumentFragment>
   <form
-    class="sc-AxirZ fWRIjU"
+    class="sc-AxirZ boPVkc"
   >
     <div
       class="sc-AxiKw kAZRMG"
@@ -169,7 +169,7 @@ exports[`Matches snapshot  1`] = `
         Text input:
       </label>
       <div
-        class="sc-AxhCb bgYvQa"
+        class="sc-AxhCb jjmKci"
       >
         <input
           style="display: inline-flex;"
@@ -186,7 +186,7 @@ exports[`Matches snapshot  1`] = `
         Select input
       </label>
       <div
-        class="sc-AxhCb bgYvQa"
+        class="sc-AxhCb jjmKci"
       >
         <select
           style="display: inline-flex;"

@@ -1,6 +1,12 @@
 import * as React from "react"
 import { useFormik } from "formik"
-import { ComboBox, TextInput, DatePicker, NumberInput } from "@jfront/ui-core"
+import {
+  ComboBox,
+  TextInput,
+  DatePicker,
+  NumberInput,
+  ComboBoxItem,
+} from "@jfront/ui-core"
 import { Form } from "@jfront/ui-form"
 import { CheckBoxGroup } from "@jfront/ui-checkbox-group"
 import { CheckBox } from "@jfront/ui-checkbox"
@@ -83,13 +89,6 @@ function App() {
           >
             <ComboBox
               name="fruit"
-              options={[
-                { name: "Apple", value: "Apple" },
-                { name: "Orange", value: "Orange" },
-                { name: "Water mellon", value: "Water mellon" },
-                { name: "Grapes", value: "Grapes" },
-                { name: "Peach", value: "Peach" },
-              ]}
               value={formik.values.fruit}
               isLoading={fruit === undefined}
               onSelectionChange={(name, newValue) => {
@@ -97,7 +96,18 @@ function App() {
                 formik.setFieldValue(name, newValue)
               }}
               error={formik.errors["fruit"]}
-            />
+            >
+              <ComboBoxItem value={undefined} label="" />
+              {[
+                { name: "Apple", value: "Apple" },
+                { name: "Orange", value: "Orange" },
+                { name: "Water mellon", value: "Water mellon" },
+                { name: "Grapes", value: "Grapes" },
+                { name: "Peach", value: "Peach" },
+              ].map((option) => (
+                <ComboBoxItem label={option.name} value={option.value} />
+              ))}
+            </ComboBox>
           </Form.Control>
         </Form.Field>
         <Form.Field label="Status code list:">

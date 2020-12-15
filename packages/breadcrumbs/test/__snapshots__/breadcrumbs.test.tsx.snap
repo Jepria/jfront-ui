@@ -1,0 +1,87 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Matches snapshot 1 1`] = `
+<body>
+  <div>
+    <nav
+      class="sc-AxhUy fNHVAv"
+    >
+      <a
+        class="sc-AxheI cshSQi"
+        href=""
+      >
+        Test Link1
+      </a>
+      <span
+        class="sc-AxirZ fdRIax"
+      >
+        /
+      </span>
+      <a
+        class="sc-AxheI cshSQi"
+        href=""
+      >
+        Test Link2
+      </a>
+      <span
+        class="sc-AxirZ fdRIax"
+      >
+        /
+      </span>
+      <a
+        class="sc-AxheI cshSQi"
+        href=""
+      >
+        Test Link3
+      </a>
+    </nav>
+  </div>
+</body>
+`;
+
+exports[`Matches snapshot 2 1`] = `
+<body>
+  <div>
+    <nav
+      class="sc-AxhUy fNHVAv"
+    >
+      <a
+        class="sc-AxheI cshSQi"
+        href=""
+      >
+        Test Link1
+      </a>
+      <span
+        class="sc-AxirZ fdRIax"
+      >
+        /
+      </span>
+      <span
+        class="sc-AxiKw ehZmPD"
+        role="button"
+      >
+        <span
+          class="sc-AxhCb hgbnDK"
+        />
+        <span
+          class="sc-AxhCb hgbnDK"
+        />
+        <span
+          class="sc-AxhCb hgbnDK"
+        />
+      </span>
+      <span
+        class="sc-AxirZ fdRIax"
+      >
+        /
+      </span>
+      <a
+        class="sc-AxheI cshSQi"
+        href=""
+      >
+        Test Link5
+      </a>
+    </nav>
+  </div>
+</body>
+`;
