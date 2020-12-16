@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.2](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-combobox@0.4.1...@jfront/ui-combobox@0.4.2) (2020-12-16)
+
+
+### Bug Fixes
+
+* children recursive search ([415f67f](https://github.com/Jepria/jfront-ui/commit/415f67fe4a2ae70932ab3841b0dcdd99e21cc67e))
+* exception when children passed to combobox consist both ReactNode and array of ReactNode ([e12c26f](https://github.com/Jepria/jfront-ui/commit/e12c26fcf0d7960b1c2af5ecafd284d1aa90c692))
+* filtering ([c54e9a0](https://github.com/Jepria/jfront-ui/commit/c54e9a01a2f0e9ae1de145e184fec79a81ef76a6))
+
+
+
+
+
 ## [0.4.1](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-combobox@0.4.0...@jfront/ui-combobox@0.4.1) (2020-12-09)
 
 

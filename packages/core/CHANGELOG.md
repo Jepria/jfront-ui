@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-core@0.4.0...@jfront/ui-core@0.5.0) (2020-12-16)
+
+
+### Features
+
+* add dual-list and textarea to core ([1039c94](https://github.com/Jepria/jfront-ui/commit/1039c94b5e84afd9c4829b4ef4a32431526eab5e))
+
+
+
+
+
 # [0.4.0](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-core@0.3.5...@jfront/ui-core@0.4.0) (2020-12-09)
 
 
