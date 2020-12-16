@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-checkbox@0.3.6...@jfront/ui-checkbox@0.4.0) (2020-12-16)
+
+
+### Features
+
+* checkbox add option orientation ([7db59a5](https://github.com/Jepria/jfront-ui/commit/7db59a57a6e41883a43a122179759d9025d1a127))
+
+
+
+
+
 ## [0.3.6](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-checkbox@0.3.5...@jfront/ui-checkbox@0.3.6) (2020-12-09)
 
 **Note:** Version bump only for package @jfront/ui-checkbox
