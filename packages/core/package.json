@@ -30,6 +30,7 @@
   "dependencies": {
     "@jfront/ui-app": "^0.1.7",
     "@jfront/ui-breadcrumbs": "^0.1.1",
+    "@jfront/ui-button": "^0.0.1",
     "@jfront/ui-checkbox": "^0.4.0",
     "@jfront/ui-checkbox-group": "^0.4.5",
     "@jfront/ui-combobox": "^0.4.2",
