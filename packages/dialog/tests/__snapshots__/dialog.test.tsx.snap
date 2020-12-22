@@ -21,11 +21,11 @@ exports[`Matches snapshot 1`] = `
         style="flex-direction: row;"
       >
         <div
-          class="sc-fzokOt eknvQt"
+          class="sc-fzqBZW lcmFPM"
         >
           <span>
             <svg
-              class="sc-fznZeY czUxfB"
+              class="sc-fzokOt jZsFTK"
               enable-background="new 0 0 512 512;"
               spacing="preserve"
               version="1.1"
@@ -80,7 +80,7 @@ exports[`Matches snapshot 1`] = `
           </span>
         </div>
         <div
-          class="sc-fzqBZW urpMC"
+          class="sc-fzqNJr euBCML"
         >
           Take attention to warning
         </div>
@@ -89,8 +89,10 @@ exports[`Matches snapshot 1`] = `
         class="sc-AxheI eZFndM"
       >
         <button
-          class="sc-fzoLsD eTwkHQ"
+          class="sc-fzoLsD dwsGTu sc-fzpans vXdVQ"
+          id="id1"
           type="button"
+          value="OK"
         >
           OK
         </button>
@@ -183,7 +185,7 @@ exports[`Matches snapshot 3`] = `
         Form Dialog
       </header>
       <form
-        class="sc-fzoyAV hOytWV"
+        class="sc-fzoLag gYkpLh"
       >
         <section
           class="sc-AxgMl hENNCS"
@@ -196,14 +198,18 @@ exports[`Matches snapshot 3`] = `
           class="sc-AxheI eZFndM"
         >
           <button
-            class="sc-fzoLsD eTwkHQ"
+            class="sc-fzoLsD dwsGTu sc-fzpans vXdVQ"
+            id="id2"
             type="submit"
+            value="OK"
           >
             OK
           </button>
           <button
-            class="sc-fzoLsD eTwkHQ"
+            class="sc-fzoLsD dwsGTu sc-fzpans vXdVQ"
+            id="id3"
             type="button"
+            value="Отмена"
           >
             Отмена
           </button>
@@ -235,11 +241,11 @@ exports[`Matches snapshot 4`] = `
         style="flex-direction: row;"
       >
         <div
-          class="sc-fzokOt eknvQt"
+          class="sc-fzqBZW lcmFPM"
         >
           <span>
             <svg
-              class="sc-fznKkj hrsaGJ"
+              class="sc-fznZeY czUxfB"
               enable-background="new 0 0 455.111 455.111;"
               spacing="preserve"
               version="1.1"
@@ -272,7 +278,7 @@ exports[`Matches snapshot 4`] = `
           </span>
         </div>
         <div
-          class="sc-fzqBZW urpMC"
+          class="sc-fzqNJr euBCML"
         >
           <div>
             ID ошибки: 
@@ -299,14 +305,18 @@ exports[`Matches snapshot 4`] = `
         class="sc-AxheI eZFndM"
       >
         <button
-          class="sc-fzoLsD eTwkHQ"
+          class="sc-fzoLsD dwsGTu sc-fzpans vXdVQ"
+          id="id4"
           type="button"
+          value="OK"
         >
           OK
         </button>
         <button
-          class="sc-fzoLsD eTwkHQ"
+          class="sc-fzoLsD dwsGTu sc-fzpans vXdVQ"
+          id="id5"
           type="button"
+          value="Показать детали"
         >
           Показать детали
         </button>
@@ -341,8 +351,10 @@ exports[`Matches snapshot 5`] = `
         class="sc-AxheI eZFndM"
       >
         <button
-          class="sc-fzoLsD eTwkHQ"
+          class="sc-fzoLsD dwsGTu sc-fzpans vXdVQ"
+          id="id6"
           type="button"
+          value="OK"
         >
           OK
         </button>
