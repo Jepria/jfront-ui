@@ -2,7 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import nextId from "react-id-generator"
 
-interface IButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface IButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string
 }
 
@@ -16,7 +16,7 @@ const ButtonStyled = styled.button`
   background: #d9ebfb;
   border-radius: 5px;
   border: solid 1px #99bbe8;
-
+  cursor: pointer;
   webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none; /* Safari */
   -khtml-user-select: none; /* Konqueror HTML */

@@ -1,7 +1,7 @@
 import React from "react"
 import { Modal, ModalHeader, ModalContent, ModalProps, ModalFooter } from "@jfront/ui-modal"
 import { Form } from "@jfront/ui-form"
-import { Button } from "./styles"
+import { StyledButton } from "./styles";
 
 export interface FirmDialogProps extends ModalProps {
   header?: string
@@ -29,8 +29,8 @@ export const FormDialog = React.forwardRef<HTMLDivElement, FirmDialogProps>(
             {children}
           </ModalContent>
           <ModalFooter>
-            <Button type="submit">OK</Button>
-            <Button type="button" onClick={onClose}>{cancelButtonLabel ? cancelButtonLabel : "Отмена"}</Button>
+            <StyledButton type="submit" value="OK"/>
+            <StyledButton type="button" onClick={onClose} value={cancelButtonLabel ? cancelButtonLabel : "Отмена"}/>
           </ModalFooter>
         </Form>
       </Modal>

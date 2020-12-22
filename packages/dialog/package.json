@@ -26,7 +26,8 @@
   },
   "dependencies": {
     "@jfront/ui-modal": "^0.0.1",
-    "@jfront/ui-form": "^0.2.4"
+    "@jfront/ui-form": "^0.2.4",
+    "@jfront/ui-button": "^0.0.1"
   },
   "peerDependencies": {
     "react": "16.x",

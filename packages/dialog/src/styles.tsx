@@ -1,11 +1,10 @@
 import styled from "styled-components";
 import { ErrorImage, WarningImage } from '@jfront/ui-icons';
+import { Button } from "@jfront/ui-button"
 
-export const Button = styled.button`
-  background: linear-gradient(rgb(255, 255, 255), rgb(208, 222, 240));
+export const StyledButton = styled(Button)`
   margin: 5px;
   padding: 3px 5px;
-  border: 1px outset #ccc;
 `;
 
 export const FieldSet = styled.fieldset`

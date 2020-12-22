@@ -6,7 +6,7 @@ import {
   ModalProps,
   ModalFooter,
 } from "@jfront/ui-modal"
-import { Button } from "./styles"
+import { StyledButton } from "./styles";
 
 export interface AlertDialogProps extends Omit<ModalProps, "children"> {
   header: string
@@ -22,9 +22,7 @@ export const AlertDialog = React.forwardRef<HTMLDivElement, AlertDialogProps>(
         <ModalHeader withCloseButton={withCloseButton}>{header}</ModalHeader>
         <ModalContent>{message}</ModalContent>
         <ModalFooter>
-          <Button type="button" onClick={onClose}>
-            OK
-          </Button>
+          <StyledButton type="button" onClick={onClose} value="OK"/>
         </ModalFooter>
       </Modal>
     )

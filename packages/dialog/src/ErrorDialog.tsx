@@ -6,7 +6,15 @@ import {
   ModalProps,
   ModalFooter,
 } from "@jfront/ui-modal"
-import { Button, FieldSet, Legend, TextArea, Error, ImageBox, ContentBox } from "./styles"
+import {
+  FieldSet,
+  Legend,
+  TextArea,
+  Error,
+  ImageBox,
+  ContentBox,
+  StyledButton
+} from "./styles"
 
 export interface ErrorDialogProps extends Omit<ModalProps, "children"> {
   header: string
@@ -37,9 +45,11 @@ export const ErrorDialog = React.forwardRef<HTMLDivElement, ErrorDialogProps>(
     return (
       <Modal {...props} onClose={onClose} ref={ref}>
         <ModalHeader>{header}</ModalHeader>
-        <ModalContent style={{flexDirection: "row"}}>
+        <ModalContent style={{ flexDirection: "row" }}>
           <ImageBox>
-            <span><Error/></span>
+            <span>
+              <Error />
+            </span>
           </ImageBox>
           <ContentBox>
             {errorId && (
@@ -57,13 +67,17 @@ export const ErrorDialog = React.forwardRef<HTMLDivElement, ErrorDialogProps>(
           </ContentBox>
         </ModalContent>
         <ModalFooter>
-          <Button type="button" onClick={onClose}>OK</Button>
+          <StyledButton type="button" onClick={onClose} value="OK" />
           {errorMessage && (
-            <Button type="button" onClick={() => setShowDetails(!showDetails)}>
-              {showDetailsButtonLabel
-                ? showDetailsButtonLabel
-                : "Показать детали"}
-            </Button>
+            <StyledButton
+              type="button"
+              onClick={() => setShowDetails(!showDetails)}
+              value={
+                showDetailsButtonLabel
+                  ? showDetailsButtonLabel
+                  : "Показать детали"
+              }
+            />
           )}
         </ModalFooter>
         {errorMessage && showDetails && (
