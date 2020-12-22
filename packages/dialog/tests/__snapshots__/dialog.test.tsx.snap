@@ -1,0 +1,353 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-AxhCb fJYEYh"
+  />
+  <div
+    class="sc-Axmtr eBZWUw"
+  >
+    <div
+      class="sc-AxhUy dybvAb"
+    >
+      <header
+        class="sc-AxiKw kwuhTE"
+      >
+        Warning dialog
+      </header>
+      <section
+        class="sc-AxgMl hENNCS"
+        style="flex-direction: row;"
+      >
+        <div
+          class="sc-fzokOt eknvQt"
+        >
+          <span>
+            <svg
+              class="sc-fznZeY czUxfB"
+              enable-background="new 0 0 512 512;"
+              spacing="preserve"
+              version="1.1"
+              viewBox="0 0 512 512"
+              x="0px"
+              xmlns="http://www.w3.org/2000/svg"
+              y="0px"
+            >
+              <path
+                d="M322.939,62.642l178.737,309.583C508.231,383.578,512,396.74,512,410.791
+ c0,42.67-34.592,77.264-77.264,77.264H256L194.189,256L256,23.946C284.62,23.946,309.587,39.519,322.939,62.642z"
+                fill="#3B4145"
+              />
+              <path
+                d="M189.061,62.642L10.323,372.225C3.769,383.578,0,396.74,0,410.791
+ c0,42.67,34.592,77.264,77.264,77.264H256V23.946C227.38,23.946,202.413,39.519,189.061,62.642z"
+                fill="#525A61"
+              />
+              <path
+                d="M474.913,387.678L296.177,78.098c-8.056-13.959-22.849-22.767-38.848-23.22l152.869,402.275h24.539
+ c25.559,0,46.358-20.798,46.358-46.358C481.095,402.677,478.952,394.683,474.913,387.678z"
+                fill="#FFB751"
+              />
+              <path
+                d="M444.853,387.678c3.492,7.005,5.336,14.999,5.336,23.117c0,25.559-17.935,46.358-39.992,46.358
+ H77.264c-25.559,0-46.358-20.799-46.358-46.358c0-8.118,2.143-16.112,6.181-23.117l178.736-309.58
+ c8.283-14.34,23.674-23.251,40.177-23.251c0.443,0,0.886,0.01,1.329,0.031c13.732,0.536,26.414,9.323,33.326,23.22L444.853,387.678z
+ "
+                fill="#FFD764"
+              />
+              <path
+                d="M256,354.131v51.509c14.227,0,25.755-11.528,25.755-25.755
+ C281.755,365.659,270.227,354.131,256,354.131z"
+                fill="#3B4145"
+              />
+              <path
+                d="M256,354.131c2.843,0,5.151,11.528,5.151,25.755c0,14.227-2.308,25.755-5.151,25.755
+ c-14.227,0-25.755-11.528-25.755-25.755C230.245,365.659,241.773,354.131,256,354.131z"
+                fill="#525A61"
+              />
+              <path
+                d="M256,132.646V323.23c14.227,0,25.755-11.538,25.755-25.755V158.401
+ C281.755,144.174,270.227,132.646,256,132.646z"
+                fill="#3B4145"
+              />
+              <path
+                d="M256,132.646c2.843,0,5.151,11.528,5.151,25.755v139.074c0,14.216-2.308,25.755-5.151,25.755
+ c-14.227,0-25.755-11.538-25.755-25.755V158.401C230.245,144.174,241.773,132.646,256,132.646z"
+                fill="#525A61"
+              />
+            </svg>
+          </span>
+        </div>
+        <div
+          class="sc-fzqBZW urpMC"
+        >
+          Take attention to warning
+        </div>
+      </section>
+      <footer
+        class="sc-AxheI eZFndM"
+      >
+        <button
+          class="sc-fzoLsD eTwkHQ"
+          type="button"
+        >
+          OK
+        </button>
+      </footer>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Matches snapshot 2`] = `
+<DocumentFragment>
+  <div
+    class="sc-AxhCb fJYEYh"
+  />
+  <div
+    class="sc-Axmtr eBZWUw"
+  >
+    <div
+      class="sc-AxhUy dybvAb"
+    >
+      <header
+        class="sc-AxiKw kwuhTE"
+        style="padding-right: 16px;"
+      >
+        Simple dialog
+        <span
+          class="sc-AxmLO jEQGnA"
+        >
+          <svg
+            class="sc-fzozJi jwZEpY"
+            enable-background="new 0 0 511.76 511.76"
+            id="Capa_1"
+            spacing="preserve"
+            version="1.1"
+            viewBox="0 0 511.76 511.76"
+            x="0px"
+            xmlns="http://www.w3.org/2000/svg"
+            y="0px"
+          >
+            <g>
+              <g>
+                <path
+                  d="M436.896,74.869c-99.84-99.819-262.208-99.819-362.048,0c-99.797,99.819-99.797,262.229,0,362.048
+ c49.92,49.899,115.477,74.837,181.035,74.837s131.093-24.939,181.013-74.837C536.715,337.099,536.715,174.688,436.896,74.869z
+ M361.461,331.317c8.341,8.341,8.341,21.824,0,30.165c-4.16,4.16-9.621,6.251-15.083,6.251c-5.461,0-10.923-2.091-15.083-6.251
+ l-75.413-75.435l-75.392,75.413c-4.181,4.16-9.643,6.251-15.083,6.251c-5.461,0-10.923-2.091-15.083-6.251
+ c-8.341-8.341-8.341-21.845,0-30.165l75.392-75.413l-75.413-75.413c-8.341-8.341-8.341-21.845,0-30.165
+ c8.32-8.341,21.824-8.341,30.165,0l75.413,75.413l75.413-75.413c8.341-8.341,21.824-8.341,30.165,0
+ c8.341,8.32,8.341,21.824,0,30.165l-75.413,75.413L361.461,331.317z"
+                />
+              </g>
+            </g>
+          </svg>
+        </span>
+      </header>
+      <section
+        class="sc-AxgMl hENNCS"
+      >
+        <ul>
+          <li>
+            Simple dialog
+          </li>
+          <li>
+            Tap outside to close
+          </li>
+          <li>
+            Click close button to close
+          </li>
+        </ul>
+      </section>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Matches snapshot 3`] = `
+<DocumentFragment>
+  <div
+    class="sc-AxhCb fJYEYh"
+  />
+  <div
+    class="sc-Axmtr eBZWUw"
+  >
+    <div
+      class="sc-AxhUy dybvAb"
+    >
+      <header
+        class="sc-AxiKw kwuhTE"
+      >
+        Form Dialog
+      </header>
+      <form
+        class="sc-fzoyAV hOytWV"
+      >
+        <section
+          class="sc-AxgMl hENNCS"
+        >
+          <input
+            type="text"
+          />
+        </section>
+        <footer
+          class="sc-AxheI eZFndM"
+        >
+          <button
+            class="sc-fzoLsD eTwkHQ"
+            type="submit"
+          >
+            OK
+          </button>
+          <button
+            class="sc-fzoLsD eTwkHQ"
+            type="button"
+          >
+            Отмена
+          </button>
+        </footer>
+      </form>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Matches snapshot 4`] = `
+<DocumentFragment>
+  <div
+    class="sc-AxhCb fJYEYh"
+  />
+  <div
+    class="sc-Axmtr eBZWUw"
+  >
+    <div
+      class="sc-AxhUy dybvAb"
+    >
+      <header
+        class="sc-AxiKw kwuhTE"
+      >
+        Error
+      </header>
+      <section
+        class="sc-AxgMl hENNCS"
+        style="flex-direction: row;"
+      >
+        <div
+          class="sc-fzokOt eknvQt"
+        >
+          <span>
+            <svg
+              class="sc-fznKkj hrsaGJ"
+              enable-background="new 0 0 455.111 455.111;"
+              spacing="preserve"
+              version="1.1"
+              viewBox="0 0 455.111 455.111"
+              x="0px"
+              xmlns="http://www.w3.org/2000/svg"
+              y="0px"
+            >
+              <circle
+                cx="227.556"
+                cy="227.556"
+                fill="#E24C4B"
+                r="227.556"
+              />
+              <path
+                d="M455.111,227.556c0,125.156-102.4,227.556-227.556,227.556c-72.533,0-136.533-32.711-177.778-85.333
+ c38.4,31.289,88.178,49.778,142.222,49.778c125.156,0,227.556-102.4,227.556-227.556c0-54.044-18.489-103.822-49.778-142.222
+ C422.4,91.022,455.111,155.022,455.111,227.556z"
+                fill="#D1403F"
+              />
+              <path
+                d="M331.378,331.378c-8.533,8.533-22.756,8.533-31.289,0l-72.533-72.533l-72.533,72.533
+ c-8.533,8.533-22.756,8.533-31.289,0c-8.533-8.533-8.533-22.756,0-31.289l72.533-72.533l-72.533-72.533
+ c-8.533-8.533-8.533-22.756,0-31.289c8.533-8.533,22.756-8.533,31.289,0l72.533,72.533l72.533-72.533
+ c8.533-8.533,22.756-8.533,31.289,0c8.533,8.533,8.533,22.756,0,31.289l-72.533,72.533l72.533,72.533
+ C339.911,308.622,339.911,322.844,331.378,331.378z"
+                fill="#FFFFFF"
+              />
+            </svg>
+          </span>
+        </div>
+        <div
+          class="sc-fzqBZW urpMC"
+        >
+          <div>
+            ID ошибки: 
+            <span
+              style="font-size: 11px;"
+            >
+              211151515315135513
+            </span>
+          </div>
+          <div>
+            Код ошибки: 
+            <span
+              style="font-size: 11px;"
+            >
+              500
+            </span>
+          </div>
+          <div>
+            Unhadled exception
+          </div>
+        </div>
+      </section>
+      <footer
+        class="sc-AxheI eZFndM"
+      >
+        <button
+          class="sc-fzoLsD eTwkHQ"
+          type="button"
+        >
+          OK
+        </button>
+        <button
+          class="sc-fzoLsD eTwkHQ"
+          type="button"
+        >
+          Показать детали
+        </button>
+      </footer>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Matches snapshot 5`] = `
+<DocumentFragment>
+  <div
+    class="sc-AxhCb fJYEYh"
+  />
+  <div
+    class="sc-Axmtr eBZWUw"
+  >
+    <div
+      class="sc-AxhUy dybvAb"
+    >
+      <header
+        class="sc-AxiKw kwuhTE"
+      >
+        Alert dialog
+      </header>
+      <section
+        class="sc-AxgMl hENNCS"
+      >
+        Alert!
+      </section>
+      <footer
+        class="sc-AxheI eZFndM"
+      >
+        <button
+          class="sc-fzoLsD eTwkHQ"
+          type="button"
+        >
+          OK
+        </button>
+      </footer>
+    </div>
+  </div>
+</DocumentFragment>
+`;
