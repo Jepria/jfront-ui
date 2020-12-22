@@ -312,7 +312,7 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
 
     useEffect(() => {
       if (currentValue) {
-        const text = optionsMap.get(currentValue)
+        const text = optionsMap.get(String(currentValue))
         if (text) {
           setText(text)
         }
