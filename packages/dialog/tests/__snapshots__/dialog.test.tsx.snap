@@ -125,6 +125,7 @@ exports[`Matches snapshot 2`] = `
             class="sc-fzozJi jwZEpY"
             enable-background="new 0 0 511.76 511.76"
             id="Capa_1"
+            role="button"
             spacing="preserve"
             version="1.1"
             viewBox="0 0 511.76 511.76"

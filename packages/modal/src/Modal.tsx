@@ -10,6 +10,7 @@ import {
   Footer,
 } from "./styles"
 import { forwardRef, isFunction } from "@jfront/ui-utils"
+import { useOnClickOutside } from "@jfront/ui-hooks"
 
 export type UseModal = {
   visible?: boolean
@@ -47,6 +48,17 @@ export interface ModalProps extends React.HTMLAttributes<HTMLDivElement> {
 
 export const Modal = forwardRef<ModalProps, "div">(
   ({ visible, onClose, onOpen, closeOnOutsideClick, as, ...props }, ref) => {
+    const innerRef = ref || React.createRef()
+
+    useOnClickOutside(
+      innerRef as any,
+      onClose
+        ? () => {
+            if (closeOnOutsideClick) onClose()
+          }
+        : () => {},
+    )
+
     useEffect(() => {
       if (visible && onOpen) {
         onOpen()
@@ -60,7 +72,7 @@ export const Modal = forwardRef<ModalProps, "div">(
           {visible && (
             <>
               <GlassMask />
-              <Container onClick={closeOnOutsideClick ? onClose : undefined}>
+              <Container>
                 <UseModalContext.Provider
                   value={{
                     visible,
@@ -68,7 +80,7 @@ export const Modal = forwardRef<ModalProps, "div">(
                     onOpen,
                   }}
                 >
-                  <Component {...props} onClose={onClose} ref={ref}>
+                  <Component {...props} onClose={onClose} ref={innerRef}>
                     {cloneChildren(props.children, { onClose })}
                   </Component>
                 </UseModalContext.Provider>
@@ -83,7 +95,7 @@ export const Modal = forwardRef<ModalProps, "div">(
           {visible && (
             <>
               <GlassMask />
-              <Container onClick={closeOnOutsideClick ? onClose : undefined}>
+              <Container>
                 <UseModalContext.Provider
                   value={{
                     visible,
@@ -91,7 +103,7 @@ export const Modal = forwardRef<ModalProps, "div">(
                     onOpen,
                   }}
                 >
-                  <StyledDialog {...props} ref={ref}>
+                  <StyledDialog {...props} ref={innerRef}>
                     {cloneChildren(props.children, { onClose })}
                   </StyledDialog>
                 </UseModalContext.Provider>
@@ -112,7 +124,7 @@ export const ModalCloseButton = (props: ModalCloseButton) => {
   const { onClose } = useModal()
   return (
     <Button title={props.tooltip}>
-      <CloseIcon onClick={onClose} />
+      <CloseIcon onClick={onClose} role="button" />
     </Button>
   )
 }
@@ -138,7 +150,15 @@ export const ModalHeader = forwardRef<ModalHeaderProps, "header">(
       )
     } else {
       return (
-        <Header {...props} style={withCloseButton ? {...props.style, paddingRight: "16px"} : {...props.style}} ref={ref}>
+        <Header
+          {...props}
+          style={
+            withCloseButton
+              ? { ...props.style, paddingRight: "16px" }
+              : { ...props.style }
+          }
+          ref={ref}
+        >
           {cloneChildren(props.children, { onClose })}
           {withCloseButton && <ModalCloseButton />}
         </Header>

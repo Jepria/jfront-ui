@@ -26,6 +26,7 @@
   },
   "dependencies": {
     "@jfront/ui-icons": "^0.2.4",
+    "@jfront/ui-hooks": "^0.4.1",
     "@jfront/ui-utils": "^0.2.1"
   },
   "peerDependencies": {
