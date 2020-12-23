@@ -50,6 +50,8 @@
     "@jfront/ui-tabpanel": "^0.1.7",
     "@jfront/ui-textarea": "^0.2.1",
     "@jfront/ui-toolbar": "^0.1.7",
+    "@jfront/ui-modal": "^0.0.1",
+    "@jfront/ui-dialog": "^0.0.1",
     "@jfront/ui-fileupload": "^0.0.1"
   },
   "peerDependencies": {
