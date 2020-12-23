@@ -3,3 +3,7 @@ node_modules
 coverage
 .next
 build
+_snapshots_
+packages/*/_snapshots_
+packages/*/test/_snapshots_
+**/_snapshots_
