@@ -3,8 +3,8 @@ import { fireEvent, render, screen } from "@testing-library/react"
 import { FileUpload } from "../src"
 
 test("Matches snapshot ", () => {
-  render(<FileUpload />)
-  expect(document.body).toMatchSnapshot()
+  const { asFragment } = render(<FileUpload />)
+  expect(asFragment()).toMatchSnapshot()
 })
 
 test("FileUpload render test", () => {
@@ -14,16 +14,22 @@ test("FileUpload render test", () => {
   expect(screen.queryByRole("list")).not.toBeInTheDocument()
 })
 
-const FileUploadTest = (props: {accept?: string}) => {
-  const [values, setValues] = React.useState(undefined);
+const FileUploadTest = (props: { accept?: string }) => {
+  const [values, setValues] = React.useState(undefined)
 
   return (
-    <FileUpload {...props} data-testid="test" label="Choose file" value={values} onChange={(name, value) => setValues(value)}/>
+    <FileUpload
+      {...props}
+      data-testid="test"
+      label="Choose file"
+      value={values}
+      onChange={(name, value) => setValues(value)}
+    />
   )
 }
 
 test("FileUpload behavior", () => {
-  render(<FileUploadTest/>)
+  render(<FileUploadTest />)
   const file = new File([new ArrayBuffer(1)], "file.jpg")
 
   const input = screen.getByTestId("test")
@@ -40,11 +46,11 @@ test("FileUpload behavior", () => {
 })
 
 test("FileUpload drag'n'drop behavior", () => {
-  render(<FileUploadTest/>)
+  render(<FileUploadTest />)
   const file = new File([new ArrayBuffer(1)], "file.jpg")
 
-  const dropZone = screen.getByText("Choose file");
-  expect(dropZone).toBeInTheDocument();
+  const dropZone = screen.getByText("Choose file")
+  expect(dropZone).toBeInTheDocument()
 
   fireEvent.drop(dropZone, { dataTransfer: { files: [file] } })
 
@@ -57,11 +63,11 @@ test("FileUpload drag'n'drop behavior", () => {
 })
 
 test("FileUpload behavior wrong mimetype", () => {
-  render(<FileUploadTest accept=".txt"/>)
+  render(<FileUploadTest accept=".txt" />)
   const file = new File([new ArrayBuffer(1)], "file.jpg")
 
-  const dropZone = screen.getByText("Choose file");
-  expect(dropZone).toBeInTheDocument();
+  const dropZone = screen.getByText("Choose file")
+  expect(dropZone).toBeInTheDocument()
   fireEvent.drop(dropZone, { dataTransfer: { files: [file] } })
 
   expect(screen.queryByRole("list")).not.toBeInTheDocument()
