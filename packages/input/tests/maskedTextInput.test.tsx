@@ -1,7 +1,6 @@
 import React from "react"
 import { fireEvent, render, screen } from "@testing-library/react"
-import { CheckBoxListInput, MaskedTextInput } from "../src"
-import { AllByBoundAttribute } from "@testing-library/dom/types/queries"
+import { MaskedTextInput } from "../src"
 
 test("Checking for the existence of an element MaskedTextInput", () => {
   render(<MaskedTextInput mask="99/99/9999" name="Masked" showMask />)
@@ -40,8 +39,8 @@ test("Entering a value in MaskedTextInput", () => {
       mask="99/99/9999"
       name="Masked"
       showMask
-      onChange={(name, value) => {
-        MaskedTextInputText = value
+      onChange={(e) => {
+        MaskedTextInputText = e.target.value
       }}
       onFocus={(event) => {
         MaskedTextInputText = event.target.value
