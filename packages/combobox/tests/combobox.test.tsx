@@ -64,3 +64,74 @@ test("ComboBox isError renders correctly", () => {
   )
   expect(tools.asFragment()).toMatchSnapshot()
 })
+
+test("undefined option exception", () => {
+  let idElementSelect = 0
+  render(
+    <ComboBox
+      onSelectionChange={(name, value) => {
+        idElementSelect = value
+      }}
+    >
+      <ComboBoxItem value={undefined} label="" />
+      {[
+        { name: "Apple", value: "Apple" },
+        { name: "Orange", value: "Orange" },
+        {
+          "data-testid": "itemCheck",
+          name: "Water mellon",
+          value: "Water mellon",
+        },
+        { name: "Grapes", value: "Grapes" },
+        { name: "Peach", value: "Peach" },
+      ].map((option) => (
+        <ComboBoxItem
+          key={option.value}
+          data-testid={option["data-testid"]}
+          label={option.name}
+          value={option.value}
+        />
+      ))}
+    </ComboBox>,
+  )
+
+  fireEvent.click(screen.getByRole("button"))
+  fireEvent.click(screen.getByTestId("itemCheck"))
+  expect(idElementSelect).toEqual("Water mellon")
+})
+
+test("null child exception", () => {
+  let idElementSelect = 0
+  render(
+    <ComboBox
+      onSelectionChange={(name, value) => {
+        idElementSelect = value
+      }}
+    >
+      <ComboBoxItem value={undefined} label="" />
+      {[
+        { name: "Apple", value: "Apple" },
+        { name: "Orange", value: "Orange" },
+        {
+          "data-testid": "itemCheck",
+          name: "Water mellon",
+          value: "Water mellon",
+        },
+        { name: "Grapes", value: "Grapes" },
+        { name: "Peach", value: "Peach" },
+      ].map((option) => (
+        <ComboBoxItem
+          key={option.value}
+          data-testid={option["data-testid"]}
+          label={option.name}
+          value={option.value}
+        />
+      ))}
+      {null}
+    </ComboBox>,
+  )
+
+  fireEvent.click(screen.getByRole("button"))
+  fireEvent.click(screen.getByTestId("itemCheck"))
+  expect(idElementSelect).toEqual("Water mellon")
+})

@@ -19,3 +19,20 @@ export const BasicUsage = () => {
     </>
   )
 }
+
+export const ChangeRotation = () => {
+  const [orientation, setOrientation] = React.useState<"left" | "right">("left")
+
+  return (
+    <>
+      <CheckBox
+        orientation={orientation}
+        label="CheckBox Name"
+        onChange={(e) => {
+          setOrientation((prev) => (prev === "left" ? "right" : "left"))
+          console.log(orientation)
+        }}
+      />
+    </>
+  )
+}

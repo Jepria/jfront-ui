@@ -1,6 +1,6 @@
 {
-  "name": "@jfront/ui-hooks",
-  "version": "0.4.1",
+  "name": "@jfront/ui-button",
+  "version": "0.0.1",
   "license": "Apache-2.0",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -25,10 +25,13 @@
     "test:cov": "yarn test --coverage"
   },
   "dependencies": {
-    "@jfront/ui-utils": "^0.2.1"
+    "react-id-generator": "^3.0.1"
   },
   "peerDependencies": {
     "react": "16.x",
     "react-dom": "16.x"
+  },
+  "devDependencies": {
+    "@types/styled-components": "^5.0.1"
   }
 }
