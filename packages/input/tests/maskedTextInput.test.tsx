@@ -45,7 +45,6 @@ test("Entering a value in MaskedTextInput", () => {
       onFocus={(event) => {
         MaskedTextInputText = event.target.value
       }}
-      value={123456}
       aria-label={"test-label"}
     />,
   )

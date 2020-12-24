@@ -71,7 +71,7 @@ export const parsePlaceholderFromArray = (
 
 export interface MaskedTextInputProps
   extends InputProps,
-    Omit<React.InputHTMLAttributes<HTMLInputElement>, "onChange"> {
+    Omit<React.InputHTMLAttributes<HTMLInputElement>, "onChange" | "value"> {
   mask: string | Array<string | RegExp>
 
   guide?: boolean
@@ -104,6 +104,8 @@ export const MaskedTextInput = React.forwardRef<
     [props.mask, props.placeholderChar],
   )
 
+  const [prevValue, setPrevValue] = React.useState(maskOptions.placeholder)
+
   return (
     <MaskedInput
       placeholderChar={"*"}
@@ -121,16 +123,25 @@ export const MaskedTextInput = React.forwardRef<
       {...props}
       onChange={(e) => {
         if (onChange) {
-          if (e.target.value === maskOptions.placeholder) {
-            e.target.value = ""
+          const isCurrentValueValid = !conformToMask(
+            e.target.value,
+            maskOptions.mask,
+            {},
+          ).meta.someCharsRejected
+          if (isCurrentValueValid) {
             onChange(e)
-          } else if (
-            onChange &&
-            !conformToMask(e.target.value, maskOptions.mask, {}).meta
-              .someCharsRejected
-          ) {
-            onChange(e)
+          } else {
+            const isPrevValueValid = !conformToMask(
+              prevValue,
+              maskOptions.mask,
+              {},
+            ).meta.someCharsRejected
+            if (isPrevValueValid && !isCurrentValueValid) {
+              const event = { ...e, target: { ...e.target, value: "" } }
+              onChange(event)
+            }
           }
+          setPrevValue(e.target.value)
         }
       }}
       mask={maskOptions.mask}
