@@ -41,7 +41,11 @@ export const DatePicker = React.forwardRef<
       <ReactDatePicker
         {...props}
         customInput={
-          <MaskedTextInput {...props} mask={dateFormatToMask(dateFormat)} />
+          <MaskedTextInput
+            {...props}
+            mask={dateFormatToMask(dateFormat)}
+            returnAllValues
+          />
         }
         peekNextMonth={peekNextMonth}
         showMonthDropdown={showMonthDropdown}

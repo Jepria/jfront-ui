@@ -87,12 +87,13 @@ export interface MaskedTextInputProps
 
   showMask?: boolean
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
+  returnAllValues?: boolean
 }
 
 export const MaskedTextInput = React.forwardRef<
   HTMLInputElement,
   MaskedTextInputProps
->(({ name = "", onChange, ...props }, ref) => {
+>(({ name = "", onChange, returnAllValues, ...props }, ref) => {
   const maskOptions = React.useMemo(
     () => ({
       mask: typeof props.mask === "string" ? parseMask(props.mask) : props.mask,
@@ -123,25 +124,29 @@ export const MaskedTextInput = React.forwardRef<
       {...props}
       onChange={(e) => {
         if (onChange) {
-          const isCurrentValueValid = !conformToMask(
-            e.target.value,
-            maskOptions.mask,
-            {},
-          ).meta.someCharsRejected
-          if (isCurrentValueValid) {
-            onChange(e)
-          } else {
-            const isPrevValueValid = !conformToMask(
-              prevValue,
+          if (!returnAllValues) {
+            const isCurrentValueValid = !conformToMask(
+              e.target.value,
               maskOptions.mask,
               {},
             ).meta.someCharsRejected
-            if (isPrevValueValid && !isCurrentValueValid) {
-              const event = { ...e, target: { ...e.target, value: "" } }
-              onChange(event)
+            if (isCurrentValueValid) {
+              onChange(e)
+            } else {
+              const isPrevValueValid = !conformToMask(
+                prevValue,
+                maskOptions.mask,
+                {},
+              ).meta.someCharsRejected
+              if (isPrevValueValid && !isCurrentValueValid) {
+                const event = { ...e, target: { ...e.target, value: "" } }
+                onChange(event)
+              }
             }
+            setPrevValue(e.target.value)
+          } else {
+            onChange(e)
           }
-          setPrevValue(e.target.value)
         }
       }}
       mask={maskOptions.mask}
