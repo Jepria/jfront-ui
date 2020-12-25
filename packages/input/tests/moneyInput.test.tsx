@@ -1,6 +1,6 @@
 import React from "react"
 import { fireEvent, render, screen } from "@testing-library/react"
-import { DecimalInput, MoneyInput } from "../src"
+import { MoneyInput } from "../src"
 import { Label } from "@jfront/ui-label"
 import { NumberFormatValues } from "react-number-format"
 

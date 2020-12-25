@@ -1,26 +1,19 @@
 # Change Log
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
 ## [0.2.5](https://github.com/Jepria/jfront-ui/compare/jfront-formik@0.2.4...jfront-formik@0.2.5) (2020-12-16)
 
-
 ### Bug Fixes
 
-* exception when children passed to combobox consist both ReactNode and array of ReactNode ([e12c26f](https://github.com/Jepria/jfront-ui/commit/e12c26fcf0d7960b1c2af5ecafd284d1aa90c692))
-
-
-
-
+- exception when children passed to combobox consist both ReactNode and array of
+  ReactNode
+  ([e12c26f](https://github.com/Jepria/jfront-ui/commit/e12c26fcf0d7960b1c2af5ecafd284d1aa90c692))
 
 ## [0.2.4](https://github.com/Jepria/jfront-ui/compare/jfront-formik@0.2.3...jfront-formik@0.2.4) (2020-12-09)
 
 **Note:** Version bump only for package jfront-formik
-
-
-
-
 
 # Change Log
 

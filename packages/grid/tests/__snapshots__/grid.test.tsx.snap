@@ -280,11 +280,11 @@ exports[`Grid colors block renders correctly 1`] = `
           >
             Стр. 
             <div
-              class="sc-fzoYHE fiJGUm"
+              class="sc-fznMnq jFPAol"
               style="min-width: 60px; max-width: 150px; background-color: white;"
             >
               <input
-                class="sc-fzpkqZ gurULy"
+                class="sc-fzoant djCkbe"
                 id="test_pagingbar_page"
                 max="1"
                 min="1"
@@ -339,11 +339,11 @@ exports[`Grid colors block renders correctly 1`] = `
         <label>
           Записей на странице: 
           <div
-            class="sc-fzoYHE fiJGUm"
+            class="sc-fznMnq jFPAol"
             style="min-width: 60px; max-width: 100px; background-color: white;"
           >
             <input
-              class="sc-fzpkqZ gurULy"
+              class="sc-fzoant djCkbe"
               id="test_pagingbar_pagesize"
               max="9999"
               min="1"
@@ -565,11 +565,11 @@ exports[`Matches snapshot  1`] = `
           >
             Стр. 
             <div
-              class="sc-fzoYHE fiJGUm"
+              class="sc-fznMnq jFPAol"
               style="min-width: 60px; max-width: 150px; background-color: white;"
             >
               <input
-                class="sc-fzpkqZ gurULy"
+                class="sc-fzoant djCkbe"
                 id="test_pagingbar_page"
                 max="1"
                 min="1"
@@ -624,11 +624,11 @@ exports[`Matches snapshot  1`] = `
         <label>
           Записей на странице: 
           <div
-            class="sc-fzoYHE fiJGUm"
+            class="sc-fznMnq jFPAol"
             style="min-width: 60px; max-width: 100px; background-color: white;"
           >
             <input
-              class="sc-fzpkqZ gurULy"
+              class="sc-fzoant djCkbe"
               id="test_pagingbar_pagesize"
               max="9999"
               min="1"

@@ -235,15 +235,15 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
     const filteredChildren = React.useMemo(() => {
       if (children) {
         if ((text && currentValue) || onInputChange) {
-          return children;
+          return children
         } else {
           return React.Children.toArray(children).filter((child) => {
-            const name = (child as any)?.props?.label;
-            return name?.startsWith(text);
+            const name = (child as any)?.props?.label
+            return name?.startsWith(text)
           })
         }
       } else {
-        return undefined;
+        return undefined
       }
     }, [children, text, currentValue, onInputChange])
 

@@ -1,26 +1,18 @@
 # Change Log
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
 ## [0.4.1](https://github.com/Jepria/jfront-ui/compare/jfront-react-router@0.4.0...jfront-react-router@0.4.1) (2020-12-16)
 
 **Note:** Version bump only for package jfront-react-router
 
-
-
-
-
 # 0.4.0 (2020-12-09)
-
 
 ### Features
 
-* router example ([cad0f0d](https://github.com/Jepria/jfront-ui/commit/cad0f0dcf053db0d1a88a510fd299b4f9e66598d))
-
-
-
-
+- router example
+  ([cad0f0d](https://github.com/Jepria/jfront-ui/commit/cad0f0dcf053db0d1a88a510fd299b4f9e66598d))
 
 # Change Log
 
