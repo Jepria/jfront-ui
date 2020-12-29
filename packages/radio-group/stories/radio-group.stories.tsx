@@ -11,7 +11,6 @@ export default {
 
 export const BasicUsage = () => {
   const [values, setValues] = useState<string[]>()
-
   return (
     <div>
       <Label>Group:</Label>
@@ -26,6 +25,7 @@ export const BasicUsage = () => {
       >
         <Radio label="label1" value="value1" />
         <Radio label="label2" value="value2" />
+        <Radio label="label3" value="value3" />
       </RadioGroup>
     </div>
   )

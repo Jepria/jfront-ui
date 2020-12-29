@@ -23,7 +23,7 @@ interface RadioGroupInterface {
    */
   onChange?: (
     name?: string,
-    value?: any[],
+    value?: any,
     event?: React.ChangeEvent<any>,
   ) => void
 }
@@ -99,7 +99,7 @@ export const RadioGroup = React.forwardRef<HTMLDivElement, RadioGroupInterface>(
     },
     ref,
   ) => {
-    const [state, setState] = useState<any[]>([])
+    const [state, setState] = useState<any>([])
 
     useEffect(() => {
       if (values) {
@@ -111,22 +111,9 @@ export const RadioGroup = React.forwardRef<HTMLDivElement, RadioGroupInterface>(
       _value: React.ReactText,
       event: React.ChangeEvent<any> | undefined,
     ) => {
-      const newValue = values ? values.slice() : state.slice()
-
-      const changedValueIndex = newValue.findIndex(
-        (stateValue) => stateValue === _value,
-      )
-
-      if (event && event.target.checked) {
-        newValue.push(_value)
-      } else {
-        newValue.splice(changedValueIndex, 1)
-      }
-
-      setState(newValue)
-
+      setState(_value)
       if (onChange) {
-        onChange(name, newValue, event)
+        onChange(name, _value, event)
       }
     }
 
@@ -140,25 +127,21 @@ export const RadioGroup = React.forwardRef<HTMLDivElement, RadioGroupInterface>(
         <StyledUl
           direction={props.direction ? props.direction : RadioDirection.column}
         >
-          {React.Children.map(children, (checkbox) => {
-            if (!React.isValidElement(checkbox)) {
+          {React.Children.map(children, (radio) => {
+            if (!React.isValidElement(radio)) {
               return null
             }
 
-            const isFound = state.find(
-              (stateValue) => stateValue === checkbox.props.value,
-            )
+            const checked = state === radio.props.value
 
-            const checked = undefined !== isFound
-
-            return React.cloneElement(checkbox, {
-              disabled: checkbox.props.disabled || disabled,
+            return React.cloneElement(radio, {
+              disabled: radio.props.disabled || disabled,
               checked: checked,
               onChange:
-                checkbox.props.onChange === undefined
+                radio.props.onChange === undefined
                   ? (event: any, _text: any) =>
-                      handleCheckboxChange(checkbox.props.value, event)
-                  : checkbox.props.onChange,
+                      handleCheckboxChange(radio.props.value, event)
+                  : radio.props.onChange,
             })
           })}
         </StyledUl>
