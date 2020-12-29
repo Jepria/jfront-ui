@@ -33,7 +33,7 @@ test("Checking when clicking on Radio in RadioGroup", () => {
   fireEvent.click(screen.getByLabelText("label1"))
   fireEvent.click(screen.getByLabelText("label2"))
 
-  expect(pressed).toEqual(["value2"])
+  expect(pressed).toEqual("value2")
 })
 
 test("Matches snapshot ", () => {
