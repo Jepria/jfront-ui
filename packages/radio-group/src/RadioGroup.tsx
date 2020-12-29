@@ -8,7 +8,7 @@ interface RadioGroupInterface {
   /**
    * use values to external state control
    */
-  values?: any[]
+  values?: any
   error?: string
   disabled?: boolean
   isLoading?: boolean
