@@ -1,6 +1,6 @@
 {
   "name": "@jfront/ui-toolbar",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "license": "Apache-2.0",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -25,7 +25,7 @@
     "test:cov": "yarn test --coverage"
   },
   "dependencies": {
-    "@jfront/ui-icons": "^0.2.4"
+    "@jfront/ui-icons": "^0.3.0"
   },
   "peerDependencies": {
     "react": "16.x",

@@ -1,5 +1,22 @@
 # Change Log
 
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [0.4.6](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-input@0.4.5...@jfront/ui-input@0.4.6) (2020-12-30)
+
+
+### Bug Fixes
+
+* datepicker mask compliance ([495b722](https://github.com/Jepria/jfront-ui/commit/495b72273f61cbbe45b990776175a1e463d41a32))
+* masked input cleared value when onChange prop was provided ([796ede4](https://github.com/Jepria/jfront-ui/commit/796ede4fdeaae9a85f8e2482436793ab41df2a97))
+
+
+
+
+
+# Change Log
+
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 

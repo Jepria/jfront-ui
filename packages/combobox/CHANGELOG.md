@@ -1,5 +1,22 @@
 # Change Log
 
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [0.4.3](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-combobox@0.4.2...@jfront/ui-combobox@0.4.3) (2020-12-30)
+
+
+### Bug Fixes
+
+* cast currentValue to string before using it as optionMap key. ([ba9e9b8](https://github.com/Jepria/jfront-ui/commit/ba9e9b86f9b6361ec813d94cdbe99fe41cb47c31))
+* null child fix ([7e966d3](https://github.com/Jepria/jfront-ui/commit/7e966d3c2fb453db30eb3585a74af9e37a831e30))
+
+
+
+
+
+# Change Log
+
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 

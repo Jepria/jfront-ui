@@ -1,5 +1,18 @@
 # Change Log
 
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [0.2.2](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-textarea@0.2.1...@jfront/ui-textarea@0.2.2) (2020-12-30)
+
+**Note:** Version bump only for package @jfront/ui-textarea
+
+
+
+
+
+# Change Log
+
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
