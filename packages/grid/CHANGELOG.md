@@ -3,7 +3,7 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [0.2.7](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-grid@0.2.6...@jfront/ui-grid@0.2.7) (2020-12-16)
+## [0.2.8](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-grid@0.2.7...@jfront/ui-grid@0.2.8) (2020-12-30)
 
 **Note:** Version bump only for package @jfront/ui-grid
 
@@ -11,17 +11,23 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [0.2.6](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-grid@0.2.5...@jfront/ui-grid@0.2.6) (2020-12-09)
+# Change Log
 
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [0.2.7](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-grid@0.2.6...@jfront/ui-grid@0.2.7) (2020-12-16)
+
+**Note:** Version bump only for package @jfront/ui-grid
+
+## [0.2.6](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-grid@0.2.5...@jfront/ui-grid@0.2.6) (2020-12-09)
 
 ### Bug Fixes
 
-* add missing dependency ([bf3b86f](https://github.com/Jepria/jfront-ui/commit/bf3b86f5c6eb54cff54a8a7ed873e47c6d19789c))
-* grid row count ([5b3af88](https://github.com/Jepria/jfront-ui/commit/5b3af88b82e33b4a63a22a0dc64eabcccd2e2eba))
-
-
-
-
+- add missing dependency
+  ([bf3b86f](https://github.com/Jepria/jfront-ui/commit/bf3b86f5c6eb54cff54a8a7ed873e47c6d19789c))
+- grid row count
+  ([5b3af88](https://github.com/Jepria/jfront-ui/commit/5b3af88b82e33b4a63a22a0dc64eabcccd2e2eba))
 
 # Change Log
 

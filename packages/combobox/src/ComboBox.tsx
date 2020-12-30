@@ -205,12 +205,14 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
           ),
         )
       } else {
-        React.Children.forEach(children, (child) =>
-          result.set(
-            String((child as any).props?.value),
-            (child as any).props?.label,
-          ),
-        )
+        React.Children.forEach(children, (child) => {
+          if (child) {
+            result.set(
+              String((child as any)?.props?.value),
+              (child as any)?.props?.label,
+            )
+          }
+        })
       }
       return result
     }, [children, getOptionName, getOptionValue, options])
@@ -235,9 +237,9 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
         if ((text && currentValue) || onInputChange) {
           return children
         } else {
-          return React.Children.toArray(children).filter(child => {
-            const name = (child as any)?.props?.label;
-            return name?.startsWith(text);
+          return React.Children.toArray(children).filter((child) => {
+            const name = (child as any)?.props?.label
+            return name?.startsWith(text)
           })
         }
       } else {
@@ -310,7 +312,7 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
 
     useEffect(() => {
       if (currentValue) {
-        const text = optionsMap.get(currentValue)
+        const text = optionsMap.get(String(currentValue))
         if (text) {
           setText(text)
         }
@@ -424,7 +426,9 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
             filteredChildren &&
             React.Children.count(filteredChildren) > 0
           ) {
-            const item = React.Children.toArray(filteredChildren)[hoverIndex] as any
+            const item = React.Children.toArray(filteredChildren)[
+              hoverIndex
+            ] as any
             onChangeValue(item?.props?.label, item?.props?.value)
           }
         }

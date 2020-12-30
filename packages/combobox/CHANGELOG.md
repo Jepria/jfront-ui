@@ -3,30 +3,43 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [0.4.2](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-combobox@0.4.1...@jfront/ui-combobox@0.4.2) (2020-12-16)
+## [0.4.3](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-combobox@0.4.2...@jfront/ui-combobox@0.4.3) (2020-12-30)
 
 
 ### Bug Fixes
 
-* children recursive search ([415f67f](https://github.com/Jepria/jfront-ui/commit/415f67fe4a2ae70932ab3841b0dcdd99e21cc67e))
-* exception when children passed to combobox consist both ReactNode and array of ReactNode ([e12c26f](https://github.com/Jepria/jfront-ui/commit/e12c26fcf0d7960b1c2af5ecafd284d1aa90c692))
-* filtering ([c54e9a0](https://github.com/Jepria/jfront-ui/commit/c54e9a01a2f0e9ae1de145e184fec79a81ef76a6))
+* cast currentValue to string before using it as optionMap key. ([ba9e9b8](https://github.com/Jepria/jfront-ui/commit/ba9e9b86f9b6361ec813d94cdbe99fe41cb47c31))
+* null child fix ([7e966d3](https://github.com/Jepria/jfront-ui/commit/7e966d3c2fb453db30eb3585a74af9e37a831e30))
 
 
 
 
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [0.4.2](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-combobox@0.4.1...@jfront/ui-combobox@0.4.2) (2020-12-16)
+
+### Bug Fixes
+
+- children recursive search
+  ([415f67f](https://github.com/Jepria/jfront-ui/commit/415f67fe4a2ae70932ab3841b0dcdd99e21cc67e))
+- exception when children passed to combobox consist both ReactNode and array of
+  ReactNode
+  ([e12c26f](https://github.com/Jepria/jfront-ui/commit/e12c26fcf0d7960b1c2af5ecafd284d1aa90c692))
+- filtering
+  ([c54e9a0](https://github.com/Jepria/jfront-ui/commit/c54e9a01a2f0e9ae1de145e184fec79a81ef76a6))
 
 ## [0.4.1](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-combobox@0.4.0...@jfront/ui-combobox@0.4.1) (2020-12-09)
 
-
 ### Bug Fixes
 
-* combobox behaviour when clicked on current option ([a6670d9](https://github.com/Jepria/jfront-ui/commit/a6670d98c6cf1142af9b25fe86a43cf8b6c8d5f5))
-* initial value issue ([3bf7c5d](https://github.com/Jepria/jfront-ui/commit/3bf7c5d2f7013ee9a20ec762de2605db0fae7c69))
-
-
-
-
+- combobox behaviour when clicked on current option
+  ([a6670d9](https://github.com/Jepria/jfront-ui/commit/a6670d98c6cf1142af9b25fe86a43cf8b6c8d5f5))
+- initial value issue
+  ([3bf7c5d](https://github.com/Jepria/jfront-ui/commit/3bf7c5d2f7013ee9a20ec762de2605db0fae7c69))
 
 # Change Log
 

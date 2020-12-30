@@ -3,7 +3,7 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [0.2.4](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-form@0.2.3...@jfront/ui-form@0.2.4) (2020-12-16)
+## [0.2.5](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-form@0.2.4...@jfront/ui-form@0.2.5) (2020-12-30)
 
 **Note:** Version bump only for package @jfront/ui-form
 
@@ -11,19 +11,27 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [0.2.3](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-form@0.2.2...@jfront/ui-form@0.2.3) (2020-12-09)
+# Change Log
 
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [0.2.4](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-form@0.2.3...@jfront/ui-form@0.2.4) (2020-12-16)
+
+**Note:** Version bump only for package @jfront/ui-form
+
+## [0.2.3](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-form@0.2.2...@jfront/ui-form@0.2.3) (2020-12-09)
 
 ### Bug Fixes
 
-* add max-width to Form.Control ([4d86914](https://github.com/Jepria/jfront-ui/commit/4d86914c13618001348d944b850acab792e383df))
-* overflow in Form ([e29a6c1](https://github.com/Jepria/jfront-ui/commit/e29a6c1c5e1a141fce01b1b5d19100b429f3eb5e))
-* snapshot ([5182c29](https://github.com/Jepria/jfront-ui/commit/5182c29e4a0100c950c4859a57f2ca90e7bf01dc))
-* upgrade test. Warning: layout.test.tsx deleted! ([fddae0b](https://github.com/Jepria/jfront-ui/commit/fddae0b2f96413b0533e905efcefc1d08392a495))
-
-
-
-
+- add max-width to Form.Control
+  ([4d86914](https://github.com/Jepria/jfront-ui/commit/4d86914c13618001348d944b850acab792e383df))
+- overflow in Form
+  ([e29a6c1](https://github.com/Jepria/jfront-ui/commit/e29a6c1c5e1a141fce01b1b5d19100b429f3eb5e))
+- snapshot
+  ([5182c29](https://github.com/Jepria/jfront-ui/commit/5182c29e4a0100c950c4859a57f2ca90e7bf01dc))
+- upgrade test. Warning: layout.test.tsx deleted!
+  ([fddae0b](https://github.com/Jepria/jfront-ui/commit/fddae0b2f96413b0533e905efcefc1d08392a495))
 
 # Change Log
 

@@ -1,4 +1,4 @@
-import React, { RefObject, useState } from "react"
+import React, { useState } from "react"
 import styled from "styled-components"
 import { InputProps } from "."
 import { StyledDiv } from "./styles"
@@ -15,7 +15,6 @@ export interface SelectInputProps
   getOptionValue?: (option: any) => any
   children?: React.ReactNode[]
   renderItem?: (option: any) => React.ReactNode
-  selectRef?: RefObject<HTMLSelectElement>
 }
 
 const StyledSelect = styled.select`
@@ -39,7 +38,10 @@ const StyledSelect = styled.select`
   }
 `
 
-export const SelectInput = React.forwardRef<HTMLDivElement, SelectInputProps>(
+export const SelectInput = React.forwardRef<
+  HTMLSelectElement,
+  SelectInputProps
+>(
   (
     {
       options,
@@ -90,7 +92,6 @@ export const SelectInput = React.forwardRef<HTMLDivElement, SelectInputProps>(
         style={style}
         className={className}
         focused={focused}
-        ref={ref}
         error={props.error !== undefined}
       >
         <StyledSelect
@@ -107,7 +108,7 @@ export const SelectInput = React.forwardRef<HTMLDivElement, SelectInputProps>(
             }
             setFocused(false)
           }}
-          ref={props.selectRef}
+          ref={ref}
         >
           {renderItems()}
         </StyledSelect>
