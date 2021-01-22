@@ -715,7 +715,7 @@ export function Grid<D extends object>(props: GridProps<D>) {
                 if (pageIndex === 0) {
                   onPagination(pageIndex, pageSize)
                 } else {
-                  gotoPage(defaultPageNumber - 1)
+                  gotoPage(0)
                 }
               }}
             >
