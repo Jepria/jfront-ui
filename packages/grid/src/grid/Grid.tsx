@@ -147,7 +147,7 @@ export interface GridProps<D extends object>
   className?: string
   style?: React.CSSProperties
   defaultPageSize?: number
-  pageNumber?: number
+  defaultPageNumber?: number
   totalRowCount?: number
   totalPageCount?: number
   maxPageSize?: number
@@ -203,7 +203,7 @@ export function Grid<D extends object>(props: GridProps<D>) {
     style,
     defaultPageSize = 25,
     maxPageSize = 9999,
-    pageNumber = 1,
+    defaultPageNumber = 1,
     totalRowCount,
     isLoading,
     disableSort = false,
@@ -325,7 +325,7 @@ export function Grid<D extends object>(props: GridProps<D>) {
       autoResetPage: onPaging ? false : true,
       initialState: {
         pageSize: defaultPageSize,
-        pageIndex: pageNumber - 1,
+        pageIndex: defaultPageNumber - 1,
         hiddenColumns: hiddenColumnConfiguration,
       } as TableState<D>,
     } as TableOptions<D>,
@@ -450,10 +450,10 @@ export function Grid<D extends object>(props: GridProps<D>) {
           sortOrder: sort.desc ? "desc" : "asc",
         })),
       )
-      if (pageIndex !== 0) {
-        gotoPage(0)
+      if (pageIndex !== defaultPageNumber) {
+        gotoPage(defaultPageNumber - 1)
       } else {
-        onPagination(0, pageSize)
+        onPagination(defaultPageNumber, pageSize)
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
