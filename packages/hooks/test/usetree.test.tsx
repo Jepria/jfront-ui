@@ -127,7 +127,7 @@ const TestNode = (props: any) => {
   )
 }
 
-const TestTree = (props: UseTreeProps) => {
+const TestTree = (props: UseTreeProps<TreeData>) => {
   const tree = useTree({ ...props })
 
   return (
