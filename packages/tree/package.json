@@ -27,7 +27,8 @@
   "dependencies": {
     "@jfront/ui-icons": "^0.2.4",
     "@jfront/ui-hooks": "^0.4.1",
-    "@jfront/ui-checkbox": "^0.4.1"
+    "@jfront/ui-checkbox": "^0.4.1",
+    "react-virtualized": "9.22.3"
   },
   "peerDependencies": {
     "react": "16.x",
@@ -36,9 +37,6 @@
   },
   "devDependencies": {
     "@types/styled-components": "^5.0.1",
-    "@types/react-virtualized": "9.21.11",
-    "react-virtualized": "9.22.3",
-    "lodash": "4.17.20",
-    "@types/lodash": "4.14.108"
+    "@types/react-virtualized": "9.21.11"
   }
 }
