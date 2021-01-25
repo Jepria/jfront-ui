@@ -1,6 +1,6 @@
 import React, { useCallback } from "react"
 import { TreeNode as Node } from "@jfront/ui-hooks"
-import { Item, Label, StyledTreeNode } from "./styles"
+import { Label, StyledTreeNode } from "./styles"
 import {
   ArrowCollapsedImage,
   ArrowExpandedImage,
@@ -51,11 +51,21 @@ export const TreeNode: React.FC<TreeNodeProps> = ({
 
   return (
     <>
-      <StyledTreeNode className="jfront-ui-tree-node" level={level} {...props}>
-        <Item>
+      <StyledTreeNode
+        className="jfront-ui-tree-node"
+        level={level}
+        {...props}
+        available={available}
+        onClick={() => {
+          if (!disabled && available && !disabledNode && !isLoading)
+            setSelected()
+        }}
+      >
+        <span>
           {!isLeaf && (
             <span
-              onClick={() => {
+              onClick={(e) => {
+                e.stopPropagation()
                 if (!isLoading) setExpanded()
               }}
             >
@@ -80,14 +90,9 @@ export const TreeNode: React.FC<TreeNodeProps> = ({
           <Label
             className="jfront-ui-tree-node-label"
             role="button"
-            available={available}
             padding={!multiple || !available}
             selected={!multiple && isSelected}
             disabled={disabledNode || disabled}
-            onClick={() => {
-              if (!disabled && available && !disabledNode && !isLoading)
-                setSelected()
-            }}
           >
             {multiple && available && !isLoading && (
               <input
@@ -106,7 +111,7 @@ export const TreeNode: React.FC<TreeNodeProps> = ({
             )}
             <span>{label}</span>
           </Label>
-        </Item>
+        </span>
       </StyledTreeNode>
     </>
   )

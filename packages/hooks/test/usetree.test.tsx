@@ -577,3 +577,28 @@ test("Controlled component available nodes vs cascade", () => {
     "Cascade selection ALL and CHILDREN is not acceptable when only nodes are available",
   )
 })
+
+test("Controlled component select all children", () => {
+  let spyValues: Array<string> = []
+  const ControlledTree = () => {
+    const [values, setValues] = React.useState([...spyValues])
+    return (
+      <TestTree
+        data={data}
+        defaultExpandedKeys={["2", "12", "21"]}
+        value={values}
+        onSelect={(value) => {
+          spyValues = value as Array<string>
+          setValues(value as Array<string>)
+        }}
+      />
+    )
+  }
+  render(<ControlledTree />)
+  fireEvent.click(screen.getByTestId("212-select"))
+  fireEvent.click(screen.getByTestId("2-select"))
+  const partly = screen.queryAllByText("partly selected")
+  expect(partly).toHaveLength(0)
+  const selected = screen.getAllByText("selected")
+  expect(selected).toHaveLength(5)
+})

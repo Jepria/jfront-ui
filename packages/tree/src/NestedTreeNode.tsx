@@ -1,14 +1,5 @@
-import React, { useCallback } from "react"
+import React from "react"
 import { TreeNode as Node } from "@jfront/ui-hooks"
-import { Item, StyledTreeNode } from "./styles"
-import {
-  ArrowCollapsedImage,
-  ArrowExpandedImage,
-  FolderClosedImage,
-  FolderOpenedImage,
-  LeafImage,
-  LoadingImage,
-} from "@jfront/ui-icons"
 import { TreeNode } from "./TreeNode"
 
 export interface TreeNodeProps {

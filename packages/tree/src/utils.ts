@@ -31,3 +31,7 @@ export function convertChildrenToData(
   }
   return result
 }
+
+export const getPaddingLeft = (level: number) => {
+  return `${level * 20}px`
+}

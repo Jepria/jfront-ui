@@ -5,6 +5,7 @@ import { StyledList } from "./styles"
 import { AutoSizer, ListRowProps } from "react-virtualized"
 import { CheckBox } from "@jfront/ui-checkbox"
 import { LoadingImage, ExclamationImage } from "@jfront/ui-icons"
+import { getPaddingLeft } from "./utils"
 
 export interface VirtualizedTreeProps<T extends TreeData = TreeData>
   extends UseTreeProps<T> {
@@ -30,7 +31,9 @@ export const VirtualizedTree = React.forwardRef<
     },
     ref,
   ) => {
-    const { allNodesSelected, getAllNodes, selectAll } = useTree(props)
+    const { maxLevel, allNodesSelected, getAllNodes, selectAll } = useTree(
+      props,
+    )
 
     const nodes = getAllNodes()
 
@@ -59,7 +62,13 @@ export const VirtualizedTree = React.forwardRef<
                       multiple={props.multiple}
                       level={nodes[index].level}
                       key={key}
-                      style={style}
+                      style={{
+                        ...style,
+                        width:
+                          maxLevel === 0
+                            ? "100%"
+                            : `calc(100% + ${getPaddingLeft(maxLevel)})`,
+                      }}
                       node={nodes[index]}
                     />
                   )}

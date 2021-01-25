@@ -21,11 +21,13 @@ export const useCascade = ({
     select: boolean,
   ) => {
     if (display[value]?.available) {
+      partlySelectedSet.delete(value)
       if (select) {
         selectedSet.add(value)
       } else {
         selectedSet.delete(value)
       }
+      partlySelectedSet.delete(value)
     }
     const node = display[value]
     if (node && node.children !== undefined) {

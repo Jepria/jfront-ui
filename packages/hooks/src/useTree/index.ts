@@ -147,9 +147,11 @@ export const useTree = <T extends TreeData = TreeData>({
   }, [data])
 
   const nodes = useMemo(() => {
+    let maxLevel = 0
     let result: Array<TreeNodeLevel> = []
     const displayValues = Object.values(display)
     const recursive = (node: TreeNodeLocal, level: number): TreeNodeLevel[] => {
+      maxLevel = maxLevel < level ? level : maxLevel
       let result: Array<TreeNodeLevel> = []
       node.children?.forEach((value) => {
         const child = display[value]
@@ -176,7 +178,10 @@ export const useTree = <T extends TreeData = TreeData>({
           result = [...result, ...recursive(displayValue, 1)]
         }
       })
-    return result
+    return {
+      allNodes: result,
+      maxLevel,
+    }
   }, [display, expanded])
   const allNodesSelected = useMemo(() => {
     const availableNodes = Object.values(display)
@@ -359,7 +364,7 @@ export const useTree = <T extends TreeData = TreeData>({
   }
 
   const getAllNodes = useCallback((): TreeNode[] => {
-    return nodes.map(({ level, node }) => mapNode(level, node))
+    return nodes.allNodes.map(({ level, node }) => mapNode(level, node))
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [nodes, selected, partlySelected, expanded, loadingNodes])
 
@@ -394,6 +399,7 @@ export const useTree = <T extends TreeData = TreeData>({
   }
 
   return {
+    maxLevel: nodes.maxLevel,
     allNodesSelected,
     setExpanded: expandNode,
     setSelected: selectNode,

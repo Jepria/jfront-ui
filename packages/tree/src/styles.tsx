@@ -1,11 +1,8 @@
 import styled from "styled-components"
-import { List, ListProps } from "react-virtualized"
-
-const getPaddingLeft = (level: number) => {
-  return `${level * 20}px`
-}
-
+import { List } from "react-virtualized"
+import { getPaddingLeft } from "./utils"
 export interface StyledTreeNodeProps {
+  available?: boolean
   level: number
 }
 
@@ -13,11 +10,13 @@ export const StyledTreeNode = styled.div<StyledTreeNodeProps>`
   font-family: tahoma, arial, helvetica, sans-serif;
   font-size: 12px;
   box-sizing: border-box;
-  display: flex;
-  flex-direction: row;
   align-items: center;
   padding: 5px 8px;
+  ${(props) => (props.available ? "cursor: pointer; " : "cursor: default;")}
   padding-left: ${(props) => getPaddingLeft(props.level)};
+  &:hover {
+    background: #ededed;
+  }
 `
 
 export const Container = styled.div`
@@ -35,10 +34,10 @@ interface StyledTreeProps {
 }
 
 export const StyledTree = styled.div<StyledTreeProps>`
-  box-sizing: border-box;
-  display: flex;
+  display: inline-flex;
   flex-grow: 1;
-  flex-direction: column;
+  box-sizing: border-box;
+  margin-bottom: 2px;
   background: none;
   overflow: auto;
   ${(props) =>
@@ -54,25 +53,21 @@ export const StyledTree = styled.div<StyledTreeProps>`
   }
 `
 
+export const StyledItemList = styled.div`
+  display: inline-block;
+`
+
 export interface ItemProps {
-  available?: boolean
   disabled?: boolean
   selected?: boolean
   padding?: boolean
 }
 
 export const Label = styled.span<ItemProps>`
-   ${(props) => (props.available ? "cursor: pointer; " : "cursor: default;")}
    ${(props) => (props.disabled ? "opacity: 0.7;" : "")}
   background: ${(props) =>
     props.selected && !props.disabled ? "#dae6f4" : "unset"};
   ${(props) => (props.padding ? "padding-left: 5px;" : "")}
-`
-
-export const Item = styled.span`
-  &:hover {
-    background: #ededed;
-  }
 `
 
 export const StyledList = styled(List)<StyledTreeProps>`

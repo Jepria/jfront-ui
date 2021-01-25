@@ -1,7 +1,7 @@
 import React, { useMemo } from "react"
 import { UseTreeProps, useTree, TreeData } from "@jfront/ui-hooks"
 import { NestedTreeNode } from "./NestedTreeNode"
-import { StyledTree } from "./styles"
+import { StyledItemList, StyledTree } from "./styles"
 import { CheckBox } from "@jfront/ui-checkbox"
 import { convertChildrenToData } from "./utils"
 import { LoadingImage, ExclamationImage } from "@jfront/ui-icons"
@@ -53,15 +53,17 @@ export const SimpleTree = React.forwardRef<HTMLDivElement, SimpleTreeProps>(
             ref={ref}
             error={error}
           >
-            {getRootNodes().map((node) => (
-              <NestedTreeNode
-                multiple={props.multiple}
-                key={node.value}
-                level={0}
-                disabled={disabled}
-                node={node}
-              />
-            ))}
+            <StyledItemList>
+              {getRootNodes().map((node) => (
+                <NestedTreeNode
+                  multiple={props.multiple}
+                  key={node.value}
+                  level={0}
+                  disabled={disabled}
+                  node={node}
+                />
+              ))}
+            </StyledItemList>
           </StyledTree>
           {isLoading && <LoadingImage />}
           {error !== undefined && <ExclamationImage title={error} />}
