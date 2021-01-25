@@ -1,6 +1,6 @@
 {
   "name": "@jfront/ui-fileupload",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "license": "Apache-2.0",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -25,15 +25,15 @@
     "test:cov": "yarn test --coverage"
   },
   "dependencies": {
-    "@jfront/ui-label": "^0.3.6",
-    "@jfront/ui-icons": "^0.2.4"
+    "@jfront/ui-icons": "^0.3.0",
+    "@jfront/ui-label": "^0.3.7"
   },
   "peerDependencies": {
     "react": "16.x",
     "react-dom": "16.x"
   },
   "devDependencies": {
-    "@jfront/ui-layout": "^0.2.4",
+    "@jfront/ui-layout": "^0.2.5",
     "@types/styled-components": "^5.0.1"
   }
 }
