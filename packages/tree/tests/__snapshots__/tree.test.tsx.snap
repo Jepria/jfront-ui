@@ -34,6 +34,7 @@ exports[`Matches snapshot  1`] = `
             >
               <input
                 readonly=""
+                style="margin: 0px 5px;"
                 type="checkbox"
               />
               <span>
@@ -64,6 +65,7 @@ exports[`Matches snapshot  1`] = `
             >
               <input
                 readonly=""
+                style="margin: 0px 5px;"
                 type="checkbox"
               />
               <span>
