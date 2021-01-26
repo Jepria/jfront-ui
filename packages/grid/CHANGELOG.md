@@ -1,15 +1,11 @@
 # Change Log
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
 ## [0.2.8](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-grid@0.2.7...@jfront/ui-grid@0.2.8) (2020-12-30)
 
 **Note:** Version bump only for package @jfront/ui-grid
-
-
-
-
 
 # Change Log
 

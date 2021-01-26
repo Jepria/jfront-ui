@@ -14,7 +14,7 @@ export default {
 
 export const BasicUsage = () => {
   const onChange = (value: Date) => {
-    console.log("onChange()")
+    console.log("onChange()", value)
     setDate(value)
   }
 

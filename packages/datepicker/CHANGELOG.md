@@ -1,18 +1,14 @@
 # Change Log
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
 ## [0.3.6](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-datepicker@0.3.5...@jfront/ui-datepicker@0.3.6) (2020-12-30)
 
-
 ### Bug Fixes
 
-* datepicker mask compliance ([495b722](https://github.com/Jepria/jfront-ui/commit/495b72273f61cbbe45b990776175a1e463d41a32))
-
-
-
-
+- datepicker mask compliance
+  ([495b722](https://github.com/Jepria/jfront-ui/commit/495b72273f61cbbe45b990776175a1e463d41a32))
 
 # Change Log
 

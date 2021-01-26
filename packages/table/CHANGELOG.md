@@ -1,15 +1,11 @@
 # Change Log
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
 ## [0.1.7](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-table@0.1.6...@jfront/ui-table@0.1.7) (2020-12-30)
 
 **Note:** Version bump only for package @jfront/ui-table
-
-
-
-
 
 # Change Log
 

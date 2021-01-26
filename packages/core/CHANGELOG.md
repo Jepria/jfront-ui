@@ -1,21 +1,20 @@
 # Change Log
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
 # [0.6.0](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-core@0.5.0...@jfront/ui-core@0.6.0) (2020-12-30)
 
-
 ### Features
 
-* add button component ([7a30a0d](https://github.com/Jepria/jfront-ui/commit/7a30a0d6823a1a705dfef9cd145e3ba7cf26f919))
-* FileUpload ([dd9ed06](https://github.com/Jepria/jfront-ui/commit/dd9ed06916401f398f6c37536b77558855ecb7ad))
-* initial radio-group ([beef369](https://github.com/Jepria/jfront-ui/commit/beef36913c7e60db13ba69b1634f0ebd969ea95f))
-* modal ([098b352](https://github.com/Jepria/jfront-ui/commit/098b352d6056fde09e11082cf7008157f76e2d07))
-
-
-
-
+- add button component
+  ([7a30a0d](https://github.com/Jepria/jfront-ui/commit/7a30a0d6823a1a705dfef9cd145e3ba7cf26f919))
+- FileUpload
+  ([dd9ed06](https://github.com/Jepria/jfront-ui/commit/dd9ed06916401f398f6c37536b77558855ecb7ad))
+- initial radio-group
+  ([beef369](https://github.com/Jepria/jfront-ui/commit/beef36913c7e60db13ba69b1634f0ebd969ea95f))
+- modal
+  ([098b352](https://github.com/Jepria/jfront-ui/commit/098b352d6056fde09e11082cf7008157f76e2d07))
 
 # Change Log
 
