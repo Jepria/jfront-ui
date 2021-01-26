@@ -3,13 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [0.3.8](https://github.com/Jepria/jfront-ui/compare/jfront-cra@0.3.7...jfront-cra@0.3.8) (2020-12-30)
+## [0.3.9](https://github.com/Jepria/jfront-ui/compare/jfront-cra@0.3.8...jfront-cra@0.3.9) (2021-01-26)
 
 **Note:** Version bump only for package jfront-cra
 
 
 
 
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [0.3.8](https://github.com/Jepria/jfront-ui/compare/jfront-cra@0.3.7...jfront-cra@0.3.8) (2020-12-30)
+
+**Note:** Version bump only for package jfront-cra
 
 # Change Log
 

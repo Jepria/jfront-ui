@@ -1,0 +1,42 @@
+{
+  "name": "@jfront/ui-tree",
+  "version": "0.1.0",
+  "license": "Apache-2.0",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types/index.d.ts",
+  "typings": "dist/types/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "prebuild": "rimraf dist",
+    "build": "concurrently yarn:build:*",
+    "build:esm": "cross-env BABEL_ENV=esm babel src --root-mode upward --extensions .ts,.tsx -d dist/esm --source-maps --copy-files",
+    "build:cjs": "cross-env BABEL_ENV=cjs babel src --root-mode upward --extensions .ts,.tsx -d dist/cjs --source-maps --copy-files",
+    "build:types": "tsc --emitDeclarationOnly --declaration --declarationDir dist/types",
+    "lint": "concurrently yarn:lint:*",
+    "lint:src": "eslint src --ext .ts,.tsx --config ../../.eslintrc",
+    "lint:types": "tsc --noEmit",
+    "test": "jest --passWithNoTests",
+    "test:cov": "yarn test --coverage"
+  },
+  "dependencies": {
+    "@jfront/ui-checkbox": "^0.4.2",
+    "@jfront/ui-hooks": "^0.5.0",
+    "@jfront/ui-icons": "^0.4.0",
+    "react-virtualized": "9.22.3"
+  },
+  "peerDependencies": {
+    "react": "16.x",
+    "react-dom": "16.x",
+    "styled-components": "5.x.x"
+  },
+  "devDependencies": {
+    "@types/react-virtualized": "9.21.11",
+    "@types/styled-components": "^5.0.1"
+  }
+}

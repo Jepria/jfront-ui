@@ -1,0 +1,12 @@
+import React from "react"
+
+export const FolderClosedImage = (
+  props: React.HTMLAttributes<HTMLImageElement>,
+) => {
+  return (
+    <img
+      {...props}
+      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAK3RFWHRDcmVhdGlvbiBUaW1lAERvIDIxIE5vdiAyMDAyIDExOjQ1OjQ1ICswMTAwsqsFmAAAAAd0SU1FB9MDBBImDqt48JsAAAAJcEhZcwAACxIAAAsSAdLdfvwAAAAEZ0FNQQAAsY8L/GEFAAACBklEQVR42qVTPWgUQRT+du9279zkvBSH4k+jhRjQwi6SgEWwESwsLLSxECys7GKTgGAREEUsLION2gmSJqQQixjExMpIIupdLgh6l72f7N7s3s7uzPh2z0Tjpjj0wWPn/Xzffm94A/ynaf02Lj/CfKOD81ICsTttzFx5gOt9/+nVPXjca6htezkFFeezfzeqt6cK2siK++kJRltbGJcKIyHHAWWUTCXCFHGKYGlpZfn90zMn+MAhHD59FqXjF2EWDgICCPwNsMos9h8ZTsbYRfD6PqYoecfjwLmrswi8dbognZxB8UXSG8KyKKqVkckUIUQPp28TxODh8VtBrxAgZ/kwLQeG1UA2L2EYEc3nUCMjb6cVxImsaf0q1MkbBCCQRoyyS+eAcpzGqFF8dEfBLoLQY78JpI1k8PjiJM0VEYHyEbRqNNLm3gpE9D2ibw6yCnR/UFL0wIkTgQggoy00yx/3ViACO5MU/HUiIAVxoEJ0Wm2q+WCOi2Mnh/DlQzWtQNFadJobKin4FcBz0GUeIsExWKS2QohiScfqwhqqZVcZBjZTChzb0RMCXkkuLm+RAtqitUUblc9d5boaM3X9+aVpfmN6rIfdISC1N+vf6o9j1VH9K969YbBrMlRi32p+YHDuwiSb+HPhbi8gSj2mFxO45nh4mMtpzWx+6Nnlu63Jvh/Lv9pPBrUhjUtyw8kAAAAASUVORK5CYII="
+    />
+  )
+}

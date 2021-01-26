@@ -1,9 +1,9 @@
 {
   "name": "jfront-react-router",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "private": true,
   "dependencies": {
-    "@jfront/ui-core": "^0.6.0",
+    "@jfront/ui-core": "^0.7.0",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-router-dom": "5.2.0"

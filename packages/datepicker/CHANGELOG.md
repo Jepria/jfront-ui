@@ -3,16 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [0.3.6](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-datepicker@0.3.5...@jfront/ui-datepicker@0.3.6) (2020-12-30)
+# [0.4.0](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-datepicker@0.3.6...@jfront/ui-datepicker@0.4.0) (2021-01-26)
 
+
+### Features
+
+* useTree hook ([ef1012a](https://github.com/Jepria/jfront-ui/commit/ef1012af5ef8d97ae968b37dcac86562dd24c55f))
+
+
+
+
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [0.3.6](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-datepicker@0.3.5...@jfront/ui-datepicker@0.3.6) (2020-12-30)
 
 ### Bug Fixes
 
-* datepicker mask compliance ([495b722](https://github.com/Jepria/jfront-ui/commit/495b72273f61cbbe45b990776175a1e463d41a32))
-
-
-
-
+- datepicker mask compliance
+  ([495b722](https://github.com/Jepria/jfront-ui/commit/495b72273f61cbbe45b990776175a1e463d41a32))
 
 # Change Log
 
