@@ -1,6 +1,6 @@
 {
   "name": "@jfront/ui-hooks",
-  "version": "0.4.2",
+  "version": "0.5.0",
   "license": "Apache-2.0",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -25,7 +25,7 @@
     "test:cov": "yarn test --coverage"
   },
   "dependencies": {
-    "@jfront/ui-utils": "^0.2.2"
+    "@jfront/ui-utils": "^0.3.0"
   },
   "peerDependencies": {
     "react": "16.x"
