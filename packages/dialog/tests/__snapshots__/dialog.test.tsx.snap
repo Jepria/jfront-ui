@@ -21,11 +21,11 @@ exports[`Matches snapshot 1`] = `
         style="flex-direction: row;"
       >
         <div
-          class="sc-fzqBZW lcmFPM"
+          class="sc-fzqNJr chjqeJ"
         >
           <span>
             <svg
-              class="sc-fzokOt jZsFTK"
+              class="sc-fzqBZW dQKxAb"
               enable-background="new 0 0 512 512;"
               spacing="preserve"
               version="1.1"
@@ -70,7 +70,7 @@ exports[`Matches snapshot 1`] = `
           </span>
         </div>
         <div
-          class="sc-fzqNJr euBCML"
+          class="sc-fzoyAV biuXzx"
         >
           Take attention to warning
         </div>
@@ -166,11 +166,9 @@ exports[`Matches snapshot 3`] = `
     >
       <header
         class="sc-AxiKw kwuhTE"
-      >
-        Form Dialog
-      </header>
+      />
       <form
-        class="sc-fzoLag gYkpLh"
+        class="sc-fzoXzr kyGBar"
       >
         <section
           class="sc-AxgMl hENNCS"
@@ -214,7 +212,7 @@ exports[`Matches snapshot 4`] = `
     class="sc-Axmtr eBZWUw"
   >
     <div
-      class="sc-AxhUy dybvAb"
+      class="sc-AxhUy dybvAb sc-fznyAO SlMew"
     >
       <header
         class="sc-AxiKw kwuhTE"
@@ -226,11 +224,11 @@ exports[`Matches snapshot 4`] = `
         style="flex-direction: row;"
       >
         <div
-          class="sc-fzqBZW lcmFPM"
+          class="sc-fzqNJr chjqeJ"
         >
           <span>
             <svg
-              class="sc-fznZeY czUxfB"
+              class="sc-fzokOt jZsFTK"
               enable-background="new 0 0 455.111 455.111;"
               spacing="preserve"
               version="1.1"
@@ -257,7 +255,7 @@ exports[`Matches snapshot 4`] = `
           </span>
         </div>
         <div
-          class="sc-fzqNJr euBCML"
+          class="sc-fzoyAV biuXzx"
         >
           <div>
             ID ошибки: 

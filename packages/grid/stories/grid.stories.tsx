@@ -234,6 +234,139 @@ export const ExternalPagingAndSort = () => {
   )
 }
 
+export const InternalPagingForAsyncData = () => {
+  const [forgedData, setForgedData] = React.useState([])
+  const [loading, setLoading] = React.useState(false)
+  const fetchIdRef = React.useRef(0)
+  const sortIdRef = React.useRef(0)
+
+  const fetchData = React.useCallback(() => {
+    const fetchId = ++fetchIdRef.current
+    setLoading(true)
+
+    // We'll even set a delay to simulate a server here
+    setTimeout(() => {
+      // Only update the data if this is the latest fetch
+      if (fetchId === fetchIdRef.current) {
+        setForgedData(sortableData)
+        setLoading(false)
+      }
+    }, 1000)
+  }, [])
+
+  useEffect(() => {
+    fetchData()
+  }, [])
+
+  const sortData = React.useCallback(
+    (sortConfig: Array<ColumnSortConfiguration>) => {
+      const sortId = ++sortIdRef.current
+      setLoading(true)
+
+      // We'll even set a delay to simulate a server here
+      setTimeout(() => {
+        // Only update the data if this is the latest sort
+        if (sortId === sortIdRef.current) {
+          const sortedData = sortableData.sort((row1, row2) => {
+            let result = 0
+            if (sortConfig.length > 0) {
+              sortConfig.forEach((config) => {
+                if (result == 0) {
+                  if (config.sortOrder === "desc") {
+                    if (row1[config.columnName] < row2[config.columnName]) {
+                      result = 1
+                    } else if (
+                      row1[config.columnName] > row2[config.columnName]
+                    ) {
+                      result = -1
+                    } else {
+                      result = 0
+                    }
+                  } else {
+                    if (row1[config.columnName] > row2[config.columnName]) {
+                      result = 1
+                    } else if (
+                      row1[config.columnName] < row2[config.columnName]
+                    ) {
+                      result = -1
+                    } else {
+                      result = 0
+                    }
+                  }
+                }
+              })
+            } else {
+              if (row1.id > row2.id) {
+                result = 1
+              } else if (row1.id < row2.id) {
+                result = -1
+              } else {
+                result = 0
+              }
+            }
+            return result
+          })
+          sortableData = sortedData
+          setLoading(false)
+        }
+      }, 1000)
+    },
+    [],
+  )
+
+  return (
+    <Grid<Data>
+      id="paging"
+      isLoading={loading}
+      columns={[
+        {
+          Header: "Id",
+          accessor: "id",
+        },
+        {
+          Header: "Name",
+          columns: [
+            {
+              Header: "First Name",
+              accessor: "firstName",
+            },
+            {
+              Header: "Last Name",
+              accessor: "lastName",
+            },
+          ],
+        },
+        {
+          Header: "Info",
+          columns: [
+            {
+              Header: "Age",
+              accessor: "age",
+            },
+            {
+              Header: "Visits",
+              accessor: "visits",
+            },
+            {
+              Header: "Status",
+              accessor: "status",
+            },
+            {
+              Header: "Profile Progress",
+              accessor: "progress",
+            },
+          ],
+        },
+      ]}
+      totalRowCount={sortableData.length}
+      // when external paging is absent, provide onRefresh callback to refetch data
+      onRefresh={fetchData}
+      onSort={sortData}
+      data={React.useMemo(() => forgedData, [forgedData])}
+    />
+  )
+}
+
 export const ExternalDataDrivenStyle = () => {
   return (
     <Grid<Data>
