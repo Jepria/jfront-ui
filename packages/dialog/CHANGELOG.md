@@ -1,5 +1,21 @@
 # Change Log
 
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [0.1.2](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-dialog@0.1.1...@jfront/ui-dialog@0.1.2) (2021-01-29)
+
+
+### Bug Fixes
+
+* dialog props and styles fixes ([2d44994](https://github.com/Jepria/jfront-ui/commit/2d44994fa570c5c1e9f225b5066a81993acf0e73))
+
+
+
+
+
+# Change Log
+
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 

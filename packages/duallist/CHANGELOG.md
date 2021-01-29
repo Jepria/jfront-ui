@@ -1,5 +1,18 @@
 # Change Log
 
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [0.1.5](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-dual-list@0.1.4...@jfront/ui-dual-list@0.1.5) (2021-01-29)
+
+**Note:** Version bump only for package @jfront/ui-dual-list
+
+
+
+
+
+# Change Log
+
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 

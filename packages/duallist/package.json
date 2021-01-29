@@ -1,6 +1,6 @@
 {
   "name": "@jfront/ui-dual-list",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "license": "Apache-2.0",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -22,7 +22,7 @@
     "test:cov": "yarn test --coverage"
   },
   "dependencies": {
-    "@jfront/ui-input": "^0.4.7"
+    "@jfront/ui-input": "^0.4.8"
   },
   "peerDependencies": {
     "react": "16.x",
