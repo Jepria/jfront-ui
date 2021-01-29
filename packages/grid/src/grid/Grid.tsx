@@ -153,6 +153,9 @@ export interface GridProps<D extends object>
   maxPageSize?: number
   //disable sorting dor all columns, if you want to disable only for some columns add disableSortBy to each column description in columns prop
   disableSort?: boolean
+  /**
+   * when external paging is absent, provide onRefresh callback to refetch data
+   */
   onRefresh?: (pageSize: number, pageNumber: number) => void
   onSelection?: (records?: D[]) => void
   //provide onSort if sorting is processing outside of Grid component (e.g. server-side)
