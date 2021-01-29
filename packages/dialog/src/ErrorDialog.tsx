@@ -1,6 +1,5 @@
 import React, { useState } from "react"
 import {
-  Modal,
   ModalHeader,
   ModalContent,
   ModalProps,
@@ -13,7 +12,8 @@ import {
   Error,
   ImageBox,
   ContentBox,
-  StyledButton
+  StyledButton,
+  StyledModal,
 } from "./styles"
 
 export interface ErrorDialogProps extends Omit<ModalProps, "children"> {
@@ -43,7 +43,7 @@ export const ErrorDialog = React.forwardRef<HTMLDivElement, ErrorDialogProps>(
     const [showDetails, setShowDetails] = useState(false)
 
     return (
-      <Modal {...props} onClose={onClose} ref={ref}>
+      <StyledModal {...props} onClose={onClose} ref={ref}>
         <ModalHeader>{header}</ModalHeader>
         <ModalContent style={{ flexDirection: "row" }}>
           <ImageBox>
@@ -83,10 +83,10 @@ export const ErrorDialog = React.forwardRef<HTMLDivElement, ErrorDialogProps>(
         {errorMessage && showDetails && (
           <FieldSet>
             <Legend>Детали</Legend>
-            {errorMessage && <TextArea>{errorMessage}</TextArea>}
+            {errorMessage && <TextArea defaultValue={errorMessage} />}
           </FieldSet>
         )}
-      </Modal>
+      </StyledModal>
     )
   },
 )
