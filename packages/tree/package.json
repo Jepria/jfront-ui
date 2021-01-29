@@ -1,6 +1,6 @@
 {
   "name": "@jfront/ui-tree",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "license": "Apache-2.0",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -25,9 +25,9 @@
     "test:cov": "yarn test --coverage"
   },
   "dependencies": {
-    "@jfront/ui-checkbox": "^0.4.2",
-    "@jfront/ui-hooks": "^0.5.0",
-    "@jfront/ui-icons": "^0.4.0",
+    "@jfront/ui-checkbox": "^0.4.3",
+    "@jfront/ui-hooks": "^0.5.1",
+    "@jfront/ui-icons": "^0.5.0",
     "react-virtualized": "9.22.3"
   },
   "peerDependencies": {

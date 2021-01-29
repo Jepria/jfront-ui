@@ -1,5 +1,21 @@
 # Change Log
 
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+# [0.3.0](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-grid@0.2.9...@jfront/ui-grid@0.3.0) (2021-01-29)
+
+
+### Features
+
+* onRefresh callback added in props ([1e87bdd](https://github.com/Jepria/jfront-ui/commit/1e87bdd7a8e97eea8c0b4f0d6005366d8521f23b))
+
+
+
+
+
+# Change Log
+
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
