@@ -1,15 +1,11 @@
 # Change Log
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
 ## [0.1.9](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-toolbar@0.1.8...@jfront/ui-toolbar@0.1.9) (2021-01-26)
 
 **Note:** Version bump only for package @jfront/ui-toolbar
-
-
-
-
 
 # Change Log
 

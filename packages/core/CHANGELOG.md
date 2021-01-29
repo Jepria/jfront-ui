@@ -1,18 +1,14 @@
 # Change Log
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
 # [0.7.0](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-core@0.6.0...@jfront/ui-core@0.7.0) (2021-01-26)
 
-
 ### Features
 
-* useTree hook ([ef1012a](https://github.com/Jepria/jfront-ui/commit/ef1012af5ef8d97ae968b37dcac86562dd24c55f))
-
-
-
-
+- useTree hook
+  ([ef1012a](https://github.com/Jepria/jfront-ui/commit/ef1012af5ef8d97ae968b37dcac86562dd24c55f))
 
 # Change Log
 
