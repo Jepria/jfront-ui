@@ -153,6 +153,10 @@ export interface GridProps<D extends object>
   maxPageSize?: number
   //disable sorting dor all columns, if you want to disable only for some columns add disableSortBy to each column description in columns prop
   disableSort?: boolean
+  /**
+   * when external paging is absent, provide onRefresh callback to refetch data
+   */
+  onRefresh?: (pageSize: number, pageNumber: number) => void
   onSelection?: (records?: D[]) => void
   //provide onSort if sorting is processing outside of Grid component (e.g. server-side)
   onSort?: (sortConfigs?: ColumnSortConfiguration[]) => void
@@ -208,6 +212,7 @@ export function Grid<D extends object>(props: GridProps<D>) {
     isLoading,
     disableSort = false,
     totalPageCount,
+    onRefresh,
     getHeaderProps = defaultPropGetter,
     getColumnProps = defaultPropGetter,
     getRowProps = defaultPropGetter,
@@ -712,10 +717,17 @@ export function Grid<D extends object>(props: GridProps<D>) {
             <Item
               id={id ? `${id}_pagingbar_refresh` : undefined}
               onClick={() => {
-                if (pageIndex === 0) {
-                  onPagination(pageIndex, pageSize)
-                } else {
+                if (pageIndex !== 0) {
                   gotoPage(0)
+                  if (!onPaging && onRefresh) {
+                    onRefresh(pageSize, 0)
+                  }
+                } else {
+                  if (onPaging) {
+                    onPagination(0, pageSize)
+                  } else if (onRefresh) {
+                    onRefresh(pageSize, 0)
+                  }
                 }
               }}
             >

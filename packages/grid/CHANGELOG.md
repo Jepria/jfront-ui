@@ -3,17 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [0.2.9](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-grid@0.2.8...@jfront/ui-grid@0.2.9) (2021-01-26)
+# [0.3.0](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-grid@0.2.9...@jfront/ui-grid@0.3.0) (2021-01-29)
 
+
+### Features
+
+* onRefresh callback added in props ([1e87bdd](https://github.com/Jepria/jfront-ui/commit/1e87bdd7a8e97eea8c0b4f0d6005366d8521f23b))
+
+
+
+
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [0.2.9](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-grid@0.2.8...@jfront/ui-grid@0.2.9) (2021-01-26)
 
 ### Bug Fixes
 
-* default page after refresh returned to 0 ([783797f](https://github.com/Jepria/jfront-ui/commit/783797f4373937d04c2c32786696f5ad75fd6e31))
-* grid default page ([07171c2](https://github.com/Jepria/jfront-ui/commit/07171c2040e1d35d2bcb820d6d575a9578a32303))
-
-
-
-
+- default page after refresh returned to 0
+  ([783797f](https://github.com/Jepria/jfront-ui/commit/783797f4373937d04c2c32786696f5ad75fd6e31))
+- grid default page
+  ([07171c2](https://github.com/Jepria/jfront-ui/commit/07171c2040e1d35d2bcb820d6d575a9578a32303))
 
 # Change Log
 

@@ -1,0 +1,88 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Matches snapshot  1`] = `
+<body>
+  <div>
+    <div
+      class="sc-AxhCb fJYEYh"
+    />
+    <div
+      class="sc-Axmtr eBZWUw"
+    >
+      <div
+        class="sc-AxhUy dybvAb sc-fznyAO SlMew"
+      >
+        <header
+          class="sc-AxiKw kwuhTE"
+        >
+          Ошибка
+        </header>
+        <section
+          class="sc-AxgMl hENNCS"
+          style="flex-direction: row;"
+        >
+          <div
+            class="sc-fzqNJr chjqeJ"
+          >
+            <span>
+              <svg
+                class="sc-fzokOt jZsFTK"
+                enable-background="new 0 0 455.111 455.111;"
+                spacing="preserve"
+                version="1.1"
+                viewBox="0 0 455.111 455.111"
+                x="0px"
+                xmlns="http://www.w3.org/2000/svg"
+                y="0px"
+              >
+                <circle
+                  cx="227.556"
+                  cy="227.556"
+                  fill="#E24C4B"
+                  r="227.556"
+                />
+                <path
+                  d="M455.111,227.556c0,125.156-102.4,227.556-227.556,227.556c-72.533,0-136.533-32.711-177.778-85.333c38.4,31.289,88.178,49.778,142.222,49.778c125.156,0,227.556-102.4,227.556-227.556c0-54.044-18.489-103.822-49.778-142.222C422.4,91.022,455.111,155.022,455.111,227.556z"
+                  fill="#D1403F"
+                />
+                <path
+                  d="M331.378,331.378c-8.533,8.533-22.756,8.533-31.289,0l-72.533-72.533l-72.533,72.533c-8.533,8.533-22.756,8.533-31.289,0c-8.533-8.533-8.533-22.756,0-31.289l72.533-72.533l-72.533-72.533c-8.533-8.533-8.533-22.756,0-31.289c8.533-8.533,22.756-8.533,31.289,0l72.533,72.533l72.533-72.533c8.533-8.533,22.756-8.533,31.289,0c8.533,8.533,8.533,22.756,0,31.289l-72.533,72.533l72.533,72.533C339.911,308.622,339.911,322.844,331.378,331.378z"
+                  fill="#FFFFFF"
+                />
+              </svg>
+            </span>
+          </div>
+          <div
+            class="sc-fzoyAV biuXzx"
+          >
+            <div>
+              Test error
+            </div>
+          </div>
+        </section>
+        <footer
+          class="sc-AxheI eZFndM"
+        >
+          <button
+            class="sc-fzoLsD dwsGTu sc-fzpans vXdVQ"
+            id="id1"
+            type="button"
+            value="OK"
+          >
+            OK
+          </button>
+          <button
+            class="sc-fzoLsD dwsGTu sc-fzpans vXdVQ"
+            id="id2"
+            type="button"
+            value="Показать детали"
+          >
+            Показать детали
+          </button>
+        </footer>
+      </div>
+    </div>
+    UI
+  </div>
+</body>
+`;

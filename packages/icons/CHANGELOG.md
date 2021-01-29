@@ -3,16 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-# [0.4.0](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-icons@0.3.0...@jfront/ui-icons@0.4.0) (2021-01-26)
+# [0.5.0](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-icons@0.4.0...@jfront/ui-icons@0.5.0) (2021-01-29)
 
 
 ### Features
 
-* useTree hook ([ef1012a](https://github.com/Jepria/jfront-ui/commit/ef1012af5ef8d97ae968b37dcac86562dd24c55f))
+* loader ([3600ee3](https://github.com/Jepria/jfront-ui/commit/3600ee3c3d69ecf0948f7342f7398dfe0785982f))
 
 
 
 
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+# [0.4.0](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-icons@0.3.0...@jfront/ui-icons@0.4.0) (2021-01-26)
+
+### Features
+
+- useTree hook
+  ([ef1012a](https://github.com/Jepria/jfront-ui/commit/ef1012af5ef8d97ae968b37dcac86562dd24c55f))
 
 # Change Log
 

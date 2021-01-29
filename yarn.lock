@@ -2062,6 +2062,13 @@
     "@types/yargs" "^15.0.0"
     chalk "^4.0.0"
 
+"@jfront/core-rest@^0.1.2":
+  version "0.1.3"
+  resolved "https://registry.yarnpkg.com/@jfront/core-rest/-/core-rest-0.1.3.tgz#dfae7bae8c96fe24ec9282ab0b752240a11bd49c"
+  integrity sha512-7S3f0qLpOFgq6caOfJS5ICMxZYqatcwj75Bxiy00m4Adviy/Jw4mMY79mpCKaKZy/000p67GlXAP1E65fz3n8g==
+  dependencies:
+    axios "0.20.0"
+
 "@jfront/ui-label@^0.1.0":
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/@jfront/ui-label/-/ui-label-0.1.0.tgz#05d84de5dff5830d7edf44476678e5f5724e327a"
@@ -5432,6 +5439,13 @@ axios@0.19.0:
   dependencies:
     follow-redirects "1.5.10"
     is-buffer "^2.0.2"
+
+axios@0.20.0:
+  version "0.20.0"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-0.20.0.tgz#057ba30f04884694993a8cd07fa394cff11c50bd"
+  integrity sha512-ANA4rr2BDcmmAQLOKft2fufrtuvlqR+cXNNinUmvfeSNCOF98PZL+7M/v1zIdGo7OLjEA9J2gXJL+j4zGsl0bA==
+  dependencies:
+    follow-redirects "^1.10.0"
 
 axios@^0.19.0:
   version "0.19.2"
@@ -9423,6 +9437,11 @@ follow-redirects@^1.0.0:
   version "1.13.0"
   resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.13.0.tgz#b42e8d93a2a7eea5ed88633676d6597bc8e384db"
   integrity sha512-aq6gF1BEKje4a9i9+5jimNFIpq4Q1WiwBToeRK5NvZBd/TRsmW8BsJfOEGkr76TbOyPVD3OVDN910EcUNtRYEA==
+
+follow-redirects@^1.10.0:
+  version "1.13.2"
+  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.13.2.tgz#dd73c8effc12728ba5cf4259d760ea5fb83e3147"
+  integrity sha512-6mPTgLxYm3r6Bkkg0vNM0HTjfGrOEtsfbhagQvbxDEsEkpNhw582upBaoRZylzen6krEmxXJgt9Ju6HiI4O7BA==
 
 for-in@^0.1.3:
   version "0.1.8"

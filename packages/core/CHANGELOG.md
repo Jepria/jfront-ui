@@ -3,16 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-# [0.7.0](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-core@0.6.0...@jfront/ui-core@0.7.0) (2021-01-26)
+# [0.8.0](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-core@0.7.0...@jfront/ui-core@0.8.0) (2021-01-29)
 
 
 ### Features
 
-* useTree hook ([ef1012a](https://github.com/Jepria/jfront-ui/commit/ef1012af5ef8d97ae968b37dcac86562dd24c55f))
+* error boundary ui component ([a601b62](https://github.com/Jepria/jfront-ui/commit/a601b62a86a5e2340e80564a8e7093f577e86ae4))
+* loader ([3600ee3](https://github.com/Jepria/jfront-ui/commit/3600ee3c3d69ecf0948f7342f7398dfe0785982f))
 
 
 
 
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+# [0.7.0](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-core@0.6.0...@jfront/ui-core@0.7.0) (2021-01-26)
+
+### Features
+
+- useTree hook
+  ([ef1012a](https://github.com/Jepria/jfront-ui/commit/ef1012af5ef8d97ae968b37dcac86562dd24c55f))
 
 # Change Log
 

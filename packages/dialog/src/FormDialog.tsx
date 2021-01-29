@@ -1,7 +1,13 @@
 import React from "react"
-import { Modal, ModalHeader, ModalContent, ModalProps, ModalFooter } from "@jfront/ui-modal"
+import {
+  Modal,
+  ModalHeader,
+  ModalContent,
+  ModalProps,
+  ModalFooter,
+} from "@jfront/ui-modal"
 import { Form } from "@jfront/ui-form"
-import { StyledButton } from "./styles";
+import { StyledButton } from "./styles"
 
 export interface FirmDialogProps extends ModalProps {
   header?: string
@@ -13,24 +19,36 @@ export interface FirmDialogProps extends ModalProps {
 
 export const FormDialog = React.forwardRef<HTMLDivElement, FirmDialogProps>(
   (
-    { header, children, withCloseButton, handleSubmit, cancelButtonLabel, onClose, ...props },
+    {
+      header,
+      children,
+      withCloseButton,
+      handleSubmit,
+      cancelButtonLabel,
+      onClose,
+      ...props
+    },
     ref,
   ) => {
     return (
       <Modal {...props}>
-        <ModalHeader>Form Dialog</ModalHeader>
-        <Form onSubmit={() => {
-          handleSubmit();
-          if (onClose) {
-            onClose();
-          }
-        }}>
-          <ModalContent>
-            {children}
-          </ModalContent>
+        <ModalHeader>{header}</ModalHeader>
+        <Form
+          onSubmit={() => {
+            handleSubmit()
+            if (onClose) {
+              onClose()
+            }
+          }}
+        >
+          <ModalContent>{children}</ModalContent>
           <ModalFooter>
-            <StyledButton type="submit" value="OK"/>
-            <StyledButton type="button" onClick={onClose} value={cancelButtonLabel ? cancelButtonLabel : "Отмена"}/>
+            <StyledButton type="submit" value="OK" />
+            <StyledButton
+              type="button"
+              onClick={onClose}
+              value={cancelButtonLabel ? cancelButtonLabel : "Отмена"}
+            />
           </ModalFooter>
         </Form>
       </Modal>
