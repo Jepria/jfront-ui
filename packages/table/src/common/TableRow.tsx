@@ -27,6 +27,7 @@ export const TableCell = styled.td<TableCellProps>`
     text-overflow: ellipsis;
     white-space: nowrap;
     ${(props) => (props.width ? `width: ${props.width};` : "")}
+    display: flex;
   }
   @media only screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px) {
     display: block;

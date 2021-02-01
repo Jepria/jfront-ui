@@ -24,7 +24,7 @@ exports[`Grid colors block renders correctly 1`] = `
             style="display: flex; flex: 1 0 auto; min-width: 90px;"
           >
             <th
-              class="sc-fzqBZW cVRUvW sc-fznJRM buLgpv"
+              class="sc-fzqBZW eSMKRw sc-fznJRM buLgpv"
               colspan="1"
               id="test_th_id"
               role="columnheader"
@@ -55,7 +55,7 @@ exports[`Grid colors block renders correctly 1`] = `
               />
             </th>
             <th
-              class="sc-fzqBZW cVRUvW sc-fznJRM buLgpv"
+              class="sc-fzqBZW eSMKRw sc-fznJRM buLgpv"
               colspan="1"
               id="test_th_name"
               role="columnheader"
@@ -86,7 +86,7 @@ exports[`Grid colors block renders correctly 1`] = `
               />
             </th>
             <th
-              class="sc-fzqBZW cVRUvW sc-fznJRM buLgpv"
+              class="sc-fzqBZW eSMKRw sc-fznJRM buLgpv"
               colspan="1"
               id="test_th_info"
               role="columnheader"
@@ -130,7 +130,7 @@ exports[`Grid colors block renders correctly 1`] = `
             style="display: flex; flex: 1 0 auto; min-width: 90px; background-color: rgb(255, 95, 87);"
           >
             <td
-              class="sc-fzoyAV erdTaJ sc-fzqARJ hFSrUY"
+              class="sc-fzoyAV dhjQXH sc-fzqARJ hFSrUY"
               id="test_td_0_0"
               label="Id"
               role="cell"
@@ -140,7 +140,7 @@ exports[`Grid colors block renders correctly 1`] = `
               1
             </td>
             <td
-              class="sc-fzoyAV fhdlZT sc-fzqARJ hFSrUY"
+              class="sc-fzoyAV cKqCBd sc-fzqARJ hFSrUY"
               id="test_td_0_1"
               label="Name"
               role="cell"
@@ -150,7 +150,7 @@ exports[`Grid colors block renders correctly 1`] = `
               123
             </td>
             <td
-              class="sc-fzoyAV hgHnhu sc-fzqARJ hFSrUY"
+              class="sc-fzoyAV hnRjjY sc-fzqARJ hFSrUY"
               id="test_td_0_2"
               label="Info"
               role="cell"
@@ -167,7 +167,7 @@ exports[`Grid colors block renders correctly 1`] = `
             style="display: flex; flex: 1 0 auto; min-width: 90px; background-color: rgb(255, 95, 87);"
           >
             <td
-              class="sc-fzoyAV erdTaJ sc-fzqARJ hFSrUY"
+              class="sc-fzoyAV dhjQXH sc-fzqARJ hFSrUY"
               id="test_td_1_0"
               label="Id"
               role="cell"
@@ -177,7 +177,7 @@ exports[`Grid colors block renders correctly 1`] = `
               1
             </td>
             <td
-              class="sc-fzoyAV fhdlZT sc-fzqARJ hFSrUY"
+              class="sc-fzoyAV cKqCBd sc-fzqARJ hFSrUY"
               id="test_td_1_1"
               label="Name"
               role="cell"
@@ -187,7 +187,7 @@ exports[`Grid colors block renders correctly 1`] = `
               121
             </td>
             <td
-              class="sc-fzoyAV hgHnhu sc-fzqARJ hFSrUY"
+              class="sc-fzoyAV hnRjjY sc-fzqARJ hFSrUY"
               id="test_td_1_2"
               label="Info"
               role="cell"
@@ -204,7 +204,7 @@ exports[`Grid colors block renders correctly 1`] = `
             style="display: flex; flex: 1 0 auto; min-width: 90px; background-color: rgb(255, 95, 87);"
           >
             <td
-              class="sc-fzoyAV erdTaJ sc-fzqARJ hFSrUY"
+              class="sc-fzoyAV dhjQXH sc-fzqARJ hFSrUY"
               id="test_td_2_0"
               label="Id"
               role="cell"
@@ -214,7 +214,7 @@ exports[`Grid colors block renders correctly 1`] = `
               1
             </td>
             <td
-              class="sc-fzoyAV fhdlZT sc-fzqARJ hFSrUY"
+              class="sc-fzoyAV cKqCBd sc-fzqARJ hFSrUY"
               id="test_td_2_1"
               label="Name"
               role="cell"
@@ -224,7 +224,7 @@ exports[`Grid colors block renders correctly 1`] = `
               14
             </td>
             <td
-              class="sc-fzoyAV hgHnhu sc-fzqARJ hFSrUY"
+              class="sc-fzoyAV hnRjjY sc-fzqARJ hFSrUY"
               id="test_td_2_2"
               label="Info"
               role="cell"
@@ -280,11 +280,11 @@ exports[`Grid colors block renders correctly 1`] = `
           >
             Стр. 
             <div
-              class="sc-fznMnq jFPAol"
+              class="sc-fznMnq gxOuQI"
               style="min-width: 60px; max-width: 150px; background-color: white;"
             >
               <input
-                class="sc-fzoant djCkbe"
+                class="sc-fzoant iQIBBj"
                 id="test_pagingbar_page"
                 max="1"
                 min="1"
@@ -339,11 +339,11 @@ exports[`Grid colors block renders correctly 1`] = `
         <label>
           Записей на странице: 
           <div
-            class="sc-fznMnq jFPAol"
+            class="sc-fznMnq gxOuQI"
             style="min-width: 60px; max-width: 100px; background-color: white;"
           >
             <input
-              class="sc-fzoant djCkbe"
+              class="sc-fzoant iQIBBj"
               id="test_pagingbar_pagesize"
               max="9999"
               min="1"
@@ -383,7 +383,7 @@ exports[`Matches snapshot  1`] = `
             style="display: flex; flex: 1 0 auto; min-width: 90px;"
           >
             <th
-              class="sc-fzqBZW cVRUvW sc-fznJRM buLgpv"
+              class="sc-fzqBZW eSMKRw sc-fznJRM buLgpv"
               colspan="1"
               id="test_th_id"
               role="columnheader"
@@ -414,7 +414,7 @@ exports[`Matches snapshot  1`] = `
               />
             </th>
             <th
-              class="sc-fzqBZW cVRUvW sc-fznJRM buLgpv"
+              class="sc-fzqBZW eSMKRw sc-fznJRM buLgpv"
               colspan="1"
               id="test_th_name"
               role="columnheader"
@@ -445,7 +445,7 @@ exports[`Matches snapshot  1`] = `
               />
             </th>
             <th
-              class="sc-fzqBZW cVRUvW sc-fznJRM buLgpv"
+              class="sc-fzqBZW eSMKRw sc-fznJRM buLgpv"
               colspan="1"
               id="test_th_info"
               role="columnheader"
@@ -489,7 +489,7 @@ exports[`Matches snapshot  1`] = `
             style="display: flex; flex: 1 0 auto; min-width: 90px;"
           >
             <td
-              class="sc-fzoyAV erdTaJ sc-fzqARJ hFSrUY"
+              class="sc-fzoyAV dhjQXH sc-fzqARJ hFSrUY"
               id="test_td_0_0"
               label="Id"
               role="cell"
@@ -499,7 +499,7 @@ exports[`Matches snapshot  1`] = `
               1
             </td>
             <td
-              class="sc-fzoyAV fhdlZT sc-fzqARJ hFSrUY"
+              class="sc-fzoyAV cKqCBd sc-fzqARJ hFSrUY"
               id="test_td_0_1"
               label="Name"
               role="cell"
@@ -509,7 +509,7 @@ exports[`Matches snapshot  1`] = `
               123
             </td>
             <td
-              class="sc-fzoyAV hgHnhu sc-fzqARJ hFSrUY"
+              class="sc-fzoyAV hnRjjY sc-fzqARJ hFSrUY"
               id="test_td_0_2"
               label="Info"
               role="cell"
@@ -565,11 +565,11 @@ exports[`Matches snapshot  1`] = `
           >
             Стр. 
             <div
-              class="sc-fznMnq jFPAol"
+              class="sc-fznMnq gxOuQI"
               style="min-width: 60px; max-width: 150px; background-color: white;"
             >
               <input
-                class="sc-fzoant djCkbe"
+                class="sc-fzoant iQIBBj"
                 id="test_pagingbar_page"
                 max="1"
                 min="1"
@@ -624,11 +624,11 @@ exports[`Matches snapshot  1`] = `
         <label>
           Записей на странице: 
           <div
-            class="sc-fznMnq jFPAol"
+            class="sc-fznMnq gxOuQI"
             style="min-width: 60px; max-width: 100px; background-color: white;"
           >
             <input
-              class="sc-fzoant djCkbe"
+              class="sc-fzoant iQIBBj"
               id="test_pagingbar_pagesize"
               max="9999"
               min="1"
