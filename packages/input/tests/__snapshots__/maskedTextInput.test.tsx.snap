@@ -3,10 +3,10 @@
 exports[`Error display MaskedTextInput 1`] = `
 <DocumentFragment>
   <div
-    class="sc-AxjAm frgqBk"
+    class="sc-AxjAm fMVLBd"
   >
     <input
-      class="sc-AxirZ dHumgW"
+      class="sc-AxirZ hedxSL"
       type="text"
       value=""
     />
@@ -22,10 +22,10 @@ exports[`Error display MaskedTextInput 1`] = `
 exports[`Matches snapshot  1`] = `
 <DocumentFragment>
   <div
-    class="sc-AxjAm fPKomS"
+    class="sc-AxjAm fvvfBP"
   >
     <input
-      class="sc-AxirZ dHumgW"
+      class="sc-AxirZ hedxSL"
       type="text"
       value=""
     />
@@ -36,10 +36,10 @@ exports[`Matches snapshot  1`] = `
 exports[`isLoading  display MaskedTextInput 1`] = `
 <DocumentFragment>
   <div
-    class="sc-AxjAm fPKomS"
+    class="sc-AxjAm fvvfBP"
   >
     <input
-      class="sc-AxirZ dHumgW"
+      class="sc-AxirZ hedxSL"
       type="text"
       value=""
     />

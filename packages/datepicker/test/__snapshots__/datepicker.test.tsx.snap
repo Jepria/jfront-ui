@@ -9,11 +9,11 @@ exports[`DatePicker isError renders correctly 1`] = `
       class="react-datepicker__input-container"
     >
       <div
-        class="sc-AxjAm frgqBk"
+        class="sc-AxjAm fMVLBd"
       >
         <input
           autocomplete="off"
-          class="sc-AxirZ dHumgW"
+          class="sc-AxirZ hedxSL"
           placeholder="**.**.****"
           type="text"
           value=""
@@ -38,11 +38,11 @@ exports[`DatePicker isLoading renders correctly 1`] = `
       class="react-datepicker__input-container"
     >
       <div
-        class="sc-AxjAm fPKomS"
+        class="sc-AxjAm fvvfBP"
       >
         <input
           autocomplete="off"
-          class="sc-AxirZ dHumgW"
+          class="sc-AxirZ hedxSL"
           placeholder="**.**.****"
           type="text"
           value=""
@@ -66,11 +66,11 @@ exports[`Matches snapshot  1`] = `
       class="react-datepicker__input-container"
     >
       <div
-        class="sc-AxjAm fPKomS"
+        class="sc-AxjAm fvvfBP"
       >
         <input
           autocomplete="off"
-          class="sc-AxirZ dHumgW"
+          class="sc-AxirZ hedxSL"
           placeholder="**.**.****"
           type="text"
           value=""
