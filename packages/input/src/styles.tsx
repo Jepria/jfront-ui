@@ -6,20 +6,12 @@ export interface StyledInputProps {
 }
 
 export const StyledDiv = styled.div<StyledInputProps>`
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-box-flex: 1;
-  -ms-flex-positive: 1;
   margin: 0;
   padding: 0;
   min-width: 150px;
   white-space: nowrap;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
   justify-content: center;
   height: 24px;
   text-align: left;
@@ -38,12 +30,8 @@ export const StyledDiv = styled.div<StyledInputProps>`
 `
 
 export const StyledInput = styled.input`
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-box-flex: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
+  display: flex;
+  flex: 1;
   min-width: 0px;
   margin: 0;
   padding: 0;
