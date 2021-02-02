@@ -540,6 +540,7 @@ export function Grid<D extends object>(props: GridProps<D>) {
     selections.forEach((rowId) => toggleRowSelected(rowId, true))
 
     setLastSelectedItem(row)
+    document.getSelection()?.removeAllRanges()
   }
 
   /**
@@ -547,12 +548,14 @@ export function Grid<D extends object>(props: GridProps<D>) {
    * @param e
    * @param row
    */
-  const selectRow = (e: React.MouseEvent, row: Row<D>) => {
+  const onRowClick = (row: Row<D>, e: React.MouseEvent) => {
     const selectableRow = (row as unknown) as UseRowSelectRowProps<D>
     if (e.shiftKey) {
       onShiftClick(row)
-      document.getSelection()?.removeAllRanges()
-    } else if (!e.ctrlKey) {
+    } else if (e.ctrlKey) {
+      if (!selectableRow.isSelected) setLastSelectedItem(row)
+      selectableRow.toggleRowSelected()
+    } else {
       selectedFlatRows.map((selectedRow) => {
         if (selectedRow.id !== row.id) {
           toggleRowSelected(selectedRow.id, false)
@@ -560,7 +563,7 @@ export function Grid<D extends object>(props: GridProps<D>) {
       })
       selectableRow.toggleRowSelected(true)
       setLastSelectedItem(row)
-      if (e.detail % 2 == 0) {
+      if (e.detail === 2) {
         if (onDoubleClick) {
           onDoubleClick(row.original, e)
         }
@@ -569,9 +572,6 @@ export function Grid<D extends object>(props: GridProps<D>) {
           onClick(row.original, e)
         }
       }
-    } else {
-      if (!selectableRow.isSelected) setLastSelectedItem(row)
-      selectableRow.toggleRowSelected()
     }
   }
 
@@ -638,7 +638,13 @@ export function Grid<D extends object>(props: GridProps<D>) {
                 {...row.getRowProps(
                   getRowProps(row as Row<D> & UseRowSelectRowProps<D>),
                 )}
-                onClick={(e) => selectRow(e, row)}
+                onClick={(e) => onRowClick(row, e)}
+                onDoubleClick={(e) => {
+                  if ((document as any).documentMode) {
+                    e.detail = 2
+                    onRowClick(row, e)
+                  }
+                }}
                 selected={selectableRow.isSelected}
               >
                 {row.cells.map((cell, index) => {
