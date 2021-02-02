@@ -3,7 +3,7 @@
 exports[`Grid colors block renders correctly 1`] = `
 <DocumentFragment>
   <section
-    class="sc-fzoLag inWPiQ sc-fzoXzr bvUUDN"
+    class="sc-fzoLag inWPiQ sc-fzoXzr cvtAp"
     id="test_grid"
   >
     <div
@@ -24,24 +24,13 @@ exports[`Grid colors block renders correctly 1`] = `
             style="display: flex; flex: 1 0 auto; min-width: 90px;"
           >
             <th
-              class="sc-fzqBZW eSMKRw sc-fznJRM buLgpv"
+              class="sc-fzqBZW eSMKRw sc-fznJRM dQhwFo"
               colspan="1"
               id="test_th_id"
               role="columnheader"
               style="box-sizing: border-box; flex: 150 0 auto; min-width: 30px; width: 150px; position: relative; cursor: pointer;"
               title="Id"
             >
-              <span
-                class="sc-fzoXWK dMrSVb"
-              >
-                <svg
-                  class="sc-fzpmMD blFlkL"
-                >
-                  <path
-                    d="M7 10l5 5 5-5z"
-                  />
-                </svg>
-              </span>
               Id
               <img
                 class="sc-fzoNJl fwLPQn"
@@ -55,24 +44,13 @@ exports[`Grid colors block renders correctly 1`] = `
               />
             </th>
             <th
-              class="sc-fzqBZW eSMKRw sc-fznJRM buLgpv"
+              class="sc-fzqBZW eSMKRw sc-fznJRM dQhwFo"
               colspan="1"
               id="test_th_name"
               role="columnheader"
               style="box-sizing: border-box; flex: 150 0 auto; min-width: 30px; width: 150px; position: relative; cursor: pointer;"
               title="Name"
             >
-              <span
-                class="sc-fzoXWK dMrSVb"
-              >
-                <svg
-                  class="sc-fzpmMD blFlkL"
-                >
-                  <path
-                    d="M7 10l5 5 5-5z"
-                  />
-                </svg>
-              </span>
               Name
               <img
                 class="sc-fzoNJl fwLPQn"
@@ -86,24 +64,13 @@ exports[`Grid colors block renders correctly 1`] = `
               />
             </th>
             <th
-              class="sc-fzqBZW eSMKRw sc-fznJRM buLgpv"
+              class="sc-fzqBZW eSMKRw sc-fznJRM dQhwFo"
               colspan="1"
               id="test_th_info"
               role="columnheader"
               style="box-sizing: border-box; flex: 150 0 auto; min-width: 30px; width: 150px; position: relative; cursor: pointer;"
               title="Info"
             >
-              <span
-                class="sc-fzoXWK dMrSVb"
-              >
-                <svg
-                  class="sc-fzpmMD blFlkL"
-                >
-                  <path
-                    d="M7 10l5 5 5-5z"
-                  />
-                </svg>
-              </span>
               Info
               <img
                 class="sc-fzoNJl fwLPQn"
@@ -234,29 +201,29 @@ exports[`Grid colors block renders correctly 1`] = `
               test3
             </td>
           </tr>
+        </tbody>
+        <tbody
+          class="sc-fzplWN hbEGsR"
+        >
           <tr
-            class="sc-fzplWN hbEGsR"
-          >
-            <td
-              class="sc-fznyAO eMIraO"
-              height="0"
-            />
-          </tr>
+            class="sc-fznyAO eMIraO"
+            height="0"
+          />
         </tbody>
       </table>
     </div>
     <div
-      class="sc-fzolEj dRnGtF"
+      class="sc-fznWOq gZnyhe"
       id="test_pagingbar"
     >
       <div
-        class="sc-fzqBkg ehTsMo"
+        class="sc-fzolEj vHnJP"
       >
         <div
-          class="sc-fznxKY kCZLjk"
+          class="sc-fzpmMD hbksPk"
         >
           <button
-            class="sc-fznMAR cnTfHo"
+            class="sc-fznxKY bcZRVQ"
             disabled=""
             id="test_pagingbar_first"
           >
@@ -266,7 +233,7 @@ exports[`Grid colors block renders correctly 1`] = `
             />
           </button>
           <button
-            class="sc-fznMAR cnTfHo"
+            class="sc-fznxKY bcZRVQ"
             disabled=""
             id="test_pagingbar_prev"
           >
@@ -276,15 +243,15 @@ exports[`Grid colors block renders correctly 1`] = `
             />
           </button>
           <label
-            class="sc-fznWOq jcxdSx"
+            class="sc-fznMAR dMzEFu"
           >
             Стр. 
             <div
-              class="sc-fznMnq gxOuQI"
+              class="sc-fznzOf dzUiil"
               style="min-width: 60px; max-width: 150px; background-color: white;"
             >
               <input
-                class="sc-fzoant iQIBBj"
+                class="sc-fznMnq iwlAwL"
                 id="test_pagingbar_page"
                 max="1"
                 min="1"
@@ -296,7 +263,7 @@ exports[`Grid colors block renders correctly 1`] = `
              из 1
           </label>
           <button
-            class="sc-fznMAR cnTfHo"
+            class="sc-fznxKY bcZRVQ"
             disabled=""
             id="test_pagingbar_next"
           >
@@ -306,7 +273,7 @@ exports[`Grid colors block renders correctly 1`] = `
             />
           </button>
           <button
-            class="sc-fznMAR cnTfHo"
+            class="sc-fznxKY bcZRVQ"
             disabled=""
             id="test_pagingbar_last"
           >
@@ -316,7 +283,7 @@ exports[`Grid colors block renders correctly 1`] = `
             />
           </button>
           <button
-            class="sc-fznMAR DWfuS"
+            class="sc-fznxKY gGYoEa"
             id="test_pagingbar_refresh"
           >
             <img
@@ -327,23 +294,23 @@ exports[`Grid colors block renders correctly 1`] = `
         </div>
       </div>
       <div
-        class="sc-fzqPZZ kSrhMH"
+        class="sc-fzqBkg LbbBR"
       >
         Записи 1 
             - 3
             из 3
       </div>
       <div
-        class="sc-fzoxKX jDdfqI"
+        class="sc-fzqPZZ kuQunZ"
       >
         <label>
           Записей на странице: 
           <div
-            class="sc-fznMnq gxOuQI"
+            class="sc-fznzOf dzUiil"
             style="min-width: 60px; max-width: 100px; background-color: white;"
           >
             <input
-              class="sc-fzoant iQIBBj"
+              class="sc-fznMnq iwlAwL"
               id="test_pagingbar_pagesize"
               max="9999"
               min="1"
@@ -362,7 +329,7 @@ exports[`Grid colors block renders correctly 1`] = `
 exports[`Matches snapshot  1`] = `
 <DocumentFragment>
   <section
-    class="sc-fzoLag inWPiQ sc-fzoXzr bvUUDN"
+    class="sc-fzoLag inWPiQ sc-fzoXzr cvtAp"
     id="test_grid"
   >
     <div
@@ -383,24 +350,13 @@ exports[`Matches snapshot  1`] = `
             style="display: flex; flex: 1 0 auto; min-width: 90px;"
           >
             <th
-              class="sc-fzqBZW eSMKRw sc-fznJRM buLgpv"
+              class="sc-fzqBZW eSMKRw sc-fznJRM dQhwFo"
               colspan="1"
               id="test_th_id"
               role="columnheader"
               style="box-sizing: border-box; flex: 150 0 auto; min-width: 30px; width: 150px; position: relative; cursor: pointer;"
               title="Id"
             >
-              <span
-                class="sc-fzoXWK dMrSVb"
-              >
-                <svg
-                  class="sc-fzpmMD blFlkL"
-                >
-                  <path
-                    d="M7 10l5 5 5-5z"
-                  />
-                </svg>
-              </span>
               Id
               <img
                 class="sc-fzoNJl fwLPQn"
@@ -414,24 +370,13 @@ exports[`Matches snapshot  1`] = `
               />
             </th>
             <th
-              class="sc-fzqBZW eSMKRw sc-fznJRM buLgpv"
+              class="sc-fzqBZW eSMKRw sc-fznJRM dQhwFo"
               colspan="1"
               id="test_th_name"
               role="columnheader"
               style="box-sizing: border-box; flex: 150 0 auto; min-width: 30px; width: 150px; position: relative; cursor: pointer;"
               title="Name"
             >
-              <span
-                class="sc-fzoXWK dMrSVb"
-              >
-                <svg
-                  class="sc-fzpmMD blFlkL"
-                >
-                  <path
-                    d="M7 10l5 5 5-5z"
-                  />
-                </svg>
-              </span>
               Name
               <img
                 class="sc-fzoNJl fwLPQn"
@@ -445,24 +390,13 @@ exports[`Matches snapshot  1`] = `
               />
             </th>
             <th
-              class="sc-fzqBZW eSMKRw sc-fznJRM buLgpv"
+              class="sc-fzqBZW eSMKRw sc-fznJRM dQhwFo"
               colspan="1"
               id="test_th_info"
               role="columnheader"
               style="box-sizing: border-box; flex: 150 0 auto; min-width: 30px; width: 150px; position: relative; cursor: pointer;"
               title="Info"
             >
-              <span
-                class="sc-fzoXWK dMrSVb"
-              >
-                <svg
-                  class="sc-fzpmMD blFlkL"
-                >
-                  <path
-                    d="M7 10l5 5 5-5z"
-                  />
-                </svg>
-              </span>
               Info
               <img
                 class="sc-fzoNJl fwLPQn"
@@ -519,29 +453,29 @@ exports[`Matches snapshot  1`] = `
               test
             </td>
           </tr>
+        </tbody>
+        <tbody
+          class="sc-fzplWN hbEGsR"
+        >
           <tr
-            class="sc-fzplWN hbEGsR"
-          >
-            <td
-              class="sc-fznyAO eMIraO"
-              height="0"
-            />
-          </tr>
+            class="sc-fznyAO eMIraO"
+            height="0"
+          />
         </tbody>
       </table>
     </div>
     <div
-      class="sc-fzolEj dRnGtF"
+      class="sc-fznWOq gZnyhe"
       id="test_pagingbar"
     >
       <div
-        class="sc-fzqBkg ehTsMo"
+        class="sc-fzolEj vHnJP"
       >
         <div
-          class="sc-fznxKY kCZLjk"
+          class="sc-fzpmMD hbksPk"
         >
           <button
-            class="sc-fznMAR cnTfHo"
+            class="sc-fznxKY bcZRVQ"
             disabled=""
             id="test_pagingbar_first"
           >
@@ -551,7 +485,7 @@ exports[`Matches snapshot  1`] = `
             />
           </button>
           <button
-            class="sc-fznMAR cnTfHo"
+            class="sc-fznxKY bcZRVQ"
             disabled=""
             id="test_pagingbar_prev"
           >
@@ -561,15 +495,15 @@ exports[`Matches snapshot  1`] = `
             />
           </button>
           <label
-            class="sc-fznWOq jcxdSx"
+            class="sc-fznMAR dMzEFu"
           >
             Стр. 
             <div
-              class="sc-fznMnq gxOuQI"
+              class="sc-fznzOf dzUiil"
               style="min-width: 60px; max-width: 150px; background-color: white;"
             >
               <input
-                class="sc-fzoant iQIBBj"
+                class="sc-fznMnq iwlAwL"
                 id="test_pagingbar_page"
                 max="1"
                 min="1"
@@ -581,7 +515,7 @@ exports[`Matches snapshot  1`] = `
              из 1
           </label>
           <button
-            class="sc-fznMAR cnTfHo"
+            class="sc-fznxKY bcZRVQ"
             disabled=""
             id="test_pagingbar_next"
           >
@@ -591,7 +525,7 @@ exports[`Matches snapshot  1`] = `
             />
           </button>
           <button
-            class="sc-fznMAR cnTfHo"
+            class="sc-fznxKY bcZRVQ"
             disabled=""
             id="test_pagingbar_last"
           >
@@ -601,7 +535,7 @@ exports[`Matches snapshot  1`] = `
             />
           </button>
           <button
-            class="sc-fznMAR DWfuS"
+            class="sc-fznxKY gGYoEa"
             id="test_pagingbar_refresh"
           >
             <img
@@ -612,23 +546,23 @@ exports[`Matches snapshot  1`] = `
         </div>
       </div>
       <div
-        class="sc-fzqPZZ kSrhMH"
+        class="sc-fzqBkg LbbBR"
       >
         Записи 1 
             - 1
             из 1
       </div>
       <div
-        class="sc-fzoxKX jDdfqI"
+        class="sc-fzqPZZ kuQunZ"
       >
         <label>
           Записей на странице: 
           <div
-            class="sc-fznMnq gxOuQI"
+            class="sc-fznzOf dzUiil"
             style="min-width: 60px; max-width: 100px; background-color: white;"
           >
             <input
-              class="sc-fzoant iQIBBj"
+              class="sc-fznMnq iwlAwL"
               id="test_pagingbar_pagesize"
               max="9999"
               min="1"

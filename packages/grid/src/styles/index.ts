@@ -2,7 +2,9 @@ import { Table } from "@jfront/ui-table"
 import styled from "styled-components"
 import { SettingsSmallImage } from "@jfront/ui-icons"
 
-export const Grid = styled(Table)``
+export const Grid = styled(Table)`
+  position: relative;
+`
 
 export const GridTable = styled(Table.Table)`
   font-family: Arial Unicode MS, Arial, sans-serif;
@@ -18,7 +20,7 @@ export const GridHeader = styled(Table.Header)`
 `
 
 export const GridHeaderCell = styled(Table.HeaderCell)`
-  min-height: 20px;
+  min-height: 31px;
   border-bottom: 1px solid #ddd;
   border-right: 1px solid #ddd;
   color: black;
@@ -29,8 +31,8 @@ export const GridHeaderCell = styled(Table.HeaderCell)`
   overflow: hidden;
   background-color: #ededed;
   background-clip: padding-box;
+  align-items: center;
   padding: 3px;
-  text-align: center;
 `
 
 export const GridBody = styled(Table.Body)``
@@ -115,55 +117,21 @@ export const ColumnConfigImg = styled(SettingsSmallImage)`
     opacity: 1;
   }
 `
-export interface StyledSpanProps {
-  active?: boolean
-  desc?: boolean
+
+export interface IconProps {
+  rotate: string
 }
 
-export const StyledSpan = styled.span<StyledSpanProps>`
-  position: absolute;
-  z-index: 2;
-  left: 0;
-  top: 0;
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  width: 24px;
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  text-align: center;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  ${(props) => (props.active ? "" : "display: none;")}
-  ${(props) =>
-    props.desc
-      ? ""
-      : `
-  -webkit-transform: rotate(180deg);
-      -ms-transform: rotate(180deg);
-          transform: rotate(180deg);`}
-`
-
-export const StyledSvg = styled.svg`
+export const StyledSvg = styled.svg<IconProps>`
   fill: currentColor;
   width: 1em;
   height: 1em;
   display: inline-block;
   font-size: 1.5rem;
-  -webkit-transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  -o-transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  -ms-flex-negative: 0;
   flex-shrink: 0;
+  user-select: none;
+  ${(props) => (props.rotate === "true" ? "transform: rotate(180deg);" : "")}
 `
 
 export const PagingToolbar = styled.div`
