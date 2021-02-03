@@ -13,6 +13,7 @@ import {
 import { TabPanel, Tab } from "@jfront/ui-tabpanel"
 import { Toolbar } from "@jfront/ui-toolbar"
 import namor from "namor"
+import { useState } from "react"
 
 function App() {
   interface Data {
@@ -48,6 +49,7 @@ function App() {
   }
 
   const data: Array<Data> = makeData(100)
+  const [rows, setRows] = useState<Array<any> | undefined>([])
 
   return (
     <div
@@ -83,6 +85,8 @@ function App() {
         }}
       >
         <Grid<Data>
+          onClick={(r, e) => console.log("click")}
+          onDoubleClick={(r, e) => window.alert()}
           columns={[
             {
               Header: "Id",
@@ -91,36 +95,31 @@ function App() {
             {
               Header: "First Name",
               accessor: "firstName",
-              width: 300,
             },
             {
               Header: "Last Name",
               accessor: "lastName",
-              width: 300,
             },
 
             {
               Header: "Age",
               accessor: "age",
-              width: 300,
             },
             {
               Header: "Visits",
               accessor: "visits",
-              width: 300,
             },
             {
               Header: "Status",
               accessor: "status",
-              width: 300,
             },
             {
               Header: "Profile Progress",
               accessor: "progress",
-              width: 300,
             },
           ]}
           data={React.useMemo(() => data, [])}
+          onSelection={setRows}
         />
       </div>
     </div>

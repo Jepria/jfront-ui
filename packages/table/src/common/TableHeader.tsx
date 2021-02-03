@@ -22,4 +22,5 @@ export const TableHeaderCell = styled.th<TableHeaderCellProps>`
   text-overflow: ellipsis;
   white-space: normal;
   overflow: hidden;
+  display: flex;
 `

@@ -3,10 +3,10 @@
 exports[`Matches snapshot  1`] = `
 <DocumentFragment>
   <div
-    class="sc-AxjAm fPKomS"
+    class="sc-AxjAm fvvfBP"
   >
     <input
-      class="sc-AxirZ dHumgW"
+      class="sc-AxirZ hedxSL"
       name="InputTextName"
       pattern="^[0-9]+$"
       type="number"
@@ -18,10 +18,10 @@ exports[`Matches snapshot  1`] = `
 exports[`NumberInput isError renders correctly 1`] = `
 <DocumentFragment>
   <div
-    class="sc-AxjAm frgqBk"
+    class="sc-AxjAm fMVLBd"
   >
     <input
-      class="sc-AxirZ dHumgW"
+      class="sc-AxirZ hedxSL"
       name="InputTextNameLoading"
       pattern="^[0-9]+$"
       type="number"
@@ -46,10 +46,10 @@ exports[`NumberInput label renders correctly 1`] = `
       Text label
     </label>
     <div
-      class="sc-AxjAm fPKomS"
+      class="sc-AxjAm fvvfBP"
     >
       <input
-        class="sc-AxirZ dHumgW"
+        class="sc-AxirZ hedxSL"
         name="InputTextName"
         pattern="^[0-9]+$"
         type="number"

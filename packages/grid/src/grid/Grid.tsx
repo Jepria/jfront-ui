@@ -9,7 +9,6 @@ import {
   GridRowCell,
   GlassMask,
   ModalDiv,
-  StyledSpan,
   StyledSvg,
   ColumnConfigImg,
   Resizer,
@@ -20,6 +19,7 @@ import {
   Label,
   Center,
   Right,
+  IconProps,
 } from "../styles"
 import { CheckBox } from "@jfront/ui-checkbox"
 import {
@@ -57,6 +57,7 @@ import {
 } from "react-table"
 import { throttle } from "throttle-debounce"
 import { NumberInput } from "@jfront/ui-input"
+import { Button } from "@jfront/ui-button"
 
 interface ColumnConfigPanelProps<D extends object> {
   id?: string
@@ -88,10 +89,7 @@ function ColumnConfigPanel<D extends object>(props: ColumnConfigPanelProps<D>) {
           flexDirection: "column",
           backgroundColor: "white",
           border: "1px solid #999",
-          borderRadius: "5%",
           padding: "15px",
-          minWidth: "100px",
-          maxWidth: "300px",
           ...place,
         }}
       >
@@ -100,6 +98,7 @@ function ColumnConfigPanel<D extends object>(props: ColumnConfigPanelProps<D>) {
             fontFamily: "Arial Unicode MS, Arial, sans-serif",
             fontSize: "small",
             height: "100px",
+            width: "150px",
             overflow: "hidden",
             overflowY: "auto",
             padding: 0,
@@ -124,8 +123,50 @@ function ColumnConfigPanel<D extends object>(props: ColumnConfigPanelProps<D>) {
             userSelect: "none",
           }}
         >
-          <button onClick={hide}>ОК</button>
+          <Button onClick={hide} value="ОК" />
         </div>
+      </ModalDiv>
+    </>
+  )
+}
+
+const Arrow = (props: IconProps) => {
+  return (
+    <StyledSvg
+      focusable="false"
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+      {...props}
+    >
+      <path d="M7 10l5 5 5-5z" />
+    </StyledSvg>
+  )
+}
+
+const Loader = (props: any) => {
+  return (
+    <>
+      <GlassMask style={{ top: "0px", left: "0px" }} />
+      <ModalDiv
+        id={props.id ? `${props.id}_loading` : undefined}
+        style={{
+          backgroundColor: "transparent",
+          height: "100%",
+          width: "100%",
+          top: "0px",
+          left: "0px",
+        }}
+      >
+        <span
+          style={{
+            backgroundColor: "white",
+            padding: "5px",
+            border: "1px solid #999",
+            fontSize: "8px",
+          }}
+        >
+          Загрузка данных...
+        </span>
       </ModalDiv>
     </>
   )
@@ -429,16 +470,21 @@ export function Grid<D extends object>(props: GridProps<D>) {
       window.alert("Выберите хотя бы одну колонку")
       return
     }
-    const rect = target?.getBoundingClientRect()
     const screenWidth = document.body.clientWidth
-    if (rect) {
-      if (rect && rect.right + 300 > screenWidth) {
+    if (target) {
+      if (
+        target.getBoundingClientRect().left + target.offsetWidth + 300 >
+        screenWidth
+      ) {
         setPlace({
-          top: rect.top,
-          right: screenWidth - rect.right,
+          top: target.offsetTop,
+          left: target.getBoundingClientRect().left - 150,
         })
       } else {
-        setPlace({ top: rect.top, left: rect.left })
+        setPlace({
+          top: target.offsetTop,
+          left: target.getBoundingClientRect().left,
+        })
       }
     }
     setColumnConfigVisible(visible)
@@ -540,6 +586,7 @@ export function Grid<D extends object>(props: GridProps<D>) {
     selections.forEach((rowId) => toggleRowSelected(rowId, true))
 
     setLastSelectedItem(row)
+    document.getSelection()?.removeAllRanges()
   }
 
   /**
@@ -547,12 +594,14 @@ export function Grid<D extends object>(props: GridProps<D>) {
    * @param e
    * @param row
    */
-  const selectRow = (e: React.MouseEvent, row: Row<D>) => {
+  const onRowClick = (row: Row<D>, e: React.MouseEvent) => {
     const selectableRow = (row as unknown) as UseRowSelectRowProps<D>
     if (e.shiftKey) {
       onShiftClick(row)
-      document.getSelection()?.removeAllRanges()
-    } else if (!e.ctrlKey) {
+    } else if (e.ctrlKey) {
+      if (!selectableRow.isSelected) setLastSelectedItem(row)
+      selectableRow.toggleRowSelected()
+    } else {
       selectedFlatRows.map((selectedRow) => {
         if (selectedRow.id !== row.id) {
           toggleRowSelected(selectedRow.id, false)
@@ -560,7 +609,7 @@ export function Grid<D extends object>(props: GridProps<D>) {
       })
       selectableRow.toggleRowSelected(true)
       setLastSelectedItem(row)
-      if (e.detail % 2 == 0) {
+      if (e.detail === 2) {
         if (onDoubleClick) {
           onDoubleClick(row.original, e)
         }
@@ -569,9 +618,6 @@ export function Grid<D extends object>(props: GridProps<D>) {
           onClick(row.original, e)
         }
       }
-    } else {
-      if (!selectableRow.isSelected) setLastSelectedItem(row)
-      selectableRow.toggleRowSelected()
     }
   }
 
@@ -601,14 +647,9 @@ export function Grid<D extends object>(props: GridProps<D>) {
                     ])}
                     title={`${column.Header}`}
                   >
-                    <StyledSpan
-                      active={sortableColumn.isSorted}
-                      desc={sortableColumn.isSortedDesc}
-                    >
-                      <StyledSvg>
-                        <path d="M7 10l5 5 5-5z" />
-                      </StyledSvg>
-                    </StyledSpan>
+                    {sortableColumn.isSorted && (
+                      <Arrow rotate={String(sortableColumn.isSortedDesc)} />
+                    )}
                     {column.render("Header")}
                     <ColumnConfigImg
                       onClick={(e) => {
@@ -638,7 +679,13 @@ export function Grid<D extends object>(props: GridProps<D>) {
                 {...row.getRowProps(
                   getRowProps(row as Row<D> & UseRowSelectRowProps<D>),
                 )}
-                onClick={(e) => selectRow(e, row)}
+                onClick={(e) => onRowClick(row, e)}
+                onDoubleClick={(e) => {
+                  if ((document as any).documentMode) {
+                    e.detail = 2
+                    onRowClick(row, e)
+                  }
+                }}
                 selected={selectableRow.isSelected}
               >
                 {row.cells.map((cell, index) => {
@@ -776,30 +823,7 @@ export function Grid<D extends object>(props: GridProps<D>) {
           hide={() => showColumnConfig(false)}
         />
       )}
-      {isLoading && (
-        <>
-          <GlassMask />
-          <ModalDiv
-            id={id ? `${id}_loading` : undefined}
-            style={{
-              backgroundColor: "transparent",
-              height: "100%",
-              width: "100%",
-            }}
-          >
-            <span
-              style={{
-                backgroundColor: "white",
-                padding: "5px",
-                border: "1px solid #999",
-                fontSize: "8px",
-              }}
-            >
-              Загрузка данных...
-            </span>
-          </ModalDiv>
-        </>
-      )}
+      {isLoading && <Loader id={id} />}
     </StyledGrid>
   )
 }
