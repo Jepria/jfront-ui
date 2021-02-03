@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.9](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-input@0.4.8...@jfront/ui-input@0.4.9) (2021-02-03)
+
+
+### Bug Fixes
+
+* table cell flex display property wasn't inherited in IE ([f948958](https://github.com/Jepria/jfront-ui/commit/f948958b3c0710d9561c682e60983f7101c94dbf))
+
+
+
+
+
 ## [0.4.8](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-input@0.4.7...@jfront/ui-input@0.4.8) (2021-01-29)
 
 **Note:** Version bump only for package @jfront/ui-input
