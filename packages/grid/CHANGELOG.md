@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.1](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-grid@0.3.0...@jfront/ui-grid@0.3.1) (2021-02-03)
+
+
+### Bug Fixes
+
+* absolute elements positioning ([b19ddcc](https://github.com/Jepria/jfront-ui/commit/b19ddcc7ece55009f8b309b854671d230608c807))
+* grid selection ([7aa6948](https://github.com/Jepria/jfront-ui/commit/7aa6948d1fb19f57b7ddb2f00b8d6b74b51e35aa))
+* row double click IE ([ebe224a](https://github.com/Jepria/jfront-ui/commit/ebe224ad380134c34010019fb92c0f5eb90e21f2))
+
+
+
+
+
 # [0.3.0](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-grid@0.2.9...@jfront/ui-grid@0.3.0) (2021-01-29)
 
 
