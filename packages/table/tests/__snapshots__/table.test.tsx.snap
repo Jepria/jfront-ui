@@ -474,13 +474,13 @@ exports[`Matches snapshot  1`] = `
               Row6
             </td>
           </tr>
+        </tbody>
+        <tbody
+          class="sc-fzplWN hbEGsR"
+        >
           <tr
-            class="sc-fzplWN hbEGsR"
-          >
-            <td
-              class="sc-fznyAO eMIraO"
-            />
-          </tr>
+            class="sc-fznyAO eMIraO"
+          />
         </tbody>
       </table>
     </div>

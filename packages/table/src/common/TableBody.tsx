@@ -30,7 +30,7 @@ interface ScrollDivProps {
   top?: number
 }
 
-const StyledScroll = styled.tr<ScrollDivProps>`
+const StyledScroll = styled.tbody<ScrollDivProps>`
   margin: 0;
   padding: 0;
   display: block;
@@ -50,7 +50,7 @@ const StyledScroll = styled.tr<ScrollDivProps>`
   ${(props) => (props.top ? `top: ${props.top}px` : "")}
 `
 
-const ScrollSpacer = styled.td<ScrollDivProps>`
+const ScrollSpacer = styled.tr<ScrollDivProps>`
   margin: 0;
   padding: 0;
   display: block;
@@ -64,7 +64,7 @@ export const TableBody: React.FC<React.DetailedHTMLProps<
   HTMLTableSectionElement
 >> = (props) => {
   const refThis = useRef<HTMLTableSectionElement>(null)
-  const refScroll = useRef<HTMLTableRowElement>(null)
+  const refScroll = useRef<HTMLTableSectionElement>(null)
 
   useLayoutEffect(() => {
     const refTbody = refThis.current
@@ -107,16 +107,16 @@ export const TableBody: React.FC<React.DetailedHTMLProps<
           <>
             <StyledTBody {...props} ref={refThis}>
               {props.children}
-              <StyledScroll
-                height={resizerProps.height}
-                ref={refScroll}
-                top={refThis.current?.getBoundingClientRect()?.top}
-              >
-                <ScrollSpacer
-                  height={resizerProps.targetRef.current?.scrollHeight}
-                />
-              </StyledScroll>
             </StyledTBody>
+            <StyledScroll
+              height={resizerProps.height}
+              ref={refScroll}
+              top={refThis.current ? refThis.current.offsetTop : 0}
+            >
+              <ScrollSpacer
+                height={resizerProps.targetRef.current?.scrollHeight}
+              />
+            </StyledScroll>
           </>
         )
       }}
