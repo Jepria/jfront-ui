@@ -41,6 +41,7 @@ export const GridRow = styled(Table.Row)`
   box-sizing: border-box;
   min-height: 13px;
   border-bottom: 1px solid #ededed;
+  border-top: 1px solid #ffffff;
   @media only screen and (max-width: 760px),
     (min-device-width: 768px) and (max-device-width: 1024px) {
     flex-direction: column;
@@ -52,15 +53,17 @@ export const GridRow = styled(Table.Row)`
     background: #fff;
     &:nth-child(odd) {
       background: #fafafa;
+      border-top: 1px solid #fafafa;
     }
     &:hover {
       background: #eee;
+      border-top: 1px solid #ededed;
     }
   `}
 `
 
 export const GridRowCell = styled(Table.Cell)`
-  min-height: 20px;
+  min-height: 19px;
   cursor: pointer;
   padding: 3px;
   @media only screen and (min-width: 761px) {

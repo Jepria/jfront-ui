@@ -10,7 +10,7 @@ exports[`Grid colors block renders correctly 1`] = `
       class="sc-fznZeY JotLz"
     >
       <table
-        class="sc-fznKkj fMNvPW sc-fzpjYC fZJtjE"
+        class="sc-fznKkj FtzxI sc-fzpjYC fZJtjE"
         id="test_table"
         role="table"
         style="min-width: 450px;"
@@ -91,13 +91,13 @@ exports[`Grid colors block renders correctly 1`] = `
           role="rowgroup"
         >
           <tr
-            class="sc-fzqNJr jQXiND sc-fzoiQi eYEEes"
+            class="sc-fzqNJr jQXiND sc-fzoiQi boeKXo"
             id="test_row_0"
             role="row"
             style="display: flex; flex: 1 0 auto; min-width: 90px; background-color: rgb(255, 95, 87);"
           >
             <td
-              class="sc-fzoyAV dhjQXH sc-fzqARJ hFSrUY"
+              class="sc-fzoyAV dhjQXH sc-fzqARJ jCtNIy"
               id="test_td_0_0"
               label="Id"
               role="cell"
@@ -107,7 +107,7 @@ exports[`Grid colors block renders correctly 1`] = `
               1
             </td>
             <td
-              class="sc-fzoyAV cKqCBd sc-fzqARJ hFSrUY"
+              class="sc-fzoyAV cKqCBd sc-fzqARJ jCtNIy"
               id="test_td_0_1"
               label="Name"
               role="cell"
@@ -117,7 +117,7 @@ exports[`Grid colors block renders correctly 1`] = `
               123
             </td>
             <td
-              class="sc-fzoyAV hnRjjY sc-fzqARJ hFSrUY"
+              class="sc-fzoyAV hnRjjY sc-fzqARJ jCtNIy"
               id="test_td_0_2"
               label="Info"
               role="cell"
@@ -128,13 +128,13 @@ exports[`Grid colors block renders correctly 1`] = `
             </td>
           </tr>
           <tr
-            class="sc-fzqNJr jQXiND sc-fzoiQi eYEEes"
+            class="sc-fzqNJr jQXiND sc-fzoiQi boeKXo"
             id="test_row_1"
             role="row"
             style="display: flex; flex: 1 0 auto; min-width: 90px; background-color: rgb(255, 95, 87);"
           >
             <td
-              class="sc-fzoyAV dhjQXH sc-fzqARJ hFSrUY"
+              class="sc-fzoyAV dhjQXH sc-fzqARJ jCtNIy"
               id="test_td_1_0"
               label="Id"
               role="cell"
@@ -144,7 +144,7 @@ exports[`Grid colors block renders correctly 1`] = `
               1
             </td>
             <td
-              class="sc-fzoyAV cKqCBd sc-fzqARJ hFSrUY"
+              class="sc-fzoyAV cKqCBd sc-fzqARJ jCtNIy"
               id="test_td_1_1"
               label="Name"
               role="cell"
@@ -154,7 +154,7 @@ exports[`Grid colors block renders correctly 1`] = `
               121
             </td>
             <td
-              class="sc-fzoyAV hnRjjY sc-fzqARJ hFSrUY"
+              class="sc-fzoyAV hnRjjY sc-fzqARJ jCtNIy"
               id="test_td_1_2"
               label="Info"
               role="cell"
@@ -165,13 +165,13 @@ exports[`Grid colors block renders correctly 1`] = `
             </td>
           </tr>
           <tr
-            class="sc-fzqNJr jQXiND sc-fzoiQi eYEEes"
+            class="sc-fzqNJr jQXiND sc-fzoiQi boeKXo"
             id="test_row_2"
             role="row"
             style="display: flex; flex: 1 0 auto; min-width: 90px; background-color: rgb(255, 95, 87);"
           >
             <td
-              class="sc-fzoyAV dhjQXH sc-fzqARJ hFSrUY"
+              class="sc-fzoyAV dhjQXH sc-fzqARJ jCtNIy"
               id="test_td_2_0"
               label="Id"
               role="cell"
@@ -181,7 +181,7 @@ exports[`Grid colors block renders correctly 1`] = `
               1
             </td>
             <td
-              class="sc-fzoyAV cKqCBd sc-fzqARJ hFSrUY"
+              class="sc-fzoyAV cKqCBd sc-fzqARJ jCtNIy"
               id="test_td_2_1"
               label="Name"
               role="cell"
@@ -191,7 +191,7 @@ exports[`Grid colors block renders correctly 1`] = `
               14
             </td>
             <td
-              class="sc-fzoyAV hnRjjY sc-fzqARJ hFSrUY"
+              class="sc-fzoyAV hnRjjY sc-fzqARJ jCtNIy"
               id="test_td_2_2"
               label="Info"
               role="cell"
@@ -336,7 +336,7 @@ exports[`Matches snapshot  1`] = `
       class="sc-fznZeY JotLz"
     >
       <table
-        class="sc-fznKkj fMNvPW sc-fzpjYC fZJtjE"
+        class="sc-fznKkj FtzxI sc-fzpjYC fZJtjE"
         id="test_table"
         role="table"
         style="min-width: 450px;"
@@ -417,13 +417,13 @@ exports[`Matches snapshot  1`] = `
           role="rowgroup"
         >
           <tr
-            class="sc-fzqNJr jQXiND sc-fzoiQi eYEEes"
+            class="sc-fzqNJr jQXiND sc-fzoiQi boeKXo"
             id="test_row_0"
             role="row"
             style="display: flex; flex: 1 0 auto; min-width: 90px;"
           >
             <td
-              class="sc-fzoyAV dhjQXH sc-fzqARJ hFSrUY"
+              class="sc-fzoyAV dhjQXH sc-fzqARJ jCtNIy"
               id="test_td_0_0"
               label="Id"
               role="cell"
@@ -433,7 +433,7 @@ exports[`Matches snapshot  1`] = `
               1
             </td>
             <td
-              class="sc-fzoyAV cKqCBd sc-fzqARJ hFSrUY"
+              class="sc-fzoyAV cKqCBd sc-fzqARJ jCtNIy"
               id="test_td_0_1"
               label="Name"
               role="cell"
@@ -443,7 +443,7 @@ exports[`Matches snapshot  1`] = `
               123
             </td>
             <td
-              class="sc-fzoyAV hnRjjY sc-fzqARJ hFSrUY"
+              class="sc-fzoyAV hnRjjY sc-fzqARJ jCtNIy"
               id="test_td_0_2"
               label="Info"
               role="cell"
