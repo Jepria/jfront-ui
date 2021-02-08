@@ -39,7 +39,6 @@ export const GridBody = styled(Table.Body)``
 
 export const GridRow = styled(Table.Row)`
   box-sizing: border-box;
-  min-height: 13px;
   border-bottom: 1px solid #ededed;
   border-top: 1px solid #ffffff;
   @media only screen and (max-width: 760px),
@@ -65,12 +64,9 @@ export const GridRow = styled(Table.Row)`
 export const GridRowCell = styled(Table.Cell)`
   min-height: 19px;
   cursor: pointer;
-  padding: 3px;
+  padding: 2px;
   @media only screen and (min-width: 761px) {
-    padding-bottom: 3px;
     padding-left: 5px;
-    padding-right: 3px;
-    padding-top: 3px;
     overflow: hidden;
     font: 11px tahoma, arial, verdana, sans-serif;
     text-overflow: ellipsis;
