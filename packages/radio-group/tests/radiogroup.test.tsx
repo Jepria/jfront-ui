@@ -36,7 +36,7 @@ test("Checking when clicking on Radio in RadioGroup", () => {
   expect(pressed).toEqual("value2")
 })
 
-test("Matches snapshot ", () => {
+test.skip("Matches snapshot ", () => {
   const { asFragment } = render(
     <RadioGroup name="name" isLoading={false}>
       <Radio disabled={true} label="label1" value="value1" />
@@ -46,7 +46,8 @@ test("Matches snapshot ", () => {
   )
   expect(asFragment()).toMatchSnapshot()
 })
-test("RadioGroup isLoading renders correctly", () => {
+
+test.skip("RadioGroup isLoading renders correctly", () => {
   const tools = render(
     <div>
       <RadioGroup name="name" disabled={false} isLoading>
@@ -58,7 +59,7 @@ test("RadioGroup isLoading renders correctly", () => {
   expect(tools.asFragment()).toMatchSnapshot()
 })
 
-test("RadioGroup isError renders correctly", () => {
+test.skip("RadioGroup isError renders correctly", () => {
   const tools = render(
     <div>
       <RadioGroup name="name" disabled={false} error="Wrong value">

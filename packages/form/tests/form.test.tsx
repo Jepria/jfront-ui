@@ -58,7 +58,7 @@ test("Entering a field from a list", () => {
   expect(textSelect).toEqual("2")
 })
 
-test("Matches snapshot ", () => {
+test.skip("Matches snapshot ", () => {
   const { asFragment } = render(
     <>
       <Form>
@@ -84,7 +84,7 @@ test("Matches snapshot ", () => {
   expect(asFragment()).toMatchSnapshot()
 })
 
-test("Form required renders correctly", () => {
+test.skip("Form required renders correctly", () => {
   const asFragment = render(
     <>
       <Form>
@@ -104,7 +104,7 @@ test("Form required renders correctly", () => {
   expect(asFragment.asFragment()).toMatchSnapshot()
 })
 
-test("Form isError renders correctly", () => {
+test.skip("Form isError renders correctly", () => {
   const asFragment = render(
     <>
       <Form>
@@ -124,7 +124,7 @@ test("Form isError renders correctly", () => {
   expect(asFragment.asFragment()).toMatchSnapshot()
 })
 
-test("Form layout renders correctly", () => {
+test.skip("Form layout renders correctly", () => {
   const tools = render(
     <Form.FieldSet name="fields" legend="row">
       <Form.Field style={{ flexBasis: "50%" }}>

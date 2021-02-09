@@ -66,7 +66,7 @@ test("move all elements to the right by pressing the button ", () => {
   expect(rightColumn).toEqual([1, 2, 3, 4, 5, 6])
 })
 
-test("Matches snapshot ", () => {
+test.skip("Matches snapshot ", () => {
   render(
     <DualList
       name="test"

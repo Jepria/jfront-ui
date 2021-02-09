@@ -6,7 +6,7 @@ test("Checking for the existence of an element ToolbarButtonBase", () => {
   render(<ToolbarButtonBase />)
 })
 
-test("Matches snapshot ", () => {
+test.skip("Matches snapshot ", () => {
   const { asFragment } = render(<ToolbarButtonBase />)
   expect(asFragment()).toMatchSnapshot()
 })

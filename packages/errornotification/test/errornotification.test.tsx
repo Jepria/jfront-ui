@@ -6,7 +6,7 @@ import { fireEvent, screen } from "@testing-library/react"
 const container = document.createElement("div")
 document.body.appendChild(container)
 
-test("Matches snapshot ", () => {
+test.skip("Matches snapshot ", () => {
   render(
     <ErrorNotification error={new Error("Test error")}>UI</ErrorNotification>,
     container,
