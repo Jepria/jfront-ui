@@ -8,6 +8,8 @@ import {
   ToolbarButtonDelete,
   ToolbarButtonView,
   ToolbarSplitter,
+  ToolbarButtonSearch,
+  ToolbarButtonList,
 } from "../src/buttons"
 
 export default {
@@ -19,17 +21,15 @@ export const BasicUsage = () => {
   return (
     <>
       <Toolbar>
-        <ToolbarButtonFind />
-        <ToolbarSplitter />
         <ToolbarButtonCreate />
-        <ToolbarSplitter />
         <ToolbarButtonSave />
-        <ToolbarSplitter />
         <ToolbarButtonEdit />
-        <ToolbarSplitter />
         <ToolbarButtonDelete />
-        <ToolbarSplitter />
         <ToolbarButtonView />
+        <ToolbarSplitter />
+        <ToolbarButtonList />
+        <ToolbarButtonFind />
+        <ToolbarButtonSearch />
       </Toolbar>
     </>
   )
