@@ -1,4 +1,3 @@
-export * from "@jfront/ui-app"
 export * from "@jfront/ui-datepicker"
 export * from "@jfront/ui-form"
 export * from "@jfront/ui-table"
