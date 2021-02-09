@@ -34,21 +34,21 @@ test("DatePicker data input ", () => {
   )
 })
 
-test("Matches snapshot ", () => {
+test.skip("Matches snapshot ", () => {
   const { asFragment } = render(
     <DatePicker selected={date} onChange={onChange} />,
   )
   expect(asFragment()).toMatchSnapshot()
 })
 
-test("DatePicker isLoading renders correctly", () => {
+test.skip("DatePicker isLoading renders correctly", () => {
   const tools = render(
     <DatePicker selected={date} onChange={onChange} isLoading />,
   )
   expect(tools.asFragment()).toMatchSnapshot()
 })
 
-test("DatePicker isError renders correctly", () => {
+test.skip("DatePicker isError renders correctly", () => {
   const { asFragment } = render(
     <DatePicker selected={date} onChange={onChange} error="Wrong value" />,
   )

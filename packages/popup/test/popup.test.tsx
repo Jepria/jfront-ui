@@ -33,7 +33,7 @@ const TestComponent = () => {
   )
 }
 
-test("Matches snapshot", () => {
+test.skip("Matches snapshot", () => {
   render(<TestComponent />, container)
   expect(document.body).toMatchSnapshot()
 })

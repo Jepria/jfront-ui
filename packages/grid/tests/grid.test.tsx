@@ -41,7 +41,8 @@ test("Checking clicking on one of the grid elements", () => {
   fireEvent.click(input)
   expect(record).toEqual([{ id: 1, name: "Rook", info: "Rook" }])
 })
-test("Matches snapshot ", () => {
+
+test.skip("Matches snapshot ", () => {
   const { asFragment } = render(
     <Grid
       id="test"
@@ -56,7 +57,7 @@ test("Matches snapshot ", () => {
   expect(asFragment()).toMatchSnapshot()
 })
 
-test("Grid colors block renders correctly", () => {
+test.skip("Grid colors block renders correctly", () => {
   const { asFragment } = render(
     <Grid
       id="test"

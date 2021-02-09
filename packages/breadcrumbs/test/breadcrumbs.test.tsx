@@ -7,7 +7,7 @@ import { fireEvent, screen } from "@testing-library/react"
 const container = document.createElement("div")
 document.body.appendChild(container)
 
-test("Matches snapshot 1", () => {
+test.skip("Matches snapshot 1", () => {
   render(
     <Breadcrumbs>
       <Link href="/test1">Test Link1</Link>
@@ -19,7 +19,7 @@ test("Matches snapshot 1", () => {
   expect(document.body).toMatchSnapshot()
 })
 
-test("Matches snapshot 2", () => {
+test.skip("Matches snapshot 2", () => {
   render(
     <Breadcrumbs>
       <Link href="/test1">Test Link1</Link>

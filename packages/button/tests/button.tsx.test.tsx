@@ -25,7 +25,7 @@ test("Checking Button clicking", () => {
   expect(ButtonClick).toEqual(true)
 })
 
-test("Matches snapshot ", () => {
+test.skip("Matches snapshot ", () => {
   const { asFragment } = render(<Button />)
   expect(asFragment()).toMatchSnapshot()
 })

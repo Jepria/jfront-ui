@@ -6,7 +6,7 @@ test("Checking for the existence of an element Modal", () => {
   expect(render(<Modal visible>Text</Modal>))
 })
 
-test("Matches snapshot", () => {
+test.skip("Matches snapshot", () => {
   const { asFragment } = render(<Modal visible>Text</Modal>)
   expect(asFragment()).toMatchSnapshot()
 })
