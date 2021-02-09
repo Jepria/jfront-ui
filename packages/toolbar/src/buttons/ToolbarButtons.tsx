@@ -14,7 +14,7 @@ import styled from "styled-components"
 
 const ToolbarButtonFind: React.FC<ToolbarButtonInterface> = (props) => {
   return (
-    <ToolbarButtonBase {...props}>
+    <ToolbarButtonBase title="Поиск" {...props}>
       <SearchImage />
     </ToolbarButtonBase>
   )
@@ -22,7 +22,7 @@ const ToolbarButtonFind: React.FC<ToolbarButtonInterface> = (props) => {
 
 const ToolbarButtonCreate: React.FC<ToolbarButtonInterface> = (props) => {
   return (
-    <ToolbarButtonBase {...props}>
+    <ToolbarButtonBase title="Создание" {...props}>
       <AddImage />
     </ToolbarButtonBase>
   )
@@ -30,7 +30,7 @@ const ToolbarButtonCreate: React.FC<ToolbarButtonInterface> = (props) => {
 
 const ToolbarButtonSave: React.FC<ToolbarButtonInterface> = (props) => {
   return (
-    <ToolbarButtonBase {...props}>
+    <ToolbarButtonBase title="Сохранить" {...props}>
       <SaveImage />
     </ToolbarButtonBase>
   )
@@ -38,7 +38,7 @@ const ToolbarButtonSave: React.FC<ToolbarButtonInterface> = (props) => {
 
 const ToolbarButtonEdit: React.FC<ToolbarButtonInterface> = (props) => {
   return (
-    <ToolbarButtonBase {...props}>
+    <ToolbarButtonBase title="Редактирование" {...props}>
       <EditImage />
     </ToolbarButtonBase>
   )
@@ -46,7 +46,7 @@ const ToolbarButtonEdit: React.FC<ToolbarButtonInterface> = (props) => {
 
 const ToolbarButtonDelete: React.FC<ToolbarButtonInterface> = (props) => {
   return (
-    <ToolbarButtonBase {...props}>
+    <ToolbarButtonBase title="Удаление" {...props}>
       <DeleteImage />
     </ToolbarButtonBase>
   )
@@ -54,8 +54,30 @@ const ToolbarButtonDelete: React.FC<ToolbarButtonInterface> = (props) => {
 
 const ToolbarButtonView: React.FC<ToolbarButtonInterface> = (props) => {
   return (
-    <ToolbarButtonBase {...props}>
+    <ToolbarButtonBase title="Просмотр" {...props}>
       <ViewImage />
+    </ToolbarButtonBase>
+  )
+}
+
+const ToolbarButtonList: React.FC<ToolbarButtonInterface> = ({
+  title = "Список",
+  ...props
+}) => {
+  return (
+    <ToolbarButtonBase title={title} {...props}>
+      {title}
+    </ToolbarButtonBase>
+  )
+}
+
+const ToolbarButtonSearch: React.FC<ToolbarButtonInterface> = ({
+  title = "Найти",
+  ...props
+}) => {
+  return (
+    <ToolbarButtonBase title={title} {...props}>
+      {title}
     </ToolbarButtonBase>
   )
 }
@@ -78,5 +100,7 @@ export {
   ToolbarButtonEdit,
   ToolbarButtonDelete,
   ToolbarButtonView,
+  ToolbarButtonList,
+  ToolbarButtonSearch,
   ToolbarSplitter,
 }

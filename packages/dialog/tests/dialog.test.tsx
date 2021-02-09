@@ -8,7 +8,7 @@ import {
   AlertDialog,
 } from "../src"
 
-test("Matches snapshot", () => {
+test.skip("Matches snapshot", () => {
   const { asFragment } = render(
     <WarningDialog
       visible
@@ -19,7 +19,7 @@ test("Matches snapshot", () => {
   expect(asFragment()).toMatchSnapshot()
 })
 
-test("Matches snapshot", () => {
+test.skip("Matches snapshot", () => {
   const { asFragment } = render(
     <SimpleDialog visible header="Simple dialog" closeOnOutsideClick>
       <ul>
@@ -32,7 +32,7 @@ test("Matches snapshot", () => {
   expect(asFragment()).toMatchSnapshot()
 })
 
-test("Matches snapshot", () => {
+test.skip("Matches snapshot", () => {
   const { asFragment } = render(
     <FormDialog visible handleSubmit={null}>
       <input type="text" />
@@ -41,7 +41,7 @@ test("Matches snapshot", () => {
   expect(asFragment()).toMatchSnapshot()
 })
 
-test("Matches snapshot", () => {
+test.skip("Matches snapshot", () => {
   const { asFragment } = render(
     <ErrorDialog
       visible
@@ -55,7 +55,7 @@ test("Matches snapshot", () => {
   expect(asFragment()).toMatchSnapshot()
 })
 
-test("Matches snapshot", () => {
+test.skip("Matches snapshot", () => {
   const { asFragment } = render(
     <AlertDialog visible header="Alert dialog" message="Alert!" />,
   )
