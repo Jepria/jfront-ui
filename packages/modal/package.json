@@ -30,7 +30,6 @@
     "@jfront/ui-utils": "^0.3.2"
   },
   "peerDependencies": {
-    "@types/styled-components": "^5.x.x",
     "react": "16.x",
     "react-dom": "16.x"
   },
