@@ -37,7 +37,7 @@ test("Checking when clicking on CheckBox in CheckBoxGroup", () => {
   expect(pressed).toEqual(["value2"])
 })
 
-test("Matches snapshot ", () => {
+test.skip("Matches snapshot ", () => {
   const { asFragment } = render(
     <CheckBoxGroup name="name" isLoading={false}>
       <CheckBox disabled={true} label="label1" value="value1" />
@@ -47,7 +47,8 @@ test("Matches snapshot ", () => {
   )
   expect(asFragment()).toMatchSnapshot()
 })
-test("CheckBoxGroup isLoading renders correctly", () => {
+
+test.skip("CheckBoxGroup isLoading renders correctly", () => {
   const tools = render(
     <div>
       <CheckBoxGroup name="name" disabled={false} isLoading>
@@ -59,7 +60,7 @@ test("CheckBoxGroup isLoading renders correctly", () => {
   expect(tools.asFragment()).toMatchSnapshot()
 })
 
-test("CheckBoxGroup isError renders correctly", () => {
+test.skip("CheckBoxGroup isError renders correctly", () => {
   const tools = render(
     <div>
       <CheckBoxGroup name="name" disabled={false} error="Wrong value">

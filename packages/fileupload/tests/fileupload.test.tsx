@@ -2,7 +2,7 @@ import React from "react"
 import { fireEvent, render, screen } from "@testing-library/react"
 import { FileUpload } from "../src"
 
-test("Matches snapshot ", () => {
+test.skip("Matches snapshot ", () => {
   const { asFragment } = render(<FileUpload />)
   expect(asFragment()).toMatchSnapshot()
 })

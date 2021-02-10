@@ -21,12 +21,12 @@ test("Checking CheckBox clicking", () => {
   expect(checkBoxState).toEqual(true)
 })
 
-test("Matches snapshot ", () => {
+test.skip("Matches snapshot ", () => {
   const { asFragment } = render(<CheckBox />)
   expect(asFragment()).toMatchSnapshot()
 })
 
-test("Checkbox renders correctly", () => {
+test.skip("Checkbox renders correctly", () => {
   const tools = render(<CheckBox label="CheckBox Name" />)
   expect(tools.asFragment()).toMatchSnapshot()
 })

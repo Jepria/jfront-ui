@@ -6,19 +6,20 @@ import { Label } from "@jfront/ui-label"
 test("Checking for the existence of an element SelectInput", () => {
   render(<SelectInput />)
 })
-test("Matches snapshot ", () => {
+
+test.skip("Matches snapshot ", () => {
   const { asFragment } = render(<SelectInput name="InputTextName" />)
   expect(asFragment()).toMatchSnapshot()
 })
 
-test("SelectInput isError renders correctly", () => {
+test.skip("SelectInput isError renders correctly", () => {
   const tools = render(
     <SelectInput name="InputTextNameLoading" error="wrong value" />,
   )
   expect(tools.asFragment()).toMatchSnapshot()
 })
 
-test("SelectInput label renders correctly", () => {
+test.skip("SelectInput label renders correctly", () => {
   const tools = render(
     <div style={{ display: "inline-block" }}>
       <Label>Text label</Label>

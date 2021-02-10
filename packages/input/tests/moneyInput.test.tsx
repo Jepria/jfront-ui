@@ -8,7 +8,7 @@ test("Checking for the existence of an element MoneyInput", () => {
   render(<MoneyInput />)
 })
 
-test("Matches snapshot ", () => {
+test.skip("Matches snapshot ", () => {
   const { asFragment } = render(<MoneyInput name="InputTextName" />)
   expect(asFragment()).toMatchSnapshot()
 })
@@ -18,14 +18,14 @@ test("Matches snapshot ", () => {
 //   expect(tools.asFragment()).toMatchSnapshot()
 // })
 
-test("MoneyInput isError renders correctly", () => {
+test.skip("MoneyInput isError renders correctly", () => {
   const tools = render(
     <MoneyInput name="InputTextNameLoading" error="wrong value" />,
   )
   expect(tools.asFragment()).toMatchSnapshot()
 })
 
-test("MoneyInput label renders correctly", () => {
+test.skip("MoneyInput label renders correctly", () => {
   const tools = render(
     <div style={{ display: "inline-block" }}>
       <Label>Text label</Label>

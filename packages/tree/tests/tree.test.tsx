@@ -2,7 +2,7 @@ import React from "react"
 import { render } from "@testing-library/react"
 import { Tree, TreeItem } from "../src"
 
-test("Matches snapshot ", () => {
+test.skip("Matches snapshot ", () => {
   const { asFragment } = render(
     <Tree showSelectAllCheckbox>
       <TreeItem label="1" value={1}>

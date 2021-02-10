@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.2](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-grid@0.3.1...@jfront/ui-grid@0.3.2) (2021-02-10)
+
+
+### Bug Fixes
+
+* grid body overflow IE ([2dc4b28](https://github.com/Jepria/jfront-ui/commit/2dc4b281a3fcca0fd7b6560744e0cb13ffaf190e))
+
+
+
+
+
 ## [0.3.1](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-grid@0.3.0...@jfront/ui-grid@0.3.1) (2021-02-03)
 
 
