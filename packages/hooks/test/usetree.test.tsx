@@ -307,7 +307,7 @@ test("Async node loading", async () => {
             setData([...data, ...generateLevel(level, 3)])
           })
           resolve()
-        }, [1000])
+        }, 1000)
       })
     }
     return (
@@ -339,7 +339,7 @@ test("Async node loading default values", async () => {
             setData((prevData) => [...prevData, ...generateLevel(level, 3)])
           })
           resolve()
-        }, [1000])
+        }, 1000)
       })
     }
     return (
@@ -377,7 +377,7 @@ test("Async node loading default values controlled", async () => {
             setData((prevData) => [...prevData, ...generateLevel(level, 3)])
           })
           resolve()
-        }, [1000])
+        }, 1000)
       })
     }
     return (

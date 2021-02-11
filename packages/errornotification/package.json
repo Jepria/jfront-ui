@@ -25,15 +25,12 @@
     "test:cov": "yarn test --coverage"
   },
   "dependencies": {
+    "@jfront/core-rest": "^0.1.4",
     "@jfront/ui-dialog": "^0.1.4"
   },
   "peerDependencies": {
-    "@jfront/core-rest": "^0.x.x",
-    "react": "16.x",
-    "react-dom": "16.x"
-  },
-  "devDependencies": {
-    "@jfront/core-rest": "^0.1.2",
-    "@types/styled-components": "^5.0.1"
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "styled-components": "^5.2.1"
   }
 }

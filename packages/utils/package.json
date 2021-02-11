@@ -25,7 +25,6 @@
     "test:cov": "yarn test --coverage"
   },
   "peerDependencies": {
-    "react": "16.x",
-    "react-dom": "16.x"
+    "react": "^17.0.1"
   }
 }
