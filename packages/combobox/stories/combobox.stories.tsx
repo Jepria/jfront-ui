@@ -35,6 +35,33 @@ export const BasicUsage = () => {
   )
 }
 
+export const DefaultOption = () => {
+  return (
+    <>
+      <ComboBox
+        onSelectionChange={(name, value) => console.log(value)}
+        value={10}
+        defaultInputValue="test10"
+      >
+        <ComboBoxItem value={undefined} label={""} />
+        {[
+          { name: "test1", value: 1 },
+          { name: "test2", value: 2 },
+          { name: "test3", value: 3 },
+          { name: "test4", value: 4 },
+          { name: "test5", value: 5 },
+          { name: "test6", value: 6 },
+          { name: "test7", value: 7 },
+          { name: "test8", value: 8 },
+          { name: "test9", value: 9 },
+        ].map(({ name, value }) => (
+          <ComboBoxItem key={value} value={value} label={name} />
+        ))}
+      </ComboBox>
+    </>
+  )
+}
+
 export const CustomFilter = () => {
   const options = [
     { name: "test1", value: 1 },

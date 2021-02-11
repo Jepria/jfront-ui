@@ -1,129 +1,10 @@
 import React, { useState, useRef, useEffect } from "react"
-import styled from "styled-components"
 import nextId from "react-id-generator"
 import { LoadingImage, ExclamationImage } from "@jfront/ui-icons"
 import { ComboBoxButton } from "./ComboBoxButton"
 import { Popup } from "@jfront/ui-popup"
-
-interface ItemProps {
-  disabled?: boolean
-  selected?: boolean
-  hover?: boolean
-}
-
-const Item = styled.div<ItemProps>`
-  overflow: hidden;
-  white-space: nowrap;
-  height: 18px;
-  padding: 2px 6px;
-  cursor: pointer;
-  font-family: tahoma, arial, helvetica, sans-serif;
-  font-size: 12px;
-  text-align: left;
-  ${(props) =>
-    props.selected
-      ? "background: #ccddf3;"
-      : props.hover
-      ? "background: #eee;"
-      : "&:hover {background: #eee}"}
-  -webkit-touch-callout: none; /* iOS Safari */
-  -webkit-user-select: none; /* Safari */
-  -khtml-user-select: none; /* Konqueror HTML */
-  -moz-user-select: none; /* Old versions of Firefox */
-  -ms-user-select: none; /* Internet Explorer/Edge */
-  user-select: none; /* Non-prefixed version, currently
-                                supported by Chrome, Edge, Opera and Firefox */
-  ${(props) => (props.disabled ? "opacity: 0.33;" : "cursor: pointer;")}
-`
-
-const StyledInput = styled.input.attrs({ type: "search" })`
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-box-flex: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
-  min-width: 0px;
-  margin: 0;
-  padding: 0;
-  padding-left: 3px;
-  font-family: tahoma, arial, helvetica, sans-serif;
-  font-size: 12px;
-  border: 0;
-  height: 100%;
-  box-sizing: border-box;
-  &:focus {
-    outline: none;
-  }
-`
-
-interface StyledDivProps {
-  focused?: boolean
-  error?: boolean
-}
-
-const StyledDiv = styled.div<StyledDivProps>`
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-box-flex: 1;
-  -ms-flex-positive: 1;
-  margin: 0;
-  padding: 0;
-  min-width: 150px;
-  white-space: nowrap;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  height: 24px;
-  text-align: left;
-  ${(props) =>
-    props.focused
-      ? `box-shadow: 0 0 5px #99bbe8;
-         border: 1px solid #99bbe8;`
-      : "border: 1px solid #ccc; border-top: 1px solid #999;"};
-  ${(props) =>
-    props.error
-      ? props.focused
-        ? `box-shadow: 0 0 5px red;
-        border: 1px solid red;`
-        : "border: 1px solid red;"
-      : ""};
-`
-
-export interface ComboBoxItemProps {
-  id?: string
-  disabled?: boolean
-  value: any
-  selected?: boolean
-  hover?: boolean
-  label: string
-  onClick?: () => void
-}
-
-export const ComboBoxItem = React.forwardRef<HTMLDivElement, ComboBoxItemProps>(
-  (
-    { id, disabled, value, label, children, onClick, hover, selected, ...rest },
-    ref,
-  ) => {
-    return (
-      <Item
-        id={id}
-        onClick={!disabled ? onClick : undefined}
-        ref={ref}
-        disabled={disabled}
-        hover={hover}
-        selected={selected}
-        {...rest}
-      >
-        {React.Children.count(children) > 0 ? children : label}
-      </Item>
-    )
-  },
-)
+import { ComboBoxItemProps, ComboBoxItem } from "./ComboBoxItem"
+import { StyledDiv, StyledInput } from "./styles"
 
 export interface ComboBoxProps {
   id?: string
@@ -140,13 +21,14 @@ export interface ComboBoxProps {
   initialValue?: any
   placeholder?: string
   value?: any
+  defaultInputValue?: string
   getOptionName?: (option: any) => string
   getOptionValue?: (option: any) => any
   renderItem?: (props: ComboBoxItemProps) => React.ReactNode
   onFocus?: (event: React.FocusEvent) => void
   onBlur?: (event: React.FocusEvent) => void
   onInputChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
-  onSelectionChange?: (name: string, value: any) => void
+  onSelectionChange?: (name: string, value: any, label: string) => void
 }
 
 const ARROW_UP = 38
@@ -170,6 +52,7 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
       options,
       placeholder,
       error,
+      defaultInputValue = "",
       onInputChange,
       onSelectionChange,
       getOptionName,
@@ -186,7 +69,7 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
     const [isOpen, setIsOpen] = useState(false)
     const [currentValue, setCurrentValue] = useState<any>(value || initialValue)
     const [focused, setFocused] = useState(false)
-    const [text, setText] = useState("")
+    const [text, setText] = useState(defaultInputValue)
     const [hoverIndex, setHoverIndex] = useState(-1)
     const outerDivRef = useRef<HTMLDivElement>(null)
     const popupRef = useRef<HTMLDivElement>(null)
@@ -276,7 +159,7 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
       if (currentValue) {
         setCurrentValue(undefined)
         if (onSelectionChange) {
-          onSelectionChange(name, undefined)
+          onSelectionChange(name, undefined, "")
         }
       }
       setText(e.target.value)
@@ -289,7 +172,9 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
         setCurrentValue(newValue)
         setText(label)
         setIsOpen(false)
-        if (onSelectionChange) onSelectionChange(name, newValue)
+        if (onSelectionChange) {
+          onSelectionChange(name, newValue, label)
+        }
       } else {
         setIsOpen(false)
       }
@@ -479,6 +364,7 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
         </StyledDiv>
         <Popup
           id={`${id}_popup`}
+          className="jfront-combobox-popup"
           ref={popupRef}
           tabIndex={0}
           onKeyDown={(e: React.KeyboardEvent<Element>) => onKeyDownHandler(e)}
