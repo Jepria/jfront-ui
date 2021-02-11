@@ -1,4 +1,4 @@
-class ResizeObserver {
+class ResizeObserverMock {
   observe() {
     // do nothing
   }
@@ -9,5 +9,4 @@ class ResizeObserver {
     // do nothing
   }
 }
-window.ResizeObserver = ResizeObserver
-export default ResizeObserver
+window.ResizeObserver = ResizeObserverMock

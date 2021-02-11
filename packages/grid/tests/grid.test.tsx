@@ -1,11 +1,7 @@
 import React from "react"
 import { fireEvent, render, screen } from "@testing-library/react"
 import { Grid } from "../src"
-import ResizeObserver from "./_mocks_/resizeObserver"
-
-jest.mock("resize-observer-polyfill", () => {
-  return ResizeObserver
-})
+import "./_mocks_/resizeObserver"
 
 test("Checking for the existence of an element Grid", () => {
   render(
