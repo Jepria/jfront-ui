@@ -24,12 +24,12 @@
     "test": "jest --passWithNoTests",
     "test:cov": "yarn test --coverage"
   },
-  "peerDependencies": {
-    "react": "16.x",
-    "react-dom": "16.x"
+  "dependencies": {
+    "@jfront/ui-icons": "^0.5.2"
   },
-  "devDependencies": {
-    "@jfront/ui-label": "^0.3.11",
-    "@types/styled-components": "^5.0.1"
+  "peerDependencies": {
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "styled-components": "^5.2.1"
   }
 }

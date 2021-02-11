@@ -1,11 +1,12 @@
 import styled from "styled-components"
-import React, { HTMLAttributes, ThHTMLAttributes } from "react"
+import { ThHTMLAttributes } from "react"
 
 export const TableHeader = styled.thead`
   display: flex;
   flex-direction: column;
   overflow-y: hidden;
   overflow-x: hidden;
+  min-height: 20px;
   @media only screen and (max-width: 760px),
     (min-device-width: 768px) and (max-device-width: 1024px) {
     display: none;

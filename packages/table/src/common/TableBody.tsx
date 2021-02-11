@@ -1,6 +1,10 @@
-import React, { useRef, useState, useLayoutEffect } from "react"
-import ReactResizeDetector from "react-resize-detector"
+import React, { useRef, useLayoutEffect } from "react"
+import ResizeObserver from "resize-observer-polyfill"
+import { useResizeDetector } from "react-resize-detector"
 import styled from "styled-components"
+
+// IE 11 PolyFill
+window.ResizeObserver = window.ResizeObserver || ResizeObserver
 
 interface TableBodyProps
   extends React.DetailedHTMLProps<
@@ -59,15 +63,17 @@ const ScrollSpacer = styled.tr<ScrollDivProps>`
   height: ${(props) => (props.height ? props.height : 0)}px;
 `
 
-export const TableBody: React.FC<React.DetailedHTMLProps<
-  React.HTMLAttributes<HTMLTableSectionElement>,
-  HTMLTableSectionElement
->> = (props) => {
-  const refThis = useRef<HTMLTableSectionElement>(null)
+export const TableBody: React.FC<
+  React.DetailedHTMLProps<
+    React.HTMLAttributes<HTMLTableSectionElement>,
+    HTMLTableSectionElement
+  >
+> = (props) => {
   const refScroll = useRef<HTMLTableSectionElement>(null)
+  const { height, ref } = useResizeDetector()
 
   useLayoutEffect(() => {
-    const refTbody = refThis.current
+    const refTbody = ref.current as HTMLElement
     const refScrollPanel = refScroll.current
     let ignoreScrollEvents = false
 
@@ -100,26 +106,17 @@ export const TableBody: React.FC<React.DetailedHTMLProps<
   }, [])
 
   return (
-    <ReactResizeDetector handleHeight>
-      {(resizerProps: any) => {
-        resizerProps.targetRef = refThis
-        return (
-          <>
-            <StyledTBody {...props} ref={refThis}>
-              {props.children}
-            </StyledTBody>
-            <StyledScroll
-              height={resizerProps.height}
-              ref={refScroll}
-              top={refThis.current ? refThis.current.offsetTop : 0}
-            >
-              <ScrollSpacer
-                height={resizerProps.targetRef.current?.scrollHeight}
-              />
-            </StyledScroll>
-          </>
-        )
-      }}
-    </ReactResizeDetector>
+    <>
+      <StyledTBody {...props} ref={ref as any}>
+        {props.children}
+      </StyledTBody>
+      <StyledScroll
+        height={height}
+        ref={refScroll}
+        top={ref.current ? (ref.current as HTMLElement).offsetTop : 0}
+      >
+        <ScrollSpacer height={ref.current?.scrollHeight} />
+      </StyledScroll>
+    </>
   )
 }
