@@ -12,6 +12,7 @@ const restoreHiddenColumns = (id?: string) => {
       return JSON.parse(savedString)
     }
   }
+  return []
 }
 
 const updateLevel = <D extends object = any>(

@@ -77,17 +77,16 @@ export interface TablePagingBarProps extends HTMLAttributes<HTMLDivElement> {
   onRefresh?: () => void
 }
 
-export const TablePagingBar: React.FC<TablePagingBarProps> = (props) => {
-  const {
-    currentPage = 1,
-    rowCount,
-    totalRowCount,
-    visibleRowCount = 25,
-    onVisibleRowCountChange,
-    onPaging,
-    onRefresh,
-  } = props
-
+export const TablePagingBar: React.FC<TablePagingBarProps> = ({
+  currentPage = 1,
+  rowCount,
+  totalRowCount,
+  visibleRowCount = 25,
+  onVisibleRowCountChange,
+  onPaging,
+  onRefresh,
+  ...props
+}) => {
   const [_visibleRowCount, setVisibleRowCount] = useState<number>(
     visibleRowCount,
   )

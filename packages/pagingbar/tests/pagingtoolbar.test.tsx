@@ -3,11 +3,25 @@ import { fireEvent, render, screen } from "@testing-library/react"
 import { PagingToolBar } from "../src"
 
 test("Checking for the existence of an element PagingToolBar", () => {
-  render(<PagingToolBar pageCount={2} />)
+  render(
+    <PagingToolBar
+      currentPage={1}
+      pageCount={2}
+      onChange={() => {}}
+      onRefresh={() => {}}
+    />,
+  )
 })
 
 test.skip("Matches snapshot ", () => {
-  const { asFragment } = render(<PagingToolBar pageCount={2} />)
+  const { asFragment } = render(
+    <PagingToolBar
+      currentPage={1}
+      pageCount={2}
+      onChange={() => {}}
+      onRefresh={() => {}}
+    />,
+  )
   expect(asFragment()).toMatchSnapshot()
 })
 
@@ -19,6 +33,8 @@ test("Enter values ​​in a string field", () => {
         itemSelection = currentPageNumber
       }}
       pageCount={6}
+      currentPage={1}
+      onRefresh={() => {}}
     />,
   )
   fireEvent.click(screen.getAllByRole("button")[2])
