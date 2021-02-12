@@ -25,6 +25,8 @@
     "test:cov": "yarn test --coverage"
   },
   "dependencies": {
+    "@jfront/ui-label": "0.3.11",
+    "@jfront/ui-input": "0.4.10",
     "@jfront/ui-pagingbar": "^0.1.12",
     "react-resize-detector": "^6.5.0",
     "resize-observer-polyfill": "1.5.1"
