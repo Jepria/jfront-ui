@@ -1,6 +1,8 @@
-import React, { useState, useEffect, HTMLAttributes } from "react"
+import React, { useState, HTMLAttributes, useEffect } from "react"
 import styled from "styled-components"
 import { PagingToolBar } from "@jfront/ui-pagingbar"
+import { Label } from "@jfront/ui-label"
+import { NumberInput } from "@jfront/ui-input"
 
 export const StyledPagingBar = styled.div`
   display: flex;
@@ -14,6 +16,13 @@ export const StyledPagingBar = styled.div`
     flex-direction: column;
     justify-content: center;
   }
+`
+
+const StyledNumberInput = styled(NumberInput)`
+  min-width: 60px;
+  max-width: 150px;
+  background-color: white;
+  margin: 0px 5px;
 `
 
 export const Left = styled.div`
@@ -53,24 +62,31 @@ const Input = styled.input.attrs({ type: "number" })`
   width: 60px;
 `
 
+const StyledLabel = styled(Label)`
+  align-items: center;
+`
+
 export interface TablePagingBarProps extends HTMLAttributes<HTMLDivElement> {
   currentPage?: number
-  rowCount?: number
-  totalRowCount?: number
+  rowCount: number
+  totalRowCount: number
   visibleRowCount?: number
   children?: never
-  onRefresh?(pageNumber: number, pageSize: number): void
+  onVisibleRowCountChange?: (maxRowCount: number) => void
+  onPaging?: (pageNumber: number, pageSize: number) => void
+  onRefresh?: () => void
 }
 
-export const TablePagingBar: React.FC<TablePagingBarProps> = (props) => {
-  const {
-    currentPage = 1,
-    rowCount,
-    totalRowCount,
-    visibleRowCount = 25,
-    onRefresh,
-  } = props
-
+export const TablePagingBar: React.FC<TablePagingBarProps> = ({
+  currentPage = 1,
+  rowCount,
+  totalRowCount,
+  visibleRowCount = 25,
+  onVisibleRowCountChange,
+  onPaging,
+  onRefresh,
+  ...props
+}) => {
   const [_visibleRowCount, setVisibleRowCount] = useState<number>(
     visibleRowCount,
   )
@@ -79,20 +95,14 @@ export const TablePagingBar: React.FC<TablePagingBarProps> = (props) => {
   const pageCount = totalRowCount
     ? Math.ceil(totalRowCount / _visibleRowCount)
     : 1
-  const [_rowCount, setRowCount] = useState(rowCount)
-  const [_totalRowCount, setTotalRowCount] = useState(totalRowCount)
 
-  useEffect(() => {
-    setTotalRowCount(totalRowCount)
-  }, [totalRowCount])
+  useEffect(() => setCurrentPage(currentPage), [currentPage])
 
-  useEffect(() => {
-    setRowCount(rowCount)
-  }, [rowCount])
+  useEffect(() => setVisibleRowCount(visibleRowCount), [visibleRowCount])
 
   const onChangeValues = (pageNumber?: number, pageSize?: number) => {
-    if (pageNumber && pageSize && pageSize >= 1 && onRefresh) {
-      onRefresh(pageNumber, pageSize)
+    if (pageNumber && pageSize && pageSize >= 1 && onPaging) {
+      onPaging(pageNumber, pageSize)
     }
   }
 
@@ -116,48 +126,49 @@ export const TablePagingBar: React.FC<TablePagingBarProps> = (props) => {
     }
   }
 
-  const onBlur = (e: React.FocusEvent<HTMLInputElement>) => {
-    if (e.target.value && parseInt(e.target.value) > 0) {
-      setVisibleRowCount(parseInt(e.target.value))
-    }
-  }
-
   return (
     <StyledPagingBar {...props}>
       <Left>
         <PagingToolBar
-          startPageNumber={currentPage}
+          currentPage={currentPage}
           pageCount={pageCount}
           onChange={(page) => {
             setCurrentPage(page)
             onChangeValues(page, _visibleRowCount)
           }}
+          onRefresh={() => {
+            if (onRefresh) {
+              onRefresh()
+            }
+          }}
         />
       </Left>
       <Center>
-        {_totalRowCount && _rowCount
-          ? `Записи ${
-              _visibleRowCount * _currentPage - _visibleRowCount + 1
-            } - ${
-              _rowCount < _visibleRowCount
-                ? _rowCount
-                : _visibleRowCount * _currentPage
-            } из ${_totalRowCount}`
+        {totalRowCount > 0
+          ? `Записи ${visibleRowCount * currentPage - visibleRowCount + 1} 
+        - ${visibleRowCount * currentPage - visibleRowCount + rowCount}
+        из ${totalRowCount}`
           : "Записей не найдено"}
       </Center>
       <Right>
-        <label>
+        <StyledLabel>
           Записей на странице:{" "}
-          <Input
+          <StyledNumberInput
             ref={visibleRowCountInputRef}
-            type="number"
             min={1}
-            max={_totalRowCount}
-            defaultValue={_visibleRowCount}
-            onBlur={onBlur}
+            max={totalRowCount}
+            value={_visibleRowCount}
+            onChange={(e) => {
+              if (e.target.value) {
+                if (onVisibleRowCountChange) {
+                  onVisibleRowCountChange(parseInt(e.target.value))
+                }
+                setVisibleRowCount(parseInt(e.target.value))
+              }
+            }}
             onKeyUp={onKeyUp}
           />
-        </label>
+        </StyledLabel>
       </Right>
     </StyledPagingBar>
   )

@@ -41,10 +41,6 @@ export const GridRow = styled(Table.Row)`
   box-sizing: border-box;
   border-bottom: 1px solid #ededed;
   border-top: 1px solid #ffffff;
-  @media only screen and (max-width: 760px),
-    (min-device-width: 768px) and (max-device-width: 1024px) {
-    flex-direction: column;
-  }
   ${(props) =>
     props.selected
       ? `background: #dfe8f6; border-bottom: 1px solid #b7cefd; border-top: 1px solid #b7cefd;`
@@ -157,60 +153,11 @@ export const Item = styled.button`
   }`}
 `
 
-export const Label = styled.label`
-  display: inline-block;
-  vertical-align: top;
-`
-
-export const StyledPagingBar = styled.div`
-  display: flex;
-  width: 100%;
-  font: 11px arial, tahoma, helvetica, sans-serif;
-  margin: 0;
-  padding: 2px 2px 2px 2px;
-  box-sizing: border-box;
+export const StyledPagingBar = styled(Table.PagingBar)`
   border-style: solid;
   border-color: rgb(153, 187, 232);
   border-width: 1px;
   background: linear-gradient(rgb(218, 230, 244), rgb(208, 222, 240));
-  @media only screen and (max-width: 760px),
-    (min-device-width: 768px) and (max-device-width: 1024px) {
-    flex-direction: column;
-    justify-content: center;
-  }
-`
-
-export const Left = styled.div`
-  display: inline-flex;
-  flex: 1 1 auto;
-  align-items: center;
-  justify-content: flex-start;
-  @media only screen and (max-width: 760px),
-    (min-device-width: 768px) and (max-device-width: 1024px) {
-    justify-content: center;
-  }
-`
-
-export const Center = styled.div`
-  display: inline-flex;
-  flex: 1 1 auto;
-  align-items: center;
-  justify-content: center;
-  @media only screen and (max-width: 760px),
-    (min-device-width: 768px) and (max-device-width: 1024px) {
-    justify-content: center;
-  }
-`
-
-export const Right = styled.div`
-  display: inline-flex;
-  flex: 1 1 auto;
-  align-items: center;
-  justify-content: flex-end;
-  @media only screen and (max-width: 760px),
-    (min-device-width: 768px) and (max-device-width: 1024px) {
-    justify-content: center;
-  }
 `
 
 export const ModalDiv = styled.div`

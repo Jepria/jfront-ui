@@ -27,11 +27,9 @@
   "dependencies": {
     "@jfront/ui-button": "^0.1.4",
     "@jfront/ui-checkbox": "^0.4.5",
-    "@jfront/ui-icons": "^0.5.2",
-    "@jfront/ui-input": "^0.4.10",
     "@jfront/ui-table": "^0.1.11",
-    "react-table": "^7.6.3",
-    "throttle-debounce": "^2.1.0"
+    "react-table": "7.6.3",
+    "throttle-debounce": "3.0.1"
   },
   "peerDependencies": {
     "react": "^17.0.1",
