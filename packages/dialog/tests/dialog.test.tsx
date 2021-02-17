@@ -34,7 +34,7 @@ test.skip("Matches snapshot", () => {
 
 test.skip("Matches snapshot", () => {
   const { asFragment } = render(
-    <FormDialog visible handleSubmit={null}>
+    <FormDialog visible handleSubmit={() => {}}>
       <input type="text" />
     </FormDialog>,
   )
