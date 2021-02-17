@@ -88,7 +88,7 @@ export const Warning = () => {
   )
 }
 
-export const Form = () => {
+export const Formik = () => {
   const [visible, setVisible] = React.useState(true)
 
   const formik = useFormik({
@@ -106,6 +106,7 @@ export const Form = () => {
     <>
       <button onClick={() => setVisible(true)}>tap to show dialog</button>
       <FormDialog
+        header="Formik"
         visible={visible}
         onClose={() => setVisible(false)}
         handleSubmit={formik.handleSubmit}
@@ -122,6 +123,41 @@ export const Form = () => {
           </Forms.Label>
           <Forms.Control>
             <TextInput name="input" onChange={formik.handleChange} />
+          </Forms.Control>
+        </Forms.Field>
+      </FormDialog>
+    </>
+  )
+}
+
+export const Form = () => {
+  const [visible, setVisible] = React.useState(true)
+
+  return (
+    <>
+      <button onClick={() => setVisible(true)}>tap to show dialog</button>
+      <FormDialog
+        header="Form"
+        visible={visible}
+        onClose={() => setVisible(false)}
+        handleSubmit={(e) => {
+          e.preventDefault()
+          console.log("submit")
+          setVisible(false)
+        }}
+      >
+        <Forms.Field>
+          <Forms.Label
+            style={{
+              minWidth: "unset",
+              width: "unset",
+              justifyContent: "flex-start",
+            }}
+          >
+            Input:
+          </Forms.Label>
+          <Forms.Control>
+            <TextInput name="input" />
           </Forms.Control>
         </Forms.Field>
       </FormDialog>

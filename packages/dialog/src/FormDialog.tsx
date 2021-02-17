@@ -9,33 +9,33 @@ import {
 import { Form } from "@jfront/ui-form"
 import { StyledButton } from "./styles"
 
-export interface FirmDialogProps extends ModalProps {
+export interface FormDialogProps extends ModalProps {
   header?: string
   withCloseButton?: boolean
   cancelButtonLabel?: string
-  handleSubmit: any
   children: React.ReactNode
+  handleSubmit: (event: React.FormEvent<HTMLFormElement>) => void
 }
 
-export const FormDialog = React.forwardRef<HTMLDivElement, FirmDialogProps>(
+export const FormDialog = React.forwardRef<HTMLDivElement, FormDialogProps>(
   (
     {
       header,
       children,
       withCloseButton,
-      handleSubmit,
       cancelButtonLabel,
+      handleSubmit,
       onClose,
       ...props
     },
     ref,
   ) => {
     return (
-      <Modal {...props}>
+      <Modal {...props} ref={ref}>
         <ModalHeader>{header}</ModalHeader>
         <Form
-          onSubmit={() => {
-            handleSubmit()
+          onSubmit={(e) => {
+            handleSubmit(e)
             if (onClose) {
               onClose()
             }
