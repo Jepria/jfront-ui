@@ -1,35 +1,28 @@
 # Change Log
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [0.1.12](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-table@0.1.11...@jfront/ui-table@0.1.12) (2021-02-17)
+
+**Note:** Version bump only for package @jfront/ui-table
 
 ## [0.1.11](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-table@0.1.10...@jfront/ui-table@0.1.11) (2021-02-10)
 
 **Note:** Version bump only for package @jfront/ui-table
 
-
-
-
-
 ## [0.1.10](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-table@0.1.9...@jfront/ui-table@0.1.10) (2021-02-03)
-
 
 ### Bug Fixes
 
-* absolute elements positioning ([b19ddcc](https://github.com/Jepria/jfront-ui/commit/b19ddcc7ece55009f8b309b854671d230608c807))
-* table cell flex display property wasn't inherited in IE ([f948958](https://github.com/Jepria/jfront-ui/commit/f948958b3c0710d9561c682e60983f7101c94dbf))
-
-
-
-
+- absolute elements positioning
+  ([b19ddcc](https://github.com/Jepria/jfront-ui/commit/b19ddcc7ece55009f8b309b854671d230608c807))
+- table cell flex display property wasn't inherited in IE
+  ([f948958](https://github.com/Jepria/jfront-ui/commit/f948958b3c0710d9561c682e60983f7101c94dbf))
 
 ## [0.1.9](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-table@0.1.8...@jfront/ui-table@0.1.9) (2021-01-29)
 
 **Note:** Version bump only for package @jfront/ui-table
-
-
-
-
 
 # Change Log
 

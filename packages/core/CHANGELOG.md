@@ -1,38 +1,31 @@
 # Change Log
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [0.9.1](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-core@0.9.0...@jfront/ui-core@0.9.1) (2021-02-17)
+
+**Note:** Version bump only for package @jfront/ui-core
 
 # [0.9.0](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-core@0.8.1...@jfront/ui-core@0.9.0) (2021-02-10)
 
-
 ### Features
 
-* remove app ([b3e4319](https://github.com/Jepria/jfront-ui/commit/b3e43194a3c0d65c7076622ac7f7873a320b4b77))
-
-
-
-
+- remove app
+  ([b3e4319](https://github.com/Jepria/jfront-ui/commit/b3e43194a3c0d65c7076622ac7f7873a320b4b77))
 
 ## [0.8.1](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-core@0.8.0...@jfront/ui-core@0.8.1) (2021-02-03)
 
 **Note:** Version bump only for package @jfront/ui-core
 
-
-
-
-
 # [0.8.0](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-core@0.7.0...@jfront/ui-core@0.8.0) (2021-01-29)
-
 
 ### Features
 
-* error boundary ui component ([a601b62](https://github.com/Jepria/jfront-ui/commit/a601b62a86a5e2340e80564a8e7093f577e86ae4))
-* loader ([3600ee3](https://github.com/Jepria/jfront-ui/commit/3600ee3c3d69ecf0948f7342f7398dfe0785982f))
-
-
-
-
+- error boundary ui component
+  ([a601b62](https://github.com/Jepria/jfront-ui/commit/a601b62a86a5e2340e80564a8e7093f577e86ae4))
+- loader
+  ([3600ee3](https://github.com/Jepria/jfront-ui/commit/3600ee3c3d69ecf0948f7342f7398dfe0785982f))
 
 # Change Log
 

@@ -1,31 +1,23 @@
 # Change Log
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [0.3.12](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-label@0.3.11...@jfront/ui-label@0.3.12) (2021-02-17)
+
+**Note:** Version bump only for package @jfront/ui-label
 
 ## [0.3.11](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-label@0.3.10...@jfront/ui-label@0.3.11) (2021-02-10)
 
 **Note:** Version bump only for package @jfront/ui-label
 
-
-
-
-
 ## [0.3.10](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-label@0.3.9...@jfront/ui-label@0.3.10) (2021-02-03)
 
 **Note:** Version bump only for package @jfront/ui-label
 
-
-
-
-
 ## [0.3.9](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-label@0.3.8...@jfront/ui-label@0.3.9) (2021-01-29)
 
 **Note:** Version bump only for package @jfront/ui-label
-
-
-
-
 
 # Change Log
 

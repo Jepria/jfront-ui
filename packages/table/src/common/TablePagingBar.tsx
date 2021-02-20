@@ -58,10 +58,6 @@ export const Right = styled.div`
   }
 `
 
-const Input = styled.input.attrs({ type: "number" })`
-  width: 60px;
-`
-
 const StyledLabel = styled(Label)`
   align-items: center;
 `
