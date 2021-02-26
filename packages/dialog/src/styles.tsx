@@ -31,7 +31,7 @@ export const TextArea = styled.textarea`
   height: 100%;
   width: 100%;
   overflow: auto;
-  min-height: 20em;
+  min-height: 0px;
   min-width: 20em;
 `
 
@@ -51,6 +51,7 @@ export const ImageBox = styled.div`
   align-items: center;
   justify-content: center;
   padding: 5px;
+  min-height: 42px;
 `
 
 export const ContentBox = styled.div`
