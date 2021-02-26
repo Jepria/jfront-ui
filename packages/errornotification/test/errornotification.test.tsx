@@ -15,18 +15,14 @@ test.skip("Matches snapshot ", () => {
 })
 
 test("Error capture", () => {
+  const ErrorTest = () => {
+    throw new Error("test error")
+  }
   render(
     <ErrorNotification>
-      <button
-        onClick={() => {
-          throw new Error("test error")
-        }}
-      >
-        button
-      </button>
+      <ErrorTest />
     </ErrorNotification>,
     container,
   )
-  fireEvent.click(screen.getByText("button"))
   expect(screen.queryAllByText("test error")).toHaveLength(1)
 })
