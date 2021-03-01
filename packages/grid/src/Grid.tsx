@@ -39,6 +39,7 @@ import {
   UseResizeColumnsState,
   Cell,
   TableCommonProps,
+  SortingRule,
 } from "react-table"
 import { ColumnConfigPanel } from "./ColumnConfigPanel"
 import { useColumnConfiguration } from "./useColumnConfiguration"
@@ -106,10 +107,10 @@ export interface GridProps<D extends object>
   totalPageCount?: number
   //disable sorting dor all columns, if you want to disable only for some columns add disableSortBy to each column description in columns prop
   disableSort?: boolean
-  /**
-   * when external paging is absent, provide onRefresh callback to refetch data
-   */
-  onRefresh?: (pageSize: number, pageNumber: number) => void
+  disableMultiSort?: boolean
+  manualSort?: boolean
+  manualPaging?: boolean
+  defaultSorting?: SortingRule<D>[]
   onSelection?: (records?: D[]) => void
   //provide onSort if sorting is processing outside of Grid component (e.g. server-side)
   onSort?: (sortConfigs?: ColumnSortConfiguration[]) => void
@@ -122,6 +123,11 @@ export interface GridProps<D extends object>
   getColumnProps?: (column?: ColumnInstance<D>) => TableCommonProps
   getRowProps?: (row?: Row<D> & UseRowSelectRowProps<D>) => TableCommonProps
   getCellProps?: (cell?: Cell<D>) => TableCommonProps
+  fetchData?: (
+    pageNumber: number,
+    pageSize: number,
+    sortConfigs?: ColumnSortConfiguration[],
+  ) => void
 }
 
 // Create a default prop getter
@@ -164,7 +170,10 @@ export function Grid<D extends object>(props: GridProps<D>) {
     isLoading,
     disableSort = false,
     totalPageCount,
-    onRefresh,
+    defaultSorting = [],
+    manualSort,
+    manualPaging,
+    fetchData,
     getHeaderProps = defaultPropGetter,
     getColumnProps = defaultPropGetter,
     getRowProps = defaultPropGetter,
@@ -215,15 +224,16 @@ export function Grid<D extends object>(props: GridProps<D>) {
       data: data,
       defaultColumn,
       disableSortBy: disableSort,
-      manualSortBy: onSort ? true : false,
-      manualPagination: onPaging ? true : false,
+      manualSortBy: onSort != undefined || manualSort,
+      manualPagination: onPaging != undefined || manualPaging,
       pageCount: _pageCount ? _pageCount : -1,
       autoResetPage: onPaging ? false : true,
       initialState: {
         pageSize: defaultPageSize,
         pageIndex: defaultPageNumber - 1,
         hiddenColumns: hiddenColumnConfiguration,
-      } as TableState<D>,
+        sortBy: defaultSorting,
+      } as TableState<D> & UseSortByState<D>,
     } as TableOptions<D>,
     useSortBy,
     useFlexLayout,
@@ -302,6 +312,26 @@ export function Grid<D extends object>(props: GridProps<D>) {
   }
 
   /**
+   * call onSelection callback, if present
+   */
+  useEffect(() => {
+    if (onSelection) {
+      onSelection(selectedFlatRows.map((selectedRow) => selectedRow.original))
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [onSelection, selectedRowIds])
+
+  /**
+   * call onPaging callback, if present
+   */
+  useEffect(() => {
+    if (onPaging) {
+      onPaging(pageIndex + 1, pageSize)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pageIndex, pageSize])
+
+  /**
    * call onSort callback, if present
    */
   useEffect(() => {
@@ -312,38 +342,45 @@ export function Grid<D extends object>(props: GridProps<D>) {
           sortOrder: sort.desc ? "desc" : "asc",
         })),
       )
-      if (pageIndex !== defaultPageNumber) {
-        gotoPage(defaultPageNumber - 1)
-      } else {
-        onPagination(defaultPageNumber, pageSize)
-      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sortBy])
 
   /**
-   * call onSelection callback, if present
+   * call fetchData callback, if present
    */
   useEffect(() => {
-    if (onSelection) {
-      onSelection(selectedFlatRows.map((selectedRow) => selectedRow.original))
+    if (fetchData) {
+      fetchData(
+        pageIndex + 1,
+        pageSize,
+        sortBy.map((sort) => ({
+          columnName: sort.id,
+          sortOrder: sort.desc ? "desc" : "asc",
+        })),
+      )
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [onSelection, selectedRowIds])
+  }, [pageIndex, pageSize, sortBy])
 
-  const onPagination = (pageIndex: number, pageSize: number) => {
-    if (onPaging) {
-      onPaging(pageIndex + 1, pageSize)
+  const refresh = () => {
+    if (pageIndex !== 0) {
+      gotoPage(0)
+    } else {
+      if (onPaging) {
+        onPaging(1, pageSize)
+      } else if (fetchData) {
+        fetchData(
+          1,
+          pageSize,
+          sortBy.map((sort) => ({
+            columnName: sort.id,
+            sortOrder: sort.desc ? "desc" : "asc",
+          })),
+        )
+      }
     }
   }
-
-  /**
-   * call onPaging callback, if present
-   */
-  useEffect(() => {
-    onPagination(pageIndex, pageSize)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pageIndex, pageSize])
 
   /**
    * count item's id's for selecting
@@ -444,7 +481,7 @@ export function Grid<D extends object>(props: GridProps<D>) {
         <GridHeader id={id ? `${id}_thead` : undefined}>
           {headerGroups.map((headerGroup) => (
             <tr {...headerGroup.getHeaderGroupProps()}>
-              {headerGroup.headers.map((column, index) => {
+              {headerGroup.headers.map((column) => {
                 const sortableColumn = (column as unknown) as UseSortByColumnProps<D>
                 return (
                   <GridHeaderCell
@@ -522,20 +559,7 @@ export function Grid<D extends object>(props: GridProps<D>) {
         visibleRowCount={pageSize}
         onVisibleRowCountChange={setPageSize}
         onPaging={(pageNumber) => gotoPage(pageNumber - 1)}
-        onRefresh={() => {
-          if (pageIndex !== 0) {
-            gotoPage(0)
-            if (!onPaging && onRefresh) {
-              onRefresh(pageSize, 0)
-            }
-          } else {
-            if (onPaging) {
-              onPaging(0, pageSize)
-            } else if (onRefresh) {
-              onRefresh(pageSize, 0)
-            }
-          }
-        }}
+        onRefresh={refresh}
       />
       {!isLoading && isColumnConfigVisible && (
         <ColumnConfigPanel
