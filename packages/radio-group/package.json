@@ -1,6 +1,6 @@
 {
   "name": "@jfront/ui-radio-group",
-  "version": "0.1.5",
+  "version": "0.2.0",
   "license": "Apache-2.0",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -24,12 +24,12 @@
     "test": "jest --passWithNoTests",
     "test:cov": "yarn test --coverage"
   },
-  "peerDependencies": {
-    "react": "16.x",
-    "react-dom": "16.x"
+  "dependencies": {
+    "@jfront/ui-icons": "^0.6.0"
   },
-  "devDependencies": {
-    "@jfront/ui-label": "^0.3.12",
-    "@types/styled-components": "^5.0.1"
+  "peerDependencies": {
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "styled-components": "^5.2.1"
   }
 }

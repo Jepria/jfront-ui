@@ -1,6 +1,6 @@
 {
   "name": "@jfront/ui-dialog",
-  "version": "0.1.5",
+  "version": "0.2.0",
   "license": "Apache-2.0",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -25,17 +25,13 @@
     "test:cov": "yarn test --coverage"
   },
   "dependencies": {
-    "@jfront/ui-button": "^0.1.5",
-    "@jfront/ui-form": "^0.2.10",
-    "@jfront/ui-modal": "^0.1.5"
+    "@jfront/ui-button": "^0.2.0",
+    "@jfront/ui-form": "^0.3.0",
+    "@jfront/ui-modal": "^0.2.0"
   },
   "peerDependencies": {
-    "@types/styled-components": "^5.x.x",
-    "react": "16.x",
-    "react-dom": "16.x"
-  },
-  "devDependencies": {
-    "@types/styled-components": "^5.0.1",
-    "formik": "2.2.5"
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "styled-components": "^5.2.1"
   }
 }

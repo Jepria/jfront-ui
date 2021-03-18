@@ -45,11 +45,9 @@ export const ErrorDialog = React.forwardRef<HTMLDivElement, ErrorDialogProps>(
     return (
       <StyledModal {...props} onClose={onClose} ref={ref}>
         <ModalHeader>{header}</ModalHeader>
-        <ModalContent style={{ flexDirection: "row" }}>
+        <ModalContent style={{ flexDirection: "row", height: "75px" }}>
           <ImageBox>
-            <span>
-              <Error />
-            </span>
+            <Error />
           </ImageBox>
           <ContentBox>
             {errorId && (

@@ -3,43 +3,53 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [0.1.5](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-dialog@0.1.4...@jfront/ui-dialog@0.1.5) (2021-02-17)
+# [0.2.0](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-dialog@0.1.5...@jfront/ui-dialog@0.2.0) (2021-03-18)
 
 
 ### Bug Fixes
 
-* form submit event added to handleSubmit prop ([69d2e27](https://github.com/Jepria/jfront-ui/commit/69d2e279d0c11a5818f9565d080578a5453af93d))
+* error dialog style ([93fdd1c](https://github.com/Jepria/jfront-ui/commit/93fdd1c6550b49f6ea223c995c36b3fdcafa9abc))
+
+
+### Features
+
+* package dependencies update to latest versions ([90946d2](https://github.com/Jepria/jfront-ui/commit/90946d25fcb08fc77e4b143567963682f8ff3d2b))
+
+
+### BREAKING CHANGES
+
+* react upgraded to 17.0.1
 
 
 
 
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [0.1.5](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-dialog@0.1.4...@jfront/ui-dialog@0.1.5) (2021-02-17)
+
+### Bug Fixes
+
+- form submit event added to handleSubmit prop
+  ([69d2e27](https://github.com/Jepria/jfront-ui/commit/69d2e279d0c11a5818f9565d080578a5453af93d))
 
 ## [0.1.4](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-dialog@0.1.3...@jfront/ui-dialog@0.1.4) (2021-02-10)
 
 **Note:** Version bump only for package @jfront/ui-dialog
 
-
-
-
-
 ## [0.1.3](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-dialog@0.1.2...@jfront/ui-dialog@0.1.3) (2021-02-03)
 
 **Note:** Version bump only for package @jfront/ui-dialog
 
-
-
-
-
 ## [0.1.2](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-dialog@0.1.1...@jfront/ui-dialog@0.1.2) (2021-01-29)
-
 
 ### Bug Fixes
 
-* dialog props and styles fixes ([2d44994](https://github.com/Jepria/jfront-ui/commit/2d44994fa570c5c1e9f225b5066a81993acf0e73))
-
-
-
-
+- dialog props and styles fixes
+  ([2d44994](https://github.com/Jepria/jfront-ui/commit/2d44994fa570c5c1e9f225b5066a81993acf0e73))
 
 # Change Log
 

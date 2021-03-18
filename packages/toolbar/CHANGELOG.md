@@ -3,40 +3,45 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-toolbar@0.1.13...@jfront/ui-toolbar@0.2.0) (2021-03-18)
+
+
+### Features
+
+* package dependencies update to latest versions ([90946d2](https://github.com/Jepria/jfront-ui/commit/90946d25fcb08fc77e4b143567963682f8ff3d2b))
+
+
+### BREAKING CHANGES
+
+* react upgraded to 17.0.1
+
+
+
+
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
 ## [0.1.13](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-toolbar@0.1.12...@jfront/ui-toolbar@0.1.13) (2021-02-17)
 
 **Note:** Version bump only for package @jfront/ui-toolbar
 
-
-
-
-
 ## [0.1.12](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-toolbar@0.1.11...@jfront/ui-toolbar@0.1.12) (2021-02-10)
-
 
 ### Bug Fixes
 
-* default titles added to toolbar buttons ([eb6b727](https://github.com/Jepria/jfront-ui/commit/eb6b727be82d5d275030df8088f6ad9c86cdf6ab))
-
-
-
-
+- default titles added to toolbar buttons
+  ([eb6b727](https://github.com/Jepria/jfront-ui/commit/eb6b727be82d5d275030df8088f6ad9c86cdf6ab))
 
 ## [0.1.11](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-toolbar@0.1.10...@jfront/ui-toolbar@0.1.11) (2021-02-03)
 
 **Note:** Version bump only for package @jfront/ui-toolbar
 
-
-
-
-
 ## [0.1.10](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-toolbar@0.1.9...@jfront/ui-toolbar@0.1.10) (2021-01-29)
 
 **Note:** Version bump only for package @jfront/ui-toolbar
-
-
-
-
 
 # Change Log
 

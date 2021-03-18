@@ -13,22 +13,8 @@ import {
   ColumnConfigImg,
   Resizer,
   StyledPagingBar,
-  Left,
-  PagingToolbar,
-  Item,
-  Label,
-  Center,
-  Right,
   IconProps,
-} from "../styles"
-import { CheckBox } from "@jfront/ui-checkbox"
-import {
-  FirstImage,
-  PrevImage,
-  NextImage,
-  LastImage,
-  RefreshImage,
-} from "@jfront/ui-icons"
+} from "./styles"
 import {
   useTable,
   useFlexLayout,
@@ -37,7 +23,6 @@ import {
   Column,
   UseResizeColumnsColumnProps,
   ColumnInstance,
-  TableToggleHideAllColumnProps,
   TableInstance,
   UseRowSelectInstanceProps,
   UseRowSelectRowProps,
@@ -54,81 +39,10 @@ import {
   UseResizeColumnsState,
   Cell,
   TableCommonProps,
+  SortingRule,
 } from "react-table"
-import { throttle } from "throttle-debounce"
-import { NumberInput } from "@jfront/ui-input"
-import { Button } from "@jfront/ui-button"
-
-interface ColumnConfigPanelProps<D extends object> {
-  id?: string
-  top?: string | number
-  left?: string | number
-  right?: string | number
-  columns: Array<ColumnInstance<D>>
-  toggleAllProps: (
-    props?: Partial<TableToggleHideAllColumnProps>,
-  ) => TableToggleHideAllColumnProps
-  hide: () => void
-}
-
-function ColumnConfigPanel<D extends object>(props: ColumnConfigPanelProps<D>) {
-  const { id, columns, toggleAllProps, hide, top, left, right } = props
-
-  const [place, setPlace] = useState<React.CSSProperties>({ top, left, right })
-
-  useEffect(() => {
-    setPlace({ top, left, right })
-  }, [top, left, right])
-
-  return (
-    <>
-      <GlassMask onClick={hide} />
-      <ModalDiv
-        id={id}
-        style={{
-          flexDirection: "column",
-          backgroundColor: "white",
-          border: "1px solid #999",
-          padding: "15px",
-          ...place,
-        }}
-      >
-        <div
-          style={{
-            fontFamily: "Arial Unicode MS, Arial, sans-serif",
-            fontSize: "small",
-            height: "100px",
-            width: "150px",
-            overflow: "hidden",
-            overflowY: "auto",
-            padding: 0,
-            border: 0,
-          }}
-        >
-          <CheckBox key="selectAll" {...toggleAllProps()} label="Выбрать все" />
-          {columns.map((column) => {
-            return (
-              <CheckBox
-                key={column.id}
-                {...column.getToggleHiddenProps()}
-                label={column.Header}
-              />
-            )
-          })}
-        </div>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            userSelect: "none",
-          }}
-        >
-          <Button onClick={hide} value="ОК" />
-        </div>
-      </ModalDiv>
-    </>
-  )
-}
+import { ColumnConfigPanel } from "./ColumnConfigPanel"
+import { useColumnConfiguration } from "./useColumnConfiguration"
 
 const Arrow = (props: IconProps) => {
   return (
@@ -191,13 +105,12 @@ export interface GridProps<D extends object>
   defaultPageNumber?: number
   totalRowCount?: number
   totalPageCount?: number
-  maxPageSize?: number
   //disable sorting dor all columns, if you want to disable only for some columns add disableSortBy to each column description in columns prop
   disableSort?: boolean
-  /**
-   * when external paging is absent, provide onRefresh callback to refetch data
-   */
-  onRefresh?: (pageSize: number, pageNumber: number) => void
+  disableMultiSort?: boolean
+  manualSort?: boolean
+  manualPaging?: boolean
+  defaultSorting?: SortingRule<D>[]
   onSelection?: (records?: D[]) => void
   //provide onSort if sorting is processing outside of Grid component (e.g. server-side)
   onSort?: (sortConfigs?: ColumnSortConfiguration[]) => void
@@ -210,6 +123,11 @@ export interface GridProps<D extends object>
   getColumnProps?: (column?: ColumnInstance<D>) => TableCommonProps
   getRowProps?: (row?: Row<D> & UseRowSelectRowProps<D>) => TableCommonProps
   getCellProps?: (cell?: Cell<D>) => TableCommonProps
+  fetchData?: (
+    pageNumber: number,
+    pageSize: number,
+    sortConfigs?: ColumnSortConfiguration[],
+  ) => void
 }
 
 // Create a default prop getter
@@ -247,13 +165,15 @@ export function Grid<D extends object>(props: GridProps<D>) {
     className,
     style,
     defaultPageSize = 25,
-    maxPageSize = 9999,
     defaultPageNumber = 1,
     totalRowCount,
     isLoading,
     disableSort = false,
     totalPageCount,
-    onRefresh,
+    defaultSorting = [],
+    manualSort,
+    manualPaging,
+    fetchData,
     getHeaderProps = defaultPropGetter,
     getColumnProps = defaultPropGetter,
     getRowProps = defaultPropGetter,
@@ -274,66 +194,12 @@ export function Grid<D extends object>(props: GridProps<D>) {
     [],
   )
 
-  /**
-   * Restoring saved hidden columns array from Local Storage
-   */
-  const restoreHiddenColumns = () => {
-    if (id) {
-      const savedString = window.localStorage.getItem(
-        `${id}_grid_hidden_columns`,
-      )
-      if (savedString) {
-        return JSON.parse(savedString)
-      }
-    }
-    return []
-  }
-
-  /**
-   * Restoring saved column widths and integrating them in columns object
-   */
-  const restoreColumnWidth = (columnConfiguration: Array<Column<D>>) => {
-    if (id) {
-      const savedString = window.localStorage.getItem(`${id}_grid_column_width`)
-      if (savedString) {
-        const columnWidth: Record<string, number> = JSON.parse(savedString)
-        const test = updateLevel(columnConfiguration, columnWidth)
-        return test
-      }
-    }
-    return columnConfiguration
-  }
-
-  const updateLevel = (
-    columnConfiguration: any,
-    columnWidth: Record<string, number>,
-  ) => {
-    return columnConfiguration.map((column: any) => {
-      if (typeof column.accessor == "string" && columnWidth[column.accessor]) {
-        column.width = columnWidth[column.accessor]
-      } else if (column.id && columnWidth[column.id]) {
-        column.width = columnWidth[column.id]
-      }
-      if (column.columns) {
-        column.columns = updateLevel(column.columns, columnWidth)
-      }
-      return column
-    })
-  }
-
-  const [columnConfiguration, setColumnConfiguration] = useState(columns)
-  const [hiddenColumnConfiguration, setHiddenColumnConfiguration] = useState([])
-
-  useEffect(() => {
-    setColumnConfiguration(restoreColumnWidth(columns))
-    setHiddenColumnConfiguration(restoreHiddenColumns())
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
-
-  useEffect(() => {
-    setHiddenColumns(hiddenColumnConfiguration)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [hiddenColumnConfiguration])
+  const {
+    columnConfiguration,
+    hiddenColumnConfiguration,
+    saveResizedColumnConfig,
+    saveHiddenColumnConfig,
+  } = useColumnConfiguration({ id, columns })
 
   const [_pageCount, setPageCount] = useState(totalPageCount)
 
@@ -345,19 +211,12 @@ export function Grid<D extends object>(props: GridProps<D>) {
     state,
     rows,
     page,
-    canPreviousPage,
-    canNextPage,
-    pageOptions,
-    pageCount,
-    setHiddenColumns,
     getTableProps,
     getTableBodyProps,
     prepareRow,
     getToggleHideAllColumnsProps,
     toggleRowSelected,
     gotoPage,
-    nextPage,
-    previousPage,
     setPageSize,
   } = useTable<D>(
     {
@@ -365,15 +224,16 @@ export function Grid<D extends object>(props: GridProps<D>) {
       data: data,
       defaultColumn,
       disableSortBy: disableSort,
-      manualSortBy: onSort ? true : false,
-      manualPagination: onPaging ? true : false,
+      manualSortBy: onSort != undefined || manualSort,
+      manualPagination: onPaging != undefined || manualPaging,
       pageCount: _pageCount ? _pageCount : -1,
       autoResetPage: onPaging ? false : true,
       initialState: {
         pageSize: defaultPageSize,
         pageIndex: defaultPageNumber - 1,
         hiddenColumns: hiddenColumnConfiguration,
-      } as TableState<D>,
+        sortBy: defaultSorting,
+      } as TableState<D> & UseSortByState<D>,
     } as TableOptions<D>,
     useSortBy,
     useFlexLayout,
@@ -403,54 +263,15 @@ export function Grid<D extends object>(props: GridProps<D>) {
     )
   }, [pageSize, totalRowCount])
 
-  /**
-   * Saving resized column widths, only if something was manually resized
-   */
-  const saveResizedColumnConfig = throttle(1000, () => {
-    if (
-      columnResizing.columnWidths &&
-      Object.keys(columnResizing.columnWidths).length > 0
-    ) {
-      const savedString = window.localStorage.getItem(`${id}_grid_column_width`)
-      if (savedString) {
-        const columnWidth: Record<string, number> = JSON.parse(savedString)
-        window.localStorage.setItem(
-          `${id}_grid_column_width`,
-          JSON.stringify({
-            ...columnWidth,
-            ...columnResizing.columnWidths,
-          }),
-        )
-      } else {
-        window.localStorage.setItem(
-          `${id}_grid_column_width`,
-          JSON.stringify(columnResizing.columnWidths),
-        )
-      }
-    }
-  })
-
   useEffect(() => {
     if (id) {
-      saveResizedColumnConfig()
+      saveResizedColumnConfig(columnResizing)
     }
   }, [columnResizing, id, saveResizedColumnConfig])
 
-  /**
-   * Saving hidden columns names, if present
-   */
-  const saveHiddenColumnConfig = throttle(1000, () => {
-    if (hiddenColumns) {
-      window.localStorage.setItem(
-        `${id}_grid_hidden_columns`,
-        JSON.stringify(hiddenColumns),
-      )
-    }
-  })
-
   useEffect(() => {
     if (id) {
-      saveHiddenColumnConfig()
+      saveHiddenColumnConfig(hiddenColumns)
     }
   }, [hiddenColumns, id, saveHiddenColumnConfig])
 
@@ -491,6 +312,26 @@ export function Grid<D extends object>(props: GridProps<D>) {
   }
 
   /**
+   * call onSelection callback, if present
+   */
+  useEffect(() => {
+    if (onSelection) {
+      onSelection(selectedFlatRows.map((selectedRow) => selectedRow.original))
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [onSelection, selectedRowIds])
+
+  /**
+   * call onPaging callback, if present
+   */
+  useEffect(() => {
+    if (onPaging) {
+      onPaging(pageIndex + 1, pageSize)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pageIndex, pageSize])
+
+  /**
    * call onSort callback, if present
    */
   useEffect(() => {
@@ -501,38 +342,45 @@ export function Grid<D extends object>(props: GridProps<D>) {
           sortOrder: sort.desc ? "desc" : "asc",
         })),
       )
-      if (pageIndex !== defaultPageNumber) {
-        gotoPage(defaultPageNumber - 1)
-      } else {
-        onPagination(defaultPageNumber, pageSize)
-      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sortBy])
 
   /**
-   * call onSelection callback, if present
+   * call fetchData callback, if present
    */
   useEffect(() => {
-    if (onSelection) {
-      onSelection(selectedFlatRows.map((selectedRow) => selectedRow.original))
+    if (fetchData) {
+      fetchData(
+        pageIndex + 1,
+        pageSize,
+        sortBy.map((sort) => ({
+          columnName: sort.id,
+          sortOrder: sort.desc ? "desc" : "asc",
+        })),
+      )
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [onSelection, selectedRowIds])
+  }, [pageIndex, pageSize, sortBy])
 
-  const onPagination = (pageIndex: number, pageSize: number) => {
-    if (onPaging) {
-      onPaging(pageIndex + 1, pageSize)
+  const refresh = () => {
+    if (pageIndex !== 0) {
+      gotoPage(0)
+    } else {
+      if (onPaging) {
+        onPaging(1, pageSize)
+      } else if (fetchData) {
+        fetchData(
+          1,
+          pageSize,
+          sortBy.map((sort) => ({
+            columnName: sort.id,
+            sortOrder: sort.desc ? "desc" : "asc",
+          })),
+        )
+      }
     }
   }
-
-  /**
-   * call onPaging callback, if present
-   */
-  useEffect(() => {
-    onPagination(pageIndex, pageSize)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pageIndex, pageSize])
 
   /**
    * count item's id's for selecting
@@ -633,10 +481,8 @@ export function Grid<D extends object>(props: GridProps<D>) {
         <GridHeader id={id ? `${id}_thead` : undefined}>
           {headerGroups.map((headerGroup) => (
             <tr {...headerGroup.getHeaderGroupProps()}>
-              {headerGroup.headers.map((column, index) => {
-                const sortableColumn = (column as unknown) as UseSortByColumnProps<
-                  D
-                >
+              {headerGroup.headers.map((column) => {
+                const sortableColumn = (column as unknown) as UseSortByColumnProps<D>
                 return (
                   <GridHeaderCell
                     id={id ? `${id}_th_${column.id}` : undefined}
@@ -658,9 +504,7 @@ export function Grid<D extends object>(props: GridProps<D>) {
                       }}
                     />
                     <Resizer
-                      {...((column as unknown) as UseResizeColumnsColumnProps<
-                        D
-                      >).getResizerProps()}
+                      {...((column as unknown) as UseResizeColumnsColumnProps<D>).getResizerProps()}
                       onClick={(e) => e.stopPropagation()}
                     />
                   </GridHeaderCell>
@@ -708,110 +552,15 @@ export function Grid<D extends object>(props: GridProps<D>) {
           })}
         </GridBody>
       </GridTable>
-      <StyledPagingBar id={id ? `${id}_pagingbar` : undefined}>
-        <Left>
-          <PagingToolbar>
-            <Item
-              id={id ? `${id}_pagingbar_first` : undefined}
-              onClick={() => gotoPage(0)}
-              disabled={!canPreviousPage}
-            >
-              <FirstImage title="Первая" />
-            </Item>
-            <Item
-              id={id ? `${id}_pagingbar_prev` : undefined}
-              onClick={() => previousPage()}
-              disabled={!canPreviousPage}
-            >
-              <PrevImage title="Предыдушая" />
-            </Item>
-            <Label>
-              Стр.{" "}
-              <NumberInput
-                id={id ? `${id}_pagingbar_page` : undefined}
-                value={pageIndex + 1}
-                min={1}
-                pattern="^[0-9]+$"
-                max={pageOptions.length}
-                onChange={(e) => {
-                  const page = e.target.value ? Number(e.target.value) - 1 : 0
-                  gotoPage(page)
-                }}
-                style={{
-                  minWidth: "60px",
-                  maxWidth: "150px",
-                  backgroundColor: "white",
-                }}
-              />{" "}
-              из {pageOptions.length}
-            </Label>
-            <Item
-              id={id ? `${id}_pagingbar_next` : undefined}
-              onClick={() => {
-                nextPage()
-              }}
-              disabled={!canNextPage}
-            >
-              <NextImage title="Следующая" />
-            </Item>
-            <Item
-              id={id ? `${id}_pagingbar_last` : undefined}
-              onClick={() => gotoPage(pageCount - 1)}
-              disabled={!canNextPage}
-            >
-              <LastImage title="Последняя" />
-            </Item>
-            <Item
-              id={id ? `${id}_pagingbar_refresh` : undefined}
-              onClick={() => {
-                if (pageIndex !== 0) {
-                  gotoPage(0)
-                  if (!onPaging && onRefresh) {
-                    onRefresh(pageSize, 0)
-                  }
-                } else {
-                  if (onPaging) {
-                    onPagination(0, pageSize)
-                  } else if (onRefresh) {
-                    onRefresh(pageSize, 0)
-                  }
-                }
-              }}
-            >
-              <RefreshImage title="Обновить" />
-            </Item>
-          </PagingToolbar>
-        </Left>
-        <Center>
-          {data.length > 0
-            ? `Записи ${pageSize * (pageIndex + 1) - pageSize + 1} 
-            - ${pageSize * (pageIndex + 1) - pageSize + page.length}
-            из ${totalRowCount ? totalRowCount : data.length}`
-            : "Записей не найдено"}
-        </Center>
-        <Right>
-          <label>
-            Записей на странице:{" "}
-            <NumberInput
-              id={id ? `${id}_pagingbar_pagesize` : undefined}
-              min={1}
-              max={maxPageSize}
-              pattern="^[0-9]+$"
-              value={pageSize}
-              onChange={(e) => {
-                if (e.target.value !== "") {
-                  setPageSize(Number(e.target.value))
-                }
-              }}
-              style={{
-                minWidth: "60px",
-                maxWidth: "100px",
-                backgroundColor: "white",
-              }}
-            />
-          </label>
-        </Right>
-      </StyledPagingBar>
+      <StyledPagingBar
+        currentPage={pageIndex + 1}
+        rowCount={page.length}
+        totalRowCount={totalRowCount || data.length}
+        visibleRowCount={pageSize}
+        onVisibleRowCountChange={setPageSize}
+        onPaging={(pageNumber) => gotoPage(pageNumber - 1)}
+        onRefresh={refresh}
+      />
       {!isLoading && isColumnConfigVisible && (
         <ColumnConfigPanel
           id={id ? `${id}_column_config` : undefined}

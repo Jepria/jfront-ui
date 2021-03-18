@@ -3,48 +3,61 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [0.3.3](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-grid@0.3.2...@jfront/ui-grid@0.3.3) (2021-02-17)
-
-**Note:** Version bump only for package @jfront/ui-grid
-
-
-
-
-
-## [0.3.2](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-grid@0.3.1...@jfront/ui-grid@0.3.2) (2021-02-10)
+# [0.4.0](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-grid@0.3.3...@jfront/ui-grid@0.4.0) (2021-03-18)
 
 
 ### Bug Fixes
 
-* grid body overflow IE ([2dc4b28](https://github.com/Jepria/jfront-ui/commit/2dc4b281a3fcca0fd7b6560744e0cb13ffaf190e))
-
-
-
-
-
-## [0.3.1](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-grid@0.3.0...@jfront/ui-grid@0.3.1) (2021-02-03)
-
-
-### Bug Fixes
-
-* absolute elements positioning ([b19ddcc](https://github.com/Jepria/jfront-ui/commit/b19ddcc7ece55009f8b309b854671d230608c807))
-* grid selection ([7aa6948](https://github.com/Jepria/jfront-ui/commit/7aa6948d1fb19f57b7ddb2f00b8d6b74b51e35aa))
-* row double click IE ([ebe224a](https://github.com/Jepria/jfront-ui/commit/ebe224ad380134c34010019fb92c0f5eb90e21f2))
-
-
-
-
-
-# [0.3.0](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-grid@0.2.9...@jfront/ui-grid@0.3.0) (2021-01-29)
+* empty array config ([ad51a1b](https://github.com/Jepria/jfront-ui/commit/ad51a1be1c6c3027bbf95dec2dec360b381e2e94))
 
 
 ### Features
 
-* onRefresh callback added in props ([1e87bdd](https://github.com/Jepria/jfront-ui/commit/1e87bdd7a8e97eea8c0b4f0d6005366d8521f23b))
+* fetchData prop added ([841990a](https://github.com/Jepria/jfront-ui/commit/841990ac39006bd44834fc95d4db65db60fc5f6f))
+* package dependencies update to latest versions ([90946d2](https://github.com/Jepria/jfront-ui/commit/90946d25fcb08fc77e4b143567963682f8ff3d2b))
+
+
+### BREAKING CHANGES
+
+* react upgraded to 17.0.1
 
 
 
 
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [0.3.3](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-grid@0.3.2...@jfront/ui-grid@0.3.3) (2021-02-17)
+
+**Note:** Version bump only for package @jfront/ui-grid
+
+## [0.3.2](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-grid@0.3.1...@jfront/ui-grid@0.3.2) (2021-02-10)
+
+### Bug Fixes
+
+- grid body overflow IE
+  ([2dc4b28](https://github.com/Jepria/jfront-ui/commit/2dc4b281a3fcca0fd7b6560744e0cb13ffaf190e))
+
+## [0.3.1](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-grid@0.3.0...@jfront/ui-grid@0.3.1) (2021-02-03)
+
+### Bug Fixes
+
+- absolute elements positioning
+  ([b19ddcc](https://github.com/Jepria/jfront-ui/commit/b19ddcc7ece55009f8b309b854671d230608c807))
+- grid selection
+  ([7aa6948](https://github.com/Jepria/jfront-ui/commit/7aa6948d1fb19f57b7ddb2f00b8d6b74b51e35aa))
+- row double click IE
+  ([ebe224a](https://github.com/Jepria/jfront-ui/commit/ebe224ad380134c34010019fb92c0f5eb90e21f2))
+
+# [0.3.0](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-grid@0.2.9...@jfront/ui-grid@0.3.0) (2021-01-29)
+
+### Features
+
+- onRefresh callback added in props
+  ([1e87bdd](https://github.com/Jepria/jfront-ui/commit/1e87bdd7a8e97eea8c0b4f0d6005366d8521f23b))
 
 # Change Log
 

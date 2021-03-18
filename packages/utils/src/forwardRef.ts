@@ -1,5 +1,4 @@
 import React from "react"
-
 export interface ComponentWithAs<T extends React.ElementType, P> {
   <TT extends React.ElementType>(
     props: { as?: TT } & P &

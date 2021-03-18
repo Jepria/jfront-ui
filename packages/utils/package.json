@@ -1,6 +1,6 @@
 {
   "name": "@jfront/ui-utils",
-  "version": "0.3.4",
+  "version": "0.4.0",
   "license": "Apache-2.0",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -25,7 +25,6 @@
     "test:cov": "yarn test --coverage"
   },
   "peerDependencies": {
-    "react": "16.x",
-    "react-dom": "16.x"
+    "react": "^17.0.1"
   }
 }

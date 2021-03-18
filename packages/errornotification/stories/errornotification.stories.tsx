@@ -12,20 +12,13 @@ export const BasicUsage = () => {
   )
 }
 
-export const CatchError = () => {
+export const RenderError = () => {
+  const TestError = () => {
+    throw new Error("Test error")
+  }
   return (
     <ErrorNotification>
-      <div>
-        Click button to throw error
-        <button
-          style={{ margin: "5px" }}
-          onClick={() => {
-            throw new Error("Error thrown")
-          }}
-        >
-          Throw error
-        </button>
-      </div>
+      <TestError />
     </ErrorNotification>
   )
 }

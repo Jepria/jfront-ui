@@ -3,37 +3,43 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-combobox@0.4.8...@jfront/ui-combobox@0.5.0) (2021-03-18)
+
+
+### Features
+
+* default input value ([751da14](https://github.com/Jepria/jfront-ui/commit/751da14f94c4ea6a7627cd89ad0d8bdefbb01a48))
+* package dependencies update to latest versions ([90946d2](https://github.com/Jepria/jfront-ui/commit/90946d25fcb08fc77e4b143567963682f8ff3d2b))
+
+
+### BREAKING CHANGES
+
+* react upgraded to 17.0.1
+
+
+
+
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
 ## [0.4.8](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-combobox@0.4.7...@jfront/ui-combobox@0.4.8) (2021-02-17)
 
 **Note:** Version bump only for package @jfront/ui-combobox
-
-
-
-
 
 ## [0.4.7](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-combobox@0.4.6...@jfront/ui-combobox@0.4.7) (2021-02-10)
 
 **Note:** Version bump only for package @jfront/ui-combobox
 
-
-
-
-
 ## [0.4.6](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-combobox@0.4.5...@jfront/ui-combobox@0.4.6) (2021-02-03)
 
 **Note:** Version bump only for package @jfront/ui-combobox
 
-
-
-
-
 ## [0.4.5](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-combobox@0.4.4...@jfront/ui-combobox@0.4.5) (2021-01-29)
 
 **Note:** Version bump only for package @jfront/ui-combobox
-
-
-
-
 
 # Change Log
 

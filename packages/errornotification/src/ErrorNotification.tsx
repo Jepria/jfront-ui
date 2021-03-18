@@ -30,31 +30,6 @@ export class ErrorNotification extends React.Component<
   constructor(props: ErrorNotificationProps) {
     super(props)
     this.state = { error: props.error }
-    window.onerror = (msg, url, line, col, error) => {
-      // Note that col & error are new to the HTML 5 spec and may not be
-      // supported in every browser.
-      let extra = !col ? "" : "\ncolumn: " + col
-      extra += !error ? "" : "\nerror: " + error
-      const log = "Error: " + msg + "\nurl: " + url + "\nline: " + line + extra
-      // You can view the information in an alert to see things working like this:
-      console.error(log)
-      if (this.props.log) {
-        if (error) {
-          this.props.log(error, log)
-        } else {
-          this.props.log(log)
-        }
-      }
-      const suppressErrorAlert = true
-      // If you return true, then error alerts (like in older versions of
-      // Internet Explorer) will be suppressed.
-      if (error) {
-        this.setState({ error })
-      } else {
-        this.setState({ error: log })
-      }
-      return suppressErrorAlert
-    }
 
     window.onunhandledrejection = (e: PromiseRejectionEvent) => {
       console.error(e)
@@ -123,18 +98,15 @@ export class ErrorNotification extends React.Component<
         errorDescription = (error as Error).message
       }
       return (
-        <>
-          <ErrorDialog
-            header={header}
-            visible={error !== undefined}
-            errorId={errorId}
-            errorCode={errorCode}
-            errorMessage={errorMessage}
-            errorDescription={errorDescription}
-            onClose={() => this.setState({ error: undefined })}
-          />
-          {children}
-        </>
+        <ErrorDialog
+          header={header}
+          visible={error !== undefined}
+          errorId={errorId}
+          errorCode={errorCode}
+          errorMessage={errorMessage}
+          errorDescription={errorDescription}
+          onClose={() => this.setState({ error: undefined })}
+        />
       )
     } else {
       return children

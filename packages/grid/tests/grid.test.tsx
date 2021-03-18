@@ -1,6 +1,7 @@
 import React from "react"
 import { fireEvent, render, screen } from "@testing-library/react"
 import { Grid } from "../src"
+import "./_mocks_/resizeObserver"
 
 test("Checking for the existence of an element Grid", () => {
   render(

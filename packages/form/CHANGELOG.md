@@ -3,37 +3,42 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-form@0.2.10...@jfront/ui-form@0.3.0) (2021-03-18)
+
+
+### Features
+
+* package dependencies update to latest versions ([90946d2](https://github.com/Jepria/jfront-ui/commit/90946d25fcb08fc77e4b143567963682f8ff3d2b))
+
+
+### BREAKING CHANGES
+
+* react upgraded to 17.0.1
+
+
+
+
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
 ## [0.2.10](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-form@0.2.9...@jfront/ui-form@0.2.10) (2021-02-17)
 
 **Note:** Version bump only for package @jfront/ui-form
-
-
-
-
 
 ## [0.2.9](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-form@0.2.8...@jfront/ui-form@0.2.9) (2021-02-10)
 
 **Note:** Version bump only for package @jfront/ui-form
 
-
-
-
-
 ## [0.2.8](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-form@0.2.7...@jfront/ui-form@0.2.8) (2021-02-03)
 
 **Note:** Version bump only for package @jfront/ui-form
 
-
-
-
-
 ## [0.2.7](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-form@0.2.6...@jfront/ui-form@0.2.7) (2021-01-29)
 
 **Note:** Version bump only for package @jfront/ui-form
-
-
-
-
 
 # Change Log
 

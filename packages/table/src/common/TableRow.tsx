@@ -8,9 +8,10 @@ export interface TableRowProps
 
 export const TableRow = styled.tr<TableRowProps>`
   display: flex;
-  flex-direction: row @media only screen and (max-width: 760px),
+  flex-direction: row;
+  @media only screen and (max-width: 760px),
     (min-device-width: 768px) and (max-device-width: 1024px) {
-    display: block;
+    flex-direction: column;
   }
 `
 
@@ -29,9 +30,10 @@ export const TableCell = styled.td<TableCellProps>`
     ${(props) => (props.width ? `width: ${props.width};` : "")}
     display: flex;
   }
-  @media only screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px) {
+  @media only screen and (max-width: 760px),
+    (min-device-width: 768px) and (max-device-width: 1024px) {
     display: block;
-    &::before {    
+    &::before {
       display: inline-block;
       content: "${(props) => (props.label ? `${props.label}:` : "")}";
     }

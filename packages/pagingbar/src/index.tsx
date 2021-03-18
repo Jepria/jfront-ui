@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React from "react"
 import styled from "styled-components"
 import {
   FirstImage,
@@ -7,8 +7,12 @@ import {
   LastImage,
   RefreshImage,
 } from "@jfront/ui-icons"
+import { Label } from "@jfront/ui-label"
+import { NumberInput } from "@jfront/ui-input"
 
 const Wrapper = styled.div`
+  display: inline-flex;
+  align-items: center;
   white-space: nowrap;
 `
 
@@ -20,53 +24,49 @@ const Item = styled.button`
   background-color: transparent;
   background-image: none;
   border: solid 1px transparent;
-  &:hover {
+  ${(props) =>
+    props.disabled
+      ? "opacity: 0.5;"
+      : `opacity: 1;
+      &:hover {
     border: solid 1px #99bbe8;
     background: #ddefff;
-  }
+  }`}
 `
 
-const Label = styled.label`
-  display: inline-block;
-  height: 22px;
-  vertical-align: top;
+const StyledNumberInput = styled(NumberInput)`
+  min-width: 60px;
+  max-width: 150px;
+  background-color: white;
+  margin: 0px 5px;
 `
 
-const NumberInput = styled.input.attrs({ type: "number" })`
-  width: 60px;
-  margin: 0 5px;
+const StyledLabel = styled(Label)`
+  align-items: center;
 `
 
 interface PagingToolBarProps {
-  startPageNumber?: number
   pageCount: number
-  onChange?: (currentPageNumber: number) => void
+  currentPage: number
+  onChange: (currentPageNumber: number) => void
+  onRefresh: () => void
 }
 
 export const PagingToolBar: React.FC<PagingToolBarProps> = ({
-  startPageNumber = 1,
   pageCount,
+  currentPage,
+  onRefresh,
   onChange,
 }) => {
-  const [_pageCount, setPageCount] = useState<number>(pageCount)
-  const [currentPage, setCurrentPage] = useState<number | undefined>(
-    startPageNumber,
-  )
-
-  useEffect(() => {
-    setPageCount(pageCount)
-  }, [pageCount])
-
   const changeValue = (page?: number) => {
-    if (page && page >= 1 && page <= _pageCount && onChange) {
-      setCurrentPage(page)
+    if (page && page >= 1 && page <= pageCount && onChange) {
       onChange(page)
     }
   }
 
   const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = parseInt(e.target.value)
-    setCurrentPage(value ? value : undefined)
+    onChange(value)
   }
 
   const onKeyPressed = (e: React.KeyboardEvent) => {
@@ -74,7 +74,7 @@ export const PagingToolBar: React.FC<PagingToolBarProps> = ({
       if (
         currentPage &&
         currentPage >= 1 &&
-        currentPage <= _pageCount &&
+        currentPage <= pageCount &&
         onChange
       ) {
         onChange(currentPage)
@@ -88,34 +88,42 @@ export const PagingToolBar: React.FC<PagingToolBarProps> = ({
         onClick={() => {
           if (currentPage !== 1) changeValue(1)
         }}
+        disabled={currentPage === 1}
       >
         <FirstImage title="Первая" />
       </Item>
-      <Item onClick={() => currentPage && changeValue(currentPage - 1)}>
+      <Item
+        onClick={() => currentPage && changeValue(currentPage - 1)}
+        disabled={currentPage === 1}
+      >
         <PrevImage title="Предыдушая" />
       </Item>
-      <Label>
+      <StyledLabel>
         Стр.{" "}
-        <NumberInput
+        <StyledNumberInput
           value={currentPage}
           onChange={onInputChange}
           onKeyUp={onKeyPressed}
-          max={_pageCount}
+          max={pageCount}
           min={1}
         />{" "}
-        из {_pageCount}
-      </Label>
-      <Item onClick={() => currentPage && changeValue(currentPage + 1)}>
+        из {pageCount}
+      </StyledLabel>
+      <Item
+        onClick={() => currentPage && changeValue(currentPage + 1)}
+        disabled={currentPage === pageCount}
+      >
         <NextImage title="Следующая" />
       </Item>
       <Item
         onClick={() => {
-          if (currentPage !== _pageCount) changeValue(_pageCount)
+          if (currentPage !== pageCount) changeValue(pageCount)
         }}
+        disabled={currentPage === pageCount}
       >
         <LastImage title="Последняя" />
       </Item>
-      <Item onClick={() => currentPage && onChange && onChange(currentPage)}>
+      <Item onClick={() => onRefresh()}>
         <RefreshImage title="Обновить" />
       </Item>
     </Wrapper>
