@@ -1,5 +1,32 @@
 # Change Log
 
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+# [0.4.0](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-grid@0.3.3...@jfront/ui-grid@0.4.0) (2021-03-18)
+
+
+### Bug Fixes
+
+* empty array config ([ad51a1b](https://github.com/Jepria/jfront-ui/commit/ad51a1be1c6c3027bbf95dec2dec360b381e2e94))
+
+
+### Features
+
+* fetchData prop added ([841990a](https://github.com/Jepria/jfront-ui/commit/841990ac39006bd44834fc95d4db65db60fc5f6f))
+* package dependencies update to latest versions ([90946d2](https://github.com/Jepria/jfront-ui/commit/90946d25fcb08fc77e4b143567963682f8ff3d2b))
+
+
+### BREAKING CHANGES
+
+* react upgraded to 17.0.1
+
+
+
+
+
+# Change Log
+
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 

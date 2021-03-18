@@ -1,5 +1,31 @@
 # Change Log
 
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+# [0.2.0](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-error-notification@0.1.3...@jfront/ui-error-notification@0.2.0) (2021-03-18)
+
+
+### Bug Fixes
+
+* removed window error ([3bd4616](https://github.com/Jepria/jfront-ui/commit/3bd4616c8fec87361c6966e463d31e8e6a7f0d8b))
+
+
+### Features
+
+* package dependencies update to latest versions ([90946d2](https://github.com/Jepria/jfront-ui/commit/90946d25fcb08fc77e4b143567963682f8ff3d2b))
+
+
+### BREAKING CHANGES
+
+* react upgraded to 17.0.1
+
+
+
+
+
+# Change Log
+
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
