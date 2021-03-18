@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.1](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-form@0.3.0...@jfront/ui-form@0.3.1) (2021-03-18)
+
+**Note:** Version bump only for package @jfront/ui-form
+
+
+
+
+
 # [0.3.0](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-form@0.2.10...@jfront/ui-form@0.3.0) (2021-03-18)
 
 
