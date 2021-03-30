@@ -350,7 +350,7 @@ export function Grid<D extends object>(props: GridProps<D>) {
    * call fetchData callback, if present
    */
   useEffect(() => {
-    if (fetchData) {
+    if (fetchData && (manualPaging || manualSort)) {
       fetchData(
         pageIndex + 1,
         pageSize,
@@ -363,22 +363,36 @@ export function Grid<D extends object>(props: GridProps<D>) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pageIndex, pageSize, sortBy])
 
+  /**
+   * call fetchData callback on mount
+   */
+  useEffect(() => {
+    if (fetchData) {
+      fetchData(
+        pageIndex + 1,
+        pageSize,
+        sortBy.map((sort) => ({
+          columnName: sort.id,
+          sortOrder: sort.desc ? "desc" : "asc",
+        })),
+      )
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   const refresh = () => {
-    if (pageIndex !== 0) {
+    if (fetchData && !manualPaging && !manualSort) {
       gotoPage(0)
+      fetchData(
+        1,
+        pageSize,
+        sortBy.map((sort) => ({
+          columnName: sort.id,
+          sortOrder: sort.desc ? "desc" : "asc",
+        })),
+      )
     } else {
-      if (onPaging) {
-        onPaging(1, pageSize)
-      } else if (fetchData) {
-        fetchData(
-          1,
-          pageSize,
-          sortBy.map((sort) => ({
-            columnName: sort.id,
-            sortOrder: sort.desc ? "desc" : "asc",
-          })),
-        )
-      }
+      gotoPage(0)
     }
   }
 
@@ -494,7 +508,7 @@ export function Grid<D extends object>(props: GridProps<D>) {
                     title={`${column.Header}`}
                   >
                     {sortableColumn.isSorted && (
-                      <Arrow rotate={String(sortableColumn.isSortedDesc)} />
+                      <Arrow rotate={String(!sortableColumn.isSortedDesc)} />
                     )}
                     {column.render("Header")}
                     <ColumnConfigImg
