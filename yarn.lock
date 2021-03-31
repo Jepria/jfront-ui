@@ -1909,6 +1909,11 @@
     "@types/yargs" "^15.0.0"
     chalk "^4.0.0"
 
+"@jfront/core-common@^0.2.1":
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/@jfront/core-common/-/core-common-0.2.1.tgz#4597eb949f785f55d131dcd85cde3e8293dc0726"
+  integrity sha512-3b8lPxzBJjwcHPvbzLbfoJMu+xWN6m3ia4PFdvDIeFqdVdP5iMGQZwDQ03IDcO4slgudmtQ/K70WCzwZeYaTbg==
+
 "@jfront/core-rest@^0.1.4":
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/@jfront/core-rest/-/core-rest-0.1.4.tgz#171f436b3d5427e5ca5ced98fcb97b0d9edbe98e"

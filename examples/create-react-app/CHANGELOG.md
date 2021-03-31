@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.17](https://github.com/Jepria/jfront-ui/compare/jfront-cra@0.3.16...jfront-cra@0.3.17) (2021-03-31)
+
+**Note:** Version bump only for package jfront-cra
+
+
+
+
+
 ## [0.3.16](https://github.com/Jepria/jfront-ui/compare/jfront-cra@0.3.15...jfront-cra@0.3.16) (2021-03-31)
 
 **Note:** Version bump only for package jfront-cra
