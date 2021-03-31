@@ -47,9 +47,10 @@ export const Content = styled.section`
   width: 100%;
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
   overflow-y: auto;
   padding: 5px;
-`;
+`
 
 export const Footer = styled.footer`
   box-sizing: border-box;
@@ -58,7 +59,7 @@ export const Footer = styled.footer`
   justify-content: flex-end;
   align-items: center;
   padding: 5px;
-`;
+`
 
 export const Container = styled.div`
   top: 0;
