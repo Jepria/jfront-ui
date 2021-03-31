@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.4](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-error-notification@0.2.3...@jfront/ui-error-notification@0.2.4) (2021-03-31)
+
+
+### Bug Fixes
+
+* error notification dialog was always visible ([ef2a7bc](https://github.com/Jepria/jfront-ui/commit/ef2a7bcd177ed622d39076a570f6326cee3fd971))
+
+
+
+
+
 ## [0.2.3](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-error-notification@0.2.2...@jfront/ui-error-notification@0.2.3) (2021-03-31)
 
 **Note:** Version bump only for package @jfront/ui-error-notification
