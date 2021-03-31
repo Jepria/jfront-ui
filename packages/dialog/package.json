@@ -1,6 +1,6 @@
 {
   "name": "@jfront/ui-dialog",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "license": "Apache-2.0",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -25,10 +25,10 @@
     "test:cov": "yarn test --coverage"
   },
   "dependencies": {
-    "@jfront/ui-button": "^0.2.1",
-    "@jfront/ui-form": "^0.3.1",
-    "@jfront/ui-modal": "^0.2.1",
-    "@jfront/core-common": "^0.2.1"
+    "@jfront/core-common": "^0.2.1",
+    "@jfront/ui-button": "^0.2.2",
+    "@jfront/ui-form": "^0.3.2",
+    "@jfront/ui-modal": "^0.2.2"
   },
   "peerDependencies": {
     "react": "^17.0.1",

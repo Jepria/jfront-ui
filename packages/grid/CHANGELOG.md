@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.2](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-grid@0.4.1...@jfront/ui-grid@0.4.2) (2021-03-31)
+
+
+### Bug Fixes
+
+* grid fetchData infinite loop when only client paging and sort is enabled ([e7a79ea](https://github.com/Jepria/jfront-ui/commit/e7a79ea0ec80340d967fde48e786153cb2edc4e9))
+
+
+
+
+
 ## [0.4.1](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-grid@0.4.0...@jfront/ui-grid@0.4.1) (2021-03-18)
 
 

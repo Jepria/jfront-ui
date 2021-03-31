@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.2](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-dialog@0.2.1...@jfront/ui-dialog@0.2.2) (2021-03-31)
+
+
+### Bug Fixes
+
+* dialog styles ([9921b17](https://github.com/Jepria/jfront-ui/commit/9921b17c95a69a8b0f7e4ee4f78cb72eebbda1b8))
+
+
+
+
+
 ## [0.2.1](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-dialog@0.2.0...@jfront/ui-dialog@0.2.1) (2021-03-18)
 
 **Note:** Version bump only for package @jfront/ui-dialog

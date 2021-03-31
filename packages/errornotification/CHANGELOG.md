@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.2](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-error-notification@0.2.1...@jfront/ui-error-notification@0.2.2) (2021-03-31)
+
+
+### Bug Fixes
+
+* error from props was not included in render method ([5cfd7fc](https://github.com/Jepria/jfront-ui/commit/5cfd7fc5b61e291071957a483184d6524ce9f075))
+
+
+
+
+
 ## [0.2.1](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-error-notification@0.2.0...@jfront/ui-error-notification@0.2.1) (2021-03-18)
 
 **Note:** Version bump only for package @jfront/ui-error-notification
