@@ -95,6 +95,8 @@ export const Formik = () => {
     enableReinitialize: true,
     initialValues: {
       input: "",
+      inputt: "",
+      inputtt: "",
     },
     onSubmit: (values) => {
       console.log(values)
@@ -119,10 +121,50 @@ export const Formik = () => {
               justifyContent: "flex-start",
             }}
           >
-            Input:
+            Input1:
           </Forms.Label>
           <Forms.Control>
-            <TextInput name="input" onChange={formik.handleChange} />
+            <TextInput
+              name="input"
+              value={formik.values.input}
+              onChange={formik.handleChange}
+            />
+          </Forms.Control>
+        </Forms.Field>
+        <Forms.Field>
+          <Forms.Label
+            style={{
+              minWidth: "unset",
+              width: "unset",
+              justifyContent: "flex-start",
+            }}
+          >
+            Input2:
+          </Forms.Label>
+          <Forms.Control>
+            <TextInput
+              name="inputt"
+              value={formik.values.inputt}
+              onChange={formik.handleChange}
+            />
+          </Forms.Control>
+        </Forms.Field>
+        <Forms.Field>
+          <Forms.Label
+            style={{
+              minWidth: "unset",
+              width: "unset",
+              justifyContent: "flex-start",
+            }}
+          >
+            Input3:
+          </Forms.Label>
+          <Forms.Control>
+            <TextInput
+              name="inputtt"
+              value={formik.values.inputtt}
+              onChange={formik.handleChange}
+            />
           </Forms.Control>
         </Forms.Field>
       </FormDialog>
