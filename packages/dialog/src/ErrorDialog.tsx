@@ -14,6 +14,8 @@ import {
   ContentBox,
   StyledButton,
   StyledModal,
+  StyledModalContent,
+  StyledSpan,
 } from "./styles"
 
 export interface ErrorDialogProps extends Omit<ModalProps, "children"> {
@@ -43,27 +45,31 @@ export const ErrorDialog = React.forwardRef<HTMLDivElement, ErrorDialogProps>(
     const [showDetails, setShowDetails] = useState(false)
 
     return (
-      <StyledModal {...props} onClose={onClose} ref={ref}>
+      <StyledModal
+        style={{ minHeight: showDetails ? "300px" : "150px" }}
+        {...props}
+        onClose={onClose}
+        ref={ref}
+      >
         <ModalHeader>{header}</ModalHeader>
-        <ModalContent style={{ flexDirection: "row", height: "75px" }}>
+        <StyledModalContent style={{ minHeight: "75px" }}>
           <ImageBox>
             <Error />
           </ImageBox>
           <ContentBox>
             {errorId && (
               <div>
-                ID ошибки: <span style={{ fontSize: "11px" }}>{errorId}</span>
+                ID ошибки: <StyledSpan>{errorId}</StyledSpan>
               </div>
             )}
             {errorCode && (
               <div>
-                Код ошибки:{" "}
-                <span style={{ fontSize: "11px" }}>{errorCode}</span>
+                Код ошибки: <StyledSpan>{errorCode}</StyledSpan>
               </div>
             )}
             {errorDescription && <div>{errorDescription}</div>}
           </ContentBox>
-        </ModalContent>
+        </StyledModalContent>
         <ModalFooter>
           <StyledButton type="button" onClick={onClose} value="OK" />
           {errorMessage && (
