@@ -105,7 +105,7 @@ export class ErrorNotification extends React.Component<
         <>
           <ErrorDialog
             header={header}
-            visible={error !== undefined || error !== null}
+            visible={error !== undefined && error !== null}
             errorId={errorId}
             errorCode={errorCode}
             errorMessage={errorMessage}
@@ -127,7 +127,7 @@ export class ErrorNotification extends React.Component<
       return (
         <ErrorDialog
           header={header}
-          visible={error !== undefined}
+          visible={error !== undefined && error !== null}
           errorId={errorId}
           errorCode={errorCode}
           errorMessage={errorMessage}
