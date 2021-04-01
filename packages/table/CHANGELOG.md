@@ -1,5 +1,55 @@
 # Change Log
 
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [0.2.3](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-table@0.2.2...@jfront/ui-table@0.2.3) (2021-03-31)
+
+**Note:** Version bump only for package @jfront/ui-table
+
+
+
+
+
+## [0.2.2](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-table@0.2.1...@jfront/ui-table@0.2.2) (2021-03-31)
+
+**Note:** Version bump only for package @jfront/ui-table
+
+
+
+
+
+## [0.2.1](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-table@0.2.0...@jfront/ui-table@0.2.1) (2021-03-18)
+
+**Note:** Version bump only for package @jfront/ui-table
+
+
+
+
+
+# [0.2.0](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-table@0.1.12...@jfront/ui-table@0.2.0) (2021-03-18)
+
+
+### Bug Fixes
+
+* empty array config ([ad51a1b](https://github.com/Jepria/jfront-ui/commit/ad51a1be1c6c3027bbf95dec2dec360b381e2e94))
+
+
+### Features
+
+* package dependencies update to latest versions ([90946d2](https://github.com/Jepria/jfront-ui/commit/90946d25fcb08fc77e4b143567963682f8ff3d2b))
+
+
+### BREAKING CHANGES
+
+* react upgraded to 17.0.1
+
+
+
+
+
+# Change Log
+
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 

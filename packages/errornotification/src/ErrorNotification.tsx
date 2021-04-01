@@ -16,6 +16,7 @@ export interface ErrorNotificationProps {
   header?: string
   log?: (error: any, info?: any) => void
   render?: (error: NetworkError | Error | string | undefined) => React.ReactNode
+  onClose?: () => void
   children?: React.ReactNode
 }
 
@@ -53,14 +54,14 @@ export class ErrorNotification extends React.Component<
 
   render() {
     const { header = "Ошибка", children } = this.props
-    const { error } = this.state
+    const error = this.props.error || this.state.error
+    let errorId, errorCode, errorMessage, errorDescription
     if (error) {
       if (this.props.render) {
         return this.props.render(error)
       }
-      let errorId, errorCode, errorMessage, errorDescription
       if (typeof error === "string") {
-        errorMessage = error
+        errorDescription = error
       } else if ((error as NetworkError).type) {
         switch ((error as NetworkError).type) {
           case BAD_REQUEST: {
@@ -97,19 +98,48 @@ export class ErrorNotification extends React.Component<
         errorMessage = (error as Error).stack
         errorDescription = (error as Error).message
       }
+    }
+    if (this.props.error || !error) {
+      // error passed to props so render with children
+      return (
+        <>
+          <ErrorDialog
+            header={header}
+            visible={error !== undefined && error !== null}
+            errorId={errorId}
+            errorCode={errorCode}
+            errorMessage={errorMessage}
+            errorDescription={errorDescription}
+            onClose={() => {
+              if (this.props.onClose) {
+                this.props.onClose()
+              }
+              if (this.state.error) {
+                this.setState({ error: undefined })
+              }
+            }}
+          />
+          {children}
+        </>
+      )
+    } else if (this.state.error) {
+      // error catched so render without children to prevent error render loop
       return (
         <ErrorDialog
           header={header}
-          visible={error !== undefined}
+          visible={error !== undefined && error !== null}
           errorId={errorId}
           errorCode={errorCode}
           errorMessage={errorMessage}
           errorDescription={errorDescription}
-          onClose={() => this.setState({ error: undefined })}
+          onClose={() => {
+            if (this.props.onClose) {
+              this.props.onClose()
+            }
+            this.setState({ error: undefined })
+          }}
         />
       )
-    } else {
-      return children
     }
   }
 }

@@ -1,5 +1,50 @@
 # Change Log
 
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [0.2.3](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-tabpanel@0.2.2...@jfront/ui-tabpanel@0.2.3) (2021-03-31)
+
+**Note:** Version bump only for package @jfront/ui-tabpanel
+
+
+
+
+
+## [0.2.2](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-tabpanel@0.2.1...@jfront/ui-tabpanel@0.2.2) (2021-03-31)
+
+**Note:** Version bump only for package @jfront/ui-tabpanel
+
+
+
+
+
+## [0.2.1](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-tabpanel@0.2.0...@jfront/ui-tabpanel@0.2.1) (2021-03-18)
+
+**Note:** Version bump only for package @jfront/ui-tabpanel
+
+
+
+
+
+# [0.2.0](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-tabpanel@0.1.13...@jfront/ui-tabpanel@0.2.0) (2021-03-18)
+
+
+### Features
+
+* package dependencies update to latest versions ([90946d2](https://github.com/Jepria/jfront-ui/commit/90946d25fcb08fc77e4b143567963682f8ff3d2b))
+
+
+### BREAKING CHANGES
+
+* react upgraded to 17.0.1
+
+
+
+
+
+# Change Log
+
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 

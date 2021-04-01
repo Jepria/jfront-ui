@@ -1,17 +1,17 @@
-import React from "react"
+import React, { useRef } from "react"
 import {
-  Modal,
   ModalHeader,
   ModalContent,
   ModalProps,
   ModalFooter,
 } from "@jfront/ui-modal"
-import { Form } from "@jfront/ui-form"
-import { StyledButton } from "./styles"
+import { createEvent } from "@jfront/core-common"
+import { StyledButton, StyledForm, StyledModal } from "./styles"
 
 export interface FormDialogProps extends ModalProps {
   header?: string
   withCloseButton?: boolean
+  submitButtonLabel?: string
   cancelButtonLabel?: string
   children: React.ReactNode
   handleSubmit: (event: React.FormEvent<HTMLFormElement>) => void
@@ -23,35 +23,47 @@ export const FormDialog = React.forwardRef<HTMLDivElement, FormDialogProps>(
       header,
       children,
       withCloseButton,
-      cancelButtonLabel,
+      submitButtonLabel = "OK",
+      cancelButtonLabel = "Отмена",
       handleSubmit,
       onClose,
       ...props
     },
     ref,
   ) => {
+    const formRef = useRef<HTMLFormElement>(null)
+
     return (
-      <Modal {...props} ref={ref}>
+      <StyledModal {...props} ref={ref}>
         <ModalHeader>{header}</ModalHeader>
-        <Form
-          onSubmit={(e) => {
-            handleSubmit(e)
-            if (onClose) {
-              onClose()
-            }
-          }}
-        >
-          <ModalContent>{children}</ModalContent>
-          <ModalFooter>
-            <StyledButton type="submit" value="OK" />
-            <StyledButton
-              type="button"
-              onClick={onClose}
-              value={cancelButtonLabel ? cancelButtonLabel : "Отмена"}
-            />
-          </ModalFooter>
-        </Form>
-      </Modal>
+        <ModalContent>
+          <StyledForm
+            ref={formRef}
+            onSubmit={(e) => {
+              handleSubmit(e)
+              if (onClose) {
+                onClose()
+              }
+            }}
+          >
+            {children}
+          </StyledForm>
+        </ModalContent>
+        <ModalFooter>
+          <StyledButton
+            type="button"
+            value={submitButtonLabel}
+            onClick={() => {
+              formRef.current?.dispatchEvent(createEvent("submit"))
+            }}
+          />
+          <StyledButton
+            type="button"
+            onClick={onClose}
+            value={cancelButtonLabel}
+          />
+        </ModalFooter>
+      </StyledModal>
     )
   },
 )

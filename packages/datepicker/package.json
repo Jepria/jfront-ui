@@ -1,6 +1,6 @@
 {
   "name": "@jfront/ui-datepicker",
-  "version": "0.4.4",
+  "version": "0.5.3",
   "license": "Apache-2.0",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -25,7 +25,7 @@
     "test:cov": "yarn test --coverage"
   },
   "dependencies": {
-    "@jfront/ui-input": "^0.4.11",
+    "@jfront/ui-input": "^0.5.3",
     "@types/react-datepicker": "^3.1.5",
     "date-fns": "2.17.0",
     "react-datepicker": "3.5.0"

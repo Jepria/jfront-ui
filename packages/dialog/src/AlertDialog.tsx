@@ -1,12 +1,11 @@
 import React from "react"
 import {
-  Modal,
   ModalHeader,
   ModalContent,
   ModalProps,
   ModalFooter,
 } from "@jfront/ui-modal"
-import { StyledButton } from "./styles";
+import { StyledButton, StyledModal } from "./styles"
 
 export interface AlertDialogProps extends Omit<ModalProps, "children"> {
   header: string
@@ -18,13 +17,13 @@ export interface AlertDialogProps extends Omit<ModalProps, "children"> {
 export const AlertDialog = React.forwardRef<HTMLDivElement, AlertDialogProps>(
   ({ header, message, onClose, withCloseButton, ...props }, ref) => {
     return (
-      <Modal {...props} onClose={onClose} ref={ref}>
+      <StyledModal {...props} onClose={onClose} ref={ref}>
         <ModalHeader withCloseButton={withCloseButton}>{header}</ModalHeader>
         <ModalContent>{message}</ModalContent>
         <ModalFooter>
-          <StyledButton type="button" onClick={onClose} value="OK"/>
+          <StyledButton type="button" onClick={onClose} value="OK" />
         </ModalFooter>
-      </Modal>
+      </StyledModal>
     )
   },
 )

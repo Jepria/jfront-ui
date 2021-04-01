@@ -1,5 +1,62 @@
 # Change Log
 
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [0.4.3](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-grid@0.4.2...@jfront/ui-grid@0.4.3) (2021-03-31)
+
+**Note:** Version bump only for package @jfront/ui-grid
+
+
+
+
+
+## [0.4.2](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-grid@0.4.1...@jfront/ui-grid@0.4.2) (2021-03-31)
+
+
+### Bug Fixes
+
+* grid fetchData infinite loop when only client paging and sort is enabled ([e7a79ea](https://github.com/Jepria/jfront-ui/commit/e7a79ea0ec80340d967fde48e786153cb2edc4e9))
+
+
+
+
+
+## [0.4.1](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-grid@0.4.0...@jfront/ui-grid@0.4.1) (2021-03-18)
+
+
+### Bug Fixes
+
+* downgrade react-table version ([bb7e935](https://github.com/Jepria/jfront-ui/commit/bb7e9356aa54efe34b0fa373820344b5d9c8ccb1))
+
+
+
+
+
+# [0.4.0](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-grid@0.3.3...@jfront/ui-grid@0.4.0) (2021-03-18)
+
+
+### Bug Fixes
+
+* empty array config ([ad51a1b](https://github.com/Jepria/jfront-ui/commit/ad51a1be1c6c3027bbf95dec2dec360b381e2e94))
+
+
+### Features
+
+* fetchData prop added ([841990a](https://github.com/Jepria/jfront-ui/commit/841990ac39006bd44834fc95d4db65db60fc5f6f))
+* package dependencies update to latest versions ([90946d2](https://github.com/Jepria/jfront-ui/commit/90946d25fcb08fc77e4b143567963682f8ff3d2b))
+
+
+### BREAKING CHANGES
+
+* react upgraded to 17.0.1
+
+
+
+
+
+# Change Log
+
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 

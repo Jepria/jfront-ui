@@ -1,6 +1,6 @@
 {
   "name": "@jfront/ui-pagingbar",
-  "version": "0.1.13",
+  "version": "0.2.3",
   "license": "Apache-2.0",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -25,9 +25,9 @@
     "test:cov": "yarn test --coverage"
   },
   "dependencies": {
-    "@jfront/ui-label": "0.3.12",
-    "@jfront/ui-input": "0.4.11",
-    "@jfront/ui-icons": "^0.5.3"
+    "@jfront/ui-icons": "^0.6.3",
+    "@jfront/ui-input": "^0.5.3",
+    "@jfront/ui-label": "^0.4.3"
   },
   "peerDependencies": {
     "react": "^17.0.1",
