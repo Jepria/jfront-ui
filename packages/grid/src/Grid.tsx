@@ -367,7 +367,7 @@ export function Grid<D extends object>(props: GridProps<D>) {
    * call fetchData callback on mount
    */
   useEffect(() => {
-    if (fetchData) {
+    if (fetchData && !manualPaging && !manualSort) {
       fetchData(
         pageIndex + 1,
         pageSize,
@@ -391,8 +391,19 @@ export function Grid<D extends object>(props: GridProps<D>) {
           sortOrder: sort.desc ? "desc" : "asc",
         })),
       )
-    } else {
+    } else if (pageIndex !== 0) {
       gotoPage(0)
+    } else if (fetchData) {
+      fetchData(
+        1,
+        pageSize,
+        sortBy.map((sort) => ({
+          columnName: sort.id,
+          sortOrder: sort.desc ? "desc" : "asc",
+        })),
+      )
+    } else if (onPaging) {
+      onPaging(1, pageSize)
     }
   }
 
