@@ -11,6 +11,7 @@ import {
 } from "./styles"
 import { forwardRef, isFunction } from "@jfront/ui-utils"
 import { useOnClickOutside } from "@jfront/ui-hooks"
+import ReactDOM from "react-dom"
 
 export type UseModal = {
   visible?: boolean
@@ -67,7 +68,7 @@ export const Modal = forwardRef<ModalProps, "div">(
 
     if (as) {
       const Component = as
-      return (
+      return ReactDOM.createPortal(
         <>
           {visible && (
             <>
@@ -87,10 +88,11 @@ export const Modal = forwardRef<ModalProps, "div">(
               </Container>
             </>
           )}
-        </>
+        </>,
+        document.body,
       )
     } else {
-      return (
+      return ReactDOM.createPortal(
         <>
           {visible && (
             <>
@@ -110,7 +112,8 @@ export const Modal = forwardRef<ModalProps, "div">(
               </Container>
             </>
           )}
-        </>
+        </>,
+        document.body,
       )
     }
   },
