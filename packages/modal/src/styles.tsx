@@ -30,7 +30,13 @@ export const GlassMask = styled.div`
   background-color: black;
 `
 
-export const StyledDialog = styled.div`
+export interface StyledDialogProps {
+  type?: string
+  x?: number
+  y?: number
+}
+
+export const StyledDraggableView = styled.div`
   position: relative;
   z-index: 5102;
   box-sizing: border-box;
@@ -38,8 +44,25 @@ export const StyledDialog = styled.div`
   max-width: 400px;
   background-color: white;
   border-radius: 5px;
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
+  opacity: 0.75;
+  box-shadow: 4px 4px 8px 0px rgb(34, 60, 80);
+`
+
+export const StyledDialog = styled.div<StyledDialogProps>`
+  position: relative;
+  z-index: 5102;
+  box-sizing: border-box;
+  overflow-wrap: break-word;
+  max-width: 400px;
+  background-color: white;
+  border-radius: 5px;
+  display: inline-flex;
+  flex-direction: column;
+  left: ${(props) => (props.x ? `${props.x}px` : "50%")};
+  top: ${(props) => (props.y ? `${props.y}px` : "50%")};
+  transform: translate(-50%, -50%);
 `
 
 export const Content = styled.section`
@@ -61,16 +84,13 @@ export const Footer = styled.footer`
   padding: 5px;
 `
 
-export const Container = styled.div`
+export const StyledContainer = styled.div`
   top: 0;
   left: 0;
   position: absolute;
   z-index: 5101;
   width: 100vw;
   height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 `
 
 export const Button = styled.span`
@@ -78,13 +98,31 @@ export const Button = styled.span`
   position: absolute;
   top: 1px;
   right: 1px;
+  color: rgb(21, 66, 139);
 `
 
 export const CloseIcon = styled(CloseImage)`
   height: 16px;
   width: 16px;
-  fill: rgb(21, 66, 139);
+  fill: currentColor;
   &:hover {
     opacity: 0.5;
   }
+`
+
+export const StyledLayer = styled.div`
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 6000;
+`
+
+export const DraggableBlock = styled.div`
+  display: inline-block;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 `

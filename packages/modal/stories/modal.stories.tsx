@@ -1,5 +1,12 @@
 import * as React from "react"
-import { Modal, ModalHeader, ModalFooter, ModalContent } from "../src"
+import {
+  Modal,
+  ModalHeader,
+  ModalFooter,
+  ModalContent,
+  ModalCloseButton,
+  useModal,
+} from "../src"
 import { useFormik } from "formik"
 import { Form } from "@jfront/ui-form"
 import { TextInput } from "@jfront/ui-input"
@@ -33,44 +40,7 @@ export const BasicUsage = () => {
   )
 }
 
-export const CustomHeader = () => {
-  const [visible, setVisible] = React.useState(true)
-
-  const CustomHeader = () => <h3>A Problem in Need of a Creative Solution</h3>
-
-  return (
-    <>
-      <button onClick={() => setVisible(true)}>tap to show dialog</button>
-      <Modal
-        visible={visible}
-        onClose={() => setVisible(false)}
-        closeOnOutsideClick
-      >
-        <ModalHeader as={CustomHeader} withCloseButton />
-        <ModalContent>
-          <p>
-            In the 1870s, newspapers and printers faced a very specific and very
-            costly problem. Photography was a new and exciting medium at the
-            time. Readers wanted to see more pictures, but nobody could figure
-            out how to print images quickly and cheaply.
-          </p>
-        </ModalContent>
-        <ModalFooter>
-          {() => (
-            <button
-              type="button"
-              style={{ backgroundColor: "rgb(21, 66, 139)", color: "#fff" }}
-            >
-              Close
-            </button>
-          )}
-        </ModalFooter>
-      </Modal>
-    </>
-  )
-}
-
-export const WithButtons = () => {
+export const Draggable = () => {
   const [visible, setVisible] = React.useState(true)
 
   return (
@@ -80,6 +50,7 @@ export const WithButtons = () => {
         visible={visible}
         onClose={() => setVisible(false)}
         closeOnOutsideClick
+        draggable
       >
         <ModalHeader withCloseButton>Dialog</ModalHeader>
         <ModalContent>
@@ -89,8 +60,49 @@ export const WithButtons = () => {
             <li>Click close button to close</li>
           </ul>
         </ModalContent>
+      </Modal>
+    </>
+  )
+}
+
+export const CustomDialog = () => {
+  const [visible, setVisible] = React.useState(true)
+
+  const Button = () => {
+    const { onClose } = useModal()
+    return (
+      <button
+        type="button"
+        style={{ backgroundColor: "black", color: "#fff" }}
+        onClick={onClose}
+      >
+        Close
+      </button>
+    )
+  }
+
+  return (
+    <>
+      <button onClick={() => setVisible(true)}>tap to show dialog</button>
+      <Modal
+        visible={visible}
+        onClose={() => setVisible(false)}
+        closeOnOutsideClick
+      >
+        <ModalHeader style={{ background: "transparent", color: "black" }}>
+          <strong>A Problem in Need of a Creative Solution</strong>
+          <ModalCloseButton style={{ color: "black" }} />
+        </ModalHeader>
+        <ModalContent>
+          <p>
+            In the 1870s, newspapers and printers faced a very specific and very
+            costly problem. Photography was a new and exciting medium at the
+            time. Readers wanted to see more pictures, but nobody could figure
+            out how to print images quickly and cheaply.
+          </p>
+        </ModalContent>
         <ModalFooter>
-          {({ onClose }) => <button onClick={onClose}>Close</button>}
+          <Button />
         </ModalFooter>
       </Modal>
     </>
