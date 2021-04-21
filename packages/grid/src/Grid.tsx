@@ -14,6 +14,8 @@ import {
   Resizer,
   StyledPagingBar,
   IconProps,
+  Preview,
+  GridHeaderRow,
 } from "./styles"
 import {
   useTable,
@@ -92,7 +94,7 @@ export interface ColumnSortConfiguration {
 }
 
 export interface GridProps<D extends object>
-  extends React.RefAttributes<HTMLTableElement> {
+  extends React.RefAttributes<HTMLDivElement> {
   id?: string
   //column configuration
   columns: Array<Column<D>>
@@ -132,6 +134,13 @@ export interface GridProps<D extends object>
 
 // Create a default prop getter
 const defaultPropGetter = () => ({})
+
+const ResizePreview = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>((props, ref) => {
+  return <Preview ref={ref} {...props} />
+})
 
 /**
  * Grid implementation based on [react-table v7](https://github.com/tannerlinsley/react-table)
@@ -228,6 +237,7 @@ export function Grid<D extends object>(props: GridProps<D>) {
       manualPagination: onPaging != undefined || manualPaging,
       pageCount: _pageCount ? _pageCount : -1,
       autoResetPage: onPaging ? false : true,
+      preview: ResizePreview,
       initialState: {
         pageSize: defaultPageSize,
         pageIndex: defaultPageNumber - 1,
@@ -495,17 +505,16 @@ export function Grid<D extends object>(props: GridProps<D>) {
   }
 
   return (
-    <StyledGrid id={id ? `${id}_grid` : undefined}>
+    <StyledGrid id={id ? `${id}_grid` : undefined} ref={ref}>
       <GridTable
         id={id ? `${id}_table` : undefined}
         className={className}
         style={style}
         {...getTableProps()}
-        ref={ref}
       >
         <GridHeader id={id ? `${id}_thead` : undefined}>
           {headerGroups.map((headerGroup) => (
-            <tr {...headerGroup.getHeaderGroupProps()}>
+            <GridHeaderRow {...headerGroup.getHeaderGroupProps()}>
               {headerGroup.headers.map((column) => {
                 const sortableColumn = (column as unknown) as UseSortByColumnProps<D>
                 return (
@@ -516,7 +525,7 @@ export function Grid<D extends object>(props: GridProps<D>) {
                       getColumnProps(column),
                       getHeaderProps(column),
                     ])}
-                    title={`${column.Header}`}
+                    title={!column.placeholderOf ? `${column.Header}` : ""}
                   >
                     {sortableColumn.isSorted && (
                       <Arrow rotate={String(!sortableColumn.isSortedDesc)} />
@@ -528,14 +537,16 @@ export function Grid<D extends object>(props: GridProps<D>) {
                         showColumnConfig(true, e.currentTarget)
                       }}
                     />
-                    <Resizer
-                      {...((column as unknown) as UseResizeColumnsColumnProps<D>).getResizerProps()}
-                      onClick={(e) => e.stopPropagation()}
-                    />
+                    {!column.placeholderOf && (
+                      <Resizer
+                        {...((column as unknown) as UseResizeColumnsColumnProps<D>).getResizerProps()}
+                        onClick={(e) => e.stopPropagation()}
+                      />
+                    )}
                   </GridHeaderCell>
                 )
               })}
-            </tr>
+            </GridHeaderRow>
           ))}
         </GridHeader>
         <GridBody {...getTableBodyProps()} id={id ? `${id}_tbody` : undefined}>

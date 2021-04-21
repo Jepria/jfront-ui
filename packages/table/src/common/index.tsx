@@ -2,77 +2,126 @@ import React, {
   HTMLAttributes,
   TableHTMLAttributes,
   RefAttributes,
+  ForwardRefExoticComponent,
 } from "react"
 import styled from "styled-components"
 import { TablePagingBar, TablePagingBarProps } from "./TablePagingBar"
 import { TableBody } from "./TableBody"
 import { Table as StyledTable } from "./Table"
-import {
-  TableHeader,
-  TableHeaderCell,
-  TableHeaderCellProps,
-} from "./TableHeader"
-import { TableRow, TableCell, TableRowProps, TableCellProps } from "./TableRow"
+import { TableHeader, TableHeaderCell } from "./TableHeader"
+import { TableRow, TableCell, TableCellProps } from "./TableRow"
 
 export * from "./Table"
 
-export type Table = React.FC<TableHTMLAttributes<HTMLTableElement>> & {
-  Table: React.FC<
-    TableHTMLAttributes<HTMLTableElement> & RefAttributes<HTMLTableElement>
+export type Table = ForwardRefExoticComponent<
+  HTMLAttributes<HTMLDivElement> & RefAttributes<HTMLDivElement>
+> & {
+  Table: ForwardRefExoticComponent<
+    HTMLAttributes<HTMLDivElement> & RefAttributes<HTMLDivElement>
   >
-  Header: React.FC<HTMLAttributes<HTMLTableSectionElement>>
-  HeaderCell: React.FC<TableHeaderCellProps>
-  Body: React.FC<
-    React.DetailedHTMLProps<
-      React.HTMLAttributes<HTMLTableSectionElement>,
-      HTMLTableSectionElement
-    >
+  Header: ForwardRefExoticComponent<
+    HTMLAttributes<HTMLDivElement> & RefAttributes<HTMLDivElement>
   >
-  Row: React.FC<TableRowProps>
-  Cell: React.FC<TableCellProps>
-  PagingBar: React.FC<TablePagingBarProps>
+  HeaderCell: ForwardRefExoticComponent<
+    HTMLAttributes<HTMLDivElement> & RefAttributes<HTMLDivElement>
+  >
+  Body: ForwardRefExoticComponent<
+    HTMLAttributes<HTMLDivElement> & RefAttributes<HTMLDivElement>
+  >
+  Row: ForwardRefExoticComponent<
+    HTMLAttributes<HTMLDivElement> & RefAttributes<HTMLDivElement>
+  >
+  Cell: ForwardRefExoticComponent<
+    TableCellProps & RefAttributes<HTMLDivElement>
+  >
+  PagingBar: ForwardRefExoticComponent<
+    TablePagingBarProps & RefAttributes<HTMLDivElement>
+  >
 }
 
-const Container = styled.section`
+const Container = styled.div`
   height: 100%;
   width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
   flex-direction: column;
 `
 
-export const Table: Table = (props) => {
-  return <Container {...props}>{props.children}</Container>
-}
+export const Table = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>((props, ref) => {
+  return (
+    <Container {...props} ref={ref}>
+      {props.children}
+    </Container>
+  )
+}) as Table
 
-Table.Table = (props) => {
-  return <StyledTable {...props}>{props.children}</StyledTable>
-}
+Table.Table = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>((props, ref) => {
+  return (
+    <StyledTable {...props} ref={ref}>
+      {props.children}
+    </StyledTable>
+  )
+})
 
-Table.Header = (props) => {
-  return <TableHeader {...props}>{props.children}</TableHeader>
-}
+Table.Header = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>((props, ref) => {
+  return (
+    <TableHeader {...props} ref={ref}>
+      {props.children}
+    </TableHeader>
+  )
+})
 
-Table.HeaderCell = (props) => {
-  return <TableHeaderCell {...props}>{props.children}</TableHeaderCell>
-}
+Table.HeaderCell = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>((props, ref) => {
+  return (
+    <TableHeaderCell {...props} ref={ref}>
+      {props.children}
+    </TableHeaderCell>
+  )
+})
 
-Table.Body = (props) => {
-  return <TableBody {...props}>{props.children}</TableBody>
-}
+Table.Body = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>((props, ref) => {
+  return (
+    <TableBody {...props} ref={ref}>
+      {props.children}
+    </TableBody>
+  )
+})
 
-Table.Row = (props) => {
-  return <TableRow {...props}>{props.children}</TableRow>
-}
+Table.Row = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>((props, ref) => {
+  return (
+    <TableRow {...props} ref={ref}>
+      {props.children}
+    </TableRow>
+  )
+})
 
-Table.Cell = (props) => {
-  return <TableCell {...props}>{props.children}</TableCell>
-}
+Table.Cell = React.forwardRef<HTMLDivElement, TableCellProps>((props, ref) => {
+  return (
+    <TableCell {...props} ref={ref}>
+      {props.children}
+    </TableCell>
+  )
+})
 
-Table.PagingBar = (props: TablePagingBarProps) => {
-  return <TablePagingBar {...props} />
-}
+Table.PagingBar = React.forwardRef<HTMLDivElement, TablePagingBarProps>(
+  (props, ref) => {
+    return <TablePagingBar {...props} ref={ref} />
+  },
+)

@@ -37,7 +37,6 @@
     "@types/shelljs": "0.8.8",
     "@types/styled-components": "5.1.7",
     "@types/react-text-mask": "5.4.6",
-    "@types/react-table": "7.0.28",
     "@types/throttle-debounce": "^2.1.0",
     "@types/react-virtualized": "9.21.11",
     "@typescript-eslint/eslint-plugin": "3.7.0",

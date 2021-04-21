@@ -1,19 +1,12 @@
 import React, { TableHTMLAttributes } from "react"
 import styled from "styled-components"
 
-const StyledTable = styled.table<TableHTMLAttributes<HTMLTableElement>>`
-  display: -webkit-box;
-  display: -ms-flexbox;
+const StyledTable = styled.div`
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
   flex-direction: column;
   box-sizing: border-box;
-  border-collapse: collapse;
-  border-spacing: 0;
-  margin: 0;
-  padding: 0;
+  color: #212529;
+  height: 100%;
   width: 100%;
   height: 100%;
   @media only screen and (max-width: 760px),
@@ -22,21 +15,16 @@ const StyledTable = styled.table<TableHTMLAttributes<HTMLTableElement>>`
   }
 `
 
-interface TableContainerProps {
-  height?: string
-}
-
-const TableContainer = styled.div<TableContainerProps>`
+const TableContainer = styled.div`
+  height: 100%;
   width: 100%;
   overflow-y: hidden;
-  -webkit-box-flex: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
+  overflow-x: auto;
 `
 
 export const Table = React.forwardRef<
-  HTMLTableElement,
-  TableHTMLAttributes<HTMLTableElement>
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
 >((props, ref) => {
   return (
     <TableContainer>

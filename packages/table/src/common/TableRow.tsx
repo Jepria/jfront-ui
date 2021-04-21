@@ -1,13 +1,8 @@
-import React from "react"
 import styled from "styled-components"
 
-export interface TableRowProps
-  extends React.HTMLAttributes<HTMLTableRowElement> {
-  selected?: boolean
-}
-
-export const TableRow = styled.tr<TableRowProps>`
+export const TableRow = styled.div`
   display: flex;
+  flex: 1;
   flex-direction: row;
   @media only screen and (max-width: 760px),
     (min-device-width: 768px) and (max-device-width: 1024px) {
@@ -15,26 +10,22 @@ export const TableRow = styled.tr<TableRowProps>`
   }
 `
 
-export interface TableCellProps
-  extends React.TdHTMLAttributes<HTMLTableCellElement> {
+export interface TableCellProps extends React.HTMLAttributes<HTMLDivElement> {
   label?: string
-  width?: string
 }
 
-export const TableCell = styled.td<TableCellProps>`
-  @media only screen and (min-width: 761px) {
-    flex: 1;
+export const TableCell = styled.div<TableCellProps>`
+  display: flex;
+  flex: 1;
+  @media only screen and (min-width: 768px) {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    ${(props) => (props.width ? `width: ${props.width};` : "")}
-    display: flex;
   }
-  @media only screen and (max-width: 760px),
-    (min-device-width: 768px) and (max-device-width: 1024px) {
-    display: block;
+  @media only screen and (max-width: 760px) { {
     &::before {
-      display: inline-block;
+      display: inline-flex;
+      padding-right: 0.5rem;
       content: "${(props) => (props.label ? `${props.label}:` : "")}";
     }
   }
