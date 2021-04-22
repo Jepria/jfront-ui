@@ -5,6 +5,9 @@ module.exports = {
     "@storybook/addon-toolbars",
     "@storybook/addon-storysource",
   ],
+  typescript: {
+    reactDocgen: false,
+  },
   webpackFinal: async (config, { configType }) => ({
     ...config,
     module: {

@@ -27,7 +27,9 @@
   "dependencies": {
     "@jfront/ui-hooks": "^0.6.4",
     "@jfront/ui-icons": "^0.6.4",
-    "@jfront/ui-utils": "^0.4.4"
+    "@jfront/ui-utils": "^0.4.4",
+    "react-dnd": "14.0.2",
+    "react-dnd-html5-backend": "14.0.0"
   },
   "peerDependencies": {
     "react": "^17.0.1",
