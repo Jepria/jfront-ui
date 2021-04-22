@@ -4,7 +4,13 @@ import { LoadingImage, ExclamationImage } from "@jfront/ui-icons"
 import { ComboBoxButton } from "./ComboBoxButton"
 import { Popup } from "@jfront/ui-popup"
 import { ComboBoxItemProps, ComboBoxItem } from "./ComboBoxItem"
-import { StyledDiv, StyledInput } from "./styles"
+import {
+  RelativeContainer,
+  FlexContainer,
+  StyledInput,
+  ButtonContainer,
+  InputContainer,
+} from "./styles"
 
 export interface ComboBoxProps {
   id?: string
@@ -186,11 +192,15 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
 
     useEffect(() => {
       if (isOpen && hoverIndex != -1) {
-        if (hoveredItemRef.current) {
-          hoveredItemRef.current.scrollIntoView({
-            behavior: "smooth",
-            block: "start",
-          })
+        if (hoveredItemRef.current && popupRef.current) {
+          if (popupRef.current.scrollTo) {
+            popupRef.current.scrollTo({
+              top: hoveredItemRef.current.offsetTop,
+              behavior: "smooth",
+            })
+          } else {
+            popupRef.current.scrollTop = hoveredItemRef.current.offsetTop
+          }
         }
       }
     }, [isOpen, hoverIndex])
@@ -321,53 +331,57 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
     }
 
     const scrollIntoCurrentItem = () => {
-      if (currentValueRef.current) {
-        currentValueRef.current.scrollIntoView({
-          behavior: "smooth",
-          block: "nearest",
-        })
+      if (currentValueRef.current && popupRef.current) {
+        if (popupRef.current.scrollTo) {
+          popupRef.current.scrollTo({
+            top: currentValueRef.current.offsetTop,
+            behavior: "smooth",
+          })
+        } else {
+          popupRef.current.scrollTop = currentValueRef.current.offsetTop
+        }
       }
     }
 
     return (
-      <>
-        <StyledDiv
+      <RelativeContainer>
+        <FlexContainer
           className={className}
-          focused={focused}
           ref={outerDivRef}
           onBlur={onBlur}
           style={style}
+          focused={focused}
           error={error !== undefined}
+          onKeyDown={(e) => onKeyDownHandler(e)}
         >
-          <StyledInput
-            id={`${id}_input`}
-            ref={inputRef}
-            value={text}
-            onKeyDown={(e) => onKeyDownHandler(e)}
-            onFocus={onFocus}
-            onChange={onChange}
-            placeholder={placeholder}
-            disabled={disabled}
-            autoComplete="off"
-          />
-          <ComboBoxButton
-            id={`${id}_button`}
-            disabled={disabled}
-            tabIndex={-1}
-            onKeyDown={(e) => onKeyDownHandler(e)}
-            rotate={String(isOpen)}
-            onClick={toggle}
-            onFocus={() => setFocused(true)}
-          />
+          <InputContainer>
+            <StyledInput
+              id={`${id}_input`}
+              ref={inputRef}
+              value={text}
+              onFocus={onFocus}
+              onChange={onChange}
+              placeholder={placeholder}
+              disabled={disabled}
+              autoComplete="off"
+            />
+          </InputContainer>
+          <ButtonContainer>
+            <ComboBoxButton
+              id={id}
+              disabled={disabled}
+              rotate={String(isOpen)}
+              onClick={toggle}
+              onFocus={() => setFocused(true)}
+            />
+          </ButtonContainer>
           {isLoading && <LoadingImage />}
           {error !== undefined && <ExclamationImage title={error} />}
-        </StyledDiv>
+        </FlexContainer>
         <Popup
           id={`${id}_popup`}
           className="jfront-combobox-popup"
           ref={popupRef}
-          tabIndex={0}
-          onKeyDown={(e: React.KeyboardEvent<Element>) => onKeyDownHandler(e)}
           targetElementRef={outerDivRef as React.RefObject<HTMLDivElement>}
           targetRelativePosition={{
             horizontal: "left",
@@ -383,7 +397,7 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
         >
           {renderItems()}
         </Popup>
-      </>
+      </RelativeContainer>
     )
   },
 )
