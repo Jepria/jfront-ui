@@ -89,7 +89,7 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
       if (options != undefined) {
         options.forEach((option) =>
           result.set(
-            String(getOptionValue ? getOptionValue(option) : option.value),
+            getOptionValue ? getOptionValue(option) : option.value,
             getOptionName ? getOptionName(option) : option.name,
           ),
         )
@@ -97,7 +97,7 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
         React.Children.forEach(children, (child) => {
           if (child) {
             result.set(
-              String((child as any)?.props?.value),
+              (child as any)?.props?.value,
               (child as any)?.props?.label,
             )
           }
@@ -207,7 +207,7 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
 
     useEffect(() => {
       if (currentValue) {
-        const text = optionsMap.get(String(currentValue))
+        const text = optionsMap.get(currentValue)
         if (text) {
           setText(text)
         }

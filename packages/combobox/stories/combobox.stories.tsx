@@ -33,6 +33,27 @@ export const BasicUsage = () => {
   )
 }
 
+export const ObjectValue = () => {
+  return (
+    <ComboBox onSelectionChange={(name, value) => console.log(value)}>
+      <ComboBoxItem value={undefined} label={""} />
+      {[
+        { name: "test1", value: { id: 1 } },
+        { name: "test2", value: { id: 2 } },
+        { name: "test3", value: { id: 3 } },
+        { name: "test4", value: { id: 4 } },
+        { name: "test5", value: { id: 5 } },
+        { name: "test6", value: { id: 6 } },
+        { name: "test7", value: { id: 7 } },
+        { name: "test8", value: { id: 8 } },
+        { name: "test9", value: { id: 9 } },
+      ].map(({ name, value }) => (
+        <ComboBoxItem key={value.id} value={value} label={name} />
+      ))}
+    </ComboBox>
+  )
+}
+
 export const ScollableParent = () => {
   return (
     <div style={{ height: "200px", overflow: "auto" }}>
