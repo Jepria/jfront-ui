@@ -1921,6 +1921,11 @@
   dependencies:
     axios "0.20.0"
 
+"@jfront/react-table@1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@jfront/react-table/-/react-table-1.0.0.tgz#76feb7f54a2f00c0eda52efcac3d33d9ea7d7627"
+  integrity sha512-dbMQ51R3eWkBLcfHs6CgYO4N5WnY3yufrelhS5UnL9K4EmU+bE9FUeF4C6o5YY8mShgHuKEfKUs1mZh2JMy1EQ==
+
 "@lerna/add@3.21.0":
   version "3.21.0"
   resolved "https://registry.yarnpkg.com/@lerna/add/-/add-3.21.0.tgz#27007bde71cc7b0a2969ab3c2f0ae41578b4577b"
@@ -3774,13 +3779,6 @@
   version "11.0.4"
   resolved "https://registry.yarnpkg.com/@types/react-syntax-highlighter/-/react-syntax-highlighter-11.0.4.tgz#d86d17697db62f98046874f62fdb3e53a0bbc4cd"
   integrity sha512-9GfTo3a0PHwQeTVoqs0g5bS28KkSY48pp5659wA+Dp4MqceDEa8EHBqrllJvvtyusszyJhViUEap0FDvlk/9Zg==
-  dependencies:
-    "@types/react" "*"
-
-"@types/react-table@7.0.28":
-  version "7.0.28"
-  resolved "https://registry.yarnpkg.com/@types/react-table/-/react-table-7.0.28.tgz#763383c3e7a285892ee64f311ee97a9c254b2bb0"
-  integrity sha512-crPm70S2KYGj3HJ2zCoeT0t8tdIvKDKCClMd1up3Gi/EDiTZraj3JFUsEL3+oXGSyv+n0EGGAf9a+0XsmdGpXA==
   dependencies:
     "@types/react" "*"
 
@@ -15099,11 +15097,6 @@ react-syntax-highlighter@^13.5.0:
     lowlight "^1.14.0"
     prismjs "^1.21.0"
     refractor "^3.1.0"
-
-react-table@7.5.2:
-  version "7.5.2"
-  resolved "https://registry.yarnpkg.com/react-table/-/react-table-7.5.2.tgz#d82ceee3d4d40b119159bce1708f084a95d3435c"
-  integrity sha512-qiceR/gQUOBsO/q1z1wZ3RbRvkRt39Gbzo631HiPuWmo+eTmTgaXDqLGzCmU+bOr81PB6kDxXhoWQR8hiWaUJA==
 
 react-text-mask@5.4.3:
   version "5.4.3"

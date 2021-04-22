@@ -42,7 +42,7 @@ import {
   Cell,
   TableCommonProps,
   SortingRule,
-} from "react-table"
+} from "@jfront/react-table"
 import { ColumnConfigPanel } from "./ColumnConfigPanel"
 import { useColumnConfiguration } from "./useColumnConfiguration"
 

@@ -1,5 +1,5 @@
 import { useMemo } from "react"
-import { Column } from "react-table"
+import { Column } from "@jfront/react-table"
 import { throttle } from "throttle-debounce"
 
 /**

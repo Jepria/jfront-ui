@@ -30,7 +30,7 @@
     "@jfront/ui-icons": "^0.6.4",
     "@jfront/ui-input": "^0.5.4",
     "@jfront/ui-table": "^0.2.4",
-    "react-table": "1.0.33-resize-fix",
+    "@jfront/react-table": "1.0.0",
     "throttle-debounce": "3.0.1"
   },
   "peerDependencies": {
