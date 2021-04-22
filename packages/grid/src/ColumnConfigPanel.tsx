@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react"
-import { ColumnInstance, TableToggleHideAllColumnProps } from "react-table"
+import {
+  ColumnInstance,
+  TableToggleHideAllColumnProps,
+} from "@jfront/react-table"
 import { CheckBox } from "@jfront/ui-checkbox"
 import { Button } from "@jfront/ui-button"
 import { GlassMask, ModalDiv } from "./styles"
