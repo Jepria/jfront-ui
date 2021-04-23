@@ -49,6 +49,7 @@ export const Error = () => {
 export const IsLoading = () => {
   const onChange = (value: Date) => {
     console.log("onChange()")
+    console.log(`value = ${value}`)
     setDate(value)
   }
 
@@ -57,6 +58,22 @@ export const IsLoading = () => {
   return (
     <>
       <DatePicker selected={date} onChange={onChange} isLoading />
+    </>
+  )
+}
+
+export const IsoDate = () => {
+  const onChange = (value: string) => {
+    console.log("onChange()")
+    console.log(`value = ${value}`)
+    setDate(value)
+  }
+
+  const [date, setDate] = React.useState<string | undefined>(undefined)
+
+  return (
+    <>
+      <DatePicker selected={date} onChange={onChange} isoDateString />
     </>
   )
 }

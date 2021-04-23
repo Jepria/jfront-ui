@@ -54,3 +54,22 @@ test.skip("DatePicker isError renders correctly", () => {
   )
   expect(asFragment()).toMatchSnapshot()
 })
+
+test("DatePicker isoDateString ", () => {
+  const expectedDate = "2018-05-05"
+  const formattedDate = "05.05.2018"
+
+  let outDate
+  render(
+    <DatePicker
+      isoDateString
+      onChange={(date) => {
+        outDate = date
+      }}
+    />,
+  )
+  const input = screen.getByRole("textbox")
+  fireEvent.change(input, { target: { value: formattedDate } })
+
+  expect(outDate).toBe(expectedDate)
+})

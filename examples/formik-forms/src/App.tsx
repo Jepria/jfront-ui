@@ -21,6 +21,7 @@ interface FormData {
   statusCodeList?: string[]
   name?: string
   date?: Date
+  isoDate?: string
   numberInput?: number
 }
 
@@ -106,6 +107,14 @@ function App() {
             name="date"
             selected={formik.values.date}
             onChange={(date) => formik.setFieldValue("date", date)}
+          />
+        </Form.Field>
+        <Form.Field label="ISO Date:">
+          <DatePicker
+            name="date"
+            isoDateString
+            selected={formik.values.isoDate}
+            onChange={(date) => formik.setFieldValue("date", isoDate)}
           />
         </Form.Field>
         <Form.Field label="Fruit:" required>
