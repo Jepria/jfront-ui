@@ -157,7 +157,7 @@ export const CheckBoxGroup = React.forwardRef<
       selectAllRef.current.indeterminate = false
       setSelectAll(select)
 
-      let values = new Array()
+      let values: any[] = []
       React.Children.map(children, (checkbox) => {
         if (!React.isValidElement(checkbox)) {
           return null
