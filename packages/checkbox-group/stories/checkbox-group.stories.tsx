@@ -81,3 +81,32 @@ export const Error = () => {
     </div>
   )
 }
+
+export const SelectAll = () => {
+  const [values, setValues] = useState<string[]>()
+
+  return (
+    <div>
+      <Label>Group:</Label>
+      <CheckBoxGroup
+        style={{ height: "150px" }}
+        name="name"
+        isLoading={false}
+        disabled={false}
+        values={values ? values : []}
+        onChange={(name, _values) => {
+          setValues(_values)
+          console.log(_values)
+        }}
+        selectAll
+      >
+        <CheckBox label="label1" value="value1" />
+        <CheckBox label="label2" value="value2" />
+        <CheckBox label="label3" value="value3" />
+        <CheckBox label="label4" value="value4" />
+        <CheckBox label="label5" value="value5" />
+        <CheckBox label="label6" value="value6" />
+      </CheckBoxGroup>
+    </div>
+  )
+}
