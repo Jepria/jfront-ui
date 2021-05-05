@@ -71,3 +71,24 @@ test.skip("CheckBoxGroup isError renders correctly", () => {
   )
   expect(tools.asFragment()).toMatchSnapshot()
 })
+
+test("Checking when clicking on SelectAll checkbox", () => {
+  let pressed: any[] | undefined = []
+  render(
+    <CheckBoxGroup
+      name="name"
+      selectAll
+      isLoading={false}
+      onChange={(name, values) => {
+        pressed = values
+      }}
+    >
+      <CheckBox label="label1" value="value1" />
+      <CheckBox label="label2" value="value2" />
+      <CheckBox label="label3" value="value3" />
+    </CheckBoxGroup>,
+  )
+  fireEvent.click(screen.getByLabelText("Выбрать всё"))
+
+  expect(pressed).toEqual(["value1", "value2", "value3"])
+})

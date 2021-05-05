@@ -1,6 +1,7 @@
-import React, { useState, ReactNode, useEffect } from "react"
+import React, { useState, ReactNode, useEffect, useRef } from "react"
 import styled from "styled-components"
 import { LoadingImage, ExclamationImage } from "@jfront/ui-icons"
+import { CheckBox } from "@jfront/ui-checkbox"
 
 interface CheckBoxGroupInterface {
   children: ReactNode[]
@@ -26,6 +27,7 @@ interface CheckBoxGroupInterface {
     value?: any[],
     event?: React.ChangeEvent<any>,
   ) => void
+  selectAll?: boolean
 }
 
 interface StyledCheckBoxGroupProps {
@@ -47,6 +49,14 @@ const StyledCheckBoxGroup = styled.div<StyledCheckBoxGroupProps>`
   margin: 0;
   min-width: 150px;
   ${(props) => (props.error ? "border: 1px solid red;" : "")};
+`
+
+const StyledDiv = styled.div`
+  display: inline-flex;
+  align-items: center;
+  flex-grow: 1;
+  flex-direction: column;
+  justify-content: flex-end;
 `
 
 export enum Direction {
@@ -104,11 +114,68 @@ export const CheckBoxGroup = React.forwardRef<
   ) => {
     const [state, setState] = useState<any[]>([])
 
+    const [mapState, setMapState] = useState(new Map())
+
     useEffect(() => {
       if (values) {
         setState(values)
       }
     }, [values])
+
+    useEffect(() => {
+      React.Children.map(children, (checkbox) => {
+        if (!React.isValidElement(checkbox)) {
+          return null
+        }
+        const isFound = state.find(
+          (stateValue) => stateValue === checkbox.props.value,
+        )
+
+        const checked = undefined !== isFound || selectAll
+
+        setMapState(mapState.set(checkbox.props.value, checked))
+      })
+    }, [])
+
+    const selectAllRef = useRef<any>(null)
+
+    function checkSelectAll(values: Map<any, any>) {
+      const array = Array.from(values)
+
+      if (array.every((item) => item[1] === true)) {
+        selectAllRef.current.indeterminate = false
+        setSelectAll(true)
+      } else {
+        selectAllRef.current.indeterminate = array.some(
+          (item) => item[1] === true,
+        )
+        setSelectAll(false)
+      }
+    }
+
+    function updateSelectAll(select: boolean) {
+      selectAllRef.current.indeterminate = false
+      setSelectAll(select)
+
+      let values: any[] = []
+      React.Children.map(children, (checkbox) => {
+        if (!React.isValidElement(checkbox)) {
+          return null
+        }
+        values.push(checkbox.props.value)
+        setMapState(mapState.set(checkbox.props.value, select))
+      })
+
+      if (!select) {
+        values = []
+      }
+
+      setState(values)
+
+      if (onChange) {
+        onChange(name, values)
+      }
+    }
 
     const handleCheckboxChange = (
       _value: React.ReactText,
@@ -128,46 +195,67 @@ export const CheckBoxGroup = React.forwardRef<
 
       setState(newValue)
 
+      setMapState(mapState.set(_value, event && event.target.checked))
+      if (props.selectAll) {
+        checkSelectAll(mapState)
+      }
+
       if (onChange) {
         onChange(name, newValue, event)
       }
     }
 
+    const [selectAll, setSelectAll] = useState(false)
+
     return (
-      <StyledCheckBoxGroup
-        style={style}
-        className={className}
-        ref={ref}
-        error={error}
-      >
-        <StyledUl
-          direction={props.direction ? props.direction : Direction.column}
+      <StyledDiv>
+        {props.selectAll && (
+          <CheckBox
+            ref={selectAllRef}
+            label="Выбрать всё"
+            checked={selectAll}
+            onChange={(e: any) => {
+              updateSelectAll(e.target.checked)
+            }}
+          />
+        )}
+        <StyledCheckBoxGroup
+          style={style}
+          className={className}
+          ref={ref}
+          error={error}
         >
-          {React.Children.map(children, (checkbox) => {
-            if (!React.isValidElement(checkbox)) {
-              return null
-            }
+          <>
+            <StyledUl
+              direction={props.direction ? props.direction : Direction.column}
+            >
+              {React.Children.map(children, (checkbox) => {
+                if (!React.isValidElement(checkbox)) {
+                  return null
+                }
 
-            const isFound = state.find(
-              (stateValue) => stateValue === checkbox.props.value,
-            )
+                const isFound = state.find(
+                  (stateValue) => stateValue === checkbox.props.value,
+                )
 
-            const checked = undefined !== isFound
+                const checked = undefined !== isFound
 
-            return React.cloneElement(checkbox, {
-              disabled: checkbox.props.disabled || disabled,
-              checked: checked,
-              onChange:
-                checkbox.props.onChange === undefined
-                  ? (event: any, _text: any) =>
-                      handleCheckboxChange(checkbox.props.value, event)
-                  : checkbox.props.onChange,
-            })
-          })}
-        </StyledUl>
-        {isLoading && <LoadingImage />}
-        {error !== undefined && <ExclamationImage title={error} />}
-      </StyledCheckBoxGroup>
+                return React.cloneElement(checkbox, {
+                  disabled: checkbox.props.disabled || disabled,
+                  checked: checked,
+                  onChange:
+                    checkbox.props.onChange === undefined
+                      ? (event: any, _text: any) =>
+                          handleCheckboxChange(checkbox.props.value, event)
+                      : checkbox.props.onChange,
+                })
+              })}
+            </StyledUl>
+          </>
+          {isLoading && <LoadingImage />}
+          {error !== undefined && <ExclamationImage title={error} />}
+        </StyledCheckBoxGroup>
+      </StyledDiv>
     )
   },
 )
