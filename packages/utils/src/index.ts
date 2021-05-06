@@ -9,3 +9,5 @@ export interface Dictionary<T> {
 export * from "./forwardRef"
 
 export * from "./compareArrays"
+
+export * from "./dateUtils"

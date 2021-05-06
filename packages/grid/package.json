@@ -1,6 +1,6 @@
 {
   "name": "@jfront/ui-grid",
-  "version": "0.4.4",
+  "version": "0.4.5",
   "license": "Apache-2.0",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -25,12 +25,12 @@
     "test:cov": "yarn test --coverage"
   },
   "dependencies": {
-    "@jfront/ui-button": "^0.2.4",
-    "@jfront/ui-checkbox": "^0.5.4",
-    "@jfront/ui-icons": "^0.6.4",
-    "@jfront/ui-input": "^0.5.4",
-    "@jfront/ui-table": "^0.2.4",
-    "react-table": "7.5.2",
+    "@jfront/react-table": "1.0.0",
+    "@jfront/ui-button": "^0.2.5",
+    "@jfront/ui-checkbox": "^0.5.5",
+    "@jfront/ui-icons": "^0.6.5",
+    "@jfront/ui-input": "^0.5.5",
+    "@jfront/ui-table": "^0.2.5",
     "throttle-debounce": "3.0.1"
   },
   "peerDependencies": {

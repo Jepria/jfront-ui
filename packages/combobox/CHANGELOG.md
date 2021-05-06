@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.5](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-combobox@0.5.4...@jfront/ui-combobox@0.5.5) (2021-05-06)
+
+
+### Bug Fixes
+
+* combobox fixes for cases when its parent is scrollable ([70c3483](https://github.com/Jepria/jfront-ui/commit/70c3483bcb1229a0d51f4f8922d7d3d0ca596f42))
+* combobox option values as objects ([7c9eefc](https://github.com/Jepria/jfront-ui/commit/7c9eefcaa311741ca77eae944c815d2ed2912bb5))
+
+
+
+
+
 ## [0.5.4](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-combobox@0.5.3...@jfront/ui-combobox@0.5.4) (2021-04-01)
 
 **Note:** Version bump only for package @jfront/ui-combobox

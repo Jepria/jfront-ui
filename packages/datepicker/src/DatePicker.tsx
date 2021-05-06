@@ -7,6 +7,7 @@ import {
   parsePlaceholderFromString,
   MaskedTextInput,
 } from "@jfront/ui-input"
+import { toIsoDateString } from "@jfront/ui-utils"
 
 export const dateFormatToMask = (dateFormat: string | string[]) => {
   if (Array.isArray(dateFormat)) {
@@ -20,7 +21,15 @@ export const dateFormatToMask = (dateFormat: string | string[]) => {
 
 export const DatePicker = React.forwardRef<
   ReactDatePicker,
-  ReactDatePickerProps & InputProps
+  Omit<ReactDatePickerProps, "selected" | "onChange"> &
+    InputProps & {
+      selected?: string | Date | null
+      isoDateString?: boolean
+      onChange(
+        date: Date | [Date, Date] | null | string,
+        event: React.SyntheticEvent<any> | undefined,
+      ): void
+    }
 >(
   (
     {
@@ -33,6 +42,8 @@ export const DatePicker = React.forwardRef<
       dateFormat = "dd.MM.yyyy",
       autoComplete = "off",
       locale = ru,
+      selected,
+      isoDateString,
       ...props
     },
     ref,
@@ -47,13 +58,20 @@ export const DatePicker = React.forwardRef<
             returnAllValues
           />
         }
+        selected={typeof selected === "string" ? new Date(selected) : selected}
         peekNextMonth={peekNextMonth}
         showMonthDropdown={showMonthDropdown}
         showYearDropdown={showYearDropdown}
         dropdownMode={dropdownMode}
         dateFormat={dateFormat}
         autoComplete={autoComplete}
-        onChange={onChange}
+        onChange={(date, event) => {
+          if (isoDateString) {
+            onChange(toIsoDateString(date as Date), event)
+          } else {
+            onChange(date, event)
+          }
+        }}
         onSelect={onSelect}
         locale={locale}
         isClearable={!props.error && !props.isLoading}

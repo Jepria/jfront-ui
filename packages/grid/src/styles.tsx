@@ -16,12 +16,16 @@ export const GridTable = styled(Table.Table)`
 `
 
 export const GridHeader = styled(Table.Header)`
-  flex-shrink: 0;
+  background-color: #ededed;
+  background-clip: padding-box;
+`
+
+export const GridHeaderRow = styled(Table.Row)`
+  border-bottom: 1px solid #ddd;
 `
 
 export const GridHeaderCell = styled(Table.HeaderCell)`
   min-height: 31px;
-  border-bottom: 1px solid #ddd;
   border-right: 1px solid #ddd;
   color: black;
   text-shadow: none;
@@ -33,11 +37,18 @@ export const GridHeaderCell = styled(Table.HeaderCell)`
   background-clip: padding-box;
   align-items: center;
   padding: 3px;
+  width: 150px;
+  display: inline-flex;
+  flex: none;
 `
 
 export const GridBody = styled(Table.Body)``
 
-export const GridRow = styled(Table.Row)`
+export interface GridRowProps {
+  selected?: boolean
+}
+
+export const GridRow = styled(Table.Row)<GridRowProps>`
   box-sizing: border-box;
   border-bottom: 1px solid #ededed;
   border-top: 1px solid #ffffff;
@@ -58,6 +69,9 @@ export const GridRow = styled(Table.Row)`
 `
 
 export const GridRowCell = styled(Table.Cell)`
+  width: 150px;
+  display: inline-flex;
+  flex: none;
   min-height: 19px;
   cursor: pointer;
   padding: 2px;
@@ -166,4 +180,11 @@ export const ModalDiv = styled.div`
   align-items: center;
   justify-content: center;
   z-index: 5101;
+`
+export const Preview = styled.div`
+  width: 2px;
+  height: 100vh;
+  box-sizing: border-box;
+  border-left: 1px dashed black;
+  opacity: 0.3;
 `

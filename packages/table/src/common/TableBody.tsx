@@ -6,20 +6,11 @@ import styled from "styled-components"
 // IE 11 PolyFill
 window.ResizeObserver = window.ResizeObserver || ResizeObserver
 
-interface TableBodyProps
-  extends React.DetailedHTMLProps<
-    React.HTMLAttributes<HTMLTableSectionElement>,
-    HTMLTableSectionElement
-  > {
-  height?: string
-  scrollWidth?: number
-}
-
-const StyledTBody = styled.tbody<TableBodyProps>`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  overflow: auto;
+const StyledTableBody = styled.div`
+  box-sizing: border-box;
+  flex-grow: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
   @media only screen and (min-width: 761px) {
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
@@ -29,12 +20,7 @@ const StyledTBody = styled.tbody<TableBodyProps>`
   }
 `
 
-interface ScrollDivProps {
-  height?: number
-  top?: number
-}
-
-const StyledScroll = styled.tbody<ScrollDivProps>`
+const StyledScroll = styled.div`
   margin: 0;
   padding: 0;
   display: block;
@@ -43,7 +29,6 @@ const StyledScroll = styled.tbody<ScrollDivProps>`
   z-index: 2;
   width: 17px;
   right: 0;
-  height: ${(props) => (props.height ? props.height : 0)}px;
   background-color: transparent;
   overflow: auto;
   -ms-overflow-style: auto; /* IE and Edge */
@@ -51,29 +36,25 @@ const StyledScroll = styled.tbody<ScrollDivProps>`
     (min-device-width: 768px) and (max-device-width: 1024px) {
     display: none;
   }
-  ${(props) => (props.top ? `top: ${props.top}px` : "")}
 `
 
-const ScrollSpacer = styled.tr<ScrollDivProps>`
+const ScrollSpacer = styled.div`
   margin: 0;
   padding: 0;
   display: block;
   width: 1px;
   background-color: transparent;
-  height: ${(props) => (props.height ? props.height : 0)}px;
 `
 
-export const TableBody: React.FC<
-  React.DetailedHTMLProps<
-    React.HTMLAttributes<HTMLTableSectionElement>,
-    HTMLTableSectionElement
-  >
-> = (props) => {
-  const refScroll = useRef<HTMLTableSectionElement>(null)
+export const TableBody = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>((props) => {
+  const refScroll = useRef<HTMLDivElement>(null)
   const { height, ref } = useResizeDetector()
 
   useLayoutEffect(() => {
-    const refTbody = ref.current as HTMLElement
+    const refTbody = (ref.current as unknown) as HTMLElement
     const refScrollPanel = refScroll.current
     let ignoreScrollEvents = false
 
@@ -103,20 +84,35 @@ export const TableBody: React.FC<
       refTbody?.removeEventListener("scroll", handleScroll)
       refScrollPanel?.removeEventListener("scroll", handleScroll)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
     <>
-      <StyledTBody {...props} ref={ref as any}>
+      <StyledTableBody {...props} ref={ref as any}>
         {props.children}
-      </StyledTBody>
+      </StyledTableBody>
       <StyledScroll
-        height={height}
         ref={refScroll}
-        top={ref.current ? (ref.current as HTMLElement).offsetTop : 0}
+        style={{
+          height: `${height ? height : 0}px`,
+          top: `${
+            ref.current
+              ? ((ref.current as unknown) as HTMLElement).offsetTop
+              : 0
+          }px`,
+        }}
       >
-        <ScrollSpacer height={ref.current?.scrollHeight} />
+        <ScrollSpacer
+          style={{
+            height: `${
+              ref.current
+                ? ((ref.current as unknown) as HTMLElement).scrollHeight
+                : 0
+            }px`,
+          }}
+        />
       </StyledScroll>
     </>
   )
-}
+})

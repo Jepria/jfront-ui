@@ -5,12 +5,11 @@ import { Label } from "@jfront/ui-label"
 import { NumberInput } from "@jfront/ui-input"
 
 export const StyledPagingBar = styled.div`
+  box-sizing: border-box;
   display: flex;
-  width: 100%;
   font: 11px arial, tahoma, helvetica, sans-serif;
   margin: 0;
   padding: 2px 2px 2px 2px;
-  box-sizing: border-box;
   @media only screen and (max-width: 760px),
     (min-device-width: 768px) and (max-device-width: 1024px) {
     flex-direction: column;
@@ -26,9 +25,10 @@ const StyledNumberInput = styled(NumberInput)`
 `
 
 export const Left = styled.div`
-  display: inline-flex;
+  box-sizing: border-box;
+  display: flex;
+  flex: 1;
   align-items: center;
-  flex-basis: 33.33%;
   justify-content: flex-start;
   @media only screen and (max-width: 760px),
     (min-device-width: 768px) and (max-device-width: 1024px) {
@@ -37,9 +37,9 @@ export const Left = styled.div`
 `
 
 export const Center = styled.div`
-  display: inline-flex;
-  align-items: center;
-  flex-basis: 33.33%;
+  box-sizing: border-box;
+  display: flex;
+  flex: 1;
   justify-content: center;
   @media only screen and (max-width: 760px),
     (min-device-width: 768px) and (max-device-width: 1024px) {
@@ -48,9 +48,10 @@ export const Center = styled.div`
 `
 
 export const Right = styled.div`
-  display: inline-flex;
+  box-sizing: border-box;
+  display: flex;
+  flex: 1;
   align-items: center;
-  flex-basis: 33.33%;
   justify-content: flex-end;
   @media only screen and (max-width: 760px),
     (min-device-width: 768px) and (max-device-width: 1024px) {
@@ -59,7 +60,21 @@ export const Right = styled.div`
 `
 
 const StyledLabel = styled(Label)`
+  box-sizing: border-box;
   align-items: center;
+`
+
+const InlineFlex = styled.div`
+  box-sizing: border-box;
+  display: inline-flex;
+  height: 26px;
+  align-items: center;
+`
+
+const StyledSpan = styled.span`
+  box-sizing: border-box;
+  vertical-align: middle;
+  line-height: normal;
 `
 
 export interface TablePagingBarProps extends HTMLAttributes<HTMLDivElement> {
@@ -73,99 +88,114 @@ export interface TablePagingBarProps extends HTMLAttributes<HTMLDivElement> {
   onRefresh?: () => void
 }
 
-export const TablePagingBar: React.FC<TablePagingBarProps> = ({
-  currentPage = 1,
-  rowCount,
-  totalRowCount,
-  visibleRowCount = 25,
-  onVisibleRowCountChange,
-  onPaging,
-  onRefresh,
-  ...props
-}) => {
-  const [_visibleRowCount, setVisibleRowCount] = useState<number>(
-    visibleRowCount,
-  )
-  const [_currentPage, setCurrentPage] = useState<number>(currentPage)
-  const visibleRowCountInputRef = React.createRef<HTMLInputElement>()
-  const pageCount = totalRowCount
-    ? Math.ceil(totalRowCount / _visibleRowCount)
-    : 1
+export const TablePagingBar = React.forwardRef<
+  HTMLDivElement,
+  TablePagingBarProps
+>(
+  (
+    {
+      currentPage = 1,
+      rowCount,
+      totalRowCount,
+      visibleRowCount = 25,
+      onVisibleRowCountChange,
+      onPaging,
+      onRefresh,
+      ...props
+    },
+    ref,
+  ) => {
+    const [_visibleRowCount, setVisibleRowCount] = useState<number>(
+      visibleRowCount,
+    )
+    const [_currentPage, setCurrentPage] = useState<number>(currentPage)
+    const visibleRowCountInputRef = React.createRef<HTMLInputElement>()
+    const pageCount = totalRowCount
+      ? Math.ceil(totalRowCount / _visibleRowCount)
+      : 1
 
-  useEffect(() => setCurrentPage(currentPage), [currentPage])
+    useEffect(() => setCurrentPage(currentPage), [currentPage])
 
-  useEffect(() => setVisibleRowCount(visibleRowCount), [visibleRowCount])
+    useEffect(() => setVisibleRowCount(visibleRowCount), [visibleRowCount])
 
-  const onChangeValues = (pageNumber?: number, pageSize?: number) => {
-    if (pageNumber && pageSize && pageSize >= 1 && onPaging) {
-      onPaging(pageNumber, pageSize)
+    const onChangeValues = (pageNumber?: number, pageSize?: number) => {
+      if (pageNumber && pageSize && pageSize >= 1 && onPaging) {
+        onPaging(pageNumber, pageSize)
+      }
     }
-  }
 
-  const onKeyUp = (e: React.KeyboardEvent) => {
-    if (e.key === "Enter") {
-      const value = visibleRowCountInputRef.current?.value
-      let intValue: number
-      if (value) {
-        intValue = parseInt(value)
-        if (intValue < 0) {
+    const onKeyUp = (e: React.KeyboardEvent) => {
+      if (e.key === "Enter") {
+        const value = visibleRowCountInputRef.current?.value
+        let intValue: number
+        if (value) {
+          intValue = parseInt(value)
+          if (intValue < 0) {
+            intValue = visibleRowCount
+          }
+        } else {
           intValue = visibleRowCount
         }
-      } else {
-        intValue = visibleRowCount
+        if (visibleRowCountInputRef.current) {
+          visibleRowCountInputRef.current.value = `${intValue}`
+        }
+        setVisibleRowCount(intValue)
+        onChangeValues(_currentPage, intValue)
       }
-      if (visibleRowCountInputRef.current) {
-        visibleRowCountInputRef.current.value = `${intValue}`
-      }
-      setVisibleRowCount(intValue)
-      onChangeValues(_currentPage, intValue)
     }
-  }
 
-  return (
-    <StyledPagingBar {...props}>
-      <Left>
-        <PagingToolBar
-          currentPage={currentPage}
-          pageCount={pageCount}
-          onChange={(page) => {
-            setCurrentPage(page)
-            onChangeValues(page, _visibleRowCount)
-          }}
-          onRefresh={() => {
-            if (onRefresh) {
-              onRefresh()
-            }
-          }}
-        />
-      </Left>
-      <Center>
-        {totalRowCount > 0
-          ? `Записи ${visibleRowCount * currentPage - visibleRowCount + 1} 
+    return (
+      <StyledPagingBar {...props} ref={ref}>
+        <Left>
+          <InlineFlex>
+            <PagingToolBar
+              currentPage={currentPage}
+              pageCount={pageCount}
+              onChange={(page) => {
+                setCurrentPage(page)
+                onChangeValues(page, _visibleRowCount)
+              }}
+              onRefresh={() => {
+                if (onRefresh) {
+                  onRefresh()
+                }
+              }}
+            />
+          </InlineFlex>
+        </Left>
+        <Center>
+          <InlineFlex>
+            {totalRowCount > 0
+              ? `Записи ${visibleRowCount * currentPage - visibleRowCount + 1} 
         - ${visibleRowCount * currentPage - visibleRowCount + rowCount}
         из ${totalRowCount}`
-          : "Записей не найдено"}
-      </Center>
-      <Right>
-        <StyledLabel>
-          Записей на странице:{" "}
-          <StyledNumberInput
-            ref={visibleRowCountInputRef}
-            min={1}
-            max={totalRowCount}
-            value={_visibleRowCount}
-            onChange={(e) => {
-              if (e.target.value) {
-                if (onVisibleRowCountChange) {
-                  onVisibleRowCountChange(parseInt(e.target.value))
-                }
-                setVisibleRowCount(parseInt(e.target.value))
-              }
-            }}
-            onKeyUp={onKeyUp}
-          />
-        </StyledLabel>
-      </Right>
-    </StyledPagingBar>
-  )
-}
+              : "Записей не найдено"}
+          </InlineFlex>
+        </Center>
+        <Right>
+          <InlineFlex>
+            {" "}
+            <StyledLabel>
+              Записей на странице:{" "}
+              <StyledNumberInput
+                ref={visibleRowCountInputRef}
+                min={1}
+                max={totalRowCount}
+                value={_visibleRowCount}
+                onChange={(e) => {
+                  if (e.target.value) {
+                    if (onVisibleRowCountChange) {
+                      onVisibleRowCountChange(parseInt(e.target.value))
+                    }
+                    setVisibleRowCount(parseInt(e.target.value))
+                  }
+                }}
+                onKeyUp={onKeyUp}
+              />
+            </StyledLabel>
+          </InlineFlex>
+        </Right>
+      </StyledPagingBar>
+    )
+  },
+)

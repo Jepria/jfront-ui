@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.5](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-grid@0.4.4...@jfront/ui-grid@0.4.5) (2021-05-06)
+
+
+### Bug Fixes
+
+* react table resize ([7fbe317](https://github.com/Jepria/jfront-ui/commit/7fbe3179257ea3179123c653c1d4e041e502bc54))
+
+
+
+
+
 ## [0.4.4](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-grid@0.4.3...@jfront/ui-grid@0.4.4) (2021-04-01)
 
 
