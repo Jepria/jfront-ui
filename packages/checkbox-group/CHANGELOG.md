@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.6.0](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-checkbox-group@0.5.4...@jfront/ui-checkbox-group@0.6.0) (2021-05-06)
+
+
+### Bug Fixes
+
+* lint error fixed ([2c0d05d](https://github.com/Jepria/jfront-ui/commit/2c0d05d2956baafb660b7c6b1edc7a083b57a607))
+
+
+### Features
+
+* selectAll props added ([c6e5104](https://github.com/Jepria/jfront-ui/commit/c6e51045d650c8954b281a2ef812d79685fe509f))
+
+
+
+
+
 ## [0.5.4](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-checkbox-group@0.5.3...@jfront/ui-checkbox-group@0.5.4) (2021-04-01)
 
 **Note:** Version bump only for package @jfront/ui-checkbox-group

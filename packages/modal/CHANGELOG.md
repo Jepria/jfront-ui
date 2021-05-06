@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-modal@0.2.5...@jfront/ui-modal@0.3.0) (2021-05-06)
+
+
+### Features
+
+* draggable dialog ([b678201](https://github.com/Jepria/jfront-ui/commit/b6782014a1a266c268e4b2a11752d39f50980b0c))
+
+
+
+
+
 ## [0.2.5](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-modal@0.2.4...@jfront/ui-modal@0.2.5) (2021-04-01)
 
 **Note:** Version bump only for package @jfront/ui-modal
