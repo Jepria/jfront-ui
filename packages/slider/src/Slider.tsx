@@ -1,6 +1,5 @@
-import React, { MouseEventHandler, MouseEvent } from "react"
+import React from "react";
 import styled from "styled-components"
-import { number } from "@storybook/addon-knobs"
 
 export interface SliderInterface
   extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -78,7 +77,7 @@ export const Slider = React.forwardRef<HTMLInputElement, SliderInterface>(
       document.removeEventListener('mousemove', handleMouseMove);
     };
 
-    const handlerMouseClick = (event: MouseEvent<HTMLElement>) => {
+    const handlerMouseClick = (event:  React.MouseEvent) => {
       const newPercentage = getPercentage(event.clientX, sliderRef.current.offsetWidth);
       let value:number = parseInt(formatFn ( getValue ( newPercentage, props.max )) );
       if (value > props.max) {
