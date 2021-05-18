@@ -113,7 +113,7 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
         } else {
           return options.filter((option) => {
             const name = getOptionName ? getOptionName(option) : option.name
-            return name.startsWith(text)
+            return name.toUpperCase().startsWith(text.toUpperCase())
           })
         }
       } else {
@@ -128,7 +128,7 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
         } else {
           return React.Children.toArray(children).filter((child) => {
             const name = (child as any)?.props?.label
-            return name?.startsWith(text)
+            return name?.toUpperCase().startsWith(text.toUpperCase())
           })
         }
       } else {
