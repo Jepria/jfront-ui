@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react"
+import React, { useState, useRef, useEffect, MutableRefObject } from "react"
 import nextId from "react-id-generator"
 import { LoadingImage, ExclamationImage } from "@jfront/ui-icons"
 import { ComboBoxButton } from "./ComboBoxButton"
@@ -28,6 +28,7 @@ export interface ComboBoxProps {
   placeholder?: string
   value?: any
   defaultInputValue?: string
+  notFoundOptionComponent?: React.ReactNode
   getOptionName?: (option: any) => string
   getOptionValue?: (option: any) => any
   renderItem?: (props: ComboBoxItemProps) => React.ReactNode
@@ -59,6 +60,7 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
       placeholder,
       error,
       defaultInputValue = "",
+      notFoundOptionComponent,
       onInputChange,
       onSelectionChange,
       getOptionName,
@@ -159,6 +161,30 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
     const onBlur = (e: React.FocusEvent) => {
       setFocused(false)
       if (props.onBlur) props.onBlur(e)
+      if (onInputChange && (!options || options?.length === 0)) {
+        if (inputRef) {
+          if ((inputRef as MutableRefObject<HTMLInputElement>).current) {
+            Object.getOwnPropertyDescriptor(
+              window.HTMLInputElement.prototype,
+              "value",
+            )?.set?.call(
+              (inputRef as MutableRefObject<HTMLInputElement>).current,
+              "",
+            )
+            const event = new Event("change", { bubbles: true })
+            ;(inputRef as MutableRefObject<HTMLInputElement>).current.dispatchEvent(
+              event,
+            )
+          }
+        }
+      } else if (
+        text?.length > 0 &&
+        ((options && options.length > 0 && filteredOptions?.length === 0) ||
+          (React.Children.count(children) > 0 &&
+            filteredChildren?.length === 0))
+      ) {
+        setText("")
+      }
     }
 
     const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {

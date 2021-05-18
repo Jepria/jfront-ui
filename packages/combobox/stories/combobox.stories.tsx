@@ -124,7 +124,9 @@ export const CustomFilter = () => {
   return (
     <>
       <ComboBox
-        onInputChange={(e) => setFilter(e.target.value)}
+        onInputChange={(e) => {
+          setTimeout(() => setFilter(e.target.value), 1000)
+        }}
         onSelectionChange={(name, value) => {
           console.log(value)
           if (value !== undefined) {
