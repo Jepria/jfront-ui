@@ -65,6 +65,7 @@ export const FlexContainer = styled.div<StyledDivProps>`
   flex: 1;
   margin: 0;
   padding: 0;
+  align-items: center;
   ${(props) =>
     props.focused
       ? `box-shadow: 0 0 5px #99bbe8;
