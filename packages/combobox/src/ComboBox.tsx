@@ -53,8 +53,8 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
       className,
       name = "",
       style,
-      initialValue = null,
-      value = null,
+      initialValue,
+      value,
       isLoading,
       options,
       placeholder,
@@ -139,9 +139,10 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
     }, [children, text, currentValue, onInputChange])
 
     useEffect(() => {
-      if (value != null) {
+      if (value !== currentValue) {
         setCurrentValue(value)
       }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [value])
 
     useEffect(() => {
@@ -232,11 +233,9 @@ export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
     }, [isOpen, hoverIndex])
 
     useEffect(() => {
-      if (currentValue) {
-        const text = optionsMap.get(currentValue)
-        if (text) {
-          setText(text)
-        }
+      const text = optionsMap.get(currentValue)
+      if (text !== undefined && text !== null) {
+        setText(text)
       }
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [currentValue, optionsMap])
