@@ -12,6 +12,7 @@ const StyledForm = styled.form`
   font-family: Arial, sans-serif;
   font-size: small;
   overflow: auto;
+  height: 100%;
 `
 
 const StyledField = styled.div`
