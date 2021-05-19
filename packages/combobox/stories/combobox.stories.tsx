@@ -13,23 +13,35 @@ export default {
 }
 
 export const BasicUsage = () => {
+  const [value, setValue] = React.useState<any>(undefined)
+
+  console.log(value)
+
   return (
-    <ComboBox onSelectionChange={(name, value) => console.log(value)}>
-      <ComboBoxItem value={undefined} label={""} />
-      {[
-        { name: "test1", value: 1 },
-        { name: "test2", value: 2 },
-        { name: "test3", value: 3 },
-        { name: "test4", value: 4 },
-        { name: "test5", value: 5 },
-        { name: "test6", value: 6 },
-        { name: "test7", value: 7 },
-        { name: "test8", value: 8 },
-        { name: "test9", value: 9 },
-      ].map(({ name, value }) => (
-        <ComboBoxItem key={value} value={value} label={name} />
-      ))}
-    </ComboBox>
+    <>
+      <button type="button" onClick={() => setValue(undefined)}>
+        Clear value
+      </button>
+      <ComboBox
+        value={value}
+        onSelectionChange={(name, value) => setValue(value)}
+      >
+        <ComboBoxItem value={undefined} label={""} />
+        {[
+          { name: "test1", value: 1 },
+          { name: "test2", value: 2 },
+          { name: "test3", value: 3 },
+          { name: "test4", value: 4 },
+          { name: "test5", value: 5 },
+          { name: "test6", value: 6 },
+          { name: "test7", value: 7 },
+          { name: "test8", value: 8 },
+          { name: "test9", value: 9 },
+        ].map(({ name, value }) => (
+          <ComboBoxItem key={value} value={value} label={name} />
+        ))}
+      </ComboBox>
+    </>
   )
 }
 
