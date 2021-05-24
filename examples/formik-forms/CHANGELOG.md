@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/Jepria/jfront-ui/compare/jfront-formik@0.3.10...jfront-formik@0.4.0) (2021-05-06)
+
+
+### Features
+
+* **datepicker:** add ISO string support ([a53ca13](https://github.com/Jepria/jfront-ui/commit/a53ca138895039b880fa7729009c749a236086d1))
+
+
+
+
+
 ## [0.3.10](https://github.com/Jepria/jfront-ui/compare/jfront-formik@0.3.9...jfront-formik@0.3.10) (2021-04-01)
 
 **Note:** Version bump only for package jfront-formik
