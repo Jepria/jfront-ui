@@ -136,11 +136,11 @@ export function ComboBox<T = any>({
 
   const filteredChildren = useFilter({
     values: children,
-    filter:
-      (value && filter === getName(currentOption)) || onInputChange
-        ? undefined
-        : filter,
+    filter,
     isSuitable: (value, filter) => {
+      if ((value && filter === getName(currentOption)) || onInputChange) {
+        return true
+      }
       const name = (value as any)?.props?.label
       return name?.toUpperCase().startsWith(filter.toUpperCase())
     },
