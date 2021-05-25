@@ -6,9 +6,9 @@ import {
   StyledSvg,
 } from "./styles"
 
-export const ComboBoxButton = (props: ComboBoxButtonProps) => {
+export const ComboBoxButton = ({ rotate, ...props }: ComboBoxButtonProps) => {
   return (
-    <StyledButton {...props} id={`${props.id}_button`} type="button">
+    <StyledButton rotate={rotate} {...props} type="button">
       <StyledSpan>
         <StyledSvg>
           <path d="M7 10l5 5 5-5z" />

@@ -27,7 +27,8 @@
   "dependencies": {
     "@jfront/ui-icons": "^0.6.5",
     "@jfront/ui-popup": "^0.2.5",
-    "react-id-generator": "3.0.1"
+    "react-id-generator": "3.0.1",
+    "@jfront/ui-hooks": "^0.6.5"
   },
   "peerDependencies": {
     "react": "^17.0.1",
