@@ -48,7 +48,7 @@ test("object accessor string", () => {
     }),
   )
 
-  expect(result.current.length).toEqual(2)
+  expect(result.current?.length).toEqual(2)
   expect(result.current).toEqual(expect.arrayContaining([values[2], values[3]]))
   expect(result.current).not.toEqual(
     expect.arrayContaining([values[0], values[1]]),
@@ -71,7 +71,7 @@ test("object accessor func", () => {
     }),
   )
 
-  expect(result.current.length).toEqual(2)
+  expect(result.current?.length).toEqual(2)
   expect(result.current).toEqual(expect.arrayContaining([values[2], values[3]]))
   expect(result.current).not.toEqual(
     expect.arrayContaining([values[0], values[1]]),
@@ -89,7 +89,7 @@ test("object accessor string number value", () => {
     }),
   )
 
-  expect(result.current.length).toEqual(2)
+  expect(result.current?.length).toEqual(2)
   expect(result.current).toEqual(expect.arrayContaining([values[0], values[1]]))
   expect(result.current).not.toEqual(
     expect.arrayContaining([values[2], values[3]]),
@@ -108,7 +108,7 @@ test("isSuitable", () => {
     }),
   )
 
-  expect(result.current.length).toEqual(2)
+  expect(result.current?.length).toEqual(2)
   expect(result.current).toEqual(expect.arrayContaining([values[0], values[1]]))
   expect(result.current).not.toEqual(
     expect.arrayContaining([values[2], values[3]]),
