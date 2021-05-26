@@ -85,6 +85,8 @@ export const GridRowCell = styled(Table.Cell)`
   @media only screen and (max-width: 760px),
     (min-device-width: 768px) and (max-device-width: 1024px) {
     font-size: 0.8em;
+    width: 100% !important;
+    display: flex !important;
     &::before {
       padding-right: 5px;
     }

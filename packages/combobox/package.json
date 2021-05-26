@@ -1,6 +1,6 @@
 {
   "name": "@jfront/ui-combobox",
-  "version": "0.5.5",
+  "version": "0.6.0",
   "license": "Apache-2.0",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -25,8 +25,9 @@
     "test:cov": "yarn test --coverage"
   },
   "dependencies": {
-    "@jfront/ui-icons": "^0.6.5",
-    "@jfront/ui-popup": "^0.2.5",
+    "@jfront/ui-hooks": "^0.7.0",
+    "@jfront/ui-icons": "^0.6.6",
+    "@jfront/ui-popup": "^0.2.6",
     "react-id-generator": "3.0.1"
   },
   "peerDependencies": {

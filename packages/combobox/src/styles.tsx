@@ -65,6 +65,7 @@ export const FlexContainer = styled.div<StyledDivProps>`
   flex: 1;
   margin: 0;
   padding: 0;
+  align-items: center;
   ${(props) =>
     props.focused
       ? `box-shadow: 0 0 5px #99bbe8;
@@ -80,6 +81,7 @@ export const FlexContainer = styled.div<StyledDivProps>`
 `
 
 export const InputContainer = styled.div`
+  height: 100%;
   display: flex;
   flex: 1;
 `
@@ -92,7 +94,7 @@ export const ButtonContainer = styled.div`
 
 export interface ComboBoxButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  rotate: string
+  rotate: boolean
 }
 
 export const StyledButton = styled.button<ComboBoxButtonProps>`
@@ -108,7 +110,7 @@ export const StyledButton = styled.button<ComboBoxButtonProps>`
   width: 24px;
   background-color: transparent;
   border: 0;
-  ${(props) => (props.rotate === "true" ? "transform: rotate(180deg);" : "")}
+  ${(props) => (props.rotate ? "transform: rotate(180deg);" : "")}
   color: #999;
   &:hover {
     background-color: #f2f0f0;

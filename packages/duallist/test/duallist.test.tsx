@@ -15,55 +15,82 @@ const options = [
   { name: "option6", value: 6 },
 ]
 test("Checking moving items to another column", () => {
-  let rightColumn
-  render(
-    <DualList
-      name="test"
-      options={options}
-      onSelectionChange={(name, value) => {
-        rightColumn = value
-      }}
-    />,
-    container,
+  const valueSpy = jest.fn()
+
+  const TestComponent = () => {
+    const [value, setValue] = React.useState<Array<any>>([])
+    return (
+      <DualList
+        name="test"
+        options={options}
+        value={value}
+        onSelectionChange={(name, value) => {
+          valueSpy(value)
+          setValue(value)
+        }}
+      />
+    )
+  }
+
+  render(<TestComponent />, container)
+  fireEvent.dblClick(screen.getByTitle("option1"))
+  fireEvent.dblClick(screen.getByTitle("option2"))
+  expect(valueSpy.mock.calls[valueSpy.mock.calls.length - 1][0]).toEqual(
+    expect.arrayContaining([options[0], options[1]]),
   )
-  fireEvent.click(screen.getByTitle("option1"))
-  fireEvent.click(screen.getByTitle("option2"))
-  expect(rightColumn).toEqual([1, 2])
 })
 
 test("find an element and move it to the right", () => {
-  let rightColumn
-  render(
-    <DualList
-      name="test"
-      options={options}
-      onSelectionChange={(name, value) => {
-        rightColumn = value
-      }}
-    />,
-    container,
-  )
+  const valueSpy = jest.fn()
+
+  const TestComponent = () => {
+    const [value, setValue] = React.useState<Array<any>>([])
+    return (
+      <DualList
+        name="test"
+        options={options}
+        value={value}
+        onSelectionChange={(name, value) => {
+          valueSpy(value)
+          setValue(value)
+        }}
+      />
+    )
+  }
+
+  render(<TestComponent />, container)
   const input = screen.getAllByRole("textbox")[0]
   fireEvent.click(input)
   fireEvent.change(input, { target: { value: "option6" } })
-  fireEvent.click(screen.getAllByRole("option")[0])
-  expect(rightColumn).toEqual([1, 2, 6])
+  fireEvent.dblClick(screen.getAllByRole("option")[0])
+  expect(valueSpy.mock.calls[valueSpy.mock.calls.length - 1][0]).toEqual(
+    expect.arrayContaining([options[5]]),
+  )
 })
 
 test("move all elements to the right by pressing the button ", () => {
-  let rightColumn
-  render(
-    <DualList
-      name="test"
-      options={options}
-      onSelectionChange={(name, value) => {
-        rightColumn = value
-      }}
-    />,
-    container,
-  )
+  const valueSpy = jest.fn()
+
+  const TestComponent = () => {
+    const [value, setValue] = React.useState<Array<any>>([])
+    return (
+      <DualList
+        name="test"
+        options={options}
+        value={value}
+        onSelectionChange={(name, value) => {
+          valueSpy(value)
+          setValue(value)
+        }}
+      />
+    )
+  }
+
+  render(<TestComponent />, container)
   fireEvent.click(screen.getAllByRole("button")[0])
-  expect(rightColumn).toEqual([1, 2, 3, 4, 5, 6])
+  expect(valueSpy.mock.calls[valueSpy.mock.calls.length - 1][0]).toEqual(
+    expect.arrayContaining(options),
+  )
 })
 
 test.skip("Matches snapshot ", () => {
