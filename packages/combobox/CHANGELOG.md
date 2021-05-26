@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.6.0](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-combobox@0.5.5...@jfront/ui-combobox@0.6.0) (2021-05-26)
+
+
+### Bug Fixes
+
+* combobox didn't react on value prop changes ([3a7ffec](https://github.com/Jepria/jfront-ui/commit/3a7ffec3870f121f443506d161882315b7454870))
+* combobox icons centered ([9ed3dfa](https://github.com/Jepria/jfront-ui/commit/9ed3dfa66c7615ea4b5992a78aa2b53a317b3a38))
+* default filtering is made with upper case ([f68f8d8](https://github.com/Jepria/jfront-ui/commit/f68f8d82715bca9f64a7911731a03c0eb1bb632e))
+* when filter text is invalid it will be cleared on blur ([0030137](https://github.com/Jepria/jfront-ui/commit/0030137f2f5ae7ec9ffda39d3e231be9a52edf3c))
+
+
+### Features
+
+* useFilter hook for combobox ([f91c93a](https://github.com/Jepria/jfront-ui/commit/f91c93a45e93a7832c724293d1eeb4cd9b269366))
+
+
+
+
+
 ## [0.5.5](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-combobox@0.5.4...@jfront/ui-combobox@0.5.5) (2021-05-06)
 
 

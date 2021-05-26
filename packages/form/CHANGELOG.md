@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.6](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-form@0.3.5...@jfront/ui-form@0.3.6) (2021-05-26)
+
+
+### Bug Fixes
+
+* form height 100% ([9909634](https://github.com/Jepria/jfront-ui/commit/9909634b586fad176187519c14e79d2b6e192b70))
+
+
+
+
+
 ## [0.3.5](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-form@0.3.4...@jfront/ui-form@0.3.5) (2021-05-06)
 
 **Note:** Version bump only for package @jfront/ui-form
