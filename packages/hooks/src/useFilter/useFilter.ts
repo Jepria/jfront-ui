@@ -1,22 +1,21 @@
 import React, { useEffect, useState } from "react"
 
-export interface UseFilterProps<T = any> {
+export interface UseFilterProps<T = any, F = string> {
   values?: T[]
-  filter?: string
+  filter: F
   mode?: "equal" | "startsWith"
   allowEmptyString?: boolean
   accessor?: string | ((value: T) => React.ReactText)
-  isSuitable?: (value: T, filter: string) => boolean
+  isSuitable?: (value: T, filter: F) => boolean
 }
 
-export const useFilter = <T = any>({
+export const useFilter = <T = any, F = string>({
   values,
-  filter = "",
+  filter,
   mode = "startsWith",
   accessor,
-  allowEmptyString = false,
   isSuitable,
-}: UseFilterProps<T>) => {
+}: UseFilterProps<T, F>) => {
   const [filteredValues, setFilteredValues] = useState<Array<T> | undefined>(
     values,
   )
@@ -32,20 +31,22 @@ export const useFilter = <T = any>({
         if (isSuitable) {
           return isSuitable(value, filter)
         }
-        if (accessor) {
-          if (typeof accessor === "string") {
-            return mode === "startsWith"
-              ? startsWith(value[accessor], filter)
-              : value[accessor] === filter
-          } else {
-            return mode === "startsWith"
-              ? startsWith(accessor(value), filter)
-              : accessor(value) === filter
+        if (typeof filter === "string") {
+          if (accessor) {
+            if (typeof accessor === "string") {
+              return mode === "startsWith"
+                ? startsWith(value[accessor], filter as string)
+                : value[accessor] === filter
+            } else {
+              return mode === "startsWith"
+                ? startsWith(accessor(value), filter)
+                : accessor(value) === filter
+            }
           }
+          return mode === "startsWith"
+            ? startsWith(value, filter)
+            : (value as any) === filter
         }
-        return mode === "startsWith"
-          ? startsWith(value, filter)
-          : (value as any) === filter
       }),
     )
     // eslint-disable-next-line react-hooks/exhaustive-deps
