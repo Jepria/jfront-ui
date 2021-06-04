@@ -21,6 +21,14 @@ export const BasicUsage = () => {
   )
 }
 
+export const Disabled = () => {
+  return (
+    <>
+      <TextInput name="InputTextName" disabled value="asd" />
+    </>
+  )
+}
+
 export const IsLoading = () => {
   return (
     <>

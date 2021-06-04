@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import styled from "styled-components"
 import { InputProps } from "."
-import { StyledDiv } from "./styles"
+import { StyledDiv, StyledSelect } from "./styles"
 import { LoadingImage, ExclamationImage } from "@jfront/ui-icons"
 
 export interface SelectInputProps
@@ -16,27 +16,6 @@ export interface SelectInputProps
   children?: React.ReactNode[]
   renderItem?: (option: any) => React.ReactNode
 }
-
-const StyledSelect = styled.select`
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-box-flex: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
-  min-width: 0px;
-  margin: 0;
-  padding: 0;
-  padding-left: 3px;
-  font-family: tahoma, arial, helvetica, sans-serif;
-  font-size: 12px;
-  border: 0;
-  height: 100%;
-  box-sizing: border-box;
-  &:focus {
-    outline: none;
-  }
-`
 
 export const SelectInput = React.forwardRef<
   HTMLSelectElement,
@@ -92,10 +71,12 @@ export const SelectInput = React.forwardRef<
         style={style}
         className={className}
         focused={focused}
+        disabled={props.disabled}
         error={props.error !== undefined}
       >
         <StyledSelect
           {...props}
+          error={props.error !== undefined}
           onFocus={(e) => {
             if (props.onFocus) {
               props.onFocus(e)

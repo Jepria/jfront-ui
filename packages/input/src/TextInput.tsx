@@ -1,4 +1,4 @@
-import React, { RefObject, useState } from "react"
+import React, { useState } from "react"
 import { InputProps } from "."
 import { StyledInput, StyledDiv } from "./styles"
 import { LoadingImage, ExclamationImage } from "@jfront/ui-icons"
@@ -18,10 +18,12 @@ export const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
         className={className}
         focused={focused}
         style={style}
+        disabled={props.disabled}
         error={props.error !== undefined}
       >
         <StyledInput
           {...props}
+          error={props.error !== undefined}
           onFocus={(e) => {
             if (props.onFocus) {
               props.onFocus(e)
