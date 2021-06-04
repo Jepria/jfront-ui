@@ -23,7 +23,6 @@ export const BasicUsage = () => {
       <Popup
         visible={visible}
         targetElementRef={buttonRef}
-        targetRelativePosition={{ horizontal: "left", vertical: "bottom" }}
         onOpen={() => console.log("open")}
         onClose={() => {
           setVisible(false)
@@ -74,7 +73,6 @@ export const CustomComponent = () => {
         as={CustomPopup}
         visible={visible}
         targetElementRef={buttonRef}
-        targetRelativePosition={{ horizontal: "left", vertical: "bottom" }}
         onOpen={() => console.log("open")}
         onClose={() => {
           setVisible(false)

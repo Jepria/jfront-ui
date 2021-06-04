@@ -61,7 +61,8 @@ export interface StyledDivProps {
 
 export const FlexContainer = styled.div<StyledDivProps>`
   box-sizing: border-box;
-  display: flex;
+  display: inline-flex;
+  min-width: 150px;
   flex: 1;
   margin: 0;
   padding: 0;

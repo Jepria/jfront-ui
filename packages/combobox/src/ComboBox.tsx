@@ -84,6 +84,7 @@ export function ComboBox<T = any>({
   const currentValueRef = useRef<HTMLDivElement>(null)
   const hoveredItemRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
+  ref = outerDivRef
 
   const getValue = (option: any) => {
     return getOptionValue ? getOptionValue(option) : option?.value
@@ -288,8 +289,14 @@ export function ComboBox<T = any>({
   }
 
   return (
-    <RelativeContainer id={id} className={className} ref={ref} style={style}>
-      <FlexContainer ref={outerDivRef} onKeyDown={(e) => onKeyDownHandler(e)}>
+    <>
+      <FlexContainer
+        id={id}
+        className={className}
+        style={style}
+        ref={outerDivRef}
+        onKeyDown={(e) => onKeyDownHandler(e)}
+      >
         <InputContainer>
           <StyledInput
             placeholder={placeholder}
@@ -323,10 +330,6 @@ export function ComboBox<T = any>({
       <Popup
         ref={popupRef}
         targetElementRef={outerDivRef as React.RefObject<HTMLDivElement>}
-        targetRelativePosition={{
-          horizontal: "left",
-          vertical: "bottom",
-        }}
         style={{
           width: getPopupWidth(),
           maxHeight: getPopupHeight(),
@@ -337,6 +340,6 @@ export function ComboBox<T = any>({
       >
         {render()}
       </Popup>
-    </RelativeContainer>
+    </>
   )
 }
