@@ -12,19 +12,31 @@ export default {
   ],
 }
 
-export const BasicUsage = () => {
+export const PrimaryButton = () => {
   return (
     <>
       <Button
         onClick={() => {
           console.log("click")
         }}
-        style={{
-          width: "100px",
-          height: "50px",
+        primary
+      >
+        Text
+      </Button>
+    </>
+  )
+}
+
+export const SimpleButton = () => {
+  return (
+    <>
+      <Button
+        onClick={() => {
+          console.log("click")
         }}
-        value={"Text"}
-      />
+      >
+        Text
+      </Button>
     </>
   )
 }
@@ -35,13 +47,10 @@ export const ButtonDisabled = () => {
         onClick={() => {
           console.log("click")
         }}
-        style={{
-          width: "100px",
-          height: "50px",
-        }}
         disabled={true}
-        value={"Text"}
-      />
+      >
+        Text
+      </Button>
     </>
   )
 }
