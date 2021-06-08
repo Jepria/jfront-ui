@@ -91,7 +91,8 @@ export function ComboBox<T = any>({
   }
 
   const getName = (option: any) => {
-    return getOptionName ? getOptionName(option) : option?.name
+    const name = getOptionName ? getOptionName(option) : option?.name
+    return name ? name : ""
   }
 
   const optionsMap = React.useMemo(() => {
@@ -113,7 +114,10 @@ export function ComboBox<T = any>({
   }, [props.children, options])
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  const currentOption = useMemo(() => optionsMap.get(value), [value])
+  const currentOption = useMemo(() => optionsMap.get(value), [
+    value,
+    optionsMap,
+  ])
 
   const children = useMemo(
     () =>
@@ -148,9 +152,11 @@ export function ComboBox<T = any>({
   })
 
   useEffect(() => {
-    setFilter(getName(optionsMap.get(value)))
+    if (optionsMap.has(value)) {
+      setFilter(getName(optionsMap.get(value)))
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [value])
+  }, [value, optionsMap])
 
   const onChangeValue = (label: string, newValue: any) => {
     if (newValue !== value) {
