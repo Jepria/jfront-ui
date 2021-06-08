@@ -152,7 +152,9 @@ export function ComboBox<T = any>({
   })
 
   useEffect(() => {
-    setFilter(getName(optionsMap.get(value)))
+    if (optionsMap.has(value)) {
+      setFilter(getName(optionsMap.get(value)))
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [value, optionsMap])
 
