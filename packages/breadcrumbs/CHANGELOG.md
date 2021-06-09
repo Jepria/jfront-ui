@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.6](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-breadcrumbs@0.2.5...@jfront/ui-breadcrumbs@0.2.6) (2021-05-26)
+
+**Note:** Version bump only for package @jfront/ui-breadcrumbs
+
+
+
+
+
 ## [0.2.5](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-breadcrumbs@0.2.4...@jfront/ui-breadcrumbs@0.2.5) (2021-05-06)
 
 **Note:** Version bump only for package @jfront/ui-breadcrumbs

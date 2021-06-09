@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.7.0](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-hooks@0.6.5...@jfront/ui-hooks@0.7.0) (2021-05-26)
+
+
+### Features
+
+* useFilter hook for combobox ([f91c93a](https://github.com/Jepria/jfront-ui/commit/f91c93a45e93a7832c724293d1eeb4cd9b269366))
+
+
+
+
+
 ## [0.6.5](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-hooks@0.6.4...@jfront/ui-hooks@0.6.5) (2021-05-06)
 
 **Note:** Version bump only for package @jfront/ui-hooks
