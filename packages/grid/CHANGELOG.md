@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.6](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-grid@0.4.5...@jfront/ui-grid@0.4.6) (2021-05-26)
+
+
+### Bug Fixes
+
+* cell will take 100% on mobile ([8eb1490](https://github.com/Jepria/jfront-ui/commit/8eb1490299fdf01072ae643bf59049da1dc7b3eb))
+
+
+
+
+
 ## [0.4.5](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-grid@0.4.4...@jfront/ui-grid@0.4.5) (2021-05-06)
 
 
