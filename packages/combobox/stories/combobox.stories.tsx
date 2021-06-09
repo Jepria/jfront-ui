@@ -1,4 +1,5 @@
 import * as React from "react"
+import styled from "styled-components"
 import { ComboBox, ComboBoxItem } from "../src"
 
 export default {
@@ -38,6 +39,43 @@ export const BasicUsage = () => {
           { name: "test8", value: 8 },
           { name: "test9", value: 9 },
         ].map(({ name, value }) => (
+          <ComboBoxItem key={value} value={value} label={name} />
+        ))}
+      </ComboBox>
+    </>
+  )
+}
+
+export const AsyncOptions = () => {
+  const [value, setValue] = React.useState<any>(1)
+  const [options, setOptions] = React.useState<Array<any>>([])
+  console.log(value)
+  React.useEffect(() => {
+    setTimeout(() => {
+      setOptions([
+        { name: "test1", value: 1 },
+        { name: "test2", value: 2 },
+        { name: "test3", value: 3 },
+        { name: "test4", value: 4 },
+        { name: "test5", value: 5 },
+        { name: "test6", value: 6 },
+        { name: "test7", value: 7 },
+        { name: "test8", value: 8 },
+        { name: "test9", value: 9 },
+      ])
+    }, 2000)
+  }, [])
+  return (
+    <>
+      <button type="button" onClick={() => setValue(undefined)}>
+        Clear value
+      </button>
+      <ComboBox
+        value={value}
+        onSelectionChange={(name, value) => setValue(value)}
+      >
+        <ComboBoxItem value={undefined} label={""} />
+        {options.map(({ name, value }) => (
           <ComboBoxItem key={value} value={value} label={name} />
         ))}
       </ComboBox>
