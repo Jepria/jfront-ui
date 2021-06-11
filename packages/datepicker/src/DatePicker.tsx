@@ -44,6 +44,7 @@ export const DatePicker = React.forwardRef<
       locale = ru,
       selected,
       isoDateString,
+      isClearable = true,
       ...props
     },
     ref,
@@ -74,7 +75,7 @@ export const DatePicker = React.forwardRef<
         }}
         onSelect={onSelect}
         locale={locale}
-        isClearable={!props.error && !props.isLoading}
+        isClearable={isClearable && !props.error && !props.isLoading}
         placeholderText={parsePlaceholderFromString(
           dateFormatToMask(dateFormat),
         )}

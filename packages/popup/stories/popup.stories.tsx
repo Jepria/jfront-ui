@@ -23,7 +23,6 @@ export const BasicUsage = () => {
       <Popup
         visible={visible}
         targetElementRef={buttonRef}
-        targetRelativePosition={{ horizontal: "left", vertical: "bottom" }}
         onOpen={() => console.log("open")}
         onClose={() => {
           setVisible(false)
@@ -37,27 +36,28 @@ export const BasicUsage = () => {
   )
 }
 
-interface CustomProps extends React.HTMLAttributes<HTMLDivElement> {
-  alertText: string
-}
-
-const CustomPopup = React.forwardRef<HTMLDivElement, CustomProps>(
-  (props: CustomProps, ref) => {
-    return (
-      <div
-        {...props}
-        style={{ ...props.style, backgroundColor: "red", color: "yellow" }}
-        ref={ref}
-        onClick={() => window.alert(props.alertText)}
-      >
-        {props.children}
-      </div>
-    )
-  },
-)
+const CustomPopup = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>((props, ref) => {
+  return (
+    <div
+      {...props}
+      style={{
+        ...props.style,
+        backgroundColor: "red",
+        color: "yellow",
+        position: "absolute",
+      }}
+      ref={ref}
+    >
+      {props.children}
+    </div>
+  )
+})
 
 export const CustomComponent = () => {
-  const [visible, setVisible] = React.useState(true)
+  const [visible, setVisible] = React.useState(false)
   const buttonRef = React.useRef<HTMLButtonElement>(null)
   const test = React.useRef<HTMLDivElement>(null)
 
@@ -74,13 +74,11 @@ export const CustomComponent = () => {
         as={CustomPopup}
         visible={visible}
         targetElementRef={buttonRef}
-        targetRelativePosition={{ horizontal: "left", vertical: "bottom" }}
         onOpen={() => console.log("open")}
         onClose={() => {
           setVisible(false)
           console.log("close")
         }}
-        alertText="alert"
         ref={test}
       >
         <p>This is popup</p>

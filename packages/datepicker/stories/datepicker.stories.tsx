@@ -31,6 +31,31 @@ export const BasicUsage = () => {
   )
 }
 
+export const Disabled = () => {
+  const onChange = (value: Date) => {
+    console.log("onChange()", value)
+    setDate(value)
+  }
+
+  const [date, setDate] = React.useState<Date | undefined>(new Date())
+
+  const ref = React.useRef(null)
+
+  console.log(ref)
+
+  return (
+    <>
+      <DatePicker
+        selected={date}
+        disabled
+        isClearable={false}
+        onChange={onChange}
+        ref={ref}
+      />
+    </>
+  )
+}
+
 export const Error = () => {
   const onChange = (value: Date) => {
     console.log("onChange()")

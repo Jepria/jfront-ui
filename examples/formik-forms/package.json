@@ -1,9 +1,9 @@
 {
   "name": "jfront-formik",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "private": true,
   "dependencies": {
-    "@jfront/ui-core": "^0.10.7",
+    "@jfront/ui-core": "^0.10.8",
     "react": "17.0.1",
     "react-dom": "17.0.1"
   },

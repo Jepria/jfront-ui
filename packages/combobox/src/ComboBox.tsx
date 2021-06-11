@@ -84,13 +84,15 @@ export function ComboBox<T = any>({
   const currentValueRef = useRef<HTMLDivElement>(null)
   const hoveredItemRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
+  ref = outerDivRef
 
   const getValue = (option: any) => {
     return getOptionValue ? getOptionValue(option) : option?.value
   }
 
   const getName = (option: any) => {
-    return getOptionName ? getOptionName(option) : option?.name
+    const name = getOptionName ? getOptionName(option) : option?.name
+    return name ? name : ""
   }
 
   const optionsMap = React.useMemo(() => {
@@ -112,7 +114,10 @@ export function ComboBox<T = any>({
   }, [props.children, options])
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  const currentOption = useMemo(() => optionsMap.get(value), [value])
+  const currentOption = useMemo(() => optionsMap.get(value), [
+    value,
+    optionsMap,
+  ])
 
   const children = useMemo(
     () =>
@@ -147,9 +152,11 @@ export function ComboBox<T = any>({
   })
 
   useEffect(() => {
-    setFilter(getName(optionsMap.get(value)))
+    if (optionsMap.has(value)) {
+      setFilter(getName(optionsMap.get(value)))
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [value])
+  }, [value, optionsMap])
 
   const onChangeValue = (label: string, newValue: any) => {
     if (newValue !== value) {
@@ -288,8 +295,14 @@ export function ComboBox<T = any>({
   }
 
   return (
-    <RelativeContainer id={id} className={className} ref={ref} style={style}>
-      <FlexContainer ref={outerDivRef} onKeyDown={(e) => onKeyDownHandler(e)}>
+    <>
+      <FlexContainer
+        id={id}
+        className={className}
+        style={style}
+        ref={outerDivRef}
+        onKeyDown={(e) => onKeyDownHandler(e)}
+      >
         <InputContainer>
           <StyledInput
             placeholder={placeholder}
@@ -323,10 +336,6 @@ export function ComboBox<T = any>({
       <Popup
         ref={popupRef}
         targetElementRef={outerDivRef as React.RefObject<HTMLDivElement>}
-        targetRelativePosition={{
-          horizontal: "left",
-          vertical: "bottom",
-        }}
         style={{
           width: getPopupWidth(),
           maxHeight: getPopupHeight(),
@@ -337,6 +346,6 @@ export function ComboBox<T = any>({
       >
         {render()}
       </Popup>
-    </RelativeContainer>
+    </>
   )
 }

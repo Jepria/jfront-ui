@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.2](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-datepicker@0.6.1...@jfront/ui-datepicker@0.6.2) (2021-06-11)
+
+
+### Bug Fixes
+
+* isClearable was ignored ([64167eb](https://github.com/Jepria/jfront-ui/commit/64167ebde5dd4e90f09441113ea802f513c94af0))
+
+
+
+
+
 ## [0.6.1](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-datepicker@0.6.0...@jfront/ui-datepicker@0.6.1) (2021-05-26)
 
 **Note:** Version bump only for package @jfront/ui-datepicker
