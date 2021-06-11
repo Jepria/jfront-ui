@@ -15,7 +15,7 @@ export default {
 
 export const BasicUsage = () => {
   const [value, setValue] = React.useState<any>(undefined)
-
+  const ref = React.useRef()
   console.log(value)
 
   return (
@@ -25,6 +25,7 @@ export const BasicUsage = () => {
       </button>
       <ComboBox
         value={value}
+        ref={ref}
         onSelectionChange={(name, value) => setValue(value)}
       >
         <ComboBoxItem value={undefined} label={""} />
