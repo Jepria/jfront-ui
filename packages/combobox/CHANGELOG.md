@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.2](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-combobox@0.6.1...@jfront/ui-combobox@0.6.2) (2021-06-11)
+
+
+### Bug Fixes
+
+* combobox ref ([3022925](https://github.com/Jepria/jfront-ui/commit/3022925de96825ba403baa7bb6e5d7b2a60d13ff))
+
+
+
+
+
 ## [0.6.1](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-combobox@0.6.0...@jfront/ui-combobox@0.6.1) (2021-06-11)
 
 

@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.8](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-layout@0.3.7...@jfront/ui-layout@0.3.8) (2021-06-11)
+
+**Note:** Version bump only for package @jfront/ui-layout
+
+
+
+
+
 ## [0.3.7](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-layout@0.3.6...@jfront/ui-layout@0.3.7) (2021-06-11)
 
 **Note:** Version bump only for package @jfront/ui-layout
