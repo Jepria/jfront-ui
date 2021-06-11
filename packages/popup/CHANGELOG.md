@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.7](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-popup@0.2.6...@jfront/ui-popup@0.2.7) (2021-06-11)
+
+
+### Bug Fixes
+
+* custom popup story ([e90f790](https://github.com/Jepria/jfront-ui/commit/e90f790e0fee9a312bdc39172add4cdcea398c41))
+* popup moving with scroll and resize ([20708a7](https://github.com/Jepria/jfront-ui/commit/20708a7d99a137e0e0cf42416d6fc35363c9cf12))
+
+
+
+
+
 ## [0.2.6](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-popup@0.2.5...@jfront/ui-popup@0.2.6) (2021-05-26)
 
 **Note:** Version bump only for package @jfront/ui-popup

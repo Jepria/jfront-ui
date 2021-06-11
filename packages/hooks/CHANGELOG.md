@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.1](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-hooks@0.7.0...@jfront/ui-hooks@0.7.1) (2021-06-11)
+
+
+### Bug Fixes
+
+* popup moving with scroll and resize ([20708a7](https://github.com/Jepria/jfront-ui/commit/20708a7d99a137e0e0cf42416d6fc35363c9cf12))
+
+
+
+
+
 # [0.7.0](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-hooks@0.6.5...@jfront/ui-hooks@0.7.0) (2021-05-26)
 
 

@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.1](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-combobox@0.6.0...@jfront/ui-combobox@0.6.1) (2021-06-11)
+
+
+### Bug Fixes
+
+* default text ([75fe836](https://github.com/Jepria/jfront-ui/commit/75fe83610beed7a2f0c5fd52ed014b1cd03b0c1e))
+* popup moving with scroll and resize ([20708a7](https://github.com/Jepria/jfront-ui/commit/20708a7d99a137e0e0cf42416d6fc35363c9cf12))
+* when options were loaded async, initial value wasn't displayed ([f7592c4](https://github.com/Jepria/jfront-ui/commit/f7592c4918cd7ee2a9416c38850410db47dcfbdd))
+
+
+
+
+
 # [0.6.0](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-combobox@0.5.5...@jfront/ui-combobox@0.6.0) (2021-05-26)
 
 
