@@ -1,6 +1,6 @@
 {
   "name": "@jfront/ui-fileupload",
-  "version": "0.2.7",
+  "version": "0.2.8",
   "license": "Apache-2.0",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -25,8 +25,8 @@
     "test:cov": "yarn test --coverage"
   },
   "dependencies": {
-    "@jfront/ui-icons": "^0.6.7",
-    "@jfront/ui-label": "^0.4.7"
+    "@jfront/ui-icons": "^0.6.8",
+    "@jfront/ui-label": "^0.4.8"
   },
   "peerDependencies": {
     "react": "^17.0.1",
