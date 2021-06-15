@@ -1,6 +1,6 @@
 {
   "name": "@jfront/ui-checkbox-group",
-  "version": "0.6.3",
+  "version": "0.6.4",
   "license": "Apache-2.0",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -25,8 +25,8 @@
     "test:cov": "yarn test --coverage"
   },
   "dependencies": {
-    "@jfront/ui-checkbox": "^0.5.8",
-    "@jfront/ui-icons": "^0.6.8"
+    "@jfront/ui-checkbox": "^0.5.9",
+    "@jfront/ui-icons": "^0.6.9"
   },
   "peerDependencies": {
     "react": "^17.0.1",

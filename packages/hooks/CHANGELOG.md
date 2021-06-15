@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.3](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-hooks@0.7.2...@jfront/ui-hooks@0.7.3) (2021-06-15)
+
+
+### Bug Fixes
+
+* popup movement fixed in draggable modal ([c284422](https://github.com/Jepria/jfront-ui/commit/c284422d517c3cff667008626b3dbf688baac2bd))
+
+
+
+
+
 ## [0.7.2](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-hooks@0.7.1...@jfront/ui-hooks@0.7.2) (2021-06-11)
 
 **Note:** Version bump only for package @jfront/ui-hooks
