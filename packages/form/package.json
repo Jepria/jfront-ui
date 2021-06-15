@@ -1,6 +1,6 @@
 {
   "name": "@jfront/ui-form",
-  "version": "0.3.8",
+  "version": "0.3.9",
   "license": "Apache-2.0",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -25,7 +25,7 @@
     "test:cov": "yarn test --coverage"
   },
   "dependencies": {
-    "@jfront/ui-label": "^0.4.8"
+    "@jfront/ui-label": "^0.4.9"
   },
   "peerDependencies": {
     "react": "^17.0.1",

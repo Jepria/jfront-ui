@@ -38,7 +38,7 @@ export interface StyledDialogProps {
 
 export const StyledDraggableView = styled.div`
   position: relative;
-  z-index: 5102;
+  z-index: 1102;
   box-sizing: border-box;
   overflow-wrap: break-word;
   max-width: 400px;
@@ -52,7 +52,7 @@ export const StyledDraggableView = styled.div`
 
 export const StyledDialog = styled.div<StyledDialogProps>`
   position: relative;
-  z-index: 5102;
+  z-index: 1102;
   box-sizing: border-box;
   overflow-wrap: break-word;
   max-width: 400px;
@@ -88,13 +88,13 @@ export const StyledContainer = styled.div`
   top: 0;
   left: 0;
   position: absolute;
-  z-index: 5101;
+  z-index: 1101;
   width: 100vw;
   height: 100vh;
 `
 
 export const Button = styled.span`
-  z-index: 5103;
+  z-index: 1103;
   position: absolute;
   top: 1px;
   right: 1px;
@@ -117,7 +117,7 @@ export const StyledLayer = styled.div`
   top: 0;
   left: 0;
   pointer-events: none;
-  z-index: 6000;
+  z-index: 1105;
 `
 
 export const DraggableBlock = styled.div`

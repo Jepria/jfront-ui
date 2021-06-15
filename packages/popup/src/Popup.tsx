@@ -4,6 +4,7 @@ import {
   ElementPosition,
   useOnClickOutside,
   useResizePosition,
+  useDragPosition,
   useScrollPosition,
 } from "@jfront/ui-hooks"
 import styled from "styled-components"
@@ -41,7 +42,7 @@ export interface Position {
 export interface PopupProps {
   className?: string
   style?: React.CSSProperties
-  targetElementRef?: React.RefObject<any>
+  targetElementRef?: React.RefObject<HTMLElement>
   targetRelativePosition?: RelativePosition
   absolutePosition?: Position
   onOpen?: () => void
@@ -74,8 +75,8 @@ export const Popup = forwardRef<PopupProps, "div">(
   ) => {
     const [targetElement, setTargetElement] = useState<any>()
     const [elementPosition, setElementPosition] = useState<ElementPosition>({
-      x: targetElementRef?.current?.offsetLeft,
-      y: targetElementRef?.current?.offsetTop,
+      x: targetElementRef?.current?.getBoundingClientRect().left,
+      y: targetElementRef?.current?.getBoundingClientRect().top,
     })
     const innerRef = useRef<HTMLDivElement>(null)
     const [isOpen, setOpen] = useState(visible)
@@ -84,8 +85,8 @@ export const Popup = forwardRef<PopupProps, "div">(
       if (targetElementRef?.current != targetElement) {
         setTargetElement(targetElementRef?.current)
         setElementPosition({
-          x: targetElementRef?.current?.offsetLeft,
-          y: targetElementRef?.current?.offsetTop,
+          x: targetElementRef?.current?.getBoundingClientRect().left,
+          y: targetElementRef?.current?.getBoundingClientRect().top,
         })
       }
       // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -106,6 +107,15 @@ export const Popup = forwardRef<PopupProps, "div">(
       },
       targetElementRef,
       50,
+    )
+
+    useDragPosition(
+      (prev, next) => {
+        setElementPosition(next)
+      },
+      targetElementRef,
+      false,
+      10,
     )
 
     useEffect(() => {

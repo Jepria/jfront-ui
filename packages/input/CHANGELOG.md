@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.9](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-input@0.5.8...@jfront/ui-input@0.5.9) (2021-06-15)
+
+**Note:** Version bump only for package @jfront/ui-input
+
+
+
+
+
 ## [0.5.8](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-input@0.5.7...@jfront/ui-input@0.5.8) (2021-06-11)
 
 **Note:** Version bump only for package @jfront/ui-input

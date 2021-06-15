@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.4](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-modal@0.3.3...@jfront/ui-modal@0.3.4) (2021-06-15)
+
+
+### Bug Fixes
+
+* popup movement fixed in draggable modal ([c284422](https://github.com/Jepria/jfront-ui/commit/c284422d517c3cff667008626b3dbf688baac2bd))
+
+
+
+
+
 ## [0.3.3](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-modal@0.3.2...@jfront/ui-modal@0.3.3) (2021-06-11)
 
 **Note:** Version bump only for package @jfront/ui-modal

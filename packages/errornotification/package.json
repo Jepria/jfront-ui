@@ -1,6 +1,6 @@
 {
   "name": "@jfront/ui-error-notification",
-  "version": "0.2.9",
+  "version": "0.2.10",
   "license": "Apache-2.0",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -26,7 +26,7 @@
   },
   "dependencies": {
     "@jfront/core-rest": "^0.1.4",
-    "@jfront/ui-dialog": "^0.2.9"
+    "@jfront/ui-dialog": "^0.2.10"
   },
   "peerDependencies": {
     "react": "^17.0.1",
