@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.9](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-core@0.10.8...@jfront/ui-core@0.10.9) (2021-06-11)
+
+**Note:** Version bump only for package @jfront/ui-core
+
+
+
+
+
 ## [0.10.8](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-core@0.10.7...@jfront/ui-core@0.10.8) (2021-06-11)
 
 **Note:** Version bump only for package @jfront/ui-core
