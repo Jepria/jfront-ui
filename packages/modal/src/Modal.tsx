@@ -170,7 +170,14 @@ const DraggableDialog = reactForwardRef<HTMLDivElement, any>((props, ref) => {
   }
 
   return (
-    <StyledDialog {...props} ref={ref} x={x} y={y} style={getStyles()}>
+    <StyledDialog
+      {...props}
+      ref={ref}
+      x={x}
+      y={y}
+      style={getStyles()}
+      draggable="true"
+    >
       <UseDragContext.Provider value={{ dragSource: drag }}>
         {props.children}
       </UseDragContext.Provider>
