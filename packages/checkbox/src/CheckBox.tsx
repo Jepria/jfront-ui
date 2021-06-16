@@ -80,6 +80,7 @@ export const CheckBox = React.forwardRef<HTMLInputElement, CheckBoxInterface>(
           id={htmlId}
           ref={ref}
           type="checkbox"
+          name={props.name}
           value={props.value}
           checked={props.checked}
           disabled={props.disabled}

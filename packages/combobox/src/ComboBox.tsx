@@ -331,8 +331,10 @@ export const ComboBox = React.forwardRef<HTMLDivElement, ComboBoxProps>(
         >
           <InputContainer>
             <StyledInput
+              id={id + "-input"}
               placeholder={placeholder}
               value={filter}
+              name={name}
               ref={inputRef}
               onChange={(e) => {
                 if (!e.target.value && onSelectionChange) {
@@ -351,6 +353,7 @@ export const ComboBox = React.forwardRef<HTMLDivElement, ComboBoxProps>(
           </InputContainer>
           <ButtonContainer>
             <ComboBoxButton
+              id={id + "-button"}
               disabled={disabled}
               rotate={isOpen}
               onFocus={() => setFocused(true)}
