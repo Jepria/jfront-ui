@@ -241,6 +241,7 @@ export const CheckBoxGroup = React.forwardRef<
                 const checked = undefined !== isFound
 
                 return React.cloneElement(checkbox, {
+                  name: name ? name + "-" + checkbox.props.value : undefined,
                   disabled: checkbox.props.disabled || disabled,
                   checked: checked,
                   onChange:

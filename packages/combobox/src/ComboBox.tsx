@@ -328,10 +328,11 @@ export const ComboBox = React.forwardRef<HTMLDivElement, ComboBoxProps>(
           onKeyDown={(e) => onKeyDownHandler(e)}
           error={error != undefined}
           focused={focused}
+          {...props}
         >
           <InputContainer>
             <StyledInput
-              id={id + "-input"}
+              id={id ? id + "-input" : undefined}
               placeholder={placeholder}
               value={filter}
               name={name}
@@ -353,7 +354,7 @@ export const ComboBox = React.forwardRef<HTMLDivElement, ComboBoxProps>(
           </InputContainer>
           <ButtonContainer>
             <ComboBoxButton
-              id={id + "-button"}
+              id={id ? id + "-button" : undefined}
               disabled={disabled}
               rotate={isOpen}
               onFocus={() => setFocused(true)}
