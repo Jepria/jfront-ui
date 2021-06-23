@@ -150,7 +150,9 @@ export const MaskedTextInput = React.forwardRef<
         }
       }}
       mask={maskOptions.mask}
-      render={(innerRef, props) => <TextInput ref={innerRef} {...props} />}
+      render={(innerRef, props) => (
+        <TextInput name={name} ref={innerRef} {...props} />
+      )}
     />
   )
 })

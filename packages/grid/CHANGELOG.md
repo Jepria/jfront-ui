@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.10](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-grid@0.4.9...@jfront/ui-grid@0.4.10) (2021-06-23)
+
+**Note:** Version bump only for package @jfront/ui-grid
+
+
+
+
+
 ## [0.4.9](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-grid@0.4.8...@jfront/ui-grid@0.4.9) (2021-06-15)
 
 **Note:** Version bump only for package @jfront/ui-grid

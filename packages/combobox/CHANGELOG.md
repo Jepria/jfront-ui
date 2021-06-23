@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.4](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-combobox@0.6.3...@jfront/ui-combobox@0.6.4) (2021-06-23)
+
+
+### Bug Fixes
+
+* checkbox group and combobox name`s ([d7d6763](https://github.com/Jepria/jfront-ui/commit/d7d6763cef05377f0765c36cc90ed292e567a645))
+* name and id props in ComboBox ([d848453](https://github.com/Jepria/jfront-ui/commit/d8484530602435d610f179182796ff538c376923))
+
+
+
+
+
 ## [0.6.3](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-combobox@0.6.2...@jfront/ui-combobox@0.6.3) (2021-06-15)
 
 

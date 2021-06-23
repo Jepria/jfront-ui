@@ -25,6 +25,8 @@ export const BasicUsage = () => {
         Clear value
       </button>
       <ComboBox
+        id="basic-usage"
+        name="combobox-basic-name"
         value={value}
         ref={ref}
         onSelectionChange={(name, value) => setValue(value)}

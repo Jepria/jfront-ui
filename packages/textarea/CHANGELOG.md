@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.10](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-textarea@0.3.9...@jfront/ui-textarea@0.3.10) (2021-06-23)
+
+**Note:** Version bump only for package @jfront/ui-textarea
+
+
+
+
+
 ## [0.3.9](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-textarea@0.3.8...@jfront/ui-textarea@0.3.9) (2021-06-15)
 
 **Note:** Version bump only for package @jfront/ui-textarea
