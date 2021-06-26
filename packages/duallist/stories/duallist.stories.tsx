@@ -12,10 +12,11 @@ export const BasicUsage = () => {
   const options = [
     { name: "option1", value: 1 },
     { name: "option2", value: 2 },
-    { name: "option3", value: 3 },
+    { name: "Option3", value: 3 },
     { name: "option4", value: 4 },
     { name: "option5", value: 5 },
     { name: "option6", value: 6 },
+    { name: "ITEM", value: 7 },
   ]
 
   return (

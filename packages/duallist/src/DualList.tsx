@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect, useMemo } from "react"
+import React, { useState } from "react"
 import { useFilter } from "@jfront/ui-hooks"
 import {
   StyledDualList,
@@ -13,7 +13,6 @@ import {
   List,
   ListOption,
 } from "./styles"
-import { AnyStyledComponent } from "styled-components"
 
 export interface DualListProps<T = any> {
   id?: string
@@ -89,7 +88,9 @@ export const DualList = ({
       if (onInputChange) {
         return true
       }
-      return getOptionName(value).startsWith(filter)
+      return getOptionName(value)
+        ?.toUpperCase()
+        ?.startsWith(filter?.toUpperCase())
     },
   })
 
