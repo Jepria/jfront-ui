@@ -1,6 +1,6 @@
 {
   "name": "@jfront/ui-modal",
-  "version": "0.3.1",
+  "version": "0.3.5",
   "license": "Apache-2.0",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -25,9 +25,9 @@
     "test:cov": "yarn test --coverage"
   },
   "dependencies": {
-    "@jfront/ui-hooks": "^0.7.0",
-    "@jfront/ui-icons": "^0.6.6",
-    "@jfront/ui-utils": "^0.5.1",
+    "@jfront/ui-hooks": "^0.7.4",
+    "@jfront/ui-icons": "^0.6.10",
+    "@jfront/ui-utils": "^0.5.5",
     "react-dnd": "14.0.2",
     "react-dnd-html5-backend": "14.0.0"
   },

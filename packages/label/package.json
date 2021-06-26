@@ -1,6 +1,6 @@
 {
   "name": "@jfront/ui-label",
-  "version": "0.4.6",
+  "version": "0.4.10",
   "license": "Apache-2.0",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",

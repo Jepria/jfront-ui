@@ -1,6 +1,6 @@
 {
   "name": "@jfront/ui-breadcrumbs",
-  "version": "0.2.6",
+  "version": "0.2.10",
   "license": "Apache-2.0",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -25,9 +25,9 @@
     "test:cov": "yarn test --coverage"
   },
   "dependencies": {
-    "@jfront/ui-link": "^0.2.6",
-    "@jfront/ui-popup": "^0.2.6",
-    "@jfront/ui-utils": "^0.5.1"
+    "@jfront/ui-link": "^0.2.10",
+    "@jfront/ui-popup": "^0.2.10",
+    "@jfront/ui-utils": "^0.5.5"
   },
   "peerDependencies": {
     "react": "^17.0.1",

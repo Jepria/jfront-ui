@@ -3,6 +3,38 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.10](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-fileupload@0.2.9...@jfront/ui-fileupload@0.2.10) (2021-06-23)
+
+**Note:** Version bump only for package @jfront/ui-fileupload
+
+
+
+
+
+## [0.2.9](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-fileupload@0.2.8...@jfront/ui-fileupload@0.2.9) (2021-06-15)
+
+**Note:** Version bump only for package @jfront/ui-fileupload
+
+
+
+
+
+## [0.2.8](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-fileupload@0.2.7...@jfront/ui-fileupload@0.2.8) (2021-06-11)
+
+**Note:** Version bump only for package @jfront/ui-fileupload
+
+
+
+
+
+## [0.2.7](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-fileupload@0.2.6...@jfront/ui-fileupload@0.2.7) (2021-06-11)
+
+**Note:** Version bump only for package @jfront/ui-fileupload
+
+
+
+
+
 ## [0.2.6](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-fileupload@0.2.5...@jfront/ui-fileupload@0.2.6) (2021-05-26)
 
 **Note:** Version bump only for package @jfront/ui-fileupload

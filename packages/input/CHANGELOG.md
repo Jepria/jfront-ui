@@ -3,6 +3,41 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.10](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-input@0.5.9...@jfront/ui-input@0.5.10) (2021-06-23)
+
+
+### Bug Fixes
+
+* name props in MaskedInput ([bd13332](https://github.com/Jepria/jfront-ui/commit/bd133328f6029026ea72b075cb68e1c0a850a4b3))
+
+
+
+
+
+## [0.5.9](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-input@0.5.8...@jfront/ui-input@0.5.9) (2021-06-15)
+
+**Note:** Version bump only for package @jfront/ui-input
+
+
+
+
+
+## [0.5.8](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-input@0.5.7...@jfront/ui-input@0.5.8) (2021-06-11)
+
+**Note:** Version bump only for package @jfront/ui-input
+
+
+
+
+
+## [0.5.7](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-input@0.5.6...@jfront/ui-input@0.5.7) (2021-06-11)
+
+**Note:** Version bump only for package @jfront/ui-input
+
+
+
+
+
 ## [0.5.6](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-input@0.5.5...@jfront/ui-input@0.5.6) (2021-05-26)
 
 **Note:** Version bump only for package @jfront/ui-input

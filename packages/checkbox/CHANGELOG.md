@@ -3,6 +3,41 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.10](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-checkbox@0.5.9...@jfront/ui-checkbox@0.5.10) (2021-06-23)
+
+
+### Bug Fixes
+
+* name props in CheckBox ([9358f5b](https://github.com/Jepria/jfront-ui/commit/9358f5b076759e4973addad7961830d36c666f52))
+
+
+
+
+
+## [0.5.9](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-checkbox@0.5.8...@jfront/ui-checkbox@0.5.9) (2021-06-15)
+
+**Note:** Version bump only for package @jfront/ui-checkbox
+
+
+
+
+
+## [0.5.8](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-checkbox@0.5.7...@jfront/ui-checkbox@0.5.8) (2021-06-11)
+
+**Note:** Version bump only for package @jfront/ui-checkbox
+
+
+
+
+
+## [0.5.7](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-checkbox@0.5.6...@jfront/ui-checkbox@0.5.7) (2021-06-11)
+
+**Note:** Version bump only for package @jfront/ui-checkbox
+
+
+
+
+
 ## [0.5.6](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-checkbox@0.5.5...@jfront/ui-checkbox@0.5.6) (2021-05-26)
 
 **Note:** Version bump only for package @jfront/ui-checkbox
