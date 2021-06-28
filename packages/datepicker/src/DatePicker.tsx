@@ -8,6 +8,7 @@ import {
   MaskedTextInput,
 } from "@jfront/ui-input"
 import { toIsoDateString } from "@jfront/ui-utils"
+import { StyledDatePicker } from "./styles"
 
 export const dateFormatToMask = (dateFormat: string | string[]) => {
   if (Array.isArray(dateFormat)) {
@@ -50,7 +51,7 @@ export const DatePicker = React.forwardRef<
     ref,
   ) => {
     return (
-      <ReactDatePicker
+      <StyledDatePicker
         {...props}
         customInput={
           <MaskedTextInput
@@ -79,7 +80,7 @@ export const DatePicker = React.forwardRef<
         placeholderText={parsePlaceholderFromString(
           dateFormatToMask(dateFormat),
         )}
-        ref={ref}
+        customInputRef={ref as any}
       />
     )
   },
