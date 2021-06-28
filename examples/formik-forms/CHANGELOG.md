@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.6](https://github.com/Jepria/jfront-ui/compare/jfront-formik@0.4.5...jfront-formik@0.4.6) (2021-06-28)
+
+**Note:** Version bump only for package jfront-formik
+
+
+
+
+
 ## [0.4.5](https://github.com/Jepria/jfront-ui/compare/jfront-formik@0.4.4...jfront-formik@0.4.5) (2021-06-23)
 
 **Note:** Version bump only for package jfront-formik
