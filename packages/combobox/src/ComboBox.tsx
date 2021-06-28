@@ -323,6 +323,7 @@ export const ComboBox = React.forwardRef<HTMLDivElement, ComboBoxProps>(
         <FlexContainer
           id={id}
           className={className}
+          disabled={disabled}
           style={style}
           ref={getOuterDivRef()}
           onKeyDown={(e) => onKeyDownHandler(e)}
@@ -356,7 +357,7 @@ export const ComboBox = React.forwardRef<HTMLDivElement, ComboBoxProps>(
             <ComboBoxButton
               id={id ? id + "-button" : undefined}
               disabled={disabled}
-              rotate={isOpen}
+              rotate={String(isOpen)}
               onFocus={() => setFocused(true)}
               onClick={() => setIsOpen(!isOpen)}
             />

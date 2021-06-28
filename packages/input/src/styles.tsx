@@ -118,6 +118,7 @@ export const StyledInput = styled.input<StyledProps>`
   }
   background: transparent;
 `
+
 export const StyledSelect = styled.select<StyledProps>`
   display: inline-flex;
   flex-grow: 1;

@@ -11,7 +11,7 @@ export const ComboBoxButton = ({ rotate, ...props }: ComboBoxButtonProps) => {
     <StyledButton rotate={rotate} {...props} type="button">
       <StyledSpan>
         <StyledSvg>
-          <path d="M7 10l5 5 5-5z" />
+          <path d="M7 9l5 5 5-5z" />
         </StyledSvg>
       </StyledSpan>
     </StyledButton>

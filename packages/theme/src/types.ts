@@ -42,14 +42,29 @@ export type Theme = {
     hoverColor?: string
     hoverBorderColor?: string
     hoverBgBorder?: string
-    buttonHoverColor?: string
-    buttonColor?: string
-    selectedItemBgColor?: string
-    selectedItemColor?: string
-    itemHoverBgColor?: string
-    itemHoverColor?: string
-    itemColor?: string
-    popupBgColor?: string
+    button: {
+      height?: string
+      width?: string
+      bgColor?: string
+      color?: string
+    }
+    item: {
+      margin?: string
+      height?: string
+      padding?: string
+      borderWidth?: string
+      borderStyle?: string
+      borderColor?: string
+      borderRadius?: string
+      bgColor?: string
+      color?: string
+      hoverBgColor?: string
+      hoverColor?: string
+      disabledBgColor?: string
+      disabledColor?: string
+      selectedBgColor?: string
+      selectedColor?: string
+    }
   }
   input?: {
     height?: string
