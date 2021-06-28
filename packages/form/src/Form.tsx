@@ -1,5 +1,5 @@
 import React, { ForwardRefExoticComponent, RefAttributes } from "react"
-import { Label, LabelProps } from "@jfront/ui-label"
+import { Label } from "@jfront/ui-label"
 import styled from "styled-components"
 
 const StyledForm = styled.form`
@@ -44,7 +44,8 @@ export interface FormFieldSetProps
   renderLegend?: (legend?: string) => React.ReactNode
 }
 
-export interface FormLabelProps extends LabelProps {
+export interface FormLabelProps
+  extends React.LabelHTMLAttributes<HTMLLabelElement> {
   required?: boolean
 }
 
