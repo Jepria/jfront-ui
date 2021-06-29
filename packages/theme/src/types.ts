@@ -201,5 +201,29 @@ export type Theme = {
         borderRadius?: string
       }
     }
+    form?: {
+      padding?: string
+      errorColor?: string
+      field?: {
+        margin?: string
+        control?: {
+          maxWidth?: string
+        }
+      }
+      label?: {
+        maxWidth?: string
+        minWidth?: string
+      }
+      fieldSet?: {
+        borderWidth?: string
+        borderStyle?: string
+        borderColor?: string
+        borderRadius?: string
+      }
+      legend?: {
+        color?: string
+        margin?: string
+      }
+    }
   }
 }

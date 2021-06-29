@@ -3,59 +3,73 @@ import { Label } from "@jfront/ui-label"
 import styled from "styled-components"
 
 const StyledForm = styled.form`
-  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  padding-left: 10px;
-  padding-top: 5px;
-  font-family: Arial, sans-serif;
-  font-size: small;
+  padding: ${(props) => props.theme.form.padding};
+  font-size: ${(props) => props.theme.fontSize.medium};
+  font-family: ${(props) => props.theme.fontFamily};
   overflow: auto;
   height: 100%;
 `
 
+StyledForm.defaultProps = {
+  theme: {
+    fontFamily: "tahoma, arial, helvetica, sans-serif",
+    fontSize: {
+      medium: "12px",
+    },
+    form: {
+      padding: "5px 0 0 10px",
+    },
+  },
+}
+
 const StyledField = styled.div`
-  -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  margin-bottom: 1em;
+  margin: ${(props) => props.theme.form.field.margin};
   @media (max-width: 575px) {
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
+    flex-direction: column;
   }
 `
+
+StyledField.defaultProps = {
+  theme: {
+    form: {
+      field: {
+        margin: "0 0 1em 0",
+      },
+    },
+  },
+}
 
 const StyledFieldControl = styled.div`
   flex-direction: column;
   box-sizing: border-box;
   display: inline-flex;
-  max-width: 150px;
-  -webkit-box-flex: 1;
-  -ms-flex: 1 1 0;
+  max-width: ${(props) => props.theme.form.field.control.maxWidth};
   flex: 1 1 0;
 `
 
-export interface FormFieldSetProps
-  extends React.FieldsetHTMLAttributes<HTMLFieldSetElement> {
-  legend?: string
-  renderLegend?: (legend?: string) => React.ReactNode
-}
-
-export interface FormLabelProps
-  extends React.LabelHTMLAttributes<HTMLLabelElement> {
-  required?: boolean
+StyledFieldControl.defaultProps = {
+  theme: {
+    form: {
+      field: {
+        control: {
+          maxWidth: "150px",
+        },
+      },
+    },
+  },
 }
 
 const StyledFormLabel = styled(Label)<FormLabelProps>`
-  min-width: 150px;
-  max-width: 200px;
+  min-width: ${(props) => props.theme.form.label.minWidth};
+  max-width: ${(props) => props.theme.form.label.maxWidth};
   width: 100%;
   line-height: 1.5715;
   @media (max-width: 575px) {
-    justify-content: flex-start;
     text-align: left;
     min-width: unset;
     max-width: unset;
@@ -76,15 +90,91 @@ const StyledFormLabel = styled(Label)<FormLabelProps>`
       : ""}
 `
 
+StyledFormLabel.defaultProps = {
+  theme: {
+    fontFamily: "tahoma, arial, helvetica, sans-serif",
+    fontSize: {
+      medium: "12px",
+    },
+    label: {
+      margin: 0,
+      color: "#000",
+      padding: "0 5px 0 0",
+    },
+    form: {
+      label: {
+        maxWidth: "200px",
+        minWidth: "150px",
+      },
+    },
+  },
+}
+
 const StyledFieldSet = styled.fieldset`
-  border: 1px solid rgba(81, 162, 238, 1);
-  border-radius: 5px;
+  border: ${(props) =>
+    `${props.theme.form.fieldSet.borderWidth} 
+    ${props.theme.form.fieldSet.borderStyle} 
+    ${props.theme.form.fieldSet.borderColor}`};
+  border-radius: ${(props) => props.theme.form.fieldSet.borderRadius};
 `
 
+StyledFieldSet.defaultProps = {
+  theme: {
+    form: {
+      fieldSet: {
+        borderWidth: "1px",
+        borderStyle: "solid",
+        borderColor: "rgb(81, 162, 238)",
+        borderRadius: "5px",
+      },
+    },
+  },
+}
+
 const StyledLegend = styled.legend`
-  color: rgba(81, 162, 238, 1);
-  margin: 0 5px;
+  color: ${(props) => props.theme.form.legend.color};
+  margin: ${(props) => props.theme.form.legend.margin};
 `
+
+StyledLegend.defaultProps = {
+  theme: {
+    form: {
+      legend: {
+        color: "rgb(81, 162, 238)",
+        margin: "0 5px",
+      },
+    },
+  },
+}
+
+const ErrorSpan = styled.span`
+  font-family: ${(props) => props.theme.fontFamily};
+  font-size: ${(props) => props.theme.fontSize.small};
+  color: ${(props) => props.theme.form.errorColor};
+`
+
+ErrorSpan.defaultProps = {
+  theme: {
+    fontFamily: "tahoma, arial, helvetica, sans-serif",
+    fontSize: {
+      small: "11px",
+    },
+    form: {
+      errorColor: "red",
+    },
+  },
+}
+
+export interface FormFieldSetProps
+  extends React.FieldsetHTMLAttributes<HTMLFieldSetElement> {
+  legend?: string
+  renderLegend?: (legend?: string) => React.ReactNode
+}
+
+export interface FormLabelProps
+  extends React.LabelHTMLAttributes<HTMLLabelElement> {
+  required?: boolean
+}
 
 export interface FormControlProps extends React.HTMLAttributes<HTMLDivElement> {
   error?: string
@@ -155,17 +245,7 @@ Form.Control = (props: FormControlProps) => {
   return (
     <StyledFieldControl {...props}>
       {React.Children.only(props.children)}
-      {props.error && (
-        <span
-          style={{
-            fontFamily: "tahoma, arial, helvetica, sans-serif",
-            fontSize: 11,
-            color: "red",
-          }}
-        >
-          {props.error}
-        </span>
-      )}
+      {props.error && <ErrorSpan>{props.error}</ErrorSpan>}
     </StyledFieldControl>
   )
 }

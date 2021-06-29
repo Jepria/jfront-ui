@@ -108,7 +108,6 @@ export const FlexContainer = styled.div<StyledDivProps>`
   text-align: left;
   flex: 1;
   height: ${(props) => props.theme.combobox.height};
-  border-radius: ${(props) => props.theme.combobox.borderRadius};
   margin: ${(props) => props.theme.combobox.margin};
   padding: ${(props) => props.theme.combobox.padding};
   font-size: ${(props) => props.theme.fontSize.medium};
@@ -141,6 +140,7 @@ export const FlexContainer = styled.div<StyledDivProps>`
         ? props.theme.combobox.disabledBorderColor
         : props.theme.combobox.borderColor
     }`};
+  border-radius: ${(props) => props.theme.combobox.borderRadius};
   ${(props) =>
     props.focused
       ? `box-shadow: 0 0 5px ${
