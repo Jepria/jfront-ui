@@ -15,8 +15,6 @@ export const Item = styled.div<ItemProps>`
   margin: ${(props) => props.theme.combobox.item.margin};
   font-size: ${(props) => props.theme.fontSize.medium};
   font-family: ${(props) => props.theme.fontFamily};
-  font-size: ${(props) => props.theme.fontSize.medium};
-  font-family: ${(props) => props.theme.fontFamily};
   text-align: left;
   border: ${(props) =>
     `${props.theme.combobox.item.borderWidth} 

@@ -42,13 +42,13 @@ export type Theme = {
     hoverColor?: string
     hoverBorderColor?: string
     hoverBgBorder?: string
-    button: {
+    button?: {
       height?: string
       width?: string
       bgColor?: string
       color?: string
     }
-    item: {
+    item?: {
       margin?: string
       height?: string
       padding?: string
@@ -145,6 +145,61 @@ export type Theme = {
       disabledBgColor?: string
       disabledColor?: string
       disabledBorderColor?: string
+    }
+  }
+  calendar?: {
+    margin?: string
+    height?: string
+    padding?: string
+    borderColor?: string
+    borderRadius?: string
+    bgColor?: string
+    header?: {
+      bgColor?: string
+      borderWidth?: string
+      borderStyle?: string
+      borderColor?: string
+    }
+    hoverBgColor?: string
+    hoverColor?: string
+    keyboardHoverBgColor?: string
+    keyboardHoverColor?: string
+    selectedBgColor?: string
+    selectedColor?: string
+    todayBgColor?: string
+    todayColor?: string
+    closeIcon: {
+      bgColor?: string
+      color?: string
+    }
+    toolbar?: {
+      bgColor?: string
+      borderWidth?: string
+      borderStyle?: string
+      borderColor?: string
+      borderRadius?: string
+      button?: {
+        bgColor?: string
+        borderWidth?: string
+        borderStyle?: string
+        borderColor?: string
+        borderRadius?: string
+        hoverBgColor?: string
+        hoverBorderWidth?: string
+        hoverBorderStyle?: string
+        hoverBorderColor?: string
+      }
+    }
+    tabPanel?: {
+      color?: string
+      tab?: {
+        bgColor?: string
+        selectedBgColor?: string
+        borderWidth?: string
+        borderStyle?: string
+        borderColor?: string
+        borderRadius?: string
+      }
     }
   }
 }

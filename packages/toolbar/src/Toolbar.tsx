@@ -1,21 +1,47 @@
 import React from "react"
 import styled from "styled-components"
 
-export interface ToolbarInterface extends React.HTMLAttributes<HTMLElement> {}
-
 const StyledToolbar = styled.nav`
-  font: 11px arial, tahoma, verdana, helvetica;
-  vertical-align: middle;
+  box-sizing: border-box;
+  font-size: ${(props) => props.theme.fontSize.small};
+  font-family: ${(props) => props.theme.fontFamily};
   padding: 2px;
-  border-style: solid;
-  border-color: #99bbe8;
-  border-width: 1px 1px 1px 1px;
+  background: ${(props) => props.theme.toolbar.bgColor};
+  border: ${(props) =>
+    `${props.theme.toolbar.borderWidth} 
+    ${props.theme.toolbar.borderStyle} 
+    ${props.theme.toolbar.borderColor}`};
+  border-radius: ${(props) => props.theme.toolbar.borderRadius};
   overflow: hidden;
-  background: linear-gradient(#dae6f4, #d0def0);
   z-index: 0;
-  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 `
 
-export const Toolbar: React.FC<ToolbarInterface> = (props) => {
-  return <StyledToolbar {...props}>{props.children}</StyledToolbar>
+StyledToolbar.defaultProps = {
+  theme: {
+    fontFamily: "tahoma, arial, helvetica, sans-serif",
+    fontSize: {
+      small: "11px",
+    },
+    toolbar: {
+      bgColor: "linear-gradient(#dae6f4, #d0def0)",
+      borderWidth: "1px",
+      borderStyle: "solid",
+      borderColor: "#99bbe8",
+      borderRadius: 0,
+    },
+  },
 }
+
+export const Toolbar = React.forwardRef<
+  HTMLElement,
+  React.HTMLAttributes<HTMLElement>
+>((props, ref) => {
+  return (
+    <StyledToolbar {...props} ref={ref}>
+      {props.children}
+    </StyledToolbar>
+  )
+})
