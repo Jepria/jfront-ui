@@ -226,4 +226,28 @@ export type Theme = {
       }
     }
   }
+  tree?: {
+    borderWidth?: string
+    borderStyle?: string
+    borderColor?: string
+    borderRadius?: string
+    focusedBorderColor?: string
+    errorBorderColor?: string
+    hoverBorderColor?: string
+    node?: {
+      margin?: string
+      padding?: string
+      borderWidth?: string
+      borderStyle?: string
+      borderColor?: string
+      borderRadius?: string
+      bgColor?: string
+      color?: string
+      hoverBgColor?: string
+      label?: {
+        bgColor?: string
+        selectedBgColor?: string
+      }
+    }
+  }
 }
