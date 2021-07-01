@@ -250,4 +250,11 @@ export type Theme = {
       }
     }
   }
+  link?: {
+    color?: string
+    textDecoration?: string
+  }
+  breadcrumbs?: {
+    color?: string
+  }
 }

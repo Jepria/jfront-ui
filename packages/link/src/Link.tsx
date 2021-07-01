@@ -2,20 +2,39 @@ import React from "react"
 import { forwardRef } from "@jfront/ui-utils"
 import styled from "styled-components"
 
+const defaultProps = {
+  theme: {
+    fontFamily: "tahoma, arial, helvetica, sans-serif",
+    fontSize: {
+      medium: "12px",
+    },
+    link: {
+      color: "rgb(21, 66, 139)",
+      textDecoration: "underline",
+    },
+  },
+}
+
 const StyledSpan = styled.span`
-  color: currentColor;
+  font-size: ${(props) => props.theme.fontSize.medium};
+  font-family: ${(props) => props.theme.fontFamily};
+  color: ${(props) => props.theme.link.color};
   font-weight: bold;
 `
 
+StyledSpan.defaultProps = defaultProps
+
 const StyledLink = styled.a`
-  color: currentColor;
-  text-decoration: none;
+  font-size: ${(props) => props.theme.fontSize.medium};
+  font-family: ${(props) => props.theme.fontFamily};
+  color: ${(props) => props.theme.link.color};
+  text-decoration: ${(props) => props.theme.link.textDecoration};
   font-weight: normal;
   &:hover {
     opacity: 0.7;
-    text-decoration: underline;
   }
 `
+StyledLink.defaultProps = defaultProps
 
 export interface LinkProps
   extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
