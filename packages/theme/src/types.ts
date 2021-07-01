@@ -257,4 +257,43 @@ export type Theme = {
   breadcrumbs?: {
     color?: string
   }
+  grid?: {
+    color?: string
+    header?: {
+      color?: string
+      bgColor?: string
+      borderWidth?: string
+      borderStyle?: string
+      borderColor?: string
+      borderRadius?: string
+    }
+    row?: {
+      color?: string
+      borderWidth?: string
+      borderStyle?: string
+      borderColor?: string
+      borderRadius: 0
+      bgColor?: string
+      oddBgColor?: string
+      hoverBgColor?: string
+      selectedBgColor?: string
+      selectedBorderColor?: string
+    }
+    pagingBar?: {
+      color?: string
+      borderWidth?: string
+      borderStyle?: string
+      borderColor?: string
+      borderRadius?: string
+      bgColor?: string
+    }
+    modal?: {
+      borderWidth?: string
+      borderStyle?: string
+      borderColor?: string
+      borderRadius?: string
+      headerBgColor?: string
+      headerColor?: string
+    }
+  }
 }

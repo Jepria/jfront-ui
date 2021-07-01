@@ -25,6 +25,14 @@ export const BreadcrumsLink = styled(Link)`
 
 BreadcrumsLink.defaultProps = {
   theme: {
+    fontFamily: "tahoma, arial, helvetica, sans-serif",
+    fontSize: {
+      medium: "12px",
+    },
+    link: {
+      color: "rgb(21, 66, 139)",
+      textDecoration: "underline",
+    },
     breadcrumbs: {
       color: "currentColor",
     },
