@@ -295,5 +295,15 @@ export type Theme = {
       headerBgColor?: string
       headerColor?: string
     }
+    checkboxGroup?: {
+      borderWidth?: string
+      borderStyle?: string
+      borderColor?: string
+      borderRadius?: string
+      color?: string
+      focusedBorderColor?: string
+      errorBorderColor?: string
+      hoverBorderColor?: string
+    }
   }
 }

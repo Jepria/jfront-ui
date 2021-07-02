@@ -25,6 +25,7 @@
     "test:cov": "yarn test --coverage"
   },
   "dependencies": {
+    "@jfront/ui-label": "^0.4.10",
     "react-id-generator": "^3.0.1"
   },
   "peerDependencies": {
