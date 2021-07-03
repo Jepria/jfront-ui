@@ -71,17 +71,18 @@ export const ErrorDialog = React.forwardRef<HTMLDivElement, ErrorDialogProps>(
           </ContentBox>
         </StyledModalContent>
         <ModalFooter>
-          <StyledButton type="button" onClick={onClose} value="OK" />
+          <StyledButton type="button" onClick={onClose}>
+            OK
+          </StyledButton>
           {errorMessage && (
             <StyledButton
               type="button"
               onClick={() => setShowDetails(!showDetails)}
-              value={
-                showDetailsButtonLabel
-                  ? showDetailsButtonLabel
-                  : "Показать детали"
-              }
-            />
+            >
+              {showDetailsButtonLabel
+                ? showDetailsButtonLabel
+                : "Показать детали"}
+            </StyledButton>
           )}
         </ModalFooter>
         {errorMessage && showDetails && (

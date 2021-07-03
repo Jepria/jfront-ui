@@ -58,12 +58,12 @@ const List = styled.div`
 
 export const StyledHeader = styled.header`
   box-sizing: border-box;
-  background: ${(props) => props.theme.grid.modal.headerBgColor};
+  background: ${(props) => props.theme.modal.header.bgColor};
   padding: 5px 10px;
   margin: 0;
-  color: ${(props) => props.theme.grid.modal.headerColor};
-  border-top-left-radius: ${(props) => props.theme.grid.modal.borderRadius};
-  border-top-right-radius: ${(props) => props.theme.grid.modal.borderRadius};
+  color: ${(props) => props.theme.modal.header.color};
+  border-top-left-radius: ${(props) => props.theme.modal.header.borderRadius};
+  border-top-right-radius: ${(props) => props.theme.modal.header.borderRadius};
   min-height: 18px;
   font-family: ${(props) => props.theme.fontFamily};
   font-size: ${(props) => props.theme.fontSize.small};
@@ -76,15 +76,14 @@ StyledHeader.defaultProps = {
       small: "11px",
     },
     fontFamily: "tahoma, arial, helvetica, sans-serif",
-    grid: {
-      modal: {
-        borderWidth: "1px",
-        borderStyle: "solid",
-        borderColor: "#ccc",
+    modal: {
+      header: {
+        borderWidth: 0,
+        borderStyle: "",
+        borderColor: "",
         borderRadius: "5px",
-        headerBgColor:
-          "linear-gradient(rgb(255, 255, 255), rgb(208, 222, 240))",
-        headerColor: "rgb(21, 66, 139)",
+        bgColor: "linear-gradient(rgb(255, 255, 255), rgb(208, 222, 240))",
+        color: "rgb(21, 66, 139)",
       },
     },
   },

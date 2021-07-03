@@ -306,4 +306,20 @@ export type Theme = {
       hoverBorderColor?: string
     }
   }
+  modal?: {
+    borderWidth?: string
+    borderStyle?: string
+    borderColor?: string
+    borderRadius?: string
+    bgColor?: string
+    closeButtonColor?: string
+    header?: {
+      borderWidth?: string
+      borderStyle?: string
+      borderColor?: string
+      borderRadius?: string
+      bgColor?: string
+      color?: string
+    }
+  }
 }
