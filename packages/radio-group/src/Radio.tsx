@@ -18,10 +18,11 @@ const StyledRadioInput = styled.input`
 `
 
 const StyledRadioLabel = styled.label`
+  box-sizing: border-box;
+  padding: 2px;
   height: 20px;
-  width: 100px;
-  margin: 2px;
   overflow: hidden;
+  text-overflow: ellipsis;
   cursor: pointer;
   white-space: nowrap;
   width: 100%;
@@ -32,14 +33,14 @@ const StyledRadioLabel = styled.label`
   -moz-user-select: none; /* Old versions of Firefox */
   -ms-user-select: none; /* Internet Explorer/Edge */
   user-select: none; /* Non-prefixed version, currently
-                              supported by Chrome, Edge, Opera and Firefox */
+                            supported by Chrome, Edge, Opera and Firefox */
 `
 interface RadioSpanI {
   orientation?: "left" | "right"
 }
 const StyledRadio = styled.span<RadioSpanI>`
-  margin: 2px;
-  height: 22px;
+  box-sizing: border-box;
+  padding: 2px;
   display: flex;
   ${(props) =>
     props.orientation && props.orientation === "left"
@@ -55,35 +56,33 @@ const StyledRadio = styled.span<RadioSpanI>`
 `
 
 export const Radio = React.forwardRef<HTMLInputElement, RadioInterface>(
-  (props, ref) => {
-    const htmlId = props.id ? props.id : nextId()
+  ({ id, label, className, style, type, orientation, ...props }, ref) => {
+    const htmlId = id ? id : nextId()
 
     return (
       <StyledRadio
-        className={props.className}
-        style={props.style}
-        orientation={props.orientation}
+        className={className}
+        style={style}
+        orientation={orientation}
       >
-        <StyledRadioLabel
-          htmlFor={htmlId}
-          onDoubleClick={(e) => {
-            /** IE fix checkbox double-click issue **/
-            if ((document as any).documentMode) {
-              e.stopPropagation()
-              e.currentTarget.click()
-            }
-          }}
-        >
-          {props.label}
-        </StyledRadioLabel>
+        {label && (
+          <StyledRadioLabel
+            htmlFor={htmlId}
+            onDoubleClick={(e) => {
+              /** IE fix checkbox double-click issue **/
+              if ((document as any).documentMode) {
+                e.stopPropagation()
+                e.currentTarget.click()
+              }
+            }}
+          >
+            {label}
+          </StyledRadioLabel>
+        )}
         <StyledRadioInput
           id={htmlId}
           ref={ref}
           type="radio"
-          value={props.value}
-          checked={props.checked}
-          disabled={props.disabled}
-          onChange={props.onChange}
           onDoubleClick={(e) => {
             /** IE fix checkbox double-click issue **/
             if ((document as any).documentMode) {
@@ -91,6 +90,7 @@ export const Radio = React.forwardRef<HTMLInputElement, RadioInterface>(
               e.currentTarget.click()
             }
           }}
+          {...props}
         />
       </StyledRadio>
     )

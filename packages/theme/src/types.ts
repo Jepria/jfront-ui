@@ -287,24 +287,26 @@ export type Theme = {
       borderRadius?: string
       bgColor?: string
     }
-    modal?: {
-      borderWidth?: string
-      borderStyle?: string
-      borderColor?: string
-      borderRadius?: string
-      headerBgColor?: string
-      headerColor?: string
-    }
-    checkboxGroup?: {
-      borderWidth?: string
-      borderStyle?: string
-      borderColor?: string
-      borderRadius?: string
-      color?: string
-      focusedBorderColor?: string
-      errorBorderColor?: string
-      hoverBorderColor?: string
-    }
+  }
+  checkboxGroup?: {
+    borderWidth?: string
+    borderStyle?: string
+    borderColor?: string
+    borderRadius?: string
+    color?: string
+    focusedBorderColor?: string
+    errorBorderColor?: string
+    hoverBorderColor?: string
+  }
+  radioGroup?: {
+    borderWidth?: string
+    borderStyle?: string
+    borderColor?: string
+    borderRadius?: string
+    color?: string
+    focusedBorderColor?: string
+    errorBorderColor?: string
+    hoverBorderColor?: string
   }
   modal?: {
     borderWidth?: string

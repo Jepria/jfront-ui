@@ -57,14 +57,14 @@ const StyledCheckBox = styled.div<CheckboxContainer>`
 `
 
 export const CheckBox = React.forwardRef<HTMLInputElement, CheckBoxInterface>(
-  ({ id, label, className, style, type, ...props }, ref) => {
+  ({ id, label, className, style, type, orientation, ...props }, ref) => {
     const htmlId = id ? id : nextId()
 
     return (
       <StyledCheckBox
         className={className}
         style={style}
-        orientation={props.orientation}
+        orientation={orientation}
       >
         {label && (
           <StyledCheckBoxLabel
