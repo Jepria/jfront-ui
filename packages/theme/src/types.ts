@@ -324,4 +324,14 @@ export type Theme = {
       color?: string
     }
   }
+  duallist?: {
+    color?: string
+    borderWidth?: string
+    borderStyle?: string
+    borderColor?: string
+    borderRadius?: string
+    focusedBorderColor?: string
+    errorBorderColor?: string
+    hoverBorderColor?: string
+  }
 }

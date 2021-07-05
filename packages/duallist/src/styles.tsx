@@ -14,7 +14,22 @@ export const StyledDualList = styled.div`
   flex-direction: column;
   box-sizing: border-box;
   width: 100%;
+  font-size: ${(props) => props.theme.fontSize.medium};
+  font-family: ${(props) => props.theme.fontFamily};
+  color: ${(props) => props.theme.duallist.color};
 `
+
+StyledDualList.defaultProps = {
+  theme: {
+    fontSize: {
+      medium: "12px",
+    },
+    fontFamily: "tahoma, arial, helvetica, sans-serif",
+    duallist: {
+      color: "#000",
+    },
+  },
+}
 
 export const Container = styled.div`
   box-sizing: border-box;
@@ -44,15 +59,41 @@ export const List = styled.select.attrs({ multiple: true })<ListProps>`
   flex-grow: 1;
   width: 45%;
   outline: 0;
+  border-radius: ${(props) => props.theme.duallist.borderRadius};
   &:focus {
-    box-shadow: 0 0 5px #99bbe8;
-    border: 1px solid #99bbe8;
+    box-shadow: 0 0 5px
+      ${(props) =>
+        props.error
+          ? props.theme.duallist.errorBorderColor
+          : props.theme.duallist.focusedBorderColor};
   }
-  ${(props: ListProps) =>
-    props.error
-      ? "border: 1px solid red"
-      : "border: 1px solid #ccc; border-top: 1px solid #999;"}
+  &:hover:enabled {
+    border: 1px solid
+      ${(props) =>
+        props.error
+          ? props.theme.duallist.errorBorderColor
+          : props.theme.duallist.hoverBorderColor};
+  }
+  border: 1px solid
+    ${(props) =>
+      props.error
+        ? props.theme.duallist.errorBorderColor
+        : props.theme.duallist.borderColor};
 `
+
+List.defaultProps = {
+  theme: {
+    duallist: {
+      borderWidth: "1px",
+      borderStyle: "solid",
+      borderColor: "#ccc",
+      borderRadius: 0,
+      focusedBorderColor: "#99bbe8",
+      errorBorderColor: "red",
+      hoverBorderColor: "#99bbe8",
+    },
+  },
+}
 
 export const ListOption = styled.option`
   padding-left: 3px;
