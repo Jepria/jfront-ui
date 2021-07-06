@@ -1,103 +1,59 @@
 # Change Log
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [0.1.23](https://github.com/Jepria/jfront-ui/compare/jfront-listpage@0.1.22...jfront-listpage@0.1.23) (2021-06-28)
+
+**Note:** Version bump only for package jfront-listpage
 
 ## [0.1.22](https://github.com/Jepria/jfront-ui/compare/jfront-listpage@0.1.21...jfront-listpage@0.1.22) (2021-06-23)
 
 **Note:** Version bump only for package jfront-listpage
 
-
-
-
-
 ## [0.1.21](https://github.com/Jepria/jfront-ui/compare/jfront-listpage@0.1.20...jfront-listpage@0.1.21) (2021-06-15)
 
 **Note:** Version bump only for package jfront-listpage
-
-
-
-
 
 ## [0.1.20](https://github.com/Jepria/jfront-ui/compare/jfront-listpage@0.1.19...jfront-listpage@0.1.20) (2021-06-11)
 
 **Note:** Version bump only for package jfront-listpage
 
-
-
-
-
 ## [0.1.19](https://github.com/Jepria/jfront-ui/compare/jfront-listpage@0.1.18...jfront-listpage@0.1.19) (2021-06-11)
 
 **Note:** Version bump only for package jfront-listpage
-
-
-
-
 
 ## [0.1.18](https://github.com/Jepria/jfront-ui/compare/jfront-listpage@0.1.17...jfront-listpage@0.1.18) (2021-05-26)
 
 **Note:** Version bump only for package jfront-listpage
 
-
-
-
-
 ## [0.1.17](https://github.com/Jepria/jfront-ui/compare/jfront-listpage@0.1.16...jfront-listpage@0.1.17) (2021-05-06)
 
 **Note:** Version bump only for package jfront-listpage
-
-
-
-
 
 ## [0.1.16](https://github.com/Jepria/jfront-ui/compare/jfront-listpage@0.1.15...jfront-listpage@0.1.16) (2021-04-01)
 
 **Note:** Version bump only for package jfront-listpage
 
-
-
-
-
 ## [0.1.15](https://github.com/Jepria/jfront-ui/compare/jfront-listpage@0.1.14...jfront-listpage@0.1.15) (2021-03-31)
 
 **Note:** Version bump only for package jfront-listpage
-
-
-
-
 
 ## [0.1.14](https://github.com/Jepria/jfront-ui/compare/jfront-listpage@0.1.13...jfront-listpage@0.1.14) (2021-03-31)
 
 **Note:** Version bump only for package jfront-listpage
 
-
-
-
-
 ## [0.1.13](https://github.com/Jepria/jfront-ui/compare/jfront-listpage@0.1.12...jfront-listpage@0.1.13) (2021-03-31)
 
 **Note:** Version bump only for package jfront-listpage
-
-
-
-
 
 ## [0.1.12](https://github.com/Jepria/jfront-ui/compare/jfront-listpage@0.1.11...jfront-listpage@0.1.12) (2021-03-18)
 
 **Note:** Version bump only for package jfront-listpage
 
-
-
-
-
 ## [0.1.11](https://github.com/Jepria/jfront-ui/compare/jfront-listpage@0.1.10...jfront-listpage@0.1.11) (2021-03-18)
 
 **Note:** Version bump only for package jfront-listpage
-
-
-
-
 
 # Change Log
 

@@ -1,112 +1,71 @@
 # Change Log
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [0.7.5](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-hooks@0.7.4...@jfront/ui-hooks@0.7.5) (2021-06-28)
+
+**Note:** Version bump only for package @jfront/ui-hooks
 
 ## [0.7.4](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-hooks@0.7.3...@jfront/ui-hooks@0.7.4) (2021-06-23)
 
 **Note:** Version bump only for package @jfront/ui-hooks
 
-
-
-
-
 ## [0.7.3](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-hooks@0.7.2...@jfront/ui-hooks@0.7.3) (2021-06-15)
-
 
 ### Bug Fixes
 
-* popup movement fixed in draggable modal ([c284422](https://github.com/Jepria/jfront-ui/commit/c284422d517c3cff667008626b3dbf688baac2bd))
-
-
-
-
+- popup movement fixed in draggable modal
+  ([c284422](https://github.com/Jepria/jfront-ui/commit/c284422d517c3cff667008626b3dbf688baac2bd))
 
 ## [0.7.2](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-hooks@0.7.1...@jfront/ui-hooks@0.7.2) (2021-06-11)
 
 **Note:** Version bump only for package @jfront/ui-hooks
 
-
-
-
-
 ## [0.7.1](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-hooks@0.7.0...@jfront/ui-hooks@0.7.1) (2021-06-11)
-
 
 ### Bug Fixes
 
-* popup moving with scroll and resize ([20708a7](https://github.com/Jepria/jfront-ui/commit/20708a7d99a137e0e0cf42416d6fc35363c9cf12))
-
-
-
-
+- popup moving with scroll and resize
+  ([20708a7](https://github.com/Jepria/jfront-ui/commit/20708a7d99a137e0e0cf42416d6fc35363c9cf12))
 
 # [0.7.0](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-hooks@0.6.5...@jfront/ui-hooks@0.7.0) (2021-05-26)
 
-
 ### Features
 
-* useFilter hook for combobox ([f91c93a](https://github.com/Jepria/jfront-ui/commit/f91c93a45e93a7832c724293d1eeb4cd9b269366))
-
-
-
-
+- useFilter hook for combobox
+  ([f91c93a](https://github.com/Jepria/jfront-ui/commit/f91c93a45e93a7832c724293d1eeb4cd9b269366))
 
 ## [0.6.5](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-hooks@0.6.4...@jfront/ui-hooks@0.6.5) (2021-05-06)
 
 **Note:** Version bump only for package @jfront/ui-hooks
 
-
-
-
-
 ## [0.6.4](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-hooks@0.6.3...@jfront/ui-hooks@0.6.4) (2021-04-01)
 
 **Note:** Version bump only for package @jfront/ui-hooks
-
-
-
-
 
 ## [0.6.3](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-hooks@0.6.2...@jfront/ui-hooks@0.6.3) (2021-03-31)
 
 **Note:** Version bump only for package @jfront/ui-hooks
 
-
-
-
-
 ## [0.6.2](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-hooks@0.6.1...@jfront/ui-hooks@0.6.2) (2021-03-31)
 
 **Note:** Version bump only for package @jfront/ui-hooks
-
-
-
-
 
 ## [0.6.1](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-hooks@0.6.0...@jfront/ui-hooks@0.6.1) (2021-03-18)
 
 **Note:** Version bump only for package @jfront/ui-hooks
 
-
-
-
-
 # [0.6.0](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-hooks@0.5.4...@jfront/ui-hooks@0.6.0) (2021-03-18)
-
 
 ### Features
 
-* package dependencies update to latest versions ([90946d2](https://github.com/Jepria/jfront-ui/commit/90946d25fcb08fc77e4b143567963682f8ff3d2b))
-
+- package dependencies update to latest versions
+  ([90946d2](https://github.com/Jepria/jfront-ui/commit/90946d25fcb08fc77e4b143567963682f8ff3d2b))
 
 ### BREAKING CHANGES
 
-* react upgraded to 17.0.1
-
-
-
-
+- react upgraded to 17.0.1
 
 # Change Log
 

@@ -1,103 +1,62 @@
 # Change Log
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [0.6.11](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-icons@0.6.10...@jfront/ui-icons@0.6.11) (2021-06-28)
+
+**Note:** Version bump only for package @jfront/ui-icons
 
 ## [0.6.10](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-icons@0.6.9...@jfront/ui-icons@0.6.10) (2021-06-23)
 
 **Note:** Version bump only for package @jfront/ui-icons
 
-
-
-
-
 ## [0.6.9](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-icons@0.6.8...@jfront/ui-icons@0.6.9) (2021-06-15)
 
 **Note:** Version bump only for package @jfront/ui-icons
-
-
-
-
 
 ## [0.6.8](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-icons@0.6.7...@jfront/ui-icons@0.6.8) (2021-06-11)
 
 **Note:** Version bump only for package @jfront/ui-icons
 
-
-
-
-
 ## [0.6.7](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-icons@0.6.6...@jfront/ui-icons@0.6.7) (2021-06-11)
 
 **Note:** Version bump only for package @jfront/ui-icons
-
-
-
-
 
 ## [0.6.6](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-icons@0.6.5...@jfront/ui-icons@0.6.6) (2021-05-26)
 
 **Note:** Version bump only for package @jfront/ui-icons
 
-
-
-
-
 ## [0.6.5](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-icons@0.6.4...@jfront/ui-icons@0.6.5) (2021-05-06)
 
 **Note:** Version bump only for package @jfront/ui-icons
-
-
-
-
 
 ## [0.6.4](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-icons@0.6.3...@jfront/ui-icons@0.6.4) (2021-04-01)
 
 **Note:** Version bump only for package @jfront/ui-icons
 
-
-
-
-
 ## [0.6.3](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-icons@0.6.2...@jfront/ui-icons@0.6.3) (2021-03-31)
 
 **Note:** Version bump only for package @jfront/ui-icons
-
-
-
-
 
 ## [0.6.2](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-icons@0.6.1...@jfront/ui-icons@0.6.2) (2021-03-31)
 
 **Note:** Version bump only for package @jfront/ui-icons
 
-
-
-
-
 ## [0.6.1](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-icons@0.6.0...@jfront/ui-icons@0.6.1) (2021-03-18)
 
 **Note:** Version bump only for package @jfront/ui-icons
 
-
-
-
-
 # [0.6.0](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-icons@0.5.3...@jfront/ui-icons@0.6.0) (2021-03-18)
-
 
 ### Features
 
-* package dependencies update to latest versions ([90946d2](https://github.com/Jepria/jfront-ui/commit/90946d25fcb08fc77e4b143567963682f8ff3d2b))
-
+- package dependencies update to latest versions
+  ([90946d2](https://github.com/Jepria/jfront-ui/commit/90946d25fcb08fc77e4b143567963682f8ff3d2b))
 
 ### BREAKING CHANGES
 
-* react upgraded to 17.0.1
-
-
-
-
+- react upgraded to 17.0.1
 
 # Change Log
 
