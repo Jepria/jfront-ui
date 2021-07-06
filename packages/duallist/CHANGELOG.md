@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.11](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-dual-list@0.2.10...@jfront/ui-dual-list@0.2.11) (2021-06-28)
+
+
+### Bug Fixes
+
+* dual list filter with upper case ([968e588](https://github.com/Jepria/jfront-ui/commit/968e58847455eb9a47548b14d72a1eea2994511a))
+
+
+
+
+
 ## [0.2.10](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-dual-list@0.2.9...@jfront/ui-dual-list@0.2.10) (2021-06-23)
 
 **Note:** Version bump only for package @jfront/ui-dual-list
