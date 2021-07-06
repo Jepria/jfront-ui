@@ -3,11 +3,17 @@ import styled from "styled-components"
 export const TableHeader = styled.div`
   box-sizing: border-box;
   width: 100%;
-  @media only screen and (max-width: 760px),
-    (min-device-width: 768px) and (max-device-width: 1024px) {
+  @media (max-width: ${(props) => props.theme.breakpoints.md}) {
     display: none;
   }
 `
+TableHeader.defaultProps = {
+  theme: {
+    breakpoints: {
+      md: "768px",
+    },
+  },
+}
 
 export const TableHeaderCell = styled.div`
   box-sizing: border-box;

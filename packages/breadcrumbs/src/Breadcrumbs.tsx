@@ -27,7 +27,7 @@ BreadcrumsLink.defaultProps = {
   theme: {
     fontFamily: "tahoma, arial, helvetica, sans-serif",
     fontSize: {
-      medium: "12px",
+      md: "12px",
     },
     link: {
       color: "rgb(21, 66, 139)",
@@ -79,7 +79,7 @@ Dot.defaultProps = {
 }
 
 const Nav = styled.nav`
-  font-size: ${(props) => props.theme.fontSize.medium};
+  font-size: ${(props) => props.theme.fontSize.md};
   font-family: ${(props) => props.theme.fontFamily};
   box-sizing: border-box;
   padding: 0;
@@ -90,7 +90,7 @@ Nav.defaultProps = {
   theme: {
     fontFamily: "tahoma, arial, helvetica, sans-serif",
     fontSize: {
-      medium: "12px",
+      md: "12px",
     },
   },
 }

@@ -5,20 +5,15 @@ import {
 } from "styled-components"
 
 export interface ThemeProviderProps<T extends object, U extends object = T>
-  extends SCThemeProviderProps<T, U> {
-  variant?: "jepria"
-}
+  extends SCThemeProviderProps<T, U> {}
 
 export const ThemeProvider = ({
-  variant,
   theme,
   children,
   ...props
 }: ThemeProviderProps<any, any>) => {
-  const finalTheme = Object.assign(variant === "jepria" ? {} : {}, theme)
-
   return (
-    <SCThemeProvider theme={finalTheme} {...props}>
+    <SCThemeProvider theme={theme} {...props}>
       {children}
     </SCThemeProvider>
   )

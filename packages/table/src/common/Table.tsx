@@ -9,11 +9,18 @@ const StyledTable = styled.div`
   height: 100%;
   width: 100%;
   height: 100%;
-  @media only screen and (max-width: 760px),
-    (min-device-width: 768px) and (max-device-width: 1024px) {
+  @media (max-width: ${(props) => props.theme.breakpoints.md}) {
     border: 0;
   }
 `
+
+StyledTable.defaultProps = {
+  theme: {
+    breakpoints: {
+      md: "768px",
+    },
+  },
+}
 
 const TableContainer = styled.div`
   height: 100%;

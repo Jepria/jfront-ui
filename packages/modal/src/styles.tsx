@@ -10,14 +10,14 @@ export const Header = styled.header`
   border-top-right-radius: ${(props) => props.theme.modal.header.borderRadius};
   min-height: 18px;
   font-weight: bold;
-  font-size: ${(props) => props.theme.fontSize.medium};
+  font-size: ${(props) => props.theme.fontSize.md};
   font-family: ${(props) => props.theme.fontFamily};
 `
 Header.defaultProps = {
   theme: {
     fontFamily: "tahoma, arial, helvetica, sans-serif",
     fontSize: {
-      medium: "12px",
+      md: "12px",
     },
     modal: {
       header: {

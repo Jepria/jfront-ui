@@ -16,6 +16,7 @@ export const StyledDatePicker = styled(
   .react-datepicker__month-text,
   .react-datepicker__quarter-text,
   .react-datepicker__year-text {
+    color: ${(props) => props.theme.calendar.color};
     &--selected,
     &----in-selecting-range,
     &--in-range {
@@ -69,6 +70,7 @@ StyledDatePicker.defaultProps = {
       padding: "2px 6px",
       borderColor: "#aeaeae",
       borderRadius: "0.3rem",
+      color: "#000",
       bgColor: "#fff",
       header: {
         bgColor: "#f0f0f0",

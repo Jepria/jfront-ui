@@ -38,7 +38,7 @@ StyledButton.defaultProps = {
   theme: {
     fontFamily: "tahoma, arial, helvetica, sans-serif",
     fontSize: {
-      small: "11px",
+      sm: "11px",
     },
     toolbar: {
       button: {

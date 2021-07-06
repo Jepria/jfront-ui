@@ -5,7 +5,7 @@ const StyledLabel = styled.label`
   display: inline-block;
   margin: ${(props) => props.theme.label.margin};
   padding: ${(props) => props.theme.label.padding};
-  font-size: ${(props) => props.theme.fontSize.medium};
+  font-size: ${(props) => props.theme.fontSize.md};
   font-family: ${(props) => props.theme.fontFamily};
   color: ${(props) => props.theme.label.color};
   word-break: break-word;
@@ -16,7 +16,7 @@ StyledLabel.defaultProps = {
   theme: {
     fontFamily: "tahoma, arial, helvetica, sans-serif",
     fontSize: {
-      medium: "12px",
+      md: "12px",
     },
     label: {
       margin: 0,

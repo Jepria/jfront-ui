@@ -3,7 +3,7 @@ import styled from "styled-components"
 
 const StyledToolbar = styled.nav`
   box-sizing: border-box;
-  font-size: ${(props) => props.theme.fontSize.small};
+  font-size: ${(props) => props.theme.fontSize.sm};
   font-family: ${(props) => props.theme.fontFamily};
   padding: 2px;
   background: ${(props) => props.theme.toolbar.bgColor};
@@ -23,7 +23,7 @@ StyledToolbar.defaultProps = {
   theme: {
     fontFamily: "tahoma, arial, helvetica, sans-serif",
     fontSize: {
-      small: "11px",
+      sm: "11px",
     },
     toolbar: {
       bgColor: "linear-gradient(#dae6f4, #d0def0)",

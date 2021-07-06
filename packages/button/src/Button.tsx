@@ -15,7 +15,7 @@ const ButtonStyled = styled.button<ButtonProps>`
     `${props.theme.button.borderWidth} ${props.theme.button.borderStyle} ${props.theme.button.borderColor}`};
   margin: ${(props) => props.theme.button.margin};
   padding: ${(props) => props.theme.button.padding};
-  font-size: ${(props) => props.theme.fontSize.medium};
+  font-size: ${(props) => props.theme.fontSize.md};
   font-family: ${(props) => props.theme.fontFamily};
   font-weight: ${(props) => props.theme.button.fontWeight};
   background: ${(props) =>
@@ -91,20 +91,19 @@ const ButtonStyled = styled.button<ButtonProps>`
 `
 
 ButtonStyled.defaultProps = {
-  primary: false,
   theme: {
     fontSize: {
-      medium: "12px",
+      md: "12px",
     },
     fontFamily: "arial, tahoma, verdana, helvetica",
     button: {
       borderWidth: "1px",
       borderStyle: "solid",
+      borderColor: "rgb(153, 187, 232)",
+      borderRadius: "5px",
       margin: 0,
       fontWeight: 700,
       padding: "12px 24px",
-      borderColor: "rgb(153, 187, 232)",
-      borderRadius: "5px",
       bgColor: "#fff",
       color: "black",
       hoverBgColor: "rgb(217, 235, 251)",

@@ -23,7 +23,7 @@ export const StyledDiv = styled.div<StyledAreaProps>`
   border-radius: ${(props) => props.theme.textArea.borderRadius};
   margin: ${(props) => props.theme.textArea.margin};
   padding: ${(props) => props.theme.textArea.padding};
-  font-size: ${(props) => props.theme.fontSize.medium};
+  font-size: ${(props) => props.theme.fontSize.md};
   font-family: ${(props) => props.theme.fontFamily};
   background: ${(props) =>
     props.error
@@ -75,7 +75,7 @@ export const StyledDiv = styled.div<StyledAreaProps>`
 StyledDiv.defaultProps = {
   theme: {
     fontSize: {
-      medium: "12px",
+      md: "12px",
     },
     fontFamily: "tahoma, arial, helvetica, sans-serif",
     textArea: {

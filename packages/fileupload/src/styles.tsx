@@ -7,7 +7,7 @@ export interface StyledDivProps {
 }
 
 export const StyledDiv = styled.div<StyledDivProps>`
-  font-size: ${(props) => props.theme.fontSize.small};
+  font-size: ${(props) => props.theme.fontSize.sm};
   font-family: ${(props) => props.theme.fontFamily};
   border-radius: 5px;
   display: inline-flex;
@@ -30,7 +30,7 @@ export const StyledDiv = styled.div<StyledDivProps>`
 StyledDiv.defaultProps = {
   theme: {
     fontSize: {
-      small: "11px",
+      sm: "11px",
     },
     fontFamily: "arial, tahoma, verdana, helvetica",
   },
@@ -98,7 +98,7 @@ export const StyledLabel = styled(Label)<StyledLabelProps>`
 StyledLabel.defaultProps = {
   theme: {
     fontSize: {
-      small: "11px",
+      sm: "11px",
     },
     fontFamily: "arial, tahoma, verdana, helvetica",
     label: {

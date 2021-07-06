@@ -2,7 +2,7 @@ import styled from "styled-components"
 
 const TabPanel = styled.div`
   height: 22px;
-  font-size: ${(props) => props.theme.fontSize.small};
+  font-size: ${(props) => props.theme.fontSize.sm};
   font-family: ${(props) => props.theme.fontFamily};
   color: ${(props) => props.theme.tabPanel.color};
   z-index: 1;
@@ -13,7 +13,7 @@ TabPanel.defaultProps = {
   theme: {
     fontFamily: "tahoma, arial, helvetica, sans-serif",
     fontSize: {
-      small: "11px",
+      sm: "11px",
     },
     tabPanel: {
       color: "rgb(21, 66, 139)",
@@ -59,7 +59,7 @@ Tab.defaultProps = {
   theme: {
     fontFamily: "tahoma, arial, helvetica, sans-serif",
     fontSize: {
-      small: "11px",
+      sm: "11px",
     },
     tabPanel: {
       tab: {

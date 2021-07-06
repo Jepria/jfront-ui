@@ -4,11 +4,17 @@ export const TableRow = styled.div`
   display: flex;
   flex: 1;
   flex-direction: row;
-  @media only screen and (max-width: 760px),
-    (min-device-width: 768px) and (max-device-width: 1024px) {
+  @media (max-width: ${(props) => props.theme.breakpoints.md}) {
     flex-direction: column;
   }
 `
+TableRow.defaultProps = {
+  theme: {
+    breakpoints: {
+      md: "768px",
+    },
+  },
+}
 
 export interface TableCellProps extends React.HTMLAttributes<HTMLDivElement> {
   label?: string
@@ -17,12 +23,12 @@ export interface TableCellProps extends React.HTMLAttributes<HTMLDivElement> {
 export const TableCell = styled.div<TableCellProps>`
   display: flex;
   flex: 1;
-  @media only screen and (min-width: 768px) {
+  @media (min-width: ${(props) => props.theme.breakpoints.md}) {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
   }
-  @media only screen and (max-width: 760px) { {
+  @media (max-width: ${(props) => props.theme.breakpoints.md}) {
     &::before {
       display: inline-flex;
       padding-right: 0.5rem;
@@ -30,3 +36,10 @@ export const TableCell = styled.div<TableCellProps>`
     }
   }
 `
+TableCell.defaultProps = {
+  theme: {
+    breakpoints: {
+      md: "768px",
+    },
+  },
+}

@@ -14,7 +14,7 @@ export const StyledDualList = styled.div`
   flex-direction: column;
   box-sizing: border-box;
   width: 100%;
-  font-size: ${(props) => props.theme.fontSize.medium};
+  font-size: ${(props) => props.theme.fontSize.md};
   font-family: ${(props) => props.theme.fontFamily};
   color: ${(props) => props.theme.duallist.color};
 `
@@ -22,7 +22,7 @@ export const StyledDualList = styled.div`
 StyledDualList.defaultProps = {
   theme: {
     fontSize: {
-      medium: "12px",
+      md: "12px",
     },
     fontFamily: "tahoma, arial, helvetica, sans-serif",
     duallist: {

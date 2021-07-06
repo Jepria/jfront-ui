@@ -10,35 +10,35 @@ export const Item = styled.div<ItemProps>`
   box-sizing: border-box;
   overflow: hidden;
   white-space: nowrap;
-  height: ${(props) => props.theme.combobox.item.height};
-  padding: ${(props) => props.theme.combobox.item.padding};
-  margin: ${(props) => props.theme.combobox.item.margin};
-  font-size: ${(props) => props.theme.fontSize.medium};
+  height: ${(props) => props.theme.comboBox.item.height};
+  padding: ${(props) => props.theme.comboBox.item.padding};
+  margin: ${(props) => props.theme.comboBox.item.margin};
+  font-size: ${(props) => props.theme.fontSize.md};
   font-family: ${(props) => props.theme.fontFamily};
   text-align: left;
   border: ${(props) =>
-    `${props.theme.combobox.item.borderWidth} 
-    ${props.theme.combobox.item.borderStyle} 
-    ${props.theme.combobox.item.borderColor}`};
+    `${props.theme.comboBox.item.borderWidth} 
+    ${props.theme.comboBox.item.borderStyle} 
+    ${props.theme.comboBox.item.borderColor}`};
   background: ${(props) =>
     props.selected
-      ? props.theme.combobox.item.selectedBgColor
+      ? props.theme.comboBox.item.selectedBgColor
       : props.hover
-      ? props.theme.combobox.item.hoverBgColor
+      ? props.theme.comboBox.item.hoverBgColor
       : props.disabled
-      ? props.theme.combobox.item.disabledBgColor
-      : props.theme.combobox.item.bgColor};
+      ? props.theme.comboBox.item.disabledBgColor
+      : props.theme.comboBox.item.bgColor};
   color: ${(props) =>
     props.selected
-      ? props.theme.combobox.item.selectedColor
+      ? props.theme.comboBox.item.selectedColor
       : props.hover
-      ? props.theme.combobox.item.hoverColor
+      ? props.theme.comboBox.item.hoverColor
       : props.disabled
-      ? props.theme.combobox.item.disabledColor
-      : props.theme.combobox.item.color};
+      ? props.theme.comboBox.item.disabledColor
+      : props.theme.comboBox.item.color};
   &:hover {
-    background: ${(props) => props.theme.combobox.item.hoverBgColor};
-    color: ${(props) => props.theme.combobox.item.hoverColor};
+    background: ${(props) => props.theme.comboBox.item.hoverBgColor};
+    color: ${(props) => props.theme.comboBox.item.hoverColor};
   }
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none; /* Safari */
@@ -54,9 +54,9 @@ Item.defaultProps = {
   theme: {
     fontFamily: "tahoma, arial, helvetica, sans-serif",
     fontSize: {
-      medium: "12px",
+      md: "12px",
     },
-    combobox: {
+    comboBox: {
       item: {
         margin: 0,
         height: "18px",
@@ -107,59 +107,59 @@ export const FlexContainer = styled.div<StyledDivProps>`
   justify-content: center;
   text-align: left;
   flex: 1;
-  height: ${(props) => props.theme.combobox.height};
-  margin: ${(props) => props.theme.combobox.margin};
-  padding: ${(props) => props.theme.combobox.padding};
-  font-size: ${(props) => props.theme.fontSize.medium};
+  height: ${(props) => props.theme.comboBox.height};
+  margin: ${(props) => props.theme.comboBox.margin};
+  padding: ${(props) => props.theme.comboBox.padding};
+  font-size: ${(props) => props.theme.fontSize.md};
   font-family: ${(props) => props.theme.fontFamily};
   background: ${(props) =>
     props.error
-      ? props.theme.combobox.errorBgColor
+      ? props.theme.comboBox.errorBgColor
       : props.focused
-      ? props.theme.combobox.focusedBgColor
+      ? props.theme.comboBox.focusedBgColor
       : props.disabled
-      ? props.theme.combobox.disabledBgColor
-      : props.theme.combobox.bgColor};
+      ? props.theme.comboBox.disabledBgColor
+      : props.theme.comboBox.bgColor};
   color: ${(props) =>
     props.error
-      ? props.theme.combobox.errorColor
+      ? props.theme.comboBox.errorColor
       : props.focused
-      ? props.theme.combobox.focusedColor
+      ? props.theme.comboBox.focusedColor
       : props.disabled
-      ? props.theme.combobox.disabledColor
-      : props.theme.combobox.color};
+      ? props.theme.comboBox.disabledColor
+      : props.theme.comboBox.color};
   border: ${(props) =>
-    `${props.theme.combobox.borderWidth} 
-    ${props.theme.combobox.borderStyle} 
+    `${props.theme.comboBox.borderWidth} 
+    ${props.theme.comboBox.borderStyle} 
     ${
       props.error
-        ? props.theme.combobox.errorBorderColor
+        ? props.theme.comboBox.errorBorderColor
         : props.focused
-        ? props.theme.combobox.focusedBorderColor
+        ? props.theme.comboBox.focusedBorderColor
         : props.disabled
-        ? props.theme.combobox.disabledBorderColor
-        : props.theme.combobox.borderColor
+        ? props.theme.comboBox.disabledBorderColor
+        : props.theme.comboBox.borderColor
     }`};
-  border-radius: ${(props) => props.theme.combobox.borderRadius};
+  border-radius: ${(props) => props.theme.comboBox.borderRadius};
   ${(props) =>
     props.focused
       ? `box-shadow: 0 0 5px ${
           props.error
-            ? props.theme.combobox.errorBorderColor
-            : props.theme.combobox.focusedBorderColor
+            ? props.theme.comboBox.errorBorderColor
+            : props.theme.comboBox.focusedBorderColor
         };`
       : ""}
   &:hover {
     ${(props) =>
       !props.focused && !props.error && !props.disabled
-        ? `border: ${props.theme.combobox.borderWidth} 
-      ${props.theme.combobox.borderStyle} 
-      ${props.theme.combobox.hoverBorderColor};
-      color: ${props.theme.combobox.hoverColor};`
+        ? `border: ${props.theme.comboBox.borderWidth} 
+      ${props.theme.comboBox.borderStyle} 
+      ${props.theme.comboBox.hoverBorderColor};
+      color: ${props.theme.comboBox.hoverColor};`
         : ""}
     ${(props) =>
       !props.focused && !props.error && !props.disabled
-        ? `background: ${props.theme.combobox.hoverBgColor};`
+        ? `background: ${props.theme.comboBox.hoverBgColor};`
         : ""}
   }
 `
@@ -167,10 +167,10 @@ export const FlexContainer = styled.div<StyledDivProps>`
 FlexContainer.defaultProps = {
   theme: {
     fontSize: {
-      medium: "12px",
+      md: "12px",
     },
     fontFamily: "tahoma, arial, helvetica, sans-serif",
-    combobox: {
+    comboBox: {
       height: "24px",
       margin: 0,
       padding: 0,
@@ -222,14 +222,14 @@ export const StyledButton = styled.button<ComboBoxButtonProps>`
   font-size: 1.5rem;
   text-align: center;
   border-radius: 50%;
-  height: ${(props) => props.theme.combobox.button.height};
-  width: ${(props) => props.theme.combobox.button.width};
+  height: ${(props) => props.theme.comboBox.button.height};
+  width: ${(props) => props.theme.comboBox.button.width};
   background-color: transparent;
   border: 0;
   ${(props) => (props.rotate === "true" ? "transform: rotate(180deg);" : "")}
-  color: ${(props) => props.theme.combobox.button.color};
+  color: ${(props) => props.theme.comboBox.button.color};
   &:hover {
-    background-color: ${(props) => props.theme.combobox.button.bgColor};
+    background-color: ${(props) => props.theme.comboBox.button.bgColor};
     transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
     opacity: 0.5;
   }
@@ -243,7 +243,7 @@ export const StyledButton = styled.button<ComboBoxButtonProps>`
 `
 StyledButton.defaultProps = {
   theme: {
-    combobox: {
+    comboBox: {
       button: {
         height: "22px",
         width: "22px",

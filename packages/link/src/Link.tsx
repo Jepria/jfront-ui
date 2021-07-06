@@ -6,7 +6,7 @@ const defaultProps = {
   theme: {
     fontFamily: "tahoma, arial, helvetica, sans-serif",
     fontSize: {
-      medium: "12px",
+      md: "12px",
     },
     link: {
       color: "rgb(21, 66, 139)",
@@ -16,7 +16,7 @@ const defaultProps = {
 }
 
 const StyledSpan = styled.span`
-  font-size: ${(props) => props.theme.fontSize.medium};
+  font-size: ${(props) => props.theme.fontSize.md};
   font-family: ${(props) => props.theme.fontFamily};
   color: ${(props) => props.theme.link.color};
   font-weight: bold;
@@ -25,7 +25,7 @@ const StyledSpan = styled.span`
 StyledSpan.defaultProps = defaultProps
 
 const StyledLink = styled.a`
-  font-size: ${(props) => props.theme.fontSize.medium};
+  font-size: ${(props) => props.theme.fontSize.md};
   font-family: ${(props) => props.theme.fontFamily};
   color: ${(props) => props.theme.link.color};
   text-decoration: ${(props) => props.theme.link.textDecoration};

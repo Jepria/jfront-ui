@@ -98,14 +98,14 @@ const StyledUl = styled.div<StyledUlProps>`
       : `flex-direction: row;`};
   overflow: auto;
   padding: 7px;
-  font-size: ${(props) => props.theme.fontSize.medium};
+  font-size: ${(props) => props.theme.fontSize.md};
   font-family: ${(props) => props.theme.fontFamily};
 `
 
 StyledUl.defaultProps = {
   theme: {
     fontSize: {
-      medium: "12px",
+      md: "12px",
     },
     fontFamily: "tahoma, arial, helvetica, sans-serif",
   },

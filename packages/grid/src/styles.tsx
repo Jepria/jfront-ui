@@ -7,10 +7,9 @@ export const Grid = styled(Table)`
 `
 
 export const GridTable = styled(Table.Table)`
-  font-size: ${(props) => props.theme.fontSize.small};
+  font-size: ${(props) => props.theme.fontSize.sm};
   font-family: ${(props) => props.theme.fontFamily};
-  @media only screen and (max-width: 760px),
-    (min-device-width: 768px) and (max-device-width: 1024px) {
+  @media (max-width: ${(props) => props.theme.breakpoints.md}) {
     min-width: 100% !important;
   }
 `
@@ -18,7 +17,10 @@ export const GridTable = styled(Table.Table)`
 GridTable.defaultProps = {
   theme: {
     fontSize: {
-      small: "11px",
+      sm: "11px",
+    },
+    breakpoints: {
+      md: "768px",
     },
     fontFamily: "tahoma, arial, helvetica, sans-serif",
   },
@@ -31,6 +33,9 @@ export const GridHeader = styled(Table.Header)`
 
 GridHeader.defaultProps = {
   theme: {
+    breakpoints: {
+      md: "768px",
+    },
     grid: {
       header: {
         bgColor: "#ededed",
@@ -47,6 +52,9 @@ export const GridHeaderRow = styled(Table.Row)`
 `
 GridHeaderRow.defaultProps = {
   theme: {
+    breakpoints: {
+      md: "768px",
+    },
     grid: {
       header: {
         bgColor: "#ededed",
@@ -80,6 +88,9 @@ export const GridHeaderCell = styled(Table.HeaderCell)`
 `
 GridHeaderCell.defaultProps = {
   theme: {
+    breakpoints: {
+      md: "768px",
+    },
     grid: {
       header: {
         color: "black",
@@ -129,6 +140,9 @@ export const GridRow = styled(Table.Row)<GridRowProps>`
 `
 GridRow.defaultProps = {
   theme: {
+    breakpoints: {
+      md: "768px",
+    },
     grid: {
       row: {
         color: "black",
@@ -153,14 +167,13 @@ export const GridRowCell = styled(Table.Cell)`
   min-height: 19px;
   cursor: pointer;
   padding: 2px;
-  @media only screen and (min-width: 761px) {
+  @media (min-width: ${(props) => props.theme.breakpoints.md}) {
     padding-left: 5px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
   }
-  @media only screen and (max-width: 760px),
-    (min-device-width: 768px) and (max-device-width: 1024px) {
+  @media (max-width: ${(props) => props.theme.breakpoints.md}) {
     width: 100% !important;
     display: flex !important;
     &::before {
@@ -168,6 +181,14 @@ export const GridRowCell = styled(Table.Cell)`
     }
   }
 `
+
+GridRowCell.defaultProps = {
+  theme: {
+    breakpoints: {
+      md: "768px",
+    },
+  },
+}
 
 export const Resizer = styled.div`
   display: inline-block;
@@ -238,6 +259,9 @@ export const StyledPagingBar = styled(Table.PagingBar)`
 
 StyledPagingBar.defaultProps = {
   theme: {
+    breakpoints: {
+      md: "768px",
+    },
     grid: {
       pagingBar: {
         color: "black",

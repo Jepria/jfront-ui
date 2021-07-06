@@ -8,7 +8,7 @@ export interface StyledTreeNodeProps {
 
 export const StyledTreeNode = styled.div<StyledTreeNodeProps>`
   box-sizing: border-box;
-  font-size: ${(props) => props.theme.fontSize.medium};
+  font-size: ${(props) => props.theme.fontSize.md};
   font-family: ${(props) => props.theme.fontFamily};
   align-items: center;
   padding: ${(props) => props.theme.tree.node.padding};
@@ -24,7 +24,7 @@ StyledTreeNode.defaultProps = {
   theme: {
     fontFamily: "tahoma, arial, helvetica, sans-serif",
     fontSize: {
-      medium: "12px",
+      md: "12px",
     },
     tree: {
       node: {
@@ -189,7 +189,7 @@ Label.defaultProps = {
   theme: {
     fontFamily: "tahoma, arial, helvetica, sans-serif",
     fontSize: {
-      medium: "12px",
+      md: "12px",
     },
     tree: {
       node: {

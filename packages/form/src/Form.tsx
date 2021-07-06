@@ -7,7 +7,7 @@ const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
   padding: ${(props) => props.theme.form.padding};
-  font-size: ${(props) => props.theme.fontSize.medium};
+  font-size: ${(props) => props.theme.fontSize.md};
   font-family: ${(props) => props.theme.fontFamily};
   overflow: auto;
   height: 100%;
@@ -17,7 +17,7 @@ StyledForm.defaultProps = {
   theme: {
     fontFamily: "tahoma, arial, helvetica, sans-serif",
     fontSize: {
-      medium: "12px",
+      md: "12px",
     },
     form: {
       padding: "5px 0 0 10px",
@@ -29,13 +29,17 @@ const StyledField = styled.div`
   box-sizing: border-box;
   display: flex;
   margin: ${(props) => props.theme.form.field.margin};
-  @media (max-width: 575px) {
-    flex-direction: column;
+  flex-direction: column;
+  @media (min-width: ${(props) => props.theme.breakpoints.sm}) {
+    flex-direction: row;
   }
 `
 
 StyledField.defaultProps = {
   theme: {
+    breakpoints: {
+      sm: "576px",
+    },
     form: {
       field: {
         margin: "0 0 1em 0",
@@ -65,15 +69,12 @@ StyledFieldControl.defaultProps = {
 }
 
 const StyledFormLabel = styled(Label)<FormLabelProps>`
-  min-width: ${(props) => props.theme.form.label.minWidth};
-  max-width: ${(props) => props.theme.form.label.maxWidth};
-  width: 100%;
   line-height: 1.5715;
-  @media (max-width: 575px) {
-    text-align: left;
-    min-width: unset;
-    max-width: unset;
-    width: unset;
+  text-align: left;
+  @media (min-width: ${(props) => props.theme.breakpoints.md}) {
+    min-width: ${(props) => props.theme.form.label.minWidth};
+    max-width: ${(props) => props.theme.form.label.maxWidth};
+    text-align: right;
   }
   ${(props) =>
     props.required
@@ -94,7 +95,11 @@ StyledFormLabel.defaultProps = {
   theme: {
     fontFamily: "tahoma, arial, helvetica, sans-serif",
     fontSize: {
-      medium: "12px",
+      md: "12px",
+    },
+    breakpoints: {
+      sm: "576px",
+      md: "768px",
     },
     label: {
       margin: 0,
@@ -149,7 +154,7 @@ StyledLegend.defaultProps = {
 
 const ErrorSpan = styled.span`
   font-family: ${(props) => props.theme.fontFamily};
-  font-size: ${(props) => props.theme.fontSize.small};
+  font-size: ${(props) => props.theme.fontSize.sm};
   color: ${(props) => props.theme.form.errorColor};
 `
 
@@ -157,7 +162,7 @@ ErrorSpan.defaultProps = {
   theme: {
     fontFamily: "tahoma, arial, helvetica, sans-serif",
     fontSize: {
-      small: "11px",
+      sm: "11px",
     },
     form: {
       errorColor: "red",
