@@ -49,7 +49,7 @@ export interface StyledLabelProps {
   error?: boolean
 }
 
-export const StyledLabel = styled(Label)<StyledLabelProps>`
+export const StyledLabel = styled.label<StyledLabelProps>`
   box-sizing: border-box;
   display: flex;
   align-items: center;

@@ -87,7 +87,7 @@ test("move all elements to the right by pressing the button ", () => {
   }
 
   render(<TestComponent />, container)
-  fireEvent.click(screen.getAllByRole("button")[0])
+  fireEvent.click(screen.getAllByRole("button")[3])
   expect(valueSpy.mock.calls[valueSpy.mock.calls.length - 1][0]).toEqual(
     expect.arrayContaining(options),
   )
