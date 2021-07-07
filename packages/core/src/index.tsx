@@ -1,5 +1,6 @@
 export * from "@jfront/ui-datepicker"
 export * from "@jfront/ui-form"
+export * from "@jfront/ui-button"
 export * from "@jfront/ui-table"
 export * from "@jfront/ui-grid"
 export * from "@jfront/ui-hooks"

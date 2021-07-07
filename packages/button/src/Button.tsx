@@ -10,6 +10,7 @@ export interface ButtonProps
 
 const ButtonStyled = styled.button<ButtonProps>`
   box-sizing: border-box;
+  display: inline-block;
   cursor: pointer;
   border: ${(props) =>
     `${props.theme.button.borderWidth} ${props.theme.button.borderStyle} ${props.theme.button.borderColor}`};

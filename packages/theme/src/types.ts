@@ -40,6 +40,8 @@ export type LabelTheme = {
   margin?: string
   color?: string
   padding?: string
+  maxWidth?: string
+  minWidth?: string
 }
 
 export type InputTheme = {
@@ -106,6 +108,8 @@ export type CalendarTheme = {
     borderWidth?: string
     borderStyle?: string
     borderColor?: string
+    color?: string
+    buttonColor?: string
   }
   hoverBgColor?: string
   hoverColor?: string
@@ -122,6 +126,7 @@ export type CalendarTheme = {
 }
 
 export type TreeTheme = {
+  bgColor?: string
   borderWidth?: string
   borderStyle?: string
   borderColor?: string
@@ -139,6 +144,7 @@ export type TreeTheme = {
     bgColor?: string
     color?: string
     hoverBgColor?: string
+    hoverColor?: string
     label?: {
       bgColor?: string
       selectedBgColor?: string
@@ -154,6 +160,7 @@ export type ToolbarTheme = {
   borderRadius?: string
   button?: {
     bgColor?: string
+    color?: string
     borderWidth?: string
     borderStyle?: string
     borderColor?: string
@@ -185,10 +192,6 @@ export type FormTheme = {
     control?: {
       maxWidth?: string
     }
-  }
-  label?: {
-    maxWidth?: string
-    minWidth?: string
   }
   fieldSet?: {
     borderWidth?: string
@@ -232,6 +235,7 @@ export type GridTheme = {
     hoverBgColor?: string
     selectedBgColor?: string
     selectedBorderColor?: string
+    selectedColor?: string
   }
   pagingBar?: {
     color?: string
@@ -244,6 +248,7 @@ export type GridTheme = {
 }
 
 export type GroupTheme = {
+  bgColor?: string
   borderWidth?: string
   borderStyle?: string
   borderColor?: string
@@ -273,6 +278,7 @@ export type ModalTheme = {
 
 export type DualListTheme = {
   color?: string
+  bgColor?: string
   borderWidth?: string
   borderStyle?: string
   borderColor?: string
@@ -289,6 +295,7 @@ export type Theme = {
     primaryColor_80?: string
     primaryColor_60?: string
     primaryColor_40?: string
+    primaryColor_20?: string
   }
   errorColor?: string
   infoColor?: string
@@ -348,4 +355,14 @@ export type Theme = {
   radioGroup?: GroupTheme
   modal?: ModalTheme
   duallist?: DualListTheme
+  checkbox?: {
+    hoverBgColor?: string
+    hoverColor?: string
+    color?: string
+  }
+  radio?: {
+    hoverBgColor?: string
+    hoverColor?: string
+    color?: string
+  }
 }

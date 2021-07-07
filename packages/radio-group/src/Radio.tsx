@@ -42,18 +42,35 @@ const StyledRadio = styled.span<RadioSpanI>`
   box-sizing: border-box;
   padding: 2px;
   display: flex;
+  align-items: center;
   ${(props) =>
     props.orientation && props.orientation === "left"
       ? `flex-direction: row-reverse;`
       : `flex-direction: row;`};
   width: 100%;
-  font-family: tahoma, arial, helvetica, sans-serif;
-  font-size: 12px;
+  font-size: ${(props) => props.theme.fontSize.md};
+  font-family: ${(props) => props.theme.fontFamily};
   cursor: pointer;
+  color: ${(props) => props.theme.radio.color};
   &:hover {
-    background: #eee;
+    background: ${(props) => props.theme.radio.hoverBgColor};
+    color: ${(props) => props.theme.radio.hoverColor};
   }
 `
+
+StyledRadio.defaultProps = {
+  theme: {
+    fontSize: {
+      md: "12px",
+    },
+    fontFamily: "tahoma, arial, helvetica, sans-serif",
+    radio: {
+      hoverBgColor: "#eee",
+      hoverColor: "#000",
+      color: "#000",
+    },
+  },
+}
 
 export const Radio = React.forwardRef<HTMLInputElement, RadioInterface>(
   ({ id, label, className, style, type, orientation, ...props }, ref) => {

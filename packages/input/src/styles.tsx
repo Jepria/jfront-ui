@@ -7,6 +7,7 @@ export interface StyledProps {
 }
 
 export const StyledDiv = styled.div<StyledProps>`
+  box-sizing: border-box;
   display: inline-flex;
   white-space: nowrap;
   align-items: center;

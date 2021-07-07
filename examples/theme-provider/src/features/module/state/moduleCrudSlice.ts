@@ -18,6 +18,5 @@ const thunkCreators = slice.thunk
 
 export const getRecordById = thunkCreators.getRecordByIdThunk(api)
 export const createRecord = thunkCreators.createThunk(api)
-export const deleteRecord = thunkCreators.deleteThunk(api)
 
 export const { name, actions, reducer } = slice

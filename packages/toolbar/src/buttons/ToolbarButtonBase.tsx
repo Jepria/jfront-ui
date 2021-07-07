@@ -18,6 +18,7 @@ const StyledButton = styled.button`
   height: 22px;
   padding: 1px 1px;
   background: ${(props) => props.theme.toolbar.button.bgColor};
+  color: ${(props) => props.theme.toolbar.button.color};
   &:disabled {
     opacity: 0.5;
     background: transparent;
@@ -42,6 +43,7 @@ StyledButton.defaultProps = {
     },
     toolbar: {
       button: {
+        color: "#000",
         bgColor: "transparent",
         borderWidth: "1px",
         borderStyle: "solid",

@@ -1,36 +1,11 @@
 import { Theme } from "../types"
+import defaultDeep from "lodash/defaultsDeep"
+import { jepriaTheme } from "../themes/jepria-theme"
+import { createTheme } from "./createTheme"
 
-function extendTheme<T extends Theme>(arg: T, baseTheme: Theme = {}) {
-  const resultTheme = { ...baseTheme, ...arg }
-  // button
-
-  // input
-
-  // textarea
-
-  // combobox
-
-  // calendar
-
-  // tree
-
-  // toolbar
-
-  // tabPanel
-
-  // form
-
-  // link
-
-  // breadcrumbs
-
-  // grid
-
-  // checkboxGroup
-
-  // radioGroup
-
-  // modal
-
-  // duallist
+export function extendTheme<T extends Theme>(
+  arg: T,
+  baseTheme: Theme = jepriaTheme,
+) {
+  return createTheme(defaultDeep(arg, baseTheme))
 }

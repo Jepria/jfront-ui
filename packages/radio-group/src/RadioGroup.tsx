@@ -38,27 +38,27 @@ const StyledRadioGroup = styled.div<StyledRadioGroupProps>`
   display: inline-flex;
   align-items: center;
   justify-content: flex-end;
-  border: 1px solid grey;
   padding: 0;
   margin: 0;
   min-width: 150px;
-  color: ${(props) => props.theme.checkboxGroup.color} !important;
+  color: ${(props) => props.theme.radioGroup.color} !important;
+  background: ${(props) => props.theme.radioGroup.bgColor};
   ${(props) =>
     props.focused
       ? `box-shadow: 0 0 5px ${
           props.error
-            ? props.theme.checkboxGroup.errorBorderColor
-            : props.theme.checkboxGroup.focusedBorderColor
+            ? props.theme.radioGroup.errorBorderColor
+            : props.theme.radioGroup.focusedBorderColor
         };`
       : ""}
   ${(props) =>
     !!props.error
-      ? `border: ${props.theme.checkboxGroup.borderWidth} ${props.theme.checkboxGroup.borderStyle} ${props.theme.checkboxGroup.errorBorderColor};`
+      ? `border: ${props.theme.radioGroup.borderWidth} ${props.theme.radioGroup.borderStyle} ${props.theme.radioGroup.errorBorderColor};`
       : props.focused
-      ? `border: ${props.theme.checkboxGroup.borderWidth} ${props.theme.checkboxGroup.borderStyle} ${props.theme.checkboxGroup.focusedBorderColor};`
-      : `border: ${props.theme.checkboxGroup.borderWidth} ${props.theme.checkboxGroup.borderStyle} ${props.theme.checkboxGroup.borderColor};
+      ? `border: ${props.theme.radioGroup.borderWidth} ${props.theme.radioGroup.borderStyle} ${props.theme.radioGroup.focusedBorderColor};`
+      : `border: ${props.theme.radioGroup.borderWidth} ${props.theme.radioGroup.borderStyle} ${props.theme.radioGroup.borderColor};
     &:hover {
-      border: ${props.theme.checkboxGroup.borderWidth} ${props.theme.checkboxGroup.borderStyle} ${props.theme.checkboxGroup.hoverBorderColor};
+      border: ${props.theme.radioGroup.borderWidth} ${props.theme.radioGroup.borderStyle} ${props.theme.radioGroup.hoverBorderColor};
     }
   `}
 `
@@ -66,6 +66,7 @@ const StyledRadioGroup = styled.div<StyledRadioGroupProps>`
 StyledRadioGroup.defaultProps = {
   theme: {
     radioGroup: {
+      bgColor: "#fff",
       borderWidth: "1px",
       borderStyle: "solid",
       borderColor: "#ccc",

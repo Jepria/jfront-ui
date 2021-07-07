@@ -4,7 +4,7 @@
   "private": true,
   "homepage": "/jepria-theme-provider",
   "dependencies": {
-    "@jfront/ui-core": "0.10.11",
+    "@jfront/ui-core": "^0.10.12",
     "@jfront/core-redux-thunk": "^0.3.5",
     "@jfront/core-rest": "^0.3.5",
     "react": "17.0.1",
@@ -21,6 +21,7 @@
     "@types/react-router-dom": "^5.1.7",
     "@types/react-redux": "^7.1.7",
     "@types/redux-logger": "3.0.7",
+    "@types/color": "3.0.1",
     "@reduxjs/toolkit": "1.5.0",
     "core-js": "^3.9.0",
     "eslint-config-react-app": "^6.0.0",
@@ -32,7 +33,9 @@
     "namor": "2.0.3",
     "react-redux": "7.2.1",
     "redux": "4.0.5",
-    "redux-logger": "3.0.6"
+    "redux-logger": "3.0.6",
+    "yup": "0.32.9",
+    "color": "3.1.3"
   },
   "scripts": {
     "start": "react-scripts start",

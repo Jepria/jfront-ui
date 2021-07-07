@@ -9,6 +9,11 @@ const Text = styled.div`
   min-height: 20px;
   max-width: 200px;
   width: 100%;
+  padding: 2px;
+  font-family: ${(props) => props.theme.fontFamily};
+  font-size: ${(props) => props.theme.fontSize.md};
+  color: ${(props) => props.theme.textColor};
+  word-wrap: normal;
 `
 
 const Page = () => {
@@ -20,59 +25,59 @@ const Page = () => {
       <Form.Field>
         <Form.Label>id</Form.Label>
         <Form.Control>
-          <span>{currentRecord?.id}</span>
+          <Text>{currentRecord?.id}</Text>
         </Form.Control>
       </Form.Field>
       <Form.Field>
         <Form.Label>name</Form.Label>
         <Form.Control>
-          <span>{currentRecord?.name}</span>
+          <Text>{currentRecord?.name}</Text>
         </Form.Control>
       </Form.Field>
       <Form.Field>
         <Form.Label>description</Form.Label>
         <Form.Control>
-          <span>{currentRecord?.description}</span>
+          <Text>{currentRecord?.description}</Text>
         </Form.Control>
       </Form.Field>
       <Form.Field>
         <Form.Label>code</Form.Label>
         <Form.Control>
-          <span>{currentRecord?.code}</span>
+          <Text>{currentRecord?.code}</Text>
         </Form.Control>
       </Form.Field>
       <Form.Field>
         <Form.Label>status</Form.Label>
         <Form.Control>
-          <span>{currentRecord?.status}</span>
+          <Text>{currentRecord?.status}</Text>
         </Form.Control>
       </Form.Field>
       <Form.Field>
         <Form.Label>cities</Form.Label>
         <Form.Control>
-          <span>{currentRecord?.cities?.join(", ")}</span>
+          <Text>{currentRecord?.cities?.join(", ")}</Text>
         </Form.Control>
       </Form.Field>
       <Form.Field>
         <Form.Label>categories</Form.Label>
         <Form.Control>
-          <span>{currentRecord?.categories?.join(", ")}</span>
+          <Text>{currentRecord?.categories?.join(", ")}</Text>
         </Form.Control>
       </Form.Field>
       <Form.Field>
         <Form.Label>types</Form.Label>
         <Form.Control>
-          <span>{currentRecord?.types?.join(", ")}</span>
+          <Text>{currentRecord?.types?.join(", ")}</Text>
         </Form.Control>
       </Form.Field>
       <Form.Field>
         <Form.Label>activeDate</Form.Label>
         <Form.Control>
-          <span>
+          <Text>
             {currentRecord?.activeDate
               ? new Date(currentRecord?.activeDate).toLocaleDateString()
               : ""}
-          </span>
+          </Text>
         </Form.Control>
       </Form.Field>
     </Form>

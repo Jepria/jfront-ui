@@ -5,10 +5,8 @@ const StyledTable = styled.div`
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  color: #212529;
   height: 100%;
   width: 100%;
-  height: 100%;
   @media (max-width: ${(props) => props.theme.breakpoints.md}) {
     border: 0;
   }

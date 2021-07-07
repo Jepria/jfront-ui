@@ -72,7 +72,7 @@ export const StyledDraggableView = styled.div`
   display: inline-flex;
   flex-direction: column;
   opacity: 0.75;
-  box-shadow: 4px 4px 8px 0px rgb(34, 60, 80);
+  box-shadow: 4px 4px 8px 0px ${(props) => props.theme.modal.borderColor};
 `
 StyledDraggableView.defaultProps = defaultProps
 

@@ -26,7 +26,6 @@ StyledPagingBar.defaultProps = {
 const StyledNumberInput = styled(NumberInput)`
   min-width: 60px;
   max-width: 150px;
-  background-color: white;
   margin: 0px 5px;
 `
 

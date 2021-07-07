@@ -1,13 +1,12 @@
-import { Theme } from "../types"
-import { createTheme } from "../utils/createTheme"
+import { Theme, createTheme } from "@jfront/ui-core"
+import Color from "color"
 
 const themeValues: Theme = {
-  primaryColor: "#99bbe8",
-  bodyBgColor: "#fff",
-  componentBgColor: "#fff",
+  primaryColor: Color("#474747").lighten(0.35).hex(),
+  bodyBgColor: "rgb(13, 17, 23)",
+  componentBgColor: "rgb(13, 17, 23)",
   fontFamily: "arial, tahoma, verdana, helvetica, -apple-system",
-  textColor: "rgb(0, 0, 0)",
-  textColorSecondary: "rgba(0, 0, 0, 0.75)",
+  textColor: Color("rgb(255, 255, 255)").darken(0.25).hex(),
   fontSize: {
     xs: "10px",
     sm: "11px",
@@ -17,24 +16,16 @@ const themeValues: Theme = {
   },
   borderWidth: "1px",
   borderStyle: "solid",
-  borderColor: "#ccc",
-  borderRadius: "0",
+  borderColor: "#474747",
+  borderRadius: "3px",
+  errorColor: Color("red").lighten(0.5).hex(),
   button: {
     borderRadius: "5px",
     margin: "4px",
     fontWeight: "700",
     padding: "12px 24px",
-    hoverBgColor: "rgb(217, 235, 251)",
-    hoverBorderColor: "rgb(153, 187, 232)",
-    activeBgColor: "#b6cbe4",
-    activeBorderColor: "1px solid #b6cbe4",
     primary: {
-      borderColor: "rgb(153, 187, 232)",
       borderRadius: "5px",
-      hoverBgColor: "rgba(221, 239, 255, 0.55)",
-      hoverBorderColor: "rgb(153, 187, 232)",
-      activeBgColor: "#b6cbe4",
-      activeBorderColor: "#b6cbe4",
     },
   },
   label: {
@@ -47,7 +38,6 @@ const themeValues: Theme = {
     height: "24px",
     margin: "0",
     padding: "0",
-    errorBorderColor: "red",
     disabledColor: "rgba(0, 0, 0, 0.75)",
     disabledBgColor: "rgba(239, 239, 239, 0.5)",
   },
@@ -82,8 +72,7 @@ const themeValues: Theme = {
     selectedBgColor: "#216ba5",
     selectedColor: "#fff",
     header: {
-      bgColor: "#f0f0f0",
-      buttonColor: "#ccc",
+      bgColor: "rgb(22,27,34)",
     },
     closeIcon: {
       bgColor: "#216ba5",
@@ -96,7 +85,6 @@ const themeValues: Theme = {
       margin: "0",
       padding: "5px 8px",
       bgColor: "transparent",
-      hoverBgColor: "#eee",
       label: {
         bgColor: "transparent",
         selectedBgColor: "#dae6f4",
@@ -104,31 +92,26 @@ const themeValues: Theme = {
     },
   },
   toolbar: {
-    bgColor: "linear-gradient(#dae6f4, #d0def0)",
-    borderColor: "#99bbe8",
+    bgColor: "rgb(22, 27, 34)",
     button: {
       bgColor: "transparent",
       borderWidth: "1px",
       borderStyle: "solid",
       borderColor: "transparent",
       borderRadius: "0",
-      hoverBgColor: "#ddefff",
+      hoverBgColor: "rgb(22, 27, 34)",
       hoverBorderWidth: "1px",
       hoverBorderStyle: "solid",
-      hoverBorderColor: "#99bbe8",
     },
   },
   tabPanel: {
-    color: "rgb(21, 66, 139)",
     tab: {
-      bgColor: "linear-gradient(#dae6f4, #d0def0)",
-      selectedBgColor: "#d7e4f3",
-      borderColor: "#99bbe8",
+      bgColor: "rgb(22, 27, 34)",
+      selectedBgColor: "rgb(22, 27, 34)",
     },
   },
   form: {
     padding: "5px 0 0 10px",
-    errorColor: "red",
     field: {
       margin: "0 0 1em 0",
       control: {
@@ -150,50 +133,32 @@ const themeValues: Theme = {
     color: "currentColor",
   },
   grid: {
-    color: "black",
     header: {
-      color: "black",
-      bgColor: "#ededed",
-      borderWidth: "1px",
-      borderStyle: "solid",
-      borderColor: "#ddd",
-      borderRadius: "0",
+      bgColor: "rgb(22,27,34)",
     },
     row: {
-      color: "black",
       borderWidth: "1px",
       borderStyle: "solid",
-      borderColor: "#ededed",
       borderRadius: "0",
-      bgColor: "transparent",
-      oddBgColor: "#fafafa",
-      hoverBgColor: "#eee",
-      selectedBgColor: "#dfe8f6",
-      selectedBorderColor: "#b7cefd",
     },
     pagingBar: {
-      color: "black",
-      borderWidth: "1px",
-      borderStyle: "solid",
-      borderColor: "rgb(153, 187, 232)",
-      borderRadius: "0",
-      bgColor: "linear-gradient(rgb(218, 230, 244), rgb(208, 222, 240))",
+      bgColor: "rgb(22,27,34)",
     },
   },
   modal: {
     borderRadius: "5px",
-    closeButtonColor: "rgb(21, 66, 139)",
+    // closeButtonColor: "rgb(21, 66, 139)",
     header: {
       borderWidth: "0",
       borderStyle: "solid",
       borderColor: "transparent",
       borderRadius: "5px",
-      bgColor: "linear-gradient(rgb(255, 255, 255), rgb(208, 222, 240))",
-      color: "rgb(21, 66, 139)",
+      // bgColor: "linear-gradient(rgb(255, 255, 255), rgb(208, 222, 240))",
+      // color: "rgb(21, 66, 139)",
     },
   },
 }
 
 const theme = createTheme(themeValues)
 
-export { theme as jepriaTheme }
+export default theme

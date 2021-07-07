@@ -10,5 +10,17 @@ export const GlobalStyles = createGlobalStyle`
     width: 100%;
     height: 100%;
     overflow: hidden;
+    font-size: ${(props: any) => props.theme.fontSize.md};
+    font-family: ${(props: any) => props.theme.fontFamily};
+    background: ${(props: any) => props.theme.bodyBgColor};
   }
 `
+GlobalStyles.defaultProps = {
+  theme: {
+    fontFamily: "tahoma, arial, helvetica, sans-serif",
+    fontSize: {
+      md: "12px",
+    },
+    bodyBgColor: "#fff",
+  },
+}

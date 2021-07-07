@@ -3,19 +3,28 @@ import "react-app-polyfill/ie11"
 import React from "react"
 import ReactDOM from "react-dom"
 import App from "./App"
-import "./index.css"
 import * as serviceWorker from "./serviceWorker"
 import { ThemeProvider, jepriaTheme, GlobalStyles } from "@jfront/ui-core"
 import { Provider } from "react-redux"
 import { store } from "./app/store/configureStore"
+import darkTheme from "./app/common/darkTheme"
+import { ComboBox } from "@jfront/ui-core"
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <ThemeProvider theme={jepriaTheme}>
+    {/* <ComboBox
+      name="code"
+      // value={values.code}
+      // onSelectionChange={(name, value) => setFieldValue(name, value)}
+      options={[{ name: "1", value: "1" }]}
+      // error={errors.code}
+    /> */}
+    <ThemeProvider theme={darkTheme}>
+      <GlobalStyles theme={darkTheme} />
+      <Provider store={store}>
         <App />
-      </ThemeProvider>
-    </Provider>
+      </Provider>
+    </ThemeProvider>
   </React.StrictMode>,
   document.getElementById("root"),
 )

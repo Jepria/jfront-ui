@@ -120,20 +120,22 @@ export const GridRow = styled(Table.Row)<GridRowProps>`
     `${props.theme.grid.row.borderWidth} 
     ${props.theme.grid.row.borderStyle}
     ${props.theme.grid.row.borderColor}`};
+  color: ${(props) => props.theme.grid.row.color};
   ${(props) =>
     props.selected
       ? `background: ${props.theme.grid.row.selectedBgColor};
       border-bottom: ${props.theme.grid.row.borderWidth} ${props.theme.grid.row.borderStyle} ${props.theme.grid.row.selectedBorderColor};
       border-top: ${props.theme.grid.row.borderWidth} ${props.theme.grid.row.borderStyle} ${props.theme.grid.row.selectedBorderColor};
+      color: ${props.theme.grid.row.selectedColor};
       `
       : `
-    background: #fff;
+    background: ${props.theme.grid.row.bgColor};
     &:nth-child(odd) {
-      background:  ${props.theme.grid.row.oddBgColor};
-      border-top: border-top: ${props.theme.grid.row.borderWidth} ${props.theme.grid.row.borderStyle} ${props.theme.grid.row.oddBgColor};
+      background: ${props.theme.grid.row.oddBgColor};
+      border-top: ${props.theme.grid.row.borderWidth} ${props.theme.grid.row.borderStyle} ${props.theme.grid.row.oddBgColor};
     }
     &:hover {
-      background:  ${props.theme.grid.row.hoverBgColor};
+      background: ${props.theme.grid.row.hoverBgColor};
       border-top: ${props.theme.grid.row.borderWidth} ${props.theme.grid.row.borderStyle} ${props.theme.grid.row.borderColor};
     }
   `}
@@ -154,6 +156,7 @@ GridRow.defaultProps = {
         oddBgColor: "#fafafa",
         hoverBgColor: "#eee",
         selectedBgColor: "#dfe8f6",
+        selectedColor: "black",
         selectedBorderColor: "#b7cefd",
       },
     },

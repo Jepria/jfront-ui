@@ -44,6 +44,8 @@ const StyledCheckBoxGroup = styled.div<StyledCheckBoxGroupProps>`
   margin: 0;
   min-width: 150px;
   color: ${(props) => props.theme.checkboxGroup.color} !important;
+  background: ${(props) => props.theme.checkboxGroup.bgColor};
+  border-radius: ${(props) => props.theme.checkboxGroup.borderRadius};
   ${(props) =>
     props.focused
       ? `box-shadow: 0 0 5px ${
@@ -67,6 +69,7 @@ const StyledCheckBoxGroup = styled.div<StyledCheckBoxGroupProps>`
 StyledCheckBoxGroup.defaultProps = {
   theme: {
     checkboxGroup: {
+      bgColor: "#fff",
       borderWidth: "1px",
       borderStyle: "solid",
       borderColor: "#ccc",

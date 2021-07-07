@@ -219,7 +219,7 @@ export const StyledButton = styled.button<ComboBoxButtonProps>`
   margin: 0;
   padding: 0;
   overflow: visible;
-  font-size: 1.5rem;
+  font-size: 22px;
   text-align: center;
   border-radius: 50%;
   height: ${(props) => props.theme.comboBox.button.height};
@@ -273,7 +273,6 @@ export const StyledSvg = styled.svg`
   width: 1em;
   height: 1em;
   display: inline-block;
-  font-size: 1.5rem;
   transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   flex-shrink: 0;
 `

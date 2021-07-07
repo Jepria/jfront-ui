@@ -69,13 +69,6 @@ StyledFieldControl.defaultProps = {
 }
 
 const StyledFormLabel = styled(Label)<FormLabelProps>`
-  line-height: 1.5715;
-  text-align: left;
-  @media (min-width: ${(props) => props.theme.breakpoints.md}) {
-    min-width: ${(props) => props.theme.form.label.minWidth};
-    max-width: ${(props) => props.theme.form.label.maxWidth};
-    text-align: right;
-  }
   ${(props) =>
     props.required
       ? `&::before{
@@ -91,31 +84,8 @@ const StyledFormLabel = styled(Label)<FormLabelProps>`
       : ""}
 `
 
-StyledFormLabel.defaultProps = {
-  theme: {
-    fontFamily: "tahoma, arial, helvetica, sans-serif",
-    fontSize: {
-      md: "12px",
-    },
-    breakpoints: {
-      sm: "576px",
-      md: "768px",
-    },
-    label: {
-      margin: 0,
-      color: "#000",
-      padding: "0 5px 0 0",
-    },
-    form: {
-      label: {
-        maxWidth: "200px",
-        minWidth: "150px",
-      },
-    },
-  },
-}
-
 const StyledFieldSet = styled.fieldset`
+  margin: 12px;
   border: ${(props) =>
     `${props.theme.form.fieldSet.borderWidth} 
     ${props.theme.form.fieldSet.borderStyle} 

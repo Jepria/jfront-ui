@@ -23,10 +23,19 @@ export interface ColumnConfigPanelProps<D extends object> {
 const StyledModalDiv = styled(ModalDiv)`
   box-sizing: border-box;
   flex-direction: column;
-  background-color: #fff;
-  border-radius: 5px;
-  box-shadow: 4px 4px 8px 0px rgb(34, 60, 80);
+  background: ${(props) => props.theme.modal.bgColor};
+  border-radius: ${(props) => props.theme.modal.borderRadius};
+  box-shadow: 4px 4px 8px 0px ${(props) => props.theme.modal.borderColor};
 `
+StyledModalDiv.defaultProps = {
+  theme: {
+    modal: {
+      borderRadius: "5px",
+      bgColor: "#fff",
+      borderColor: "#ccc",
+    },
+  },
+}
 
 const ButtonContainer = styled.div`
   width: 100%;

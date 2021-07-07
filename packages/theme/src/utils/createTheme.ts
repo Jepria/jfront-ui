@@ -171,6 +171,8 @@ const buildCalendarTheme = (arg: Theme) => {
     borderWidth: theme.header?.borderWidth || theme.borderColor,
     borderStyle: theme.header?.borderStyle || arg.borderStyle,
     borderColor: theme.header?.borderColor || theme.borderColor,
+    color: theme.header?.color || arg.textColor,
+    buttonColor: theme.header?.buttonColor || arg.primaryColor,
   }
   theme.closeIcon = {
     ...theme.closeIcon,
@@ -199,7 +201,8 @@ const buildTreeTheme = (arg: Theme) => {
   theme.node = {
     ...theme.node,
     color: theme.node?.color || arg.textColor,
-    hoverBgColor: theme.node?.hoverBgColor || arg.colorPallete?.primaryColor_40,
+    hoverBgColor: theme.node?.hoverBgColor || arg.primaryColor,
+    hoverColor: theme.node?.hoverColor || theme.node?.color,
     label: {
       ...theme.node?.label,
       selectedBgColor: theme.node?.label?.selectedBgColor || arg.primaryColor,
@@ -216,6 +219,7 @@ const buildCheckboxGroupTheme = (arg: Theme) => {
 
   const inputTheme = buildInputTheme(arg)
 
+  theme.bgColor = theme.bgColor || inputTheme.bgColor
   theme.borderWidth = theme.borderWidth || inputTheme.borderWidth
   theme.borderStyle = theme.borderStyle || inputTheme.borderStyle
   theme.borderColor = theme.borderColor || inputTheme.borderColor
@@ -236,6 +240,7 @@ const buildRadioGroupTheme = (arg: Theme) => {
 
   const inputTheme = buildInputTheme(arg)
 
+  theme.bgColor = theme.bgColor || inputTheme.bgColor
   theme.borderWidth = theme.borderWidth || inputTheme.borderWidth
   theme.borderStyle = theme.borderStyle || inputTheme.borderStyle
   theme.borderColor = theme.borderColor || inputTheme.borderColor
@@ -265,6 +270,7 @@ const buildDuallistTheme = (arg: Theme) => {
   theme.errorBorderColor = theme.errorBorderColor || inputTheme.errorBorderColor
   theme.hoverBorderColor = theme.hoverBorderColor || inputTheme.hoverBorderColor
   theme.color = theme.color || inputTheme.color
+  theme.bgColor = theme.bgColor || inputTheme.bgColor
 
   return theme
 }
@@ -278,6 +284,11 @@ const buildToolbarTheme = (arg: Theme) => {
   theme.borderColor = theme.borderColor || arg.borderColor
   theme.borderRadius = theme.borderRadius || arg.borderRadius
   theme.bgColor = theme.bgColor || arg.borderColor
+  theme.button = {
+    ...theme.button,
+    hoverBorderColor: theme.button?.hoverBorderColor || arg.borderColor,
+    color: theme.button?.color || arg.textColor,
+  }
   return theme
 }
 
@@ -302,6 +313,8 @@ const buildFormTheme = (arg: Theme) => {
   const theme: FormTheme = {
     ...arg.form,
   }
+
+  theme.errorColor = theme.errorColor || arg.errorColor
 
   theme.fieldSet = {
     ...theme.fieldSet,
@@ -362,16 +375,13 @@ const buildGridTheme = (arg: Theme) => {
     borderStyle: theme.row?.borderStyle || arg.borderWidth,
     borderColor: theme.row?.borderColor || arg.borderColor,
     borderRadius: theme.row?.borderRadius || arg.borderWidth,
-    bgColor: theme.header?.bgColor || arg.componentBgColor,
-    oddBgColor:
-      theme.row?.oddBgColor ||
-      Color(arg.componentBgColor).negate().fade(0.25).string(),
-    hoverBgColor:
-      theme.row?.hoverBgColor ||
-      Color(arg.componentBgColor).negate().fade(0.5).string(),
+    bgColor: theme.row?.bgColor || arg.componentBgColor,
+    oddBgColor: theme.row?.oddBgColor || arg.colorPallete?.primaryColor_20,
+    hoverBgColor: theme.row?.hoverBgColor || arg.colorPallete?.primaryColor_40,
     selectedBgColor:
-      theme.row?.selectedBgColor || arg.colorPallete?.primaryColor_40,
+      theme.row?.selectedBgColor || arg.colorPallete?.primaryColor_60,
     selectedBorderColor: theme.row?.selectedBorderColor || arg.primaryColor,
+    selectedColor: theme.row?.selectedColor || arg.textColor,
   }
   theme.pagingBar = {
     ...theme.pagingBar,
@@ -409,15 +419,39 @@ const buildModalTheme = (arg: Theme) => {
 
   return theme
 }
+const buildCheckboxTheme = (arg: Theme) => {
+  const theme = {
+    ...arg.checkbox,
+  }
+
+  theme.color = theme.color || arg.textColor
+  theme.hoverBgColor = theme.hoverBgColor || arg.primaryColor
+  theme.hoverColor = theme.hoverColor || theme.color
+
+  return theme
+}
+
+const buildRadioTheme = (arg: Theme) => {
+  const theme = {
+    ...arg.radio,
+  }
+
+  theme.color = theme.color || arg.textColor
+  theme.hoverBgColor = theme.hoverBgColor || arg.primaryColor
+  theme.hoverColor = theme.hoverColor || theme.color
+
+  return theme
+}
 
 const buildTheme = (arg: Theme) => {
   const defaultValues: Theme = {
     colorPallete: {
-      primaryColor_80: Color(arg.primaryColor).fade(0.8).string(),
-      primaryColor_60: Color(arg.primaryColor).fade(0.6).string(),
-      primaryColor_40: Color(arg.primaryColor).fade(0.4).string(),
+      primaryColor_80: Color(arg.primaryColor).rgb().fade(0.2).string(),
+      primaryColor_60: Color(arg.primaryColor).rgb().fade(0.4).string(),
+      primaryColor_40: Color(arg.primaryColor).rgb().fade(0.6).string(),
+      primaryColor_20: Color(arg.primaryColor).rgb().fade(0.8).string(),
     },
-    textColorSecondary: Color(arg.textColor).fade(0.6).string(),
+    textColorSecondary: Color(arg.textColor).fade(0.25).string(),
     breakpoints: {
       sm: "576px",
       md: "768px",
@@ -486,6 +520,11 @@ export function createTheme<T extends Theme>(arg: T): T {
   const grid = buildGridTheme(arg)
   // modal
   const modal = buildModalTheme(arg)
+  // checkbox
+  const checkbox = buildCheckboxTheme(arg)
+  // radio
+  const radio = buildRadioTheme(arg)
+
   return defaultDeep(arg, {
     button,
     label,
@@ -504,5 +543,7 @@ export function createTheme<T extends Theme>(arg: T): T {
     breadcrumbs,
     grid,
     modal,
+    checkbox,
+    radio,
   })
 }

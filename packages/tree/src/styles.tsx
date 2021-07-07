@@ -14,8 +14,10 @@ export const StyledTreeNode = styled.div<StyledTreeNodeProps>`
   padding: ${(props) => props.theme.tree.node.padding};
   ${(props) => (props.available ? "cursor: pointer; " : "cursor: default;")}
   padding-left: ${(props) => getPaddingLeft(props.level)};
+  color: ${(props) => props.theme.tree.node.color};
   background: ${(props) => props.theme.tree.node.bgColor};
   &:hover {
+    color: ${(props) => props.theme.tree.node.hoverColor};
     background: ${(props) => props.theme.tree.node.hoverBgColor};
   }
 `
@@ -37,6 +39,7 @@ StyledTreeNode.defaultProps = {
         bgColor: "transparent",
         color: "#000",
         hoverBgColor: "#eee",
+        hoverColor: "#000",
       },
     },
   },

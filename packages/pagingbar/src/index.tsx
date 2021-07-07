@@ -17,27 +17,57 @@ const Wrapper = styled.div`
 `
 
 const Item = styled.button`
-  font: 11px arial, tahoma, verdana, helvetica;
   height: 100%;
   padding: 1px 1px;
   margin: 0 1px;
-  background-color: transparent;
-  background-image: none;
-  border: solid 1px transparent;
-  ${(props) =>
-    props.disabled
-      ? "opacity: 0.5;"
-      : `opacity: 1;
-      &:hover {
-    border: solid 1px #99bbe8;
-    background: #ddefff;
-  }`}
+  border: ${(props) =>
+    `${props.theme.toolbar.button.borderWidth} 
+    ${props.theme.toolbar.button.borderStyle} 
+    ${props.theme.toolbar.button.borderColor}`};
+  background: ${(props) => props.theme.toolbar.button.bgColor};
+  color: ${(props) => props.theme.toolbar.button.color};
+  &:disabled {
+    opacity: 0.5;
+    background: transparent;
+    cursor: default;
+  }
+  &:enabled {
+    &:hover {
+      background: ${(props) => props.theme.toolbar.button.hoverBgColor};
+      border: ${(props) =>
+        `${props.theme.toolbar.button.hoverBorderWidth} 
+        ${props.theme.toolbar.button.hoverBorderStyle} 
+        ${props.theme.toolbar.button.hoverBorderColor}`};
+    }
+  }
 `
+
+Item.defaultProps = {
+  theme: {
+    fontFamily: "tahoma, arial, helvetica, sans-serif",
+    fontSize: {
+      sm: "11px",
+    },
+    toolbar: {
+      button: {
+        color: "#000",
+        bgColor: "transparent",
+        borderWidth: "1px",
+        borderStyle: "solid",
+        borderColor: "transparent",
+        borderRadius: 0,
+        hoverBgColor: "#ddefff",
+        hoverBorderWidth: "1px",
+        hoverBorderStyle: "solid",
+        hoverBorderColor: "#99bbe8",
+      },
+    },
+  },
+}
 
 const StyledNumberInput = styled(NumberInput)`
   min-width: 60px;
   max-width: 150px;
-  background-color: white;
   margin: 0px 5px;
 `
 

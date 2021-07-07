@@ -2,7 +2,6 @@ import React from "react"
 import {
   Toolbar,
   ToolbarButtonCreate,
-  ToolbarButtonDelete,
   ToolbarButtonView,
   ToolbarSplitter,
   ToolbarButtonList,
@@ -10,7 +9,7 @@ import {
 import { useHistory, useRouteMatch } from "react-router-dom"
 import { useSelector } from "react-redux"
 import { AppState } from "../../../app/store/reducer"
-import { actions as crudActions, deleteRecord } from "../state/moduleCrudSlice"
+import { actions as crudActions } from "../state/moduleCrudSlice"
 import { useAppDispatch } from "../../../app/store/configureStore"
 
 const ModuleToolbar = () => {
@@ -35,15 +34,6 @@ const ModuleToolbar = () => {
           history.push(path + "/" + currentRecord?.id + "/detail")
         }}
       />
-      <ToolbarButtonDelete
-        disabled={!currentRecord}
-        onClick={() => {
-          if (currentRecord) {
-            dispatch<any>(deleteRecord([currentRecord?.id]))
-          }
-        }}
-      />
-      <ToolbarSplitter />
       <ToolbarButtonList
         onClick={() => {
           dispatch(crudActions.setCurrentRecord({}))

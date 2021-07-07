@@ -1,6 +1,11 @@
 import React from "react"
 import ReactDatePicker, { ReactDatePickerProps } from "react-datepicker"
 import styled from "styled-components"
+import { MaskedTextInput } from "@jfront/ui-input"
+
+export const StyledInput = styled(MaskedTextInput)`
+  display: flex;
+`
 
 export const StyledDatePicker = styled(
   ({ className, ...props }: ReactDatePickerProps) => (
@@ -18,7 +23,7 @@ export const StyledDatePicker = styled(
   .react-datepicker__year-text {
     color: ${(props) => props.theme.calendar.color};
     &--selected,
-    &----in-selecting-range,
+    &--in-selecting-range,
     &--in-range {
       background-color: ${(props) =>
         props.theme.calendar.selectedBgColor} !important;
@@ -40,12 +45,29 @@ export const StyledDatePicker = styled(
       opacity: 0.5;
     }
   }
+  .react-datepicker__current-month {
+    box-sizing: border-box;
+    padding: 4px;
+    color: ${(props) => props.theme.calendar.header.color};
+  }
+  .react-datepicker__navigation {
+    top: 12px;
+    &--previous {
+      border-right-color: ${(props) => props.theme.calendar.header.buttonColor};
+    }
+    &--next {
+      border-left-color: ${(props) => props.theme.calendar.header.buttonColor};
+    }
+  }
   .react-datepicker__header {
     background-color: ${(props) => props.theme.calendar.header.bgColor};
     border-bottom: ${(props) =>
       `${props.theme.calendar.header.borderWidth} 
       ${props.theme.calendar.header.borderStyle} 
       ${props.theme.calendar.header.borderColor}`};
+  }
+  .react-datepicker__day-name {
+    color: ${(props) => props.theme.calendar.header.color};
   }
   .react-datepicker__close-icon {
     &:after {
@@ -77,6 +99,8 @@ StyledDatePicker.defaultProps = {
         borderWidth: "1px",
         borderStyle: "solid",
         borderColor: "#aeaeae",
+        color: "#000",
+        buttonColor: "#ccc",
       },
       hoverBgColor: "#eee",
       hoverColor: "#000",

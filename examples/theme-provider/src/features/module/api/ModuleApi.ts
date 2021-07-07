@@ -2,7 +2,7 @@ import {} from "@jfront/core-rest"
 import { Item } from "./types"
 import { ConnectorCrud, ResultSet, ConnectorSearch } from "@jfront/core-rest"
 
-let id = 0
+export let id = 0
 
 const makeData = () => {
   const arr: Item[] = []

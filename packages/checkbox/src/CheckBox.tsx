@@ -1,7 +1,6 @@
 import React from "react"
 import styled from "styled-components"
 import nextId from "react-id-generator"
-import { Label } from "@jfront/ui-label"
 
 export interface CheckBoxInterface
   extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -18,7 +17,7 @@ const StyledCheckBoxInput = styled.input.attrs({ type: "checkbox" })`
   cursor: pointer;
 `
 
-const StyledCheckBoxLabel = styled(Label)`
+const StyledCheckBoxLabel = styled.label`
   box-sizing: border-box;
   padding: 2px;
   height: 20px;
@@ -51,10 +50,28 @@ const StyledCheckBox = styled.div<CheckboxContainer>`
       : `flex-direction: row;`};
   width: 100%;
   cursor: pointer;
+  font-size: ${(props) => props.theme.fontSize.md};
+  font-family: ${(props) => props.theme.fontFamily};
+  color: ${(props) => props.theme.checkbox.color};
   &:hover {
-    background: #eee;
+    background: ${(props) => props.theme.checkbox.hoverBgColor};
+    color: ${(props) => props.theme.checkbox.hoverColor};
   }
 `
+
+StyledCheckBox.defaultProps = {
+  theme: {
+    fontSize: {
+      md: "12px",
+    },
+    fontFamily: "tahoma, arial, helvetica, sans-serif",
+    checkbox: {
+      hoverBgColor: "#eee",
+      hoverColor: "#000",
+      color: "#000",
+    },
+  },
+}
 
 export const CheckBox = React.forwardRef<HTMLInputElement, CheckBoxInterface>(
   ({ id, label, className, style, type, orientation, ...props }, ref) => {
