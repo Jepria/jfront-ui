@@ -1,6 +1,5 @@
 import styled from "styled-components"
 import { DeleteImage, UploadImage } from "@jfront/ui-icons"
-import { Label } from "@jfront/ui-label"
 
 export interface StyledDivProps {
   highlight?: boolean
