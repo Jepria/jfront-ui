@@ -12,6 +12,7 @@ const StyledSlider = styled.div`
   border-radius: 3px;
   background: #dddddd;
   height: 5px;
+  cursor: pointer;
 `
 
 const StyledThumb = styled.div`
@@ -122,7 +123,9 @@ export const SliderOptionsPointer = React.forwardRef<
 
   return (
     <>
-      <SliderHeader {...props} ref={currentRef}></SliderHeader>
+      <SliderHeader {...props} ref={currentRef}>
+        Нет
+      </SliderHeader>
       <StyledSlider ref={sliderRef}>
         <StyledThumb
           {...props}

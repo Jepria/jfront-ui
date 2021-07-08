@@ -15,6 +15,7 @@ const StyledSlider = styled.div`
   border-radius: 3px;
   background: #dddddd;
   height: 5px;
+  cursor: pointer;
 `
 
 const StyledThumb = styled.div`
