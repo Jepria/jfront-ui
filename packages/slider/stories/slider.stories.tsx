@@ -59,7 +59,7 @@ export const UsageSliderOptions = () => {
 }
 
 export const UsageSliderOptionsPoint = () => {
-  const options = ["Один", "Два", "Три", "Четыре"]
+  const options = ["Один", "Два", "Три", "Тут можно многое написать"]
   return (
     <>
       <SliderOptionsPointer

@@ -25,7 +25,12 @@ const StyledThumb = styled.div`
   background: #99bbe8;
   cursor: pointer;
 `
-
+const StyledRangeProgress = styled.div`
+  border-radius: 3px;
+  position: absolute;
+  height: 100%;
+  background: rgba(121, 119, 119, 0.34);
+`
 const SliderHeader = styled.div`
   visibility: hidden;
   padding-bottom: 5px;
@@ -43,6 +48,7 @@ const SliderHeader = styled.div`
 const getPercentage = (current: number, max: number) => (100 * current) / max
 
 const getLeft = (percentage: any) => `calc(${percentage}% - 5px)`
+const getWidth = (percentage: any) => `${percentage}%`
 
 const getValue = (percentage: number, max: number) => (max / 100) * percentage
 
@@ -54,7 +60,7 @@ export const SliderPointer = React.forwardRef<
   const sliderRef: any = React.useRef()
   const thumbRef: any = React.useRef()
   const currentRef: any = React.useRef()
-
+  const rangeProgressRef: any = React.useRef()
   const diff: any = React.useRef()
 
   const handleMouseMove = (event: any) => {
@@ -75,6 +81,8 @@ export const SliderPointer = React.forwardRef<
 
     const newValue: number = getValue(newPercentage, props.max)
     thumbRef.current.style.left = getLeft(newPercentage)
+    rangeProgressRef.current.style.width = getWidth(newPercentage)
+
     currentRef.current.textContent = formatFn(newValue)
 
     props.onChange(formatFn(newValue))
@@ -113,6 +121,7 @@ export const SliderPointer = React.forwardRef<
     if (value > props.max) {
       value = props.max
     }
+    rangeProgressRef.current.style.width = getWidth(newPercentage)
     currentRef.current.style = ` left: ${newPercentage}%  ;margin-right: ${
       100 - 4 * formatFn(value).length
     }%;visibility: visible; `
@@ -133,6 +142,10 @@ export const SliderPointer = React.forwardRef<
         {formatFn(props.initial)}
       </SliderHeader>
       <StyledSlider ref={sliderRef} onClick={handlerMouseClick}>
+        <StyledRangeProgress
+          style={{ width: getWidth(initialPercentage) }}
+          ref={rangeProgressRef}
+        />
         <StyledThumb
           {...props}
           id={props.id}

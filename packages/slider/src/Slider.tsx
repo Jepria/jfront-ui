@@ -20,13 +20,12 @@ const StyledRangeProgress = styled.div`
   border-radius: 3px;
   position: absolute;
   height: 100%;
-
   background: rgba(121, 119, 119, 0.34);
 `
 
 const StyledThumb = styled.div`
   width: 16px;
-  height: 16px;а
+  height: 16px;
   border-radius: 15px;
   position: relative;
   top: -5px;

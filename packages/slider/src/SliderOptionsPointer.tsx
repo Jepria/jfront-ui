@@ -12,7 +12,6 @@ const StyledSlider = styled.div`
   border-radius: 3px;
   background: #dddddd;
   height: 5px;
-  cursor: pointer;
 `
 
 const StyledThumb = styled.div`
@@ -38,11 +37,17 @@ const SliderHeader = styled.div`
   -webkit-user-select: none;
   user-select: none;
 `
+const StyledRangeProgress = styled.div`
+  border-radius: 3px;
+  position: absolute;
+  height: 100%;
+  background: rgba(121, 119, 119, 0.34);
+`
 
 const getPercentage = (current: number, max: number) => (100 * current) / max
 
 const getLeft = (percentage: any) => `calc(${percentage}% - 5px)`
-
+const getWidth = (percentage: any) => `${percentage}%`
 const getValue = (percentage: number, max: number) => (max / 100) * percentage
 
 export const SliderOptionsPointer = React.forwardRef<
@@ -53,6 +58,7 @@ export const SliderOptionsPointer = React.forwardRef<
   const thumbRef: any = React.useRef()
   const currentRef: any = React.useRef()
   const numberOfSliderElements: number = props.options.length
+  const rangeProgressRef: any = React.useRef()
 
   const diff: any = React.useRef()
 
@@ -76,6 +82,9 @@ export const SliderOptionsPointer = React.forwardRef<
       formatFn(getValue(newPercentage, numberOfSliderElements)),
     )
     thumbRef.current.style.left = getLeft(
+      getPercentage(newValue, numberOfSliderElements),
+    )
+    rangeProgressRef.current.style.width = getWidth(
       getPercentage(newValue, numberOfSliderElements),
     )
     currentRef.current.style = ` left: ${getPercentage(
@@ -107,6 +116,7 @@ export const SliderOptionsPointer = React.forwardRef<
     const value: number = parseInt(
       formatFn(getValue(newPercentage, numberOfSliderElements)),
     )
+    rangeProgressRef.current.style.width = getWidth(newPercentage)
     currentRef.current.style = ` left: ${getPercentage(
       value,
       numberOfSliderElements,
@@ -127,6 +137,7 @@ export const SliderOptionsPointer = React.forwardRef<
         Нет
       </SliderHeader>
       <StyledSlider ref={sliderRef}>
+        <StyledRangeProgress ref={rangeProgressRef} />
         <StyledThumb
           {...props}
           id={props.id}

@@ -25,10 +25,17 @@ const StyledThumb = styled.div`
   background: #99bbe8;
   cursor: pointer;
 `
+const StyledRangeProgress = styled.div`
+  border-radius: 3px;
+  position: absolute;
+  height: 100%;
+  background: rgba(121, 119, 119, 0.34);
+`
 
 const getPercentage = (current: number, max: number) => (100 * current) / max
 const getLeft = (percentage: any) => `calc(${percentage}% - 5px)`
 const getValue = (percentage: number, max: number) => (max / 100) * percentage
+const getWidth = (percentage: any) => `${percentage}%`
 
 export const SliderOptions = React.forwardRef<
   HTMLInputElement,
@@ -38,6 +45,7 @@ export const SliderOptions = React.forwardRef<
   const thumbRef: any = React.useRef()
   const diff: any = React.useRef()
   const numberOfSliderElements: number = props.options.length
+  const rangeProgressRef: any = React.useRef()
 
   const handleMouseMove = (event: any) => {
     let newX: any =
@@ -61,6 +69,10 @@ export const SliderOptions = React.forwardRef<
     thumbRef.current.style.left = getLeft(
       getPercentage(newValue, numberOfSliderElements),
     )
+    console.log(props.options.length)
+    rangeProgressRef.current.style.width = getWidth(
+      getPercentage(newValue, numberOfSliderElements),
+    )
 
     props.onChange(newValue == 0 ? null : props.options[newValue - 1])
   }
@@ -80,7 +92,7 @@ export const SliderOptions = React.forwardRef<
     const value: number = parseInt(
       formatFn(getValue(newPercentage, numberOfSliderElements)),
     )
-
+    rangeProgressRef.current.style.width = getWidth(newPercentage)
     thumbRef.current.style.left = getLeft(newPercentage)
     props.onChange(value == 0 ? null : props.options[value - 1])
   }
@@ -94,6 +106,7 @@ export const SliderOptions = React.forwardRef<
   return (
     <>
       <StyledSlider ref={sliderRef} onClick={handlerMouseClick}>
+        <StyledRangeProgress ref={rangeProgressRef} />
         <StyledThumb
           {...props}
           id={props.id}
