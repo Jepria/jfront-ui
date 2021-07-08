@@ -13,15 +13,16 @@ export interface CheckBoxInterface
   orientation?: "left" | "right"
 }
 
-const StyledCheckBoxInput = styled.input`
+const StyledCheckBoxInput = styled.input.attrs({ type: "checkbox" })`
   cursor: pointer;
 `
 
 const StyledCheckBoxLabel = styled.label`
+  box-sizing: border-box;
+  padding: 2px;
   height: 20px;
-  width: 100px;
-  margin: 2px;
   overflow: hidden;
+  text-overflow: ellipsis;
   cursor: pointer;
   white-space: nowrap;
   width: 100%;
@@ -34,57 +35,71 @@ const StyledCheckBoxLabel = styled.label`
   user-select: none; /* Non-prefixed version, currently
                               supported by Chrome, Edge, Opera and Firefox */
 `
-interface CheckboxSpanI {
+interface CheckboxContainer {
   orientation?: "left" | "right"
 }
-const StyledCheckBox = styled.span<CheckboxSpanI>`
-  margin: 2px;
-  height: 22px;
+
+const StyledCheckBox = styled.div<CheckboxContainer>`
+  box-sizing: border-box;
+  padding: 2px;
   display: flex;
+  align-items: center;
   ${(props) =>
     props.orientation && props.orientation === "left"
       ? `flex-direction: row-reverse;`
       : `flex-direction: row;`};
   width: 100%;
-  font-family: tahoma, arial, helvetica, sans-serif;
-  font-size: 12px;
   cursor: pointer;
+  font-size: ${(props) => props.theme.fontSize.md};
+  font-family: ${(props) => props.theme.fontFamily};
+  color: ${(props) => props.theme.checkbox.color};
   &:hover {
-    background: #eee;
+    background: ${(props) => props.theme.checkbox.hoverBgColor};
+    color: ${(props) => props.theme.checkbox.hoverColor};
   }
 `
 
+StyledCheckBox.defaultProps = {
+  theme: {
+    fontSize: {
+      md: "12px",
+    },
+    fontFamily: "tahoma, arial, helvetica, sans-serif",
+    checkbox: {
+      hoverBgColor: "#eee",
+      hoverColor: "#000",
+      color: "#000",
+    },
+  },
+}
+
 export const CheckBox = React.forwardRef<HTMLInputElement, CheckBoxInterface>(
-  (props, ref) => {
-    const htmlId = props.id ? props.id : nextId()
+  ({ id, label, className, style, type, orientation, ...props }, ref) => {
+    const htmlId = id ? id : nextId()
 
     return (
       <StyledCheckBox
-        className={props.className}
-        style={props.style}
-        orientation={props.orientation}
+        className={className}
+        style={style}
+        orientation={orientation}
       >
-        <StyledCheckBoxLabel
-          htmlFor={htmlId}
-          onDoubleClick={(e) => {
-            /** IE fix checkbox double-click issue **/
-            if ((document as any).documentMode) {
-              e.stopPropagation()
-              e.currentTarget.click()
-            }
-          }}
-        >
-          {props.label}
-        </StyledCheckBoxLabel>
+        {label && (
+          <StyledCheckBoxLabel
+            htmlFor={htmlId}
+            onDoubleClick={(e) => {
+              /** IE fix checkbox double-click issue **/
+              if ((document as any).documentMode) {
+                e.stopPropagation()
+                e.currentTarget.click()
+              }
+            }}
+          >
+            {label}
+          </StyledCheckBoxLabel>
+        )}
         <StyledCheckBoxInput
           id={htmlId}
           ref={ref}
-          type="checkbox"
-          name={props.name}
-          value={props.value}
-          checked={props.checked}
-          disabled={props.disabled}
-          onChange={props.onChange}
           onDoubleClick={(e) => {
             /** IE fix checkbox double-click issue **/
             if ((document as any).documentMode) {
@@ -92,6 +107,7 @@ export const CheckBox = React.forwardRef<HTMLInputElement, CheckBoxInterface>(
               e.currentTarget.click()
             }
           }}
+          {...props}
         />
       </StyledCheckBox>
     )

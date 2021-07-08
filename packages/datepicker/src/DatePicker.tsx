@@ -2,12 +2,9 @@ import React from "react"
 import ReactDatePicker, { ReactDatePickerProps } from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css"
 import { ru } from "date-fns/locale"
-import {
-  InputProps,
-  parsePlaceholderFromString,
-  MaskedTextInput,
-} from "@jfront/ui-input"
+import { InputProps, parsePlaceholderFromString } from "@jfront/ui-input"
 import { toIsoDateString } from "@jfront/ui-utils"
+import { StyledDatePicker, StyledInput } from "./styles"
 
 export const dateFormatToMask = (dateFormat: string | string[]) => {
   if (Array.isArray(dateFormat)) {
@@ -20,7 +17,7 @@ export const dateFormatToMask = (dateFormat: string | string[]) => {
 }
 
 export const DatePicker = React.forwardRef<
-  ReactDatePicker,
+  HTMLInputElement,
   Omit<ReactDatePickerProps, "selected" | "onChange"> &
     InputProps & {
       selected?: string | Date | null
@@ -50,10 +47,10 @@ export const DatePicker = React.forwardRef<
     ref,
   ) => {
     return (
-      <ReactDatePicker
+      <StyledDatePicker
         {...props}
         customInput={
-          <MaskedTextInput
+          <StyledInput
             {...props}
             mask={dateFormatToMask(dateFormat)}
             returnAllValues

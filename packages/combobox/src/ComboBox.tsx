@@ -48,7 +48,7 @@ const ARROW_UP = 38
 const ARROW_DOWN = 40
 const ENTER = 13
 
-export const ComboBox = React.forwardRef<HTMLDivElement, ComboBoxProps>(
+export const ComboBox = React.forwardRef<HTMLInputElement, ComboBoxProps>(
   (
     {
       id,
@@ -88,11 +88,11 @@ export const ComboBox = React.forwardRef<HTMLDivElement, ComboBoxProps>(
     const outerDivRef = useRef<HTMLInputElement>(null)
     const [focused, setFocused] = useState(false)
 
-    const getOuterDivRef = () => {
+    const getInputRef = () => {
       if (ref !== null) {
-        return ref as RefObject<HTMLDivElement>
+        return ref as RefObject<HTMLInputElement>
       } else {
-        return outerDivRef
+        return inputRef
       }
     }
 
@@ -206,14 +206,12 @@ export const ComboBox = React.forwardRef<HTMLDivElement, ComboBoxProps>(
 
     const getPopupWidth = () => {
       return `${
-        getOuterDivRef().current?.offsetWidth
-          ? getOuterDivRef().current?.offsetWidth
-          : 0
+        outerDivRef.current?.offsetWidth ? outerDivRef.current?.offsetWidth : 0
       }px`
     }
 
     const getPopupHeight = () => {
-      const rect = getOuterDivRef().current?.getBoundingClientRect()
+      const rect = outerDivRef.current?.getBoundingClientRect()
       const screenHeight = document.body.clientHeight
 
       if (rect && screenHeight - rect.bottom < 20 && rect.top > 22) {
@@ -302,16 +300,16 @@ export const ComboBox = React.forwardRef<HTMLDivElement, ComboBoxProps>(
       const label = getName(currentOption)
       if (value && filter !== label) {
         setFilter(label)
-        if (onInputChange && inputRef?.current) {
+        if (onInputChange && getInputRef()?.current) {
           Object.getOwnPropertyDescriptor(
             window.HTMLInputElement.prototype,
             "value",
           )?.set?.call(
-            (inputRef as MutableRefObject<HTMLInputElement>).current,
+            (getInputRef() as MutableRefObject<HTMLInputElement>).current,
             label,
           )
           const event = new Event("change", { bubbles: true })
-          ;(inputRef as MutableRefObject<HTMLInputElement>).current.dispatchEvent(
+          ;(getInputRef() as MutableRefObject<HTMLInputElement>).current.dispatchEvent(
             event,
           )
         }
@@ -323,8 +321,9 @@ export const ComboBox = React.forwardRef<HTMLDivElement, ComboBoxProps>(
         <FlexContainer
           id={id}
           className={className}
+          disabled={disabled}
           style={style}
-          ref={getOuterDivRef()}
+          ref={outerDivRef}
           onKeyDown={(e) => onKeyDownHandler(e)}
           error={error != undefined}
           focused={focused}
@@ -336,7 +335,7 @@ export const ComboBox = React.forwardRef<HTMLDivElement, ComboBoxProps>(
               placeholder={placeholder}
               value={filter}
               name={name}
-              ref={inputRef}
+              ref={getInputRef()}
               onChange={(e) => {
                 if (!e.target.value && onSelectionChange) {
                   onSelectionChange(name, undefined, undefined)
@@ -356,7 +355,7 @@ export const ComboBox = React.forwardRef<HTMLDivElement, ComboBoxProps>(
             <ComboBoxButton
               id={id ? id + "-button" : undefined}
               disabled={disabled}
-              rotate={isOpen}
+              rotate={String(isOpen)}
               onFocus={() => setFocused(true)}
               onClick={() => setIsOpen(!isOpen)}
             />
@@ -366,7 +365,7 @@ export const ComboBox = React.forwardRef<HTMLDivElement, ComboBoxProps>(
         </FlexContainer>
         <Popup
           ref={popupRef}
-          targetElementRef={getOuterDivRef()}
+          targetElementRef={outerDivRef}
           style={{
             width: getPopupWidth(),
             maxHeight: getPopupHeight(),

@@ -36,7 +36,9 @@ export const WarningDialog = React.forwardRef<
         <ContentBox>{message}</ContentBox>
       </StyledModalContent>
       <ModalFooter>
-        <StyledButton type="button" onClick={onClose} value="OK" />
+        <StyledButton type="button" onClick={onClose}>
+          OK
+        </StyledButton>
       </ModalFooter>
     </StyledModal>
   )

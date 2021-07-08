@@ -51,17 +51,17 @@ export const FormDialog = React.forwardRef<HTMLDivElement, FormDialogProps>(
         </ModalContent>
         <ModalFooter>
           <StyledButton
+            primary
             type="button"
-            value={submitButtonLabel}
             onClick={() => {
               formRef.current?.dispatchEvent(createEvent("submit"))
             }}
-          />
-          <StyledButton
-            type="button"
-            onClick={onClose}
-            value={cancelButtonLabel}
-          />
+          >
+            {submitButtonLabel}
+          </StyledButton>
+          <StyledButton type="button" onClick={onClose}>
+            {cancelButtonLabel}
+          </StyledButton>
         </ModalFooter>
       </StyledModal>
     )

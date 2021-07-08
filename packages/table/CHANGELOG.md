@@ -1,119 +1,70 @@
 # Change Log
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
 ## [0.2.11](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-table@0.2.10...@jfront/ui-table@0.2.11) (2021-06-28)
 
 **Note:** Version bump only for package @jfront/ui-table
 
-
-
-
-
 ## [0.2.10](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-table@0.2.9...@jfront/ui-table@0.2.10) (2021-06-23)
 
 **Note:** Version bump only for package @jfront/ui-table
-
-
-
-
 
 ## [0.2.9](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-table@0.2.8...@jfront/ui-table@0.2.9) (2021-06-15)
 
 **Note:** Version bump only for package @jfront/ui-table
 
-
-
-
-
 ## [0.2.8](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-table@0.2.7...@jfront/ui-table@0.2.8) (2021-06-11)
 
 **Note:** Version bump only for package @jfront/ui-table
-
-
-
-
 
 ## [0.2.7](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-table@0.2.6...@jfront/ui-table@0.2.7) (2021-06-11)
 
 **Note:** Version bump only for package @jfront/ui-table
 
-
-
-
-
 ## [0.2.6](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-table@0.2.5...@jfront/ui-table@0.2.6) (2021-05-26)
 
 **Note:** Version bump only for package @jfront/ui-table
 
-
-
-
-
 ## [0.2.5](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-table@0.2.4...@jfront/ui-table@0.2.5) (2021-05-06)
-
 
 ### Bug Fixes
 
-* react table resize ([7fbe317](https://github.com/Jepria/jfront-ui/commit/7fbe3179257ea3179123c653c1d4e041e502bc54))
-
-
-
-
+- react table resize
+  ([7fbe317](https://github.com/Jepria/jfront-ui/commit/7fbe3179257ea3179123c653c1d4e041e502bc54))
 
 ## [0.2.4](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-table@0.2.3...@jfront/ui-table@0.2.4) (2021-04-01)
 
 **Note:** Version bump only for package @jfront/ui-table
 
-
-
-
-
 ## [0.2.3](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-table@0.2.2...@jfront/ui-table@0.2.3) (2021-03-31)
 
 **Note:** Version bump only for package @jfront/ui-table
-
-
-
-
 
 ## [0.2.2](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-table@0.2.1...@jfront/ui-table@0.2.2) (2021-03-31)
 
 **Note:** Version bump only for package @jfront/ui-table
 
-
-
-
-
 ## [0.2.1](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-table@0.2.0...@jfront/ui-table@0.2.1) (2021-03-18)
 
 **Note:** Version bump only for package @jfront/ui-table
 
-
-
-
-
 # [0.2.0](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-table@0.1.12...@jfront/ui-table@0.2.0) (2021-03-18)
-
 
 ### Bug Fixes
 
-* empty array config ([ad51a1b](https://github.com/Jepria/jfront-ui/commit/ad51a1be1c6c3027bbf95dec2dec360b381e2e94))
-
+- empty array config
+  ([ad51a1b](https://github.com/Jepria/jfront-ui/commit/ad51a1be1c6c3027bbf95dec2dec360b381e2e94))
 
 ### Features
 
-* package dependencies update to latest versions ([90946d2](https://github.com/Jepria/jfront-ui/commit/90946d25fcb08fc77e4b143567963682f8ff3d2b))
-
+- package dependencies update to latest versions
+  ([90946d2](https://github.com/Jepria/jfront-ui/commit/90946d25fcb08fc77e4b143567963682f8ff3d2b))
 
 ### BREAKING CHANGES
 
-* react upgraded to 17.0.1
-
-
-
-
+- react upgraded to 17.0.1
 
 # Change Log
 

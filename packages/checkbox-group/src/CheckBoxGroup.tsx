@@ -2,6 +2,7 @@ import React, { useState, ReactNode, useEffect, useRef } from "react"
 import styled from "styled-components"
 import { LoadingImage, ExclamationImage } from "@jfront/ui-icons"
 import { CheckBox } from "@jfront/ui-checkbox"
+import { useOnClickOutside } from "@jfront/ui-hooks"
 
 interface CheckBoxGroupInterface {
   children: ReactNode[]
@@ -31,25 +32,55 @@ interface CheckBoxGroupInterface {
 }
 
 interface StyledCheckBoxGroupProps {
+  focused?: boolean
   error?: string
 }
 
 const StyledCheckBoxGroup = styled.div<StyledCheckBoxGroupProps>`
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
-  -webkit-box-pack: end;
-  -ms-flex-pack: end;
   justify-content: flex-end;
-  border: 1px solid grey;
   padding: 0;
   margin: 0;
   min-width: 150px;
-  ${(props) => (props.error ? "border: 1px solid red;" : "")};
+  color: ${(props) => props.theme.checkboxGroup.color} !important;
+  background: ${(props) => props.theme.checkboxGroup.bgColor};
+  border-radius: ${(props) => props.theme.checkboxGroup.borderRadius};
+  ${(props) =>
+    props.focused
+      ? `box-shadow: 0 0 5px ${
+          props.error
+            ? props.theme.checkboxGroup.errorBorderColor
+            : props.theme.checkboxGroup.focusedBorderColor
+        };`
+      : ""}
+  ${(props) =>
+    !!props.error
+      ? `border: ${props.theme.checkboxGroup.borderWidth} ${props.theme.checkboxGroup.borderStyle} ${props.theme.checkboxGroup.errorBorderColor};`
+      : props.focused
+      ? `border: ${props.theme.checkboxGroup.borderWidth} ${props.theme.checkboxGroup.borderStyle} ${props.theme.checkboxGroup.focusedBorderColor};`
+      : `border: ${props.theme.checkboxGroup.borderWidth} ${props.theme.checkboxGroup.borderStyle} ${props.theme.checkboxGroup.borderColor};
+    &:hover {
+      border: ${props.theme.checkboxGroup.borderWidth} ${props.theme.checkboxGroup.borderStyle} ${props.theme.checkboxGroup.hoverBorderColor};
+    }
+  `}
 `
+
+StyledCheckBoxGroup.defaultProps = {
+  theme: {
+    checkboxGroup: {
+      bgColor: "#fff",
+      borderWidth: "1px",
+      borderStyle: "solid",
+      borderColor: "#ccc",
+      borderRadius: 0,
+      color: "black",
+      focusedBorderColor: "#99bbe8",
+      errorBorderColor: "red",
+      hoverBorderColor: "#99bbe8",
+    },
+  },
+}
 
 const StyledDiv = styled.div`
   display: inline-flex;
@@ -69,29 +100,28 @@ interface StyledUlProps {
 }
 
 const StyledUl = styled.div<StyledUlProps>`
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-box-flex: 1;
-  -ms-flex-positive: 1;
   flex-grow: 1;
   box-sizing: border-box;
   height: 100%;
   ${(props) =>
     props.direction === Direction.column
-      ? `-webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;`
-      : `-webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;`};
+      ? `flex-direction: column;`
+      : `flex-direction: row;`};
   overflow: auto;
   padding: 7px;
-  font-family: tahoma, arial, helvetica, sans-serif;
-  font-size: 12px;
+  font-size: ${(props) => props.theme.fontSize.md};
+  font-family: ${(props) => props.theme.fontFamily};
 `
+
+StyledUl.defaultProps = {
+  theme: {
+    fontSize: {
+      md: "12px",
+    },
+    fontFamily: "tahoma, arial, helvetica, sans-serif",
+  },
+}
 
 export const CheckBoxGroup = React.forwardRef<
   HTMLDivElement,
@@ -112,9 +142,11 @@ export const CheckBoxGroup = React.forwardRef<
     },
     ref,
   ) => {
+    const [focused, setFocused] = useState<boolean>(false)
     const [state, setState] = useState<any[]>([])
-
     const [mapState, setMapState] = useState(new Map())
+    const containerRef = useRef(null)
+    useOnClickOutside(containerRef, () => setFocused(false))
 
     useEffect(() => {
       if (values) {
@@ -208,7 +240,7 @@ export const CheckBoxGroup = React.forwardRef<
     const [selectAll, setSelectAll] = useState(false)
 
     return (
-      <StyledDiv>
+      <StyledDiv ref={containerRef}>
         {props.selectAll && (
           <CheckBox
             ref={selectAllRef}
@@ -220,6 +252,7 @@ export const CheckBoxGroup = React.forwardRef<
           />
         )}
         <StyledCheckBoxGroup
+          focused={focused}
           style={style}
           className={className}
           ref={ref}
@@ -244,6 +277,7 @@ export const CheckBoxGroup = React.forwardRef<
                   name: name ? name + "-" + checkbox.props.value : undefined,
                   disabled: checkbox.props.disabled || disabled,
                   checked: checked,
+                  onFocus: () => setFocused(true),
                   onChange:
                     checkbox.props.onChange === undefined
                       ? (event: any, _text: any) =>

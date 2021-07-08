@@ -49,6 +49,12 @@ export const TreeNode: React.FC<TreeNodeProps> = ({
     [isPartlySelected],
   )
 
+  const onEnterClick = (e: React.KeyboardEvent<HTMLSpanElement>) => {
+    if (e.key === "Enter") {
+      if (!isLoading) setExpanded()
+    }
+  }
+
   return (
     <>
       <StyledTreeNode
@@ -64,6 +70,8 @@ export const TreeNode: React.FC<TreeNodeProps> = ({
         <span>
           {!isLeaf && (
             <span
+              tabIndex={0}
+              onKeyUp={onEnterClick}
               onClick={(e) => {
                 e.stopPropagation()
                 if (!isLoading) setExpanded()
@@ -83,7 +91,7 @@ export const TreeNode: React.FC<TreeNodeProps> = ({
             </span>
           )}
           {isLeaf && (
-            <span>
+            <span tabIndex={0} onKeyUp={onEnterClick}>
               <LeafImage />
             </span>
           )}

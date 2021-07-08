@@ -44,9 +44,7 @@ export const SimpleTree = React.forwardRef<HTMLDivElement, SimpleTreeProps>(
 
     return (
       <>
-        <div
-          style={{ display: "inline-flex", flexGrow: 1, overflow: "hidden" }}
-        >
+        <div style={{ display: "inline-flex", flexGrow: 1 }}>
           <StyledTree
             className="jfront-ui-tree"
             tabIndex={0}

@@ -7,33 +7,78 @@ export const Grid = styled(Table)`
 `
 
 export const GridTable = styled(Table.Table)`
-  font-family: Arial Unicode MS, Arial, sans-serif;
-  font-size: small;
-  @media only screen and (max-width: 760px),
-    (min-device-width: 768px) and (max-device-width: 1024px) {
+  font-size: ${(props) => props.theme.fontSize.sm};
+  font-family: ${(props) => props.theme.fontFamily};
+  @media (max-width: ${(props) => props.theme.breakpoints.md}) {
     min-width: 100% !important;
   }
 `
 
+GridTable.defaultProps = {
+  theme: {
+    fontSize: {
+      sm: "11px",
+    },
+    breakpoints: {
+      md: "768px",
+    },
+    fontFamily: "tahoma, arial, helvetica, sans-serif",
+  },
+}
+
 export const GridHeader = styled(Table.Header)`
-  background-color: #ededed;
+  background: ${(props) => props.theme.grid.header.bgColor};
   background-clip: padding-box;
 `
 
+GridHeader.defaultProps = {
+  theme: {
+    breakpoints: {
+      md: "768px",
+    },
+    grid: {
+      header: {
+        bgColor: "#ededed",
+      },
+    },
+  },
+}
+
 export const GridHeaderRow = styled(Table.Row)`
-  border-bottom: 1px solid #ddd;
+  border-bottom: ${(props) =>
+    `${props.theme.grid.header.borderWidth} 
+    ${props.theme.grid.header.borderStyle}
+    ${props.theme.grid.header.borderColor}`};
 `
+GridHeaderRow.defaultProps = {
+  theme: {
+    breakpoints: {
+      md: "768px",
+    },
+    grid: {
+      header: {
+        bgColor: "#ededed",
+        borderWidth: "1px",
+        borderStyle: "solid",
+        borderColor: "#ddd",
+        borderRadius: 0,
+      },
+    },
+  },
+}
 
 export const GridHeaderCell = styled(Table.HeaderCell)`
   min-height: 31px;
-  border-right: 1px solid #ddd;
-  color: black;
+  border-right: ${(props) =>
+    `${props.theme.grid.header.borderWidth} 
+    ${props.theme.grid.header.borderStyle}
+    ${props.theme.grid.header.borderColor}`};
+  color: ${(props) => props.theme.grid.header.color};
   text-shadow: none;
-  font: 11px tahoma, arial, verdana, sans-serif;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  background-color: #ededed;
+  background: ${(props) => props.theme.grid.header.bgColor};
   background-clip: padding-box;
   align-items: center;
   padding: 3px;
@@ -41,6 +86,23 @@ export const GridHeaderCell = styled(Table.HeaderCell)`
   display: inline-flex;
   flex: none;
 `
+GridHeaderCell.defaultProps = {
+  theme: {
+    breakpoints: {
+      md: "768px",
+    },
+    grid: {
+      header: {
+        color: "black",
+        bgColor: "#ededed",
+        borderWidth: "1px",
+        borderStyle: "solid",
+        borderColor: "#ddd",
+        borderRadius: 0,
+      },
+    },
+  },
+}
 
 export const GridBody = styled(Table.Body)``
 
@@ -50,23 +112,56 @@ export interface GridRowProps {
 
 export const GridRow = styled(Table.Row)<GridRowProps>`
   box-sizing: border-box;
-  border-bottom: 1px solid #ededed;
-  border-top: 1px solid #ffffff;
+  border-top: ${(props) =>
+    `${props.theme.grid.row.borderWidth} 
+    ${props.theme.grid.row.borderStyle}
+    transparent`};
+  border-bottom: ${(props) =>
+    `${props.theme.grid.row.borderWidth} 
+    ${props.theme.grid.row.borderStyle}
+    ${props.theme.grid.row.borderColor}`};
+  color: ${(props) => props.theme.grid.row.color};
   ${(props) =>
     props.selected
-      ? `background: #dfe8f6; border-bottom: 1px solid #b7cefd; border-top: 1px solid #b7cefd;`
+      ? `background: ${props.theme.grid.row.selectedBgColor};
+      border-bottom: ${props.theme.grid.row.borderWidth} ${props.theme.grid.row.borderStyle} ${props.theme.grid.row.selectedBorderColor};
+      border-top: ${props.theme.grid.row.borderWidth} ${props.theme.grid.row.borderStyle} ${props.theme.grid.row.selectedBorderColor};
+      color: ${props.theme.grid.row.selectedColor};
+      `
       : `
-    background: #fff;
+    background: ${props.theme.grid.row.bgColor};
     &:nth-child(odd) {
-      background: #fafafa;
-      border-top: 1px solid #fafafa;
+      background: ${props.theme.grid.row.oddBgColor};
+      border-top: ${props.theme.grid.row.borderWidth} ${props.theme.grid.row.borderStyle} ${props.theme.grid.row.oddBgColor};
     }
     &:hover {
-      background: #eee;
-      border-top: 1px solid #ededed;
+      background: ${props.theme.grid.row.hoverBgColor};
+      border-top: ${props.theme.grid.row.borderWidth} ${props.theme.grid.row.borderStyle} ${props.theme.grid.row.borderColor};
     }
   `}
 `
+GridRow.defaultProps = {
+  theme: {
+    breakpoints: {
+      md: "768px",
+    },
+    grid: {
+      row: {
+        color: "black",
+        borderWidth: "1px",
+        borderStyle: "solid",
+        borderColor: "#ededed",
+        borderRadius: 0,
+        bgColor: "transparent",
+        oddBgColor: "#fafafa",
+        hoverBgColor: "#eee",
+        selectedBgColor: "#dfe8f6",
+        selectedColor: "black",
+        selectedBorderColor: "#b7cefd",
+      },
+    },
+  },
+}
 
 export const GridRowCell = styled(Table.Cell)`
   width: 150px;
@@ -75,16 +170,13 @@ export const GridRowCell = styled(Table.Cell)`
   min-height: 19px;
   cursor: pointer;
   padding: 2px;
-  @media only screen and (min-width: 761px) {
+  @media (min-width: ${(props) => props.theme.breakpoints.md}) {
     padding-left: 5px;
     overflow: hidden;
-    font: 11px tahoma, arial, verdana, sans-serif;
     text-overflow: ellipsis;
     white-space: nowrap;
   }
-  @media only screen and (max-width: 760px),
-    (min-device-width: 768px) and (max-device-width: 1024px) {
-    font-size: 0.8em;
+  @media (max-width: ${(props) => props.theme.breakpoints.md}) {
     width: 100% !important;
     display: flex !important;
     &::before {
@@ -92,6 +184,14 @@ export const GridRowCell = styled(Table.Cell)`
     }
   }
 `
+
+GridRowCell.defaultProps = {
+  theme: {
+    breakpoints: {
+      md: "768px",
+    },
+  },
+}
 
 export const Resizer = styled.div`
   display: inline-block;
@@ -151,30 +251,32 @@ export const PagingToolbar = styled.div`
   white-space: nowrap;
 `
 
-export const Item = styled.button`
-  font: 11px arial, tahoma, verdana, helvetica;
-  height: 100%;
-  padding: 1px 1px;
-  margin: 0 1px;
-  background-color: transparent;
-  background-image: none;
-  border: solid 1px transparent;
-  ${(props) =>
-    props.disabled
-      ? "opacity: 0.5;"
-      : `opacity: 1;
-      &:hover {
-    border: solid 1px #99bbe8;
-    background: #ddefff;
-  }`}
+export const StyledPagingBar = styled(Table.PagingBar)`
+  border: ${(props) =>
+    `${props.theme.grid.pagingBar.borderWidth} 
+    ${props.theme.grid.pagingBar.borderStyle}
+    ${props.theme.grid.pagingBar.borderColor}`};
+  background: ${(props) => props.theme.grid.pagingBar.bgColor};
+  color: ${(props) => props.theme.grid.pagingBar.color};
 `
 
-export const StyledPagingBar = styled(Table.PagingBar)`
-  border-style: solid;
-  border-color: rgb(153, 187, 232);
-  border-width: 1px;
-  background: linear-gradient(rgb(218, 230, 244), rgb(208, 222, 240));
-`
+StyledPagingBar.defaultProps = {
+  theme: {
+    breakpoints: {
+      md: "768px",
+    },
+    grid: {
+      pagingBar: {
+        color: "black",
+        borderWidth: "1px",
+        borderStyle: "solid",
+        borderColor: "rgb(153, 187, 232)",
+        borderRadius: 0,
+        bgColor: "linear-gradient(rgb(218, 230, 244), rgb(208, 222, 240))",
+      },
+    },
+  },
+}
 
 export const ModalDiv = styled.div`
   position: absolute;

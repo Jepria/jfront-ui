@@ -18,6 +18,7 @@ export const BasicUsage = () => {
   const [value, setValue] = React.useState<any>(undefined)
   const ref = React.useRef()
   console.log(value)
+  console.log(ref)
 
   return (
     <>

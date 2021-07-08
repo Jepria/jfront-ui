@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react"
 import { forwardRef } from "@jfront/ui-utils"
 import { Popup } from "@jfront/ui-popup"
 import styled from "styled-components"
+import { Link } from "@jfront/ui-link"
 
 export interface BreadcrumbsProps {
   maxItems?: number
@@ -13,12 +14,45 @@ export interface BreadcrumbsProps {
   separator?: () => React.ReactNode | string | React.ReactNode
 }
 
+export const BreadcrumsLink = styled(Link)`
+  color: ${(props) => props.theme.breadcrumbs.color};
+  text-decoration: none;
+  &:hover {
+    ${(props) =>
+      !!props.href ? "text-decoration: underline;" : "text-decoration: none;"}
+  }
+`
+
+BreadcrumsLink.defaultProps = {
+  theme: {
+    fontFamily: "tahoma, arial, helvetica, sans-serif",
+    fontSize: {
+      md: "12px",
+    },
+    link: {
+      color: "rgb(21, 66, 139)",
+      textDecoration: "underline",
+    },
+    breadcrumbs: {
+      color: "currentColor",
+    },
+  },
+}
+
 const Separator = styled.span`
   box-sizing: border-box;
   font-weight: bold;
-  color: currentColor;
+  color: ${(props) => props.theme.breadcrumbs.color};
   margin: 0 5px;
 `
+
+Separator.defaultProps = {
+  theme: {
+    breadcrumbs: {
+      color: "currentColor",
+    },
+  },
+}
 
 const ExpanderContent = styled.span`
   cursor: pointer;
@@ -30,19 +64,36 @@ const ExpanderContent = styled.span`
 const Dot = styled.span`
   height: 4px;
   width: 4px;
-  background-color: currentColor;
+  background: ${(props) => props.theme.breadcrumbs.color};
   border-radius: 50%;
   margin: 0 1px;
   display: inline-block;
 `
 
+Dot.defaultProps = {
+  theme: {
+    breadcrumbs: {
+      color: "currentColor",
+    },
+  },
+}
+
 const Nav = styled.nav`
-  font-family: tahoma, arial, helvetica, sans-serif;
+  font-size: ${(props) => props.theme.fontSize.md};
+  font-family: ${(props) => props.theme.fontFamily};
   box-sizing: border-box;
-  font-size: 11px;
   padding: 0;
   margin: 0;
 `
+
+Nav.defaultProps = {
+  theme: {
+    fontFamily: "tahoma, arial, helvetica, sans-serif",
+    fontSize: {
+      md: "12px",
+    },
+  },
+}
 
 const Expander = React.forwardRef<
   HTMLSpanElement,

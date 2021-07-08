@@ -2,9 +2,23 @@ import styled from "styled-components"
 import { TextInput } from "@jfront/ui-input"
 
 export const StyledTextInput = styled(TextInput)`
-  max-width: 45%;
+  max-width: 100%;
+  min-width: 100%;
   margin-bottom: 5px;
+  @media (min-width: ${(props) => props.theme.breakpoints.sm}) {
+    flex-direction: row;
+    max-width: 45%;
+    min-width: 45%;
+  }
 `
+
+StyledTextInput.defaultProps = {
+  theme: {
+    breakpoints: {
+      sm: "576px",
+    },
+  },
+}
 
 export const StyledDualList = styled.div`
   box-sizing: border-box;
@@ -14,25 +28,66 @@ export const StyledDualList = styled.div`
   flex-direction: column;
   box-sizing: border-box;
   width: 100%;
+  font-size: ${(props) => props.theme.fontSize.md};
+  font-family: ${(props) => props.theme.fontFamily};
+  color: ${(props) => props.theme.duallist.color};
 `
+
+StyledDualList.defaultProps = {
+  theme: {
+    fontSize: {
+      md: "12px",
+    },
+    fontFamily: "tahoma, arial, helvetica, sans-serif",
+    duallist: {
+      color: "#000",
+    },
+  },
+}
 
 export const Container = styled.div`
   box-sizing: border-box;
   width: 100%;
   flex-grow: 1;
   display: flex;
+  flex-direction: column;
+  @media (min-width: ${(props) => props.theme.breakpoints.sm}) {
+    flex-direction: row;
+  }
 `
+
+Container.defaultProps = {
+  theme: {
+    breakpoints: {
+      sm: "576px",
+    },
+  },
+}
 
 export const ButtonBar = styled.div`
   box-sizing: border-box;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 10%;
-  min-width: 32px;
-  height: 100%;
+  height: 10%;
+  height: 32px;
+  width: 100%;
+  flex-direction: row;
+  @media (min-width: ${(props) => props.theme.breakpoints.sm}) {
+    width: 10%;
+    min-width: 32px;
+    height: 100%;
+    flex-direction: column;
+  }
 `
+
+ButtonBar.defaultProps = {
+  theme: {
+    breakpoints: {
+      sm: "576px",
+    },
+  },
+}
 
 export interface ListProps {
   error?: boolean
@@ -42,17 +97,53 @@ export const List = styled.select.attrs({ multiple: true })<ListProps>`
   padding: 0;
   overflow: auto;
   flex-grow: 1;
-  width: 45%;
+  width: 100%;
   outline: 0;
+  border-radius: ${(props) => props.theme.duallist.borderRadius};
+  background: ${(props) => props.theme.duallist.bgColor};
+  color: ${(props) => props.theme.duallist.color};
   &:focus {
-    box-shadow: 0 0 5px #99bbe8;
-    border: 1px solid #99bbe8;
+    box-shadow: 0 0 5px
+      ${(props) =>
+        props.error
+          ? props.theme.duallist.errorBorderColor
+          : props.theme.duallist.focusedBorderColor};
   }
-  ${(props: ListProps) =>
-    props.error
-      ? "border: 1px solid red"
-      : "border: 1px solid #ccc; border-top: 1px solid #999;"}
+  &:hover:enabled {
+    border: 1px solid
+      ${(props) =>
+        props.error
+          ? props.theme.duallist.errorBorderColor
+          : props.theme.duallist.hoverBorderColor};
+  }
+  border: 1px solid
+    ${(props) =>
+      props.error
+        ? props.theme.duallist.errorBorderColor
+        : props.theme.duallist.borderColor};
+  @media (min-width: ${(props) => props.theme.breakpoints.sm}) {
+    width: 45%;
+  }
 `
+
+List.defaultProps = {
+  theme: {
+    breakpoints: {
+      sm: "576px",
+    },
+    duallist: {
+      borderWidth: "1px",
+      borderStyle: "solid",
+      borderColor: "#ccc",
+      borderRadius: 0,
+      bgColor: "#fff",
+      color: "#000",
+      focusedBorderColor: "#99bbe8",
+      errorBorderColor: "red",
+      hoverBorderColor: "#99bbe8",
+    },
+  },
+}
 
 export const ListOption = styled.option`
   padding-left: 3px;
@@ -64,11 +155,12 @@ export const Button = styled.button.attrs({ type: "button" })`
   padding: 0;
   text-decoration: none;
   font-weight: bold;
-  height: 25px;
   cursor: pointer;
-  border: 1px outset #ccc;
+  border: transparent;
+  background: transparent;
   border-radius: 5px;
-  width: 32px;
+  height: 25px;
+  width: 25px;
   display: flex;
   justify-content: center;
   align-items: center;

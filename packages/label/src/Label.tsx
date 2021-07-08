@@ -1,25 +1,50 @@
-import React, { RefObject } from "react"
+import React from "react"
 import styled from "styled-components"
 
-export interface LabelProps
-  extends React.LabelHTMLAttributes<HTMLLabelElement> {
-  ref?: RefObject<HTMLLabelElement>
-}
-
 const StyledLabel = styled.label`
-  position: relative;
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  padding-right: 5px;
-  font-family: tahoma, arial, helvetica, sans-serif;
-  font-size: 12px;
-  float: left;
-  word-break: break-word;
-  justify-content: flex-end;
-  text-align: right;
+  display: inline-block;
+  margin: ${(props) => props.theme.label.margin};
+  padding: ${(props) => props.theme.label.padding};
+  font-size: ${(props) => props.theme.fontSize.md};
+  font-family: ${(props) => props.theme.fontFamily};
+  color: ${(props) => props.theme.label.color};
+  word-break: normal;
+  hyphens: auto;
+  line-height: 1.5715;
+  text-align: left;
+  @media (min-width: ${(props) => props.theme.breakpoints.md}) {
+    min-width: ${(props) => props.theme.label.minWidth};
+    max-width: ${(props) => props.theme.label.maxWidth};
+    text-align: right;
+  }
 `
 
-export const Label: React.FC<LabelProps> = (props) => {
-  return <StyledLabel {...props}>{props.children}</StyledLabel>
+StyledLabel.defaultProps = {
+  theme: {
+    fontFamily: "tahoma, arial, helvetica, sans-serif",
+    fontSize: {
+      md: "12px",
+    },
+    breakpoints: {
+      md: "768px",
+    },
+    label: {
+      margin: 0,
+      color: "#000",
+      padding: "0 5px 0 0",
+      maxWidth: "200px",
+      minWidth: "150px",
+    },
+  },
 }
+
+export const Label = React.forwardRef<
+  HTMLLabelElement,
+  React.LabelHTMLAttributes<HTMLLabelElement>
+>((props, ref) => {
+  return (
+    <StyledLabel {...props} ref={ref}>
+      {props.children}
+    </StyledLabel>
+  )
+})

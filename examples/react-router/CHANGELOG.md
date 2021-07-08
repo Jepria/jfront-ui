@@ -1,111 +1,59 @@
 # Change Log
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
 ## [0.4.20](https://github.com/Jepria/jfront-ui/compare/jfront-react-router@0.4.19...jfront-react-router@0.4.20) (2021-06-28)
 
 **Note:** Version bump only for package jfront-react-router
 
-
-
-
-
 ## [0.4.19](https://github.com/Jepria/jfront-ui/compare/jfront-react-router@0.4.18...jfront-react-router@0.4.19) (2021-06-23)
 
 **Note:** Version bump only for package jfront-react-router
-
-
-
-
 
 ## [0.4.18](https://github.com/Jepria/jfront-ui/compare/jfront-react-router@0.4.17...jfront-react-router@0.4.18) (2021-06-15)
 
 **Note:** Version bump only for package jfront-react-router
 
-
-
-
-
 ## [0.4.17](https://github.com/Jepria/jfront-ui/compare/jfront-react-router@0.4.16...jfront-react-router@0.4.17) (2021-06-11)
 
 **Note:** Version bump only for package jfront-react-router
-
-
-
-
 
 ## [0.4.16](https://github.com/Jepria/jfront-ui/compare/jfront-react-router@0.4.15...jfront-react-router@0.4.16) (2021-06-11)
 
 **Note:** Version bump only for package jfront-react-router
 
-
-
-
-
 ## [0.4.15](https://github.com/Jepria/jfront-ui/compare/jfront-react-router@0.4.14...jfront-react-router@0.4.15) (2021-05-26)
 
 **Note:** Version bump only for package jfront-react-router
-
-
-
-
 
 ## [0.4.14](https://github.com/Jepria/jfront-ui/compare/jfront-react-router@0.4.13...jfront-react-router@0.4.14) (2021-05-06)
 
 **Note:** Version bump only for package jfront-react-router
 
-
-
-
-
 ## [0.4.13](https://github.com/Jepria/jfront-ui/compare/jfront-react-router@0.4.12...jfront-react-router@0.4.13) (2021-04-01)
 
 **Note:** Version bump only for package jfront-react-router
-
-
-
-
 
 ## [0.4.12](https://github.com/Jepria/jfront-ui/compare/jfront-react-router@0.4.11...jfront-react-router@0.4.12) (2021-03-31)
 
 **Note:** Version bump only for package jfront-react-router
 
-
-
-
-
 ## [0.4.11](https://github.com/Jepria/jfront-ui/compare/jfront-react-router@0.4.10...jfront-react-router@0.4.11) (2021-03-31)
 
 **Note:** Version bump only for package jfront-react-router
-
-
-
-
 
 ## [0.4.10](https://github.com/Jepria/jfront-ui/compare/jfront-react-router@0.4.9...jfront-react-router@0.4.10) (2021-03-31)
 
 **Note:** Version bump only for package jfront-react-router
 
-
-
-
-
 ## [0.4.9](https://github.com/Jepria/jfront-ui/compare/jfront-react-router@0.4.8...jfront-react-router@0.4.9) (2021-03-18)
 
 **Note:** Version bump only for package jfront-react-router
 
-
-
-
-
 ## [0.4.8](https://github.com/Jepria/jfront-ui/compare/jfront-react-router@0.4.7...jfront-react-router@0.4.8) (2021-03-18)
 
 **Note:** Version bump only for package jfront-react-router
-
-
-
-
 
 # Change Log
 

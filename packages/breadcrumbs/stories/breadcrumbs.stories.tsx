@@ -1,6 +1,5 @@
 import * as React from "react"
-import { Breadcrumbs } from "../src"
-import { Link } from "@jfront/ui-link"
+import { Breadcrumbs, BreadcrumsLink as NavLink } from "../src"
 import { Tab, TabPanel } from "@jfront/ui-tabpanel"
 import {
   Toolbar,
@@ -19,11 +18,11 @@ export const BasicUsage = () => {
     <>
       Breadcrumbs
       <Breadcrumbs>
-        <Link href="/link1">Link1</Link>
-        <Link href="/link2">Link2</Link>
-        <Link href="/link3">Link3</Link>
-        <Link href="/link4">Link4</Link>
-        <Link>Current page</Link>
+        <NavLink href="/link1">Link1</NavLink>
+        <NavLink href="/link2">Link2</NavLink>
+        <NavLink href="/link3">Link3</NavLink>
+        <NavLink href="/link4">Link4</NavLink>
+        <NavLink>Current page</NavLink>
       </Breadcrumbs>
     </>
   )
@@ -37,16 +36,16 @@ export const InTabPanel = () => {
       <TabPanel>
         <Tab selected={selected} onClick={() => setSelected(true)}>
           <Breadcrumbs collapseMethod="dropdown">
-            <Link href="/link1">Root</Link>
-            <Link href="/link2">Prev module 1</Link>
-            <Link href="/link3">Prev module 2</Link>
-            <Link href="/link4">Prev module 3</Link>
-            <Link
+            <NavLink href="/link1">Root</NavLink>
+            <NavLink href="/link2">Prev module 1</NavLink>
+            <NavLink href="/link3">Prev module 2</NavLink>
+            <NavLink href="/link4">Prev module 3</NavLink>
+            <NavLink
               style={!selected ? { cursor: "pointer" } : undefined}
               onClick={() => setSelected(true)}
             >
               Current module
-            </Link>
+            </NavLink>
           </Breadcrumbs>
         </Tab>
         <Tab selected={!selected} onClick={() => setSelected(false)}>
@@ -83,18 +82,18 @@ export const InToolBar = () => {
             alignItems: "center",
           }}
         >
-          <Link href="/link1">Root</Link>
-          <Link href="/link2">Prev module 1</Link>
-          <Link href="/link3">Prev module 2</Link>
-          <Link href="/link4">Prev module 3</Link>
+          <NavLink href="/link1">Root</NavLink>
+          <NavLink href="/link2">Prev module 1</NavLink>
+          <NavLink href="/link3">Prev module 2</NavLink>
+          <NavLink href="/link4">Prev module 3</NavLink>
           {!selected && (
-            <Link href="/link5" onClick={() => setSelected(true)}>
+            <NavLink href="/link5" onClick={() => setSelected(true)}>
               Current module
-            </Link>
+            </NavLink>
           )}
-          <Link onClick={() => setSelected(true)}>
+          <NavLink onClick={() => setSelected(true)}>
             {selected ? "Current module" : "Child module"}
-          </Link>
+          </NavLink>
         </Breadcrumbs>
         <ToolbarSplitter />
         <ToolbarButtonCreate />

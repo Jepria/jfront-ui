@@ -1,111 +1,59 @@
 # Change Log
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
 ## [0.3.26](https://github.com/Jepria/jfront-ui/compare/jfront-cra@0.3.25...jfront-cra@0.3.26) (2021-06-28)
 
 **Note:** Version bump only for package jfront-cra
 
-
-
-
-
 ## [0.3.25](https://github.com/Jepria/jfront-ui/compare/jfront-cra@0.3.24...jfront-cra@0.3.25) (2021-06-23)
 
 **Note:** Version bump only for package jfront-cra
-
-
-
-
 
 ## [0.3.24](https://github.com/Jepria/jfront-ui/compare/jfront-cra@0.3.23...jfront-cra@0.3.24) (2021-06-15)
 
 **Note:** Version bump only for package jfront-cra
 
-
-
-
-
 ## [0.3.23](https://github.com/Jepria/jfront-ui/compare/jfront-cra@0.3.22...jfront-cra@0.3.23) (2021-06-11)
 
 **Note:** Version bump only for package jfront-cra
-
-
-
-
 
 ## [0.3.22](https://github.com/Jepria/jfront-ui/compare/jfront-cra@0.3.21...jfront-cra@0.3.22) (2021-06-11)
 
 **Note:** Version bump only for package jfront-cra
 
-
-
-
-
 ## [0.3.21](https://github.com/Jepria/jfront-ui/compare/jfront-cra@0.3.20...jfront-cra@0.3.21) (2021-05-26)
 
 **Note:** Version bump only for package jfront-cra
-
-
-
-
 
 ## [0.3.20](https://github.com/Jepria/jfront-ui/compare/jfront-cra@0.3.19...jfront-cra@0.3.20) (2021-05-06)
 
 **Note:** Version bump only for package jfront-cra
 
-
-
-
-
 ## [0.3.19](https://github.com/Jepria/jfront-ui/compare/jfront-cra@0.3.18...jfront-cra@0.3.19) (2021-04-01)
 
 **Note:** Version bump only for package jfront-cra
-
-
-
-
 
 ## [0.3.18](https://github.com/Jepria/jfront-ui/compare/jfront-cra@0.3.17...jfront-cra@0.3.18) (2021-03-31)
 
 **Note:** Version bump only for package jfront-cra
 
-
-
-
-
 ## [0.3.17](https://github.com/Jepria/jfront-ui/compare/jfront-cra@0.3.16...jfront-cra@0.3.17) (2021-03-31)
 
 **Note:** Version bump only for package jfront-cra
-
-
-
-
 
 ## [0.3.16](https://github.com/Jepria/jfront-ui/compare/jfront-cra@0.3.15...jfront-cra@0.3.16) (2021-03-31)
 
 **Note:** Version bump only for package jfront-cra
 
-
-
-
-
 ## [0.3.15](https://github.com/Jepria/jfront-ui/compare/jfront-cra@0.3.14...jfront-cra@0.3.15) (2021-03-18)
 
 **Note:** Version bump only for package jfront-cra
 
-
-
-
-
 ## [0.3.14](https://github.com/Jepria/jfront-ui/compare/jfront-cra@0.3.13...jfront-cra@0.3.14) (2021-03-18)
 
 **Note:** Version bump only for package jfront-cra
-
-
-
-
 
 # Change Log
 

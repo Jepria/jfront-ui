@@ -55,7 +55,8 @@
     "@jfront/ui-tabpanel": "^0.2.11",
     "@jfront/ui-textarea": "^0.3.11",
     "@jfront/ui-toolbar": "^0.2.11",
-    "@jfront/ui-tree": "^0.2.11"
+    "@jfront/ui-tree": "^0.2.11",
+    "@jfront/ui-theme": "^0.0.1"
   },
   "peerDependencies": {
     "react": "^17.0.1",

@@ -1,114 +1,62 @@
 # Change Log
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
 ## [0.4.6](https://github.com/Jepria/jfront-ui/compare/jfront-formik@0.4.5...jfront-formik@0.4.6) (2021-06-28)
 
 **Note:** Version bump only for package jfront-formik
 
-
-
-
-
 ## [0.4.5](https://github.com/Jepria/jfront-ui/compare/jfront-formik@0.4.4...jfront-formik@0.4.5) (2021-06-23)
 
 **Note:** Version bump only for package jfront-formik
-
-
-
-
 
 ## [0.4.4](https://github.com/Jepria/jfront-ui/compare/jfront-formik@0.4.3...jfront-formik@0.4.4) (2021-06-15)
 
 **Note:** Version bump only for package jfront-formik
 
-
-
-
-
 ## [0.4.3](https://github.com/Jepria/jfront-ui/compare/jfront-formik@0.4.2...jfront-formik@0.4.3) (2021-06-11)
 
 **Note:** Version bump only for package jfront-formik
-
-
-
-
 
 ## [0.4.2](https://github.com/Jepria/jfront-ui/compare/jfront-formik@0.4.1...jfront-formik@0.4.2) (2021-06-11)
 
 **Note:** Version bump only for package jfront-formik
 
-
-
-
-
 ## [0.4.1](https://github.com/Jepria/jfront-ui/compare/jfront-formik@0.4.0...jfront-formik@0.4.1) (2021-05-26)
 
 **Note:** Version bump only for package jfront-formik
 
-
-
-
-
 # [0.4.0](https://github.com/Jepria/jfront-ui/compare/jfront-formik@0.3.10...jfront-formik@0.4.0) (2021-05-06)
-
 
 ### Features
 
-* **datepicker:** add ISO string support ([a53ca13](https://github.com/Jepria/jfront-ui/commit/a53ca138895039b880fa7729009c749a236086d1))
-
-
-
-
+- **datepicker:** add ISO string support
+  ([a53ca13](https://github.com/Jepria/jfront-ui/commit/a53ca138895039b880fa7729009c749a236086d1))
 
 ## [0.3.10](https://github.com/Jepria/jfront-ui/compare/jfront-formik@0.3.9...jfront-formik@0.3.10) (2021-04-01)
 
 **Note:** Version bump only for package jfront-formik
 
-
-
-
-
 ## [0.3.9](https://github.com/Jepria/jfront-ui/compare/jfront-formik@0.3.8...jfront-formik@0.3.9) (2021-03-31)
 
 **Note:** Version bump only for package jfront-formik
-
-
-
-
 
 ## [0.3.8](https://github.com/Jepria/jfront-ui/compare/jfront-formik@0.3.7...jfront-formik@0.3.8) (2021-03-31)
 
 **Note:** Version bump only for package jfront-formik
 
-
-
-
-
 ## [0.3.7](https://github.com/Jepria/jfront-ui/compare/jfront-formik@0.3.6...jfront-formik@0.3.7) (2021-03-31)
 
 **Note:** Version bump only for package jfront-formik
-
-
-
-
 
 ## [0.3.6](https://github.com/Jepria/jfront-ui/compare/jfront-formik@0.3.5...jfront-formik@0.3.6) (2021-03-18)
 
 **Note:** Version bump only for package jfront-formik
 
-
-
-
-
 ## [0.3.5](https://github.com/Jepria/jfront-ui/compare/jfront-formik@0.3.4...jfront-formik@0.3.5) (2021-03-18)
 
 **Note:** Version bump only for package jfront-formik
-
-
-
-
 
 # Change Log
 

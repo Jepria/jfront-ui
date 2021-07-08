@@ -10,17 +10,22 @@ export const StyledPagingBar = styled.div`
   font: 11px arial, tahoma, helvetica, sans-serif;
   margin: 0;
   padding: 2px 2px 2px 2px;
-  @media only screen and (max-width: 760px),
-    (min-device-width: 768px) and (max-device-width: 1024px) {
+  @media (max-width: ${(props) => props.theme.breakpoints.md}) {
     flex-direction: column;
     justify-content: center;
   }
 `
+StyledPagingBar.defaultProps = {
+  theme: {
+    breakpoints: {
+      md: "768px",
+    },
+  },
+}
 
 const StyledNumberInput = styled(NumberInput)`
   min-width: 60px;
   max-width: 150px;
-  background-color: white;
   margin: 0px 5px;
 `
 
@@ -30,22 +35,36 @@ export const Left = styled.div`
   flex: 1;
   align-items: center;
   justify-content: flex-start;
-  @media only screen and (max-width: 760px),
-    (min-device-width: 768px) and (max-device-width: 1024px) {
+  @media (max-width: ${(props) => props.theme.breakpoints.md}) {
     justify-content: center;
+    min-height: 26px;
   }
 `
+Left.defaultProps = {
+  theme: {
+    breakpoints: {
+      md: "768px",
+    },
+  },
+}
 
 export const Center = styled.div`
   box-sizing: border-box;
   display: flex;
   flex: 1;
   justify-content: center;
-  @media only screen and (max-width: 760px),
-    (min-device-width: 768px) and (max-device-width: 1024px) {
+  @media (max-width: ${(props) => props.theme.breakpoints.md}) {
     justify-content: center;
+    min-height: 26px;
   }
 `
+Center.defaultProps = {
+  theme: {
+    breakpoints: {
+      md: "768px",
+    },
+  },
+}
 
 export const Right = styled.div`
   box-sizing: border-box;
@@ -53,11 +72,18 @@ export const Right = styled.div`
   flex: 1;
   align-items: center;
   justify-content: flex-end;
-  @media only screen and (max-width: 760px),
-    (min-device-width: 768px) and (max-device-width: 1024px) {
+  @media (max-width: ${(props) => props.theme.breakpoints.md}) {
     justify-content: center;
+    min-height: 26px;
   }
 `
+Right.defaultProps = {
+  theme: {
+    breakpoints: {
+      md: "768px",
+    },
+  },
+}
 
 const StyledLabel = styled(Label)`
   box-sizing: border-box;
@@ -69,12 +95,6 @@ const InlineFlex = styled.div`
   display: inline-flex;
   height: 26px;
   align-items: center;
-`
-
-const StyledSpan = styled.span`
-  box-sizing: border-box;
-  vertical-align: middle;
-  line-height: normal;
 `
 
 export interface TablePagingBarProps extends HTMLAttributes<HTMLDivElement> {

@@ -1,34 +1,63 @@
-import React from "react";
+import React from "react"
 
-import styled from 'styled-components';
+import styled from "styled-components"
 
-export interface ToolbarButtonInterface extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-
-}
+export interface ToolbarButtonInterface
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {}
 
 const StyledButton = styled.button`
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-  border: solid 1px transparent;
+  border: ${(props) =>
+    `${props.theme.toolbar.button.borderWidth} 
+    ${props.theme.toolbar.button.borderStyle} 
+    ${props.theme.toolbar.button.borderColor}`};
   height: 22px;
   padding: 1px 1px;
-  background-color: transparent;
-  background-image: none;
-  float: left;
-  vertical-align: middle;
-  text-align: center;
+  background: ${(props) => props.theme.toolbar.button.bgColor};
+  color: ${(props) => props.theme.toolbar.button.color};
   &:disabled {
     opacity: 0.5;
     background: transparent;
     cursor: default;
   }
-  &:hover {
-    border: solid 1px #99bbe8;
-    background: #ddefff;
+  &:enabled {
+    &:hover {
+      background: ${(props) => props.theme.toolbar.button.hoverBgColor};
+      border: ${(props) =>
+        `${props.theme.toolbar.button.hoverBorderWidth} 
+        ${props.theme.toolbar.button.hoverBorderStyle} 
+        ${props.theme.toolbar.button.hoverBorderColor}`};
+    }
   }
-`;
+`
+
+StyledButton.defaultProps = {
+  theme: {
+    fontFamily: "tahoma, arial, helvetica, sans-serif",
+    fontSize: {
+      sm: "11px",
+    },
+    toolbar: {
+      button: {
+        color: "#000",
+        bgColor: "transparent",
+        borderWidth: "1px",
+        borderStyle: "solid",
+        borderColor: "transparent",
+        borderRadius: 0,
+        hoverBgColor: "#ddefff",
+        hoverBorderWidth: "1px",
+        hoverBorderStyle: "solid",
+        hoverBorderColor: "#99bbe8",
+      },
+    },
+  },
+}
 
 export const ToolbarButtonBase: React.FC<ToolbarButtonInterface> = (props) => {
-  return (
-      <StyledButton {...props}>{props.children}</StyledButton>
-  );
-};
+  return <StyledButton {...props}>{props.children}</StyledButton>
+}

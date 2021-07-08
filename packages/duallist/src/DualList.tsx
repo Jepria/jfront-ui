@@ -208,17 +208,17 @@ export const DualList = ({
           {render()}
         </List>
         <ButtonBar>
-          <Button disabled={disabled} onClick={selectAll}>
-            <ArrowRightAll />
-          </Button>
-          <Button disabled={disabled} onClick={select}>
-            <ArrowRight />
+          <Button disabled={disabled} onClick={deselectAll}>
+            <ArrowLeftAll />
           </Button>
           <Button disabled={disabled} onClick={deselect}>
             <ArrowLeft />
           </Button>
-          <Button disabled={disabled} onClick={deselectAll}>
-            <ArrowLeftAll />
+          <Button disabled={disabled} onClick={select}>
+            <ArrowRight />
+          </Button>
+          <Button disabled={disabled} onClick={selectAll}>
+            <ArrowRightAll />
           </Button>
         </ButtonBar>
         <List

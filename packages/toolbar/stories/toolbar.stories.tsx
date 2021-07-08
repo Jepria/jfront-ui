@@ -24,12 +24,12 @@ export const BasicUsage = () => {
         <ToolbarButtonCreate />
         <ToolbarButtonSave />
         <ToolbarButtonEdit />
-        <ToolbarButtonDelete />
-        <ToolbarButtonView />
+        <ToolbarButtonDelete disabled />
+        <ToolbarButtonView disabled />
         <ToolbarSplitter />
-        <ToolbarButtonList />
+        <ToolbarButtonList disabled />
         <ToolbarButtonFind />
-        <ToolbarButtonSearch />
+        <ToolbarButtonSearch disabled />
       </Toolbar>
     </>
   )

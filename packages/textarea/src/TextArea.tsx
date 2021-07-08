@@ -7,8 +7,8 @@ export interface TextAreaProps
   extends React.TextareaHTMLAttributes<HTMLTextAreaElement>,
     AreaProps {}
 
-export const TextArea = React.forwardRef<HTMLDivElement, TextAreaProps>(
-  ({ style, className, ...props }, ref) => {
+export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
+  ({ style, className, error, ...props }, ref) => {
     const [focused, setFocused] = useState(false)
 
     return (
@@ -16,11 +16,12 @@ export const TextArea = React.forwardRef<HTMLDivElement, TextAreaProps>(
         className={className}
         focused={focused}
         style={style}
-        ref={ref}
-        error={props.error !== undefined}
+        error={error !== undefined}
       >
         <StyledTextArea
           {...props}
+          error={error !== undefined}
+          focused={focused}
           onFocus={(e) => {
             if (props.onFocus) {
               props.onFocus(e)
@@ -34,9 +35,10 @@ export const TextArea = React.forwardRef<HTMLDivElement, TextAreaProps>(
             setFocused(false)
           }}
           resize={props.resize}
+          ref={ref}
         />
         {props.isLoading && <LoadingImage />}
-        {props.error !== undefined && <ExclamationImage title={props.error} />}
+        {error !== undefined && <ExclamationImage title={error} />}
       </StyledDiv>
     )
   },

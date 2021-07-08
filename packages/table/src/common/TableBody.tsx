@@ -11,7 +11,7 @@ const StyledTableBody = styled.div`
   flex-grow: 1;
   overflow-y: auto;
   overflow-x: hidden;
-  @media only screen and (min-width: 761px) {
+  @media (min-width: ${(props) => props.theme.breakpoints.md}) {
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
     &::-webkit-scrollbar {
@@ -19,6 +19,13 @@ const StyledTableBody = styled.div`
     }
   }
 `
+StyledTableBody.defaultProps = {
+  theme: {
+    breakpoints: {
+      md: "768px",
+    },
+  },
+}
 
 const StyledScroll = styled.div`
   margin: 0;
@@ -32,11 +39,17 @@ const StyledScroll = styled.div`
   background-color: transparent;
   overflow: auto;
   -ms-overflow-style: auto; /* IE and Edge */
-  @media only screen and (max-width: 760px),
-    (min-device-width: 768px) and (max-device-width: 1024px) {
+  @media (max-width: ${(props) => props.theme.breakpoints.md}) {
     display: none;
   }
 `
+StyledScroll.defaultProps = {
+  theme: {
+    breakpoints: {
+      md: "768px",
+    },
+  },
+}
 
 const ScrollSpacer = styled.div`
   margin: 0;
@@ -95,7 +108,7 @@ export const TableBody = React.forwardRef<
       <StyledScroll
         ref={refScroll}
         style={{
-          height: `${height ? height : 0}px`,
+          height: `${height ? Math.ceil(height) : 0}px`,
           top: `${
             ref.current
               ? ((ref.current as unknown) as HTMLElement).offsetTop

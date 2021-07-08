@@ -1,114 +1,65 @@
 # Change Log
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
 ## [0.5.6](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-utils@0.5.5...@jfront/ui-utils@0.5.6) (2021-06-28)
 
 **Note:** Version bump only for package @jfront/ui-utils
 
-
-
-
-
 ## [0.5.5](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-utils@0.5.4...@jfront/ui-utils@0.5.5) (2021-06-23)
 
 **Note:** Version bump only for package @jfront/ui-utils
-
-
-
-
 
 ## [0.5.4](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-utils@0.5.3...@jfront/ui-utils@0.5.4) (2021-06-15)
 
 **Note:** Version bump only for package @jfront/ui-utils
 
-
-
-
-
 ## [0.5.3](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-utils@0.5.2...@jfront/ui-utils@0.5.3) (2021-06-11)
 
 **Note:** Version bump only for package @jfront/ui-utils
-
-
-
-
 
 ## [0.5.2](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-utils@0.5.1...@jfront/ui-utils@0.5.2) (2021-06-11)
 
 **Note:** Version bump only for package @jfront/ui-utils
 
-
-
-
-
 ## [0.5.1](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-utils@0.5.0...@jfront/ui-utils@0.5.1) (2021-05-26)
 
 **Note:** Version bump only for package @jfront/ui-utils
 
-
-
-
-
 # [0.5.0](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-utils@0.4.4...@jfront/ui-utils@0.5.0) (2021-05-06)
-
 
 ### Features
 
-* **datepicker:** add ISO string support ([a53ca13](https://github.com/Jepria/jfront-ui/commit/a53ca138895039b880fa7729009c749a236086d1))
-
-
-
-
+- **datepicker:** add ISO string support
+  ([a53ca13](https://github.com/Jepria/jfront-ui/commit/a53ca138895039b880fa7729009c749a236086d1))
 
 ## [0.4.4](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-utils@0.4.3...@jfront/ui-utils@0.4.4) (2021-04-01)
 
 **Note:** Version bump only for package @jfront/ui-utils
 
-
-
-
-
 ## [0.4.3](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-utils@0.4.2...@jfront/ui-utils@0.4.3) (2021-03-31)
 
 **Note:** Version bump only for package @jfront/ui-utils
-
-
-
-
 
 ## [0.4.2](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-utils@0.4.1...@jfront/ui-utils@0.4.2) (2021-03-31)
 
 **Note:** Version bump only for package @jfront/ui-utils
 
-
-
-
-
 ## [0.4.1](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-utils@0.4.0...@jfront/ui-utils@0.4.1) (2021-03-18)
 
 **Note:** Version bump only for package @jfront/ui-utils
 
-
-
-
-
 # [0.4.0](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-utils@0.3.4...@jfront/ui-utils@0.4.0) (2021-03-18)
-
 
 ### Features
 
-* package dependencies update to latest versions ([90946d2](https://github.com/Jepria/jfront-ui/commit/90946d25fcb08fc77e4b143567963682f8ff3d2b))
-
+- package dependencies update to latest versions
+  ([90946d2](https://github.com/Jepria/jfront-ui/commit/90946d25fcb08fc77e4b143567963682f8ff3d2b))
 
 ### BREAKING CHANGES
 
-* react upgraded to 17.0.1
-
-
-
-
+- react upgraded to 17.0.1
 
 # Change Log
 

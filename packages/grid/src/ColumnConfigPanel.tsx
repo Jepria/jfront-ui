@@ -21,28 +21,82 @@ export interface ColumnConfigPanelProps<D extends object> {
 }
 
 const StyledModalDiv = styled(ModalDiv)`
+  box-sizing: border-box;
   flex-direction: column;
-  background-color: white;
-  border: 1px solid #999;
-  padding: 15px;
+  background: ${(props) => props.theme.modal.bgColor};
+  border-radius: ${(props) => props.theme.modal.borderRadius};
+  box-shadow: 4px 4px 8px 0px ${(props) => props.theme.modal.borderColor};
 `
+StyledModalDiv.defaultProps = {
+  theme: {
+    modal: {
+      borderRadius: "5px",
+      bgColor: "#fff",
+      borderColor: "#ccc",
+    },
+  },
+}
 
 const ButtonContainer = styled.div`
+  width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   user-select: none;
 `
 
-const List = styled.div`
-  font-family: Arial Unicode MS, Arial, sans-serif;
-  font-size: small;
+const StyledButton = styled(Button).attrs({ primary: true })`
+  margin: 6px;
+  padding 6px 12px;
+`
+
+const ListContainer = styled.div`
+  box-sizing: border-box;
   height: 100px;
-  width: 150px;
+  width: 100%;
+  padding: 5px;
+`
+
+const List = styled.div`
+  height: 100%;
+  width: 100%;
   overflow: hidden;
   overflow-y: auto;
   padding: 0;
   margin: 0;
 `
+
+export const StyledHeader = styled.header`
+  box-sizing: border-box;
+  background: ${(props) => props.theme.modal.header.bgColor};
+  padding: 5px 10px;
+  margin: 0;
+  color: ${(props) => props.theme.modal.header.color};
+  border-top-left-radius: ${(props) => props.theme.modal.header.borderRadius};
+  border-top-right-radius: ${(props) => props.theme.modal.header.borderRadius};
+  min-height: 18px;
+  font-family: ${(props) => props.theme.fontFamily};
+  font-size: ${(props) => props.theme.fontSize.sm};
+  font-weight: bold;
+`
+
+StyledHeader.defaultProps = {
+  theme: {
+    fontSize: {
+      sm: "11px",
+    },
+    fontFamily: "tahoma, arial, helvetica, sans-serif",
+    modal: {
+      header: {
+        borderWidth: 0,
+        borderStyle: "",
+        borderColor: "",
+        borderRadius: "5px",
+        bgColor: "linear-gradient(rgb(255, 255, 255), rgb(208, 222, 240))",
+        color: "rgb(21, 66, 139)",
+      },
+    },
+  },
+}
 
 export function ColumnConfigPanel<D extends object>(
   props: ColumnConfigPanelProps<D>,
@@ -58,20 +112,27 @@ export function ColumnConfigPanel<D extends object>(
     <>
       <GlassMask onClick={hide} />
       <StyledModalDiv id={id} style={place}>
-        <List>
-          <CheckBox key="selectAll" {...toggleAllProps()} label="Выбрать все" />
-          {columns.map((column) => {
-            return (
-              <CheckBox
-                key={column.id}
-                {...column.getToggleHiddenProps()}
-                label={column.Header}
-              />
-            )
-          })}
-        </List>
+        <StyledHeader>Выберите отображаемые колонки</StyledHeader>
+        <ListContainer>
+          <List>
+            <CheckBox
+              key="selectAll"
+              {...toggleAllProps()}
+              label="Выбрать все"
+            />
+            {columns.map((column) => {
+              return (
+                <CheckBox
+                  key={column.id}
+                  {...column.getToggleHiddenProps()}
+                  label={column.Header}
+                />
+              )
+            })}
+          </List>
+        </ListContainer>
         <ButtonContainer>
-          <Button onClick={hide} value="ОК" />
+          <StyledButton onClick={hide}>OK</StyledButton>
         </ButtonContainer>
       </StyledModalDiv>
     </>

@@ -21,7 +21,9 @@ export const AlertDialog = React.forwardRef<HTMLDivElement, AlertDialogProps>(
         <ModalHeader withCloseButton={withCloseButton}>{header}</ModalHeader>
         <ModalContent>{message}</ModalContent>
         <ModalFooter>
-          <StyledButton type="button" onClick={onClose} value="OK" />
+          <StyledButton type="button" onClick={onClose}>
+            OK
+          </StyledButton>
         </ModalFooter>
       </StyledModal>
     )

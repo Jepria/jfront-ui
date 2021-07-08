@@ -1,6 +1,7 @@
-import React, { useState, ReactNode, useEffect } from "react"
+import React, { useState, ReactNode, useEffect, useRef } from "react"
 import styled from "styled-components"
 import { LoadingImage, ExclamationImage } from "@jfront/ui-icons"
+import { useOnClickOutside } from "@jfront/ui-hooks"
 
 interface RadioGroupInterface {
   children: ReactNode[]
@@ -29,25 +30,54 @@ interface RadioGroupInterface {
 }
 
 interface StyledRadioGroupProps {
+  focused?: boolean
   error?: string
 }
 
 const StyledRadioGroup = styled.div<StyledRadioGroupProps>`
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
-  -webkit-box-pack: end;
-  -ms-flex-pack: end;
   justify-content: flex-end;
-  border: 1px solid grey;
   padding: 0;
   margin: 0;
   min-width: 150px;
-  ${(props) => (props.error ? "border: 1px solid red;" : "")};
+  color: ${(props) => props.theme.radioGroup.color} !important;
+  background: ${(props) => props.theme.radioGroup.bgColor};
+  ${(props) =>
+    props.focused
+      ? `box-shadow: 0 0 5px ${
+          props.error
+            ? props.theme.radioGroup.errorBorderColor
+            : props.theme.radioGroup.focusedBorderColor
+        };`
+      : ""}
+  ${(props) =>
+    !!props.error
+      ? `border: ${props.theme.radioGroup.borderWidth} ${props.theme.radioGroup.borderStyle} ${props.theme.radioGroup.errorBorderColor};`
+      : props.focused
+      ? `border: ${props.theme.radioGroup.borderWidth} ${props.theme.radioGroup.borderStyle} ${props.theme.radioGroup.focusedBorderColor};`
+      : `border: ${props.theme.radioGroup.borderWidth} ${props.theme.radioGroup.borderStyle} ${props.theme.radioGroup.borderColor};
+    &:hover {
+      border: ${props.theme.radioGroup.borderWidth} ${props.theme.radioGroup.borderStyle} ${props.theme.radioGroup.hoverBorderColor};
+    }
+  `}
 `
+
+StyledRadioGroup.defaultProps = {
+  theme: {
+    radioGroup: {
+      bgColor: "#fff",
+      borderWidth: "1px",
+      borderStyle: "solid",
+      borderColor: "#ccc",
+      borderRadius: 0,
+      color: "black",
+      focusedBorderColor: "#99bbe8",
+      errorBorderColor: "red",
+      hoverBorderColor: "#99bbe8",
+    },
+  },
+}
 
 export enum RadioDirection {
   column = "column",
@@ -59,29 +89,28 @@ interface StyledUlProps {
 }
 
 const StyledUl = styled.div<StyledUlProps>`
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-box-flex: 1;
-  -ms-flex-positive: 1;
   flex-grow: 1;
   box-sizing: border-box;
   height: 100%;
   ${(props) =>
     props.direction === RadioDirection.column
-      ? `-webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;`
-      : `-webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;`};
+      ? `flex-direction: column;`
+      : `flex-direction: row;`};
   overflow: auto;
   padding: 7px;
-  font-family: tahoma, arial, helvetica, sans-serif;
-  font-size: 12px;
+  font-size: ${(props) => props.theme.fontSize.md};
+  font-family: ${(props) => props.theme.fontFamily};
 `
+
+StyledUl.defaultProps = {
+  theme: {
+    fontSize: {
+      md: "12px",
+    },
+    fontFamily: "tahoma, arial, helvetica, sans-serif",
+  },
+}
 
 export const RadioGroup = React.forwardRef<HTMLDivElement, RadioGroupInterface>(
   (
@@ -99,6 +128,9 @@ export const RadioGroup = React.forwardRef<HTMLDivElement, RadioGroupInterface>(
     },
     ref,
   ) => {
+    const [focused, setFocused] = useState<boolean>(false)
+    const containerRef = useRef(null)
+    useOnClickOutside(containerRef, () => setFocused(false))
     const [state, setState] = useState<any>([])
 
     useEffect(() => {
@@ -119,12 +151,14 @@ export const RadioGroup = React.forwardRef<HTMLDivElement, RadioGroupInterface>(
 
     return (
       <StyledRadioGroup
+        focused={focused}
         style={style}
         className={className}
         ref={ref}
         error={error}
       >
         <StyledUl
+          ref={containerRef}
           direction={props.direction ? props.direction : RadioDirection.column}
         >
           {React.Children.map(children, (radio) => {
@@ -137,6 +171,9 @@ export const RadioGroup = React.forwardRef<HTMLDivElement, RadioGroupInterface>(
             return React.cloneElement(radio, {
               disabled: radio.props.disabled || disabled,
               checked: checked,
+              onFocus: () => {
+                setFocused(true)
+              },
               onChange:
                 radio.props.onChange === undefined
                   ? (event: any, _text: any) =>
