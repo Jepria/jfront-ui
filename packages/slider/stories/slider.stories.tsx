@@ -1,5 +1,5 @@
 import * as React from "react"
-import { Slider } from "../src/Slider"
+import { Slider, SliderPointer } from "../src"
 
 export default {
   title: "Slider",
@@ -13,13 +13,12 @@ export default {
 }
 
 export const BasicUsage = () => {
-
   return (
     <>
       <Slider
         initial={125}
         max={150}
-        onChange={(value:number) =>{
+        onChange={(value: number) => {
           console.log("value: ", value)
         }}
       />
@@ -27,3 +26,16 @@ export const BasicUsage = () => {
   )
 }
 
+export const UsagePoint = () => {
+  return (
+    <>
+      <SliderPointer
+        initial={125}
+        max={150}
+        onChange={(value: number) => {
+          console.log("value: ", value)
+        }}
+      />
+    </>
+  )
+}
