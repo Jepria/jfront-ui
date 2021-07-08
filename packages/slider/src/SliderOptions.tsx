@@ -6,13 +6,8 @@ interface SliderInterface extends React.InputHTMLAttributes<HTMLInputElement> {
   initial: number
   max: number
   min: number
-  options?: OptionsInterface[]
+  options?: any
   onChange?: any
-}
-
-interface OptionsInterface {
-  name: string
-  value: number
 }
 
 const StyledSlider = styled.div`
@@ -34,20 +29,18 @@ const StyledThumb = styled.div`
 `
 
 const getPercentage = (current: number, max: number) => (100 * current) / max
-
 const getLeft = (percentage: any) => `calc(${percentage}% - 5px)`
-
 const getValue = (percentage: number, max: number) => (max / 100) * percentage
 
 export const SliderOptions = React.forwardRef<
   HTMLInputElement,
   SliderInterface
 >(({ ...props }, ref) => {
-  const initialPercentage = getPercentage(props.initial, props.max)
   const sliderRef: any = React.useRef()
   const thumbRef: any = React.useRef()
-
   const diff: any = React.useRef()
+  const numberOfSliderElements: number = props.options.length
+  const initialPercentage = getPercentage(numberOfSliderElements, props.max)
 
   const handleMouseMove = (event: any) => {
     let newX: any =
@@ -65,23 +58,14 @@ export const SliderOptions = React.forwardRef<
     }
     const newPercentage = getPercentage(newX, end)
 
-    const newValue: number = getValue(newPercentage, props.options.length)
+    const newValue: number = parseInt(
+      formatFn(getValue(newPercentage, numberOfSliderElements)),
+    )
     thumbRef.current.style.left = getLeft(
-      getPercentage(formatFn(newValue), props.options.length),
+      getPercentage(newValue, numberOfSliderElements),
     )
-    console.log(
-      "newPercentage: ",
-      formatFn(newPercentage),
-      "newValue: ",
-      formatFn(newValue),
-      " ",
-      formatFn(newPercentage) / formatFn(newValue),
-    )
-    console.log(
-      "getPercentage1: ",
-      getPercentage(formatFn(newValue), props.options.length),
-    )
-    props.onChange(formatFn(newValue))
+
+    props.onChange(props.options[newValue - 1])
   }
 
   const formatFn = (number: number) => number.toFixed(0)

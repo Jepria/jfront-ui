@@ -40,11 +40,7 @@ export const UsagePoint = () => {
   )
 }
 export const UsageSliderOptions = () => {
-  const options = [
-    { name: "test1", value: 1 },
-    { name: "test2", value: 2 },
-    { name: "test3", value: 3 },
-  ]
+  const options = ["1", "2", "3", "5"]
   return (
     <>
       <SliderOptions
