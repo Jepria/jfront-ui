@@ -16,10 +16,17 @@ const StyledSlider = styled.div`
   height: 5px;
   cursor: pointer;
 `
+const StyledRangeProgress = styled.div`
+  border-radius: 3px;
+  position: absolute;
+  height: 100%;
+
+  background: rgba(121, 119, 119, 0.34);
+`
 
 const StyledThumb = styled.div`
   width: 16px;
-  height: 16px;
+  height: 16px;а
   border-radius: 15px;
   position: relative;
   top: -5px;
@@ -28,7 +35,7 @@ const StyledThumb = styled.div`
 `
 
 const getPercentage = (current: number, max: number) => (100 * current) / max
-
+const getWidth = (percentage: any) => `${percentage}%`
 const getLeft = (percentage: any) => `calc(${percentage}% - 5px)`
 
 const getValue = (percentage: number, max: number) => (max / 100) * percentage
@@ -38,7 +45,7 @@ export const Slider = React.forwardRef<HTMLInputElement, SliderInterface>(
     const initialPercentage = getPercentage(props.initial, props.max)
     const sliderRef: any = React.useRef()
     const thumbRef: any = React.useRef()
-
+    const rangeProgressRef: any = React.useRef()
     const diff: any = React.useRef()
 
     const handleMouseMove = (event: any) => {
@@ -59,6 +66,7 @@ export const Slider = React.forwardRef<HTMLInputElement, SliderInterface>(
 
       const newValue: number = getValue(newPercentage, props.max)
       thumbRef.current.style.left = getLeft(newPercentage)
+      rangeProgressRef.current.style.width = getWidth(newPercentage)
       props.onChange(formatFn(newValue))
     }
 
@@ -79,6 +87,7 @@ export const Slider = React.forwardRef<HTMLInputElement, SliderInterface>(
         value = props.max
       }
       thumbRef.current.style.left = getLeft(newPercentage)
+      rangeProgressRef.current.style.width = getWidth(newPercentage)
       props.onChange(value)
     }
 
@@ -92,6 +101,10 @@ export const Slider = React.forwardRef<HTMLInputElement, SliderInterface>(
     return (
       <>
         <StyledSlider ref={sliderRef} onClick={handlerMouseClick}>
+          <StyledRangeProgress
+            style={{ width: getWidth(initialPercentage) }}
+            ref={rangeProgressRef}
+          />
           <StyledThumb
             {...props}
             id={props.id}
