@@ -17,7 +17,7 @@ export const dateFormatToMask = (dateFormat: string | string[]) => {
 }
 
 export const DatePicker = React.forwardRef<
-  ReactDatePicker,
+  HTMLInputElement,
   Omit<ReactDatePickerProps, "selected" | "onChange"> &
     InputProps & {
       selected?: string | Date | null
@@ -76,7 +76,7 @@ export const DatePicker = React.forwardRef<
         placeholderText={parsePlaceholderFromString(
           dateFormatToMask(dateFormat),
         )}
-        customInputRef={ref as any}
+        ref={ref}
       />
     )
   },

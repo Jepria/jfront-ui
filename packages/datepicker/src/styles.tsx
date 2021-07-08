@@ -8,12 +8,19 @@ export const StyledInput = styled(MaskedTextInput)`
 `
 
 export const StyledDatePicker = styled(
-  ({ className, ...props }: ReactDatePickerProps) => (
-    <ReactDatePicker
-      {...props}
-      wrapperClassName={className}
-      calendarClassName={className}
-    />
+  React.forwardRef<HTMLInputElement, ReactDatePickerProps>(
+    ({ className, ...props }, ref) => (
+      <ReactDatePicker
+        {...props}
+        wrapperClassName={className}
+        calendarClassName={className}
+        ref={(innerRef) => {
+          if (ref && innerRef) {
+            ;(ref as any).current = (innerRef as any).input
+          }
+        }}
+      />
+    ),
   ),
 )`
   font-family: ${(props) => props.theme.fontFamily};

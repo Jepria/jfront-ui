@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { RefObject, useEffect, useState } from "react"
 import {
   StyledLabel,
   StyledDiv,
@@ -41,7 +41,15 @@ export const FileUpload = React.forwardRef<HTMLInputElement, FileUploadProps>(
   ) => {
     const [highlight, setHighlight] = useState(false)
     const [errorMessage, setErrorMessage] = useState(error)
-    const innerRef = ref || React.createRef<HTMLInputElement>()
+    const inputRef = React.useRef<HTMLInputElement>(null)
+
+    const getInputRef = () => {
+      if (ref !== null) {
+        return ref as RefObject<HTMLInputElement>
+      } else {
+        return inputRef
+      }
+    }
 
     useEffect(() => {
       if (errorMessage !== error) {
@@ -136,7 +144,7 @@ export const FileUpload = React.forwardRef<HTMLInputElement, FileUploadProps>(
               style={{ display: "none" }}
               {...props}
               type="file"
-              ref={innerRef}
+              ref={getInputRef()}
               onChange={(e) => handleFiles(e.target.files)}
             />
           </StyledLabel>
