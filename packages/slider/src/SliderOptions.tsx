@@ -3,9 +3,6 @@ import styled from "styled-components"
 
 interface SliderInterface extends React.InputHTMLAttributes<HTMLInputElement> {
   className?: string
-  initial: number
-  max: number
-  min: number
   options?: any
   onChange?: any
 }
@@ -40,7 +37,6 @@ export const SliderOptions = React.forwardRef<
   const thumbRef: any = React.useRef()
   const diff: any = React.useRef()
   const numberOfSliderElements: number = props.options.length
-  const initialPercentage = getPercentage(numberOfSliderElements, props.max)
 
   const handleMouseMove = (event: any) => {
     let newX: any =
@@ -65,7 +61,7 @@ export const SliderOptions = React.forwardRef<
       getPercentage(newValue, numberOfSliderElements),
     )
 
-    props.onChange(props.options[newValue - 1])
+    props.onChange(newValue == 0 ? null : props.options[newValue - 1])
   }
 
   const formatFn = (number: number) => number.toFixed(0)
@@ -80,14 +76,12 @@ export const SliderOptions = React.forwardRef<
       event.clientX,
       sliderRef.current.offsetWidth,
     )
-    let value: number = parseInt(
-      formatFn(getValue(newPercentage, props.options.length)),
+    const value: number = parseInt(
+      formatFn(getValue(newPercentage, numberOfSliderElements)),
     )
-    if (value > props.max) {
-      value = props.max
-    }
+
     thumbRef.current.style.left = getLeft(newPercentage)
-    props.onChange(value)
+    props.onChange(value == 0 ? null : props.options[value - 1])
   }
 
   const handleMouseDown = (event: any) => {
@@ -103,7 +97,6 @@ export const SliderOptions = React.forwardRef<
           {...props}
           id={props.id}
           ref={thumbRef}
-          style={{ left: getLeft(initialPercentage) }}
           onMouseDown={handleMouseDown}
         />
       </StyledSlider>

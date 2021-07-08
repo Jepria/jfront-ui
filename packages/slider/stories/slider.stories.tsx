@@ -1,5 +1,10 @@
 import * as React from "react"
-import { Slider, SliderOptions, SliderPointer } from "../src"
+import {
+  Slider,
+  SliderOptions,
+  SliderOptionsPointer,
+  SliderPointer,
+} from "../src"
 
 export default {
   title: "Slider",
@@ -45,8 +50,20 @@ export const UsageSliderOptions = () => {
     <>
       <SliderOptions
         options={options}
-        initial={125}
-        max={150}
+        onChange={(value: number) => {
+          console.log("value: ", value)
+        }}
+      />
+    </>
+  )
+}
+
+export const UsageSliderOptionsPoint = () => {
+  const options = ["Один", "Два", "Три", "Четыре"]
+  return (
+    <>
+      <SliderOptionsPointer
+        options={options}
         onChange={(value: number) => {
           console.log("value: ", value)
         }}

@@ -3,8 +3,7 @@ import styled from "styled-components"
 
 interface SliderInterface extends React.InputHTMLAttributes<HTMLInputElement> {
   className?: string
-  initial: number
-  max: number
+  options?: any
   onChange?: any
 }
 
@@ -45,14 +44,14 @@ const getLeft = (percentage: any) => `calc(${percentage}% - 5px)`
 
 const getValue = (percentage: number, max: number) => (max / 100) * percentage
 
-export const SliderPointer = React.forwardRef<
+export const SliderOptionsPointer = React.forwardRef<
   HTMLInputElement,
   SliderInterface
 >(({ ...props }, ref) => {
-  const initialPercentage = getPercentage(props.initial, props.max)
   const sliderRef: any = React.useRef()
   const thumbRef: any = React.useRef()
   const currentRef: any = React.useRef()
+  const numberOfSliderElements: number = props.options.length
 
   const diff: any = React.useRef()
 
@@ -72,15 +71,22 @@ export const SliderPointer = React.forwardRef<
     }
     const newPercentage = getPercentage(newX, end)
 
-    const newValue: number = getValue(newPercentage, props.max)
-    thumbRef.current.style.left = getLeft(newPercentage)
-    currentRef.current.textContent = formatFn(newValue)
-
-    props.onChange(formatFn(newValue))
-
-    currentRef.current.style = ` left: ${newPercentage}%  ;margin-right: ${
-      100 - 4 * formatFn(newValue).length
+    const newValue: number = parseInt(
+      formatFn(getValue(newPercentage, numberOfSliderElements)),
+    )
+    thumbRef.current.style.left = getLeft(
+      getPercentage(newValue, numberOfSliderElements),
+    )
+    currentRef.current.style = ` left: ${getPercentage(
+      newValue,
+      numberOfSliderElements,
+    )}%  ;margin-right: ${
+      100 - 5 * (newValue == 0 ? 3 : props.options[newValue - 1].length)
     }%;visibility: visible; `
+    currentRef.current.textContent =
+      newValue == 0 ? "Нет" : props.options[newValue - 1]
+
+    props.onChange(newValue == 0 ? "null" : props.options[newValue - 1])
   }
 
   const formatFn = (number: number) => number.toFixed(0)
@@ -97,27 +103,15 @@ export const SliderPointer = React.forwardRef<
       event.clientX,
       sliderRef.current.offsetWidth,
     )
-    const value: number = parseInt(formatFn(getValue(newPercentage, props.max)))
-    currentRef.current.style = ` left: ${newPercentage}%  ;margin-right: ${
-      100 - 4 * formatFn(value).length
-    }%;visibility: visible; `
-  }
-
-  const handlerMouseClick = (event: React.MouseEvent) => {
-    const newPercentage = getPercentage(
-      event.clientX,
-      sliderRef.current.offsetWidth,
+    const value: number = parseInt(
+      formatFn(getValue(newPercentage, numberOfSliderElements)),
     )
-    let value: number = parseInt(formatFn(getValue(newPercentage, props.max)))
-    if (value > props.max) {
-      value = props.max
-    }
-    currentRef.current.style = ` left: ${newPercentage}%  ;margin-right: ${
-      100 - 4 * formatFn(value).length
+    currentRef.current.style = ` left: ${getPercentage(
+      value,
+      numberOfSliderElements,
+    )}%  ;margin-right: ${
+      100 - 5 * (value == 0 ? 3 : props.options[value - 1].length)
     }%;visibility: visible; `
-    currentRef.current.textContent = value
-    thumbRef.current.style.left = getLeft(newPercentage)
-    props.onChange(value)
   }
 
   const handleMouseDown = (event: any) => {
@@ -128,15 +122,13 @@ export const SliderPointer = React.forwardRef<
 
   return (
     <>
-      <SliderHeader {...props} ref={currentRef}>
-        {formatFn(props.initial)}
-      </SliderHeader>
-      <StyledSlider ref={sliderRef} onClick={handlerMouseClick}>
+      <SliderHeader {...props} ref={currentRef}></SliderHeader>
+      <StyledSlider ref={sliderRef}>
         <StyledThumb
           {...props}
           id={props.id}
           ref={thumbRef}
-          style={{ left: getLeft(initialPercentage) }}
+          style={{ left: getLeft(0) }}
           onMouseDown={handleMouseDown}
           onMouseOut={() => {
             currentRef.current.style = ` visibility: hidden; `
