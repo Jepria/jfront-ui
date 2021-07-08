@@ -1,27 +1,25 @@
-import React from "react"
-import ReactDatePicker, { ReactDatePickerProps } from "react-datepicker"
-import styled from "styled-components"
-import { MaskedTextInput } from "@jfront/ui-input"
+import React from 'react';
+import ReactDatePicker, { ReactDatePickerProps } from 'react-datepicker';
+import styled from 'styled-components';
+import { MaskedTextInput } from '@jfront/ui-input';
 
 export const StyledInput = styled(MaskedTextInput)`
   display: flex;
-`
+`;
 
 export const StyledDatePicker = styled(
-  React.forwardRef<HTMLInputElement, ReactDatePickerProps>(
-    ({ className, ...props }, ref) => (
-      <ReactDatePicker
-        {...props}
-        wrapperClassName={className}
-        calendarClassName={className}
-        ref={(innerRef) => {
-          if (ref && innerRef) {
-            ;(ref as any).current = (innerRef as any).input
-          }
-        }}
-      />
-    ),
-  ),
+  React.forwardRef<HTMLInputElement, ReactDatePickerProps>(({ className, ...props }, ref) => (
+    <ReactDatePicker
+      {...props}
+      wrapperClassName={className}
+      calendarClassName={className}
+      ref={(innerRef) => {
+        if (ref && innerRef) {
+          (ref as any).current = (innerRef as any).input;
+        }
+      }}
+    />
+  ))
 )`
   font-family: ${(props) => props.theme.fontFamily};
   .react-datepicker__day,
@@ -32,8 +30,7 @@ export const StyledDatePicker = styled(
     &--selected,
     &--in-selecting-range,
     &--in-range {
-      background-color: ${(props) =>
-        props.theme.calendar.selectedBgColor} !important;
+      background-color: ${(props) => props.theme.calendar.selectedBgColor} !important;
       color: ${(props) => props.theme.calendar.selectedColor} !important;
     }
     &--keyboard-selected {
@@ -88,39 +85,39 @@ export const StyledDatePicker = styled(
   background-color: ${(props) => props.theme.calendar.bgColor};
   border-color: ${(props) => props.theme.calendar.borderColor};
   border-radius: ${(props) => props.theme.calendar.borderRadius};
-`
+`;
 
 StyledDatePicker.defaultProps = {
   theme: {
-    fontFamily: "tahoma, arial, helvetica, sans-serif",
+    fontFamily: 'tahoma, arial, helvetica, sans-serif',
     calendar: {
       margin: 0,
-      height: "18px",
-      padding: "2px 6px",
-      borderColor: "#aeaeae",
-      borderRadius: "0.3rem",
-      color: "#000",
-      bgColor: "#fff",
+      height: '18px',
+      padding: '2px 6px',
+      borderColor: '#aeaeae',
+      borderRadius: '0.3rem',
+      color: '#000',
+      bgColor: '#fff',
       header: {
-        bgColor: "#f0f0f0",
-        borderWidth: "1px",
-        borderStyle: "solid",
-        borderColor: "#aeaeae",
-        color: "#000",
-        buttonColor: "#ccc",
+        bgColor: '#f0f0f0',
+        borderWidth: '1px',
+        borderStyle: 'solid',
+        borderColor: '#aeaeae',
+        color: '#000',
+        buttonColor: '#ccc',
       },
-      hoverBgColor: "#eee",
-      hoverColor: "#000",
-      keyboardHoverBgColor: "#2a87d0",
-      keyboardHoverColor: "#fff",
-      selectedBgColor: "#216ba5",
-      selectedColor: "#fff",
-      todayBgColor: "#99bbe8",
-      todayColor: "#000",
+      hoverBgColor: '#eee',
+      hoverColor: '#000',
+      keyboardHoverBgColor: '#2a87d0',
+      keyboardHoverColor: '#fff',
+      selectedBgColor: '#216ba5',
+      selectedColor: '#fff',
+      todayBgColor: '#99bbe8',
+      todayColor: '#000',
       closeIcon: {
-        bgColor: "#216ba5",
-        color: "#fff",
+        bgColor: '#216ba5',
+        color: '#fff',
       },
     },
   },
-}
+};
