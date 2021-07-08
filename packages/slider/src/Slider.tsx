@@ -5,7 +5,6 @@ interface SliderInterface extends React.InputHTMLAttributes<HTMLInputElement> {
   className?: string
   initial: number
   max: number
-  min: number
   onChange?: any
 }
 
