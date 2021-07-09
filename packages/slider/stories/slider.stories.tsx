@@ -1,5 +1,6 @@
 import * as React from "react"
 import {
+  Range,
   Slider,
   SliderOptions,
   SliderOptionsPointer,
@@ -31,6 +32,31 @@ export const BasicUsage = () => {
   )
 }
 
+export const Basic = () => {
+  return (
+    <>
+      <Range
+        max={150}
+        min={20}
+        step={10}
+        options={[
+          { name: "test1", value: 1 },
+          { name: "test2", value: 2 },
+          { name: "test3", value: 3 },
+          { name: "test4", value: 4 },
+          { name: "test5", value: 5 },
+          { name: "test6", value: 6 },
+          { name: "test7", value: 7 },
+          { name: "test8", value: 8 },
+          { name: "test9", value: 9 },
+        ]}
+        onChange={(value: number) => {
+          console.log("value: ", value)
+        }}
+      ></Range>
+    </>
+  )
+}
 export const UsagePoint = () => {
   return (
     <>
