@@ -40,7 +40,6 @@ export const Basic = () => {
         max={150}
         min={20}
         step={10}
-        value={100}
         onChange={(value: number) => {
           console.log("value: ", value)
         }}
