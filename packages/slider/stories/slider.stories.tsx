@@ -37,9 +37,9 @@ export const Basic = () => {
   return (
     <>
       <Range
-        max={150}
-        min={20}
-        step={10}
+        initial={10}
+        max={25}
+        min={5}
         onChange={(value: number) => {
           console.log("value: ", value)
         }}
