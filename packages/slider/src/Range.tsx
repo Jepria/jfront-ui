@@ -7,28 +7,32 @@ interface SliderInterface extends React.InputHTMLAttributes<HTMLInputElement> {
 }
 
 const StyledSlider = styled.div`
+  margin-top: 10px;
   position: relative;
   border-radius: 3px;
   background: #dddddd;
-  height: 15px;
-`
-
-const StyledThumb = styled.div`
-  width: 10px;
-  height: 25px;
-  border-radius: 3px;
-  position: relative;
-  top: -5px;
-  opacity: 0.5;
-  background: #823eb7;
+  height: 5px;
   cursor: pointer;
 `
 const StyledRangeProgress = styled.div`
   border-radius: 3px;
   position: absolute;
   height: 100%;
-  opacity: 0.5;
-  background: #823eb7;
+  background: rgba(121, 119, 119, 0.34);
+`
+const StyledThumb = styled.div`
+  width: 16px;
+  height: 16px;
+  border-radius: 15px;
+  position: relative;
+  padding: 2px;
+  top: -5px;
+  background: #99bbe8;
+  cursor: pointer;
+  font-size: 10pt;
+  display: table;
+  text-align: center;
+  vertical-align: middle;
 `
 
 const getPercentage = (current: any, min: any, max: any) =>
@@ -71,13 +75,8 @@ export const Range = React.forwardRef<HTMLInputElement, SliderInterface>(
 
       thumbRef.current.style.left = getLeft(newPercentage)
       rangeProgressRef.current.style.width = getWidth(newPercentage)
+      thumbRef.current.textContent = formatFn(newValue)
 
-      console.log(
-        "formatFn(newPercentage)",
-        newPercentage,
-        " formatFn(newValue)",
-        formatFn(newValue),
-      )
       props.onChange(formatFn(newValue))
     }
 

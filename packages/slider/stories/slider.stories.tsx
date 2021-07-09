@@ -38,7 +38,7 @@ export const Basic = () => {
     <>
       <Range
         initial={10}
-        max={25}
+        max={250}
         min={5}
         onChange={(value: number) => {
           console.log("value: ", value)
