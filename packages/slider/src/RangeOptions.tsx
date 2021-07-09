@@ -3,28 +3,28 @@ import styled from "styled-components"
 
 interface SliderInterface extends React.InputHTMLAttributes<HTMLInputElement> {
   className?: string
-  min?: number
-  max?: number
-  step?: number
+  options?: any
   value?: any
   onChange?: any
 }
 
 const RangeInput = styled.input``
 
-export const Range = React.forwardRef<HTMLInputElement, SliderInterface>(
+export const RangeOptions = React.forwardRef<HTMLInputElement, SliderInterface>(
   ({ ...props }, ref) => {
+    const optionsSize = props.options.length - 1
+
     const updateChange = (value: number) => {
-      props.onChange(value)
+      props.onChange(props.options[value])
     }
 
     return (
       <>
         <RangeInput
           type={"range"}
-          min={props.min}
-          max={props.max}
-          step={props.step}
+          min={0}
+          max={optionsSize}
+          step={1}
           value={props.value}
           onChange={(e: any) => {
             updateChange(e.target.value)

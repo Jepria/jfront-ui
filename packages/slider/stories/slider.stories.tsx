@@ -1,6 +1,7 @@
 import * as React from "react"
 import {
   Range,
+  RangeOptions,
   Slider,
   SliderOptions,
   SliderOptionsPointer,
@@ -39,6 +40,19 @@ export const Basic = () => {
         max={150}
         min={20}
         step={10}
+        value={100}
+        onChange={(value: number) => {
+          console.log("value: ", value)
+        }}
+      />
+    </>
+  )
+}
+
+export const BasicOptions = () => {
+  return (
+    <>
+      <RangeOptions
         options={[
           { name: "test1", value: 1 },
           { name: "test2", value: 2 },
@@ -53,7 +67,7 @@ export const Basic = () => {
         onChange={(value: number) => {
           console.log("value: ", value)
         }}
-      ></Range>
+      />
     </>
   )
 }
