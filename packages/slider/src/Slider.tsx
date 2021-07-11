@@ -10,19 +10,7 @@ export const SliderWrap = React.forwardRef<
 >(({ ...props }, ref) => {
   return (
     <>
-      <Slider
-        {...props}
-        trackStyle={{
-          backgroundColor: "#e53935",
-        }}
-        dotStyle={{
-          borderColor: "#e53935",
-        }}
-        handleStyle={{
-          backgroundColor: "#e53935",
-          borderColor: "#e53935",
-        }}
-      />
+      <Slider {...props} />
     </>
   )
 })
