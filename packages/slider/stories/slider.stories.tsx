@@ -1,5 +1,6 @@
 import * as React from "react"
-import { SliderWrap } from "../src"
+import { handle, SliderWrap } from "../src"
+import Slider from "rc-slider"
 
 export default {
   title: "Slider",
@@ -11,11 +12,55 @@ export default {
     ),
   ],
 }
+const wrapperStyle = { width: 400, marginTop: 50, marginLeft: 10 }
 
-export const Basic = () => {
+function log(value: any) {
+  console.log(value)
+}
+
+export const BasicSlider = () => {
   return (
-    <>
-      <SliderWrap />
-    </>
+    <div style={wrapperStyle}>
+      <div style={wrapperStyle}>
+        <SliderWrap min={20} max={30} defaultValue={25} onChange={log} />
+      </div>
+      <div style={wrapperStyle}>
+        <SliderWrap
+          min={20}
+          max={30}
+          defaultValue={25}
+          handle={handle}
+          onChange={log}
+        />
+      </div>
+    </div>
+  )
+}
+export const BasicSliderOptions = () => {
+  return (
+    <div style={wrapperStyle}>
+      <div style={wrapperStyle}>
+        <SliderWrap
+          marks={{ 20: "", 40: "", 100: "" }}
+          step={null}
+          onChange={log}
+        />
+      </div>
+      <div style={wrapperStyle}>
+        <SliderWrap
+          marks={{ 20: 20, 40: 40, 100: 100 }}
+          step={null}
+          onChange={log}
+        />
+      </div>
+      <div style={wrapperStyle}>
+        <SliderWrap
+          marks={{ 20: 20, 40: 40, 100: 100 }}
+          step={null}
+          handle={handle}
+          onChange={log}
+        />
+      </div>
+    </div>
   )
 }

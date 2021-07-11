@@ -1,2 +1,2 @@
 export * from "./Slider"
-export * from "./Range"
+export * from "./Sliderhandle"

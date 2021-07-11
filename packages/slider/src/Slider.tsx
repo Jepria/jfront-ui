@@ -1,35 +1,21 @@
 import React from "react"
 import "rc-slider/assets/index.css"
 import Slider, { SliderTooltip } from "rc-slider"
+import { SliderProps } from "rc-slider/lib/Slider"
 
 interface SliderInterface extends React.InputHTMLAttributes<HTMLInputElement> {
   handle?: any
+  step?: any
+  marks?: any
 }
-const { createSliderWithTooltip } = Slider
-const { Handle } = Slider
-const wrapperStyle = { width: 400, margin: 50 }
 
-const handle = (props: any) => {
-  const { value, dragging, index, ...restProps } = props
+export const SliderWrap = React.forwardRef<
+  React.ComponentClass<SliderProps>,
+  SliderInterface
+>(({ handle, step, marks, ...props }, ref) => {
   return (
-    <SliderTooltip
-      prefixCls="rc-slider-tooltip"
-      overlay={`${value} %`}
-      visible={dragging}
-      placement="top"
-      key={index}
-    >
-      <Handle value={value} {...restProps} />
-    </SliderTooltip>
+    <>
+      <Slider {...props} handle={handle} step={step} marks={marks} />
+    </>
   )
-}
-
-export const SliderWrap = React.forwardRef<HTMLInputElement, SliderInterface>(
-  ({ ...props }, ref) => {
-    return (
-      <>
-        <Slider min={0} max={20} defaultValue={3} handle={handle} />
-      </>
-    )
-  },
-)
+})
