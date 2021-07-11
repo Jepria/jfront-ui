@@ -1,6 +1,5 @@
 import * as React from "react"
 import { handle, SliderWrap } from "../src"
-import Slider from "rc-slider"
 
 export default {
   title: "Slider",
@@ -36,10 +35,11 @@ export const BasicSlider = () => {
       <div style={wrapperStyle}>
         <SliderWrap
           min={20}
-          max={30}
-          marks={{ 20: 20, 30: 30 }}
+          max={3000}
+          marks={{ 20: 20, 3000: 3000 }}
           defaultValue={25}
           handle={handle}
+          step={200}
           onChange={log}
         />
       </div>
@@ -69,7 +69,8 @@ export const BasicSliderOptions = () => {
       </div>
       <div style={wrapperStyle}>
         <SliderWrap
-          marks={{ 20: 20, 40: 40, 100: 100 }}
+          max={1000}
+          marks={{ 200: 200, 400: 400, 1000: 1000 }}
           step={null}
           onChange={log}
         />

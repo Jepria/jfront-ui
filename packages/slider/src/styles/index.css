@@ -8,6 +8,7 @@
   box-sizing: border-box;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
+
 .rc-slider * {
   box-sizing: border-box;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -41,7 +42,7 @@
 }
 .rc-slider-handle-dragging.rc-slider-handle-dragging.rc-slider-handle-dragging {
   border-color: #57c5f7;
-  box-shadow: 0 0 0 5px #96dbfa;
+  box-shadow: 0 0 0 5px rgba(229, 57, 53, 0.66);
 }
 .rc-slider-handle:focus {
   outline: none;
@@ -55,7 +56,7 @@
 }
 .rc-slider-handle:active {
   border-color: #57c5f7;
-  box-shadow: 0 0 5px #57c5f7;
+  box-shadow: 0 0 5px #E53935A8;
   cursor: -webkit-grabbing;
   cursor: grabbing;
 }
@@ -72,7 +73,11 @@
   vertical-align: middle;
   text-align: center;
   cursor: pointer;
-  color: #999;
+  color: rgba(153, 153, 153, 0.72);
+  -ms-user-select: none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
 }
 .rc-slider-mark-text-active {
   color: #666;
@@ -96,7 +101,7 @@
   vertical-align: middle;
 }
 .rc-slider-dot-active {
-  border-color: #96dbfa;
+  border-color: rgba(229, 57, 53, 0.78);
 }
 .rc-slider-dot-reverse {
   margin-right: -4px;

@@ -1,5 +1,5 @@
 import React from "react"
-import "./index.css"
+import "./styles/index.css"
 import Slider, { SliderTooltip } from "rc-slider"
 const { Handle } = Slider
 
