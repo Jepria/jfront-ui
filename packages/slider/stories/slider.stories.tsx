@@ -30,7 +30,7 @@ export const BasicSlider = () => {
           max={30}
           defaultValue={25}
           onChange={log}
-          marks={{ 20: 20, 30: 30 }}
+          marks={{ 20: 20, 25: 25, 30: 30 }}
         />
       </div>
       <div style={wrapperStyle}>
