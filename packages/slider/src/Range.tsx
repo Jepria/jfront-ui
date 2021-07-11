@@ -21,9 +21,9 @@ const StyledRangeProgress = styled.div`
   background: rgba(121, 119, 119, 0.34);
 `
 const StyledThumb = styled.div`
-  width: 16px;
-  height: 16px;
-  border-radius: 15px;
+  width: 7%;
+  height: 14px;
+  border-radius: 100%;
   position: relative;
   padding: 2px;
   top: -5px;
@@ -33,6 +33,11 @@ const StyledThumb = styled.div`
   display: table;
   text-align: center;
   vertical-align: middle;
+
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
 `
 
 const getPercentage = (current: any, min: any, max: any) =>
@@ -42,7 +47,7 @@ const getValue = (percentage: any, min: any, max: any) =>
   ((max - min) / 100) * percentage + min
 
 const formatFn = (number: number) => number.toFixed(0)
-const getLeft = (percentage: any) => `calc(${percentage}% - 5px)`
+const getLeft = (percentage: any) => `calc(${percentage}%  )`
 const getWidth = (percentage: any) => `${percentage}%`
 
 export const Range = React.forwardRef<HTMLInputElement, SliderInterface>(
@@ -58,7 +63,7 @@ export const Range = React.forwardRef<HTMLInputElement, SliderInterface>(
         diff.current -
         sliderRef.current.getBoundingClientRect().left
 
-      const end = sliderRef.current.offsetWidth - thumbRef.current.offsetWidth
+      const end = sliderRef.current.offsetWidth
 
       const start = 0
 

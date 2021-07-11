@@ -1,6 +1,2 @@
 export * from "./Slider"
-export * from "./SliderPointer"
-export * from "./SliderOptions"
-export * from "./SliderOptionsPointer"
 export * from "./Range"
-export * from "./RangeOptions"
