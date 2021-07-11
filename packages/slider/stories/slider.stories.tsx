@@ -77,6 +77,29 @@ export const BasicSliderOptions = () => {
       </div>
       <div style={wrapperStyle}>
         <SliderWrap
+          max={3}
+          min={1}
+          marks={{
+            1: {
+              style: {
+                color: "#3529EAFF",
+              },
+              label: <strong>Рено</strong>,
+            },
+            2: {
+              style: {
+                color: "#a029ea",
+              },
+              label: <strong>Рэнд ровер</strong>,
+            },
+            3: "Бмв",
+          }}
+          step={null}
+          onChange={log}
+        />
+      </div>
+      <div style={wrapperStyle}>
+        <SliderWrap
           marks={{ 20: 20, 40: 40, 100: 100 }}
           step={null}
           handle={handle}
