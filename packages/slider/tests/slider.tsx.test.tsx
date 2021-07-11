@@ -1,14 +1,16 @@
 import { render } from "@testing-library/react"
 import React from "react"
-import { Slider } from "../src"
+import { SliderWrap } from "../src"
 
 test("Checking for the existence of an element Slider", () => {
-  expect(render(
-    <Slider
-      initial={125}
-      max={150}
-    />
-  ))
+  expect(
+    render(
+      <SliderWrap
+        min={20}
+        max={30}
+        defaultValue={25}
+        marks={{ 20: 20, 25: 25, 30: 30 }}
+      />,
+    ),
+  )
 })
-
-
