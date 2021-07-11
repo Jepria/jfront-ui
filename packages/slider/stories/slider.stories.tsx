@@ -29,8 +29,29 @@ export const BasicSlider = () => {
           min={20}
           max={30}
           defaultValue={25}
+          onChange={log}
+          marks={{ 20: 20, 30: 30 }}
+        />
+      </div>
+      <div style={wrapperStyle}>
+        <SliderWrap
+          min={20}
+          max={30}
+          marks={{ 20: 20, 30: 30 }}
+          defaultValue={25}
           handle={handle}
           onChange={log}
+        />
+      </div>
+      <div style={wrapperStyle}>
+        <SliderWrap
+          min={20}
+          max={30}
+          marks={{ 20: 20, 30: 30 }}
+          defaultValue={25}
+          handle={handle}
+          onChange={log}
+          disabled
         />
       </div>
     </div>
