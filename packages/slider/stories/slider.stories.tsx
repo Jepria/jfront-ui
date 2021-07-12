@@ -57,7 +57,6 @@ export const SliderDisabled = () => {
         max={30}
         marks={{ 20: 20, 30: 30 }}
         defaultValue={25}
-        handle={handle}
         onChange={log}
         disabled
       />
