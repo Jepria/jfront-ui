@@ -122,8 +122,8 @@ export const OptionValue = () => {
 export const ScollableParent = () => {
   const [value, setValue] = React.useState<any>(undefined)
   return (
-    <div style={{ height: "200px", overflow: "auto" }}>
-      <div style={{ height: "500px" }}>
+    <div style={{ height: "400px", overflow: "auto" }}>
+      <div style={{ height: "800px", paddingTop: "300px" }}>
         <ComboBox
           value={value}
           onSelectionChange={(name, value) => setValue(value)}

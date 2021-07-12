@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-popup@0.2.11...@jfront/ui-popup@0.3.0) (2021-07-12)
+
+
+### Bug Fixes
+
+* unstable flipping when the size of popup was bigger either in top, or in bottom ([d9b67b1](https://github.com/Jepria/jfront-ui/commit/d9b67b10cefb3eaaec92485d079a08179232d4fa))
+
+
+### Features
+
+* popup flip onscreen overflow ([798b8d6](https://github.com/Jepria/jfront-ui/commit/798b8d69b7426a9b6dc52742daec5971ed5441cb))
+
+
+
+
+
 ## [0.2.11](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-popup@0.2.10...@jfront/ui-popup@0.2.11) (2021-06-28)
 
 **Note:** Version bump only for package @jfront/ui-popup
