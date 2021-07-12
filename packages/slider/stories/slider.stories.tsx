@@ -120,7 +120,11 @@ export const SliderSelectInput = () => {
     width: " 500px",
     "vertical-align": "bottom",
     "text-align": " inherit",
+    ":active, :hover, :focus": {
+      outline: "none",
+    },
   }
+
   const [value, setValue] = useState(0)
   const handleChange = (value: number) => {
     setValue(value)
@@ -169,7 +173,7 @@ export const SliderOptionsMarks = () => {
             style: {
               color: "#a029ea",
             },
-            label: <strong>Рэнд ровер</strong>,
+            label: <strong>Рендж ровер</strong>,
           },
           3: "Бмв",
         }}
