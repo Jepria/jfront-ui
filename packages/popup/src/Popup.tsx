@@ -1,4 +1,11 @@
-import React, { useState, useEffect, useRef } from "react"
+import React, {
+  useState,
+  useEffect,
+  useRef,
+  RefObject,
+  useMemo,
+  useLayoutEffect,
+} from "react"
 import { forwardRef } from "@jfront/ui-utils"
 import {
   ElementPosition,
@@ -28,8 +35,8 @@ const StyledDiv = styled.div`
 `
 
 export interface RelativePosition {
-  horizontal?: string // left | center | right
-  vertical?: string // top | center | bottom
+  horizontal?: "left" | "center" | "right"
+  vertical?: "top" | "center" | "bottom"
 }
 
 export interface Position {
@@ -44,11 +51,13 @@ export interface PopupProps {
   style?: React.CSSProperties
   targetElementRef?: React.RefObject<HTMLElement>
   targetRelativePosition?: RelativePosition
-  absolutePosition?: Position
-  onOpen?: () => void
-  onClose?: () => void
   visible?: boolean
   children?: React.ReactNode
+  disablePortal?: boolean
+  flippingEnabled?: boolean
+  onFlip?: (position: RelativePosition) => void
+  onOpen?: () => void
+  onClose?: () => void
 }
 
 const LEFT = "left"
@@ -63,12 +72,17 @@ export const Popup = forwardRef<PopupProps, "div">(
       as,
       style,
       targetElementRef,
-      targetRelativePosition,
-      absolutePosition,
-      onOpen,
-      onClose,
+      targetRelativePosition = {
+        horizontal: "center",
+        vertical: "bottom",
+      },
       children,
       visible = false,
+      disablePortal = false,
+      flippingEnabled = false,
+      onFlip,
+      onOpen,
+      onClose,
       ...rest
     },
     ref,
@@ -78,8 +92,70 @@ export const Popup = forwardRef<PopupProps, "div">(
       x: targetElementRef?.current?.getBoundingClientRect().left,
       y: targetElementRef?.current?.getBoundingClientRect().top,
     })
-    const innerRef = useRef<HTMLDivElement>(null)
+    const innerRef = useRef<HTMLElement>()
     const [isOpen, setOpen] = useState(visible)
+    const [
+      currentTargetRelativePosition,
+      setCurrentTargetRelativePosition,
+    ] = useState<RelativePosition>({ ...targetRelativePosition })
+
+    const evaluatePosition = (node = innerRef.current) => {
+      const result: Position = {}
+
+      if (targetElement) {
+        if (
+          currentTargetRelativePosition.horizontal === LEFT ||
+          currentTargetRelativePosition.horizontal == undefined
+        ) {
+          result.left = String(elementPosition.x) + "px"
+        } else if (currentTargetRelativePosition.horizontal === CENTER) {
+          result.left =
+            String(elementPosition.x + targetElement.offsetWidth / 2) + "px"
+        } else if (currentTargetRelativePosition.horizontal === RIGHT) {
+          result.left =
+            String(elementPosition.x + targetElement.offsetWidth) + "px"
+        }
+        if (currentTargetRelativePosition.vertical === TOP) {
+          result.top =
+            String(
+              elementPosition.y -
+                (node?.offsetHeight !== undefined ? node.offsetHeight : 0),
+            ) + "px"
+        } else if (currentTargetRelativePosition.vertical === CENTER) {
+          result.top =
+            String(elementPosition.y + targetElement.offsetHeight / 2) + "px"
+        } else if (
+          currentTargetRelativePosition.vertical === BOTTOM ||
+          currentTargetRelativePosition.vertical == undefined
+        ) {
+          result.top =
+            String(elementPosition.y + targetElement.offsetHeight) + "px"
+        }
+      }
+      return result
+    }
+
+    const [position, setPosition] = useState(evaluatePosition())
+
+    useLayoutEffect(() => {
+      setPosition(evaluatePosition())
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [targetElement, elementPosition, currentTargetRelativePosition])
+
+    const callbackRef = React.useCallback((node: HTMLElement) => {
+      innerRef.current = node
+      if (ref) {
+        if (typeof ref === "function") {
+          ref(node)
+        } else {
+          ref.current = node
+        }
+      }
+      if (node) {
+        evaluatePosition(node)
+        flip()
+      }
+    }, [])
 
     useEffect(() => {
       if (targetElementRef?.current != targetElement) {
@@ -92,9 +168,17 @@ export const Popup = forwardRef<PopupProps, "div">(
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [targetElementRef?.current])
 
+    useLayoutEffect(() => {
+      if (flippingEnabled && onFlip) {
+        onFlip(currentTargetRelativePosition)
+      }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [flippingEnabled, currentTargetRelativePosition])
+
     useScrollPosition(
       (prev, next) => {
         setElementPosition(next)
+        flip()
       },
       targetElementRef,
       false,
@@ -104,6 +188,7 @@ export const Popup = forwardRef<PopupProps, "div">(
     useResizePosition(
       (prev, next) => {
         setElementPosition(next)
+        flip()
       },
       targetElementRef,
       50,
@@ -144,6 +229,7 @@ export const Popup = forwardRef<PopupProps, "div">(
     const close = () => {
       if (isOpen) {
         setOpen(false)
+        setCurrentTargetRelativePosition(targetRelativePosition)
       }
       if (onClose) {
         setTimeout(onClose)
@@ -151,67 +237,89 @@ export const Popup = forwardRef<PopupProps, "div">(
     }
 
     useOnClickOutside(
-      targetElementRef
-        ? [targetElementRef, (ref as React.RefObject<any>) || innerRef]
-        : [(ref as React.RefObject<any>) || innerRef],
+      targetElementRef ? [targetElementRef, innerRef] : [innerRef],
       close,
     )
 
-    const position = React.useMemo(() => {
-      let result: Position = {}
-      if (targetElement) {
-        if (
-          targetRelativePosition?.horizontal === LEFT ||
-          targetRelativePosition?.horizontal == undefined
-        ) {
-          result.left = String(elementPosition.x) + "px"
-        } else if (targetRelativePosition?.horizontal === CENTER) {
-          result.left =
-            String(elementPosition.x + targetElement.offsetWidth / 2) + "px"
-        } else if (targetRelativePosition?.horizontal === RIGHT) {
-          result.left =
-            String(elementPosition.x + targetElement.offsetWidth) + "px"
-        }
-        if (targetRelativePosition?.vertical === TOP) {
-          result.bottom = String(elementPosition.y) + "px"
-        } else if (targetRelativePosition?.vertical === CENTER) {
-          result.top =
-            String(elementPosition.y + targetElement.offsetHeight / 2) + "px"
-        } else if (
-          targetRelativePosition?.vertical === BOTTOM ||
-          targetRelativePosition?.vertical == undefined
-        ) {
-          result.top =
-            String(elementPosition.y + targetElement.offsetHeight) + "px"
-        }
-      } else if (absolutePosition) {
-        result = { ...absolutePosition }
+    const flip = () => {
+      if (!flippingEnabled || !innerRef.current) {
+        return
       }
-      return result
-    }, [
-      targetElement,
-      elementPosition,
-      absolutePosition,
-      targetRelativePosition,
-    ])
+      const clientHeight = document.body.clientHeight
+      const clientWidth = document.body.clientWidth
+
+      const newPosition: RelativePosition = {}
+      const popupRect = innerRef.current?.getBoundingClientRect()
+
+      if (popupRect) {
+        if (popupRect.bottom > clientHeight) {
+          newPosition.vertical = "top"
+        } else if (popupRect.top < 0) {
+          newPosition.vertical = "bottom"
+        }
+        if (popupRect.right > clientWidth) {
+          newPosition.horizontal = "left"
+        } else if (popupRect.left < 0) {
+          newPosition.horizontal = "right"
+        }
+      }
+
+      setCurrentTargetRelativePosition((position) => ({
+        ...position,
+        ...newPosition,
+      }))
+    }
 
     if (
       isOpen &&
       (targetElementRef == undefined || targetElementRef?.current != null)
     ) {
-      if (as != undefined) {
+      if (disablePortal) {
+        if (as != undefined) {
+          React.isValidElement(as)
+          const Component = as
+
+          return (
+            <Component
+              {...rest}
+              style={{ ...position, ...style }}
+              ref={callbackRef}
+            >
+              {children}
+            </Component>
+          )
+        } else {
+          return (
+            <StyledDiv
+              {...rest}
+              style={{ ...position, ...style }}
+              ref={callbackRef as any}
+            >
+              {children}
+            </StyledDiv>
+          )
+        }
+      } else if (as != undefined) {
         React.isValidElement(as)
         const Component = as
 
         return ReactDOM.createPortal(
-          <Component {...rest} style={{ ...position, ...style }} ref={ref}>
+          <Component
+            {...rest}
+            style={{ ...position, ...style }}
+            ref={callbackRef}
+          >
             {children}
           </Component>,
           document.body,
         )
       } else {
         return ReactDOM.createPortal(
-          <StyledDiv {...rest} style={{ ...position, ...style }} ref={ref}>
+          <StyledDiv
+            {...rest}
+            style={{ ...position, ...style }}
+            ref={callbackRef as any}
+          >
             {children}
           </StyledDiv>,
           document.body,
