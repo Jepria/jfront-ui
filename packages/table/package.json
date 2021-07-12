@@ -1,6 +1,6 @@
 {
   "name": "@jfront/ui-table",
-  "version": "0.2.11",
+  "version": "0.2.12",
   "license": "Apache-2.0",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -25,9 +25,9 @@
     "test:cov": "yarn test --coverage"
   },
   "dependencies": {
-    "@jfront/ui-input": "^0.5.11",
-    "@jfront/ui-label": "^0.4.11",
-    "@jfront/ui-pagingbar": "^0.2.11",
+    "@jfront/ui-input": "^0.5.12",
+    "@jfront/ui-label": "^0.4.12",
+    "@jfront/ui-pagingbar": "^0.2.12",
     "react-resize-detector": "^6.5.0",
     "resize-observer-polyfill": "1.5.1"
   },
