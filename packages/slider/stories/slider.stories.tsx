@@ -1,5 +1,6 @@
 import * as React from "react"
 import { handle, SliderWrap } from "../src"
+import { useEffect, useState } from "react"
 
 export default {
   title: "Slider",
@@ -11,7 +12,12 @@ export default {
     ),
   ],
 }
-const wrapperStyle = { width: 400, marginTop: 50, marginLeft: 10 }
+const wrapperStyle = {
+  width: 400,
+  marginTop: 50,
+  marginLeft: 10,
+  display: "flex",
+}
 
 function log(value: any) {
   console.log(value)
@@ -26,7 +32,12 @@ export const BasicSlider = () => {
     </div>
   )
 }
+
 export const SliderFloat = () => {
+  const [value, setValue] = useState(0)
+  const handleChange = (value: number) => {
+    setValue(value)
+  }
   return (
     <div style={wrapperStyle}>
       <SliderWrap
@@ -35,8 +46,15 @@ export const SliderFloat = () => {
         marks={{ 20: 20, 3000: 3000 }}
         defaultValue={25}
         handle={handle}
+        value={value}
         step={200}
-        onChange={log}
+        onChange={(value1) => handleChange(value1)}
+      />
+      <button
+        onClick={() => {
+          console.log(value)
+          handleChange(1000)
+        }}
       />
     </div>
   )
