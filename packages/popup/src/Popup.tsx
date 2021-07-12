@@ -250,14 +250,28 @@ export const Popup = forwardRef<PopupProps, "div">(
 
       const newPosition: RelativePosition = {}
       const popupRect = innerRef.current?.getBoundingClientRect()
+      const targetRect = targetElementRef?.current?.getBoundingClientRect()
 
       if (popupRect) {
-        if (popupRect.bottom > clientHeight) {
+        if (
+          targetRect &&
+          targetRect.bottom + popupRect.height > clientHeight &&
+          targetRect.top - popupRect.height < 0
+        ) {
+          newPosition.vertical = targetRelativePosition.vertical
+        } else if (popupRect.bottom > clientHeight) {
           newPosition.vertical = "top"
         } else if (popupRect.top < 0) {
           newPosition.vertical = "bottom"
         }
-        if (popupRect.right > clientWidth) {
+
+        if (
+          targetRect &&
+          targetRect.right + popupRect.width > clientWidth &&
+          targetRect.left - popupRect.width < 0
+        ) {
+          newPosition.horizontal = targetRelativePosition.horizontal
+        } else if (popupRect.right > clientWidth) {
           newPosition.horizontal = "left"
         } else if (popupRect.left < 0) {
           newPosition.horizontal = "right"

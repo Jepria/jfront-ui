@@ -133,6 +133,7 @@ export const ScrollFlip = () => {
           Show
         </button>
         <Popup
+          style={{ height: "100px" }}
           flippingEnabled
           onFlip={console.log}
           visible={visible}
