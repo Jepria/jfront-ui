@@ -1,6 +1,7 @@
 import * as React from "react"
 import { handle, SliderWrap } from "../src"
 import { useEffect, useState } from "react"
+import { SelectInput } from "@jfront/ui-input"
 
 export default {
   title: "Slider",
@@ -34,10 +35,6 @@ export const BasicSlider = () => {
 }
 
 export const SliderFloat = () => {
-  const [value, setValue] = useState(0)
-  const handleChange = (value: number) => {
-    setValue(value)
-  }
   return (
     <div style={wrapperStyle}>
       <SliderWrap
@@ -46,15 +43,8 @@ export const SliderFloat = () => {
         marks={{ 20: 20, 3000: 3000 }}
         defaultValue={25}
         handle={handle}
-        value={value}
         step={200}
-        onChange={(value1) => handleChange(value1)}
-      />
-      <button
-        onClick={() => {
-          console.log(value)
-          handleChange(1000)
-        }}
+        onChange={log}
       />
     </div>
   )
@@ -100,6 +90,66 @@ export const SliderOptionsFloat = () => {
           onChange={log}
         />
       </div>
+    </div>
+  )
+}
+
+export const SliderSelectInput = () => {
+  const slider = {
+    isplay: "inline-block",
+    position: "relative",
+    "box-sizing": "border-box",
+    outline: "none",
+    right: "-50px",
+    "padding-top": 10,
+    "vertical-align": "middle",
+    "z-index": "2",
+  }
+  const selectInput = {
+    "border-bottom": "1px solid black",
+    "border-top": "none",
+    "border-left": "none",
+    "border-right": "none",
+
+    position: "absolute",
+    font: "inherit",
+    background: "transparent",
+    color: "currentColor",
+    outline: "none",
+    margin: 0,
+    "z-index": "1",
+    width: " 500px",
+    "vertical-align": "bottom",
+    "text-align": " inherit",
+  }
+  const [value, setValue] = useState(0)
+  const handleChange = (value: number) => {
+    setValue(value)
+  }
+
+  return (
+    <div style={wrapperStyle}>
+      <SliderWrap
+        style={slider}
+        marks={{ 0: "", 20: "", 40: "", 100: "" }}
+        defaultValue={25}
+        handle={handle}
+        value={value}
+        step={200}
+        onChange={(value1) => handleChange(value1)}
+      />
+      <SelectInput
+        style={selectInput}
+        name="Select"
+        options={[
+          { name: "0", value: "0" },
+          { name: "20", value: "20" },
+          { name: "40", value: "40" },
+          { name: "100", value: "100" },
+        ]}
+        value={value}
+        onChange={(event: any) => handleChange(event.target.value)}
+      />
     </div>
   )
 }

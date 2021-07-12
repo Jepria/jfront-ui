@@ -7,10 +7,10 @@ interface SliderInterface extends SliderProps {}
 export const SliderWrap = React.forwardRef<
   React.ComponentClass,
   SliderInterface
->(({ value, ...props }, ref) => {
+>(({ ...props }, ref) => {
   return (
     <>
-      <Slider {...props} value={value} />
+      <Slider {...props} />
     </>
   )
 })
