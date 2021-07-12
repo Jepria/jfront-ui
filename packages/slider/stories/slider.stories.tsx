@@ -23,40 +23,40 @@ export const BasicSlider = () => {
       <div style={wrapperStyle}>
         <SliderWrap min={20} max={30} defaultValue={25} onChange={log} />
       </div>
-      <div style={wrapperStyle}>
-        <SliderWrap
-          min={20}
-          max={30}
-          defaultValue={25}
-          onChange={log}
-          marks={{ 20: 20, 25: 25, 30: 30 }}
-        />
-      </div>
-      <div style={wrapperStyle}>
-        <SliderWrap
-          min={20}
-          max={3000}
-          marks={{ 20: 20, 3000: 3000 }}
-          defaultValue={25}
-          handle={handle}
-          step={200}
-          onChange={log}
-        />
-      </div>
-      <div style={wrapperStyle}>
-        <SliderWrap
-          min={20}
-          max={30}
-          marks={{ 20: 20, 30: 30 }}
-          defaultValue={25}
-          handle={handle}
-          onChange={log}
-          disabled
-        />
-      </div>
     </div>
   )
 }
+export const SliderFloat = () => {
+  return (
+    <div style={wrapperStyle}>
+      <SliderWrap
+        min={20}
+        max={3000}
+        marks={{ 20: 20, 3000: 3000 }}
+        defaultValue={25}
+        handle={handle}
+        step={200}
+        onChange={log}
+      />
+    </div>
+  )
+}
+export const SliderDisabled = () => {
+  return (
+    <div style={wrapperStyle}>
+      <SliderWrap
+        min={20}
+        max={30}
+        marks={{ 20: 20, 30: 30 }}
+        defaultValue={25}
+        handle={handle}
+        onChange={log}
+        disabled
+      />
+    </div>
+  )
+}
+
 export const BasicSliderOptions = () => {
   return (
     <div style={wrapperStyle}>
@@ -67,37 +67,13 @@ export const BasicSliderOptions = () => {
           onChange={log}
         />
       </div>
-      <div style={wrapperStyle}>
-        <SliderWrap
-          max={1000}
-          marks={{ 200: 200, 400: 400, 1000: 1000 }}
-          step={null}
-          onChange={log}
-        />
-      </div>
-      <div style={wrapperStyle}>
-        <SliderWrap
-          max={3}
-          min={1}
-          marks={{
-            1: {
-              style: {
-                color: "#3529EAFF",
-              },
-              label: <strong>Рено</strong>,
-            },
-            2: {
-              style: {
-                color: "#a029ea",
-              },
-              label: <strong>Рэнд ровер</strong>,
-            },
-            3: "Бмв",
-          }}
-          step={null}
-          onChange={log}
-        />
-      </div>
+    </div>
+  )
+}
+
+export const SliderOptionsFloat = () => {
+  return (
+    <div style={wrapperStyle}>
       <div style={wrapperStyle}>
         <SliderWrap
           marks={{ 20: 20, 40: 40, 100: 100 }}
@@ -106,6 +82,33 @@ export const BasicSliderOptions = () => {
           onChange={log}
         />
       </div>
+    </div>
+  )
+}
+export const SliderOptionsMarks = () => {
+  return (
+    <div style={wrapperStyle}>
+      <SliderWrap
+        max={3}
+        min={1}
+        marks={{
+          1: {
+            style: {
+              color: "#3529EAFF",
+            },
+            label: <strong>Рено</strong>,
+          },
+          2: {
+            style: {
+              color: "#a029ea",
+            },
+            label: <strong>Рэнд ровер</strong>,
+          },
+          3: "Бмв",
+        }}
+        step={null}
+        onChange={log}
+      />
     </div>
   )
 }
