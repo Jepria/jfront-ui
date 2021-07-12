@@ -212,29 +212,6 @@ export const ComboBox = React.forwardRef<HTMLDivElement, ComboBoxProps>(
       }px`
     }
 
-    const getPopupHeight = () => {
-      const rect = getOuterDivRef().current?.getBoundingClientRect()
-      const screenHeight = document.body.clientHeight
-
-      if (rect && screenHeight - rect.bottom < 20 && rect.top > 22) {
-        if (rect && rect.top > 100) {
-          return "100px"
-        } else if (rect && rect.top > 20) {
-          return `${rect.top - 2}px`
-        } else {
-          return "20px"
-        }
-      } else {
-        if (rect && screenHeight - rect.bottom > 100) {
-          return "100px"
-        } else if (rect && screenHeight - rect.bottom > 20) {
-          return `${document.body.clientHeight - rect.bottom - 2}px`
-        } else {
-          return "20px"
-        }
-      }
-    }
-
     useEffect(() => {
       if (!isOpen) {
         setHoverIndex(-1)
@@ -369,7 +346,12 @@ export const ComboBox = React.forwardRef<HTMLDivElement, ComboBoxProps>(
           targetElementRef={getOuterDivRef()}
           style={{
             width: getPopupWidth(),
-            maxHeight: getPopupHeight(),
+            maxHeight: "150px",
+          }}
+          flippingEnabled
+          targetRelativePosition={{
+            horizontal: "left",
+            vertical: "bottom",
           }}
           visible={isOpen}
           onOpen={scrollIntoCurrentItem}
