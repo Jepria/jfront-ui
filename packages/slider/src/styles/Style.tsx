@@ -1,6 +1,7 @@
 import styled from "styled-components"
 import Slider, { Handle, SliderTooltip } from "rc-slider"
 import "rc-slider/assets/index.css"
+import React from "react"
 
 export const SliderStyled: any = styled(Slider)`
   .rc-slider-track {
@@ -34,6 +35,22 @@ export const SliderStyled: any = styled(Slider)`
     box-shadow: 0 0 5px #e53935a8;
   }
 `
-export const SliderTooltipStyled: any = styled(SliderTooltip)``
+// export const SliderTooltipStyled: any = styled(SliderTooltip)`
+//   color: red !important;
+// `
+
+export const SliderTooltipStyled = styled(
+  ({ className, overlay, ...props }: any) => (
+    <SliderTooltip overlayClassName={className} overlay={overlay} {...props} />
+  ),
+)`
+  .rc-slider-tooltip-inner {
+    background-color: rgba(229, 57, 53, 0.89);
+    color: #fff;
+  }
+  .rc-slider-tooltip-arrow {
+    border-top-color: rgba(229, 57, 53, 0.89);
+  }
+`
 
 export const HandleStyled: any = styled(Handle)``
