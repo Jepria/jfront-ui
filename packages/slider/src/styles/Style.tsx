@@ -39,13 +39,8 @@ export const SliderStyled: any = styled(({ className, ...props }: any) => (
 `
 
 export const SliderTooltipStyled = styled(
-  ({ className, overlay, arrowContent, ...props }: any) => (
-    <SliderTooltip
-      overlayClassName={className}
-      arrowContent={arrowContent}
-      overlay={overlay}
-      {...props}
-    />
+  ({ className, overlay, ...props }: any) => (
+    <SliderTooltip overlayClassName={className} overlay={overlay} {...props} />
   ),
 )`
   .rc-slider-tooltip-inner {
