@@ -6,7 +6,7 @@ import { HandleStyled, SliderStyled, SliderTooltipStyled } from "./styles/Style"
 interface SliderInterface extends SliderProps {}
 
 export const handle = (props: any) => {
-  const { value, dragging, index, className, ...restProps } = props
+  const { value, dragging, index, ...restProps } = props
   return (
     <SliderTooltipStyled
       prefixCls="rc-slider-tooltip"
