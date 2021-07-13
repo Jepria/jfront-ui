@@ -1,6 +1,6 @@
 import * as React from "react"
+import { useState } from "react"
 import { handle, SliderWrap } from "../src"
-import { useEffect, useState } from "react"
 import { SelectInput } from "@jfront/ui-input"
 import Slider from "rc-slider"
 
@@ -65,13 +65,6 @@ export const SliderDisabled = () => {
   )
 }
 
-export const SliderDisabledTest = () => {
-  return (
-    <div style={wrapperStyle}>
-      <Slider min={0} max={20} />
-    </div>
-  )
-}
 export const BasicSliderOptions = () => {
   return (
     <div style={wrapperStyle}>

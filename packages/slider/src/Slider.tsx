@@ -1,7 +1,6 @@
 import React from "react"
 import { SliderProps } from "rc-slider/lib/Slider"
 import "rc-slider/assets/index.css"
-// import "./styles/index.css"
 import { HandleStyled, SliderStyled, SliderTooltipStyled } from "./styles/Style"
 
 interface SliderInterface extends SliderProps {}
