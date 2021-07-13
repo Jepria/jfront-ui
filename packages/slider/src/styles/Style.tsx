@@ -49,7 +49,10 @@ export const SliderTooltipStyled = styled(
     background-color: #e53935;
   }
 
+  .rc-slider-tooltip-placement-top,
   .rc-slider-tooltip-arrow {
+    margin-left: -6px;
+    border-width: 6px 6px 0;
     border-top-color: #e53935;
   }
 `
