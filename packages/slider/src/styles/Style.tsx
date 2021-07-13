@@ -45,11 +45,13 @@ export const SliderTooltipStyled = styled(
   ),
 )`
   .rc-slider-tooltip-inner {
-    background-color: rgba(229, 57, 53, 0.89);
+    border-radius: 50%;
     color: #fff;
+    background-color: #e53935;
   }
-  .rc-slider-tooltip-arrow {
-    border-top-color: rgba(229, 57, 53, 0.89);
+
+  .rc-slider-tooltip-placement-top .rc-slider-tooltip-arrow {
+    border-top-color: #e53935;
   }
 `
 
