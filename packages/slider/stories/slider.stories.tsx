@@ -1,8 +1,7 @@
 import * as React from "react"
 import { useState } from "react"
-import { handle, SliderWrap } from "../src"
+import { handle, Slider } from "../src"
 import { SelectInput } from "@jfront/ui-input"
-import Slider from "rc-slider"
 
 export default {
   title: "Slider",
@@ -29,7 +28,7 @@ export const BasicSlider = () => {
   return (
     <div style={wrapperStyle}>
       <div style={wrapperStyle}>
-        <SliderWrap min={20} max={30} defaultValue={25} onChange={log} />
+        <Slider min={20} max={30} defaultValue={25} onChange={log} />
       </div>
     </div>
   )
@@ -38,13 +37,12 @@ export const BasicSlider = () => {
 export const SliderFloat = () => {
   return (
     <div style={wrapperStyle}>
-      <SliderWrap
+      <Slider
         min={20}
         max={3000}
         marks={{ 20: 20, 3000: 3000 }}
         defaultValue={25}
         handle={handle}
-        step={200}
         onChange={log}
       />
     </div>
@@ -53,7 +51,7 @@ export const SliderFloat = () => {
 export const SliderDisabled = () => {
   return (
     <div style={wrapperStyle}>
-      <SliderWrap
+      <Slider
         min={20}
         max={30}
         marks={{ 20: 20, 30: 30 }}
@@ -69,7 +67,7 @@ export const BasicSliderOptions = () => {
   return (
     <div style={wrapperStyle}>
       <div style={wrapperStyle}>
-        <SliderWrap
+        <Slider
           marks={{ 20: "", 40: "", 100: "" }}
           step={null}
           onChange={log}
@@ -83,7 +81,7 @@ export const SliderOptionsFloat = () => {
   return (
     <div style={wrapperStyle}>
       <div style={wrapperStyle}>
-        <SliderWrap
+        <Slider
           marks={{ 20: 20, 40: 40, 100: 100 }}
           step={null}
           handle={handle}
@@ -96,20 +94,20 @@ export const SliderOptionsFloat = () => {
 
 export const SliderSelectInput = () => {
   const slider = {
-    isplay: "inline-block",
+    isPlay: "inline-block",
     position: "relative",
-    "box-sizing": "border-box",
+    boxSizing: "border-box",
     outline: "none",
     right: "-50px",
-    "padding-top": 10,
-    "vertical-align": "middle",
-    "z-index": "2",
+    paddingTop: 10,
+    verticalAlign: "middle",
+    zIndex: "2",
   }
   const selectInput = {
-    "border-bottom": "1px solid black",
-    "border-top": "none",
-    "border-left": "none",
-    "border-right": "none",
+    borderBottom: "1px solid black",
+    borderTop: "none",
+    borderLeft: "none",
+    borderRight: "none",
 
     position: "absolute",
     font: "inherit",
@@ -117,13 +115,11 @@ export const SliderSelectInput = () => {
     color: "currentColor",
     outline: "none",
     margin: 0,
-    "z-index": "1",
+    zIndex: "1",
     width: " 500px",
-    "vertical-align": "bottom",
-    "text-align": " inherit",
-    ":active, :hover, :focus": {
-      outline: "none",
-    },
+    verticalAlign: "bottom",
+    textAlign: "inherit",
+    boxShadow: "none",
   }
 
   const [value, setValue] = useState(0)
@@ -133,7 +129,7 @@ export const SliderSelectInput = () => {
 
   return (
     <div style={wrapperStyle}>
-      <SliderWrap
+      <Slider
         style={slider}
         marks={{ 0: "", 20: "", 40: "", 100: "" }}
         defaultValue={25}
@@ -160,7 +156,7 @@ export const SliderSelectInput = () => {
 export const SliderOptionsMarks = () => {
   return (
     <div style={wrapperStyle}>
-      <SliderWrap
+      <Slider
         max={3}
         min={1}
         marks={{

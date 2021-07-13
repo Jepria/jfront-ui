@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import Slider, { Handle, SliderTooltip } from "rc-slider"
+import Slider, { SliderTooltip } from "rc-slider"
 import "rc-slider/assets/index.css"
 import React from "react"
 
@@ -17,10 +17,12 @@ export const SliderStyled: any = styled(({ className, ...props }: any) => (
   .rc-slider-track {
     background-color: rgba(229, 57, 53, 0.89);
   }
+
   .rc-slider-handle {
     border: solid 2px #e53935;
     background-color: #e53935;
   }
+
   .rc-slider-handle-dragging.rc-slider-handle-dragging.rc-slider-handle-dragging {
     border-color: #e53935;
     box-shadow: 0 0 0 5px rgba(229, 57, 53, 0.66);
@@ -29,13 +31,26 @@ export const SliderStyled: any = styled(({ className, ...props }: any) => (
   .rc-slider-handle-click-focused:focus {
     border-color: #e53935;
   }
+
   .rc-slider-handle:hover {
     border-color: #e53935;
   }
+
   .rc-slider-handle:active {
     border-color: #e53935;
     box-shadow: 0 0 5px #e53935a8;
   }
+
+  &.rc-slider-disabled {
+    background-color: rgba(0, 0, 0, 0);
+  }
+
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 `
 
 export const SliderTooltipStyled = styled(
