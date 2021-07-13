@@ -34,6 +34,51 @@ export const SliderStyled: any = styled(Slider)`
     box-shadow: 0 0 5px #e53935a8;
   }
 `
-export const SliderTooltipStyled: any = styled(SliderTooltip)``
+export const SliderTooltipStyled: any = styled(SliderTooltip)`
+  .rc-slider-tooltip {
+    position: absolute;
+    left: -9999px;
+    top: -9999px;
+    visibility: visible;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  }
+  .rc-slider-tooltip * {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  }
+  .rc-slider-tooltip-hidden {
+    display: none;
+  }
+  .rc-slider-tooltip-placement-top {
+    padding: 4px 0 8px 0;
+  }
+  .rc-slider-tooltip-inner {
+    padding: 6px 2px;
+    min-width: 24px;
+    height: 24px;
+    font-size: 12px;
+    border-radius: 50%;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    background-color: #e53935;
+  }
+  .rc-slider-tooltip-arrow {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+  }
+  .rc-slider-tooltip-placement-top .rc-slider-tooltip-arrow {
+    bottom: 4px;
+    left: 50%;
+    margin-left: -6px;
+    border-width: 6px 6px 0;
+    border-top-color: #e53935;
+  }
+`
 
 export const HandleStyled: any = styled(Handle)``
