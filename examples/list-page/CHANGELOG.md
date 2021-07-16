@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.24](https://github.com/Jepria/jfront-ui/compare/jfront-listpage@0.1.23...jfront-listpage@0.1.24) (2021-07-12)
+
+**Note:** Version bump only for package jfront-listpage
+
+
+
+
+
 ## [0.1.23](https://github.com/Jepria/jfront-ui/compare/jfront-listpage@0.1.22...jfront-listpage@0.1.23) (2021-06-28)
 
 **Note:** Version bump only for package jfront-listpage

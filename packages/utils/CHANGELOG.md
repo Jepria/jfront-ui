@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.7](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-utils@0.5.6...@jfront/ui-utils@0.5.7) (2021-07-12)
+
+**Note:** Version bump only for package @jfront/ui-utils
+
+
+
+
+
 ## [0.5.6](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-utils@0.5.5...@jfront/ui-utils@0.5.6) (2021-06-28)
 
 **Note:** Version bump only for package @jfront/ui-utils

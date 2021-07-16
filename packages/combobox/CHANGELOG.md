@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.7.0](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-combobox@0.6.5...@jfront/ui-combobox@0.7.0) (2021-07-12)
+
+
+### Features
+
+* popup flip onscreen overflow ([798b8d6](https://github.com/Jepria/jfront-ui/commit/798b8d69b7426a9b6dc52742daec5971ed5441cb))
+
+
+
+
+
 ## [0.6.5](https://github.com/Jepria/jfront-ui/compare/@jfront/ui-combobox@0.6.4...@jfront/ui-combobox@0.6.5) (2021-06-28)
 
 **Note:** Version bump only for package @jfront/ui-combobox
