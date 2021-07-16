@@ -1,4 +1,4 @@
-import React, { useRef, useLayoutEffect } from "react"
+import React, { useRef, useEffect } from "react"
 import { ElementPosition } from "./types"
 
 const isBrowser = typeof window !== `undefined`
@@ -52,16 +52,16 @@ function getScrollableParentList(
   if (!element) {
     return list
   }
-  if (element === document.body && isScrollParent(document.body)) {
-    list.push(document.body)
-    return list
-  }
   const scrollableParent = getScrollableParent(element)
 
   if (scrollableParent === null) {
     return list
-  } else {
-    list.push(scrollableParent)
+  }
+
+  list.push(scrollableParent)
+
+  if (scrollableParent === document.body && isScrollParent(document.body)) {
+    return list
   }
 
   return list.concat(getScrollableParentList(scrollableParent))
@@ -100,7 +100,7 @@ export function useScrollPosition(
     throttleTimeout.current = undefined
   }
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const handleScroll = () => {
       if (wait) {
         if (!throttleTimeout.current) {
@@ -124,5 +124,5 @@ export function useScrollPosition(
         element.removeEventListener("scroll", handleScroll),
       )
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [element])
+  }, [element?.current])
 }

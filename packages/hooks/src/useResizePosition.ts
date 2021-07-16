@@ -1,4 +1,4 @@
-import React, { useRef, useLayoutEffect } from "react"
+import React, { useRef, useEffect } from "react"
 import { ElementPosition } from "./types"
 
 const isBrowser = typeof window !== `undefined`
@@ -36,7 +36,7 @@ export function useResizePosition(
     throttleTimeout.current = undefined
   }
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const handleResize = () => {
       if (wait) {
         if (!throttleTimeout.current) {
@@ -51,5 +51,5 @@ export function useResizePosition(
 
     return () => window.removeEventListener("resize", handleResize)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [element])
+  }, [element?.current])
 }
